@@ -1,149 +1,229 @@
-﻿<html class="transparent-bg-4">
-	<meta charset="utf-8">
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/vegas.min.css">
+
 	<script src="../index.js"></script>
-	<link rel="stylesheet" href="style.css">
 
 	<script src="../js/vue.js"></script>
-	<script src="../js/particles.min.js"></script>
-	<body>
-		<b id="particles-js"></b>
-		<b class="fixed fixed_full app" id="app">
-			<b style="margin: auto; width: 20vw;">
-				<b>
-					<input type="email" class="input input_transparent-with-buttom-border" placeholder="Email" v-model="enteredMail" :disabled="mailChecked" :class="{ checked: mailChecked }" autofocus>
-					<b class="code-block" v-if="!mailChecked">
-						<input type="text" class="input input_transparent-with-buttom-border" placeholder="Code" @input="verifyCode" v-model="enteredCode">
-						<a class="link-button link-button_theme-orange transition-02 hover" @click="mailGetCode">Get code</a>
-					</b>
+</head>
+<body>
+	<div class="limiter app" id="app">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-190 p-b-30">
+				<div class="login100-form validate-form">
+					<b class="error-message" v-if="errorMessage">{{ errorMessage }}</b>
+					<b class="error-message" style="background: #00b894;" v-if="infoMessage">{{ infoMessage }}</b>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "L'email est requis">
+						<input class="input100" type="email" placeholder="Email" v-model="enteredMail" :disabled="mailChecked" :class="{ checked: mailChecked }" autofocustype="text">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-10" v-if="!mailChecked">
+						<input type="text" class="input100" placeholder="Code reçu" @input="verifyCode" v-model="enteredCode" style="    width: 65%;
+						border-radius: 0;
+						float: left;
+						border-bottom-left-radius: 25px;
+						border-top-left-radius: 25px;">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-key"></i>
+						</span>
+						<a class="get-code" @click="mailGetCode">Envoyer le code</a>
+					</div>
+
+					<div style="width: 100%;" v-if="mailChecked">
+						<div class="wrap-input100 validate-input m-b-10">
+							<input type="text" class="input100" placeholder="Prénom du personnage" v-model="enteredFirstname" :class="{ checked: nameAvailable }" @input="resetNameChecked">
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-pencil"></i>
+							</span>
+						</div>
+						<div class="wrap-input100 validate-input m-b-10">
+							<input type="text" class="input100" placeholder="Nom du personnage" v-model="enteredLastname" :class="{ checked: nameAvailable }" @input="resetNameChecked">
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-pencil"></i>
+							</span>
+						</div>
+						<div class="container-login100-form-btn p-t-10" v-if="!nameAvailable">
+							<button class="login100-form-btn" @click="checkUsername">
+								Vérifier le pseudo
+							</button>
+						</div>
+						<div class="container-login100-form-btn p-t-10" v-if="nameAvailable && !nameChecked">
+							<button class="login100-form-btn" @click="confirmUsername">
+								Confirmer le pseudo
+							</button>
+						</div>
+					</div>
 				
-					<span v-if="mailChecked">
-						<input type="text" class="input input_transparent-with-buttom-border" placeholder="First name" v-model="enteredFirstname" :class="{ checked: nameAvailable }" @input="resetNameChecked">
-						<input type="text" class="input input_transparent-with-buttom-border" placeholder="Last name" v-model="enteredLastname" :class="{ checked: nameAvailable }" @input="resetNameChecked">
-						<a class="link-button link-button_margin1 link-button_theme-orange transition-02 hover" @click="checkUsername" v-if="!nameAvailable">Check username</a>
-						<a class="link-button link-button_margin1 link-button_theme-green transition-02 hover" @click="confirmUsername" v-if="nameAvailable && !nameChecked">Confirm username</a>
-					</span>
-				
-					<span v-if="mailChecked && nameChecked">
-						<input type="text" class="input input_transparent-with-buttom-border" placeholder="Password" v-model="enteredPass1" :class="{ checked: passChecked }">
-						<input type="text" class="input input_transparent-with-buttom-border" placeholder="Confirm password" v-model="enteredPass2" @input="verifyPass" :class="{ checked: passChecked }">
-					</span>
-				
-					<a class="link-button link-button_margin1 link-button_theme-green transition-02 hover" v-if="mailChecked && nameChecked && passChecked" @click="createAccount">Create account</a>
-				</b>
-				<b class="error-message" v-if="errorMessage">{{ errorMessage }}</b>
-				<b class="error-message" style="background: limegreen;" v-if="infoMessage">{{ infoMessage }}</b>
-				<a class="fixed top-button transition-02" @click="goToLoginWindow">Already have account? Log In</a>
-			</b>
-		</b> 
-	</body>
-</html>
+					<div style="width: 100%;" v-if="mailChecked && nameChecked">
+						<div class="wrap-input100 validate-input m-b-10">
+							<input type="password" class="input100" placeholder="Mot de passe" v-model="enteredPass1" :class="{ checked: passChecked }">
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-lock"></i>
+							</span>
+						</div>
+						<div class="wrap-input100 validate-input m-b-10">
+							<input type="password" class="input100" placeholder="Confirmer le mot de passe" v-model="enteredPass2" @input="verifyPass" :class="{ checked: passChecked }">
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-lock"></i>
+							</span>
+						</div>
+					</div>
+
+					<div class="container-login100-form-btn p-t-10" v-if="mailChecked && nameChecked && passChecked">
+						<button class="login100-form-btn" @click="createAccount">
+							S'inscrire
+						</button>
+					</div>
+
+					<div class="text-center w-full p-t-25 p-b-230">
+	
+					</div>
+
+					<div class="text-center w-full">
+						<a class="txt1" href="#" @click="goToLoginWindow">
+							Vous avez déjà un compte ?
+							<i class="fa fa-long-arrow-right"></i>						
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/select2/select2.min.js"></script>
+
+	<script src="js/vegas.min.js"></script>
+
+	<script type="text/javascript">
+		$("body").vegas({
+			slides: [
+				{ src: "images/bg1.jpg" },
+				{ src: "images/bg2.jpg" },
+				{ src: "images/bg3.jpg" },
+			],
+			firstTransition: 'fade',
+			firstTransitionDuration: 2000,
+			transition: 'blur',
+			transitionDuration: 2000,
+		});
+
+		const app = new Vue({
+			el: '#app',
+			data: {
+				mailChecked: false,
+				nameAvailable: false,
+				nameChecked: false,
+				passChecked: false,
+				enteredCode: "",
+				enteredMail: "",
+				enteredFirstname: "",
+				enteredLastname: "",
+				enteredPass1: "",
+				enteredPass2: "",
+				lang: "eng",
+				errorMessage: "",
+				infoMessage: "",
+			},
+			methods: {
+				mailGetCode: function () {
+					mp.trigger("cMisc-CallServerEvent", "sRegister-TryGetCodeToRegister", this.enteredMail.toLowerCase());
+				},
+
+				setMailChecked: function () {
+					this.mailChecked = true;
+				},
+
+				verifyCode: function () {
+					if (this.enteredCode.length === 3) {
+						mp.trigger("cMisc-CallServerEvent", "sRegister-TryValidateEmailWithCode", +this.enteredCode);
+					}
+				},
+
+				checkUsername: function () {
+					const obj = { 
+						firstName: this.enteredFirstname,
+						lastName: this.enteredLastname,
+					}
+					mp.trigger("cMisc-CallServerEvent", "sRegister-CheckUsername", JSON.stringify(obj));
+				},
+
+				setNameAvailable: function () {
+					this.nameAvailable = true;
+				},
+
+				confirmUsername: function () {
+					this.nameChecked = true;
+				},
+
+				resetNameChecked: function () {
+					this.nameChecked = false;
+					this.nameAvailable = false;
+				},
 
 
-<script>
-const app = new Vue({
-	el: '#app',
-	data: {
-		mailChecked: false,
-		nameAvailable: false,
-		nameChecked: false,
-		passChecked: false,
-		enteredCode: "",
-		enteredMail: "",
-		enteredFirstname: "",
-		enteredLastname: "",
-		enteredPass1: "",
-		enteredPass2: "",
-		lang: "eng",
-		errorMessage: "",
-		infoMessage: "",
-	},
-	methods: {
-		mailGetCode: function () {
-			mp.trigger("cMisc-CallServerEvent", "sRegister-TryGetCodeToRegister", this.enteredMail.toLowerCase());
-		},
+				verifyPass: function () {
+					if (this.enteredPass1 === this.enteredPass2) {
+						this.passChecked = true;
+					}
+					else {
+						this.passChecked = false;
+					}
+				},
+				createAccount: function () {
+					const obj = {
+						email: this.enteredMail.toLowerCase(),
+						firstName: this.enteredFirstname,
+						lastName: this.enteredLastname,
+						pass: this.enteredPass1,
+					}
+					mp.trigger("cMisc-CallServerEvent", "sRegister-CreateAccount", JSON.stringify(obj));
+				},
 
-		setMailChecked: function () {
-			this.mailChecked = true;
-		},
+				showError(text) {
+					this.infoMessage = "";
+					this.errorMessage = text;
+					setTimeout(() => {
+						this.errorMessage = "";
+					}, 5000);
+				},
 
-		verifyCode: function () {
-			if (this.enteredCode.length === 3) {
-				mp.trigger("cMisc-CallServerEvent", "sRegister-TryValidateEmailWithCode", +this.enteredCode);
+				showInfo(text) {
+					this.errorMessage = "";
+					this.infoMessage = text;
+					setTimeout(() => {
+						this.infoMessage = "";
+					}, 5000);
+				},
+
+
+				goToLoginWindow: function () {
+					mp.trigger("cLogin-ShowLoginWindow");
+				},
 			}
-		},
-
-		checkUsername: function () {
-			const obj = { 
-				firstName: this.enteredFirstname,
-				lastName: this.enteredLastname,
-			}
-			mp.trigger("cMisc-CallServerEvent", "sRegister-CheckUsername", JSON.stringify(obj));
-		},
-
-		setNameAvailable: function () {
-			this.nameAvailable = true;
-		},
-
-		confirmUsername: function () {
-			this.nameChecked = true;
-		},
-
-		resetNameChecked: function () {
-			this.nameChecked = false;
-			this.nameAvailable = false;
-		},
-
-
-		verifyPass: function () {
-			if (this.enteredPass1 === this.enteredPass2) {
-				this.passChecked = true;
-			}
-			else {
-				this.passChecked = false;
-			}
-		},
-		createAccount: function () {
-			const obj = {
-				email: this.enteredMail.toLowerCase(),
-				firstName: this.enteredFirstname,
-				lastName: this.enteredLastname,
-				pass: this.enteredPass1,
-			}
-			mp.trigger("cMisc-CallServerEvent", "sRegister-CreateAccount", JSON.stringify(obj));
-		},
-
-		showError(text) {
-			this.infoMessage = "";
-			this.errorMessage = text;
-			setTimeout(() => {
-				this.errorMessage = "";
-			}, 5000);
-		},
-
-		showInfo(text) {
-			this.errorMessage = "";
-			this.infoMessage = text;
-			setTimeout(() => {
-				this.infoMessage = "";
-			}, 5000);
-		},
-
-
-		goToLoginWindow: function () {
-			mp.trigger("cLogin-ShowLoginWindow");
-		},
-	}
-});
-
-particlesJS("particles-js", {
-    "particles": {
-        "number": { "value": 25 },
-        "color": { "value": "#ffffff" },
-        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-        "opacity": { "value": 1, "random": true },
-        "size": { "value": 1.5, "random": false },
-        "line_linked": { "enable": false, },
-        "move": { "enable": true, "speed": 1.5, "direction": "top-right", "random": true, "straight": false, "out_mode": "out", "bounce": false, }
-    }
-});
-</script>
+		});
+	</script>

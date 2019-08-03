@@ -1,15 +1,17 @@
 ﻿<html>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<script src="../vue.js"></script>
 	<body>
 		<div class="b1" id="app">
-			<div class="b1-face-item" style="margin-top: 0.5vh;">
+			<div class="b1-title">Personnalisez votre personnage</div>
+			<div class="fm-b_main-2" style="margin-top: 0.5vh;">
 				<input type="range" min="90" max="270" step="1" v-model.number="camRotation" @input="changeCamRotation">
 			  	<p>{{ i18n.rot }}</p>
 			</div>
 		
-			<div class="b1-face-item"  v-for="(item, index) in faceDataNames">
+			<div class="fm-b_main-2" v-for="(item, index) in faceDataNames">
 				<input type="range" min="-1.0" max="1.0" step="0.01" v-model.number="facedata[index]" @input="setToNumber(index)">
 			  	<p>{{ item }}</p>
 			</div>
@@ -26,31 +28,31 @@ const app = new Vue({
 		camRotation: 180,
 		facedata: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		faceDataNames: [
-			"Nose width", 
-			"Nose height", 
-			"Nose length", 
-			"Nose bridge", 
-			"Nose tip", 
-			"Nose bridge shift", 
-			"Brow height", 
-			"Brow width", 
-			"Cheekbone height", 
-			"Cheekbone width", 
-			"Cheeks width", 
-			"Eyes", 
-			"Lips", 
-			"Jaw width", 
-			"Jaw height", 
-			"Chin length", 
-			"Chin position", 
-			"Chin width", 
-			"Chin shape",
-			"Neck width"
+			"Largeur du nez", 
+			"Hauteur du nez", 
+			"Longueur du nez", 
+			"Pont du nez", 
+			"Pointe du nez", 
+			"Pont de nez", 
+			"Hauteur des sourcils", 
+			"Largeur des sourcils", 
+			"Hauteur des pomettes", 
+			"Largeur des pomettes", 
+			"Largeur des joues", 
+			"Yeux", 
+			"Lèvres", 
+			"Largeur de la mâchoire", 
+			"Hauteur de la mâchoire", 
+			"Longueur du menton", 
+			"Position du menton", 
+			"Largeur du menton", 
+			"Forme du menton",
+			"Largeur du cou"
 		],
 
 		i18n: {
-			rot: "rotation",
-			next: "Next",
+			rot: "Rotation",
+			next: "Terminer",
 		},
 	},
 	methods: {

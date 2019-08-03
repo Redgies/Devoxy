@@ -1,26 +1,27 @@
 ﻿<html>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<script src="../vue.js"></script>
 	<body>
 		<div class="b1" id="app">
-			<div class="b1-title">Character Creator</div>
+			<div class="b1-title">Créez votre personnage</div>
 			<div class="fm-b">
-				<div class="fm-b_arrow" @click="changeGender"><</div>
+				<div class="fm-b_arrow" @click="changeGender"><i class="fa fa-chevron-left"></i></div>
 				<div class="fm-b_main">
 					{{ genderNames[gender] }}
 					<p>{{ i18n.gender }}</p>
 				</div>
-				<div class="fm-b_arrow" @click="changeGender">></div>
+				<div class="fm-b_arrow" @click="changeGender"><i class="fa fa-chevron-right"></i></div>
 			</div>
 
-			<div class="fm-b" style="margin-top: 10vh;">
-				<div class="fm-b_arrow" @click="prevFather"><</div>
+			<div class="fm-b">
+				<div class="fm-b_arrow" @click="prevFather"><i class="fa fa-chevron-left"></i></div>
 				<div class="fm-b_main">
 					{{ fatherNames[father] }}
 					<p>{{ i18n.father }}</p>
 				</div>
-				<div class="fm-b_arrow" @click="nextFather">></div>
+				<div class="fm-b_arrow" @click="nextFather"><i class="fa fa-chevron-right"></i></div>
 			</div>
 
 			<div class="fm-input-b">
@@ -28,15 +29,15 @@
 			</div>
 
 			<div class="fm-b">
-				<div class="fm-b_arrow" @click="prevMother"><</div>
+				<div class="fm-b_arrow" @click="prevMother"><i class="fa fa-chevron-left"></i></div>
 				<div class="fm-b_main">
 					{{ motherNames[mother] }}
 					<p>{{ i18n.mother }}</p>
 				</div>
-				<div class="fm-b_arrow" @click="nextMother">></div>
+				<div class="fm-b_arrow" @click="nextMother"><i class="fa fa-chevron-right"></i></div>
 			</div>
 	
-			<div class="fm-b" style="margin-top: 10vh;">
+			<div class="fm-b">
 				<div class="fm-b_main">
 					<input type="range" min="0" max="12" step="1" v-model.number="skinColor" @input="changeAppearance">
 					<p>{{ i18n.skinCol }}</p>
@@ -61,7 +62,7 @@ const app = new Vue({
 	el: '#app',
 	data: {
 		gender: 0,
-		genderNames: ["Man", "Woman"],
+		genderNames: ["Homme", "Femme"],
 		father: 0,
 		mother: 0,
 		fatherNames: ["Benjamin", "Daniel", "Joshua", "Noah", "Andrew", "Juan", "Alex", "Isaac", "Evan", "Ethan", "Vincent", "Angel", "Diego", "Adrian", "Gabriel", "Michael", "Santiago", "Kevin", "Louis", "Samuel", "Anthony", "Claude", "Niko", "John"],
@@ -73,12 +74,12 @@ const app = new Vue({
 		camRotation: 180,
 
 		i18n: {
-			gender: "gender",
-			father: "father",
-			mother: "mother",
-			skinCol: "skin color",
-			rot: "rotation",
-			next: "Next",
+			gender: "Sexe",
+			father: "Père",
+			mother: "Mère",
+			skinCol: "Couleur de peau",
+			rot: "Rotation",
+			next: "Suivant",
 		},
 		
 	},
