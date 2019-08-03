@@ -10,9 +10,7 @@ mp.events.add('render', (nametags) => {
     const graphics = mp.game.graphics;
     const screenRes = graphics.getScreenResolution(0, 0);
 
-    console.log("sdfsd");
-
-    logger.debug('Got cheese.');
+    player.outputChatBox("gros fdp de ta mere");
 	
     nametags.forEach(nametag => {
         let [player, x, y, distance] = nametag;
