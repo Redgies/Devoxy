@@ -13,6 +13,15 @@ mp.events.add('render', () => {
     });
 });
 
+let pNameTag = (player) => { 
+    mp.players.forEachInStreamRange(player => {
+        const position = player.position;
+        mp.game.graphics.drawText(`${player.money} [${player.remoteId}]`, [position.x, position.y, position.z], { font: 4, color: [255, 255, 255, 255], scale: [0.5, 0.5], outline: true })  
+    });
+};
+
+mp.events.add('cNameTag', pNameTag);
+
 // mp.events.add('render', (nametags) => {
 //     const graphics = mp.game.graphics;
 //     const screenRes = graphics.getScreenResolution(0, 0);
