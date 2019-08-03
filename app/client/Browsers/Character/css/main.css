@@ -1,0 +1,211 @@
+﻿@font-face {
+  font-family: Montserrat-Regular;
+  src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Montserrat-ExtraBold;
+  src: url('../fonts/montserrat/Montserrat-ExtraBold.ttf'); 
+}
+
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
+}
+
+body, html {
+  height: 100%;
+  font-family: Montserrat-Regular, sans-serif;
+  font-weight: 100;
+  font-size: 14pt;
+  color: #555;
+  text-align: center;
+}
+
+.b1 {
+  width: 450px;
+  height: 90%;
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  overflow: hidden;
+}
+
+.b1-title {
+  width: 100%;
+  background: rgb(9,132,227);
+  background: linear-gradient(90deg, rgba(9,132,227,1) 0%, rgba(232,67,147,1) 100%);
+  color: white;
+  padding: 3vh 0;
+  font-size: 2vh;
+}
+
+.fm-b {
+  display: flex;
+  font-size: 2.5vh;
+  margin-top: 10px;
+}
+
+.fm-b_arrow {
+  width: 8vh;
+  padding-top: 1.0vh;
+  color: #0984e3;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.fm-b_arrow i {
+  margin-top: 5px;
+}
+
+.fm-b_arrow:hover {
+  background: #0984e3;
+  color: white;
+}
+
+.fm-b_main {
+  width: 100%;
+  line-height: 1vh;
+  padding-top: 1.5vh;
+  color: #0984e3;
+}
+
+.fm-b_main-2 {
+  width: 50%;
+  line-height: 1vh;
+  padding-top: 6px;
+  color: #0984e3;
+  display: inline-block;
+}
+
+.fm-b_main p, .fm-b_main-2 p {
+  font-size: 1.2vh;
+  color: #777;
+}
+
+.fm-input-b {
+  width: 100%;
+}
+
+.fm-input-b input:focus {
+  outline: none;
+}
+
+.fm-input-b input:before {
+  content: "";
+  background: white;
+  width: 20vh;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+input[type='range'] {
+  width: 60%;
+  height: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+}
+input[type='range'],
+input[type='range']::-webkit-slider-runnable-track,
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+input[type='range']::-webkit-slider-runnable-track {
+  width: 200px;
+  height: 10px;
+  background: #eee;
+}
+input[type='range']::-webkit-slider-thumb {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  margin-top: -5px;
+  background: #0984e3;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+input[type='range']::-webkit-slider-thumb::before {
+  position: absolute;
+  content: '';
+  height: 10px; /* equal to height of runnable track */
+  width: 500px; /* make this bigger than the widest range input element */
+  left: -502px; /* this should be -2px - width */
+  top: 8px; /* don't change this */
+  background: #777;
+}
+
+.b1-done {
+  background: #777;
+  padding: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: 0.3s;
+  transition: all .8s;
+}
+
+.b1-done:hover {
+  background: rgb(9,132,227);
+  background: linear-gradient(90deg, rgba(9,132,227,1) 0%, rgba(232,67,147,1) 100%);
+}
+
+
+
+
+.b1-face-item {
+	height: 4vh;
+	position: relative;
+	margin-bottom: 0.5vh;
+}
+
+.b1-face-item > input:focus {
+  outline: none;
+}
+
+.b1-face-item > input:before {
+  content: "";
+  background: white;
+  width: 18vw;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.b1-face-item > input[type=range] {
+  -webkit-appearance: none;
+  width: 18vw;
+  position: relative;
+}
+
+.b1-face-item > input[type=range]::-webkit-slider-runnable-track {
+  height: 2vh;
+  background: #ddd;
+}
+
+.b1-face-item > input[type=range]::-webkit-slider-thumb {
+  height: 2vh;
+  width: 5vh;
+  background: white;
+  -webkit-appearance: none;
+  background: url(range.png) center;
+  background-size: cover;
+}
+
+.b1-face-item > p {
+	display: block;
+  font-size: 1.3vh;
+  color: #777;
+  position: absolute;
+  bottom: -1.0vh;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
