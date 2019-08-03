@@ -1,17 +1,10 @@
-const maxDistance = 25*25;
-const width = 0.03;
-const height = 0.0065;
-const border = 0.001;
-const color = [255,255,255,255];
+// const maxDistance = 25*25;
+// const width = 0.03;
+// const height = 0.0065;
+// const border = 0.001;
+// const color = [255,255,255,255];
 
-mp.nametags.enabled = false;
-
-mp.events.add('render', () => {
-	mp.players.forEachInStreamRange(player => {
-      	const position = player.position;
-    	mp.game.graphics.drawText(`${player.money} [${player.remoteId}]`, [position.x, position.y, position.z], { font: 4, color: [255, 255, 255, 255], scale: [0.5, 0.5], outline: true })  
-    });
-});
+// mp.nametags.enabled = false;
 
 let pNameTag = (player) => { 
     mp.players.forEachInStreamRange(player => {
