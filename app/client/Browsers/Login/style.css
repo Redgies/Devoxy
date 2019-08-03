@@ -1,0 +1,38 @@
+﻿.app {
+    display: flex;
+    align-items: center;
+}
+  
+.code-block {
+    display: flex;
+    align-items: flex-end;
+    margin: 2vh 0;
+}
+.code-block > a, .code-block > input {
+    margin: 0;
+}
+
+.top-button {
+    display: block;
+    padding: 2vh;
+    font-size: 1.1vw;
+}
+  
+.top-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.checked {
+    border-color: limegreen;
+    color: limegreen;
+}
+
+.error-message {
+    background: tomato;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    padding: 2vh 0;
+    font-size: 1.25vw;
+}

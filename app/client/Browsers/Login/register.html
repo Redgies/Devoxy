@@ -1,0 +1,149 @@
+﻿<html class="transparent-bg-4">
+	<meta charset="utf-8">
+	<script src="../index.js"></script>
+	<link rel="stylesheet" href="style.css">
+
+	<script src="../js/vue.js"></script>
+	<script src="../js/particles.min.js"></script>
+	<body>
+		<b id="particles-js"></b>
+		<b class="fixed fixed_full app" id="app">
+			<b style="margin: auto; width: 20vw;">
+				<b>
+					<input type="email" class="input input_transparent-with-buttom-border" placeholder="Email" v-model="enteredMail" :disabled="mailChecked" :class="{ checked: mailChecked }" autofocus>
+					<b class="code-block" v-if="!mailChecked">
+						<input type="text" class="input input_transparent-with-buttom-border" placeholder="Code" @input="verifyCode" v-model="enteredCode">
+						<a class="link-button link-button_theme-orange transition-02 hover" @click="mailGetCode">Get code</a>
+					</b>
+				
+					<span v-if="mailChecked">
+						<input type="text" class="input input_transparent-with-buttom-border" placeholder="First name" v-model="enteredFirstname" :class="{ checked: nameAvailable }" @input="resetNameChecked">
+						<input type="text" class="input input_transparent-with-buttom-border" placeholder="Last name" v-model="enteredLastname" :class="{ checked: nameAvailable }" @input="resetNameChecked">
+						<a class="link-button link-button_margin1 link-button_theme-orange transition-02 hover" @click="checkUsername" v-if="!nameAvailable">Check username</a>
+						<a class="link-button link-button_margin1 link-button_theme-green transition-02 hover" @click="confirmUsername" v-if="nameAvailable && !nameChecked">Confirm username</a>
+					</span>
+				
+					<span v-if="mailChecked && nameChecked">
+						<input type="text" class="input input_transparent-with-buttom-border" placeholder="Password" v-model="enteredPass1" :class="{ checked: passChecked }">
+						<input type="text" class="input input_transparent-with-buttom-border" placeholder="Confirm password" v-model="enteredPass2" @input="verifyPass" :class="{ checked: passChecked }">
+					</span>
+				
+					<a class="link-button link-button_margin1 link-button_theme-green transition-02 hover" v-if="mailChecked && nameChecked && passChecked" @click="createAccount">Create account</a>
+				</b>
+				<b class="error-message" v-if="errorMessage">{{ errorMessage }}</b>
+				<b class="error-message" style="background: limegreen;" v-if="infoMessage">{{ infoMessage }}</b>
+				<a class="fixed top-button transition-02" @click="goToLoginWindow">Already have account? Log In</a>
+			</b>
+		</b> 
+	</body>
+</html>
+
+
+<script>
+const app = new Vue({
+	el: '#app',
+	data: {
+		mailChecked: false,
+		nameAvailable: false,
+		nameChecked: false,
+		passChecked: false,
+		enteredCode: "",
+		enteredMail: "",
+		enteredFirstname: "",
+		enteredLastname: "",
+		enteredPass1: "",
+		enteredPass2: "",
+		lang: "eng",
+		errorMessage: "",
+		infoMessage: "",
+	},
+	methods: {
+		mailGetCode: function () {
+			mp.trigger("cMisc-CallServerEvent", "sRegister-TryGetCodeToRegister", this.enteredMail.toLowerCase());
+		},
+
+		setMailChecked: function () {
+			this.mailChecked = true;
+		},
+
+		verifyCode: function () {
+			if (this.enteredCode.length === 3) {
+				mp.trigger("cMisc-CallServerEvent", "sRegister-TryValidateEmailWithCode", +this.enteredCode);
+			}
+		},
+
+		checkUsername: function () {
+			const obj = { 
+				firstName: this.enteredFirstname,
+				lastName: this.enteredLastname,
+			}
+			mp.trigger("cMisc-CallServerEvent", "sRegister-CheckUsername", JSON.stringify(obj));
+		},
+
+		setNameAvailable: function () {
+			this.nameAvailable = true;
+		},
+
+		confirmUsername: function () {
+			this.nameChecked = true;
+		},
+
+		resetNameChecked: function () {
+			this.nameChecked = false;
+			this.nameAvailable = false;
+		},
+
+
+		verifyPass: function () {
+			if (this.enteredPass1 === this.enteredPass2) {
+				this.passChecked = true;
+			}
+			else {
+				this.passChecked = false;
+			}
+		},
+		createAccount: function () {
+			const obj = {
+				email: this.enteredMail.toLowerCase(),
+				firstName: this.enteredFirstname,
+				lastName: this.enteredLastname,
+				pass: this.enteredPass1,
+			}
+			mp.trigger("cMisc-CallServerEvent", "sRegister-CreateAccount", JSON.stringify(obj));
+		},
+
+		showError(text) {
+			this.infoMessage = "";
+			this.errorMessage = text;
+			setTimeout(() => {
+				this.errorMessage = "";
+			}, 5000);
+		},
+
+		showInfo(text) {
+			this.errorMessage = "";
+			this.infoMessage = text;
+			setTimeout(() => {
+				this.infoMessage = "";
+			}, 5000);
+		},
+
+
+		goToLoginWindow: function () {
+			mp.trigger("cLogin-ShowLoginWindow");
+		},
+	}
+});
+
+particlesJS("particles-js", {
+    "particles": {
+        "number": { "value": 25 },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+        "opacity": { "value": 1, "random": true },
+        "size": { "value": 1.5, "random": false },
+        "line_linked": { "enable": false, },
+        "move": { "enable": true, "speed": 1.5, "direction": "top-right", "random": true, "straight": false, "out_mode": "out", "bounce": false, }
+    }
+});
+</script>
