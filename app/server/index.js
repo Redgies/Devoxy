@@ -13,5 +13,4 @@ require('./Factions/Police/sPolice');
 require('./Basic/sMenu');
 require('./Basic/sGPS');
 require('./3rd/betternotifs.js');
-require('./local-chat');
-require('./fingerpointing');
+require('./local-chat')
