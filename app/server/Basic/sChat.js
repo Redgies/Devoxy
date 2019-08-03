@@ -79,10 +79,10 @@ class ChatSingleton {
 			const color = this.getColorInRange("white", dist);
 			const currentTime = misc.getTime();
 			if (anon) {
-				client.outputChatBox(`!{${color}}[${currentTime}] (( ${i18n.get('sChat', 'someone', player.lang)}: ${text} ))`);
+				client.outputChatBox(`!{#dddddd}[${currentTime}] (( ${i18n.get('sChat', 'someone', player.lang)}: ${text} ))`);
 			}
 			else {
-				client.outputChatBox(`!{${color}}[${currentTime}] (( ${player.name}[${player.id}]: ${text} ))`);
+				client.outputChatBox(`!{#dddddd}[${currentTime}] (( ${player.name}[${player.id}]: ${text} ))`);
 			}
 		});
 	}
