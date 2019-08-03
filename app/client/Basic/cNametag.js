@@ -24,7 +24,7 @@ mp.events.add('render', (nametags) => {
 			
             y -= scale * (0.005 * (screenRes.y / 1080));
 			
-            mp.game.graphics.drawText(player.name.replace('_', ' '), [x, y],
+            mp.game.graphics.drawText('Nouveau mec', [x, y],
             {
               font: 4,
               color: [255, 255, 255, 255],
