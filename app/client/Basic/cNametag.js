@@ -7,12 +7,9 @@ const color = [255,255,255,255];
 mp.nametags.enabled = false;
 
 mp.events.add('render', () => {
-    mp.game.graphics.drawText('test : ' + player.money, [0.5, 0.005], 
-    {
-      font: 4,
-      color: [255, 255, 255, 255],
-      scale: [1.0, 1.0],
-      outline: true
+	mp.players.forEachInStreamRange(player => {
+      	const position = player.position;
+    	mp.game.graphics.drawText(`${player.name} [${player.remoteId}]`, [position.x, position.y, position.z], { font: 4, color: [255, 255, 255, 255], scale: [0.5, 0.5], outline: true })  
     });
 });
 
