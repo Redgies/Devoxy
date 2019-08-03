@@ -16,4 +16,5 @@ require('./Factions/cPrison.js');
 require('./Basic/cMenu');
 require('./Basic/cGPS');
 require('./3rd/betternotifs.js');
-require('./voice.js')
+require('./fingerpointing');
+require('./voice.js');
