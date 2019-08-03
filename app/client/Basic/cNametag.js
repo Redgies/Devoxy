@@ -13,8 +13,6 @@ mp.events.add('render', (nametags) => {
     nametags.forEach(nametag => {
         let [player, x, y, distance] = nametag;
 
-        player.outputChatBox("gros fdp de ta mere");
-
 
         console.log("sdfsd");
 
@@ -31,16 +29,16 @@ mp.events.add('render', (nametags) => {
 			
             y -= scale * (0.005 * (screenRes.y / 1080));
 
-            if(player.loyality <= 70)
-            {
-                mp.game.graphics.drawText('*Nouveau joueur*', [x, y],
+            // if(player.loyality <= 70)
+            // {
+                mp.game.graphics.drawText(player.money, [x, y],
                 {
                   font: 4,
                   color: [9, 132, 227, 255],
                   scale: [0.4, 0.4],
                   outline: true
                 });
-            }
+            // }
 			
             if(mp.game.player.isFreeAimingAtEntity(player.handle)) {
                 let y2 = y + 0.042;
