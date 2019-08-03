@@ -20,7 +20,7 @@ class RegiserSingleton extends AbstractAuth {
         }
         const d = await misc.query(`SELECT email FROM users WHERE email = '${email}' LIMIT 1`);
         if (d[0]) {
-            return this.showError(player, "This email already exists");
+            return this.showError(player, "Cette adresse email éxiste déjà.");
         }
         this.trySendCode(player, email);
     }
@@ -32,7 +32,7 @@ class RegiserSingleton extends AbstractAuth {
         }
         const lastGetCodeTime = ((new Date().getTime() - player.verificationDate) / 1000).toFixed();
         if (lastGetCodeTime < 60) {
-            return this.showError(player, `Wait ${60 - lastGetCodeTime} seconds`);
+            return this.showError(player, `Patientez ${60 - lastGetCodeTime} secondes`);
             
         }
         this.sendCode(player, email);
@@ -46,11 +46,11 @@ class RegiserSingleton extends AbstractAuth {
     async checkUsername(player, obj) {
         const data = JSON.parse(obj);
         if (!data.firstName || !data.lastName) {
-            return this.showError(player, "You cant own empty username");
+            return this.showError(player, "Vous devez entrer un pseudo rp.");
         }
         const d = await misc.query(`SELECT firstName, lastName FROM users WHERE firstName = '${data.firstName}' AND lastName = '${data.lastName}' LIMIT 1`);
         if (d[0]) {
-            return this.showError(player, "This nickname already exists");
+            return this.showError(player, "Ce pseudo éxiste déjà.");
         }
         player.call("cInjectCef", [`app.setNameAvailable();`]);
     }
@@ -58,11 +58,11 @@ class RegiserSingleton extends AbstractAuth {
     async tryCreateAccount(player, obj) {
         const data = JSON.parse(obj);
         if (!mailer.isEmailValid(data.email)) {
-            return this.showError(player, "Email Invalid");
+            return this.showError(player, "L'email est invalide.");
         }
         const d = await misc.query(`SELECT email FROM users WHERE email = '${data.email}' LIMIT 1`);
         if (d[0]) {
-            return this.showError(player, "Something wrong. Try again");
+            return this.showError(player, "Une erreur est survenue, essayez plus tard.");
         }
         this.createAccount(player, data);
     }
@@ -93,7 +93,7 @@ class RegiserSingleton extends AbstractAuth {
                     <b>Password:</b> ${d.pass}<br>`, 
         }
         mailer.sendMail(mail);
-        player.call("cInjectCef", [`app.showInfo('Success! Now you can log in.');`]);
+        player.call("cInjectCef", [`app.showInfo('Succès ! Vous pouvez maintenant vous connecter.');`]);
     }
     
 }
