@@ -1,0 +1,2 @@
+# Devoxy
+Gamemode DEVOXY
