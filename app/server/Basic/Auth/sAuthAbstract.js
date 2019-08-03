@@ -21,7 +21,7 @@ class AbstractAuth {
             html: `<b>Hello!</b><br>Your verification code is: ${code}`,
         }
         mailer.sendMail(mail);
-        player.call("cInjectCef", [`app.showInfo('Please check your mailbox!');`]);
+        player.call("cInjectCef", [`app.showInfo('Vérifiez vos mails !');`]);
     }
 
     hashPassword(str) {
@@ -36,7 +36,7 @@ class AbstractAuth {
         this.showError(player, `Too many wrong codes`);
         player.loggedIn = false;
         misc.log.warn(`${player.socialClub} too many wrong codes`);
-        player.kick('You tried wrong codes for too many times.');
+        player.kick('Vous avez essayé trop de fois un mauvais code.');
         return false;
     }
 
@@ -44,7 +44,7 @@ class AbstractAuth {
         if (!this.canCheckCode(player)) return false;
         if (player.verificationCode !== code) {
             player.verificationCodeTries++;
-            this.showError(player, `Wrong code!`);
+            this.showError(player, `Code incorrect !`);
             return false;
         }
         return true;

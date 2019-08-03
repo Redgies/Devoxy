@@ -13,16 +13,16 @@ class LoginSingleton extends AbstractAuth {
         const pass = this.hashPassword(data.pass);
         const d = await misc.query(`SELECT id, email, password, socialclub FROM users WHERE email = '${data.email}' LIMIT 1`);
         if (!d[0]) {
-            return this.showError(player, "This account does NOT exist");
+            return this.showError(player, "Ce compte n'existe pas !");
         }
         if (d[0].socialclub !== player.socialClub) {
             return player.call("cInjectCef", [`app.showCode = true;`]);
         }
         if (d[0].password !== pass) {
-            return this.showError(player, `Wrong password!`);
+            return this.showError(player, `Votre mot de passe est incorrect.`);
         }
         else if (this.isAlreadyPlaying(d[0].email)) {
-            this.showError(player, `You cant log in from two devices!`);
+            this.showError(player, `Vous ne pouvez pas vous connecter sur 2 appareils différents !`);
             player.loggedIn = false;
             return player.kick('Dublicate');
         }
@@ -70,14 +70,14 @@ class LoginSingleton extends AbstractAuth {
         if (!this.checkCode(player, data.code)) return;
         const d = await misc.query(`SELECT id, email, password FROM users WHERE email = '${data.email}' LIMIT 1`);
         if (!d[0]) {
-            return this.showError(player, "This account does NOT exist");
+            return this.showError(player, "Ce compte n'éxiste pas !");
         }
         if (d[0].password !== pass) {
             player.call("cInjectCef", [`app.showCode = false; app.enteredCode = "";`]);
-            return this.showError(player, `Wrong password!`);
+            return this.showError(player, `Votre mot de passe est incorrect.`);
         }
         if (this.isAlreadyPlaying(d[0].email)) {
-            this.showError(player, `You cant log in from two devices!`);
+            this.showError(player, `Vous ne pouvez pas vous connecter sur 2 appareils différents !`);
             return player.kick('Dublicate');
         }
         this.loadAccount(player, d[0].id);
