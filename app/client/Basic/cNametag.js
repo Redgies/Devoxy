@@ -23,14 +23,17 @@ mp.events.add('render', (nametags) => {
             var armour = player.getArmour() / 100;
 			
             y -= scale * (0.005 * (screenRes.y / 1080));
-			
-            mp.game.graphics.drawText('Nouveau mec', [x, y],
+
+            if(player.loyality <= 70)
             {
-              font: 4,
-              color: [255, 255, 255, 255],
-              scale: [0.4, 0.4],
-              outline: true
-            });
+                mp.game.graphics.drawText('*Nouveau joueur*', [x, y],
+                {
+                  font: 4,
+                  color: [9, 132, 227, 255],
+                  scale: [0.4, 0.4],
+                  outline: true
+                });
+            }
 			
             if(mp.game.player.isFreeAimingAtEntity(player.handle)) {
                 let y2 = y + 0.042;
