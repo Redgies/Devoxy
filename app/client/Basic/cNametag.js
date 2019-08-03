@@ -9,11 +9,11 @@ mp.nametags.enabled = false;
 mp.events.add('render', (nametags) => {
     const graphics = mp.game.graphics;
     const screenRes = graphics.getScreenResolution(0, 0);
-
-    player.outputChatBox("gros fdp de ta mere");
 	
     nametags.forEach(nametag => {
         let [player, x, y, distance] = nametag;
+
+        player.outputChatBox("gros fdp de ta mere");
 
 
         console.log("sdfsd");
