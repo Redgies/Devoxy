@@ -9,7 +9,7 @@ mp.nametags.enabled = false;
 mp.events.add('render', () => {
 	mp.players.forEachInStreamRange(player => {
       	const position = player.position;
-    	mp.game.graphics.drawText(`${player.name} [${player.remoteId}]`, [position.x, position.y, position.z], { font: 4, color: [255, 255, 255, 255], scale: [0.5, 0.5], outline: true })  
+    	mp.game.graphics.drawText(`${player.money} [${player.remoteId}]`, [position.x, position.y, position.z], { font: 4, color: [255, 255, 255, 255], scale: [0.5, 0.5], outline: true })  
     });
 });
 
