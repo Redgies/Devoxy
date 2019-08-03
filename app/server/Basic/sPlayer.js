@@ -172,7 +172,7 @@ function playerStartEnterVehicleHandler(player) {
  
     if (!player.loggedIn) return;
     playerSingleton.saveAccount(player);
-    player.notifyWithPicture("System", "Account Saving", "~g~Your Account was saved.", "CHAR_BLOCKED");
+    // player.notifyWithPicture("System", "Account Saving", "~g~Your Account was saved.", "CHAR_BLOCKED");
 //    player.outputChatBox(`${i18n.get('sLogin', 'saveGame', player.lang)}`);
 }
  
@@ -182,7 +182,7 @@ function playerStartEnterVehicleHandler(player) {
 function playerExitVehicleHandler(player) {
     if (!player.loggedIn) return;
     playerSingleton.saveAccount(player);
-    player.notifyWithPicture("System", "Account Saving", "~g~Your Account was saved.", "CHAR_BLOCKED");
+    // player.notifyWithPicture("System", "Account Saving", "~g~Your Account was saved.", "CHAR_BLOCKED");
 //    player.outputChatBox(`${i18n.get('sLogin', 'saveGame', player.lang)}`);
 }
 
