@@ -4,8 +4,8 @@ const mysql = require("mysql");
 const connection =  mysql.createPool({
 	host			:	"localhost",       
 	user			: 	"root",
-	password		: 	"",
-	database		:	"rpserver",
+	password		: 	"nitram77340",
+	database		:	"devoxy",
 });
 
 connection.getConnection(function(e) {

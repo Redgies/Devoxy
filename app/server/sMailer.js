@@ -6,8 +6,8 @@ class MailerSingletone {
         this.transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'mail@gmail.com',
-                pass: 'pass'
+                user: 'kronos77340@gmail.com',
+                pass: 'boubou94500'
             },
             tls:{
                 rejectUnauthorized: false
@@ -26,7 +26,7 @@ class MailerSingletone {
 
     
     getMailAdress() {
-        return 'Open Source RP server <mail@gmail.com>';
+        return 'Open Source RP server <kronos77340@gmail.com>';
     }
 
     isEmailValid(email) {
