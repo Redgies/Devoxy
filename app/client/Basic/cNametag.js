@@ -13,6 +13,9 @@ mp.events.add('render', (nametags) => {
     nametags.forEach(nametag => {
         let [player, x, y, distance] = nametag;
 
+
+        console.log("sdfsd");
+
         console.log(player);
 		
         if(distance <= maxDistance) {	   
