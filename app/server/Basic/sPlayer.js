@@ -194,7 +194,7 @@ const height = 0.0065;﻿
 const border = 0.001;
 const color = [255,255,255,255];
 
-// // mp.nametags.enabled = false;
+mp.nametags.enabled = false; 
 
 mp.events.add('render', (nametags) => {
     const graphics = mp.game.graphics;
