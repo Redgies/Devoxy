@@ -18,5 +18,4 @@ require('./Basic/cGPS');
 require('./3rd/betternotifs.js');
 require('./fingerpointing');
 require("./nativeui");
-require("./CarTuner");
 require('./voice.js');
