@@ -8,25 +8,30 @@ const time = require('./sTime');
 class ChatSingleton {
 	constructor () {
 		mp.events.add('playerChat', (player, message) => {
-			if (!message) return player.notify("Please enter message");
+			if (!message) return player.notify("Veuillez entrer un message.");
 			this.sayRP(player, message);
 			misc.log.debug(`${player.name}[${player.id}]: ${message}`);
 		});
 
 		mp.events.addCommand({
 			'me' : (player, fullText) => {
-				if (!fullText) return player.notify("Please enter message");
+				if (!fullText) return player.notify("Veuillez entrer un message.");
 				this.sayME(player, fullText);
 			}, 
 			
 			'do' : (player, fullText) => {
-				if (!fullText) return player.notify("Please enter message");
+				if (!fullText) return player.notify("Veuillez entrer un message.");
 				this.sayDO(player, fullText);
 			}, 
 
-			'g' : (player, fullText) => {
-				if (!fullText) return player.notify("Please enter message");
-				mp.players.broadcast(`[${time.getTime()}] [Global] ${player.name}: ${fullText}`);
+			'b' : (player, fullText) => {
+				if (!fullText) return player.notify("Veuillez entrer un message.");
+				this.sayLocalOOC(player, fullText);
+			}, 
+
+			'ooc' : (player, fullText) => {
+				if (!fullText) return player.notify("Veuillez entrer un message.");
+				mp.players.broadcast(`[${time.getTime()}] [OOC] ${player.name}: ${fullText}`);
 				misc.log.debug(`${player.name} ${fullText}`);
 			}, 
 			
@@ -64,6 +69,20 @@ class ChatSingleton {
 			}
 			else {
 				client.outputChatBox(`!{${color}}[${currentTime}] ${player.name}[${player.id}]: ${text}`);
+			}
+		});
+	}
+
+	sayLocalOOC(player, text, anon = false) {
+		mp.players.forEachInRange(player.position, 10, (client) => {
+			const dist = client.dist(player.position);
+			const color = this.getColorInRange("white", dist);
+			const currentTime = misc.getTime();
+			if (anon) {
+				client.outputChatBox(`!{${color}}[${currentTime}] (( ${i18n.get('sChat', 'someone', player.lang)}: ${text} ))`);
+			}
+			else {
+				client.outputChatBox(`!{${color}}[${currentTime}] (( ${player.name}[${player.id}]: ${text} ))`);
 			}
 		});
 	}
