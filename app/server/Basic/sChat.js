@@ -8,32 +8,47 @@ const time = require('./sTime');
 class ChatSingleton {
 	constructor () {
 		mp.events.add('playerChat', (player, message) => {
-			if (!message) return player.notify("Veuillez entrer un message.");
+			if(!message) return player.notify("Veuillez entrer un message.");
 			this.sayRP(player, message);
 			misc.log.debug(`${player.name}[${player.id}]: ${message}`);
 		});
 
 		mp.events.addCommand({
 			'me' : (player, fullText) => {
-				if (!fullText) return player.notify("Veuillez entrer un message.");
+				if(!fullText) return player.notify("Veuillez entrer un message.");
 				this.sayME(player, fullText);
 			}, 
 			
 			'do' : (player, fullText) => {
-				if (!fullText) return player.notify("Veuillez entrer un message.");
+				if(!fullText) return player.notify("Veuillez entrer un message.");
 				this.sayDO(player, fullText);
 			}, 
 
 			'b' : (player, fullText) => {
-				if (!fullText) return player.notify("Veuillez entrer un message.");
+				if(!fullText) return player.notify("Veuillez entrer un message.");
 				this.sayLocalOOC(player, fullText);
 			}, 
 
 			'ooc' : (player, fullText) => {
-				if (!fullText) return player.notify("Veuillez entrer un message.");
+				if(!fullText) return player.notify("Veuillez entrer un message.");
 				mp.players.broadcast(`[${time.getTime()}] [OOC] ${player.name}: ${fullText}`);
 				misc.log.debug(`${player.name} ${fullText}`);
 			}, 
+
+			"pm" : (player, fullText) => {
+				if(fullText.length < 3 || !fullText[1].length || !fullText[2].length)
+					return player.notify("Utilisez /pm <id> <message>");
+			
+				const recipient = findPlayerByIdOrNickname(fullText[1]);
+				if(!recipient) 
+					return player.notify("Ce joueur n'est pas connecté.");
+			
+				const message = fullText.slice(2).join(' ');
+				const str = `<b>[PM] ${player.name}[${player.id}] -> ${recipient.name}[${recipient.id}]</b>: ${message}`;
+			
+				recipient.outputChatBox(str);
+				player.outputChatBox(str);
+			},
 
 			'test' : (player, fullText) => {
 				player.setVariable('test', player.name);
