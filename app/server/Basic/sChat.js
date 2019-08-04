@@ -59,6 +59,11 @@ class ChatSingleton {
 					return player.notify("Utilisez /thpere id");
 
 				const target = this.findPlayerByIdOrNickname(arg1);
+				if(!target) 
+					return player.notify("Ce joueur n'est pas connecté.");
+				if(target.id == player.id) 
+					return player.notify("Vous ne pouvez pas vous téléporter.");
+
 				const pos = player.position;
 
 				target.position =  new Vector(pos.x, pos.y, pos.z);
