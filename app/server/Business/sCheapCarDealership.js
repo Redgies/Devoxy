@@ -10,7 +10,7 @@ class CheapCarDealership extends carDealership {
 	
 	setLocalSettings() {
 		this.blip.model = 225;
-		this.blip.name = `Cheap Car Dealership`;
+		this.blip.name = `Concessionnaire Automobile`;
 		this.blip.color = 31;
 	}
 

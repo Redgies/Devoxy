@@ -19,7 +19,7 @@
 				</div>
 				<div class="fill-info">
 					<div class="fill-info_litres">
-						<input type="text" v-model="litres" @input="updatePrice">L
+						<input type="number" v-model="litres" min="1" @input="updatePrice">L
 					</div>
 					{{ forText }}
 					<span class="fill-info_price dollar">{{ price }}</span>
