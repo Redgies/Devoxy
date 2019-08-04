@@ -29,13 +29,11 @@ class ChatSingleton {
 
 			'ooc' : (player, fullText) => {
 				if(!fullText) return player.notify("Veuillez entrer un message.");
-				mp.players.broadcast(`[${time.getTime()}] [OOC] ${player.name}: ${fullText}`);
+				mp.players.broadcast(`!{#0984e3}[${time.getTime()}] [OOC] ${player.name}: ${fullText}`);
 				misc.log.debug(`${player.name} ${fullText}`);
 			}, 
 
 			'pm' : (player, fullText, arg1, arg2) => {
-				console.log(arg1);
-				console.log(arg2);
 				if(fullText.length < 3 || !arg1 || !arg2)
 					return player.notify("Utilisez /pm id message");
 			
@@ -44,12 +42,14 @@ class ChatSingleton {
 					return player.notify("Ce joueur n'est pas connecté.");
 				if(recipient.id == player.id) 
 					return player.notify("Vous ne pouvez pas vous PM.");
+
+				const currentTime = misc.getTime();
 			
 				const message = arg2;
-				const str = `!{#0984e3}[PM] à ${recipient.name} [${recipient.id}] : ${message}`;
+				const str = `!{#0984e3}[${currentTime}] [PM] à ${recipient.name} [${recipient.id}] : ${message}`;
 				player.outputChatBox(str);
 
-				const str2 = `!{#0984e3}[PM] de ${player.name} [${player.id}] : ${message}`;
+				const str2 = `!{#0984e3}[${currentTime}] [PM] de ${player.name} [${player.id}] : ${message}`;
 				recipient.outputChatBox(str2);
 			},
 
