@@ -44,7 +44,7 @@ class ChatSingleton {
 					return player.notify("Ce joueur n'est pas connecté.");
 			
 				const message = arg2;
-				const str = `<b>[PM] ${player.name}[${player.id}] -> ${recipient.name}[${recipient.id}]</b>: ${message}`;
+				const str = `!{#fdcb6e}[PM] {#ffffff}${player.name} [${player.id}] -> ${recipient.name} [${recipient.id}] : ${message}`;
 			
 				recipient.outputChatBox(str);
 				player.outputChatBox(str);
