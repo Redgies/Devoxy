@@ -36,6 +36,7 @@ class ChatSingleton {
 			}, 
 
 			'test' : (player, fullText) => {
+				player.setVariable('test', player.name);
 				player.call("disablePlayerRegeneration", [player]);
 				player.notify("test");
 			},
