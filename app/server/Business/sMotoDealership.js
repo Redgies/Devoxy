@@ -51,7 +51,7 @@ mp.events.addCommand({
         if (!player.vehicle) 
             return player.outputChatBox("!{#d63031} [ADMIN] Vous devez être dans un véhicule.");
 		const coord = misc.getPlayerCoordJSON(player);
-		await misc.query(`UPDATE motosdealership SET newCarCoord = '${coord}' WHERE id = ${id}`);
+		await misc.query(`UPDATE motodealership SET newCarCoord = '${coord}' WHERE id = ${id}`);
 		player.notify(`~g~${i18n.get('basic', 'success', player.lang)}`);
 
 	},	
