@@ -30,7 +30,7 @@ class ClothingShop extends business {
 		execute += `app.camRotation = ${player.heading};`;
 	
 		player.call("cBarberShop-ShowBuyerMenu", [player.lang, execute, this.camData]);
-		misc.log.debug(`${player.name} enter a barber shop menu`);
+		misc.log.debug(`${player.name} entre dans un menu de barber shop`);
 	}
 
 	async updateCamData(player) {
@@ -58,7 +58,7 @@ class ClothingShop extends business {
 		await this.addMoneyToBalance(shopTax);
 		await headOverlaySingletone.saveHeadOverlay(player, d);
 		player.notify(`~g~${i18n.get('basic', 'success', player.lang)}!`);
-		misc.log.debug(`${player.name} bought something in barbershop for $${endPrice}`);
+		misc.log.debug(`${player.name} a acheté quelque chose au barber shop pour $${endPrice}`);
 	}
 
 	getPrice(d) {
@@ -113,7 +113,7 @@ mp.events.addCommand({
 		const query1 = misc.query(`INSERT INTO business (id, title, coord, price) VALUES ('${id}', 'Barber Shop', '${coord}', '${price}');`);
 		const query2 = misc.query(`INSERT INTO barbershop (id) VALUES ('${id}');`);	
 		await Promise.all([query1, query2]);
-		player.outputChatBox("!{#4caf50} Barber shop successfully created!");
+		player.outputChatBox("!{#4caf50} Le Barber SHOP a été crée avec succès !");
 	},	
 
 	'setbscamdata' : async (player, id) => {
