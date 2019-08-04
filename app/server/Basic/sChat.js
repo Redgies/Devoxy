@@ -66,7 +66,7 @@ class ChatSingleton {
 
 				const pos = player.position;
 
-				target.position =  new Vector(pos.x, pos.y, pos.z);
+				target.position = new mp.Vector3(pos.x, pos.y, pos.z);
 
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez téléporté ${target.playername} à vous.`);
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.playername} vous a téléporté à lui.`);
