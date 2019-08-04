@@ -53,12 +53,21 @@ class ChatSingleton {
 				recipient.outputChatBox(str2);
 			},
 
-			'test' : (player, fullText) => {
-				player.tsetVariable('test', player.name);
-				player.call("disablePlayerRegeneration", [player]);
-				player.notify("test");
+			'tphere' : (player, fullText, arg1) => {
+				if(player.adminLvl < 1) return;
+				if(fullText.length < 3 || !arg1)
+					return player.notify("Utilisez /thpere id");
+
+				const target = this.findPlayerByIdOrNickname(arg1);
+				const pos = player.position;
+
+				target.position =  new Vector(pos.x, pos.y, pos.z);
+
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez téléporté ${target.playername} à vous.`);
+				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.playername} vous a téléporté à lui.`);
+
+				misc.log.debug(`${player.name} teleported ${target.playername} to him.`);
 			},
-			
 		});
 	}
 

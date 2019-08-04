@@ -24,7 +24,7 @@ class CarDealership extends business {
 		await vehicleSingletone.saveNewCar(player, model, this.newCarCoord);
 
 		player.notify(`~g~${i18n.get('basic', 'success', player.lang)}`);
-		misc.log.debug(`${player.name} bought a car ${model} for $${fullPrice}`);
+		misc.log.debug(`${player.name} bought a vehicule ${model} for $${fullPrice}`);
 	}
 	
 }
