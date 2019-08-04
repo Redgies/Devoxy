@@ -62,7 +62,16 @@ class VehiclesDataSingleton {
 
 			{   model: "bati",      title: "Bati",              fuelTank: 45,   fuelRate: 11,   price: 20000,   },
             {   model: "bf400",     title: "BF400",             fuelTank: 60,   fuelRate: 16,   price: 20000,   },
-            {   model: "enduro",    title: "Enduro",             fuelTank: 80,   fuelRate: 25,   price: 20000,   },
+			{   model: "enduro",    title: "Enduro",             fuelTank: 80,   fuelRate: 25,   price: 20000,   },
+			
+			{   model: "dinghy",        title: "Dinghy",                fuelTank: 45,   fuelRate: 11,   price: 20000,   },
+            {   model: "seashark",      title: "Seashark",          fuelTank: 60,   fuelRate: 16,   price: 20000,   },
+			{   model: "squalo",    title: "Squalo",             fuelTank: 80,   fuelRate: 25,   price: 20000,   },
+			
+			{	model: "buzzard2", 		title: "Buzzard", 				fuelTank: 45, 	fuelRate: 11, 	price: 20000,	},
+			{	model: "dodo",		title: "Dodo", 			fuelTank: 60, 	fuelRate: 16, 	price: 20000,	},
+			{	model: "cuban800", 	title: "Cuban", 		    fuelTank: 80, 	fuelRate: 25, 	price: 20000,	},
+
 		
 		];
 	}

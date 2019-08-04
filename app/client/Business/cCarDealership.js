@@ -17,5 +17,17 @@ mp.events.add({
 		misc.prepareToCef(500);
 		misc.openCef("package://RP/Browsers/Business/MotoDealership/ccd.html", lang);
 		misc.injectCef(inject);
+	},
+
+	"cAvionDealership-OpenBuyerMenu" : (lang, inject) => {
+		misc.prepareToCef(500);
+		misc.openCef("package://RP/Browsers/Business/AvionDealership/ccd.html", lang);
+		misc.injectCef(inject);
+	},
+
+	"cBateauDealership-OpenBuyerMenu" : (lang, inject) => {
+		misc.prepareToCef(500);
+		misc.openCef("package://RP/Browsers/Business/BateauDealership/ccd.html", lang);
+		misc.injectCef(inject);
 	}
 });

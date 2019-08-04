@@ -6,6 +6,8 @@ require('./Business/sBarberShop');
 require('./Business/sClothingShop');
 require('./Business/sCheapCarDealership');
 require('./Business/sMotoDealership');
+require('./Business/sAvionDealership');
+require('./Business/sBateauDealership');
 require('./Business/sCommercialCarDealership');
 require('./Business/sGasStation');
 require('./Jobs/sOrangeCollector');
