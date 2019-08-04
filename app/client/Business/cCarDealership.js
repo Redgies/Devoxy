@@ -29,5 +29,11 @@ mp.events.add({
 		misc.prepareToCef(500);
 		misc.openCef("package://RP/Browsers/Business/BateauDealership/ccd.html", lang);
 		misc.injectCef(inject);
+	},
+
+	"cTruckDealership-OpenBuyerMenu" : (lang, inject) => {
+		misc.prepareToCef(500);
+		misc.openCef("package://RP/Browsers/Business/TruckDealership/ccd.html", lang);
+		misc.injectCef(inject);
 	}
 });
