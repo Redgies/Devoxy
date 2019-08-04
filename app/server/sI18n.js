@@ -22,7 +22,7 @@ const i18n = {
 		},
 
 		pressEToOpenMenu: {
-			eng: 'Press ~b~E ~s~to open Menu',
+			eng: '~b~E ~s~pour ouvrir le menu',
 			rus: 'Нажмите ~b~E ~s~для входа в меню',
 			ger: 'Drücken Sie ~b~ E ~s~, um das Menü zu öffnen',
 			br: 'Pressione ~b~E ~s~para abrir o menu', 
