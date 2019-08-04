@@ -5,6 +5,7 @@ require('./Basic/Money/sATM');
 require('./Business/sBarberShop');
 require('./Business/sClothingShop');
 require('./Business/sCheapCarDealership');
+require('./Business/sMotoDealership');
 require('./Business/sCommercialCarDealership');
 require('./Business/sGasStation');
 require('./Jobs/sOrangeCollector');
