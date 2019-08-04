@@ -65,10 +65,6 @@ class GasStation extends business {
 			player.notify(`~r~${i18n.get('sGasStation', 'offEngine', player.lang)}!`);
 			return;
 		}
-		if (vehicle.getOccupants().length > 0) {
-			player.notify(`~r~${i18n.get('sGasStation', 'passengersDropOff', player.lang)}!`);
-			return;
-		}
 
 		const price = Math.ceil(carData.litres * this.fuelprice);
 		const canBuy = await player.changeMoney(-price);
@@ -79,7 +75,7 @@ class GasStation extends business {
 		vehicle.fillUp(carData.litres);
 
 		player.notify(`~g~${i18n.get('basic', 'success', player.lang)}!`);
-		misc.log.debug(`${player.name} fill up car for $${price}`);
+		misc.log.debug(`${player.name} remplir le réservoir pour $${price}`);
 	}
 
 	async updateFillingData(player, radius) {

@@ -19,7 +19,7 @@
 				</div>
 				<div class="fill-info">
 					<div class="fill-info_litres">
-						<input type="number" v-model="litres" min="1" @input="updatePrice">L
+						<input type="number" v-model="litres" oninput="this.value = Math.abs(this.value)" min="0" @input="updatePrice">L
 					</div>
 					{{ forText }}
 					<span class="fill-info_price dollar">{{ price }}</span>
@@ -37,8 +37,8 @@
 	</body>
 </html>
 
-
 <script>
+
 const app = new Vue({
 el: '#app',
 data: {
