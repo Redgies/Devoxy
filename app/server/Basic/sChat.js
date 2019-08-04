@@ -97,6 +97,22 @@ class ChatSingleton {
 
 				misc.log.debug(`${player.name} teleported to ${target.name}.`);
 			},
+
+			'admin' : (player, fullText) => {
+				if(player.adminLvl < 1) return;
+				if(fullText.length < 1) 
+					return player.notify("Vous devez écrire un message.");
+
+				const onlinePlayers = mp.players.toArray();
+				const currentTime = misc.getTime();
+
+				for(const p of onlinePlayers) {
+					if(p.adminLvl >= 1) 
+					{
+						p.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]   ${player.name} : ${fullText}.`);
+					}
+				}
+			}
 		});
 	}
 
