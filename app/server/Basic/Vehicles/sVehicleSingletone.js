@@ -162,7 +162,7 @@ class VehicleSingleton {
 		const vehicles = mp.vehicles.toArray();
 		for (const vehicle of vehicles) {
 			if (vehicle.dist(player.position) > range) continue;
-			if (!vehicle.canOpen(player) || !player.aduty) continue;
+			if (!vehicle.canOpen(player)) continue;
 			vehiclesInRange.push(vehicle);
 		}
 		let nearestVeh = vehiclesInRange[0];

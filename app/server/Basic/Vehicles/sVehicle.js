@@ -30,8 +30,9 @@ class Vehicle {
 		vehicle.setColorRGB(primaryColor[0], primaryColor[1], primaryColor[2], secondaryColor[0], secondaryColor[1], secondaryColor[2]);
 
 		vehicle.canOpen = function(player) {
-			if (player.dimension !== this.dimension) return false;
-			if (player.faction.name && player.faction.name === this.factionName) return true;
+			if(player.dimension !== this.dimension) return false;
+			if(player.aduty) return true;
+			if(player.faction.name && player.faction.name === this.factionName) return true;
 			for (const p of this.whoCanOpen) {
 				if (p !== player.guid) continue;
 				return true;
