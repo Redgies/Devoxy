@@ -14,4 +14,5 @@ require('./Basic/sMenu');
 require('./Basic/sGPS');
 require('./3rd/betternotifs.js');
 require('./fingerpointing');
+require('./BlipCreator');
 require('./local-chat');
