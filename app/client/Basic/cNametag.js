@@ -7,8 +7,12 @@
 // mp.nametags.enabled = false;
 
 let disableRegeneration = (currentHealth) => { //currentHealth - value, what we send from server.
-	mp.game.player.setHealthRechargeMultiplier(0); //Disable regeneration
-	mp.gui.chat.push(`Regeneration disabled. Current health: ${currentHealth}`); //Output text to default chatbox
+	mp.game.graphics.drawText("Text at the top of the screen", [0.5, 0.005], { 
+        font: 7, 
+        color: [255, 255, 255, 185], 
+        scale: [1.2, 1.2], 
+        outline: true
+      });
 };
 
 mp.events.add('disablePlayerRegeneration', disableRegeneration);

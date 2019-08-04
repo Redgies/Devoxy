@@ -107,6 +107,10 @@ class PlayerSingleton {
             return obj;
         }
 
+        player.getLoyality = function(value) {
+            return this.loyality;
+        }
+
         player.addLoyality = function(value) {
             value = misc.roundNum(value);
 			if (value === 0) return;
