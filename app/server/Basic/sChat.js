@@ -29,7 +29,7 @@ class ChatSingleton {
 
 			'ooc' : (player, fullText) => {
 				if(!fullText) return player.notify("Veuillez entrer un message.");
-				mp.players.broadcast(`!{#0984e3}[${time.getTime()}] [OOC] ${player.name}: ${fullText}`);
+				mp.players.broadcast(`!{#0984e3}[${time.getTime()}] [OOC] ${player.name} [${player.id}] : ${fullText}`);
 				misc.log.debug(`${player.name} ${fullText}`);
 			}, 
 
