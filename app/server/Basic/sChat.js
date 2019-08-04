@@ -45,7 +45,7 @@ class ChatSingleton {
 
 				const currentTime = misc.getTime();
 			
-				const message = fullText.subtr(arg1 + arg1.length);
+				const message = fullText.substr(arg1 + arg1.length);
 				const str = `!{#0984e3}[${currentTime}] [PM] à ${recipient.name} [${recipient.id}] : ${message}`;
 				player.outputChatBox(str);
 
@@ -109,7 +109,7 @@ class ChatSingleton {
 				for(const p of onlinePlayers) {
 					if(p.adminLvl >= 1) 
 					{
-						p.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} [${player.id}] : ${fullText}.`);
+						p.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} [${player.id}] : ${fullText}`);
 					}
 				}
 			}
