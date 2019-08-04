@@ -1,0 +1,154 @@
+﻿/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+   font-family: Montserrat-Regular;
+   src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
+ }
+ 
+ @font-face {
+   font-family: Montserrat-ExtraBold;
+   src: url('../fonts/montserrat/Montserrat-ExtraBold.ttf'); 
+ }
+ 
+ @font-face {
+   font-family: Montserrat-Bold;
+   src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
+ }
+ 
+ 
+ /*//////////////////////////////////////////////////////////////////
+ [ RESTYLE TAG ]*/
+ 
+ * {
+    margin: 0px; 
+    padding: 0px; 
+    box-sizing: border-box;
+ }
+ 
+body, html {
+   height: 100%;
+   font-family: Montserrat-Regular, sans-serif;
+}
+
+.panel {
+   width: 90%;
+   background: #dfe6e9;
+   height: 90%;
+   position: relative;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   overflow: hidden;
+   border-top-left-radius: 25px;
+   border-top-right-radius: 25px;
+}
+
+.panel .panel-header {
+   position: relative;
+   height: 60px;
+   background: rgb(9,132,227);
+   background: linear-gradient(90deg, rgba(9,132,227,1) 0%, rgba(232,67,147,1) 100%);
+}
+
+.panel .panel-header .panel-title
+{
+   line-height: 60px;
+   text-indent: 30px;
+   color: #fff;
+   font-weight: bolder;
+   font-size: 23px;
+}
+
+.panel .panel-header .btn-close {
+   position: absolute;
+   right: 25px;
+   top: 17px;
+   width: 25px;
+   height: 25px;
+   color: #fff;
+   line-height: 25px;
+   text-align: center;
+   font-size: 30px;
+   cursor: pointer;
+}
+.panel .panel-header .btn-close:hover {
+   color: #ddd;
+}
+
+.panel .panel-body {
+   padding: 10px;
+}
+ 
+ .content {
+    margin-top: 6vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+ }
+ 
+ .item {
+    margin-bottom: 10px;
+    width: 250px;
+    height: 140px;
+ }
+ 
+ .item-bg-color {
+    transition: 0.3s;
+ }
+ 
+ .item-bg-color:hover {
+    background: rgba(0, 0, 0, 0.85);
+ }
+ 
+ .item-table {
+    width: 100%;
+    text-align: left;
+    color: #eee;
+    font-size: 14px;
+    height: 140px;
+ }
+ 
+ .item-table td {
+    padding: 5px 10px;
+ }
+ 
+ .buy {
+    color: #55efc4;
+    transition: 0.3s;
+ }
+ 
+ .buy:hover {
+    background: #00b894;
+    color: #fff;
+ }
+ 
+ .right {
+    text-align: right;
+ }
+ 
+ .price:before {
+    content: "$";
+ }
+ 
+ .hideText td {
+    color: transparent;
+ }
+ 
+ .b3-close {
+    background: coral;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 6vh;
+    height: 3vh;
+    font-size: 2vh;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 3;
+ }
+ 
+ .b3-close:hover {
+    background: tomato;
+ }
+ 

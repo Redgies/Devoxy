@@ -1,9 +1,39 @@
 ﻿<html>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="ccd.css">
+	<link rel="stylesheet" href="css/main.css">
 	<script src="../../vue.js"></script>
 	<body>
-		<div id="app">
+		<div class="panel">
+			<div class="panel-header">
+				<h1 class="panel-title">{{ title }} №{{ id }}</h1>
+				<div class="btn-close" id="close-button" @click="exit">X</div>
+			</div>
+			<div class="panel-body">
+				<div v-for="car in cars" :style="{ 'background': 'url(img/' + car.model + '.jpg) center', 'background-size': 'cover' }" class="item">
+					<div class="item-bg-color" @mouseover="car.hideText = false" @mouseout="car.hideText = true">
+						<table class="item-table" :class="{ hideText: car.hideText }" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td>{{ modelText }}</td>
+								<td class="right">{{ car.title }}</td>
+							</tr>
+							<tr>
+								<td>{{ fuelTankText }}</td>
+								<td class="right">{{ car.fuelTank }} L</td>
+							</tr>
+							<tr>
+								<td>{{ fuelRateText }}</td>
+								<td class="right">{{ car.fuelRate }} L/100 km</td>
+							</tr>
+							<tr class="buy" @click="buyCar(car.model)">
+								<td>{{ priceText }}</td>
+								<td class="right price">{{ prettify(car.price + car.price * margin / 400) }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div id="app">
 			<div class="b3-close" id="close-button" @click="exit">X</div>
 			<div class="title" id="id">{{ title }} №{{ id }}</div>
 			<div class="content">
@@ -30,7 +60,7 @@
 				  </div>
 			   </div>
 			</div>
-		 </div>
+		 </div> -->
 	</body>
 </html>
 
