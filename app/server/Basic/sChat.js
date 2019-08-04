@@ -49,8 +49,8 @@ class ChatSingleton {
 				const str = `!{#0984e3}[PM] à ${recipient.name} [${recipient.id}] : ${message}`;
 				player.outputChatBox(str);
 
-				const str = `!{#0984e3}[PM] de ${player.name} [${player.id}] : ${message}`;
-				recipient.outputChatBox(str);
+				const str2 = `!{#0984e3}[PM] de ${player.name} [${player.id}] : ${message}`;
+				recipient.outputChatBox(str2);
 			},
 
 			'test' : (player, fullText) => {
