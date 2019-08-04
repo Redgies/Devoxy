@@ -34,10 +34,12 @@ class ChatSingleton {
 			}, 
 
 			'pm' : (player, fullText) => {
+				console.log(fullText[1].length);
+				console.log(fullText[2].length);
 				if(fullText.length < 3 || !fullText[1].length || !fullText[2].length)
 					return player.notify("Utilisez /pm id message");
 			
-				const recipittent = findPlayerByIdOrNickname(fullText[1]);
+				const recipient = this.findPlayerByIdOrNickname(fullText[1]);
 				if(!recipient) 
 					return player.notify("Ce joueur n'est pas connecté.");
 			
