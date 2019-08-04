@@ -124,6 +124,19 @@ class ChatSingleton {
 				for(const p of onlinePlayers) {
 					p.outputChatBox(`!{#fdcb6e}[${currentTime}] [RAPPORT] ${player.name} [${player.id}] : ${fullText}`);
 				}
+			},
+
+			'aooc': (player, fullText) => {
+				if(player.adminLvl < 1) return;
+				if(fullText.length < 1) 
+					return player.notify("Vous devez écrire un message.");
+
+				const onlinePlayers = mp.players.toArray();
+				const currentTime = misc.getTime();
+	
+				for(const p of onlinePlayers) {
+					p.outputChatBox(`!{#d63031}[${currentTime}] [ANNONCE] ${player.name} [${player.id}] : ${fullText}`);
+				}
 			}
 		});
 	}
