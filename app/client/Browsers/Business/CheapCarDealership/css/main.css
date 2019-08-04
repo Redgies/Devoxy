@@ -32,7 +32,7 @@ body, html {
 }
 
 .panel {
-   width: 1000px;
+   width: 90%;
    background: #dfe6e9;
    height: 90%;
    position: relative;
@@ -85,7 +85,7 @@ body, html {
 
 .item {
    flex-direction: column;
-   width: 30vh;
+   width: 50vh;
    border: 1px solid white;
    margin-bottom: 3vh;
    margin-left: 2vh;
@@ -125,7 +125,7 @@ body, html {
 }
 
 .veh-info_prop > img {
-  width: 32px;
+  width: 52px;
   margin: auto;
   background: #fff;
   border-radius: 50%;
@@ -133,7 +133,7 @@ body, html {
 }
 
 .veh-info_prop > span {
-   font-size: 8px;
+   font-size: 14px;
    margin-top: 8px;
 }
 
