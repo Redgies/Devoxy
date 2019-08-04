@@ -34,6 +34,8 @@ class ChatSingleton {
 			}, 
 
 			'pm' : (player, fullText) => {
+				console.log(fullText[1]);
+				console.log(fullText[2]);
 				console.log(fullText[1].length);
 				console.log(fullText[2].length);
 				if(fullText.length < 3 || !fullText[1].length || !fullText[2].length)
