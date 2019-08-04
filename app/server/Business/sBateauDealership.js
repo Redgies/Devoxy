@@ -19,7 +19,7 @@ class BateauDealership extends carDealership {
 		let execute = `app.id = ${this.id};`;
 		execute += `app.margin = ${this.margin};`;
 
-		player.call("cbateauDealership-OpenBuyerMenu", [player.lang, execute]);
+		player.call("cBateauDealership-OpenBuyerMenu", [player.lang, execute]);
 		misc.log.debug(`${player.name} enter a bateau dealership menu`);
 	}
 	
