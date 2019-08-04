@@ -1,5 +1,6 @@
 /node_modules/*
 node.dll
+.idea
 *.log
 /packages/*
 /client_packages/*
