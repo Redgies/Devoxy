@@ -34,6 +34,11 @@ class ChatSingleton {
 				mp.players.broadcast(`[${time.getTime()}] [OOC] ${player.name}: ${fullText}`);
 				misc.log.debug(`${player.name} ${fullText}`);
 			}, 
+
+			'test' : (player, fullText) => {
+				player.call("disablePlayerRegeneration", [player.health]);
+				player.notify("test");
+			},
 			
 		});
 	}
