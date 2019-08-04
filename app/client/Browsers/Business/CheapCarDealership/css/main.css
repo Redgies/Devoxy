@@ -78,20 +78,17 @@ body, html {
 
 .panel .panel-body {
    padding: 10px;
+   height: calc(100% - 60px);
+   overflow-y: scroll;
 }
- 
- .content {
-    margin-top: 6vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
- }
- 
- .item {
-    margin-bottom: 10px;
-    width: 250px;
-    height: 140px;
- }
+
+.item {
+   margin: 0 0 10px 10px;
+   width: 32%;
+   height: 140px;
+   display: inline-block;
+   background-size: 100% 100%;
+}
  
  .item-bg-color {
     transition: 0.3s;
@@ -127,28 +124,10 @@ body, html {
     text-align: right;
  }
  
- .price:before {
+ .price:after {
     content: "$";
  }
  
  .hideText td {
     color: transparent;
  }
- 
- .b3-close {
-    background: coral;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 6vh;
-    height: 3vh;
-    font-size: 2vh;
-    transition: 0.3s;
-    cursor: pointer;
-    z-index: 3;
- }
- 
- .b3-close:hover {
-    background: tomato;
- }
- 

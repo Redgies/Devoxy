@@ -9,7 +9,7 @@
 				<div class="btn-close" id="close-button" @click="exit">X</div>
 			</div>
 			<div class="panel-body">
-				<div v-for="car in cars" :style="{ 'background': 'url(img/' + car.model + '.jpg) center', 'background-size': 'cover' }" class="item">
+				<div v-for="car in cars" :style="{ 'background': 'url(img/' + car.model + '.jpg)'}" class="item">
 					<div class="item-bg-color" @mouseover="car.hideText = false" @mouseout="car.hideText = true">
 						<table class="item-table" :class="{ hideText: car.hideText }" border="0" cellpadding="0" cellspacing="0">
 							<tr>
