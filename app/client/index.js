@@ -19,4 +19,5 @@ require('./3rd/betternotifs.js');
 require('./fingerpointing');
 require("./nativeui");
 require('./voice.js');
+require('./noclip');
 require('./Basic/cNametag');
