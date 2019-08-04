@@ -6,14 +6,12 @@
 
 // mp.nametags.enabled = false;
 
-let pNameTag = (player) => { 
-    mp.players.forEachInStreamRange(player => {
-        const position = player.position;
-        mp.game.graphics.drawText(`${player.money} [${player.remoteId}]`, [position.x, position.y, position.z], { font: 4, color: [255, 255, 255, 255], scale: [0.5, 0.5], outline: true })  
-    });
+let disableRegeneration = (currentHealth) => { //currentHealth - value, what we send from server.
+	mp.game.player.setHealthRechargeMultiplier(0); //Disable regeneration
+	mp.gui.chat.push(`Regeneration disabled. Current health: ${currentHealth}`); //Output text to default chatbox
 };
 
-mp.events.add('cNameTag', pNameTag);
+mp.events.add('disablePlayerRegeneration', disableRegeneration);
 
 // mp.events.add('render', (nametags) => {
 //     const graphics = mp.game.graphics;

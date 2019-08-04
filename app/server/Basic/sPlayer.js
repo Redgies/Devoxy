@@ -40,8 +40,8 @@ class PlayerSingleton {
         player.tp(JSON.parse(d[0].position));
         player.health = d[0].health;
         player.call("cCloseCefAndDestroyCam");
-        player.call("cNameTag", [player]);
 
+        player.call(`disablePlayerRegeneration`, [player.health]);
 
         const q1 = moneySingleton.loadUser(player);
         const q2 = characterSingleton.loadPlayerBody(player);
