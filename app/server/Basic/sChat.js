@@ -70,10 +70,10 @@ class ChatSingleton {
 
 				const currentTime = misc.getTime();
 
-				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez téléporté ${target.playername} à vous.`);
-				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.playername} vous a téléporté à lui.`);
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez téléporté ${target.name} à vous.`);
+				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a téléporté à lui.`);
 
-				misc.log.debug(`${player.name} teleported ${target.playername} to him.`);
+				misc.log.debug(`${player.name} teleported ${target.name} to him.`);
 			},
 		});
 	}
