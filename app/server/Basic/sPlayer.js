@@ -33,7 +33,7 @@ class PlayerSingleton {
         player.email = d[0].email;
         player.firstName = d[0].firstName;
         player.lastName = d[0].lastName;
-        player.adminlvl = d[0].adminlvl;
+        player.adminLvl = d[0].adminlvl;
         player.lang = d[0].lang;
         player.loyality = d[0].loyality;
         player.updateName();
