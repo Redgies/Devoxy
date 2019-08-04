@@ -84,51 +84,101 @@ body, html {
 }
 
 .item {
-   margin: 0 10px 10px 10px;
-   width: 220px;
-   height: 140px;
-   display: inline-block;
-   background-size: 100% 100%;
+   flex-direction: column;
+   width: 30vh;
+   border: 1px solid white;
+   margin-bottom: 3vh;
+   margin-left: 2vh;
+   overflow: hidden;
+   display: inline-flex;
+   margin-right: 2vh;
+}
+
+.item > img {
+   width: 100%;
+}
+
+.item-info {
+   background: #b2bec3;
+}
+
+.item-info > .model {
+   font-size: 15px;
+   padding-top: 1vh;
+   text-transform: uppercase;
 }
  
- .item-bg-color {
-    transition: 0.3s;
- }
- 
- .item-bg-color:hover {
-    background: rgba(0, 0, 0, 0.85);
- }
- 
- .item-table {
-    width: 100%;
-    text-align: left;
-    color: #eee;
-    font-size: 14px;
-    height: 140px;
- }
- 
- .item-table td {
-    padding: 5px 10px;
- }
- 
- .buy {
-    color: #55efc4;
-    transition: 0.3s;
- }
- 
- .buy:hover {
-    background: #00b894;
-    color: #fff;
- }
- 
- .right {
-    text-align: right;
- }
- 
- .price:after {
-    content: "$";
- }
- 
- .hideText td {
-    color: transparent;
- }
+.veh-info_props {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 1vh 0;
+}
+
+.veh-info_prop {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.75vh;
+  width: 26%;
+  padding: 1.5vh 0;
+  transition: 0.2s;
+}
+
+.veh-info_prop > img {
+  width: 32px;
+  margin: auto;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid;
+}
+
+.veh-info_prop > span {
+   font-size: 8px;
+   margin-top: 8px;
+}
+
+.veh-info_prop > div {
+  font-size: 0.75em;
+  text-transform: uppercase;
+}
+
+.item-info > .buy {
+  font-size: 2vh;
+  padding: 1vh 0;
+  color: limegreen;
+}
+
+.veh-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1vh 0;
+  font-size: 2vh;
+  position: relative;
+  transition: 0.3s;
+}
+
+.veh-item.lefted {
+  transform: translateX(-5vh);
+}
+
+.veh-item .confirm {
+  position: absolute;
+  right: -5vh;
+  top: 0;
+  height: 100%;
+  width: 5vh;
+  background: limegreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  z-index: 2;
+}
+
+.veh-item .confirm:hover {
+  background: green;
+}
+
+.veh-item:hover {
+   background: rgba(0, 0, 0, 0.4);
+}

@@ -9,7 +9,31 @@
 				<div class="btn-close" id="close-button" @click="exit">X</div>
 			</div>
 			<div class="panel-body">
-				<div v-for="car in cars" :style="{ 'background': 'url(img/' + car.model + '.jpg) #b2bec3', 'background-size': 'contain', 'background-position': 'center', 'background-repeat': 'no-repeat'}" class="item">
+				<div class="item" v-for="car of cars">
+					<img :src="'img/' + car.model + '.jpg'">
+					<div class="item-info">
+						<div class="model">{{ car.title }}</div>
+						<div class="veh-info_props">
+							<div class="veh-info_prop">
+								<img src="../../Menu/img/fuel.png">
+								<span>{{ car.fuelTank }} L</span>
+							</div>
+							<div class="veh-info_prop">
+								<img src="../../Menu/img/price-tag.png">
+								<span style="color: #00b894;">${{ prettify(car.price + car.price * margin / 400) }}</span>
+							</div>
+							<div class="veh-info_prop">
+								<img src="../../Menu/img/motor.png">
+								<span>{{ car.fuelRate }}L / 100 km</span>
+							</div>
+						</div>
+						<a class="veh-item" @click="car.buy = !car.buy" :class="[{ lefted: car.buy }]">
+							<span style="color: #00b894;">Acheter</span>
+							<div class="confirm" @click="buyCar(car.model)">✓</div>
+						</a>
+					</div>
+				</div>
+				<!-- <div v-for="car in cars" :style="{ 'background': 'url(img/' + car.model + '.jpg) #b2bec3', 'background-size': 'contain', 'background-position': 'center', 'background-repeat': 'no-repeat'}" class="item">
 					<div class="item-bg-color" @mouseover="car.hideText = false" @mouseout="car.hideText = true">
 						<table class="item-table" :class="{ hideText: car.hideText }" border="0" cellpadding="0" cellspacing="0">
 							<tr>
@@ -30,7 +54,7 @@
 							</tr>
 						</table>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<!-- <div id="app">
