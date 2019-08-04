@@ -99,13 +99,14 @@ body, html {
 }
 
 .item-info {
-   background: #b2bec3;
+   background: #fff;
 }
 
 .item-info > .model {
    font-size: 15px;
    padding-top: 1vh;
    text-transform: uppercase;
+   font-weight: bolder;
 }
  
 .veh-info_props {
@@ -180,5 +181,6 @@ body, html {
 }
 
 .veh-item:hover {
-   background: rgba(0, 0, 0, 0.4);
+   background: #00b894;
+   color: #fff;
 }

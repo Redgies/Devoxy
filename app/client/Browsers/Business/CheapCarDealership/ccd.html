@@ -28,8 +28,7 @@
 							</div>
 						</div>
 						<a class="veh-item" @click="car.buy = !car.buy" :class="[{ lefted: car.buy }]">
-							<span style="color: #00b894;">Acheter</span>
-							<div class="confirm" @click="buyCar(car.model)">✓</div>
+							<span @click="buyCar(car.model)">Acheter</span>
 						</a>
 					</div>
 				</div>
