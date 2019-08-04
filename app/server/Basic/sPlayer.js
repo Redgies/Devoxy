@@ -70,7 +70,7 @@ class PlayerSingleton {
         player.firstName = false;
         player.lastName = false;
         player.loyality = 0;
-        player.adminlvl = 0;
+        player.adminLvl = 0;
         player.faction = {};
         player.canOpen = {};
         player.canEnter = {};
@@ -156,7 +156,7 @@ mp.events.addCommand({
 
 
     'pos' : (player) => { 
-        if (player.adminlvl < 1) return;
+        if (player.adminLvl < 1) return;
         const pos = player.position;
         let rot;
         if (player.vehicle) rot = player.vehicle.rotation.z
