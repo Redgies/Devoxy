@@ -151,7 +151,7 @@ mp.events.addCommand({
 //      if (!player.loggedIn || player.adminlvl < 1) return;
         if (!player.loggedIn) return;
         playerSingleton.saveAccount(player);
-        player.outputChatBox(`${i18n.get('sLogin', 'saveGame', player.lang)}`);
+        player.outputChatBox(`!{#00b894}[INFOS] Votre compte a été sauvegardé.`);
     },
 
 
