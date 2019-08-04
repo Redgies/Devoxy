@@ -6,8 +6,8 @@
 
 // mp.nametags.enabled = false;
 
-let disableRegeneration = (currentHealth) => { //currentHealth - value, what we send from server.
-	mp.game.graphics.drawText("Text at the top of the screen", [0.5, 0.005], { 
+let disableRegeneration = (currentHealth) => {
+	mp.game.graphics.drawText("test : " + currentHealth, [0.5, 0.005], { 
         font: 7, 
         color: [255, 255, 255, 185], 
         scale: [1.2, 1.2], 
