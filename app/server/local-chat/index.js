@@ -13,8 +13,3 @@ mp.events.add("remove_voice_listener", (player, target) =>
 		player.disableVoiceTo(target);
 	}
 });
-
-
-mp.events.addCommand('test', (player, fullText) => {
-	player.outputChatBox('test');
-});

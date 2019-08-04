@@ -93,11 +93,11 @@ const app = new Vue({
 	el: '#app',
 	data: {
 		id: 0,
-		title: "Cheap Car Dealership",
+		title: "Concessionnaire automobile",
 		margin: 0,
 		modelText: "Model",
-		fuelTankText: "Fuel tank",
-		fuelRateText: "Fuel rate",
+		fuelTankText: "Réservoir",
+		fuelRateText: "Consommation",
 		priceText: "Buy",
 		hideText: true,
 		cars: [
@@ -412,6 +412,14 @@ const app = new Vue({
 				fuelTank: 60,
 				fuelRate: 14,
 				price: 150000,
+			},
+			{
+				hideText: true,
+				model: "fmj",
+				title: "FMJ",
+				fuelTank: 60,
+				fuelRate: 32,
+				price: 5600000,
 			},
 
 		],

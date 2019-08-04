@@ -5,7 +5,7 @@ const MaxRange = 50.0;
 
 mp.keys.bind(0x73, true, function() {
     mp.voiceChat.muted = !mp.voiceChat.muted;
-    mp.game.graphics.notify("Voice Chat: " + ((!mp.voiceChat.muted) ? "~g~enabled" : "~r~disabled"));
+    mp.game.graphics.notify("Chat vocal : " + ((!mp.voiceChat.muted) ? "~g~allumé" : "~r~éteind"));
 });
 
 let g_voiceMgr =
