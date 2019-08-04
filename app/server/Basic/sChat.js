@@ -5,24 +5,28 @@ const time = require('./sTime');
 
 class ChatSingleton {
 	constructor () {
-		
-		function findPlayerByIdOrNickname(playerName) {
-			if(playerName == parseInt(playerName))
-			  return mp.players.at(playerName);
-			else 
-			{
-				let foundPlayer = null;
-			  
-				  mp.players.forEach((_player) => {
-					if(_player.name === playerName) {
-						  foundPlayer = _player;
-						  break;
-					}
-				});
-			  
-				return foundPlayer;
-			}
+
+		findPlayerByIdOrNickname = playerName => {
+		let foundPlayer = null;
+
+		// If playerName is numberic
+		if (playerName == parseInt(playerName)) {
+			// search player by ID
+			foundPlayer = mp.players.at(playerName);
 		}
+
+		// or search player by nickname
+		if (!foundPlayer) {
+			mp.players.forEach((_player) => {
+			if (_player.name === playerName) {
+				foundPlayer = _player;
+			}
+			});
+		}
+
+		return foundPlayer;
+		};
+
 
 		mp.events.add('playerChat', (player, message) => {
 			if(!message) return player.notify("Veuillez entrer un message.");
