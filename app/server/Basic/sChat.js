@@ -33,19 +33,17 @@ class ChatSingleton {
 				misc.log.debug(`${player.name} ${fullText}`);
 			}, 
 
-			'pm' : (player, fullText) => {
-				console.log(fullText[1]);
-				console.log(fullText[2]);
-				console.log(fullText[1].length);
-				console.log(fullText[2].length);
-				if(fullText.length < 3 || !fullText[1].length || !fullText[2].length)
+			'pm' : (player, fullText, arg1, arg2) => {
+				console.log(arg1);
+				console.log(arg2);
+				if(fullText.length < 3 || !arg1 || !arg2)
 					return player.notify("Utilisez /pm id message");
 			
-				const recipient = this.findPlayerByIdOrNickname(fullText[1]);
+				const recipient = this.findPlayerByIdOrNickname(arg1);
 				if(!recipient) 
 					return player.notify("Ce joueur n'est pas connecté.");
 			
-				const message = fullText.slice(2).join(' ');
+				const message = arg2;
 				const str = `<b>[PM] ${player.name}[${player.id}] -> ${recipient.name}[${recipient.id}]</b>: ${message}`;
 			
 				recipient.outputChatBox(str);
