@@ -81,8 +81,8 @@ class VehicleSingleton {
 
 		mp.events.addCommand({	
 			'v' : (player, fullText, model) => {
-				console.log("level admin : " + player.email);
-				if (player.adminLvl < 1) return;
+				console.log("level admin : " + player.adminlvl);
+				if (player.adminlvl < 1) return;
 				if (!model) return player.notify("Model required");
 				const d = {
 					model,
