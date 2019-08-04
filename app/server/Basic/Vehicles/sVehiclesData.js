@@ -59,6 +59,10 @@ class VehiclesDataSingleton {
 			{	model: "mule2",			title: "Maibatsu Mule 2",			fuelTank: 200,	fuelRate: 25,	price: 50000,	},
 			{	model: "mule3",			title: "Maibatsu Mule 3",			fuelTank: 200,	fuelRate: 28,	price: 75000,	},
 			{	model: "mule4",			title: "Maibatsu Mule Custom",		fuelTank: 250,	fuelRate: 30,	price: 150000,	},
+
+			{   model: "bati",      title: "Bati",              fuelTank: 45,   fuelRate: 11,   price: 20000,   },
+            {   model: "bf400",     title: "BF400",             fuelTank: 60,   fuelRate: 16,   price: 20000,   },
+            {   model: "enduro",    title: "Enduro",             fuelTank: 80,   fuelRate: 25,   price: 20000,   },
 		
 		];
 	}
