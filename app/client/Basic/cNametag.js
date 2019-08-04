@@ -7,7 +7,8 @@
 // mp.nametags.enabled = false;
 
 let disableRegeneration = (player) => {
-	mp.game.graphics.drawText("test : " + player.money, [0.5, 0.005], { 
+    console.log(player);
+	mp.game.graphics.drawText("test : " + mp.players.local.money, [0.5, 0.005], { 
         font: 4, 
         color: [9, 132, 227, 255], 
         scale: [1.2, 1.2], 
