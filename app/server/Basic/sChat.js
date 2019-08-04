@@ -137,6 +137,53 @@ class ChatSingleton {
 				for(const p of onlinePlayers) {
 					p.outputChatBox(`!{#d63031}[${currentTime}] [ANNONCE] ${player.name} [${player.id}] : ${fullText}`);
 				}
+			},
+
+			'heal': (player, fullText, arg1) =>	{
+				if(player.adminLvl < 1) return;
+				if(!arg1)
+					return player.notify("Utilisez /heal id");
+
+				const target = this.findPlayerByIdOrNickname(arg1);
+				if(!target)
+					return player.notify("Ce joueur n'est pas connecté.");
+
+				target.setHealth(100);
+
+				const currentTime = misc.getTime();
+
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez heal ${target.name}.`);
+				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a heal.`);
+			},
+
+			'guid': (player, fullText, arg1) => {
+				if(!arg1)
+					return player.notify("Utilisez /guid id");
+
+				const target = this.findPlayerByIdOrNickname(arg1);
+				if(!target)
+					return player.notify("Ce joueur n'est pas connecté.");
+
+				const currentTime = misc.getTime();
+
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Le GUID de ${target.name} [${target.id}] est ${target.guid}.`);
+			},
+
+			'aduty': (player, fullText) => {
+				if(player.adminLvl < 1) return;
+				
+				const currentTime = misc.getTime();
+
+				if(player.aduty)
+				{
+					player.aduty = false;
+					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous êtes plus en admin service.`);
+				}
+				else 
+				{
+					player.aduty = true;
+					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous êtes en admin service.`);				
+				}	
 			}
 		});
 	}
