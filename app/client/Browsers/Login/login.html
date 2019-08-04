@@ -27,7 +27,7 @@
 					<b class="error-message" style="background: #00b894;" v-if="infoMessage">{{ infoMessage }}</b>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "L'email est requis">
-						<input class="input100" type="email" placeholder="Email" v-model="enteredMail" :disabled="showCode" autofocustype="text" @keyup.enter="enterClicked()">
+						<input class="input100" type="email" placeholder="Email" v-model="enteredMail" :disabled="showCode" autofocustype="text" @keyup.enter="login()">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user"></i>
@@ -35,7 +35,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Le mot de passe est requis">
-						<input class="input100" type="password" placeholder="Mot de passe" v-model="enteredPass" :disabled="showCode" @keyup.enter="enterClicked()">
+						<input class="input100" type="password" placeholder="Mot de passe" v-model="enteredPass" :disabled="showCode" @keyup.enter="login()">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock"></i>
@@ -94,9 +94,6 @@
 	        infoMessage: "",
 	    },
 	    methods: {
-			enterClicked: function() {
-				login();
-			},
 	        login: function () {
 	            const obj = {
 	                email: this.enteredMail.toLowerCase(),
