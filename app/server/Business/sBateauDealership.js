@@ -26,7 +26,7 @@ class BateauDealership extends carDealership {
 }
 
 async function loadShops() {
-	const d = await misc.query("SELECT * FROM business INNER JOIN bateaudealership ON business.id = boatdealership.id");
+	const d = await misc.query("SELECT * FROM business INNER JOIN boatdealership ON business.id = boatdealership.id");
 	for (let i = 0; i < d.length; i++) {
 		new BateauDealership(d[i]);
 	}
