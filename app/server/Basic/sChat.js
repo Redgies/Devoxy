@@ -3,7 +3,24 @@ const i18n = require('../sI18n');
 const misc = require('../sMisc');
 const time = require('./sTime');
 
-
+function findPlayerByIdOrNickname(playerName) {
+	if(playerName == parseInt(playerName))
+	  return mp.players.at(playerName);
+	else 
+	{
+		let foundPlayer = null;
+	  
+	  	mp.players.forEach((_player) => {
+			if(_player.name === playerName) {
+		  		foundPlayer = _player;
+		  		break;
+			}
+		});
+	  
+		return foundPlayer;
+	}
+}
+  
 
 class ChatSingleton {
 	constructor () {
@@ -35,11 +52,11 @@ class ChatSingleton {
 				misc.log.debug(`${player.name} ${fullText}`);
 			}, 
 
-			"pm" : (player, fullText) => {
+			'pm' : (player, fullText) => {
 				if(fullText.length < 3 || !fullText[1].length || !fullText[2].length)
-					return player.notify("Utilisez /pm <id> <message>");
+					return player.notify("Utilisez /pm id message");
 			
-				const recipient = findPlayerByIdOrNickname(fullText[1]);
+				const recipittent = findPlayerByIdOrNickname(fullText[1]);
 				if(!recipient) 
 					return player.notify("Ce joueur n'est pas connecté.");
 			
@@ -51,7 +68,7 @@ class ChatSingleton {
 			},
 
 			'test' : (player, fullText) => {
-				player.setVariable('test', player.name);
+				player.tsetVariable('test', player.name);
 				player.call("disablePlayerRegeneration", [player]);
 				player.notify("test");
 			},
