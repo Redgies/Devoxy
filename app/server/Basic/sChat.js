@@ -57,7 +57,7 @@ class ChatSingleton {
 		});
 	}
 
-	findPlayerByIdOrNickname = playerName => {
+	findPlayerByIdOrNickname(playerName) {
 		let foundPlayer = null;
 	
 		// If playerName is numberic
