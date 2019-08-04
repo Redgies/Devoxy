@@ -42,12 +42,15 @@ class ChatSingleton {
 				const recipient = this.findPlayerByIdOrNickname(arg1);
 				if(!recipient) 
 					return player.notify("Ce joueur n'est pas connecté.");
+				if(recipient.id == player.id) 
+					return player.notify("Vous ne pouvez pas vous PM.");
 			
 				const message = arg2;
-				const str = `!{#fdcb6e}[PM] {#ffffff}${player.name} [${player.id}] -> ${recipient.name} [${recipient.id}] : ${message}`;
-			
-				recipient.outputChatBox(str);
+				const str = `!{#0984e3}[PM] à ${recipient.name} [${recipient.id}] : ${message}`;
 				player.outputChatBox(str);
+
+				const str = `!{#0984e3}[PM] de ${player.name} [${player.id}] : ${message}`;
+				recipient.outputChatBox(str);
 			},
 
 			'test' : (player, fullText) => {
