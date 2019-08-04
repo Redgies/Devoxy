@@ -85,7 +85,7 @@ body, html {
 
 .item {
    flex-direction: column;
-   width: 50vh;
+   width: 40vh;
    border: 1px solid white;
    margin-bottom: 3vh;
    margin-left: 2vh;
