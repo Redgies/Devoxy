@@ -56,12 +56,12 @@ class ChatSingleton {
 			'tphere' : (player, fullText, arg1) => {
 				if(player.adminLvl < 1) return;
 				if(!arg1)
-					return player.notify("Utilisez /thpere id");
+					return player.notify("Utilisez /tphere id");
 
 				const target = this.findPlayerByIdOrNickname(arg1);
-				if(!target) 
+				if(!target)
 					return player.notify("Ce joueur n'est pas connecté.");
-				if(target.id == player.id) 
+				if(target.id == player.id)
 					return player.notify("Vous ne pouvez pas vous téléporter.");
 
 				const pos = player.position;
@@ -74,6 +74,28 @@ class ChatSingleton {
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a téléporté à lui.`);
 
 				misc.log.debug(`${player.name} teleported ${target.name} to him.`);
+			},
+
+			'tpto' : (player, fullText, arg1) => {
+				if(player.adminLvl < 1) return;
+				if(!arg1)
+					return player.notify("Utilisez /tpto id");
+
+				const target = this.findPlayerByIdOrNickname(arg1);
+				if(!target)
+					return player.notify("Ce joueur n'est pas connecté.");
+				if(target.id == player.id)
+					return player.notify("Vous ne pouvez pas vous téléporter.");
+
+				const pos = target.position;
+
+				player.position = new mp.Vector3(pos.x, pos.y, pos.z);
+
+				const currentTime = misc.getTime();
+
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous vous êtes téléporté à ${target.name}.`);
+
+				misc.log.debug(`${player.name} teleported to ${target.name}.`);
 			},
 		});
 	}
