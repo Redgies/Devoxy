@@ -9,9 +9,9 @@ const carDealership = require('./sCarDealership');
 class MotoDealership extends carDealership {
 	
 	setLocalSettings() {
-		this.blip.model = 225;
-		this.blip.name = `Concessionnaire Moto`;
-		this.blip.color = 31;
+		this.blip.model = 661;
+		this.blip.name = `Concessionnaire 2 Roues`;
+		this.blip.color = 57;
 	}
 
 	openBuyerMenu(player) {
