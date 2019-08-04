@@ -186,6 +186,11 @@ keys.bind(k.K_KEY, false, function() {
     mp.events.callRemote('sKeys-K');
 });
 
+keys.bind(k.J_KEY, false, function() {
+    if (mp.gui.cursor.visible) return;
+    mp.events.callRemote('sKeys-J');
+});
+
 keys.bind(k.NUMERIC_KEYPAD_0_KEY, false, function() {
     if (mp.gui.cursor.visible) return;
     mp.events.callRemote('sKeys-Num0');

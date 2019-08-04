@@ -46,6 +46,11 @@ class VehicleSingleton {
 				if(vehicle) vehicle.toggleDoorsLock(player);
 			},
 
+			"sKeys-J" : (player) => {
+				if (!player.loggedIn || !player.isDriver() || player.vehicle.fuel <= 0.1) return;
+				player.vehicle.engine = !player.vehicle.engine;
+			},
+
 			"sKeys-Num7" : (player) => {
 				if (!player.loggedIn || !player.vehicle) return;
 				player.vehicle.toggleWindow(player, 0);
@@ -157,7 +162,7 @@ class VehicleSingleton {
 		const vehicles = mp.vehicles.toArray();
 		for (const vehicle of vehicles) {
 			if (vehicle.dist(player.position) > range) continue;
-			if (!vehicle.canOpen(player) || player.aduty == true) continue;
+			if (!vehicle.canOpen(player) || !player.aduty) continue;
 			vehiclesInRange.push(vehicle);
 		}
 		let nearestVeh = vehiclesInRange[0];
