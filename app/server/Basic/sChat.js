@@ -55,7 +55,7 @@ class ChatSingleton {
 
 			'tphere' : (player, fullText, arg1) => {
 				if(player.adminLvl < 1) return;
-				if(fullText.length < 3 || !arg1)
+				if(!arg1)
 					return player.notify("Utilisez /thpere id");
 
 				const target = this.findPlayerByIdOrNickname(arg1);
