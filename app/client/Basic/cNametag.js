@@ -6,10 +6,10 @@
 
 // mp.nametags.enabled = false;
 
-let disableRegeneration = (currentHealth) => {
-	mp.game.graphics.drawText("test : " + currentHealth, [0.5, 0.005], { 
-        font: 7, 
-        color: [255, 255, 255, 185], 
+let disableRegeneration = (player) => {
+	mp.game.graphics.drawText("test : " + player.money, [0.5, 0.005], { 
+        font: 4, 
+        color: [9, 132, 227, 255], 
         scale: [1.2, 1.2], 
         outline: true
       });
