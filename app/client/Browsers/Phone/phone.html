@@ -139,6 +139,10 @@ const app = new Vue({
 		},
 	},
 	methods: {
+        playerMessages: function(str) {
+            alert(str);
+            this.d.messages = JSON.parse(str);
+        },
         autoGrow: function() {
             var element = document.getElementById("reply");
             var element2 = document.getElementById("reply-div");
@@ -167,9 +171,6 @@ const app = new Vue({
         },
 		exit: function() {
 			mp.trigger("cCloseCef"); 
-        },
-        playerMessages: function(str) {
-            this.d.messages = JSON.parse(str);
         },
 	},
 });

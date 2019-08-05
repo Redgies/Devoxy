@@ -38,8 +38,6 @@ class Tab {
 			}
 			onlinePlayers.push(pVar);
         }
-        
-        console.log(JSON.stringify(onlinePlayers));
 
         return JSON.stringify(onlinePlayers);
 	}
