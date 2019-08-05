@@ -149,7 +149,7 @@ class ChatSingleton {
 				if(!target)
 					return player.notify("Ce joueur n'est pas connecté.");
 
-				target.setHealth(100);
+				target.health = 100;
 
 				const currentTime = misc.getTime();
 
