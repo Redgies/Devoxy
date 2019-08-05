@@ -178,12 +178,12 @@ class ChatSingleton {
 				if(player.aduty)
 				{
 					player.aduty = false;
-					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous êtes plus en admin service.`);
+					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous n'êtes plus en admin service.`);
 				}
 				else 
 				{
 					player.aduty = true;
-					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous êtes en admin service.`);				
+					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous êtes en admin service.`);
 				}	
 			},
 
@@ -213,12 +213,13 @@ class ChatSingleton {
 				if(!target)
 					return player.notify("Ce joueur n'est pas connecté.");
 
-				target.kick();
 
 				const currentTime = misc.getTime();
 
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez kické ${target.name}.`);
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a kické.`);
+				target.kick();
+
 			},
 		});
 	}
