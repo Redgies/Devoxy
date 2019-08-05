@@ -1,7 +1,6 @@
 const misc = require('../sMisc');
-const Message = require('./sMessage');
 
-const MessageAPI = require('./sMesageSingletone');
+const MessageAPI = require('./sMessage');
 
 class Phone {
     constructor() {

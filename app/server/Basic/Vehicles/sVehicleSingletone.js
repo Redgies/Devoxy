@@ -5,8 +5,6 @@ const i18n = require('../../sI18n');
 const vehiclesDataSingleton = require('./sVehiclesData');
 const Vehicle = require('./sVehicle');
 
-
-
 class VehicleSingleton {
 	constructor() {
 		
