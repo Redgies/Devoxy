@@ -204,20 +204,21 @@ class ChatSingleton {
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a tué.`);
 			},
 
-			'kick': (player, fullText, arg1) =>	{
+			'kick': (player, fullText, arg1, arg2) =>	{
 				if(player.adminLvl < 1) return;
 				if(!arg1)
-					return player.notify("Utilisez /kick id");
+					return player.notify("Utilisez /kick id raison");
 
 				const target = this.findPlayerByIdOrNickname(arg1);
+				const raison = arg2;
 				if(!target)
 					return player.notify("Ce joueur n'est pas connecté.");
 
 
 				const currentTime = misc.getTime();
 
-				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez kické ${target.name}.`);
-				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a kické.`);
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez kické ${target.name}. Raison : ${raison}`);
+				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a kické. Raison : ${raison}`);
 				target.kick();
 
 			},
