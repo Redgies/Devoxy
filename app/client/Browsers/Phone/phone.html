@@ -12,7 +12,7 @@
 
                 <div class="phone-messages animated zoomIn faster" v-if="currentTab === 1">
                     <div class="head">
-                        <h1>Messages {{ phone }}</h1>
+                        <h1>Messages</h1>
                         <i class="fa fa-comment"></i>
                     </div>  
                     <ul>
@@ -39,28 +39,9 @@
                         <h1>Nitram Domenia</h1>
                     </div>
                     <div id="chat" class="chat">
-                        <div class="mine messages">
+                        <div v-for="(message, i) in d.messages" class="mine messages" :class="[message.sender === phone ? mine : yours]">
                             <div class="message last">
-                            Dude
-                            </div>
-                        </div>
-                        <div class="yours messages">
-                            <div class="message">
-                            Hey!
-                            </div>
-                            <div class="message">
-                            You there?
-                            </div>
-                            <div class="message last">
-                            Hello, how's it going?
-                            </div>
-                        </div>
-                        <div class="mine messages">
-                            <div class="message">
-                            Great thanks!
-                            </div> 
-                            <div class="message last">
-                            How about you?
+                            {{ message.text }}
                             </div>
                         </div>
                         <br><br><br><br>
