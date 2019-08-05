@@ -69,7 +69,7 @@ async function loadMessage() {
 loadMessage();
 
 async function loadTalks() {
-    const d = await misc.query("SELECT * FROM talksMessages");
+    const d = await misc.query("SELECT * FROM phoneTalks");
     for (let i = 0; i < d.length; i++) {
 
         const mVar = { 
