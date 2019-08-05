@@ -40,6 +40,8 @@ class Phone {
         for (let i = 0; i < talksList.length; i++) {
             if(talksList[i].receiver !== phone && talksList[i].sender !== phone) continue;
 
+
+
 			const mVar = { 
                 id: talksList[i].id,
                 sender: talksList[i].sender,
@@ -72,10 +74,14 @@ async function loadTalks() {
     const d = await misc.query("SELECT * FROM phoneTalks");
     for (let i = 0; i < d.length; i++) {
 
+        const e = await misc.query(`SELECT * FROM phoneMessages WHERE sender = '${d[i].sender}' OR sender = '${d[i].receiver}' OR receiver = '${d[i].sender}' OR receiver = '${d[i].receiver}' ORDER BY id DESC LIMIT 1`);
+
         const mVar = { 
             id: d[i].id,
             sender: d[i].sender,
             receiver: d[i].receiver,
+            text: e[0].text,
+            time: e[0].time,
         }
         talksList.push(mVar);
     }
