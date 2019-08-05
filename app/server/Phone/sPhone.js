@@ -40,12 +40,12 @@ class Phone {
         for (let i = 0; i < talksList.length; i++) {
             if(talksList[i].receiver !== phone && talksList[i].sender !== phone) continue;
 
-
-
 			const mVar = { 
                 id: talksList[i].id,
                 sender: talksList[i].sender,
                 receiver: talksList[i].receiver,
+                text: talksList[i].text,
+                time: talksList[i].time,
             }
             playerTalks.push(mVar); 
         }
@@ -84,9 +84,10 @@ async function loadTalks() {
             time: e[0].time,
         }
 
-        console.log(mVar);
         talksList.push(mVar);
     }
+
+    console.log(talksList);
 }
 loadTalks();
 
