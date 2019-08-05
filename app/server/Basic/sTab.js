@@ -15,6 +15,8 @@ class Tab {
 
     getPlayers() {
         const onlinePlayers = mp.players.toArray();
+        misc.log.debug(`${JSON.stringify(onlinePlayers)}`);
+
 		return JSON.stringify(onlinePlayers);
 	}
 }

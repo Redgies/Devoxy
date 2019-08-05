@@ -1,11 +1,12 @@
 <html>
-	<meta charset="utf-8">
-  	<link rel="stylesheet" href="Menu.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" hre="css/main.css">
   	<script src="../vue.js"></script>
 	<body>
-		<div class="main" id="app">
-            <a class="veh-item" v-for="p in t.players">
-                <span>{{ p.name}}</span>
+		<div id="app">
+            salut
+            <a class="veh-item" v-for="p in d.players">
+                <span>{{ p.name }}</span>
             </a>
 		</div>
 	</body>
@@ -13,11 +14,18 @@
 
 <script>
 const app = new Vue({
-	el: '#app',
+    el: '#app',
+    data: {
+        d: {
+            players: [
+
+            ]
+        }
+    },
 	methods: {
 		onlinePlayers: function(str) {
-			this.t.players = JSON.parse(str);
-		},
-	},
+            this.d.players = JSON.parse(str);
+		}
+	}
 });
 </script>
