@@ -21,7 +21,7 @@
                         </thead>
                         <tbody class="body-half-screen">
                             <tr v-for="(p, i) in d.players">
-                                <td>{{ i }} ({{ p.guid }})</td>
+                                <td>{{ p.id }} ({{ p.guid }})</td>
                                 <td v-if="!p.aduty">{{ p.name }}</td>
                                 <td v-else style="color: #d63031">{{ p.name }}</td>
                                 <td>{{ p.loyality }}</td>
@@ -47,7 +47,6 @@ const app = new Vue({
     },
 	methods: {
 		onlinePlayers: function(str) {
-            alert(str);
             this.d.players = JSON.parse(str);
         },
         exit: function() {
