@@ -7,7 +7,7 @@ class Phone {
                 if(!player.loggedIn) return;
                 let execute = `app.playerMessages('${this.getMessages()}');`;
 
-                console.log("player :" + player);
+                console.log("player :" + JSON.stringify(player));
 
                 console.log("number : " + player.number);
 
