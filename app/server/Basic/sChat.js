@@ -206,13 +206,15 @@ class ChatSingleton {
 
 			'kick': (player, fullText, arg1, arg2) =>	{
 				if(player.adminLvl < 1) return;
-				if(!arg1)
+				if(!arg1 || !arg2)
 					return player.notify("Utilisez /kick id raison");
 
 				const target = this.findPlayerByIdOrNickname(arg1);
 				const raison = arg2;
 				if(!target)
 					return player.notify("Ce joueur n'est pas connecté.");
+				if(target.id == player.id)
+					return player.notify("Vous ne pouvez pas vous kicker vous même.");
 
 				const onlinePlayers = mp.players.toArray();
 				const currentTime = misc.getTime();
