@@ -73,6 +73,7 @@ class PlayerSingleton {
         player.lastName = false;
         player.loyality = 0;
         player.adminLvl = 0;
+        player.phone = 0;
         player.faction = {};
         player.canOpen = {};
         player.canEnter = {};
