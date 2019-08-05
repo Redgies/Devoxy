@@ -30,30 +30,9 @@ class Phone {
             }
             playerMessages.push(mVar); 
         }
-        console.log('json : ' + JSON.stringify(playerMessages));
+        return console.log('json : ' + JSON.stringify(playerMessages));
 		return JSON.stringify(playerMessages);
 	}
-
-    // async getMessages(phone) {
-    //     const messagesList = [];
-        
-    //     const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${phone}' OR sender = '${phone}'`);
-
-    //     for(let i = 0; i < d.length; i++) {
-    //         const mVar = { 
-    //             id: d[i].id,
-    //             sender: d[i].sender,
-    //             receiver: d[i].receiver,
-    //             text: d[i].text,
-    //             time: d[i].time
-    //         }
-    //         messagesList.push(mVar);    
-    //     }
-
-    //     console.log(JSON.stringify(messagesList));
-
-    //     return Promise.resolve(JSON.stringify(messagesList));
-	// }
 }
 
 
