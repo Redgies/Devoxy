@@ -233,7 +233,7 @@ class ChatSingleton {
 					p.outputChatBox(str2);
 				}
 				target.kick();
-				const str3 = `${player.name} kicked ${target.name} for ${raison}`;
+				const str3 = `${player.name} kicked ${target.name}. Raison : ${raison}`;
 				misc.log.debug(str3);
 
 			},
