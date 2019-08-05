@@ -17,7 +17,7 @@ class Phone {
     }
 
     getMessageForPlayer(phone) {
-		var playerMessages = [];
+		const playerMessages = [];
 		for (const msg of messagesList) {
             // if(msg.receiver !== phone && msg.sender !== phone) continue;
 
@@ -30,8 +30,8 @@ class Phone {
             }
             playerMessages.push(mVar); 
         }
-        // return console.log('json : ' + JSON.stringify(playerMessages));
-		return JSON.stringify('playerMessages');
+        console.log('json : ' + JSON.stringify(playerMessages));
+		return JSON.stringify(playerMessages);
 	}
 }
 
