@@ -258,8 +258,8 @@ class ChatSingleton {
 			});
 		}
 
-		if(!foundPlayer.loggedIn)
-			foundPlayer = null;
+		// if(!foundPlayer.loggedIn)
+		// 	foundPlayer = null;
 	
 		return foundPlayer;
 	}
