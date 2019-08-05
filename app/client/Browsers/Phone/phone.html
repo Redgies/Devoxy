@@ -40,7 +40,7 @@
                     </div>
                     <div id="chat" class="chat">
                         <!-- :class="[msg.sender === phone ? mine : yours]" -->
-                        <div v-for="(msg, i) in d.messages" class="messages" :class="[msg.sender === phone ? mine : yours]">
+                        <div v-for="(msg, i) in d.messages" class="messages" v-bind:class="[{ msg.sender === phone: phone }, { msg.sender !== phone: yours }">
                             <div class="message last">
                                 {{ msg.text }}
                             </div>
