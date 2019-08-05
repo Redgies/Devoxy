@@ -23,7 +23,7 @@ class GraylogSingletone {
                 { 'host': '127.0.0.1', port: 12201 },
                 { 'host': '127.0.0.2', port: 12201 }
             ],
-            hostname: 'server.name', // the name of this host
+            hostname: 'Devoxy RAGE MP', // the name of this host
                                      // (optional, default: os.hostname())
             facility: 'Node.js',     // the facility for these log messages
                                      // (optional, default: "Node.js")
@@ -32,7 +32,7 @@ class GraylogSingletone {
         });
 
         console.log('GRAYLOG STARTED');
-        this.logger.log('test1', 'i get this1', {cool: 'beans'});
+        this.logger.log('/me', '/me se branle', {cool: 'beans'});
         
         
         this.logger.on('error', function (error) {
