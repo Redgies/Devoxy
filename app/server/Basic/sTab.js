@@ -26,7 +26,7 @@ class Tab {
     getPlayers() {
         const onlinePlayers = [];
 		const players = mp.players.toArray();
-		for (const p of players) {
+		for(const p of players) {
 			if(!p.loggedIn) continue;
 			const pVar = {
                 id: p.id,

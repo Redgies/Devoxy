@@ -30,14 +30,14 @@ class Phone {
         const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${phone}' OR sender = '${phone}'`);
 
         for(let i = 0; i < d.length; i++) {
-            messagesList.push({ 
+            const mVar = { 
                 id: d[i].id,
                 sender: d[i].sender,
                 receiver: d[i].receiver,
                 text: d[i].text,
                 time: d[i].time
-            });
-            
+            }
+            messagesList.push(mVar); 
         }
 
         console.log(JSON.stringify(messagesList));
