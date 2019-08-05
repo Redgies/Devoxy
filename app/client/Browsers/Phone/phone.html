@@ -1,17 +1,65 @@
 <html>
     <meta charset="utf-8">
     
-  	<link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
   	<script src="../vue.js"></script>
 	<body>
 		<div id="app">
             <div class="phone" style="background: url('images/wallpaper.png'); background-size: 100% 100%;">
                 <img src="images/iphone-x.png">
 
-                <div class="phone-footer">
-                    <a href="#" class="sms"></a>
+                <div class="phone-messages animated zoomIn faster" v-if="currentTab === 1">
+                    <div class="head">
+                        <h1>Messages</h1>
+                    </div>  
+                    <ul>
+                        <li>
+                            <div class="avatar">CM</div>
+                            <h3>Lucky Salopio</h3>
+                            <span class="time">12:10</span>
+                            <i class="fa fa-chevron-right"></i>
+                            <p>Wesh poto ça va ou quoi, tu veux pas baiser ta mère un peu .</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phone-calls animated zoomIn faster" v-if="currentTab === 2">
+                    dsfd
+                </div>
+
+                
+                
+                <div class="phone-footer" v-if="currentTab === 0">
+                    <a class="call" @click="currentTab = 2"></a>
+                    <a class="sms" @click="currentTab = 1"></a>
                 </div>
             </div>
 		</div>
 	</body>
 </html>
+
+
+
+<script>
+const app = new Vue({
+	el: '#app',
+	data: {
+        currentTab: 0,
+		d: {
+			tabs: ['Home', 'Messages'],
+		},
+	},
+	computed: {
+		currentTabComponent: function () {
+			return 'tab' + this.currentTab;
+		},
+	},
+	methods: {
+		exit: function() {
+			mp.trigger("cCloseCef"); 
+		},
+	},
+});
+</script>

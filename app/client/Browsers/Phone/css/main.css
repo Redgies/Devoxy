@@ -34,6 +34,99 @@
     position: absolute;
     z-index: 101;
     top: calc(50% - 5px);
-    left: 25%;
+    right: 32%;
     transform: translateY(-50%);
+}
+
+.phone .phone-footer .call {
+    background: url('../images/call.png');
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    z-index: 101;
+    top: calc(50% - 5px);
+    left: 32%;
+    transform: translateY(-50%);
+}
+
+.phone .phone-messages {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    border-radius: 54px;
+    overflow: hidden;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.phone .phone-messages .head {
+    background: #f1f1f1;
+    padding: 30px 0px 0px 30px;
+    height: 50px;
+    border-bottom: 1px solid #dfe6e9;
+}
+.phone .phone-messages .head h1 {
+    font-size: 22px;
+}
+
+.phone .phone-messages ul {
+    list-style: none;
+    padding: 0px 0px 0px 0px;
+    margin: 0;
+}
+
+.phone .phone-messages li {
+    height: 50px;
+    border-bottom: 0.01em solid #dfe6e9;
+    position: relative;
+}
+.phone .phone-messages .avatar {
+    float: left;
+    width: 35px;
+    border-radius: 50%;
+    height: 35px;
+    margin-left: 30px;
+    margin-top: 7px;
+    background: rgb(99,110,114);
+    background: linear-gradient(140deg, rgba(99,110,114,1) 0%, rgba(57,65,68,1) 100%);
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+    font-size: 13px;
+}
+.phone .phone-messages h3 {
+    font-size: 13px;
+    position: absolute;
+    left: 75px;
+    top: -9px;
+}
+
+.phone .phone-messages p {
+    font-size: 11px;
+    position: absolute;
+    left: 75px;
+    top: 9px;
+    color: #929292; 
+    width: 190px; 
+}
+
+.phone .phone-messages i {
+    position: absolute;
+    color: #929292;
+    font-size: 9px;
+    font-weight: 100;
+    right: 25px;
+    top: 8px;
+}
+
+.phone .phone-messages .time {
+    position: absolute;
+    color: #929292;
+    font-size: 10px;
+    font-weight: 400;
+    right: 40px;
+    top: 6px;
+    text-align: right
 }
