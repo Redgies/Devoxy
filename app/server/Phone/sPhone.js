@@ -9,7 +9,7 @@ class Phone {
 
                 console.log("player :" + JSON.stringify(player));
 
-                console.log("number : " + player.number);
+                console.log("number : " + player.lastName);
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
