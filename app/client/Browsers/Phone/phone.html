@@ -95,13 +95,11 @@ const app = new Vue({
 	data: {
         currentTab: 0,
         currentLi: 0,
+        phone: 0,
 		d: {
             messsages: [
 
             ],
-            player: [
-
-            ]
 		},
     },
     created() {
@@ -191,7 +189,7 @@ const app = new Vue({
             this.d.messages = JSON.parse(str);
         },
         getPlayer: function(str) {
-            this.d.player = JSON.parse(str);
+            this.phone = JSON.parse(str);
         }
 	},
 });
