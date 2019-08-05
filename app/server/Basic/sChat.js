@@ -210,7 +210,7 @@ class ChatSingleton {
 					return player.notify("Utilisez /kick id raison");
 
 				const target = this.findPlayerByIdOrNickname(arg1);
-				const raison = fullText.substr(arg2 + arg2.length);
+				const raison = fullText.substr(arg2.length);
 				if(!target)
 					return player.notify("Ce joueur n'est pas connecté.");
 				if(target.id == player.id)
