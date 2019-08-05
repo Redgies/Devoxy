@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="phone-calls animated zoomIn faster" v-if="currentTab === 2">
-                    dsfd
+                    
                 </div>
 
                 
@@ -96,6 +96,9 @@ const app = new Vue({
         currentTab: 0,
         currentLi: 0,
 		d: {
+            messsages: [
+
+            ]
 		},
     },
     created() {
@@ -163,6 +166,11 @@ const app = new Vue({
                     element.style.height = (element.scrollHeight * 2 - element.clientHeight) + "px";
                     element2.style.height = (element.scrollHeight * 2 - element.clientHeight) + "px";
                 }
+                else 
+                {
+                    element.style.height = (element.scrollHeight * 2 + element.clientHeight) + "px";
+                    element2.style.height = (element.scrollHeight * 2 + element.clientHeight) + "px";
+                }
             }
         },
         scrollToBottom: function(id) {
@@ -175,7 +183,10 @@ const app = new Vue({
         },
 		exit: function() {
 			mp.trigger("cCloseCef"); 
-		},
+        },
+        playerMessages: function(str) {
+            this.d.messages = JSON.parse(str);
+        },
 	},
 });
 </script>
