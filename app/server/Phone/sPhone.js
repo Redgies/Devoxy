@@ -27,6 +27,9 @@ class Phone {
         const messagesList = [];
         
         const d = misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${player.number}'`);
+
+        console.log(d);
+
         for(let i = 0; i < d.length; i++) {
             var message = [];
 
@@ -37,6 +40,8 @@ class Phone {
                 text: d[i].text,
                 time: d[i].time
             }
+
+            console.log(message);
 
             messagesList.push(message);
             
