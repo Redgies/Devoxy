@@ -41,13 +41,13 @@ class Phone {
                 time: d[i].time
             }
 
-            console.log("message: " + message);
+            console.log("message: " + JSON.stringify(message));
 
             messagesList.push(message);
             
         }
 
-        console.log(JSON.stringify("messages : " + messagesList));
+        console.log(JSON.stringify(messagesList));
 
         return JSON.stringify(messagesList);
 	}
