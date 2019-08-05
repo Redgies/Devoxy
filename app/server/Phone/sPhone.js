@@ -83,6 +83,8 @@ async function loadTalks() {
             text: e[0].text,
             time: e[0].time,
         }
+
+        console.log(mVar);
         talksList.push(mVar);
     }
 }
