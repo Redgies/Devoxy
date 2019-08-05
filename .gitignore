@@ -1,6 +1,7 @@
 /node_modules/*
 node.dll
 .idea
+.DS_Store
 *.log
 /packages/*
 /client_packages/*
