@@ -11,6 +11,16 @@ class Tab {
                 misc.log.debug(`${player.name} opens tab`);
             }
         });
+
+        mp.events.addCommand({
+			'list' : (player, fullText) => {
+                if(!player.loggedIn) return;
+                let execute = `app.onlinePlayers('${this.getPlayers()}');`;
+
+                player.call("cTab-Open", [execute]);
+                misc.log.debug(`${player.name} opens tab`);
+            }
+        });
     }
 
     getPlayers() {

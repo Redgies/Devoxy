@@ -45,17 +45,11 @@ class LoginSingleton extends AbstractAuth {
 
         await playerSingleton.loadAccount(player, id);
 
-        player.outputChatBox(`${i18n.get('sLogin', 'annouceSpawnVehicle', player.lang)}`);
-        player.outputChatBox(`${i18n.get('sLogin', 'annouceGlobalChat', player.lang)}`);
-        player.outputChatBox(`${i18n.get('sLogin', 'annouceOldUser', player.lang)}`);
-        player.outputChatBox(`${i18n.get('sLogin', 'annoucePlayerMenu', player.lang)}`);
         const onlinePlayers = mp.players.toArray();
-
-        // player.call("MY FUNCTION", [player]);
 
         if (onlinePlayers.length < 30) {
             for (const p of onlinePlayers) {
-                p.outputChatBox(`[${misc.getTime()}] ${player.name} ${i18n.get('sLogin', 'connected', p.lang)}`);
+                p.outputChatBox(`[${misc.getTime()}] ${player.name} [${player.id}] s'est connecté.`);
             }
         }
     }
