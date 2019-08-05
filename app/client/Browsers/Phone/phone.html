@@ -39,99 +39,35 @@
                         <h1>Nitram Domenia</h1>
                     </div>
                     <div id="chat" class="chat">
-                            <div class="mine messages">
-                              <div class="message last">
-                                Dude
-                               </div>
+                        <div class="mine messages">
+                            <div class="message last">
+                            Dude
                             </div>
-                            <div class="yours messages">
-                              <div class="message">
-                                Hey!
-                              </div>
-                              <div class="message">
-                                You there?
-                              </div>
-                              <div class="message last">
-                                Hello, how's it going?
-                              </div>
+                        </div>
+                        <div class="yours messages">
+                            <div class="message">
+                            Hey!
                             </div>
-                            <div class="mine messages">
-                              <div class="message">
-                                Great thanks!
-                              </div> 
-                              <div class="message last">
-                                How about you?
-                               </div>
+                            <div class="message">
+                            You there?
                             </div>
-                            <div class="mine messages">
-                                    <div class="message">
-                                      Great thanks!
-                                    </div> 
-                                    <div class="message last">
-                                      How about you?
-                                     </div>
-                                  </div>
-                                  <div class="mine messages">
-                                        <div class="message">
-                                          Great thanks!
-                                        </div> 
-                                        <div class="message last">
-                                          How about you?
-                                         </div>
-                                      </div>
-                                      <div class="mine messages">
-                                            <div class="message">
-                                              Great thanks!
-                                            </div> 
-                                            <div class="message last">
-                                              How about you?
-                                             </div>
-                                          </div>
-                                          <div class="mine messages">
-                                                <div class="message">
-                                                  Great thanks!
-                                                </div> 
-                                                <div class="message last">
-                                                  How about you?
-                                                 </div>
-                                              </div>
-                                              <div class="mine messages">
-                                                    <div class="message">
-                                                      Great thanks!
-                                                    </div> 
-                                                    <div class="message last">
-                                                      How about you?
-                                                     </div>
-                                                  </div>
-                                                  
-                                                  <div class="mine messages">
-                                                        <div class="message">
-                                                          Great thanks!
-                                                        </div> 
-                                                        <div class="message last">
-                                                          How about you?
-                                                         </div>
-                                                      </div>
-                                                      <div class="mine messages">
-                                                            <div class="message">
-                                                              Great thanks!
-                                                            </div> 
-                                                            <div class="message last">
-                                                              How about you?
-                                                             </div>
-                                                          </div>
-                                                          <div class="mine messages">
-                                                                <div class="message">
-                                                                  Great thanks!
-                                                                </div> 
-                                                                <div class="message last">
-                                                                  How about you?
-                                                                 </div>
-                                                              </div>
-                                                              <br><br><br><br>
-                          </div>
+                            <div class="message last">
+                            Hello, how's it going?
+                            </div>
+                        </div>
+                        <div class="mine messages">
+                            <div class="message">
+                            Great thanks!
+                            </div> 
+                            <div class="message last">
+                            How about you?
+                            </div>
+                        </div>
+                        <br><br><br><br>
+                    </div>
                     <div class="reply" id="reply-div">
                         <textarea id="reply" rows="3" @keyup="autoGrow">dfd</textarea>
+                        <button class="send" type="button"><i class="fa fa-arrow-up"></i></button>
                     </div>
                 </div>
 
@@ -165,6 +101,11 @@ const app = new Vue({
     created() {
         window.addEventListener('keydown', (e) => {
             if(e.key == 'Backspace') {
+                var reply = document.getElementById("reply");
+
+                if(document.activeElement === reply)
+                    return;
+
                 if(this.currentTab == 0)
                     mp.trigger("cCloseCef"); 
                 if(this.currentTab == 1)

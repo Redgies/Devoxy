@@ -197,7 +197,27 @@
     min-height: 30px;
     padding: 5px;
 }
+
+.reply textarea:focus {
+    border-width: 2px;
+}
   
+.reply .send {
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    background: #0984e3;
+    right: 35px;
+    bottom: 26px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    color: #fff;
+}
+
+.reply .send:focus {
+    background: #74b9ff;
+}
   .messages {
     display: flex;
     flex-direction: column;
