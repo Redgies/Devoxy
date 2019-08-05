@@ -17,16 +17,16 @@ class Phone {
     }
 
     getMessageForPlayer(phone) {
-		const playerMessages = {};
-		for (const msg of messagesList) {
+        const playerMessages = [];
+        for (let i = 0; i < messagesList.length; i++) {
             // if(msg.receiver !== phone && msg.sender !== phone) continue;
 
 			const mVar = { 
-                id: msg.id,
-                sender: msg.sender,
-                receiver: msg.receiver,
-                text: msg.text,
-                time: msg.time,
+                id: messagesList[i].id,
+                sender: messagesList[i].sender,
+                receiver: messagesList[i].receiver,
+                text: messagesList[i].text,
+                time: messagesList[i].time,
             }
             playerMessages.push(mVar); 
         }
