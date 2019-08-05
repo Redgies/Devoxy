@@ -36,11 +36,11 @@
                 <div class="phone-conversation" v-if="currentTab === 10">
                     <div class="head">
                         <i class="fa fa-chevron-left"></i>
-                        <h1>Nitram Domenia</h1>
+                        <h1>Nitram Domenia {{ phone }}</h1>
                     </div>
                     <div id="chat" class="chat">
                         <!-- :class="[msg.sender === phone ? mine : yours]" -->
-                        <div v-for="(msg, i) in d.messages">
+                        <div v-for="(msg, i) in d.messages" :class="[msg.sender == phone ? mine : '', messages]">
                             <div class="message last">
                                 {{ msg.text }}
                             </div>
