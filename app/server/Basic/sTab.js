@@ -37,7 +37,10 @@ class Tab {
 				ping: p.ping
 			}
 			onlinePlayers.push(pVar);
-		}
+        }
+        
+        console.log(JSON.stringify(onlinePlayers));
+
         return JSON.stringify(onlinePlayers);
 	}
 }
