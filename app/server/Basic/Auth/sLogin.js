@@ -1,6 +1,7 @@
 
 const misc = require('../../sMisc');
 const mailer = require('../../sMailer');
+const logger = require('../../sGraylog');
 const i18n = require('../../sI18n');
 const playerSingleton = require('../sPlayer');
 const AbstractAuth = require('./sAuthAbstract');
