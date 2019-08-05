@@ -30,8 +30,8 @@ class Phone {
             }
             playerMessages.push(mVar); 
         }
-        const str = JSON.stringify(playerMessages);
-		return str;
+        console.log('json : ' + JSON.stringify(playerMessages));
+		return JSON.stringify('dsfsd');
 	}
 }
 
