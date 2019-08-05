@@ -1,5 +1,7 @@
 const misc = require('../sMisc');
 
+const Message = require('./sMessage');
+
 class Phone {
     constructor() {
         mp.events.add({
