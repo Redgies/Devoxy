@@ -5,7 +5,7 @@ class Phone {
         mp.events.add({
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
-                let execute = `app.playerMessages('${this.getMessages(player.number)}');`;
+                let execute = `app.playerMessages('${this.getMessages()}');`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
@@ -15,7 +15,7 @@ class Phone {
         mp.events.addCommand({
 			'phone' : (player, fullText) => {
                 if(!player.loggedIn) return;
-                let execute = `app.playerMessages('${this.getMessages(player.number)}');`;
+                let execute = `app.playerMessages('${this.getMessages()}');`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
@@ -23,12 +23,14 @@ class Phone {
         });
     }
 
-    async getMessages(number) {
+    async getMessages() {
         const messagesList = [];
-        
-        const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${number}'`);
 
-        console.log("number : " + number);
+        let player = mp.players.local;
+        
+        const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${player.number}'`);
+
+        console.log("number : " + player.number);
 
         console.log("query : " + d);
 
