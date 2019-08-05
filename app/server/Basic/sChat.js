@@ -214,11 +214,14 @@ class ChatSingleton {
 				if(!target)
 					return player.notify("Ce joueur n'est pas connecté.");
 
-
+				const onlinePlayers = mp.players.toArray();
 				const currentTime = misc.getTime();
 
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez kické ${target.name}. Raison : ${raison}`);
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a kické. Raison : ${raison}`);
+				for(const p of onlinePlayers) {
+					p.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${target.name} a été kické par ${player.name}. Raison : ${raison}`);
+				}
 				target.kick();
 
 			},
