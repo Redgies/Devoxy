@@ -62,13 +62,13 @@ async function loadMessage() {
 
         console.log("d : " + d[i]);
 
-        const mVar = { 
-            id = d[i].id,
-            sender = d[i].sender,
-            receiver = d[i].receiver,
-            text = d[i].text,
-            time = d[i].time,
-        }
+        // const mVar = { 
+        //     id = d[i].id,
+        //     sender = d[i].sender,
+        //     receiver = d[i].receiver,
+        //     text = d[i].text,
+        //     time = d[i].time,
+        // }
         messagesList.push(mVar);
     }
 }
