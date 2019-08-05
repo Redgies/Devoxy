@@ -1,0 +1,39 @@
+.phone {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    height: 580px;
+    width: 290px;
+    background: red;
+    border-radius: 54px;
+}
+
+.phone img {
+    width: calc(100% + 3px);
+    margin-left: -2px;
+    z-index: 100;
+    position: relative;
+}
+
+.phone .phone-footer {
+    position: absolute;
+    height: 70px;
+    width: 100%;
+    bottom: 0px;
+    background: rgb(129, 236, 236, .9);
+    border-bottom-left-radius: 54px;
+    border-bottom-right-radius: 54px;
+}
+
+.phone .phone-footer .sms {
+    background: url('../images/sms.png');
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    z-index: 101;
+    top: calc(50% - 5px);
+    left: 25%;
+    transform: translateY(-50%);
+}
