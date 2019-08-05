@@ -23,10 +23,10 @@ class Phone {
         });
     }
 
-    getMessages(player) {
+    async getMessages(player) {
         const messagesList = [];
         
-        const d = misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${player.number}'`);
+        const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${player.number}'`);
 
         console.log(d);
 
