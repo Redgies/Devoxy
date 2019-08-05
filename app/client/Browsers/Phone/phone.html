@@ -39,9 +39,9 @@
                         <h1>Nitram Domenia</h1>
                     </div>
                     <div id="chat" class="chat">
-                        <div v-for="(message, i) in d.messages" class="mine messages" :class="[message.sender === phone ? mine : yours]">
+                        <div v-for="(message, i) in d.messages" class="messages" :class="[message.sender === phone ? mine : yours]">
                             <div class="message last">
-                            {{ message.text }}
+                            {{ message.text }}
                             </div>
                         </div>
                         <br><br><br><br>
@@ -79,6 +79,7 @@ const app = new Vue({
         phone: 0,
 		d: {
             messages: [
+
             ],
 		},
     },
