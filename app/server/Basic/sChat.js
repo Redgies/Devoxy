@@ -223,13 +223,18 @@ class ChatSingleton {
 				const onlinePlayers = mp.players.toArray();
 				const currentTime = misc.getTime();
 
-				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez kické ${target.name}. Raison : ${raison}`);
-				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a kické. Raison : ${raison}`);
+
+				const str = `!{#d63031}[${currentTime}] [ADMIN] Vous avez kické ${target.name}. Raison : ${raison}`;
+				player.outputChatBox(str);
+				const str1 = `!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a kické. Raison : ${raison}`;
+				target.outputChatBox(str1);
+				const str2 = `!{#d63031}[${currentTime}] [ADMIN] ${target.name} a été kické par ${player.name}. Raison : ${raison}`;
 				for(const p of onlinePlayers) {
-					p.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${target.name} a été kické par ${player.name}. Raison : ${raison}`);
+					p.outputChatBox(str2);
 				}
 				target.kick();
-				misc.log.debug(`${player.name} kicked ${target.name} for ${raison}`);
+				const str3 = `${player.name} kicked ${target.name} for ${raison}`;
+				misc.log.debug(str3);
 
 			},
 		});
