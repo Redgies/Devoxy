@@ -14,10 +14,19 @@ class Tab {
     }
 
     getPlayers() {
-        const onlinePlayers = mp.players.toArray();
-        misc.log.debug(`${JSON.stringify(onlinePlayers)}`);
-
-		return JSON.stringify(onlinePlayers);
+        const onlinePlayers = [];
+		const players = mp.players.toArray();
+		for (const p of players) {
+			if(!p.loggedIn) continue;
+			const pVar = {
+				id: p.id,
+				name: p.name,
+				loyality: p.loyality,
+				ping: p.ping
+			}
+			onlinePlayers.push(pVar);
+		}
+        return JSON.stringify(onlinePlayers);
 	}
 }
 new Tab();
