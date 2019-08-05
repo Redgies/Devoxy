@@ -256,7 +256,7 @@ keys.bind(k.M_KEY, false, function() {
     mp.events.callRemote('sKeys-M');
 });
 
-keys.isUp(k.F5_KEY, false, function() {
+keys.bind(k.F5_KEY, false, function() {
     if (mp.gui.cursor.visible) return;
     mp.events.callRemote('sKeys-F5');
 });
