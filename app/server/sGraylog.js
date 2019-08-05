@@ -32,7 +32,7 @@ class GraylogSingletone {
         });
 
         console.log('GRAYLOG STARTED');
-        this.logger.log('/me', '/me se branle', {cool: 'beans'});
+        this.logger.log('/me', '/me se branle', {cool: '/me'});
         
         
         this.logger.on('error', function (error) {
