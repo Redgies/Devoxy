@@ -3,7 +3,7 @@ const misc = require('../sMisc');
 class Tab {
     constructor() {
         mp.events.add({
-            "sKeys-TAB" : (player) => {
+            "sKeys-F5" : (player) => {
                 if(!player.loggedIn) return;
                 let execute = `app.onlinePlayers('${this.getPlayers()}');`;
 

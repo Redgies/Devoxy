@@ -1,13 +1,21 @@
 <html>
     <meta charset="utf-8">
-    <link rel="stylesheet" hre="css/main.css">
+    <link rel="stylesheet" href="css/main.css">
   	<script src="../vue.js"></script>
 	<body>
 		<div id="app">
-            salut
-            <a class="veh-item" v-for="p in d.players">
-                <span>{{ p.firstName }}</span>
-            </a>
+            <table id="customers">
+                <tr>
+                    <th>ID</th>
+                    <th>Pseudo</th>
+                    <th>Loyautée</th>
+                </tr>
+                <tr v-for="(p, i) in d.players">
+                    <td>{{ i }}</td>
+                    <td>{{ p.firstName }} {{ p.lastName }}</td>
+                    <td>{{ p.loyality }}</td>
+                </tr>
+            </table>
 		</div>
 	</body>
 </html>
