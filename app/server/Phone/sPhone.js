@@ -23,37 +23,37 @@ class Phone {
             if(msg.receiver !== phone && msg.sender !== phone) continue;
 
 			const mVar = { 
-                id: d[i].id,
-                sender: d[i].sender,
-                receiver: d[i].receiver,
-                text: d[i].text,
-                time: d[i].time
+                id: msg.id,
+                sender: msg.sender,
+                receiver: msg.receiver,
+                text: msg.text,
+                time: msg.time
             }
             playerMessages.push(mVar); 
 		}
 		return JSON.stringify(playerMessages);
 	}
 
-    async getMessages(phone) {
-        const messagesList = [];
+    // async getMessages(phone) {
+    //     const messagesList = [];
         
-        const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${phone}' OR sender = '${phone}'`);
+    //     const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${phone}' OR sender = '${phone}'`);
 
-        for(let i = 0; i < d.length; i++) {
-            const mVar = { 
-                id: d[i].id,
-                sender: d[i].sender,
-                receiver: d[i].receiver,
-                text: d[i].text,
-                time: d[i].time
-            }
-            messagesList.push(mVar);    
-        }
+    //     for(let i = 0; i < d.length; i++) {
+    //         const mVar = { 
+    //             id: d[i].id,
+    //             sender: d[i].sender,
+    //             receiver: d[i].receiver,
+    //             text: d[i].text,
+    //             time: d[i].time
+    //         }
+    //         messagesList.push(mVar);    
+    //     }
 
-        console.log(JSON.stringify(messagesList));
+    //     console.log(JSON.stringify(messagesList));
 
-        return Promise.resolve(JSON.stringify(messagesList));
-	}
+    //     return Promise.resolve(JSON.stringify(messagesList));
+	// }
 }
 
 async function loadMessage() {
