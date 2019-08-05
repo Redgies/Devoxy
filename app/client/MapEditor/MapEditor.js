@@ -90,7 +90,7 @@ mp.events.add("MapEditor_SetFreeze", (entityID, frz) =>
 });
 
 // Global variables
-let objData = JSON.parse(require('./MapEditor/object_data.js')).Objects;
+let objData = JSON.parse(require('./object_data.js')).Objects;
 
 let editorStart = false;
 let editorState = 0; //0 = select mode, 1 = placement mode, 2 = adjustement mode
