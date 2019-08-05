@@ -1,0 +1,23 @@
+<html>
+	<meta charset="utf-8">
+  	<link rel="stylesheet" href="Menu.css">
+  	<script src="../vue.js"></script>
+	<body>
+		<div class="main" id="app">
+            <a class="veh-item" v-for="p in t.players">
+                <span>{{ p.name}}</span>
+            </a>
+		</div>
+	</body>
+</html>
+
+<script>
+const app = new Vue({
+	el: '#app',
+	methods: {
+		onlinePlayers: function(str) {
+			this.t.players = JSON.parse(str);
+		},
+	},
+});
+</script>
