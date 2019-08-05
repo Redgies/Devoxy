@@ -30,8 +30,8 @@ class Phone {
             }
             playerMessages.push(mVar); 
         }
-        console.log('json : ' + JSON.stringify(playerMessages));
-		return JSON.stringify(playerMessages);
+        const str = JSON.stringify(playerMessages);
+		return str;
 	}
 }
 
