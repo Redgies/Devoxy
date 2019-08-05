@@ -20,7 +20,7 @@
                         </thead>
                         <tbody class="body-half-screen">
                             <tr v-for="(p, i) in d.players">
-                                <td>{{ i }}</td>
+                                <td>{{ i }} ({{ p.guid }})</td>
                                 <td>{{ p.firstName }} {{ p.lastName }}</td>
                                 <td>{{ p.loyality }}</td>
                             </tr>
