@@ -1,6 +1,7 @@
 
 const i18n = require('../sI18n');
 const misc = require('../sMisc');
+const graylog = require('../sGraylog');
 const time = require('./sTime');  
 
 class ChatSingleton {
@@ -171,7 +172,7 @@ class ChatSingleton {
 
 			'aduty': (player, fullText) => {
 				if(player.adminLvl < 1) return;
-				
+
 				const currentTime = misc.getTime();
 
 				if(player.aduty)
@@ -272,6 +273,7 @@ class ChatSingleton {
 			else {
 				client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} ${text}`);
 			}
+			graylog.log(`${player.name} ${text}.`, `${player.name} ${text}.`, {cool: '/me'});
 			misc.log.debug(`${player.name} ${text}.`);
 		});
 	}
