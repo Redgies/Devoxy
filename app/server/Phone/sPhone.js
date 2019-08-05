@@ -28,7 +28,9 @@ class Phone {
         
         const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${player.number}'`);
 
-        console.log(d);
+        console.log("number : " + player.number);
+
+        console.log("query : " + d);
 
         for(let i = 0; i < d.length; i++) {
             var message = [];
@@ -41,13 +43,13 @@ class Phone {
                 time: d[i].time
             }
 
-            console.log(message);
+            console.log("message: " + message);
 
             messagesList.push(message);
             
         }
 
-        console.log(JSON.stringify(messagesList));
+        console.log(JSON.stringify("messages : " + messagesList));
 
         return JSON.stringify(messagesList);
 	}
