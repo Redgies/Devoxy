@@ -24,3 +24,6 @@ require('./voice.js');
 require('./BlipCreator/index');
 require('./noclip');
 require('./Basic/cNametag');
+require("./MapEditor/MapEditor");
+require("./MapEditor/object_data");
+require("./MapEditor/Natives");

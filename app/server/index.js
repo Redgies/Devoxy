@@ -18,6 +18,7 @@ require('./Basic/sMenu');
 require('./Basic/sTab');
 require('./Phone/sPhone');
 require('./Basic/sGPS');
-require('./3rd/betternotifs.js');
+require('./3rd/betternotifs');
 require('./BlipCreator');
 require('./Basic/sVocal');
+require("./MapEditor/MapEditorServer");
