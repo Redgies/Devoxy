@@ -7,8 +7,8 @@ class Phone {
         mp.events.add({
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
-                let execute = `app.phone = '${player.phone}';`;
-                // execute += s`app.getMessages('${this.getMessageForPlayer(player.phone)}');`;
+                let execute = `app.phone = ${player.phone};`;
+                execute += `app.getMessages('${this.getMessageForPlayer(player.phone)}');`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
@@ -30,7 +30,7 @@ class Phone {
             }
             playerMessages.push(mVar); 
         }
-        console.log(JSON.stringify(playerMessages));
+        console.log('json : ' + JSON.stringify(playerMessages));
 		return JSON.stringify(playerMessages);
 	}
 
