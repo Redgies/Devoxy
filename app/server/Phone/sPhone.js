@@ -7,7 +7,7 @@ class Phone {
         mp.events.add({
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
-                let execute = `app.phone = '${player.phone}';`
+                let execute = `app.phone = '${player.phone}';`;
                 execute += `app.getMessages('${this.getMessageForPlayer(player.phone)}');`;
 
                 player.call("cPhone-Open", [execute]);
