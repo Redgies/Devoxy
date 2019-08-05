@@ -140,7 +140,7 @@ const app = new Vue({
 	},
 	methods: {
         getMessages: function(str) {
-            alert('str : ' + Promise.resolve(str));
+            alert('str : ' + str);
             this.d.messages = JSON.parse(str);
         },
         autoGrow: function() {

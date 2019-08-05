@@ -13,6 +13,23 @@ class Message {
 
         messagesList.push(this);
     }
+
+    getMessageForPlayer(phone) {
+		const playerMessages = [];
+		for (const msg of messagesList) {
+            if(msg.receiver !== phone && msg.sender !== phone) continue;
+
+			const mVar = { 
+                id: d[i].id,
+                sender: d[i].sender,
+                receiver: d[i].receiver,
+                text: d[i].text,
+                time: d[i].time
+            }
+            playerMessages.push(mVar); 
+		}
+		return JSON.stringify(playerMessages);
+	}
     
 }
 
@@ -25,6 +42,7 @@ async function loadMessage() {
     console.log("message load");
 }
 loadMessage();
+
 
 
 module.exports = Message;

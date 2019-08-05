@@ -1,5 +1,4 @@
 const misc = require('../sMisc');
-
 const Message = require('./sMessage');
 
 class Phone {
@@ -8,7 +7,7 @@ class Phone {
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
                 let execute = `app.phone = '${player.phone}';`
-                execute += `app.getMessages('${this.getMessages(player.phone)}');`;
+                execute += `app.getMessages('${Message.getMessageForPlayer(player.phone)}');`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
