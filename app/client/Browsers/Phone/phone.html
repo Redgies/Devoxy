@@ -53,8 +53,11 @@ const app = new Vue({
     },
     created() {
         window.addEventListener('keydown', (e) => {
-            if(e.key == 'Escape') {
-                mp.trigger("cCloseCef"); 
+            if(e.key == 'Backspace') {
+                if(this.currentTab == 0)
+                    mp.trigger("cCloseCef"); 
+                if(this.currentTab == 1)
+                    this.currentTab = 0;
             }
         });
     }, 
