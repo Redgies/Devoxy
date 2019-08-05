@@ -8,7 +8,7 @@ class Phone {
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
                 let execute = `app.phone = ${player.phone};`;
-                execute += `app.getMessages('${this.getMessageForPlayer(player.phone)}');`;
+                execute += `app.getMessages('jkljkl');`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
