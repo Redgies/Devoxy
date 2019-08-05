@@ -98,7 +98,6 @@ const app = new Vue({
         phone: 0,
 		d: {
             messsages: [
-
             ],
 		},
     },
@@ -188,9 +187,6 @@ const app = new Vue({
         playerMessages: function(str) {
             this.d.messages = JSON.parse(str);
         },
-        getPlayer: function(str) {
-            this.phone = JSON.parse(str);
-        }
 	},
 });
 </script>
