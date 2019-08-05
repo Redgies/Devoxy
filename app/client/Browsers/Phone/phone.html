@@ -50,7 +50,14 @@ const app = new Vue({
 		d: {
 			tabs: ['Home', 'Messages'],
 		},
-	},
+    },
+    created() {
+        window.addEventListener('keydown', (e) => {
+            if(e.key == 'Escape') {
+                mp.trigger("cCloseCef"); 
+            }
+        });
+    }, 
 	computed: {
 		currentTabComponent: function () {
 			return 'tab' + this.currentTab;
