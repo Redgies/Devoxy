@@ -19,7 +19,8 @@ class Tab {
 		for (const p of players) {
 			if(!p.loggedIn) continue;
 			const pVar = {
-				id: p.id,
+                id: p.id,
+                guid: p.guid,
 				name: p.name,
 				loyality: p.loyality,
 				ping: p.ping

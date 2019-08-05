@@ -16,13 +16,15 @@
                                 <th>ID </th>
                                 <th>Pseudo</th>
                                 <th>Loyauté</th>
+                                <th>Ping</th>
                             </tr>
                         </thead>
                         <tbody class="body-half-screen">
                             <tr v-for="(p, i) in d.players">
                                 <td>{{ i }} ({{ p.guid }})</td>
-                                <td>{{ p.firstName }} {{ p.lastName }}</td>
+                                <td>{{ p.firstName }} {{ p.name }}</td>
                                 <td>{{ p.loyality }}</td>
+                                <td>{{ p.ping }}ms</td>
                             </tr>
                         </tbody>
                     </table>
