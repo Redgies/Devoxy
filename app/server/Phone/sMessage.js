@@ -17,7 +17,7 @@ class Message {
 }
 
 async function loadMessage() {
-	const d = await misc.query("SELECT * FROM phonemessages");
+	const d = await misc.query("SELECT * FROM phoneMessages");
 	for (let i = 0; i < d.length; i++) {
 		new Message(d[i]);
     }
