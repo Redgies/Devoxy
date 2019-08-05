@@ -21,7 +21,7 @@ class Phone {
 		for (const msg of messagesList) {
             // if(msg.receiver !== phone && msg.sender !== phone) continue;
 
-			var mVar = { 
+			const mVar = { 
                 id: msg.id,
                 sender: msg.sender,
                 receiver: msg.receiver,
@@ -31,7 +31,7 @@ class Phone {
             playerMessages.push(mVar); 
         }
         console.log('json fdp : ' + JSON.stringify(playerMessages));
-		return JSON.stringify('dsfsd');
+		return JSON.stringify(playerMessages);
 	}
 }
 
