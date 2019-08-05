@@ -1,6 +1,7 @@
 const misc = require('../sMisc');
 
 const messagesList = [];
+const talksList = [];
 
 class Phone {
     constructor() {
@@ -9,6 +10,7 @@ class Phone {
                 if(!player.loggedIn) return;
                 let execute = `app.phone = ${player.phone};`;
                 execute += `app.d.messages = ${this.getMessageForPlayer(player.phone)};`;
+                execute += `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
@@ -30,8 +32,22 @@ class Phone {
             }
             playerMessages.push(mVar); 
         }
-        console.log('json fdp : ' + JSON.stringify(playerMessages));
 		return JSON.stringify(playerMessages);
+    }
+    
+    getTalksForPlayer(phone) {
+        const playerTalks = [];
+        for (let i = 0; i < talksList.length; i++) {
+            if(talksList[i].receiver !== phone && talksList[i].sender !== phone) continue;
+
+			const mVar = { 
+                id: talksList[i].id,
+                sender: talksList[i].sender,
+                receiver: talksList[i].receiver,
+            }
+            playerTalks.push(mVar); 
+        }
+		return JSON.stringify(playerTalks);
 	}
 }
 
@@ -51,5 +67,19 @@ async function loadMessage() {
     }
 }
 loadMessage();
+
+async function loadTalks() {
+    const d = await misc.query("SELECT * FROM talksMessages");
+    for (let i = 0; i < d.length; i++) {
+
+        const mVar = { 
+            id: d[i].id,
+            sender: d[i].sender,
+            receiver: d[i].receiver,
+        }
+        talksList.push(mVar);
+    }
+}
+loadTalks();
 
 new Phone();

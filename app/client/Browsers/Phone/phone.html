@@ -16,19 +16,13 @@
                         <i class="fa fa-comment"></i>
                     </div>  
                     <ul>
-                        <li :class="[{ active: currentLi === 0 }]">
+                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
                             <div class="avatar">CM</div>
-                            <h3>Lucky Salopio</h3>
+                            <h3 v-if="phone == talk.sender">{{ talk.receiver }}</h3>
+                            <h3 v-else>{{ talk.sender }}</h3>
                             <span class="time">12:10</span>
                             <i class="fa fa-chevron-right"></i>
-                            <p>{{ d.messages }}</p>
-                        </li>
-                        <li :class="[{ active: currentLi === 1 }]">
-                            <div class="avatar">CM</div>
-                            <h3>Lucky Salopio</h3>
-                            <span class="time">12:10</span>
-                            <i class="fa fa-chevron-right"></i>
-                            <p>Wesh poto ça va ou quoi, tu veux pas baiser ta mère un peu .</p>
+                            <p>ftg</p>
                         </li>
                     </ul>
                 </div>
@@ -39,7 +33,7 @@
                         <h1>Nitram Domenia</h1>
                     </div>
                     <div id="chat" class="chat">
-                        <div v-for="(msg, i) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
+                        <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
                             <div class="message last">
                                 {{ msg.text }}
                             </div>
@@ -80,6 +74,9 @@ const app = new Vue({
 		d: {
             messages: [
                 
+            ],
+            talks: [
+
             ]
             // messages: [
             //     {"id":1,"sender":555555,"receiver":123456,"text":"wesh pd ça va ?","time":"2019-08-05T14:38:36.000Z"},{"id":2,"sender":555555,"receiver":123456,"text":"salope t'es ou ?","time":"2019-08-05T14:38:48.000Z"}
@@ -140,9 +137,6 @@ const app = new Vue({
 		},
 	},
 	methods: {
-        getMessages: function(str) {
-            // this.d.messages = JSON.parse(str);
-        },
         autoGrow: function() {
             var element = document.getElementById("reply");
             var element2 = document.getElementById("reply-div");
