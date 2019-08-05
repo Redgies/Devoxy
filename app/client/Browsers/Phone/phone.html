@@ -13,9 +13,17 @@
                 <div class="phone-messages animated zoomIn faster" v-if="currentTab === 1">
                     <div class="head">
                         <h1>Messages</h1>
+                        <i class="fa fa-comment"></i>
                     </div>  
                     <ul>
-                        <li>
+                        <li :class="[{ active: currentLi === 0 }]">
+                            <div class="avatar">CM</div>
+                            <h3>Lucky Salopio</h3>
+                            <span class="time">12:10</span>
+                            <i class="fa fa-chevron-right"></i>
+                            <p>Wesh poto ça va ou quoi, tu veux pas baiser ta mère un peu .</p>
+                        </li>
+                        <li :class="[{ active: currentLi === 1 }]">
                             <div class="avatar">CM</div>
                             <h3>Lucky Salopio</h3>
                             <span class="time">12:10</span>
@@ -23,6 +31,108 @@
                             <p>Wesh poto ça va ou quoi, tu veux pas baiser ta mère un peu .</p>
                         </li>
                     </ul>
+                </div>
+
+                <div class="phone-conversation" v-if="currentTab === 10">
+                    <div class="head">
+                        <i class="fa fa-chevron-left"></i>
+                        <h1>Nitram Domenia</h1>
+                    </div>
+                    <div id="chat" class="chat">
+                            <div class="mine messages">
+                              <div class="message last">
+                                Dude
+                               </div>
+                            </div>
+                            <div class="yours messages">
+                              <div class="message">
+                                Hey!
+                              </div>
+                              <div class="message">
+                                You there?
+                              </div>
+                              <div class="message last">
+                                Hello, how's it going?
+                              </div>
+                            </div>
+                            <div class="mine messages">
+                              <div class="message">
+                                Great thanks!
+                              </div> 
+                              <div class="message last">
+                                How about you?
+                               </div>
+                            </div>
+                            <div class="mine messages">
+                                    <div class="message">
+                                      Great thanks!
+                                    </div> 
+                                    <div class="message last">
+                                      How about you?
+                                     </div>
+                                  </div>
+                                  <div class="mine messages">
+                                        <div class="message">
+                                          Great thanks!
+                                        </div> 
+                                        <div class="message last">
+                                          How about you?
+                                         </div>
+                                      </div>
+                                      <div class="mine messages">
+                                            <div class="message">
+                                              Great thanks!
+                                            </div> 
+                                            <div class="message last">
+                                              How about you?
+                                             </div>
+                                          </div>
+                                          <div class="mine messages">
+                                                <div class="message">
+                                                  Great thanks!
+                                                </div> 
+                                                <div class="message last">
+                                                  How about you?
+                                                 </div>
+                                              </div>
+                                              <div class="mine messages">
+                                                    <div class="message">
+                                                      Great thanks!
+                                                    </div> 
+                                                    <div class="message last">
+                                                      How about you?
+                                                     </div>
+                                                  </div>
+                                                  
+                                                  <div class="mine messages">
+                                                        <div class="message">
+                                                          Great thanks!
+                                                        </div> 
+                                                        <div class="message last">
+                                                          How about you?
+                                                         </div>
+                                                      </div>
+                                                      <div class="mine messages">
+                                                            <div class="message">
+                                                              Great thanks!
+                                                            </div> 
+                                                            <div class="message last">
+                                                              How about you?
+                                                             </div>
+                                                          </div>
+                                                          <div class="mine messages">
+                                                                <div class="message">
+                                                                  Great thanks!
+                                                                </div> 
+                                                                <div class="message last">
+                                                                  How about you?
+                                                                 </div>
+                                                              </div>
+                                                              <br><br><br><br>
+                          </div>
+                    <div class="reply" id="reply-div">
+                        <textarea id="reply" rows="3" @keyup="autoGrow">dfd</textarea>
+                    </div>
                 </div>
 
                 <div class="phone-calls animated zoomIn faster" v-if="currentTab === 2">
@@ -43,12 +153,13 @@
 
 
 <script>
+
 const app = new Vue({
 	el: '#app',
 	data: {
         currentTab: 0,
+        currentLi: 0,
 		d: {
-			tabs: ['Home', 'Messages'],
 		},
     },
     created() {
@@ -58,6 +169,39 @@ const app = new Vue({
                     mp.trigger("cCloseCef"); 
                 if(this.currentTab == 1)
                     this.currentTab = 0;
+                if(this.currentTab == 10)
+                    this.currentTab = 1;
+            }
+            if(e.key == 'ArrowDown') {
+                if(this.currentTab == 1)
+                {
+                    this.currentLi++;
+                }
+                if(this.currentTab == 10)
+                    this.scrollToBottom("chat");
+                    
+            }
+            if(e.key == 'ArrowUp') {
+                if(this.currentTab == 1)
+                {
+                    this.currentLi--;
+                    if(this.currentLi <= 0)
+                        this.currentLi = 0;
+                }
+                if(this.currentTab == 10)
+                    this.scrollToTop("chat");
+                    
+            }
+            if(e.key == 'Enter') {
+                if(this.currentTab == 1)
+                {
+                    this.currentTab = 10;
+                }
+                if(this.currentTab == 10) 
+                {
+                    var element = document.getElementById("reply");
+                    element.focus();
+                }
             }
         });
     }, 
@@ -67,6 +211,27 @@ const app = new Vue({
 		},
 	},
 	methods: {
+        autoGrow: function() {
+            var element = document.getElementById("reply");
+            var element2 = document.getElementById("reply-div");
+            if(element.clientHeight < element.scrollHeight)
+            {
+                element.style.height = element.scrollHeight + "px";
+                if(element.clientHeight < element.scrollHeight)
+                {
+                    element.style.height = (element.scrollHeight * 2 - element.clientHeight) + "px";
+                    element2.style.height = (element.scrollHeight * 2 - element.clientHeight) + "px";
+                }
+            }
+        },
+        scrollToBottom: function(id) {
+            var element = document.getElementById(id);
+            element.scrollTop += 20;
+        },
+        scrollToTop: function(id) {
+            var element = document.getElementById(id);
+            element.scrollTop -= 20;
+        },
 		exit: function() {
 			mp.trigger("cCloseCef"); 
 		},

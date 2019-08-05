@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
 .phone {
     position: fixed;
     bottom: 30px;
@@ -51,7 +55,8 @@
     transform: translateY(-50%);
 }
 
-.phone .phone-messages {
+.phone .phone-messages, 
+.phone .phone-conversation {
     position: absolute;
     height: 100%;
     top: 0;
@@ -61,14 +66,36 @@
     overflow: hidden;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.phone .phone-messages .head {
+.phone .phone-messages .head, 
+.phone .phone-conversation .head  {
     background: #f1f1f1;
     padding: 30px 0px 0px 30px;
     height: 50px;
     border-bottom: 1px solid #dfe6e9;
 }
+.phone .phone-conversation .head h1 {
+    font-size: 19px;
+    text-indent: 28px;
+    margin-top: 14px;
+}
 .phone .phone-messages .head h1 {
     font-size: 22px;
+}
+
+.phone .phone-conversation .head i {
+    position: absolute;
+    left: 33px;
+    top: 47px;
+    color: #0984e3;
+    font-size: 20px;
+}
+
+.phone .phone-messages .head i {
+    position: absolute;
+    right: 33px;
+    top: 47px;
+    color: #0984e3;
+    font-size: 20px;
 }
 
 .phone .phone-messages ul {
@@ -81,6 +108,10 @@
     height: 50px;
     border-bottom: 0.01em solid #dfe6e9;
     position: relative;
+}
+
+.phone .phone-messages li.active {
+    background: #dfe6e9;
 }
 .phone .phone-messages .avatar {
     float: left;
@@ -130,3 +161,123 @@
     top: 6px;
     text-align: right
 }
+
+.chat {
+    width: calc(100% - 61px);
+    display: flex;
+    flex-direction: column;
+    padding: 0px 29px;
+    font-size: 12px;
+    height: calc(100% - 91px);
+    position: relative;
+    overflow-y: scroll;
+    z-index: 1;
+  }
+
+.reply {
+    background: rgba(255, 255, 255, .9);
+    width: 100%;
+    min-height: 53px;
+    position: absolute;
+    bottom: 0px;
+    z-index: 2;
+    padding: 12px 0px;
+}
+.reply textarea {
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 11px;
+    top: 5px;    
+    resize: none;
+    outline: none;
+    min-height: 30px;
+    padding: 5px;
+}
+  
+  .messages {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message {
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  
+  .yours {
+    align-items: flex-start;
+  }
+  
+  .yours .message {
+    margin-right: 25%;
+    background-color: #eee;
+    position: relative;
+  }
+  
+  .yours .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: #eee;
+    border-bottom-right-radius: 15px;
+  }
+  .yours .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .mine {
+    align-items: flex-end;
+  }
+  
+  .mine .message {
+    color: white;
+    margin-left: 25%;
+    background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+    background-attachment: fixed;
+    position: relative;
+  }
+  
+  .mine .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -8px;
+    height: 20px;
+    width: 20px;
+    background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+    background-attachment: fixed;
+    border-bottom-left-radius: 15px;
+  }
+  
+  .mine .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -10px;
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-bottom-left-radius: 10px;
+  }
+  
