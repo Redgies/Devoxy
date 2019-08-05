@@ -26,7 +26,7 @@ class Phone {
     getMessages() {
         const messagesList = [];
         
-        const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${player.number}'`);
+        const d = misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${player.number}'`);
         for(let i = 0; i < d.length; i++) {
             var message = [];
 
