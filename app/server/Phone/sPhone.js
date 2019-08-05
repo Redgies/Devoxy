@@ -7,6 +7,10 @@ class Phone {
                 if(!player.loggedIn) return;
                 let execute = `app.playerMessages('${this.getMessages()}');`;
 
+                console.log("player :" + player);
+
+                console.log("number : " + player.number);
+
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
             }
@@ -29,8 +33,6 @@ class Phone {
         let player = mp.players.local;
         
         const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${player.number}'`);
-
-        console.log("number : " + player.number);
 
         console.log("query : " + d);
 
