@@ -31,7 +31,7 @@ class Phone {
             playerMessages.push(JSON.stringify(mVar)); 
         }
         console.log('json fdp : ' + playerMessages);
-		return playerMessages;
+		return `${playerMessages}`;
 	}
 }
 
