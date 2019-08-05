@@ -7,7 +7,7 @@ class Phone {
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
                 let execute = `app.phone = '${player.phone}';`
-                execute += `app.getMessages('${Message.getMessageForPlayer(player.phone)}');`;
+                execute += `app.getMessages('${getMessageForPlayer(player.phone)}');`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
@@ -24,6 +24,23 @@ class Phone {
         //     }
         // });
     }
+
+    getMessageForPlayer(phone) {
+		const playerMessages = [];
+		for (const msg of messagesList) {
+            if(msg.receiver !== phone && msg.sender !== phone) continue;
+
+			const mVar = { 
+                id: d[i].id,
+                sender: d[i].sender,
+                receiver: d[i].receiver,
+                text: d[i].text,
+                time: d[i].time
+            }
+            playerMessages.push(mVar); 
+		}
+		return JSON.stringify(playerMessages);
+	}
 
     async getMessages(phone) {
         const messagesList = [];
