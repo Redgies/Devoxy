@@ -155,6 +155,7 @@ class ChatSingleton {
 
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez heal ${target.name}.`);
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a heal.`);
+				misc.log.debug(`${player.name} healed ${target.name}.`);
 			},
 
 			'guid': (player, fullText, arg1) => {
@@ -168,6 +169,7 @@ class ChatSingleton {
 				const currentTime = misc.getTime();
 
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Le GUID de ${target.name} [${target.id}] est ${target.guid}.`);
+				misc.log.debug(`GUID of ${target.name} [${target.id}] is ${target.guid}`);
 			},
 
 			'aduty': (player, fullText) => {
@@ -179,11 +181,13 @@ class ChatSingleton {
 				{
 					player.aduty = false;
 					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous n'êtes plus en admin service.`);
+					misc.log.debug(`${player.name} left admin mode`);
 				}
 				else 
 				{
 					player.aduty = true;
 					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous êtes en admin service.`);
+					misc.log.debug(`${player.name} started admin mode`);
 				}	
 			},
 
@@ -199,18 +203,18 @@ class ChatSingleton {
 				target.health = 0;
 
 				const currentTime = misc.getTime();
-
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez tué ${target.name}.`);
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a tué.`);
+				misc.log.debug(`${player.name} killed ${target.name}`);
 			},
 
 			'kick': (player, fullText, arg1, arg2) =>	{
 				if(player.adminLvl < 1) return;
-				if(!arg1 || !arg2)
+				if(fullText.length < 3 || !arg1 || !arg2)
 					return player.notify("Utilisez /kick id raison");
 
 				const target = this.findPlayerByIdOrNickname(arg1);
-				const raison = fullText.substr(arg2.length);
+				const raison = fullText.substr(arg1 + arg1.length);
 				if(!target)
 					return player.notify("Ce joueur n'est pas connecté.");
 				if(target.id == player.id)
@@ -225,6 +229,7 @@ class ChatSingleton {
 					p.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${target.name} a été kické par ${player.name}. Raison : ${raison}`);
 				}
 				target.kick();
+				misc.log.debug(`${player.name} kicked ${target.name} for ${raison}`);
 
 			},
 		});
