@@ -142,7 +142,7 @@ const app = new Vue({
 	},
 	methods: {
         getMessages: function(str) {
-            // this.d.messages = JSON.parse(str);
+            this.d.messages = JSON.parse(str);
         },
         autoGrow: function() {
             var element = document.getElementById("reply");
