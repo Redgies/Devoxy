@@ -19,7 +19,7 @@ class Phone {
     getMessageForPlayer(phone) {
         const playerMessages = [];
         for (let i = 0; i < messagesList.length; i++) {
-            // if(msg.receiver !== phone && msg.sender !== phone) continue;
+            if(msg.receiver !== phone && msg.sender !== phone) continue;
 
 			const mVar = { 
                 id: messagesList[i].id,
