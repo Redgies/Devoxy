@@ -22,7 +22,8 @@
                         <tbody class="body-half-screen">
                             <tr v-for="(p, i) in d.players">
                                 <td>{{ i }} ({{ p.guid }})</td>
-                                <td>{{ p.firstName }} {{ p.name }}</td>
+                                <td v-if="!p.aduty">{{ p.name }}</td>
+                                <td v-else style="color: #d63031">{{ p.name }}</td>
                                 <td>{{ p.loyality }}</td>
                                 <td>{{ p.ping }}ms</td>
                             </tr>

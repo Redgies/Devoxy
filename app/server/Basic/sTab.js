@@ -21,6 +21,7 @@ class Tab {
 			const pVar = {
                 id: p.id,
                 guid: p.guid,
+                aduty: p.aduty,
 				name: p.name,
 				loyality: p.loyality,
 				ping: p.ping
