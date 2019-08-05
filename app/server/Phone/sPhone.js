@@ -28,7 +28,7 @@ class Phone {
                 text: messagesList[i].text,
                 time: messagesList[i].time,
             }
-            playerMessages.push(mVar); 
+            playerMessages.push(JSON.stringify(mVar)); 
         }
         console.log('json fdp : ' + playerMessages);
 		return JSON.stringify(messagesList);
