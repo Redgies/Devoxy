@@ -21,7 +21,7 @@
                             <h3>Lucky Salopio</h3>
                             <span class="time">12:10</span>
                             <i class="fa fa-chevron-right"></i>
-                            <p>Wesh poto ça va ou quoi, tu veux pas baiser ta mère un peu .</p>
+                            <p>{{ d.messages }}</p>
                         </li>
                         <li :class="[{ active: currentLi === 1 }]">
                             <div class="avatar">CM</div>
@@ -142,7 +142,7 @@ const app = new Vue({
 	},
 	methods: {
         getMessages: function(str) {
-            this.d.messages = JSON.parse(str);
+            // this.d.messages = JSON.parse(str);
         },
         autoGrow: function() {
             var element = document.getElementById("reply");
