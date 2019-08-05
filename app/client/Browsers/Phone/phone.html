@@ -40,9 +40,9 @@
                     </div>
                     <div id="chat" class="chat">
                         <!-- <p v-for="(m, i) in d.messages">dfdsdss</p> -->
-                        <div v-for="(msg, i) in d.messages" class="mine messages">
+                        <div v-for="(msg, i) in d.messages" class="messages" :class="[message.sender === phone ? mine : yours]"></div>
                             <div class="message last">
-                                {{ msg }}
+                                {{ msg.text }}
                             </div>
                         </div>
                         <br><br><br><br>
