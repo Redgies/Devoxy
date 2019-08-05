@@ -32,12 +32,16 @@ class GraylogSingletone {
         });
 
         console.log('GRAYLOG STARTED');
-        this.logger.log('lancement du serveur', 'lancement du serveur', {cool: 'server'});
+        
         
         
         this.logger.on('error', function (error) {
             console.error('Error while trying to write to graylog2:', error);
         });
+    }
+
+    log(text, fulltext, cool) {
+        this.logger.log(text, fulltext, {cool: cool});
     }
 }
 const graylogSingletone = new GraylogSingletone();

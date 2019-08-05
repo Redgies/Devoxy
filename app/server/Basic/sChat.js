@@ -273,7 +273,7 @@ class ChatSingleton {
 			else {
 				client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} ${text}`);
 			}
-			graylog.log(`${player.name} ${text}.`, `${player.name} ${text}.`, {cool: '/me'});
+			graylog.log(`${player.name} ${text}.`, `${player.name} ${text}.`, '/me');
 			misc.log.debug(`${player.name} ${text}.`);
 		});
 	}
