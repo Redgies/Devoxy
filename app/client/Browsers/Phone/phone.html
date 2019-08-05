@@ -39,7 +39,7 @@
                         <h1>Nitram Domenia</h1>
                     </div>
                     <div id="chat" class="chat">
-                        <div v-for="(m, i) in d.messages" class="messages" :class="[message.sender === phone ? mine : yours]">
+                        <div v-for="(m, i) in d.messages" class="messages" :class="[m.sender === phone ? mine : yours]">
                             <div class="message last">
                                 {{ m.text }}
                             </div>
