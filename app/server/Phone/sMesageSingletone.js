@@ -1,5 +1,5 @@
 
-const misc = require('../../sMisc');
+const misc = require('../sMisc');
 
 const Vehicle = require('./sMessage');
 
