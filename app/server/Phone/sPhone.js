@@ -24,10 +24,10 @@ class Phone {
         // });
     }
 
-    async getMessages(phone) {
+    getMessages(phone) {
         const messagesList = [];
         
-        const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${phone}' OR sender = '${phone}'`);
+        const d = misc.dbquery(`SELECT * FROM phoneMessages WHERE receiver = '${phone}' OR sender = '${phone}'`);
 
         for(let i = 0; i < d.length; i++) {
             const mVar = { 
@@ -42,7 +42,7 @@ class Phone {
 
         console.log(JSON.stringify(messagesList));
 
-        return JSON.stringify(messagesList);
+        return Promise.resolve(JSON.stringify(messagesList));
 	}
 }
 new Phone();

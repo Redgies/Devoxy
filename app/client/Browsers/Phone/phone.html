@@ -140,7 +140,6 @@ const app = new Vue({
 	},
 	methods: {
         getMessages: function(str) {
-            var promise = Promise.resolve(str);
             alert(promise);
             this.d.messages = JSON.parse(str);
         },
