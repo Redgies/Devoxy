@@ -35,12 +35,12 @@ class PlayerSingleton {
         player.firstName = d[0].firstName;
         player.lastName = d[0].lastName;
         player.adminLvl = d[0].adminlvl;
+        player.phone = d[0].phone;
         player.lang = d[0].lang;
         player.loyality = d[0].loyality;
         player.updateName();
         player.tp(JSON.parse(d[0].position));
         player.health = d[0].health;
-        player.phone = d[0].phone;
         player.call("cCloseCefAndDestroyCam");
 
         const q1 = moneySingleton.loadUser(player);
@@ -52,6 +52,8 @@ class PlayerSingleton {
         const q7 = hospital.loadUser(player);
         const q8 = prison.loadUser(player);
         await Promise.all([q1, q2, q3, q4, q5, q6, q7, q8]);
+
+        console.log(player.phone);
 
         misc.log.debug(`${player.name} logged in`);
     }
