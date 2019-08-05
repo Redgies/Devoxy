@@ -47,6 +47,7 @@ const app = new Vue({
     },
 	methods: {
 		onlinePlayers: function(str) {
+            alert(str);
             this.d.players = JSON.parse(str);
         },
         exit: function() {
