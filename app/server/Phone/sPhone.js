@@ -6,29 +6,28 @@ class Phone {
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
                 let execute = `app.playerMessages('${this.getMessages(player.phone)}');`;
+                execute += `app.getPlayer('${player}');`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
             }
         });
 
-        mp.events.addCommand({
-			'phone' : (player, fullText) => {
-                if(!player.loggedIn) return;
-                let execute = `app.playerMessages('${this.getMessages(player.phone)}');`;
+        // mp.events.addCommand({
+		// 	'phone' : (player, fullText) => {
+        //         if(!player.loggedIn) return;
+        //         let execute = `app.playerMessages('${this.getMessages(player.phone)}');`;
 
-                player.call("cPhone-Open", [execute]);
-                misc.log.debug(`${player.name} opens phone`);
-            }
-        });
+        //         player.call("cPhone-Open", [execute]);
+        //         misc.log.debug(`${player.name} opens phone`);
+        //     }
+        // });
     }
 
     async getMessages(phone) {
         const messagesList = [];
         
-        const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${phone}'`);
-
-        console.log("query : " + d);
+        const d = await misc.query(`SELECT * FROM phoneMessages WHERE receiver = '${phone}' OR sender = '${phone}'`);
 
         for(let i = 0; i < d.length; i++) {
             var message = [];
