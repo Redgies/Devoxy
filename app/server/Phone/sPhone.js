@@ -60,7 +60,7 @@ async function loadMessage() {
     const d = await misc.query("SELECT * FROM phoneMessages");
     for (let i = 0; i < d.length; i++) {
 
-        console.log("d : " + d[i]);
+        console.log("d : " + d[i].id);
 
         // const mVar = { 
         //     id = d[i].id,
