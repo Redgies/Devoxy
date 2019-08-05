@@ -40,6 +40,7 @@ class PlayerSingleton {
         player.updateName();
         player.tp(JSON.parse(d[0].position));
         player.health = d[0].health;
+        player.phone = d[0].phone;
         player.call("cCloseCefAndDestroyCam");
 
         const q1 = moneySingleton.loadUser(player);
