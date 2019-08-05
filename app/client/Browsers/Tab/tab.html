@@ -4,18 +4,30 @@
   	<script src="../vue.js"></script>
 	<body>
 		<div id="app">
-            <table id="customers">
-                <tr>
-                    <th>ID</th>
-                    <th>Pseudo</th>
-                    <th>Loyautée</th>
-                </tr>
-                <tr v-for="(p, i) in d.players">
-                    <td>{{ i }}</td>
-                    <td>{{ p.firstName }} {{ p.lastName }}</td>
-                    <td>{{ p.loyality }}</td>
-                </tr>
-            </table>
+            <div class="panel">
+                <div class="panel-head">
+                    <h1>Joueurs en ligne</h1>
+                    <div class="close" @click="exit">X</div>
+                </div>
+                <div class="panel-body">
+                    <table class="table-scroll small-first-col">
+                        <thead>
+                            <tr>
+                                <th>ID </th>
+                                <th>Pseudo</th>
+                                <th>Loyauté</th>
+                            </tr>
+                        </thead>
+                        <tbody class="body-half-screen">
+                            <tr v-for="(p, i) in d.players">
+                                <td>{{ i }}</td>
+                                <td>{{ p.firstName }} {{ p.lastName }}</td>
+                                <td>{{ p.loyality }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 		</div>
 	</body>
 </html>
@@ -33,7 +45,10 @@ const app = new Vue({
 	methods: {
 		onlinePlayers: function(str) {
             this.d.players = JSON.parse(str);
-		}
+        },
+        exit: function() {
+			mp.trigger("cCloseCef"); 
+		},
 	}
 });
 </script>

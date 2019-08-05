@@ -24,26 +24,102 @@ body, html {
     font-family: Montserrat-Regular, sans-serif;
 }
 
+.panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 80%;
+    background: #dfe6e9;
+}
 
-#customers {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
+.panel .panel-head {
+    background: #636e72;
+    height: 30px;
+}
+
+.panel .panel-head h1 {
+    color: #fff;
+    font-size: 15px;
+    line-height: 30px;
+    text-indent: 10px;
+    font-weight: bolder;
+}
+
+.panel .panel-head .close {
+    position: absolute;
+    height: 30px;
+    right: 0px;
+    top: 0;
+    background: #d63031;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+}
+
+.panel .panel-head .close:hover {
+    background: #ff7675;
+}
+
+.panel .panel-body {
+    overflow: hidden;
+    height: calc(100% - 30px);
+}
+
+.table-scroll {
+    display: block;
+    empty-cells: show;
+    border-spacing: 0;
+}
+  
+.table-scroll thead {
+    background-color: #b2bec3;  
+    position:relative;
+    display: block;
     width: 100%;
-  }
+    overflow-y: scroll;
+}
   
-  #customers td, #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
+.table-scroll tbody {
+    display: block; 
+    position: relative;
+    width:100%; 
+    overflow-y: scroll;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    background: #fff;
+}
   
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
+.table-scroll tr {
+    width: 100%;
+    display: flex;
+}
   
-  #customers tr:hover {background-color: #ddd;}
-  
-  #customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+.table-scroll td,.table-scroll th {
+    flex-basis: 100%;
+    flex-grow: 2 ;
+    display: block;
+    padding: 6px;
     text-align: left;
-    background-color: #4CAF50;
-    color: white;
-  }
+}
+.table-scroll th {
+    font-size: 14px;
+}
+
+.table-scroll.small-first-col td:first-child,
+.table-scroll.small-first-col th:first-child {
+    flex-grow: 1;
+}
+  
+.table-scroll tbody tr:nth-child(2n) {
+    background-color: #f2f2f2;
+}
+  
+.body-half-screen {
+    max-height: calc(100% - 30px);
+}
+  
+.small-col{ flex-basis: 10%; }
+
+.table-scroll tr:hover {background-color: #ddd;}
