@@ -8,7 +8,7 @@ class Phone {
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
                 let execute = `app.phone = ${player.phone};`;
-                execute += `app.getMessages('${this.getMessageForPlayer(player.phone)}');`;
+                execute += `app.d.messages = ${this.getMessageForPlayer(player.phone)};`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
@@ -31,7 +31,7 @@ class Phone {
             playerMessages.push(JSON.stringify(mVar)); 
         }
         console.log('json fdp : ' + playerMessages);
-		return `${playerMessages}`;
+		return playerMessages;
 	}
 }
 
