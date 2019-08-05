@@ -7,7 +7,7 @@
 //Add 2D graphic to rotation axis so they can be seen through the map/objects like the movement axis
 //Add an object hash fetcher (Must work on any object, not just ragemp objects)
 
-const Natives = require('./MapEditor/Natives.js')
+const Natives = require('./Natives.js')
 
 //Bugged out as of 0.3.5
 mp.events.add("entityStreamIn", (entity) => 
