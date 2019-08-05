@@ -21,4 +21,4 @@ require('./3rd/betternotifs.js');
 require('./fingerpointing');
 require('./BlipCreator');
 require('./local-chat');
-require('sGraylog.js');
+require('sGraylog');
