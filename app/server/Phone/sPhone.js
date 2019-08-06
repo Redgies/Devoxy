@@ -57,6 +57,8 @@ class Phone {
     getTalksForPlayer(phone) {
         loadTalks(phone);
 
+        console.log('talklist : ' + JSON.stringify(talksList));
+
         const playerTalks = [];
         for (let i = 0; i < talksList.length; i++) {
 
