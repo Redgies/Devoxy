@@ -78,11 +78,14 @@ class Phone {
 
 
 async function loadMessage() {
+    messagesList = [];
+
     const d = await misc.query("SELECT * FROM phoneMessages");
     for (let i = 0; i < d.length; i++) {
 
         const mVar = { 
             id: d[i].id,
+            talk: d[i].talk,
             sender: d[i].sender,
             receiver: d[i].receiver,
             text: d[i].text,
@@ -90,10 +93,7 @@ async function loadMessage() {
         }
         messagesList.push(mVar);
     }
-
-    console.log(JSON.stringify(messagesList));
 }
-loadMessage();
 
 async function loadTalks() {
     talksList = [];
@@ -118,6 +118,7 @@ async function loadTalks() {
 }
 setInterval(function() {
     loadTalks();
-}, 1000);
+    loadMessage();
+}, 5000);
 
 new Phone();

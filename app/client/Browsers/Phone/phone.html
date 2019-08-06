@@ -17,7 +17,7 @@
                         <i class="fa fa-comment"></i>
                     </div>  
                     <ul>
-                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]" @keyup.enter="currentTalk = talk.id">
+                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]" @keyup.enter="goToConversation()">
                             <div class="avatar">NA</div>
                             <h3 v-if="phone == talk.sender">{{ talk.receiver }}</h3>
                             <h3 v-else>{{ talk.sender }}</h3>
@@ -152,19 +152,19 @@ const app = new Vue({
 
 
                 // ENTRER DANS UNE CONVERSATION
-                if(this.currentTab == 3)
-                {
-                    this.currentTab = 30;
+                // if(this.currentTab == 3)
+                // {
+                //     this.currentTab = 30;
 
-                    alert(this.currentTalk);
+                //     alert(this.currentTalk);
 
-                    for(let i = 0; i < this.d.talks.length; i++)
-                    {
-                        if(i != this.currentLi) continue;
+                //     for(let i = 0; i < this.d.talks.length; i++)
+                //     {
+                //         if(i != this.currentLi) continue;
                         
-                        this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
-                    }
-                }
+                //         this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
+                //     }
+                // }
                 if(this.currentTab == 30) 
                 {
                     var element = document.getElementById("reply");
@@ -179,6 +179,9 @@ const app = new Vue({
 		},
 	},
 	methods: {
+        goToConversation: function() {
+            alert('test');  
+        },
         updatePlayerMessages: function() {
             mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages");
         },
