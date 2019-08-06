@@ -17,7 +17,7 @@
                         <i class="fa fa-comment"></i>
                     </div>  
                     <ul>
-                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]" @keyup.enter="goToConversation()">
+                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]" @click="goToConversation()">
                             <div class="avatar">NA</div>
                             <h3 v-if="phone == talk.sender">{{ talk.receiver }}</h3>
                             <h3 v-else>{{ talk.sender }}</h3>
