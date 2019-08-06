@@ -17,7 +17,7 @@
                         <i class="fa fa-comment"></i>
                     </div>  
                     <ul>
-                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]" @keyup.enter="goToConversation()" tabindex="0">
+                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
                             <div class="avatar">NA</div>
                             <h3 v-if="phone == talk.sender">{{ talk.receiver }}</h3>
                             <h3 v-else>{{ talk.sender }}</h3>
@@ -126,6 +126,11 @@ const app = new Vue({
                 if(this.currentTab == 3)
                 {
                     this.currentLi++;
+
+                    for(let i = 0; i < this.d.talks.length; i++)
+                    {
+                        if(this.currentLi == i) this.currentTalk = this.d.talks[i].talk;
+                    }
                 }
                 if(this.currentTab == 10)
                     this.scrollToBottom("chat");
@@ -137,6 +142,11 @@ const app = new Vue({
                     this.currentLi--;
                     if(this.currentLi <= 0)
                         this.currentLi = 0;
+
+                    for(let i = 0; i < this.d.talks.length; i++)
+                    {
+                        if(this.currentLi == i) this.currentTalk = this.d.talks[i].talk;
+                    }
                 }
                 if(this.currentTab == 10)
                     this.scrollToTop("chat");
@@ -152,19 +162,19 @@ const app = new Vue({
 
 
                 // ENTRER DANS UNE CONVERSATION
-                // if(this.currentTab == 3)
-                // {
-                //     this.currentTab = 30;
+                if(this.currentTab == 3)
+                {
+                    this.currentTab = 30;
 
-                //     alert(this.currentTalk);
+                    alert(this.currentTalk);
 
-                //     for(let i = 0; i < this.d.talks.length; i++)
-                //     {
-                //         if(i != this.currentLi) continue;
+                    for(let i = 0; i < this.d.talks.length; i++)
+                    {
+                        if(i != this.currentLi) continue;
                         
-                //         this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
-                //     }
-                // }
+                        this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
+                    }
+                }
                 if(this.currentTab == 30) 
                 {
                     var element = document.getElementById("reply");
