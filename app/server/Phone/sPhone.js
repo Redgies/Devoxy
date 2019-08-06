@@ -32,6 +32,8 @@ class Phone {
 
                 createMessage(d);
 
+                console.log("fdp fdp fdp");
+
                 let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
 
                 player.call("cPhone-Update", [execute]);
