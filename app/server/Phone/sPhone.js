@@ -62,7 +62,7 @@ class Phone {
         {
             if(err) throw err;
             
-            for (let i = 0; i < d.length; i++) {
+            for(let i = 0; i < d.length; i++) {
     
                 mysql.query('SELECT * FROM phoneMessages WHERE talk = ? ORDER BY id DESC LIMIT 1', [d[i].id], function(err, e)
                 {
@@ -77,15 +77,12 @@ class Phone {
                     }
         
                     talksList.push(mVar);
-
-                    console.log(JSON.stringify(talksList));
-
-                    return JSON.stringify(talksList);
                 });
             }
-        });
 
-        // console.log(JSON.stringify(talksList));
+            console.log(JSON.stringify(talksList));
+            return JSON.stringify(talksList);
+        });
 
         return JSON.stringify(talksList);
 	}
