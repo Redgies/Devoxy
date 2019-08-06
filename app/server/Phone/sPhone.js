@@ -57,7 +57,8 @@ class Phone {
     getTalksForPlayer(phone) {
         const playerTalks = [];
         for (let i = 0; i < talksList.length; i++) {
-            if(talksList[i].receiver !== phone && talksList[i].sender !== phone) continue;
+
+            if(talksList[i].sender !== phone) continue;
 
 			const mVar = { 
                 id: talksList[i].id,
@@ -68,6 +69,9 @@ class Phone {
             }
             playerTalks.push(mVar); 
         }
+
+        console.log(JSON.stringify(playerTalks));
+
 		return JSON.stringify(playerTalks);
 	}
 }
