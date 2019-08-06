@@ -36,12 +36,12 @@
                         <h1>{{ talkNumber }}</h1>
                     </div>
                     <div id="chat" class="chat">
-                        <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
+                        <!-- <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
                             <div class="message last">
                                 {{ msg.text }}
                             </div>
-                        </div>
-                        <!-- <div class="messages mine">
+                        </div> -->
+                        <div class="messages mine">
                             <div class="message last">
                                 sdfsdfds
                             </div>
@@ -145,7 +145,7 @@
                             <div class="message last">
                                 sdfsdfds
                             </div>
-                        </div> -->
+                        </div>
                         <br><br><br><br>
                     </div>
                     <div class="reply" id="reply-div">
@@ -208,7 +208,7 @@ const app = new Vue({
 
                 if(this.currentTab == 0)
                 {
-                    mp.trigger("cCloseCef");
+                    // mp.trigger("cCloseCef");
                 }
                 if(this.currentTab == 3)
                     this.currentTab = 0;
@@ -298,7 +298,7 @@ const app = new Vue({
                             text: this.textMessage
                         }
 
-                        mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+                        // mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
 
                         this.textMessage = '';
                     }
@@ -317,7 +317,7 @@ const app = new Vue({
                 talkId: this.currentTalk,
             }
 
-            mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+            // mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
         },
         scrollToBottom: function(id) {
             var element = document.getElementById(id);
