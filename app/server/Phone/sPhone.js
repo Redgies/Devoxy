@@ -16,35 +16,16 @@ class Phone {
                 misc.log.debug(`${player.name} opens phone`);
             },
 
-            "sPhone-updatePlayerMessages" : (player) => {
-                // const mVar = { 
-                //     id: messagesList.length + 1,
-                //     sender: 123456,
-                //     receiver: 555555,
-                //     text: 'bogoss va',
-                //     time: '2019-09-05 03:41:36',
-                // }
-                // messagesList.push(mVar);
+            "sPhone-updatePlayerMessages" : (player, str) => {
+                const d = JSON.parse(str);
 
                 let execute = `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
-
-                // player.notify("update");
+                execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
                 
 
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} update phone`);
             },
-
-            "sPhone-updateMessages" : (player, str) => {
-                const d = JSON.parse(str);
-
-                console.log('d : ' + str);
-
-                let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
-
-                player.call("cPhone-Update", [execute]);
-                misc.log.debug(`${player.name} update phone`);
-            }
         });
     }
 
@@ -66,7 +47,7 @@ class Phone {
 
         console.log('playerMessages : ' + JSON.stringify(playerMessages));
 
-		return JSON.stringify(playerMessages);
+		return playerMessages;
     }
     
     getTalksForPlayer(phone) {
