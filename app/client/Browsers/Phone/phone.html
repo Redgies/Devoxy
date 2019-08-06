@@ -170,6 +170,8 @@ const app = new Vue({
     },
     filters: {
 		format(date) {
+            var now = moment();
+
             if(date.diff(now, 'days') <= 0)
                 return moment(date).format('LT');
             // alert(date.getMonth());
