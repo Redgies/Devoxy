@@ -38,6 +38,13 @@ class MiscSingleton {
 		}))
 	}
 
+	// simpleQuery(query) {
+	// 	mysql.query(query, function (error, results) {
+	// 		if (error) throw error;
+	// 		console.log('The solution is: ', results[0].solution);
+	// 	  });
+	// }
+
 	async query(query) {
 		const start = new Date().getTime(); 
 		const data = await this.dbquery(query);

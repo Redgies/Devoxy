@@ -1,4 +1,5 @@
 const misc = require('../sMisc');
+const mysql = require("./sMysql");
 
 let messagesList = [];
 // let talksList = [];
@@ -57,25 +58,31 @@ class Phone {
     getTalksForPlayer(phone) {
         const talksList = [];
 
-        const d = misc.dbquery(`SELECT * FROM phoneTalks WHERE sender = '${phone}' OR receiver = '${phone}'`);
-        for (let i = 0; i < d.length; i++) {
+        mysql.query(`SELECT * FROM phoneTalks WHERE sender = ? OR receiver = ?`, [phone, phone], function(err, result)
+        {
+            if (err) throw err;
+            console.log(result);
+        });
+
+        // const d = misc.dbquery(`SELECT * FROM phoneTalks WHERE sender = '${phone}' OR receiver = '${phone}'`);
+        // for (let i = 0; i < d.length; i++) {
     
-            const e = misc.dbquery(`SELECT * FROM phoneMessages WHERE talk = '${d[i].id}' ORDER BY id DESC LIMIT 1`);
+        //     const e = misc.dbquery(`SELECT * FROM phoneMessages WHERE talk = '${d[i].id}' ORDER BY id DESC LIMIT 1`);
     
-            const mVar = { 
-                id: d[i].id,
-                sender: d[i].sender,
-                receiver: d[i].receiver,
-                text: e[0].text,
-                time: e[0].time,
-            }
+        //     const mVar = { 
+        //         id: d[i].id,
+        //         sender: d[i].sender,
+        //         receiver: d[i].receiver,
+        //         text: e[0].text,
+        //         time: e[0].time,
+        //     }
     
-            talksList.push(mVar);
-        }
+        //     talksList.push(mVar);
+        // }
     
-        console.log('loaddTalks : ' + JSON.stringify(talksList));
+        // console.log('loaddTalks : ' + JSON.stringify(talksList));
     
-        return JSON.stringify(talksList);
+        // return JSON.stringify(talksList);
 
         // console.log('talklist : ' + JSON.stringify(talksList));
 
