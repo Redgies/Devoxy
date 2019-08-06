@@ -55,7 +55,7 @@ class Phone {
     }
     
     getTalksForPlayer(phone) {
-        loadMessage();
+        // loadMessage();
         const playerTalks = [];
         for (let i = 0; i < talksList.length; i++) {
 
