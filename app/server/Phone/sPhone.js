@@ -86,6 +86,8 @@ class Phone {
             playerTalks.push(mVar); 
         }
 
+        console.log('playerTalks : ' + JSON.stringify(playerTalks));
+
 		return JSON.stringify(playerTalks);
 	}
 }
@@ -125,8 +127,6 @@ async function loadTalks() {
 
         talksList.push(mVar);
     }
-
-    console.log('loaddTalks : ' + JSON.stringify(talksList));
 
     return JSON.stringify(talksList);
 }
