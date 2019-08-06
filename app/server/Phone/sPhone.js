@@ -27,6 +27,7 @@ class Phone {
                 // messagesList.push(mVar);
 
                 let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone)};`;
+                execute += `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
 
                 // player.notify("update");
                 
