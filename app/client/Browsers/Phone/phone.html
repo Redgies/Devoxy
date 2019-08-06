@@ -172,6 +172,8 @@ const app = new Vue({
 
                     mp.trigger("cMisc-CallServerEvent", "sPhone-updateMessages", JSON.stringify(data));
 
+                    alert(this.d.messages);
+
                     for(let i = 0; i < this.d.talks.length; i++)
                     {
                         if(i != this.currentLi) continue;
