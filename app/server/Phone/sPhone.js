@@ -26,6 +26,14 @@ class Phone {
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} update phone`);
             },
+
+            "sPhone-sendMessage": (player, str) => {
+                const d = JSON.parse(str);
+
+                createMessage(d);
+
+                misc.log.debug(`${player.name} send message`);
+            }
         });
     }
 
@@ -85,6 +93,9 @@ class Phone {
 	}
 }
 
+async function createMessage(d) {
+    await misc.query(`INSERT INTO phonesMessages (talk, sender, receiver, text) VALUES ('${d.talk}', '${d.sender}', '${d.receiver}', '${d.text}');`);
+}
 
 async function loadMessage() {
     messagesList = [];

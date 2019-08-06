@@ -179,9 +179,18 @@ const app = new Vue({
                 if(this.currentTab == 30) 
                 {
                     if(document.activeElement.id == 'btnSms')
-                        alert('focus');
-                    else
-                        alert('no focus');
+                    {
+                        const data = {
+                            sender: this.phone,
+                            talk: this.talkId,
+                            receiver: this.talkNumber,
+                            text: this.textMessage
+                        }
+
+                        mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+
+                        this.textMessage = '';
+                    }
 
                     alert(document.activeElement.id);
                 }
