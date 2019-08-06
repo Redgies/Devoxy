@@ -164,7 +164,8 @@ const app = new Vue({
                 // ENTRER DANS UNE CONVERSATION
                 if(this.currentTab == 3)
                 {
-                    return this.currentTab = 30;
+                    this.currentTab = 30;
+                    return alert(this.currentTab);
 
                     // for(let i = 0; i < this.d.talks.length; i++)
                     // {
