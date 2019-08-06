@@ -1,6 +1,6 @@
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     display: none;
-}
+} */
 
 .phone {
     position: fixed;
@@ -202,10 +202,11 @@
     flex-direction: column;
     padding: 0px 29px;
     font-size: 12px;
-    height: 200px;
+    heighst: 200px;
     position: relative;
     overflow-y: auto;
     z-index: 1;
+    background: red;
   }
 
 .reply {
