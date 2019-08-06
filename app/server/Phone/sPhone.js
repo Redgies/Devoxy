@@ -58,10 +58,29 @@ class Phone {
     getTalksForPlayer(phone) {
         const talksList = [];
 
-        mysql.query(`SELECT * FROM phoneTalks WHERE sender = ? OR receiver = ?`, [phone, phone], function(err, result)
+        mysql.query(`SELECT * FROM phoneTalks WHERE sender = ? OR receiver = ?`, [phone, phone], function(err, d)
         {
-            if (err) throw err;
-            console.log(result);
+            if(err) throw err;
+            
+            for (let i = 0; i < d.length; i++) {
+    
+                mysql.query('SELECT * FROM phoneMessages WHERE talk = ? ORDER BY id DESC LIMIT 1', [d[i].id], function(err, e)
+                {
+                    if(err) throw err;
+
+                    const mVar = { 
+                        id: d[i].id,
+                        sender: d[i].sender,
+                        receiver: d[i].receiver,
+                        text: e[0].text,
+                        time: e[0].time,
+                    }
+        
+                    talksList.push(mVar);
+
+                    console.log('loaddTalks : ' + JSON.stringify(talksList));
+                });
+            }
         });
 
         // const d = misc.dbquery(`SELECT * FROM phoneTalks WHERE sender = '${phone}' OR receiver = '${phone}'`);
