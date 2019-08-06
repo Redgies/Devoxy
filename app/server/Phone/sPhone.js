@@ -38,74 +38,87 @@ class Phone {
         });
     }
 
-    getMessageForPlayer(phone) {
-        const playerMessages = [];
-        for (let i = 0; i < messagesList.length; i++) {
-            if(messagesList[i].receiver !== phone && messagesList[i].sender !== phone) continue;
+    // getMessageForPlayer(phone) {
+    //     const playerMessages = [];
+    //     for (let i = 0; i < messagesList.length; i++) {
+    //         if(messagesList[i].receiver !== phone && messagesList[i].sender !== phone) continue;
 
-			const mVar = { 
-                id: messagesList[i].id,
-                sender: messagesList[i].sender,
-                receiver: messagesList[i].receiver,
-                text: messagesList[i].text,
-                time: messagesList[i].time,
-            }
-            playerMessages.push(mVar); 
-        }
-		return JSON.stringify(playerMessages);
-    }
+	// 		const mVar = { 
+    //             id: messagesList[i].id,
+    //             sender: messagesList[i].sender,
+    //             receiver: messagesList[i].receiver,
+    //             text: messagesList[i].text,
+    //             time: messagesList[i].time,
+    //         }
+    //         playerMessages.push(mVar); 
+    //     }
+	// 	return JSON.stringify(playerMessages);
+    // }
     
     getTalksForPlayer(phone) {
         const talksList = [];
 
-        mysql.query(`SELECT * FROM phoneTalks WHERE sender = ? OR receiver = ?`, [phone, phone], function(err, d)
+        data = mysql.query(`SELECT * FROM phoneTalks WHERE sender = ? OR receiver = ?`, [phone, phone], function(err, d)
         {
             if(err) throw err;
+
+            return d;
             
-            for(let i = 0; i < d.length; i++) {
+            // for(let i = 0; i < d.length; i++) {
     
-                mysql.query('SELECT * FROM phoneMessages WHERE talk = ? ORDER BY id DESC LIMIT 1', [d[i].id], function(err, e)
-                {
-                    if(err) throw err;
+            //     mysql.query('SELECT * FROM phoneMessages WHERE talk = ? ORDER BY id DESC LIMIT 1', [d[i].id], function(err, e)
+            //     {
+            //         if(err) throw err;
 
-                    const mVar = { 
-                        id: d[i].id,
-                        sender: d[i].sender,
-                        receiver: d[i].receiver,
-                        text: e[0].text,
-                        time: e[0].time,
-                    }
+            //         const mVar = { 
+            //             id: d[i].id,
+            //             sender: d[i].sender,
+            //             receiver: d[i].receiver,
+            //             text: e[0].text,
+            //             time: e[0].time,
+            //         }
         
-                    talksList.push(mVar);
-                });
-            }
+            //         talksList.push(mVar);
+            //     });
+            // }
 
-            console.log(JSON.stringify(talksList));
-            return JSON.stringify(talksList);
+            // console.log(JSON.stringify(talksList));
+            // return JSON.stringify(talksList);
         });
 
-        return JSON.stringify(talksList);
+        return JSON.stringify(data);
 	}
 }
 
-
-async function loadMessage() {
-    const d = await misc.query("SELECT * FROM phoneMessages");
-    for (let i = 0; i < d.length; i++) {
-
-        const mVar = { 
-            id: d[i].id,
-            sender: d[i].sender,
-            receiver: d[i].receiver,
-            text: d[i].text,
-            time: d[i].time,
-        }
-        messagesList.push(mVar);
-    }
-
-    console.log(JSON.stringify(messagesList));
+function getTalksForPlayer(phone)
+{
+    mysql.query(`SELECT * FROM phoneTalks WHERE sender = ? OR receiver = ?`, [phone, phone], function(err, d)
+    {
+        if (err) 
+            callback(err,null);
+        else
+            callback(null, d);
+    });
 }
-loadMessage();
+
+
+// async function loadMessage() {
+//     const d = await misc.query("SELECT * FROM phoneMessages");
+//     for (let i = 0; i < d.length; i++) {
+
+//         const mVar = { 
+//             id: d[i].id,
+//             sender: d[i].sender,
+//             receiver: d[i].receiver,
+//             text: d[i].text,
+//             time: d[i].time,
+//         }
+//         messagesList.push(mVar);
+//     }
+
+//     console.log(JSON.stringify(messagesList));
+// }
+// loadMessage();
 
 // async function loadTalks(phone) {
 //     talksList = [];
