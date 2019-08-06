@@ -77,11 +77,15 @@ class Phone {
                     }
         
                     talksList.push(mVar);
+
+                    console.log(JSON.stringify(talksList));
+
+                    return JSON.stringify(talksList);
                 });
             }
         });
 
-        console.log(JSON.stringify(talksList));
+        // console.log(JSON.stringify(talksList));
 
         return JSON.stringify(talksList);
 	}
