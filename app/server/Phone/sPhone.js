@@ -1,5 +1,5 @@
 const misc = require('../sMisc');
-const mysql = require("./sMysql");
+const mysql = require("../sMysql");
 
 let messagesList = [];
 // let talksList = [];
