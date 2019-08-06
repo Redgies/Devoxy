@@ -17,7 +17,7 @@
                         <i class="fa fa-comment"></i>
                     </div>  
                     <ul>
-                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]" @keyup.enter="goToConversation(i)">
+                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
                             <div class="avatar">NA</div>
                             <h3 v-if="phone == talk.sender">{{ talk.receiver }}</h3>
                             <h3 v-else>{{ talk.sender }}</h3>
@@ -119,10 +119,17 @@ const app = new Vue({
                     
             }
             if(e.key == 'Enter') {
-                // if(this.currentTab == 1)
-                // {
-                //     this.currentTab = 10;
-                // }
+                // ENTRER DANS UNE CONVERSATION
+                if(this.currentTab == 1)
+                {
+                    this.currentTab = 10;
+
+                    for(let i = 0; i <= d.talks.length; i++)
+                    {
+                        if(i == this.currentLi)
+                            this.talkNumber = (phone == talks[i].receiver ? talks[i].receiver : talks[i].sender);
+                    }
+                }
                 if(this.currentTab == 10) 
                 {
                     var element = document.getElementById("reply");
@@ -137,15 +144,6 @@ const app = new Vue({
 		},
 	},
 	methods: {
-        goToConversation: function(value) {
-            this.currentTab = 10;
-
-            for(let i = 0; i <= d.talks.length; i++)
-            {
-                if(i == value)
-                    this.talkNumber = (phone == talks[i].receiver ? talks[i].receiver : talks[i].sender);
-            }
-        },
         autoGrow: function() {
             var element = document.getElementById("reply");
             var element2 = document.getElementById("reply-div");
