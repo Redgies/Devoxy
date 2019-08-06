@@ -31,7 +31,7 @@
                 <div class="phone-conversation" v-if="currentTab === 30">
                     <div class="head">
                         <i class="fa fa-chevron-left"></i>
-                        <!-- <h1>{{ talkNumber }}</h1> -->
+                        <h1>{{ talkNumber }}</h1>
                     </div>
                     <!-- <div id="chat" class="chat">
                         <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
@@ -164,13 +164,14 @@ const app = new Vue({
                 // ENTRER DANS UNE CONVERSATION
                 if(this.currentTab == 3)
                 {
-                    return this.currentTab = 30;
-                    // for(let i = 0; i < this.d.talks.length; i++)
-                    // {
-                    //     if(i != this.currentLi) continue;
+                    this.currentTab = 30;
+                    for(let i = 0; i < this.d.talks.length; i++)
+                    {
+                        if(i != this.currentLi) continue;
                         
-                    //     this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
-                    // }
+                        this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
+                    }
+                    return 1;
                 }
                 if(this.currentTab == 30) 
                 {
