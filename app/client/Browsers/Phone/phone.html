@@ -266,9 +266,7 @@ const app = new Vue({
                 {
                     for(let i = 0; i < this.d.talks.length; i++)
                     {
-                        if(i != this.currentLi) continue;
-                        
-                        this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
+                        if(this.currentLi == i) this.currentTalk = this.d.talks[i].id;
                     }
 
                     return this.currentTab = 3;
@@ -295,12 +293,14 @@ const app = new Vue({
                             talk: this.currentTalk,
                             sender: this.phone,
                             receiver: this.talkNumber,
-                            text: this.textMessage
+                            text: this.textMessage,
+                            talkId: this.currentTalk
                         }
 
                         mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
 
                         this.textMessage = '';
+                        this.scrollBottom;
                     }
                 }
             }
@@ -318,6 +318,10 @@ const app = new Vue({
             }
 
             mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+        },
+        scrollBottom: function(id) {
+            var element = document.getElementById(id);
+            element.scrollTop = element.scrollHeight;
         },
         scrollToBottom: function(id) {
             var element = document.getElementById(id);

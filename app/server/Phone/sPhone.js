@@ -21,7 +21,7 @@ class Phone {
 
                 let execute = `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
                 execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
-                
+        
 
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} update phone`);
@@ -32,6 +32,9 @@ class Phone {
 
                 createMessage(d);
 
+                let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
+
+                player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} send message`);
             }
         });

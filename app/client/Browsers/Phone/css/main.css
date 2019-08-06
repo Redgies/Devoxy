@@ -200,14 +200,14 @@
     width: calc(100% - 61px);
     padding: 0px 29px;
     font-size: 12px;
-    height: calc(100% - 91px);
+    height: calc(100% - 95px);
     position: relative;
     overflow-y: scroll;
     z-index: 1;
-  }
+}
 
 .reply {
-    background: none;
+    background: rgba(255, 255, 255, .8);
     width: 100%;
     min-height: 53px;
     position: absolute;
