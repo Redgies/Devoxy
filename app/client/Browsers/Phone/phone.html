@@ -17,7 +17,7 @@
                         <i class="fa fa-comment"></i>
                     </div>  
                     <ul>
-                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
+                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]" @keyup.enter="goToConversation(i)">
                             <div class="avatar">NA</div>
                             <h3 v-if="phone == talk.sender">{{ talk.receiver }}</h3>
                             <h3 v-else>{{ talk.sender }}</h3>
@@ -31,8 +31,7 @@
                 <div class="phone-conversation" v-if="currentTab === 10">
                     <div class="head">
                         <i class="fa fa-chevron-left"></i>
-                        <h1 v-if="phone == msg.sender">{{ msg.receiver }}</h1>
-                        <h1 v-else>{{ msg.sender }}</h1>
+                        <h1>{{ talkNumber }}</h1>
                     </div>
                     <div id="chat" class="chat">
                         <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
@@ -74,6 +73,7 @@ const app = new Vue({
         currentTab: 0,
         currentLi: 0,
         phone: 0,
+        talkNumber: 0,
 		d: {
             messages: [
                 
@@ -119,10 +119,10 @@ const app = new Vue({
                     
             }
             if(e.key == 'Enter') {
-                if(this.currentTab == 1)
-                {
-                    this.currentTab = 10;
-                }
+                // if(this.currentTab == 1)
+                // {
+                //     this.currentTab = 10;
+                // }
                 if(this.currentTab == 10) 
                 {
                     var element = document.getElementById("reply");
@@ -137,6 +137,15 @@ const app = new Vue({
 		},
 	},
 	methods: {
+        goToConversation: function(value) {
+            this.currentTab = 10;
+
+            for(let i = 0; i <= d.talks.length; i++)
+            {
+                if(i == value)
+                    this.talkNumber = (phone == talks[i].receiver ? talks[i].receiver : talks[i].sender);
+            }
+        },
         autoGrow: function() {
             var element = document.getElementById("reply");
             var element2 = document.getElementById("reply-div");
