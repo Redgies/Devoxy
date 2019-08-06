@@ -167,10 +167,18 @@ const app = new Vue({
 		exit: function() {
 			mp.trigger("cCloseCef"); 
         },
+        daysPassed(date) {
+            var current = new Date(dt.getTime());
+            var previous = new Date(dt.getFullYear(), 0, 1);
+
+            return Math.ceil((current - previous + 1) / 86400000);
+        }
     },
     filters: {
 		format(date) {
-            alert(date.getMonth());
+            if(daysPassed(date) <= 0)
+                return moment(date).format('LT');
+            // alert(date.getMonth());
 			return moment(date).format('DDDD M.YYYY');
 		},
 		fromNow(date) {
