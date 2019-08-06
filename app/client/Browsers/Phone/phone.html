@@ -208,7 +208,7 @@ const app = new Vue({
 
                 if(this.currentTab == 0)
                 {
-                    // mp.trigger("cCloseCef");
+                    mp.trigger("cCloseCef");
                 }
                 if(this.currentTab == 3)
                     this.currentTab = 0;
@@ -264,12 +264,12 @@ const app = new Vue({
                 // ENTRER DANS LES MESSAGES
                 if(this.currentTab == 0)
                 {
-                    // for(let i = 0; i < this.d.talks.length; i++)
-                    // {
-                    //     if(i != this.currentLi) continue;
+                    for(let i = 0; i < this.d.talks.length; i++)
+                    {
+                        if(i != this.currentLi) continue;
                         
-                    //     this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
-                    // }
+                        this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
+                    }
 
                     return this.currentTab = 3;
                 }
@@ -298,7 +298,7 @@ const app = new Vue({
                             text: this.textMessage
                         }
 
-                        // mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+                        mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
 
                         this.textMessage = '';
                     }
@@ -317,7 +317,7 @@ const app = new Vue({
                 talkId: this.currentTalk,
             }
 
-            // mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+            mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
         },
         autoGrow: function() {
             var element = document.getElementById("reply");
