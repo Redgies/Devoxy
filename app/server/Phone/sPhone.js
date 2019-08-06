@@ -76,7 +76,7 @@ class Phone {
                 // }
 
                 player.call("cPhone-Update", [execute]);
-                misc.log.debug(`${player.name} send message`);
+                misc.log.debug(`${player.name} new message`);
             }
         });
     }
@@ -109,7 +109,7 @@ class Phone {
             playerMessages.push(mVar);
         }
 
-        console.log('playerMessages : ' + JSON.stringify(playerMessages));
+        // console.log('playerMessages : ' + JSON.stringify(playerMessages));
 
 		return JSON.stringify(playerMessages);
     }
@@ -131,7 +131,7 @@ class Phone {
             playerTalks.push(mVar); 
         }
 
-        console.log('playerTalks : ' + JSON.stringify(playerTalks));
+        // console.log('playerTalks : ' + JSON.stringify(playerTalks));
 
 		return JSON.stringify(playerTalks);
 	}
@@ -142,7 +142,7 @@ async function createTalk(d)
     await misc.query(`INSERT INTO phoneTalks (sender, receiver) VALUES ('${d.sender}', '${d.receiver}');`);
     const data = await misc.query(`SELECT id FROM phoneTalks ORDER BY id DESC LIMIT 1`);
 
-    await misc.query(`INSERT INTO phoneMessages (talk, sender, receiver, text) VALUES ('${data.id}', '${d.sender}', '${d.receiver}', '${d.text}');`);
+    await misc.query(`INSERT INTO phoneMessages (talk, sender, receiver, text) VALUES ('${data[0].id}', '${d.sender}', '${d.receiver}', '${d.text}');`);
 }
 
 async function createMessage(d) {
