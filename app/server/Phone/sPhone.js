@@ -55,11 +55,11 @@ class Phone {
     }
     
     getTalksForPlayer(phone) {
-        // loadMessage();
+        loadMessage();
         const playerTalks = [];
         for (let i = 0; i < talksList.length; i++) {
 
-            if(talksList[i].sender !== phone || talks) continue;
+            if(talksList[i].sender !== phone) continue;
 
 			const mVar = { 
                 id: talksList[i].id,
