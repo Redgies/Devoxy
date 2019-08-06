@@ -72,8 +72,8 @@ const app = new Vue({
 	data: {
         currentTab: 0,
         currentLi: 0,
-        phone: 0,
-        talkNumber: 0,
+        phone: 0,       // MON NUMERO
+        talkNumber: 0, // NUMERO DU DESTINATAIRE
 		d: {
             messages: [
                 
@@ -84,6 +84,9 @@ const app = new Vue({
 		},
     },
     created() {
+        this.updatePlayerMessages();
+        this.timer = setInterval(this.updatePlayerMessages, 10000);
+
         window.addEventListener('keydown', (e) => {
             if(e.key == 'Backspace') {
                 var reply = document.getElementById("reply");
@@ -145,6 +148,9 @@ const app = new Vue({
 		},
 	},
 	methods: {
+        updatePlayerMessages: function() {
+            alert('test');
+        },
         autoGrow: function() {
             var element = document.getElementById("reply");
             var element2 = document.getElementById("reply-div");
