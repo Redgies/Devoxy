@@ -47,7 +47,7 @@ class Phone {
 
         console.log('playerMessages : ' + JSON.stringify(playerMessages));
 
-		return playerMessages;
+		return JSON.stringify(playerMessages);
     }
     
     getTalksForPlayer(phone) {
