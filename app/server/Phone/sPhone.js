@@ -45,9 +45,21 @@ class Phone {
             playerMessages.push(mVar); 
         }
 
+        if(playerMessages.length <= 0)
+        {
+            const mVar = { 
+                id: 1,
+                sender: phone,
+                receiver: '000000',
+                text: '',
+                time: '',
+            }
+            playerMessages.push(mVar);
+        }
+
         console.log('playerMessages : ' + JSON.stringify(playerMessages));
 
-		return playerMessages;
+		return JSON.stringify(playerMessages);
     }
     
     getTalksForPlayer(phone) {
