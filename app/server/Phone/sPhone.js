@@ -58,7 +58,7 @@ class Phone {
     getTalksForPlayer(phone) {
         const talksList = [];
 
-        data = mysql.query(`SELECT * FROM phoneTalks WHERE sender = ? OR receiver = ?`, [phone, phone], function(err, d)
+        const data = mysql.query(`SELECT * FROM phoneTalks WHERE sender = ? OR receiver = ?`, [phone, phone], function(err, d)
         {
             if(err) throw err;
 
