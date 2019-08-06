@@ -77,11 +77,11 @@ class Phone {
                     }
         
                     talksList.push(mVar);
-
-                    console.log('loaddTalks : ' + JSON.stringify(talksList));
                 });
             }
         });
+
+        return JSON.stringify(talksList);
 
         // const d = misc.dbquery(`SELECT * FROM phoneTalks WHERE sender = '${phone}' OR receiver = '${phone}'`);
         // for (let i = 0; i < d.length; i++) {
