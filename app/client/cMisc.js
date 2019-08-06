@@ -13,8 +13,8 @@ const roundNum = (number, ends = 0) => parseFloat(number.toFixed(ends))
 exports.roundNum = roundNum;
 
 // CEF //
-function prepareToCef(blurred = null) {
-	mp.gui.cursor.visible = true;
+function prepareToCef(blurred = null, cursor = true) {
+	mp.gui.cursor.visible = cursor;
 	mp.game.ui.displayRadar(false);
 	mp.gui.chat.show(false);
 	if (blurred) mp.game.graphics.transitionToBlurred(blurred);
