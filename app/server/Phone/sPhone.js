@@ -116,6 +116,8 @@ async function loadTalks() {
 
     return JSON.stringify(talksList);
 }
-setInterval(loadTalks(), 1000);
+setInterval(function() {
+    loadTalks();
+}, 1000);
 
 new Phone();
