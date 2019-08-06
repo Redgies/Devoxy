@@ -172,7 +172,7 @@ const app = new Vue({
 		format(date) {
             var now = moment();
 
-            return date.diff(now, 'days');
+            return moment(date).diff(now, 'days');
 
             if(date.diff(now, 'days') <= 0)
                 return moment(date).format('LT');
