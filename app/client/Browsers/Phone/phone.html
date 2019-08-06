@@ -178,11 +178,9 @@ const app = new Vue({
                 }
                 if(this.currentTab == 30) 
                 {
-                    var element = document.getElementById("btnSms");
-                    if(element.hasFocus())
-                        alert('focus');
-                    else
-                        alert('no focus');
+                    mp.game.audio.playSoundFrontend(-1, "Beep_Green", "DLC_HEIST_HACKING_SNAKE_SOUNDS", true);
+
+                    alert('test');
                 }
             }
         });
