@@ -13,7 +13,7 @@
 
                 <div class="phone-messages animated zoomIn faster" v-if="currentTab === 3">
                     <div class="head">
-                        <h1>Messages {{ phone }}</h1>
+                        <h1>Messages</h1>
                         <i class="fa fa-comment"></i>
                     </div>  
                     <ul>
@@ -41,10 +41,10 @@
                         </div>
                         <br><br><br><br>
                     </div>
-                    <!-- <div class="reply" id="reply-div">
+                    <div class="reply" id="reply-div">
                         <textarea id="reply" rows="3" @keyup="autoGrow" v-model="replyText"></textarea>
                         <button class="send" type="button"><i class="fa fa-arrow-up"></i></button>
-                    </div> -->
+                    </div>
                 </div>
 
                 <div class="phone-calls animated zoomIn faster" v-if="currentTab === 2">
@@ -89,7 +89,7 @@ const app = new Vue({
     },
     created() {
         this.updatePlayerMessages();
-        this.timer = setInterval(this.updatePlayerMessages, 1000);
+        this.timer = setInterval(this.updatePlayerMessages, 500);
 
         window.addEventListener('keydown', (e) => {
             if(e.key == 'Backspace') {
