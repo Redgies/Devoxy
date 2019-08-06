@@ -37,7 +37,7 @@
                     </div>
                     <div id="chat" class="chat">
                         <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
-                            <div class="message last">
+                            <div class="message last" v-html="msg.text">
                                 {{ msg.text | nl2br }}
                             </div>
                         </div>
