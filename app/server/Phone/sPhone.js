@@ -56,9 +56,13 @@ class Phone {
     
     getTalksForPlayer(phone) {
         const playerTalks = [];
-        for (let i = 0; i < talksList.length; i++) {
 
+        console.log("in getTalksForPLayer : " + talksList);
+
+        for (let i = 0; i < talksList.length; i++) {
             if(talksList[i].sender !== phone || talksList[i].receiver !== phone) continue;
+
+            console.log("talk find");
 
 			const mVar = { 
                 id: talksList[i].id,
