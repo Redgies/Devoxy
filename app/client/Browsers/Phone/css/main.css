@@ -29,6 +29,14 @@
     border-bottom-right-radius: 54px;
 }
 
+.phone .phone-footer .sms.active,
+.phone .phone-footer .call.active,
+.phone .phone-footer .contact.active,
+.phone .phone-footer .cog.active {
+    border: 2px solid #ffeaa7;
+    border-radius: 15px;
+}
+
 .phone .phone-footer .sms {
     background: url('../images/sms.png');
     background-size: 100%;
@@ -42,6 +50,19 @@
     transform: translateY(-50%);
 }
 
+.phone .phone-footer .cog {
+    background: url('../images/cog.png');
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    z-index: 101;
+    top: calc(50% - 5px);
+    right: 13%;
+    transform: translateY(-50%);
+}
+
 .phone .phone-footer .call {
     background: url('../images/call.png');
     background-size: 100%;
@@ -52,6 +73,19 @@
     z-index: 101;
     top: calc(50% - 5px);
     left: 32%;
+    transform: translateY(-50%);
+}
+
+.phone .phone-footer .contact {
+    background: url('../images/contact.png');
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    z-index: 101;
+    top: calc(50% - 5px);
+    left: 13%;
     transform: translateY(-50%);
 }
 

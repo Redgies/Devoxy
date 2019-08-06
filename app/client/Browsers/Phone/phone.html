@@ -11,7 +11,7 @@
             <div class="phone" style="background: url('images/wallpaper.png'); background-size: 100% 100%;">
                 <img src="images/iphone-x.png">
 
-                <div class="phone-messages animated zoomIn faster" v-if="currentTab === 1">
+                <div class="phone-messages animated zoomIn faster" v-if="currentTab === 3">
                     <div class="head">
                         <h1>Messages</h1>
                         <i class="fa fa-comment"></i>
@@ -28,7 +28,7 @@
                     </ul>
                 </div>
 
-                <div class="phone-conversation" v-if="currentTab === 10">
+                <div class="phone-conversation" v-if="currentTab === 30">
                     <div class="head">
                         <i class="fa fa-chevron-left"></i>
                         <h1>{{ talkNumber }}</h1>
@@ -54,8 +54,10 @@
                 
                 
                 <div class="phone-footer" v-if="currentTab === 0">
-                    <a class="call" @click="currentTab = 2"></a>
-                    <a class="sms" @click="currentTab = 1"></a>
+                    <a class="contact" :class="{ 'active' : homeFooterSelection == 1}"></a>
+                    <a class="call" :class="{ 'active' : homeFooterSelection == 2}"></a>
+                    <a class="sms" :class="{ 'active' : homeFooterSelection == 3}"></a>
+                    <a class="cog" :class="{ 'active' : homeFooterSelection == 4}"></a>
                 </div>
             </div>
 		</div>
@@ -70,6 +72,7 @@ moment.locale("fr",{months:"janvier_février_mars_avril_mai_juin_juillet_août_s
 const app = new Vue({
 	el: '#app',
 	data: {
+        homeFooterSelection: 1,
         currentTab: 0,
         currentLi: 0,
         phone: 0,       // MON NUMERO
@@ -88,21 +91,41 @@ const app = new Vue({
         this.timer = setInterval(this.updatePlayerMessages, 10000);
 
         window.addEventListener('keydown', (e) => {
+            console.log(e.key);
             if(e.key == 'Backspace') {
                 var reply = document.getElementById("reply");
 
                 if(document.activeElement === reply)
                     return;
 
+                console.log(this.currentTab);
+
                 if(this.currentTab == 0)
-                    mp.trigger("cCloseCef"); 
-                if(this.currentTab == 1)
+                {
+                    mp.trigger("cCloseCef");
+                }
+                if(this.currentTab == 3)
                     this.currentTab = 0;
                 if(this.currentTab == 10)
-                    this.currentTab = 1;
+                    this.currentTab = 3;
+            }
+            if(e.key == 'ArrowLeft') {
+            
+                if(this.currentTab == 0)
+                {
+                    this.homeFooterSelection--;
+                    if(this.homeFooterSelection < 1) this.homeFooterSelection = 4;
+                }
+            }
+            if(e.key == 'ArrowRight') {
+                if(this.currentTab == 0)
+                {
+                    this.homeFooterSelection++;
+                    if(this.homeFooterSelection > 4) this.homeFooterSelection = 1;
+                }
             }
             if(e.key == 'ArrowDown') {
-                if(this.currentTab == 1)
+                if(this.currentTab == 3)
                 {
                     this.currentLi++;
                 }
@@ -111,7 +134,7 @@ const app = new Vue({
                     
             }
             if(e.key == 'ArrowUp') {
-                if(this.currentTab == 1)
+                if(this.currentTab == 3)
                 {
                     this.currentLi--;
                     if(this.currentLi <= 0)
@@ -122,10 +145,18 @@ const app = new Vue({
                     
             }
             if(e.key == 'Enter') {
-                // ENTRER DANS UNE CONVERSATION
-                if(this.currentTab == 1)
+                // ENTRER DANS LES MESSAGES
+                if(this.currentTab == 0)
                 {
-                    this.currentTab = 10;
+                    // this.currentTab = this.homeFooterSelection;
+                    return this.currentTab = 3;
+                }
+
+
+                // ENTRER DANS UNE CONVERSATION
+                if(this.currentTab == 3)
+                {
+                    this.currentTab = 30;
 
                     for(let i = 0; i < this.d.talks.length; i++)
                     {
@@ -134,7 +165,7 @@ const app = new Vue({
                         this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
                     }
                 }
-                if(this.currentTab == 10) 
+                if(this.currentTab == 30) 
                 {
                     var element = document.getElementById("reply");
                     element.focus();
