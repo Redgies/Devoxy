@@ -89,7 +89,7 @@ const app = new Vue({
     },
     created() {
         this.updatePlayerMessages();
-        this.timer = setInterval(this.updatePlayerMessages, 3000);
+        this.timer = setInterval(this.updatePlayerMessages, 1000);
 
         window.addEventListener('keydown', (e) => {
             if(e.key == 'Backspace') {
@@ -165,8 +165,6 @@ const app = new Vue({
                 if(this.currentTab == 3)
                 {
                     this.currentTab = 30;
-
-                    alert(this.d.messages);
 
                     for(let i = 0; i < this.d.talks.length; i++)
                     {
