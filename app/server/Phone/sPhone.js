@@ -17,8 +17,6 @@ class Phone {
             },
 
             "sPhone-updatePlayerMessages" : (player) => {
-                if(str)
-                    const d = JSON.parse(str);
                 // const mVar = { 
                 //     id: messagesList.length + 1,
                 //     sender: 123456,
