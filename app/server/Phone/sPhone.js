@@ -9,7 +9,7 @@ class Phone {
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
                 let execute = `app.phone = ${player.phone};`;
-                // execute += `app.d.messages = ${this.getMessageForPlayer(player.phone)};`;
+                execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
                 execute += `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
 
                 player.call("cPhone-Open", [execute]);
