@@ -9,7 +9,7 @@ class Phone {
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
                 let execute = `app.phone = ${player.phone};`;
-                execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
+                // execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
                 execute += `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
 
                 player.call("cPhone-Open", [execute]);
@@ -38,6 +38,8 @@ class Phone {
             "sPhone-updateMessages" : (player, str) => {
                 const d = JSON.parse(str);
 
+                console.log('d : ' + d);
+
                 let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
 
                 player.call("cPhone-Update", [execute]);
@@ -62,8 +64,8 @@ class Phone {
             playerMessages.push(mVar); 
         }
 
-        console.log(JSON.stringify(playerMessages));
-        
+        console.log('playerMessages : ' + JSON.stringify(playerMessages));
+
 		return JSON.stringify(playerMessages);
     }
     
