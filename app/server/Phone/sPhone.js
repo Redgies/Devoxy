@@ -61,6 +61,9 @@ class Phone {
             }
             playerMessages.push(mVar); 
         }
+
+        console.log(JSON.stringify(playerMessages));
+        
 		return JSON.stringify(playerMessages);
     }
     
