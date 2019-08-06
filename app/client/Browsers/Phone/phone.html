@@ -170,7 +170,8 @@ const app = new Vue({
     },
     filters: {
 		format(date) {
-			return moment(date).format('D.M.YYYY')
+            alert(date.getMonth());
+			return moment(date).format('DDDD M.YYYY');
 		},
 		fromNow(date) {
 			return moment(date).fromNow();
