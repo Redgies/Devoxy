@@ -91,6 +91,8 @@ async function loadMessage() {
         }
         messagesList.push(mVar);
     }
+
+    console.log(JSON.stringify(messagesList));
 }
 loadMessage();
 
