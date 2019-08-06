@@ -91,14 +91,11 @@ const app = new Vue({
         this.timer = setInterval(this.updatePlayerMessages, 10000);
 
         window.addEventListener('keydown', (e) => {
-            console.log(e.key);
             if(e.key == 'Backspace') {
                 var reply = document.getElementById("reply");
 
                 if(document.activeElement === reply)
                     return;
-
-                console.log(this.currentTab);
 
                 if(this.currentTab == 0)
                 {
@@ -106,7 +103,7 @@ const app = new Vue({
                 }
                 if(this.currentTab == 3)
                     this.currentTab = 0;
-                if(this.currentTab == 10)
+                if(this.currentTab == 30)
                     this.currentTab = 3;
             }
             if(e.key == 'ArrowLeft') {
