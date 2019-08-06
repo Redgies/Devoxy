@@ -149,7 +149,7 @@ const app = new Vue({
 	},
 	methods: {
         updatePlayerMessages: function() {
-            alert('test');
+            mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages");
         },
         autoGrow: function() {
             var element = document.getElementById("reply");
