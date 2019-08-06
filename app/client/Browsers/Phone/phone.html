@@ -319,19 +319,6 @@ const app = new Vue({
 
             mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
         },
-        autoGrow: function() {
-            var element = document.getElementById("reply");
-            var element2 = document.getElementById("reply-div");
-            if(element.clientHeight < element.scrollHeight)
-            {
-                element.style.height = element.scrollHeight + "px";
-                if(element.clientHeight < element.scrollHeight)
-                {
-                    element.style.height = (element.scrollHeight * 2 - element.clientHeight) + "px";
-                    element2.style.height = (element.scrollHeight * 2 - element.clientHeight) + "px";
-                }
-            }
-        },
         scrollToBottom: function(id) {
             var element = document.getElementById(id);
             element.scrollTop += 20;

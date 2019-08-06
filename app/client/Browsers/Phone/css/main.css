@@ -209,7 +209,7 @@
   }
 
 .reply {
-    background: rgba(255, 255, 255, .9);
+    background: none;
     width: 100%;
     min-height: 53px;
     position: absolute;
