@@ -17,6 +17,8 @@ class Phone {
             },
 
             "sPhone-updatePlayerMessages" : (player) => {
+                if(str)
+                    const d = JSON.parse(str);
                 // const mVar = { 
                 //     id: messagesList.length + 1,
                 //     sender: 123456,
@@ -26,8 +28,7 @@ class Phone {
                 // }
                 // messagesList.push(mVar);
 
-                let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone)};`;
-                execute += `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
+                let execute = `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
 
                 // player.notify("update");
                 
@@ -35,13 +36,23 @@ class Phone {
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} update phone`);
             },
+
+            "sPhone-updateMessages" : (player, str) => {
+                const d = JSON.parse(str);
+
+                let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
+
+                player.call("cPhone-Update", [execute]);
+                misc.log.debug(`${player.name} update phone`);
+            }
         });
     }
 
-    getMessageForPlayer(phone) {
+    getMessageForPlayer(phone, talkId) {
         const playerMessages = [];
+
         for (let i = 0; i < messagesList.length; i++) {
-            if(messagesList[i].receiver !== phone && messagesList[i].sender !== phone) continue;
+            if(messagesList[i].talk !== talkId) continue;
 
 			const mVar = { 
                 id: messagesList[i].id,
