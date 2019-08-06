@@ -90,7 +90,7 @@ class Phone {
         //     // return JSON.stringify(talksList);
         // });
 
-        return JSON.stringify(data);
+        // return JSON.stringify(data);
 	}
 }
 
