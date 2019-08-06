@@ -36,9 +36,114 @@
                         <h1>{{ talkNumber }}</h1>
                     </div>
                     <div id="chat" class="chat">
-                        <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
+                        <!-- <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
                             <div class="message last">
                                 {{ msg.text }}
+                            </div>
+                        </div> -->
+                        <div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                                    <div class="message last">
+                                        sdfsdfds
+                                    </div>
+                                </div><div class="messages mine">
+                                        <div class="message last">
+                                            sdfsdfds
+                                        </div>
+                                    </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
                             </div>
                         </div>
                         <br><br><br><br>
@@ -103,7 +208,7 @@ const app = new Vue({
 
                 if(this.currentTab == 0)
                 {
-                    mp.trigger("cCloseCef");
+                    // mp.trigger("cCloseCef");
                 }
                 if(this.currentTab == 3)
                     this.currentTab = 0;
@@ -135,7 +240,7 @@ const app = new Vue({
                         if(this.currentLi == i) this.currentTalk = this.d.talks[i].id;
                     }
                 }
-                if(this.currentTab == 10)
+                if(this.currentTab == 30)
                     this.scrollToBottom("chat");
                     
             }
@@ -151,7 +256,7 @@ const app = new Vue({
                         if(this.currentLi == i) this.currentTalk = this.d.talks[i].id;
                     }
                 }
-                if(this.currentTab == 10)
+                if(this.currentTab == 30)
                     this.scrollToTop("chat");
                     
             }
@@ -159,7 +264,13 @@ const app = new Vue({
                 // ENTRER DANS LES MESSAGES
                 if(this.currentTab == 0)
                 {
-                    // this.currentTab = this.homeFooterSelection;
+                    for(let i = 0; i < this.d.talks.length; i++)
+                    {
+                        if(i != this.currentLi) continue;
+                        
+                        this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
+                    }
+
                     return this.currentTab = 3;
                 }
 
@@ -187,7 +298,7 @@ const app = new Vue({
                             text: this.textMessage
                         }
 
-                        mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+                        // mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
 
                         this.textMessage = '';
                     }
@@ -206,7 +317,7 @@ const app = new Vue({
                 talkId: this.currentTalk,
             }
 
-            mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+            // mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
         },
         autoGrow: function() {
             var element = document.getElementById("reply");
