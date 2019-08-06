@@ -176,8 +176,8 @@ const app = new Vue({
     },
     filters: {
 		format(date) {
-            if(daysPassed(date) <= 0)
-                return moment(date).format('LT');
+            // if(daysPassed(date) <= 0)
+            //     return moment(date).format('LT');
             // alert(date.getMonth());
 			return moment(date).format('DDDD M.YYYY');
 		},
