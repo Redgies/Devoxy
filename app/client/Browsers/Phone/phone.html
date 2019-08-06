@@ -4,7 +4,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-  	<script src="../vue.js"></script>
+      <script src="../vue.js"></script>
+      <script src="../moment.js"></script>
 	<body>
 		<div id="app">
             <div class="phone" style="background: url('images/wallpaper.png'); background-size: 100% 100%;">
@@ -20,7 +21,7 @@
                             <div class="avatar">CM</div>
                             <h3 v-if="phone == talk.sender">{{ talk.receiver }}</h3>
                             <h3 v-else>{{ talk.sender }}</h3>
-                            <span class="time">12:10</span>
+                            <span class="time">{{ talk.time | format }}</span>
                             <i class="fa fa-chevron-right"></i>
                             <p>{{ talk.text }}</p>
                         </li>
@@ -41,7 +42,7 @@
                         <br><br><br><br>
                     </div>
                     <div class="reply" id="reply-div">
-                        <textarea id="reply" rows="3" @keyup="autoGrow">dfd</textarea>
+                        <textarea id="reply" rows="3" @keyup="autoGrow"></textarea>
                         <button class="send" type="button"><i class="fa fa-arrow-up"></i></button>
                     </div>
                 </div>
@@ -166,6 +167,14 @@ const app = new Vue({
 		exit: function() {
 			mp.trigger("cCloseCef"); 
         },
+    },
+    filters: {
+		format(date) {
+			return moment(date).format('D.M.YYYY')
+		},
+		fromNow(date) {
+			return moment(date).fromNow();
+		}
 	},
 });
 </script>
