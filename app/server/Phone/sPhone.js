@@ -60,7 +60,7 @@ class Phone {
         const playerTalks = [];
         for (let i = 0; i < talksList.length; i++) {
 
-            if(talksList[i].sender !== phone) continue;
+            if(talksList[i].sender !== phone || talksList[i].receiver !== phone) continue;
 
 			const mVar = { 
                 id: talksList[i].id,
@@ -72,7 +72,7 @@ class Phone {
             playerTalks.push(mVar); 
         }
 
-        console.log(JSON.stringify(playerTalks));
+        console.log('talks : ' + JSON.stringify(playerTalks));
 
 		return JSON.stringify(playerTalks);
 	}
@@ -116,7 +116,7 @@ async function loadTalks(phone) {
         talksList.push(mVar);
     }
 
-    console.log(JSON.stringify(talksList));
+    // console.log(JSON.stringify(talksList));
 
     return JSON.stringify(talksList);
 }
