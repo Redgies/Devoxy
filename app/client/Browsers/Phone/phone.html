@@ -264,12 +264,12 @@ const app = new Vue({
                 // ENTRER DANS LES MESSAGES
                 if(this.currentTab == 0)
                 {
-                    for(let i = 0; i < this.d.talks.length; i++)
-                    {
-                        if(i != this.currentLi) continue;
+                    // for(let i = 0; i < this.d.talks.length; i++)
+                    // {
+                    //     if(i != this.currentLi) continue;
                         
-                        this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
-                    }
+                    //     this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
+                    // }
 
                     return this.currentTab = 3;
                 }
