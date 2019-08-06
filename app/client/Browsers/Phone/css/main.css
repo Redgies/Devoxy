@@ -333,3 +333,19 @@
     border-bottom-left-radius: 10px;
   }
   
+.phone-conversation input {
+    background: #f1f1f1;
+    border: navajowhite;
+    width: 100%;
+    height: 30px;
+    outline: none;
+    text-indent: 50px;
+}
+
+.phone-conversation .sms-to {
+    position: absolute;
+    color: #0984e3;
+    left: 23px;
+    font-size: 13px;
+    margin-top: 8px;
+}

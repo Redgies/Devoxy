@@ -36,6 +36,47 @@ class Phone {
 
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} send message`);
+            },
+
+            "sPhone-newMessage": (player, str) => {
+                const d = JSON.parse(str);
+
+                var exist = false;
+                let execute = '';
+
+                for(let i = 0; i < talksList.length; i++) {
+                    if((talksList[i].sender === d.sender || talksList[i].receiver === d.sender) &&
+                    talksList[i].sender === d.receiver || talksList[i].receiver === d.receiver)
+                    {
+                        exist = talksList[i].id;
+                        break;
+                    }
+                }
+
+                if(!exist)
+                {
+                    createTalk(d);
+
+                    execute += `app.currentTab = 3;`;
+                    execute += `app.currentTalk = 0`;
+                }
+                else
+                {
+                    d.talk = exist;
+                    createMessage(d);
+
+                    execute += `app.currentTab = 30;`;
+                    execute += `app.currentTalk = ${exist}`;
+                }
+
+                // const data = {
+                //     sender: this.phone,
+                //     receiver: this.newNumber,
+                //     text: this.newMessage,
+                // }
+
+                player.call("cPhone-Update", [execute]);
+                misc.log.debug(`${player.name} send message`);
             }
         });
     }
@@ -94,6 +135,14 @@ class Phone {
 
 		return JSON.stringify(playerTalks);
 	}
+}
+
+async function createTalk(d)
+{
+    await misc.query(`INSERT INTO phoneTalks (sender, receiver) VALUES ('${d.sender}', '${d.receiver}');`);
+    const data = await misc.query(`SELECT id FROM phoneTalks ORDER BY id DESC LIMIT 1`);
+
+    await misc.query(`INSERT INTO phoneMessages (talk, sender, receiver, text) VALUES ('${data.id}', '${d.sender}', '${d.receiver}', '${d.text}');`);
 }
 
 async function createMessage(d) {

@@ -30,6 +30,18 @@
                     </ul>
                 </div>
 
+                <div class="phone-conversation" v-if="currentTab === 31">
+                    <div class="head">
+                        <h1 style="width: 100%; text-align: center; text-indent: 0px; margin-left: -16px; margin-top: 18px; font-size: 15px;">Nouveau message</h1>
+                    </div>
+                    <span class="sms-to">À :</span>
+                    <input type="text" v-model="newNumber">
+                    <div class="reply" id="reply-div">
+                        <textarea id="reply" rows="3" v-model="newMessage"></textarea>
+                        <button class="send" type="button" id="btnNewSms"><i class="fa fa-arrow-up"></i></button>
+                    </div>
+                </div>
+
                 <div class="phone-conversation" v-if="currentTab === 30">
                     <div class="head">
                         <i class="fa fa-chevron-left"></i>
@@ -185,6 +197,8 @@ const app = new Vue({
         phone: 0,       // MON NUMERO
         talkNumber: 0, // NUMERO DU DESTINATAIRE
         currentTalk: 0,
+        newMessage: 0,
+        newNumber: 0,
         textMessage: '',
 		d: {
             messages: [
@@ -200,6 +214,7 @@ const app = new Vue({
         this.timer = setInterval(this.updatePlayerMessages, 500);
 
         window.addEventListener('keydown', (e) => {
+            console.log(e.key);
             if(e.key == 'Backspace') {
                 var reply = document.getElementById("reply");
 
@@ -212,7 +227,7 @@ const app = new Vue({
                 }
                 if(this.currentTab == 3)
                     this.currentTab = 0;
-                if(this.currentTab == 30)
+                if(this.currentTab == 30 || this.currentTab == 31)
                     this.currentTab = 3;
             }
             if(e.key == 'ArrowLeft') {
@@ -284,9 +299,27 @@ const app = new Vue({
                         this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
                     }
 
-                    this.scrollBottom('chat');
+                    setTimeout(function() {
+                        var element = document.getElementById("chat");
+                        element.scrollTop = element.scrollHeight;
+                    }, 50); 
+                    
                     return 1;
                 }
+                // NOUVELLE CONVERSATION
+                if(this.currentTab == 31)
+                {
+                    if(document.activeElement.id == 'btnNewSms')
+                    {
+                        const data = {
+                            sender: this.phone,
+                            receiver: this.newNumber,
+                            text: this.newMessage,
+                        }
+
+                        mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+                    }
+                } 
                 if(this.currentTab == 30) 
                 {
                     if(document.activeElement.id == 'btnSms')
@@ -300,10 +333,13 @@ const app = new Vue({
                         }
 
                         mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
-
-                        this.textMessage = '';
-                        this.scrollBottom('chat');
                     }
+                }
+            }
+            if(e.key == 'n') {
+                if(this.currentTab == 3)
+                {
+                    this.currentTab = 31;
                 }
             }
         });
@@ -323,6 +359,7 @@ const app = new Vue({
         },
         scrollBottom: function(id) {
             var element = document.getElementById(id);
+            console.log(element);
             element.scrollTop = element.scrollHeight;
         },
         scrollToBottom: function(id) {
