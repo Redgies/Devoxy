@@ -94,16 +94,6 @@ class Phone {
 	}
 }
 
-function getTalksForPlayer(phone)
-{
-    mysql.query(`SELECT * FROM phoneTalks WHERE sender = ? OR receiver = ?`, [phone, phone], function(err, d)
-    {
-        if (err) 
-            callback(err,null);
-        else
-            callback(null, d);
-    });
-}
 
 
 // async function loadMessage() {
