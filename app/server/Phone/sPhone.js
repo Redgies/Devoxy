@@ -17,31 +17,24 @@ class Phone {
             },
 
             "sPhone-updatePlayerMessages" : (player) => {
-                const mVar = { 
-                    id: messagesList.length + 1,
-                    sender: 123456,
-                    receiver: 555555,
-                    text: 'bogoss va',
-                    time: '2019-09-05 03:41:36',
-                }
-                messagesList.push(mVar);
-                
+                // const mVar = { 
+                //     id: messagesList.length + 1,
+                //     sender: 123456,
+                //     receiver: 555555,
+                //     text: 'bogoss va',
+                //     time: '2019-09-05 03:41:36',
+                // }
+                // messagesList.push(mVar);
+
                 let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone)};`;
 
-                player.notify("update");
+                // player.notify("update");
                 
 
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} update phone`);
             },
         });
-
-        mp.events.addCommand({
-			'fdp' : (player, fullText) => {
-
-                return player.notify("OK OK OK OK");
-            }, 
-        }); 
     }
 
     getMessageForPlayer(phone) {
@@ -112,8 +105,6 @@ async function loadTalks() {
 
         talksList.push(mVar);
     }
-
-    console.log(talksList);
 }
 loadTalks();
 
