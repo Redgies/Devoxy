@@ -48,7 +48,7 @@ class Phone {
 
                 for(let i = 0; i < talksList.length; i++) {
                     if((talksList[i].sender === d.sender || talksList[i].receiver === d.sender) &&
-                    talksList[i].sender === d.receiver || talksList[i].receiver === d.receiver)
+                    (talksList[i].sender === d.receiver || talksList[i].receiver === d.receiver))
                     {
                         exist = talksList[i].id;
                         break;

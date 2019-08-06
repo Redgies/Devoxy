@@ -197,8 +197,8 @@ const app = new Vue({
         phone: 0,       // MON NUMERO
         talkNumber: 0, // NUMERO DU DESTINATAIRE
         currentTalk: 0,
-        newMessage: 0,
-        newNumber: 0,
+        newMessage: '',
+        newNumber: '000000',
         textMessage: '',
 		d: {
             messages: [
@@ -315,6 +315,15 @@ const app = new Vue({
                             sender: this.phone,
                             receiver: this.newNumber,
                             text: this.newMessage,
+                        }
+
+                        if(data.sender == data.receiver) 
+                        {
+                            this.currentTab = 3;
+                            this.currentLi = 0;
+
+                            mp.game.graphics.notify("~r~Vous ne pouvez pas vous envoyer de SMS.");
+                            return 1;
                         }
 
                         mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
