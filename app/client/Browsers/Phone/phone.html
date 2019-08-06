@@ -34,7 +34,7 @@
                         <h1>{{ talkNumber }}</h1>
                     </div>
                     <div id="chat" class="chat">
-                        <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}" v-if="currentTab === 30">
+                        <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
                             <div class="message last">
                                 {{ msg.text }}
                             </div>
@@ -164,13 +164,13 @@ const app = new Vue({
                 // ENTRER DANS UNE CONVERSATION
                 if(this.currentTab == 3)
                 {
+                    this.currentTab = 30;
+                    
                     const data = {
                         talkId: this.currentTalk,
                     }
 
                     mp.trigger("cMisc-CallServerEvent", "sPhone-updateMessages", JSON.stringify(data));
-
-                    this.currentTab = 30;
 
                     for(let i = 0; i < this.d.talks.length; i++)
                     {
