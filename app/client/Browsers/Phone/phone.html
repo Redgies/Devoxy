@@ -317,7 +317,7 @@ const app = new Vue({
                             text: this.newMessage,
                         }
 
-                        mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+                        mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
                     }
                 } 
                 if(this.currentTab == 30) 

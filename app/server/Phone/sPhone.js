@@ -57,6 +57,8 @@ class Phone {
                 {
                     createTalk(d);
 
+                    console.log("createTalk");
+
                     execute += `app.currentTab = 3;`;
                     execute += `app.currentTalk = 0`;
                 }
@@ -64,6 +66,8 @@ class Phone {
                 {
                     d.talk = exist;
                     createMessage(d);
+
+                    console.log("createMEssage");
 
                     execute += `app.currentTab = 30;`;
                     execute += `app.currentTalk = ${exist}`;
@@ -141,6 +145,8 @@ async function createTalk(d)
 {
     await misc.query(`INSERT INTO phoneTalks (sender, receiver) VALUES ('${d.sender}', '${d.receiver}');`);
     const data = await misc.query(`SELECT id FROM phoneTalks ORDER BY id DESC LIMIT 1`);
+
+    console.log(data[0].id)
 
     await misc.query(`INSERT INTO phoneMessages (talk, sender, receiver, text) VALUES ('${data[0].id}', '${d.sender}', '${d.receiver}', '${d.text}');`);
 }
