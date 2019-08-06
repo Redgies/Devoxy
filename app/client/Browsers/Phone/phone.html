@@ -18,7 +18,7 @@
                     </div>  
                     <ul>
                         <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
-                            <div class="avatar">CM</div>
+                            <div class="avatar">NA</div>
                             <h3 v-if="phone == talk.sender">{{ talk.receiver }}</h3>
                             <h3 v-else>{{ talk.sender }}</h3>
                             <span class="time">{{ talk.time | format }}</span>
@@ -31,7 +31,8 @@
                 <div class="phone-conversation" v-if="currentTab === 10">
                     <div class="head">
                         <i class="fa fa-chevron-left"></i>
-                        <h1>Nitram Domenia</h1>
+                        <h1 v-if="phone == talk.sender">{{ talk.receiver }}</h1>
+                        <h1 v-else>{{ talk.sender }}</h1>
                     </div>
                     <div id="chat" class="chat">
                         <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
@@ -65,67 +66,7 @@
 
 
 <script>
-
-moment.locale('fr', {
-    months : 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split('_'),
-    monthsShort : 'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split('_'),
-    monthsParseExact : true,
-    weekdays : 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
-    weekdaysShort : 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
-    weekdaysMin : 'Di_Lu_Ma_Me_Je_Ve_Sa'.split('_'),
-    weekdaysParseExact : true,
-    longDateFormat : {
-        LT : 'HH:mm',
-        LTS : 'HH:mm:ss',
-        L : 'DD/MM/YYYY',
-        LL : 'D MMMM YYYY',
-        LLL : 'D MMMM YYYY HH:mm',
-        LLLL : 'dddd D MMMM YYYY HH:mm'
-    },
-    calendar : {
-        sameDay : '[Aujourd’hui à] LT',
-        nextDay : '[Demain à] LT',
-        nextWeek : 'dddd [à] LT',
-        lastDay : '[Hier à] LT',
-        lastWeek : 'dddd [dernier à] LT',
-        sameElse : 'L'
-    },
-    relativeTime : {
-        future : 'dans %s',
-        past : 'il y a %s',
-        s : 'quelques secondes',
-        m : 'une minute',
-        mm : '%d minutes',
-        h : 'une heure',
-        hh : '%d heures',
-        d : 'un jour',
-        dd : '%d jours',
-        M : 'un mois',
-        MM : '%d mois',
-        y : 'un an',
-        yy : '%d ans'
-    },
-    dayOfMonthOrdinalParse : /\d{1,2}(er|e)/,
-    ordinal : function (number) {
-        return number + (number === 1 ? 'er' : 'e');
-    },
-    meridiemParse : /PD|MD/,
-    isPM : function (input) {
-        return input.charAt(0) === 'M';
-    },
-    // In case the meridiem units are not separated around 12, then implement
-    // this function (look at locale/id.js for an example).
-    // meridiemHour : function (hour, meridiem) {
-    //     return /* 0-23 hour, given meridiem token and hour 1-12 */ ;
-    // },
-    meridiem : function (hours, minutes, isLower) {
-        return hours < 12 ? 'PD' : 'MD';
-    },
-    week : {
-        dow : 1, // Monday is the first day of the week.
-        doy : 4  // Used to determine first week of the year.
-    }
-});
+moment.locale("fr",{months:"janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),monthsShort:"janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),monthsParseExact:!0,weekdays:"dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),weekdaysShort:"dim._lun._mar._mer._jeu._ven._sam.".split("_"),weekdaysMin:"Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[Aujourd’hui à] LT",nextDay:"[Demain à] LT",nextWeek:"dddd [à] LT",lastDay:"[Hier à] LT",lastWeek:"dddd [dernier à] LT",sameElse:"L"},relativeTime:{future:"dans %s",past:"il y a %s",s:"quelques secondes",m:"une minute",mm:"%d minutes",h:"une heure",hh:"%d heures",d:"un jour",dd:"%d jours",M:"un mois",MM:"%d mois",y:"un an",yy:"%d ans"},dayOfMonthOrdinalParse:/\d{1,2}(er|e)/,ordinal:function(e){return e+(1===e?"er":"e")},meridiemParse:/PD|MD/,isPM:function(e){return"M"===e.charAt(0)},meridiem:function(e,a,r){return e<12?"PD":"MD"},week:{dow:1,doy:4}});
 
 const app = new Vue({
 	el: '#app',
@@ -140,9 +81,6 @@ const app = new Vue({
             talks: [
 
             ]
-            // messages: [
-            //     {"id":1,"sender":555555,"receiver":123456,"text":"wesh pd ça va ?","time":"2019-08-05T14:38:36.000Z"},{"id":2,"sender":555555,"receiver":123456,"text":"salope t'es ou ?","time":"2019-08-05T14:38:48.000Z"}
-            // ],
 		},
     },
     created() {
@@ -242,9 +180,6 @@ const app = new Vue({
             else if(moment(date).diff(now, 'days') >= 7)
                 return moment(date).format('D/MM/YYYY');
 		},
-		fromNow(date) {
-			return moment(date).fromNow();
-		}
 	},
 });
 </script>
