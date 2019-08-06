@@ -94,7 +94,7 @@ class Phone {
 }
 
 async function createMessage(d) {
-    await misc.query(`INSERT INTO phonesMessages (talk, sender, receiver, text) VALUES ('${d.talk}', '${d.sender}', '${d.receiver}', '${d.text}');`);
+    await misc.query(`INSERT INTO phoneMessages (talk, sender, receiver, text) VALUES ('${d.talk}', '${d.sender}', '${d.receiver}', '${d.text}');`);
 }
 
 async function loadMessage() {
