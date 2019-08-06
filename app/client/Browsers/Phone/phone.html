@@ -283,6 +283,8 @@ const app = new Vue({
                         
                         this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
                     }
+
+                    this.scrollBottom('chat');
                     return 1;
                 }
                 if(this.currentTab == 30) 
@@ -300,7 +302,7 @@ const app = new Vue({
                         mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
 
                         this.textMessage = '';
-                        this.scrollBottom;
+                        this.scrollBottom('chat');
                     }
                 }
             }
