@@ -181,8 +181,8 @@ const app = new Vue({
                     if(document.activeElement.id == 'btnSms')
                     {
                         const data = {
+                            talk: this.currentTalk,
                             sender: this.phone,
-                            talk: this.talkId,
                             receiver: this.talkNumber,
                             text: this.textMessage
                         }
@@ -191,8 +191,6 @@ const app = new Vue({
 
                         this.textMessage = '';
                     }
-
-                    alert(document.activeElement.id);
                 }
             }
         });
