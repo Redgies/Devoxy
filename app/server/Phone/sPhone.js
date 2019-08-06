@@ -38,22 +38,22 @@ class Phone {
         });
     }
 
-    // getMessageForPlayer(phone) {
-    //     const playerMessages = [];
-    //     for (let i = 0; i < messagesList.length; i++) {
-    //         if(messagesList[i].receiver !== phone && messagesList[i].sender !== phone) continue;
+    getMessageForPlayer(phone) {
+        const playerMessages = [];
+        for (let i = 0; i < messagesList.length; i++) {
+            if(messagesList[i].receiver !== phone && messagesList[i].sender !== phone) continue;
 
-	// 		const mVar = { 
-    //             id: messagesList[i].id,
-    //             sender: messagesList[i].sender,
-    //             receiver: messagesList[i].receiver,
-    //             text: messagesList[i].text,
-    //             time: messagesList[i].time,
-    //         }
-    //         playerMessages.push(mVar); 
-    //     }
-	// 	return JSON.stringify(playerMessages);
-    // }
+			const mVar = { 
+                id: messagesList[i].id,
+                sender: messagesList[i].sender,
+                receiver: messagesList[i].receiver,
+                text: messagesList[i].text,
+                time: messagesList[i].time,
+            }
+            playerMessages.push(mVar); 
+        }
+		return JSON.stringify(playerMessages);
+    }
     
     getTalksForPlayer(phone) {
         const talksList = [];
