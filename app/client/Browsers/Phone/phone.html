@@ -4,8 +4,10 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-      <script src="../vue.js"></script>
-      <script src="../moment.js"></script>
+    <script src="../vue.js"></script>
+    <script src="../moment.js"></script>
+
+    <script src="js/autosize.js"></script>
 	<body>
 		<div id="app">
             <div class="phone" style="background: url('images/wallpaper.png'); background-size: 100% 100%;">
@@ -42,7 +44,7 @@
                         <br><br><br><br>
                     </div>
                     <div class="reply" id="reply-div">
-                        <textarea id="reply" rows="3" @keyup="autoGrow"></textarea>
+                        <textarea id="reply" rows="3" v-model="message"></textarea>
                         <button class="send" type="button"><i class="fa fa-arrow-up"></i></button>
                     </div>
                 </div>
@@ -100,7 +102,7 @@ const app = new Vue({
 
                 if(this.currentTab == 0)
                 {
-                    mp.trigger("cCloseCef");
+                    // mp.trigger("cCloseCef");
                 }
                 if(this.currentTab == 3)
                     this.currentTab = 0;
@@ -192,7 +194,7 @@ const app = new Vue({
                 talkId: this.currentTalk,
             }
 
-            mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+            // mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
         },
         autoGrow: function() {
             var element = document.getElementById("reply");
@@ -205,11 +207,6 @@ const app = new Vue({
                     element.style.height = (element.scrollHeight * 2 - element.clientHeight) + "px";
                     element2.style.height = (element.scrollHeight * 2 - element.clientHeight) + "px";
                 }
-                else 
-                {
-                    element.style.height = (element.scrollHeight * 2 + element.clientHeight) + "px";
-                    element2.style.height = (element.scrollHeight * 2 + element.clientHeight) + "px";
-                }
             }
         },
         scrollToBottom: function(id) {
@@ -219,9 +216,6 @@ const app = new Vue({
         scrollToTop: function(id) {
             var element = document.getElementById(id);
             element.scrollTop -= 20;
-        },
-		exit: function() {
-			mp.trigger("cCloseCef"); 
         },
     },
     filters: {
