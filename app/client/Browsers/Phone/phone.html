@@ -44,8 +44,8 @@
                         <br><br><br><br>
                     </div>
                     <div class="reply" id="reply-div">
-                        <textarea id="reply" rows="3" v-model="message"></textarea>
-                        <button class="send" type="button"><i class="fa fa-arrow-up"></i></button>
+                        <textarea id="reply" rows="3" v-model="textMessage"></textarea>
+                        <button class="send" type="button" @keyup.enter="sendMessage()"><i class="fa fa-arrow-up"></i></button>
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@ const app = new Vue({
         phone: 0,       // MON NUMERO
         talkNumber: 0, // NUMERO DU DESTINATAIRE
         currentTalk: 0,
-        message: '',
+        textMessage: '',
 		d: {
             messages: [
                 
@@ -190,6 +190,12 @@ const app = new Vue({
 		},
 	},
 	methods: {
+        sendMessage: function()
+        {
+            alert(this.textMessage);
+
+            this.textMessage = '';
+        },
         updatePlayerMessages: function() {
             const data = {
                 talkId: this.currentTalk,
