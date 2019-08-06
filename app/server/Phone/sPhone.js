@@ -60,6 +60,8 @@ class Phone {
         console.log("in getTalksForPLayer : " + talksList);
 
         for (let i = 0; i < talksList.length; i++) {
+            console.log("talk :" + i + " " + talksList[i].sender + " " + talksList[i].receiver);
+
             if(talksList[i].sender !== phone || talksList[i].receiver !== phone) continue;
 
             console.log("talk find");
