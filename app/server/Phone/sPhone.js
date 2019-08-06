@@ -57,14 +57,9 @@ class Phone {
     getTalksForPlayer(phone) {
         const playerTalks = [];
 
-        console.log("in getTalksForPLayer : " + talksList);
-
         for (let i = 0; i < talksList.length; i++) {
-            console.log("talk :" + i + " " + talksList[i].sender + " " + talksList[i].receiver);
 
             if(talksList[i].sender !== phone && talksList[i].receiver !== phone) continue;
-
-            console.log("talk find");
 
 			const mVar = { 
                 id: talksList[i].id,
@@ -75,8 +70,6 @@ class Phone {
             }
             playerTalks.push(mVar); 
         }
-
-        console.log('talks : ' + JSON.stringify(playerTalks));
 
 		return JSON.stringify(playerTalks);
 	}
@@ -122,6 +115,6 @@ async function loadTalks() {
 
     return JSON.stringify(talksList);
 }
-loadTalks();
+setInterval(loadTalks(), 1000);
 
 new Phone();
