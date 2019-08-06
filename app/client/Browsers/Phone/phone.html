@@ -129,7 +129,7 @@ const app = new Vue({
 
                     for(let i = 0; i < this.d.talks.length; i++)
                     {
-                        if(this.currentLi == i) this.currentTalk = this.d.talks[i].talk;
+                        if(this.currentLi == i) this.currentTalk = this.d.talks[i].id;
                     }
                 }
                 if(this.currentTab == 10)
@@ -145,7 +145,7 @@ const app = new Vue({
 
                     for(let i = 0; i < this.d.talks.length; i++)
                     {
-                        if(this.currentLi == i) this.currentTalk = this.d.talks[i].talk;
+                        if(this.currentLi == i) this.currentTalk = this.d.talks[i].id;
                     }
                 }
                 if(this.currentTab == 10)
