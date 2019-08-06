@@ -45,7 +45,7 @@
                     </div>
                     <div class="reply" id="reply-div">
                         <textarea id="reply" rows="3" v-model="textMessage"></textarea>
-                        <button class="send" type="button" @keyup.enter="sendMessage()"><i class="fa fa-arrow-up"></i></button>
+                        <button class="send" type="button" id="btnSms"><i class="fa fa-arrow-up"></i></button>
                     </div>
                 </div>
 
@@ -103,7 +103,7 @@ const app = new Vue({
 
                 if(this.currentTab == 0)
                 {
-                    // mp.trigger("cCloseCef");
+                    mp.trigger("cCloseCef");
                 }
                 if(this.currentTab == 3)
                     this.currentTab = 0;
@@ -178,8 +178,7 @@ const app = new Vue({
                 }
                 if(this.currentTab == 30) 
                 {
-                    var element = document.getElementById("reply");
-                    element.focus();
+                    alert(document.activeElement);
                 }
             }
         });
@@ -190,18 +189,12 @@ const app = new Vue({
 		},
 	},
 	methods: {
-        sendMessage: function()
-        {
-            alert(this.textMessage);
-
-            this.textMessage = '';
-        },
         updatePlayerMessages: function() {
             const data = {
                 talkId: this.currentTalk,
             }
 
-            // mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+            mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
         },
         autoGrow: function() {
             var element = document.getElementById("reply");
