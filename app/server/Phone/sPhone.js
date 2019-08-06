@@ -17,9 +17,19 @@ class Phone {
             },
 
             "sPhone-updatePlayerMessages" : (player) => {
+                const mVar = { 
+                    id: messagesList.length + 1,
+                    sender: 123456,
+                    receiver: 555555,
+                    text: 'bogoss va',
+                    time: '2019-09-05 03:41:36',
+                }
+                messagesList.push(mVar);
+                
                 let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone)};`;
 
                 player.notify("update");
+                
 
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} update phone`);
@@ -28,14 +38,6 @@ class Phone {
 
         mp.events.addCommand({
 			'fdp' : (player, fullText) => {
-                const mVar = { 
-                    id: 3,
-                    sender: 123456,
-                    receiver: 555555,
-                    text: 'bogoss va',
-                    time: '2019-09-05 03:41:36',
-                }
-                messagesList.push(mVar);
 
                 return player.notify("OK OK OK OK");
             }, 
