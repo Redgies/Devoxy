@@ -178,12 +178,12 @@ const app = new Vue({
                 }
                 if(this.currentTab == 30) 
                 {
-                    var element = document.getElementById("btnSms");
-
-                    if(element.document.activeElement)
+                    if(document.activeElement.id == 'btnSms')
                         alert('focus');
                     else
                         alert('no focus');
+
+                    alert(document.activeElement.id);
                 }
             }
         });
