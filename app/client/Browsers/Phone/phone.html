@@ -128,7 +128,7 @@ const app = new Vue({
                     {
                         if(i != this.currentLi) continue;
                         
-                        this.talkNumber = phone === this.d.talks[i].receiver ? this.d.talks[i].receiver : this.d.talks[i].sender;
+                        this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].receiver : this.d.talks[i].sender;
                     }
                 }
                 if(this.currentTab == 10) 
