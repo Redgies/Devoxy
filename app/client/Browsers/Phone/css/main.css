@@ -202,11 +202,10 @@
     flex-direction: column;
     padding: 0px 29px;
     font-size: 12px;
-    height: calc(100% - 91px);
+    height: 200px;
     position: relative;
     overflow-y: auto;
-    z-index: 101;
-    background: red;
+    z-index: 1;
   }
 
 .reply {
