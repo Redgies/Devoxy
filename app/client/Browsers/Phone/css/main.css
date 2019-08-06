@@ -202,9 +202,9 @@
     flex-direction: column;
     padding: 0px 29px;
     font-size: 12px;
-    heighst: 200px;
+    height: 200px;
     position: relative;
-    overflow-y: auto;
+    overflow-y: scroll;
     z-index: 1;
     background: red;
   }
