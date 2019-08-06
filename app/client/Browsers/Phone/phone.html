@@ -38,7 +38,7 @@
                     <div id="chat" class="chat">
                         <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
                             <div class="message last">
-                                {{ msg.text }}
+                                {{ msg.text | nl2br }}
                             </div>
                         </div>
                         <!-- <div class="messages mine">
@@ -344,7 +344,14 @@ const app = new Vue({
                 return moment(date).format('ddd');
             else if(moment(date).diff(now, 'days') >= 7)
                 return moment(date).format('D/MM/YYYY');
-		},
+        },
+        nl2br(str) {
+            if(typeof str === 'undefined' || str === null) {
+                return '';
+            }
+            var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+        }
 	},
 });
 </script>
