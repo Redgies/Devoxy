@@ -91,6 +91,8 @@ const app = new Vue({
         this.updatePlayerMessages();
         this.timer = setInterval(this.updatePlayerMessages, 3000);
 
+        alert(this.d.talks);
+
         window.addEventListener('keydown', (e) => {
             if(e.key == 'Backspace') {
                 var reply = document.getElementById("reply");
