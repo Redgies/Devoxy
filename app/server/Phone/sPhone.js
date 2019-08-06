@@ -115,6 +115,8 @@ async function loadTalks(phone) {
 
         talksList.push(mVar);
     }
+
+    console.log(JSON.stringify(talksList));
 }
 loadTalks();
 
