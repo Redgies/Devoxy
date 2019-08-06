@@ -204,8 +204,9 @@
     font-size: 12px;
     height: calc(100% - 91px);
     position: relative;
-    overflow-y: scroll;
-    z-index: 1;
+    overflow-y: auto;
+    z-index: 101;
+    background: red;
   }
 
 .reply {
