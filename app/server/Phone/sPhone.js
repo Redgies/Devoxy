@@ -38,7 +38,7 @@ class Phone {
             "sPhone-updateMessages" : (player, str) => {
                 const d = JSON.parse(str);
 
-                console.log('d : ' + d);
+                console.log('d : ' + str);
 
                 let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
 
