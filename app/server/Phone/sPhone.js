@@ -1,7 +1,7 @@
 const misc = require('../sMisc');
 
-const messagesList = [];
-const talksList = [];
+let messagesList = [];
+let talksList = [];
 
 class Phone {
     constructor() {
