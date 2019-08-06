@@ -55,10 +55,11 @@ class Phone {
     }
     
     getTalksForPlayer(phone) {
+        loadMessage();
         const playerTalks = [];
         for (let i = 0; i < talksList.length; i++) {
 
-            if(talksList[i].sender !== phone) continue;
+            if(talksList[i].sender !== phone || talks) continue;
 
 			const mVar = { 
                 id: talksList[i].id,
@@ -97,7 +98,7 @@ async function loadTalks() {
     const d = await misc.query("SELECT * FROM phoneTalks");
     for (let i = 0; i < d.length; i++) {
 
-        const e = await misc.query(`SELECT * FROM phoneMessages WHERE sender = '${d[i].sender}' OR sender = '${d[i].receiver}' OR receiver = '${d[i].sender}' OR receiver = '${d[i].receiver}' ORDER BY id DESC LIMIT 1`);
+        const e = await misc.query(`SELECT * FROM phoneMessages WHERE sender = '${d[i].sender}' AND receiver = '${d[i].receiver}' ORDER BY id DESC LIMIT 1`);
 
         const mVar = { 
             id: d[i].id,
