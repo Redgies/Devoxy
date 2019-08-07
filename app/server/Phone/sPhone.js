@@ -36,6 +36,8 @@ class Phone {
             "sPhone-updateContact": (player, str) => {
                 const d = JSON.parse(str);
 
+                console.log("contact : " + str);
+
                 updateContact(d);
 
                 let execute = `app.d.contact = ${this.getContactsForPlayer(player)};`;
@@ -139,8 +141,6 @@ class Phone {
     getTalksForPlayer(player) {
         const playerTalks = [];
 
-        console.log("loadtalks");
-
         for (let i = 0; i < talksList.length; i++) {
 
             if(talksList[i].sender !== player.phone && talksList[i].receiver !== player.phone) continue;
@@ -155,11 +155,8 @@ class Phone {
                 lastName: 'A'
             }
 
-            console.log("first mVar");
-
             for(let j = 0; j < contactsList.length; j++)
             {
-                console.log("for in j : " + j);
                 if((contactsList[j].guid !== player.guid) || mVar.firstName !== contactsList[j].phone) continue;
 
                 mVar.firstName = contactsList[j].firstName;
@@ -168,8 +165,6 @@ class Phone {
 
             playerTalks.push(mVar); 
         }
-
-        console.log('playerTalks : ' + JSON.stringify(playerTalks));
 
 		return JSON.stringify(playerTalks);
     }
