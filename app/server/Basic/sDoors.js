@@ -1,4 +1,4 @@
-const misc = require('./sMisc');
+const misc = require('../sMisc');
 
 class Doors {
     constructor() {
