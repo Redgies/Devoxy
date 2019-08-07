@@ -6,8 +6,8 @@ const clothesSingleton = require('../Character/sClothes');
 const headOverlaySingleton = require('../Character/sHeadOverlay');
 const vehiclesSingleton = require('../Basic/Vehicles/sVehicleSingletone');
 const faction = require('../Factions/sFaction');
-const hospital = require('../Factions/Hospital/sHospital');
-const prison = require('../Factions/Police/Prison/sPrison');
+// const hospital = require('../Factions/Hospital/sHospital');
+// const prison = require('../Factions/Police/Prison/sPrison');
 
 class PlayerSingleton {
 
@@ -50,8 +50,8 @@ class PlayerSingleton {
         const q4 = headOverlaySingleton.loadUser(player);
         const q5 = vehiclesSingleton.loadPlayerVehicles(player.guid);
         // const q6 = faction.loadUser(player);
-        const q7 = hospital.loadUser(player);
-        const q8 = prison.loadUser(player);
+        // const q7 = hospital.loadUser(player);
+        // const q8 = prison.loadUser(player);
         await Promise.all([q1, q2, q3, q4, q5, q6, q7, q8]);
 
         console.log(player.phone);
@@ -62,7 +62,7 @@ class PlayerSingleton {
     saveAccount(player) {
         player.saveBasicData();
         vehiclesSingleton.savePlayerVehicles(player.guid);
-        prison.savePlayerAccount(player);
+        // prison.savePlayerAccount(player);
 //        misc.log.debug(`${player.name} disconnected`);
 //        player.loggedIn = false;
     }
