@@ -22,7 +22,7 @@ class Faction {
 	createEvents() {
 		mp.events.addCommand({	
 			"invite" : (player, target) => {
-				const target = misc.findPlayerByIdOrNickname(target);
+				target = misc.findPlayerByIdOrNickname(target);
 				if(!target)	return player.notify("~r~Ce joueur n'est pas connecté.");
 				if(!this.isInThisFaction(player)) return;
 
