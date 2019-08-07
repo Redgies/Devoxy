@@ -475,6 +475,7 @@
                 else return str;
             },
             firstLetter(str) {
+                if(typeof str === 'number') return 'N';
                 return str.charAt(0);
             },
             format(date) {
