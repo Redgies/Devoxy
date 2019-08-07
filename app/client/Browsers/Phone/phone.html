@@ -21,7 +21,7 @@
                 </div>
                 <ul>
                     <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
-                        <div class="avatar">{{ talk.firstName | firstLetter }}</div>
+                        <div class="avatar">{{ talk.firstName | firstLetter }} {{ talk.firstName | secondLetter }}</div>
                         <h3 >{{ talk.firstName }} {{ talk.lastName | anonyme }}</h3>
                         <span class="time">{{ talk.time | format }}</span>
                         <i class="fa fa-chevron-right"></i>
@@ -277,6 +277,8 @@
                     if (this.currentTab == 33 || this.currentTab == 34)
                         this.currentTab = 32;
 
+                    mp.trigger("cHideCursor");
+
                 }
                 if (e.key == 'ArrowLeft') {
 
@@ -476,6 +478,10 @@
             },
             firstLetter(str) {
                 if(typeof str === 'number') return 'N';
+                return str.charAt(0);
+            },
+            secondLetter(str) {
+                if(typeof str === 'number') return 'A';
                 return str.charAt(0);
             },
             format(date) {
