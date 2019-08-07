@@ -31,7 +31,7 @@ class Doors {
 
                 console.log('doors : ' + JSON.stringify(this.doorsPoints));
                 
-                for(let i = 0; i < this.doorsPoints; i++)
+                for(let i = 0; i < this.doorsPoints.length; i++)
                 {
                     console.log("press E 3");
                     if(i !== player.doorId) continue;
