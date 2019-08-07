@@ -288,17 +288,9 @@ for(const f of factionsList) {
 // module.exports.createNewUser = createNewUser;
 
 
-// async function loadUser(player) {
-// 	const d = await misc.query(`SELECT * FROM usersFaction WHERE id = '${player.guid}' LIMIT 1`);
-// 	player.faction = {
-// 		name: d[0].name,
-// 		rank: d[0].rank,
-// 		info:  JSON.parse(d[0].info),
-// 		working: false,
-// 	}
-
-// 	for (const f of factionsList) {
-// 		if (f.isInThisFaction(player)) return f.updateClothingMarker(player);
-// 	}
-// }
-// module.exports.loadUser = loadUser;
+async function loadUser(player) {
+	for (const f of factionsList) {
+		if (f.isInThisFaction(player)) return f.updateClothingMarker(player);
+	}
+}
+module.exports.loadUser = loadUser;
