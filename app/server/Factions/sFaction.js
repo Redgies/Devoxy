@@ -6,14 +6,16 @@ const misc = require('../sMisc');
 
 const factionsList = [];
 
-class faction {
-	constructor() {
-
+class Faction {
+	constructor(id, name, ranks) {
+		this.id = id;
+		this.name = name;
+		this.ranks = ranks;
 	}
 }
-new faction();
+new Faction();
 
-module.exports = faction;
+module.exports = Faction;
 
 // class faction {
 // 	constructor(factionName) {
