@@ -278,7 +278,7 @@
                     }
 
                     if (this.currentTab == 0) {
-                        // mp.trigger("cCloseCef");
+                        mp.trigger("cCloseCef");
                     }
                     if (this.currentTab == 3 || this.currentTab == 32)
                         this.currentTab = 0;
@@ -287,7 +287,7 @@
                     if (this.currentTab == 33 || this.currentTab == 34)
                         this.currentTab = 32;
 
-                    // mp.trigger("cHideCursor");
+                    mp.trigger("cHideCursor");
 
                 }
                 if (e.key == 'ArrowLeft') {
@@ -386,7 +386,7 @@
 
                         if(this.currentLi > this.d.talks.length) return;
 
-                        // mp.trigger("cShowCursor");
+                        mp.trigger("cShowCursor");
 
                         for(let i = 0; i < this.d.talks.length; i++) {
                             if(i != this.currentLi) continue;
@@ -410,7 +410,7 @@
                     }
                     // NOUVELLE CONVERSATION
                     if (this.currentTab == 31) {
-                        // mp.trigger("cShowCursor");
+                        mp.trigger("cShowCursor");
 
                         if (document.activeElement.id == 'btnNewSms') {
                             const data = {
@@ -432,9 +432,9 @@
                             this.newNumber = '000000';
                             this.newMessage = '';
 
-                            // mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
+                            mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
 
-                            // mp.trigger("cHideCursor");
+                            mp.trigger("cHideCursor");
                         }
                     }
                     if (this.currentTab == 30) {
@@ -447,9 +447,9 @@
                                 talkId: this.currentTalk
                             }
 
-                            // mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+                            mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
 
-                            // mp.trigger("cHideCursor");
+                            mp.trigger("cHideCursor");
 
                             this.textMessage = '';
                         }
@@ -476,7 +476,7 @@
                     talkId: this.currentTalk,
                 }
 
-                // mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+                mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
             },
             scrollBottom: function (id) {
                 var element = document.getElementById(id);
