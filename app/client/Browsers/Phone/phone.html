@@ -272,7 +272,7 @@
                         return;
 
                     if (this.currentTab == 0) {
-                        // mp.trigger("cCloseCef");
+                        mp.trigger("cCloseCef");
                     }
                     if (this.currentTab == 3 || this.currentTab == 32)
                         this.currentTab = 0;
@@ -411,7 +411,7 @@
                             this.newNumber = '000000';
                             this.newMessage = '';
 
-                            // mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
+                            mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
 
                             // mp.gui.cursor.visible = false;
                         }
@@ -426,7 +426,7 @@
                                 talkId: this.currentTalk
                             }
 
-                            // mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+                            mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
 
                             this.textMessage = '';
                         }
@@ -453,7 +453,7 @@
                     talkId: this.currentTalk,
                 }
 
-                // mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+                mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
             },
             scrollBottom: function (id) {
                 var element = document.getElementById(id);
