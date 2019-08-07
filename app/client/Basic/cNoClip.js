@@ -55,35 +55,35 @@ mp.events.add({
         fly.f = 2.0;
       }
     
-    //   if (controls.isControlPressed(0, controlsIds.A)) {
-    //     if (fly.l < 8.0) { fly.l *= 1.025; }
+      if (controls.isControlPressed(0, controlsIds.A)) {
+        if (fly.l < 8.0) { fly.l *= 1.025; }
     
-    //     position.x += (-direction.y) * fly.l;
-    //     position.y += direction.x * fly.l;
-    //     updated = true;
-    //   } else if (controls.isControlPressed(0, controlsIds.D)) {
-    //     if (fly.l < 8.0) { fly.l *= 1.05; }
+        position.x += (-direction.y) * fly.l;
+        position.y += direction.x * fly.l;
+        updated = true;
+      } else if (controls.isControlPressed(0, controlsIds.D)) {
+        if (fly.l < 8.0) { fly.l *= 1.05; }
     
-    //     position.x -= (-direction.y) * fly.l;
-    //     position.y -= direction.x * fly.l;
-    //     updated = true;
-    //   } else {
-    //     fly.l = 2.0;
-    //   }
+        position.x -= (-direction.y) * fly.l;
+        position.y -= direction.x * fly.l;
+        updated = true;
+      } else {
+        fly.l = 2.0;
+      }
     
-    //   if (controls.isControlPressed(0, controlsIds.Space)) {
-    //     if (fly.h < 8.0) { fly.h *= 1.025; }
+      if (controls.isControlPressed(0, controlsIds.Space)) {
+        if (fly.h < 8.0) { fly.h *= 1.025; }
     
-    //     position.z += fly.h;
-    //     updated = true;
-    //   } else if (controls.isControlPressed(0, controlsIds.LCtrl)) {
-    //     if (fly.h < 8.0) { fly.h *= 1.05; }
+        position.z += fly.h;
+        updated = true;
+      } else if (controls.isControlPressed(0, controlsIds.LCtrl)) {
+        if (fly.h < 8.0) { fly.h *= 1.05; }
     
-    //     position.z -= fly.h;
-    //     updated = true;
-    //   } else {
-    //     fly.h = 2.0;
-    //   }
+        position.z -= fly.h;
+        updated = true;
+      } else {
+        fly.h = 2.0;
+      }
     
       if(updated) {
         mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
