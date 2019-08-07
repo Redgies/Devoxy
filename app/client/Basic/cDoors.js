@@ -4,7 +4,6 @@ const doors = [];
 
 mp.events.add({
 	"cDoor-Update" : (d) => {
-        mp.gui.chat.push('model : ' + d.model);
         mp.game.object.doorControl(d.model, d.x, d.y, d.z, d.open, 0.0, 0.0, 0.0);
 
         for(let i = 0; i < doors.length; i++)
@@ -19,6 +18,10 @@ mp.events.add({
         for(let i = 0; i < d.length; i++)
         {
             const dVar = {
+                model: d[i].model,
+                x: d[i].x,
+                y: d[i].y,
+                z: d[i].z,
                 open: d[i].open,
             }
 
@@ -30,6 +33,8 @@ mp.events.add({
                 color: [255,255,255,255],
                 dimension: 0
             });
+
+            mp.game.object.doorControl(dVar.model, dVar.x, dVar.y, dVar.z, dVar.open, 0.0, 0.0, 0.0);
 
             doors.push(dVar);
         }

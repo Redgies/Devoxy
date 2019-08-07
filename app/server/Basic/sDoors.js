@@ -37,12 +37,9 @@ class Doors {
                 {
                     if(i !== player.doorId) continue;
 
-                    player.outputChatBox(`${this.doorsPoints[i].x}, ${this.doorsPoints[i].y}, ${this.doorsPoints[i].z}, open : ${this.doorsPoints[i].open}`);
-
                     this.doorsPoints[i].open = !this.doorsPoints[i].open;
 
                     for(const p of mp.players.toArray()) {
-                        p.outputChatBox('cDoor-Update');
                         p.call("cDoor-Update", [this.doorsPoints[i]]);
                     }
                 }
