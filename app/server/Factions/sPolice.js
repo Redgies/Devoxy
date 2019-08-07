@@ -16,7 +16,7 @@ const factionData = {
 
 class Police extends faction {
 	constructor() {
-        super(id, name, ranks);
+        super(factionData.id, factionData.name, factionData.ranks);
     }
 }
 const Police = new Police();
