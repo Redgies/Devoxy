@@ -40,7 +40,7 @@ class Doors {
 
                     this.doorsPoints[i].open = !this.doorsPoints[i].open;
 
-                    for(const p of onlinePlayers) {
+                    for(const p of mp.players.toArray()) {
                         p.outputChatBox('cDoor-Update');
                         p.call("cDoor-Update", [this.doorsPoints[i]]);
                     }
