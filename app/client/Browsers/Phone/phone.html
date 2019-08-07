@@ -468,6 +468,13 @@
                 }
 
                 mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+
+                for (let i = 0; i < this.d.talks.length; i++) {
+                    var contactNumber = this.phone == this.d.talks[i].sender ? this.d.talks[i].receiver : this.d.talks[i].sender;
+
+                    this.d.talks[i].firstName = contactNumber;
+                    this.d.talks[i].lastName = 'A';
+                }
             },
             scrollBottom: function (id) {
                 var element = document.getElementById(id);
