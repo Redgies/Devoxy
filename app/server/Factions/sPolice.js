@@ -27,5 +27,24 @@ class Police extends faction {
         this.createEvents();
         this.createServicePoint(factionData.servicePoint);
     }
+
+    changeClothesMan(player) {
+        // if(player.rank == 1)
+        // {
+            player.setProp(0, 46, 0);
+            player.setClothes(8, 58, 0, 2);
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 35, 0, 2);
+            player.setClothes(11, 55, 0, 2);
+        // }
+	}
+
+	changeClothesWoman(player) {
+        player.setProp(0, 46, 0);
+        player.setClothes(8, 58, 0, 2);
+        player.setClothes(6, 25, 0, 2);
+        player.setClothes(4, 35, 0, 2);
+        player.setClothes(11, 55, 0, 2);
+	}
 }
 const police = new Police();

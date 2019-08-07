@@ -1,7 +1,6 @@
 
 const misc = require('../sMisc');
-
-// const clothes = require('../Character/sClothes');
+const clothes = require('../Character/sClothes');
 // const i18n = require('../sI18n');
 const vehicleSingletone = require('../Basic/Vehicles/sVehicleSingletone');
 
@@ -32,7 +31,27 @@ class Faction {
 		});
 
 		mp.events.add({
-			
+			"playerEnterColshape" : (player, shape) => {
+				if(!player.loggedIn || !this.isInThisFaction(player)) return;
+
+				if(shape === this.serviceShape)
+				{
+					player.canChangeClothes = true;
+					player.notify("Appuyez ~b~E ~w~pour vous mettre en service.")
+				}
+			},
+			"playerExitColshape" : (player, shape) => {
+				if(!player.loggedIn || !this.isInThisFaction(player)) return;
+				
+				if(shape == this.clothingShape)
+					player.canChangeClothes = false;
+			},
+			"sKeys-E" : (player) => {
+				if(!player.loggedIn || !this.isInThisFaction(player)) return;
+
+				if(player.canChangeClothes)
+					this.changeClothes(player);
+			},
 		});
 	}
 
@@ -65,6 +84,25 @@ class Faction {
 	updateServiceMarker(player) {
 		if(this.isInThisFaction(player)) this.serviceMarker.showFor(player);
 		else this.serviceMarker.hideFor(player);
+	}
+
+	changeClothes(player) {
+		if(this.isWorking(player)) {
+			this.setWorking(player, false);
+			return clothes.loadPlayerClothes(player);
+		}
+		this.setWorking(player, true);
+		if(player.model === 1885233650) this.changeClothesMan(player);
+		else this.changeClothesWoman(player);
+	}
+
+	isWorking(player) {
+		if(player.working) return true;
+		return false;
+	}
+
+	setWorking(player, status) {
+		player.working = status;
 	}
 }
 
