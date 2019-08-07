@@ -475,6 +475,7 @@
                 else return str;
             },
             firstLetter(str) {
+                if(str.length <= 0) return 'NA';
                 return str.charAt(0);
             },
             format(date) {
