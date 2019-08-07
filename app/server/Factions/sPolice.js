@@ -8,7 +8,7 @@ const factionData = {
         "Cadet",
         "Officier", 
         "Officier supérieur",
-        "Lieutenant",
+        "Sergent",
         "Capitaine",
         "Commissaire",
     ],
@@ -46,6 +46,15 @@ class Police extends faction {
             player.setClothes(4, 35, 0, 2);
             player.setClothes(11, 55, 0, 2);
             // player.setClothes(10, 8, 0, 2);
+        }
+        if(player.rank == 4)
+        {
+            player.setProp(0, 46, 0);
+            player.setClothes(8, 58, 0, 2); 
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 35, 0, 2);
+            player.setClothes(11, 55, 0, 2);
+            player.setClothes(10, 8, 0, 2);
         }
 	}
 
