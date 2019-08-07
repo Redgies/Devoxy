@@ -11,7 +11,7 @@ class Phone {
                 if(!player.loggedIn) return;
                 let execute = `app.phone = ${player.phone};`;
                 execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
-                execute += `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
+                execute += `app.d.talks = ${this.getTalksForPlayer(player)};`;
                 execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
 
                 player.call("cPhone-Open", [execute]);
@@ -21,7 +21,7 @@ class Phone {
             "sPhone-updatePlayerMessages" : (player, str) => {
                 const d = JSON.parse(str);
 
-                let execute = `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
+                let execute = `app.d.talks = ${this.getTalksForPlayer(player)};`;
                 execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
                 execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
         
@@ -123,20 +123,32 @@ class Phone {
 		return JSON.stringify(playerMessages);
     }
     
-    getTalksForPlayer(phone) {
+    getTalksForPlayer(player) {
         const playerTalks = [];
 
         for (let i = 0; i < talksList.length; i++) {
 
-            if(talksList[i].sender !== phone && talksList[i].receiver !== phone) continue;
+            if(talksList[i].sender !== player.phone && talksList[i].receiver !== player.phone) continue;
 
-			const mVar = { 
+            const mVar = { 
                 id: talksList[i].id,
                 sender: talksList[i].sender,
                 receiver: talksList[i].receiver,
                 text: talksList[i].text,
                 time: talksList[i].time,
+                firstName: player.phone == talksList[i].sender ? talksList[i].receiver : talksList[i].sender,
+                lastName: 'A',
             }
+
+            for(let j = 0; j < contactsList.length; i++)
+            {
+                if(contactsList[j].guid !== player.guid) continue;
+                if(mVar.firstName !== contactsList[j].phone) continue;
+
+                mVar.firstName = contactsList[j].firstName;
+                mVar.lastName = contactsList[j].lastName;
+            }
+
             playerTalks.push(mVar); 
         }
 

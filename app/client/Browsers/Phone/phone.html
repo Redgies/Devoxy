@@ -329,7 +329,6 @@
 
                 }
                 if (e.key == 'Enter') {
-                    console.log(this.currentTab);
                     // ENTRER DANS LES CONTACTS
                     if(this.homeFooterSelection == 1) {
                         this.homeFooterSelection = 0;
@@ -341,20 +340,6 @@
                     if (this.homeFooterSelection == 3) {
                         for (let i = 0; i < this.d.talks.length; i++) {
                             if(this.currentLi == i) this.currentTalk = this.d.talks[i].id;
-
-                            var contactNumber = this.phone == this.d.talks[i].sender ? this.d.talks[i].receiver : this.d.talks[i].sender;
-
-                            this.d.talks[i].firstName = contactNumber;
-                            this.d.talks[i].lastName = 'A';
-
-                            // for(let j = 0; j < this.d.contacts.length; j++)
-                            // {
-                            //     if(contactNumber == this.d.contacts[j].phone)
-                            //     {
-                            //         this.d.talks[i].firstName = this.d.contacts[j].firstName;
-                            //         this.d.talks[i].lastName = this.d.contacts[j].lastName;
-                            //     }
-                            // }
                         }
 
                         this.homeFooterSelection = 0;
@@ -468,13 +453,6 @@
                 }
 
                 mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
-
-                for (let i = 0; i < this.d.talks.length; i++) {
-                    var contactNumber = this.phone == this.d.talks[i].sender ? this.d.talks[i].receiver : this.d.talks[i].sender;
-
-                    this.d.talks[i].firstName = contactNumber;
-                    this.d.talks[i].lastName = 'A';
-                }
             },
             scrollBottom: function (id) {
                 var element = document.getElementById(id);
