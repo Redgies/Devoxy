@@ -2,6 +2,7 @@ const misc = require('../sMisc');
 
 let messagesList = [];
 let talksList = [];
+let contactsList = [];
 
 class Phone {
     constructor() {
@@ -11,6 +12,7 @@ class Phone {
                 let execute = `app.phone = ${player.phone};`;
                 execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
                 execute += `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
+                execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
@@ -21,6 +23,7 @@ class Phone {
 
                 let execute = `app.d.talks = ${this.getTalksForPlayer(player.phone)};`;
                 execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
+                execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
         
 
                 player.call("cPhone-Update", [execute]);
@@ -35,6 +38,7 @@ class Phone {
                 console.log("fdp fdp fdp");
 
                 let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
+                execute += `app.d.contact = ${this.getContactsForPlayer(player)};`;
 
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} send message`);
@@ -76,11 +80,9 @@ class Phone {
                     execute += `app.currentTalk = ${exist}`;
                 }
 
-                // const data = {
-                //     sender: this.phone,
-                //     receiver: this.newNumber,
-                //     text: this.newMessage,
-                // }
+                execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, exist)};`;
+                execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
+
 
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} new message`);
@@ -141,6 +143,26 @@ class Phone {
         // console.log('playerTalks : ' + JSON.stringify(playerTalks));
 
 		return JSON.stringify(playerTalks);
+    }
+    
+    getContactsForPlayer(player) {
+        const playerContacts = [];
+
+        for (let i = 0; i < contactsList.length; i++) {
+
+            if(contactsList[i].guid !== player.guid) continue;
+
+			const mVar = { 
+                phone: contactsList[i].phone,
+                firstName: contactsList[i].firstName,
+                lastName: contactsList[i].lastName,
+            }
+            playerContacts.push(mVar); 
+        }
+
+        // console.log('playerTalks : ' + JSON.stringify(playerTalks));
+
+		return JSON.stringify(playerContacts);
 	}
 }
 
@@ -192,12 +214,30 @@ async function loadTalks() {
 
         talksList.push(mVar);
     }
-
-    return JSON.stringify(talksList);
 }
+
+async function loadContacts() {
+    contactsList = [];
+
+    const d = await misc.query(`SELECT * FROM phoneContacts`);
+    for (let i = 0; i < d.length; i++) {
+
+        const mVar = { 
+            id: d[i].id,
+            guid: d[i].user_id,
+            phone: d[i].phone,
+            firstName: d[i].firstName,
+            lastName: d[i].lastName,
+        }
+
+        contactsList.push(mVar);
+    }
+}
+
 setInterval(function() {
     loadTalks();
     loadMessage();
-}, 5000);
+    loadContacts();
+}, 500);
 
 new Phone();

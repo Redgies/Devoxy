@@ -147,7 +147,7 @@
 .phone .phone-messages li.active {
     background: #dfe6e9;
 }
-.phone .phone-messages .avatar {
+.phone .avatar {
     float: left;
     width: 35px;
     border-radius: 50%;
@@ -348,4 +348,10 @@
     left: 23px;
     font-size: 13px;
     margin-top: 8px;
+}
+
+.contacts li {
+    height: 30px !important;
+    line-height: 29px;
+    text-indent: 26px;
 }
