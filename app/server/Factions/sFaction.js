@@ -63,10 +63,6 @@ class Faction {
 
 module.exports = Faction;
 
-for(const f of factionsList) {
-	if(f.isInThisFaction(player)) return f.updateServiceMarker(player);
-}
-
 // class faction {
 // 	constructor(factionName) {
 // 		this.name = factionName;
