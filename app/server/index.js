@@ -18,6 +18,7 @@ require('./Basic/sMenu');
 require('./Basic/sTab');
 require('./Phone/sPhone');
 require('./Basic/sGPS');
+require('./Basic/sDoors');
 require('./3rd/betternotifs');
 require('./BlipCreator');
 require('./Basic/sVocal');
