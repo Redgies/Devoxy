@@ -3,8 +3,8 @@ const misc = require('../sMisc');
 class Doors {
     constructor() {
         this.doorsPoints = [
-            {model: 320433149, x: 434.7479, y: -983.2151, z: 30.83926, open: 0 },
-            {model: -1215222675, x: 434.7479, y: -980.6184, z: 30.83926, open: 0 },
+            {id: 0, model: 320433149, x: 434.7479, y: -983.2151, z: 30.83926, open: false },
+            {id: 1, model: -1215222675, x: 434.7479, y: -980.6184, z: 30.83926, open: false },
         ];
 
         this.createShapes();
@@ -57,6 +57,8 @@ class Doors {
 
             const colshape = mp.colshapes.newSphere(this.doorsPoints[i].x, this.doorsPoints[i].y, this.doorsPoints[i].z - 1, 2);
             colshape.doorId = i;
+
+            console.log('colshape : ' + JSON.stringify(colshape));
         }
     }
 }
