@@ -50,9 +50,9 @@ class PlayerSingleton {
         const q4 = headOverlaySingleton.loadUser(player);
         const q5 = vehiclesSingleton.loadPlayerVehicles(player.guid);
         // const q6 = faction.loadUser(player);
-        // const q7 = hospital.loadUser(player);
+        // const q7 = hospital.loaddUser(player);
         // const q8 = prison.loadUser(player);
-        await Promise.all([q1, q2, q3, q4, q5, q6, q7, q8]);
+        await Promise.all([q1, q2, q3, q4, q5]);
 
         console.log(player.phone);
 

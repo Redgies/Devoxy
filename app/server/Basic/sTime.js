@@ -10,8 +10,8 @@ class TimeSingleton {
 		const players = mp.players.toArray();
 		for (const player of players) {
 			if (!player.loggedIn) return;
-			player.addHP();
-			player.jailEvent();
+			// player.addHP();
+			// player.jailEvent();
 		}	
 	}
 
