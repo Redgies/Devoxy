@@ -53,10 +53,10 @@ class Faction {
 			color: [0, 184, 148, 100],
 			visible: true,
 		});
-		this.serviceLabel = mp.labels.new("[service]", new mp.Vector3(pos.x, pos.y, pos.z - 1),
+		this.serviceLabel = mp.labels.new("[service]", new mp.Vector3(pos.x, pos.y, pos.z),
 		{
 			los: false,
-			font: 1,
+			font: 2,
 			drawDistance: 5,
 			color: [255, 255, 255, 255],
 		});
