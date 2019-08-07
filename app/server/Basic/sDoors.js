@@ -28,6 +28,8 @@ class Doors {
                 if(!player.loggedIn || !player.doorId) return;
 
                 console.log("press E 2");
+
+                console.log('doors : ' + JSON.stringify(this.doorsPoints));
                 
                 for(let i = 0; i < this.doorsPoints; i++)
                 {
