@@ -15,7 +15,7 @@ mp.events.add({
                 open: d[i].open,
             }
 
-            dVar.label = mp.labels.new(dVar.open ? '~r~[Fermé]' : '~g~[Ouvert]', new Vector3(d[i].x, d[i].y, d[i].z),
+            dVar.label = mp.labels.new(dVar.open ? '~r~[Fermé]' : '~g~[Ouvert]', new mp.Vector3(d[i].x, d[i].y, d[i].z),
             {
                 los: false,
                 font: 1,
