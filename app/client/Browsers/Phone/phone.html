@@ -326,6 +326,11 @@ const app = new Vue({
                             return 1;
                         }
 
+                        this.talkNumber = data.receiver;
+
+                        this.newNumber = '000000';
+                        this.newMessage = '';
+
                         mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
                     }
                 } 
