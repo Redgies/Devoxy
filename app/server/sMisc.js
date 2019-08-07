@@ -27,6 +27,23 @@ class MiscSingleton {
 		this.log = log4js.getLogger();
 		this.log.fatal("Server Started");
 	}
+
+	findPlayerByIdOrNickname(playerName) {
+		let foundPlayer = null;
+	
+		if(playerName == parseInt(playerName)) {
+			foundPlayer = mp.players.at(playerName);
+		}
+		if(!foundPlayer) {
+			mp.players.forEach((_player) => {
+			if (_player.name === playerName) {
+				foundPlayer = _player;
+			}
+			});
+		}
+
+		return foundPlayer;
+	}
 	
 	dbquery(query) {
 		return new Promise( (r, j) => mysql.query(query, null , (err, data) => {

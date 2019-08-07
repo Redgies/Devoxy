@@ -22,12 +22,12 @@ class Faction {
 	createEvents() {
 		mp.events.addCommand({	
 			"invite" : (player, target) => {
-				// player.outputChatBox("player faction : " + player.faction);
-				// player.outputChatBox("this.id : " + this.id);
-
+				const target = misc.findPlayerByIdOrNickname(target);
+				if(!target)	return player.notify("~r~Ce joueur n'est pas connecté.");
 				if(!this.isInThisFaction(player)) return;
 
 				player.notify("faction : " + this.name);
+				player.notify("rank : " + this.ranks[player.rank]);
 			},
 		});
 

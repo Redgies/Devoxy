@@ -243,14 +243,10 @@ class ChatSingleton {
 	findPlayerByIdOrNickname(playerName) {
 		let foundPlayer = null;
 	
-		// If playerName is numberic
-		if (playerName == parseInt(playerName)) {
-			// search player by ID
+		if(playerName == parseInt(playerName)) {
 			foundPlayer = mp.players.at(playerName);
 		}
-	
-		// or search player by nickname
-		if (!foundPlayer) {
+		if(!foundPlayer) {
 			mp.players.forEach((_player) => {
 			if (_player.name === playerName) {
 				foundPlayer = _player;
@@ -258,9 +254,6 @@ class ChatSingleton {
 			});
 		}
 
-		// if(!foundPlayer.loggedIn)
-		// 	foundPlayer = null;
-	
 		return foundPlayer;
 	}
 
