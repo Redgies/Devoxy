@@ -48,23 +48,23 @@ mp.events.add({
       position.z = mp.game.gameplay.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
       mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
     }
-    if (controls.isControlJustPressed(0, controlsIds.F2)) {
-      fly.flying = !fly.flying;
+    // if (controls.isControlJustPressed(0, controlsIds.F2)) {
+    //   fly.flying = !fly.flying;
     
-      const player = mp.players.local;
+    //   const player = mp.players.local;
     
-      player.setInvincible(fly.flying);
-      player.freezePosition(fly.flying);
-      player.setAlpha(fly.flying ? 0 : 255);
+    //   player.setInvincible(fly.flying);
+    //   player.freezePosition(fly.flying);
+    //   player.setAlpha(fly.flying ? 0 : 255);
     
-      if (!fly.flying && !controls.isControlPressed(0, controlsIds.Space)) {
-        const position = mp.players.local.position;
-        position.z = mp.game.gameplay.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
-        mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
-      }
+    //   // if (!fly.flying && !controls.isControlPressed(0, controlsIds.Space)) {
+    //   //   const position = mp.players.local.position;
+    //   //   position.z = mp.game.gameplay.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
+    //   //   mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
+    //   // }
     
-      mp.game.graphics.notify(fly.flying ? 'Fly: ~g~Enabled' : 'Fly: ~r~Disabled');
-    } else if (fly.flying) {
+    //   mp.game.graphics.notify(fly.flying ? 'Fly: ~g~Enabled' : 'Fly: ~r~Disabled');
+    if (fly.flying) {
       let updated = false;
       const position = mp.players.local.position;
     
@@ -120,11 +120,17 @@ mp.events.add({
         mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
       }
     }
-
-    mp.game.graphics.notify(fly.flying ? 'Fly: ~g~Enabled' : 'Fly: ~r~Disabled');
   },
   "cNoclip-Update" : (fly) => {
-    fly.flying = fly;
+    fly.flying = !fly.flying;
+    
+    const player = mp.players.local;
+  
+    player.setInvincible(fly.flying);
+    player.freezePosition(fly.flying);
+    player.setAlpha(fly.flying ? 0 : 255);
+
+    mp.game.graphics.notify(fly.flying ? 'NoClip: ~g~activé' : 'Fly: ~r~désactivé');
   },
   "getCamCoords": (name) => {
     mp.events.callRemote('saveCamCoords', JSON.stringify(coords), JSON.stringify(pointingAt(fly.point_distance)), name);
