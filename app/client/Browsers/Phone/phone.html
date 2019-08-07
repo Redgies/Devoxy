@@ -307,8 +307,8 @@
                     if (this.currentTab == 3) {
                         this.currentLi++;
 
-                        if(this.currentLi >= this.d.talks.length)
-                            this.currentLi = this.d.talks.length;
+                        if(this.currentLi >= (this.d.talks.length - 1))
+                            this.currentLi = this.d.talks.length - 1;
 
                         for (let i = 0; i < this.d.talks.length; i++) {
                             if (this.currentLi == i) this.currentTalk = this.d.talks[i].id;
@@ -317,8 +317,8 @@
                     if (this.currentTab == 32) {
                         this.currentLi++;
 
-                        if(this.currentLi >= this.d.contacts.length)
-                            this.currentLi = this.d.contacts.length;
+                        if(this.currentLi >= (this.d.contacts.length - 1))
+                            this.currentLi = this.d.contacts.length - 1;
                     }
                     if (this.currentTab == 30)
                         this.scrollToBottom("chat");
