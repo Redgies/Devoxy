@@ -19,4 +19,4 @@ class Police extends faction {
         super(factionData.id, factionData.name, factionData.ranks);
     }
 }
-const Police = new Police();
+const police = new Police();
