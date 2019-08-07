@@ -149,8 +149,8 @@ class Phone {
 
             for(let j = 0; j < contactsList.length; i++)
             {
-                if(contactsList[j].guid !== player.guid) continue;
-                if(mVar.firstName !== contactsList[j].phone) continue;
+                console.log("for in j : " + j);
+                if((contactsList[j].guid !== player.guid) || mVar.firstName !== contactsList[j].phone) continue;
 
                 mVar.firstName = contactsList[j].firstName;
                 mVar.lastName = contactsList[j].lastName;
