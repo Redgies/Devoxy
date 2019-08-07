@@ -15,7 +15,6 @@ class Faction {
 		this.maxRank = maxRank;
 
 		vehicleSingletone.loadFactionVehicles(this.id);
-		this.createEvents();
 
 		factionsList.push(this);
 	}
@@ -27,8 +26,8 @@ class Faction {
 				if(!target)	return player.notify("~r~Ce joueur n'est pas connecté.");
 				if(!this.isInThisFaction(player) || !this.isFactionLeader(player)) return;
 
-				player.notify("faction : " + this.name);
-				player.notify("rank : " + this.ranks[player.rank]);
+				// player.notify("faction : " + this.name);
+				// player.notify("rank : " + this.ranks[player.rank]);
 			},
 		});
 
@@ -38,8 +37,6 @@ class Faction {
 	}
 
 	isInThisFaction(player) {
-		player.outputChatBox("player faction : " + player.faction);
-		player.outputChatBox("this.id : " + this.id);
 		if(!player.faction || player.faction !== this.id) return false;
 		return true;
 	}
@@ -48,9 +45,27 @@ class Faction {
 		if(player.rank < this.maxRank) return false;
 		return true;
 	}
+
+	createServicePoint(pos) {
+		this.serviceShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
+		this.serviceMarker = mp.markers.new(1, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
+		{
+			color: [255, 255, 0, 15],
+			visible: false,
+		});
+	}
+
+	updateServiceMarker(player) {
+		if(this.isInThisFaction(player)) this.serviceMarker.showFor(player);
+		else this.serviceMarker.hideFor(player);
+	}
 }
 
 module.exports = Faction;
+
+for(const f of factionsList) {
+	if(f.isInThisFaction(player)) return f.updateServiceMarker(player);
+}
 
 // class faction {
 // 	constructor(factionName) {
