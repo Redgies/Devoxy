@@ -362,10 +362,13 @@
     height: 30px;
     line-height: 30px;
     text-align: center;
-    bottom: 10px;
+    bottom: 15px;
     width: 100%;
     text-transform: uppercase;
     font-size: 15px;
+    color: #fff;
+    border: none;
+    outline: none;
 }
 .btn-confirm:focus {
     background: #74b9ff;
