@@ -37,12 +37,12 @@
                         <h1 style="width: 100%; text-align: center; text-indent: 0px; margin-left: -16px; margin-top: 70px; font-size: 18px;">343543534</h1>
                     </div>
                     <span class="sms-to" style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Numéro</span>
-                    <input type="text" v-model="newNumber" style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
+                    <input type="text" v-model="contactPhone" style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
                     <br><br><br>
                     <span class="sms-to" style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Prénom</span>
-                    <input type="text" v-model="newNumber" style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
+                    <input type="text" v-model="contactFirstName" style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
                     <span class="sms-to" style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Nom</span>
-                    <input type="text" v-model="newNumber" style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
+                    <input type="text" v-model="contactLastName" style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
                 </div>
 
                 <div class="phone-messages" v-if="currentTab === 32">
@@ -52,7 +52,7 @@
                     </div>
                     <ul class="contacts">
                         <li v-for="contact, i) in d.contacts":class="[{ active: currentLi === i }]">
-                            {{ contact.firstName}} {{ contact.lastName }}
+                            {{ contact.firstName}} <b>{{ contact.lastName }}</b>
                         </li>
                     </ul>
                 </div>
@@ -72,7 +72,7 @@
                 <div class="phone-conversation" v-if="currentTab === 30">
                     <div class="head">
                         <i class="fa fa-chevron-left"></i>
-                        <h1>{{ talkNumber }}</h1>
+                        <h1>{{ talkName}}</h1>
                     </div>
                     <div id="chat" class="chat">
                         <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
@@ -223,10 +223,14 @@ const app = new Vue({
         currentLi: 0,
         phone: 0,       // MON NUMERO
         talkNumber: 0, // NUMERO DU DESTINATAIRE
+        talkName: '',
         currentTalk: 0,
         newMessage: '',
         newNumber: '000000',
         textMessage: '',
+        contactPhone: '',
+        contactFirstName: '',
+        contactLastName: '',
 		d: {
             messages: [
                 
@@ -335,6 +339,15 @@ const app = new Vue({
                 // ENTRER DANS UN CONTACT
                 if(this.currentTab == 32)
                 {
+                    for(let i = 0; i < this.d.contacts.length; i++)
+                    {
+                        if(this.currentLi == i)
+                        {
+                            this.contactPhone = this.d.contacts[i].phone;
+                            this.contactFirstName = this.d.contacts[i].firstName;
+                            this.contactLastName = this.d.contacts[i].lastName;
+                        }
+                    }
                     this.currentTab = 34;
                     return 1;
                 }
@@ -353,8 +366,16 @@ const app = new Vue({
                     for(let i = 0; i < this.d.talks.length; i++)
                     {
                         if(i != this.currentLi) continue;
-                        
+
                         this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
+
+                        for(let i = 0; i < this.d.contacts.length; i++)
+                        {
+                            if(this.talkNumber == d.contacts[i].phone)
+                            {
+                                this.talkName = this.d.contacts[i].firstName + ' ' + this.d.contacts[i].lastName;
+                            }
+                        }
                     }
 
                     setTimeout(function() {
