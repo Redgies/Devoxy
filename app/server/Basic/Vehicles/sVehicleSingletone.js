@@ -289,7 +289,7 @@ class VehicleSingleton {
 	}
 
 	async loadFactionVehicles(id) {
-		const vehicles = await misc.query(`SELECT * FROM vehicles WHERE factionId = '${name}'`);
+		const vehicles = await misc.query(`SELECT * FROM vehicles WHERE factionId = '${id}'`);
 		for (const veh of vehicles) new Vehicle(veh);
 	}
 
