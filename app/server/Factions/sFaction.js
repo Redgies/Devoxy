@@ -11,7 +11,7 @@ class faction {
 
 	}
 }
-new Faction();
+new faction();
 
 module.exports = faction;
 
