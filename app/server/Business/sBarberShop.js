@@ -89,7 +89,7 @@ mp.events.add({
 
 	"sBarberShop-SetHeadOverlay" : (player, obj) => {
 		const d = JSON.parse(obj);
-		player.setHeadOverlay(d.id, [d.index, d.opacity, 1, 1]);
+		player.setHeadOverlay(d.id, [d.sNoClip, d.opacity, 1, 1]);
 	},
 
 	"sBarberShop-BuyThing" : async (player, data) => {

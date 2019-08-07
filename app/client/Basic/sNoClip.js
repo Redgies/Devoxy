@@ -1,3 +1,5 @@
+const misc = require('../cMisc');
+
 const controlsIds = {
   F2: 289,
   W: 32, // 232
@@ -13,12 +15,33 @@ global.fly = {
 };
 global.gameplayCam = mp.cameras.new('gameplay');
 
-mp.game.graphics.notify('~r~Fly script loaded!');
-mp.game.graphics.notify('~r~F2~w~ - enable/disable\n~r~F2+Space~w~ - disable without warping to ground\n~r~W/A/S/D/Space/LCtrl~w~ - move');
-mp.game.graphics.notify('~r~/savecam~w~ - save Camera position.');
-
 let direction = null;
 let coords = null;
+
+mp.events.add({
+  "render" : () => {
+    const controls = mp.game.controls;
+    const fly = global.fly;
+    direction = global.gameplayCam.getDirection();
+    coords = global.gameplayCam.getCoord();
+
+    mp.game.graphics.drawText(`Coords: ${JSON.stringify(coords)}`, [0.5, 0.005], {
+      font: 0,
+      color: [255, 255, 255, 185],
+      scale: [0.3, 0.3],
+      outline: true,
+    });
+    mp.game.graphics.drawText(`pointAtCoord: ${JSON.stringify(pointingAt(fly.point_distance).position)}`, [0.5, 0.025], {
+      font: 0,
+      color: [255, 255, 255, 185],
+      scale: [0.3, 0.3],
+      outline: true,
+    });
+  },
+  "cNoclip-Update" : (fly) => {
+    misc.injectCef(inject);
+  }
+});
 
 function pointingAt(distance) {
   const farAway = new mp.Vector3((direction.x * distance) + (coords.x), (direction.y * distance) + (coords.y), (direction.z * distance) + (coords.z));
@@ -30,26 +53,9 @@ function pointingAt(distance) {
   return result;
 }
 
-mp.events.add('render', () => {
-  const controls = mp.game.controls;
-  const fly = global.fly;
-  direction = global.gameplayCam.getDirection();
-  coords = global.gameplayCam.getCoord();
+mp.events.add();
 
-  mp.game.graphics.drawText(`Coords: ${JSON.stringify(coords)}`, [0.5, 0.005], {
-    font: 0,
-    color: [255, 255, 255, 185],
-    scale: [0.3, 0.3],
-    outline: true,
-  });
-  mp.game.graphics.drawText(`pointAtCoord: ${JSON.stringify(pointingAt(fly.point_distance).position)}`, [0.5, 0.025], {
-    font: 0,
-    color: [255, 255, 255, 185],
-    scale: [0.3, 0.3],
-    outline: true,
-  });
-
-  if (controls.isControlJustPressed(0, controlsIds.F2)) {
+  /*if (controls.isControlJustPressed(0, controlsIds.F2)) {
     fly.flying = !fly.flying;
 
     const player = mp.players.local;
@@ -120,7 +126,7 @@ mp.events.add('render', () => {
     if (updated) {
       mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
     }
-  }
+  }*/
 });
 
 mp.events.add('getCamCoords', (name) => {

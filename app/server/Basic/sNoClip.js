@@ -1,4 +1,5 @@
 mp.events.addCommand('savecam', (player, name = 'No name') => {
+    if (player.adminLvl < 1) return;
     player.call('getCamCoords', [name]);
 });
 const saveFile = 'savedposcam.txt';
@@ -14,3 +15,20 @@ mp.events.add('saveCamCoords', (player, position, pointAtCoord, name = 'No name'
         }
     });
 });
+
+const misc = require('../sMisc');
+
+class NoClip {
+    constructor() {
+        mp.events.add({
+            "sKeys-F2" : player => {
+                if(player.adminLvl < 1) return;
+
+                player.fly = !player.fly;
+                player.call("cNoclip-Update", [player.fly]);
+
+            }
+        });
+    }
+}
+new NoClip();
