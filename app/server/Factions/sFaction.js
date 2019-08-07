@@ -286,7 +286,7 @@ module.exports = Faction;
 
 async function loadUser(player) {
 	for (const f of factionsList) {
-		if (f.isInThisFaction(player)) return f.updateClothingMarker(player);
+		if (f.isInThisFaction(player)) return f.updateServiceMarker(player);
 	}
 }
 module.exports.loadUser = loadUser;
