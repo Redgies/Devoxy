@@ -272,7 +272,7 @@
                         return;
 
                     if (this.currentTab == 0) {
-                        mp.trigger("cCloseCef");
+                        // mp.trigger("cCloseCef");
                     }
                     if (this.currentTab == 3 || this.currentTab == 32)
                         this.currentTab = 0;
@@ -330,13 +330,24 @@
 
                 }
                 if (e.key == 'Enter') {
+                    console.log(this.currentTab);
+                    // ENTRER DANS LES CONTACTS
+                    if(this.homeFooterSelection == 1) {
+                        this.homeFooterSelection = 0;
+                        return this.currentTab = 32;
+                        
+                    }
+
                     // ENTRER DANS LES MESSAGES
                     if (this.homeFooterSelection == 3) {
                         for (let i = 0; i < this.d.talks.length; i++) {
                             if (this.currentLi == i) this.currentTalk = this.d.talks[i].id;
                         }
 
-                        return this.currentTab = 3;
+                        this.homeFooterSelection = 0;
+
+                        this.currentTab = 3;
+                        return 1;
                     }
 
                     // ENTRER DANS UN CONTACT
@@ -353,26 +364,21 @@
                     }
 
 
-                    if (this.homeFooterSelection == 1) {
-                        return this.currentTab = 32;
-                    }
-
-
                     // ENTRER DANS UNE CONVERSATION
-                    if (this.currentTab == 3) {
+                    if(this.currentTab == 3) {
                         this.currentTab = 30;
 
-                        // for(let i = 0; i < this.d.talks.length; i++) {
-                        //     if(i != this.currentLi) continue;
+                        for(let i = 0; i < this.d.talks.length; i++) {
+                            if(i != this.currentLi) continue;
 
-                        //     this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
+                            this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
 
-                        //     // for(let j = 0; j < this.d.contacts.length; j++) {
-                        //     //     // if (this.talkNumber == this.d.contacts[j].phone) {
-                        //     //     //     this.talkName = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
-                        //     //     // }
-                        //     // }
-                        // }
+                            for(let j = 0; j < this.d.contacts.length; j++) {
+                                // if (this.talkNumber == this.d.contacts[j].phone) {
+                                //     this.talkName = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
+                                // }
+                            }
+                        }
 
                         setTimeout(function () {
                             var element = document.getElementById("chat");
@@ -405,7 +411,7 @@
                             this.newNumber = '000000';
                             this.newMessage = '';
 
-                            mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
+                            // mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
 
                             // mp.gui.cursor.visible = false;
                         }
@@ -420,7 +426,7 @@
                                 talkId: this.currentTalk
                             }
 
-                            mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+                            // mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
 
                             this.textMessage = '';
                         }
@@ -447,7 +453,7 @@
                     talkId: this.currentTalk,
                 }
 
-                mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+                // mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
             },
             scrollBottom: function (id) {
                 var element = document.getElementById(id);
