@@ -20,7 +20,7 @@ class Faction {
 
 	createEvents() {
 		mp.events.addCommand({	
-			"invite" : (player, target) => {
+			"invite" : (player, fullText, target) => {
 				target = misc.findPlayerByIdOrNickname(target);
 				if(!target)	return player.notify("~r~Ce joueur n'est pas connecté.");
 				if(!this.isInThisFaction(player) || !this.isFactionLeader(player)) return;
@@ -28,6 +28,13 @@ class Faction {
 				// player.notify("faction : " + this.name);
 				// player.notify("rank : " + this.ranks[player.rank]);
 			},
+			"rank" : (player, fullText, target, rank) => {
+				target = misc.findPlayerByIdOrNickname(target);
+
+				target.rank = parseInt(rank);
+
+				player.notify('rank : ' + target.rank);
+			}
 		});
 
 		mp.events.add({
