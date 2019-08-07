@@ -36,11 +36,12 @@ class Doors {
                     console.log("press E 3");
                     if(i !== player.doorId) continue;
 
-                    player.outputChatBox(`${this.doorsPoints[i].x}, ${this.doorsPoints[i].y}, ${this.doorsPoints[i].z}`);
+                    player.outputChatBox(`${this.doorsPoints[i].x}, ${this.doorsPoints[i].y}, ${this.doorsPoints[i].z}, open : ${this.doorsPoints[i].open}`);
 
                     this.doorsPoints[i].open = !this.doorsPoints[i].open;
 
                     for(const p of onlinePlayers) {
+                        p.outputChatBox('cDoor-Update');
                         p.call("cDoor-Update", [this.doorsPoints[i]]);
                     }
                 }
