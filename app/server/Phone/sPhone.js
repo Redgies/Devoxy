@@ -136,7 +136,7 @@ class Phone {
                 receiver: talksList[i].receiver,
                 text: talksList[i].text,
                 time: talksList[i].time,
-                firstName: player.phone == talksList[i].sender ? talksList[i].receiver : talksList[i].sender,
+                firstName: (player.phone == talksList[i].sender ? talksList[i].receiver : talksList[i].sender),
                 lastName: 'A',
             }
 
@@ -152,7 +152,7 @@ class Phone {
             playerTalks.push(mVar); 
         }
 
-        // console.log('playerTalks : ' + JSON.stringify(playerTalks));
+        console.log('playerTalks : ' + JSON.stringify(playerTalks));
 
 		return JSON.stringify(playerTalks);
     }
