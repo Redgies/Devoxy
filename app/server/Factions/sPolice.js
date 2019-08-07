@@ -61,6 +61,7 @@ class Police extends faction {
             player.setClothes(6, 25, 0, 2);
             player.setClothes(4, 35, 0, 2);
             player.setClothes(11, 43, 0, 2);
+            player.setClothes(3, 11, 0, 2);
             // player.setClothes(10, 8, 1, 2);
         }
 	}
