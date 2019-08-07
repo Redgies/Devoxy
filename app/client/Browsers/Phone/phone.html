@@ -79,7 +79,7 @@
                 <input type="text" id="contactLastName" v-model="contactLastName"
                     style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
 
-                <button type="button" id="confirmCreateContact" class="btn-confirm">Valider</button>
+                <button type="button" id="confirmCreateContact" class="btn-confirm">Ajouter</button>
             </div>
 
             <div class="phone-messages" v-if="currentTab === 32">
@@ -523,9 +523,6 @@
                         return this.currentTab = 31;
                     }
                     if(this.currentTab == 32) {
-                        return this.currentTab = 33;
-                    }
-                    if(this.currentTab == 33) {
                         this.contactFirstName = 'Nouveau';
                         this.contactLastName = 'Contact';
                         this.contactPhone = '000000';
