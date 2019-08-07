@@ -50,8 +50,15 @@ class Faction {
 		this.serviceShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
 		this.serviceMarker = mp.markers.new(1, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
 		{
-			color: [0, 184, 148, 15],
+			color: [0, 184, 148, 100],
 			visible: true,
+		});
+		this.serviceLabel = mp.labels.new("[service]", new mp.Vector3(pos.x, pos.y, pos.z - 1),
+		{
+			los: false,
+			font: 1,
+			drawDistance: 5,
+			color: [255, 255, 255, 255],
 		});
 	}
 
