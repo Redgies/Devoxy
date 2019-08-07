@@ -1,5 +1,7 @@
 
 const misc = require('../sMisc');
+
+const police = require('./sPolice');
 // const clothes = require('../Character/sClothes');
 // const i18n = require('../sI18n');
 const vehicleSingletone = require('../Basic/Vehicles/sVehicleSingletone');
@@ -20,6 +22,7 @@ class Faction {
 	createEvents() {
 		mp.events.addCommand({	
 			"invite" : (player, target) => {
+				player.notify("test");
 				if(!misc.isValueNumber(target) || !this.isInThisFaction(leader)) return;
 
 				player.notify("faction : " + this.name);
