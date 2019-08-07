@@ -191,8 +191,9 @@ class ChatSingleton {
 				}	
 			},
 
-			'c': (player, fullText, arg1, arg2, arg3, arg4) => {
-				player.setClothes(arg1, arg2, arg3, arg4);
+			'sap': (player, fullText, arg1, arg2, arg3, arg4) => {
+				player.notify("Changement de sappe !");
+				player.setClothes(parseInt(arg1), parseInt(arg2), parseInt(arg3), parseInt(arg4));
 			},
 
 			'kill': (player, fullText, arg1) =>	{
