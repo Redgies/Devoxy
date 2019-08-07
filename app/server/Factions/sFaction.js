@@ -4,8 +4,6 @@ const misc = require('../sMisc');
 // const i18n = require('../sI18n');
 const vehicleSingletone = require('../Basic/Vehicles/sVehicleSingletone');
 
-const Police = require('./sPolice');
-
 const factionsList = [];
 
 class Faction {
