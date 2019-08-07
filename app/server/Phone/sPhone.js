@@ -36,13 +36,23 @@ class Phone {
             "sPhone-updateContact": (player, str) => {
                 const d = JSON.parse(str);
 
-                console.log("contact : " + str);
-
                 updateContact(d);
 
                 let execute = `app.d.contact = ${this.getContactsForPlayer(player)};`;
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} phone update contact`);
+            },
+
+            "sPhone-createContact": (player, str) => {
+                const d = JSON.parse(str);
+
+                d.guid = player.guid;
+
+                createContact(d);
+
+                let execute = `app.d.contact = ${this.getContactsForPlayer(player)};`;
+                player.call("cPhone-Update", [execute]);
+                misc.log.debug(`${player.name} phone create contact`);
             },
 
             "sPhone-sendMessage": (player, str) => {
@@ -189,6 +199,11 @@ class Phone {
 
 		return JSON.stringify(playerContacts);
 	}
+}
+
+async function createContact(d)
+{
+    await mysc.query(`INSERT INTO phoneContacts (user_id, phone, firstName, lastName) VALUES ('${d.guid}', '${d.phone}', '${d.firstName}', '${d.lastName}')`);
 }
 
 async function updateContact(d)

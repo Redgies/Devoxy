@@ -56,6 +56,32 @@
                 <button type="button" id="confirmUpdateContact" class="btn-confirm">Valider</button>
             </div>
 
+            <div class="phone-conversation" v-if="currentTab === 35">
+                <div class="head" style="height: 100px;">
+                    <i class="fa fa-chevron-left"></i>
+                    <div class="avatar"
+                        style="position: absolute; width: 50px; left: calc(50% - 31px); transform: translateX(-50%); height: 50px; font-size: 19px; line-height: 50px; margin-top: 15px;">{{ contactFirstName | firstLetter }}{{ contactLastName | firstLetter }}</div>
+                    <h1
+                        style="width: 100%; text-align: center; text-indent: 0px; margin-left: -16px; margin-top: 70px; font-size: 18px;">
+                        {{ contactFirstName }} <b>{{ contactLastName }}</b></h1>
+                </div>
+                <span class="sms-to"
+                    style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Numéro</span>
+                <input type="text" id="contactPhone" v-model="contactPhone"
+                    style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
+                <br><br><br>
+                <span class="sms-to"
+                    style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Prénom</span>
+                <input type="text" id="contactFirstName" v-model="contactFirstName"
+                    style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
+                <span class="sms-to"
+                    style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Nom</span>
+                <input type="text" id="contactLastName" v-model="contactLastName"
+                    style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
+
+                <button type="button" id="confirmCreateContact" class="btn-confirm">Valider</button>
+            </div>
+
             <div class="phone-messages" v-if="currentTab === 32">
                 <div class="head">
                     <h1>Contacts</h1>
@@ -400,6 +426,22 @@
                         }
                     }
 
+                    // NOUVEAU CONTACT
+                    if(this.currentTab == 35)
+                    {
+                        if(document.activeElement.id == 'confirmCreateContact') {
+                            const data = {
+                                phone: this.contactPhone,
+                                firstName: this.contactFirstName,
+                                lastName: this.contactLastName,
+                            }
+
+                            mp.trigger("cMisc-CallServerEvent", "sPhone-createContact", JSON.stringify(data));
+
+                            mp.trigger("cHideCursor");
+                        }
+                    }
+
 
                     // ENTRER DANS UNE CONVERSATION
                     if(this.currentTab == 3) {
@@ -476,12 +518,18 @@
                         }
                     }
                 }
-                if (e.key == 'n') {
-                    if (this.currentTab == 3) {
+                if(e.key == 'n') {
+                    if(this.currentTab == 3) {
                         return this.currentTab = 31;
                     }
-                    if (this.currentTab == 32) {
+                    if(this.currentTab == 32) {
                         return this.currentTab = 33;
+                    }
+                    if(this.currentTab == 33) {
+                        this.contactFirstName = 'Nouveau';
+                        this.contactLastName = 'Contact';
+                        this.contactPhone = '000000';
+                        return this.currentTab = 35;
                     }
                 }
             });
