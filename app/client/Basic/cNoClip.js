@@ -92,7 +92,7 @@ mp.events.add({
   },
   "cNoclip-Update" : (fly) => {
     const controls = mp.game.controls;
-    
+
     global.fly.flying = fly;
     
     const player = mp.players.local;
@@ -101,7 +101,7 @@ mp.events.add({
     player.freezePosition(fly);
     player.setAlpha(fly ? 0 : 255);
 
-    if (!fly&& !controls.isControlPressed(0, controlsIds.Space)) {
+    if (!fly && !controls.isControlPressed(0, controlsIds.Space)) {
       const position = mp.players.local.position;
       position.z = mp.game.gameplay.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
       mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
