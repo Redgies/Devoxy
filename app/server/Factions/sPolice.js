@@ -1,5 +1,5 @@
 const misc = require('../sMisc');
-const faction = require('../sFaction');
+const faction = require('./sFaction');
 
 const factionData = {
     id: 1,
