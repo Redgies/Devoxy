@@ -14,9 +14,9 @@ const factionData = {
     ],
     maxRank: 6,
     servicePoint: {
-        x: 458.87,
-        y: -992.946,
-        z: 357.02,
+        x: 458.955,
+        y: -992.82,
+        z: 30.69,
     }
 }
 

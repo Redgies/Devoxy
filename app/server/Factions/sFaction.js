@@ -54,6 +54,8 @@ class Faction {
 			color: [255, 255, 0, 15],
 			visible: true,
 		});
+
+		console.log(JSON.stringify(this.serviceMarker));z
 	}
 
 	updateServiceMarker(player) {
@@ -287,7 +289,7 @@ module.exports = Faction;
 
 async function loadUser(player) {
 	for (const f of factionsList) {
-		if (f.isInThisFaction(player)) return f.updateServiceMarker(player);
+		// if (f.isInThisFaction(player)) return f.updateServiceMarker(player);
 	}
 }
 module.exports.loadUser = loadUser;
