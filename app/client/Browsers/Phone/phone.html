@@ -22,7 +22,7 @@
                 <ul>
                     <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
                         <div class="avatar">NA</div>
-                        <h3 >{{ talk.firstName }} {{ talk.lastName }}</h3>
+                        <h3 >{{ talk.firstName }} {{ talk.lastName | anonyme }}</h3>
                         <span class="time">{{ talk.time | format }}</span>
                         <i class="fa fa-chevron-right"></i>
                         <p>{{ talk.text }}</p>
@@ -471,10 +471,8 @@
         },
         filters: {
             anonyme(str) {
-                if(str.length <= 1 && str.charAt(0) == 'A')
-                    return '';
-                else 
-                    return str;
+                if(str.length <= 1 && str.charAt(0) == 'A') return '';
+                else return str;
             },
             firstLetter(str) {
                 return str.charAt(0);
