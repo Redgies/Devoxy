@@ -37,7 +37,9 @@ class Doors {
     }
 
     createShapes() {
+        console.log("createShapes");
         for(let i = 0; i < this.doorsPoints.length; i++) {
+            
             // const marker = mp.markers.new(1, new mp.Vector3(this.doorsPoints[i].x, this.doorsPoints[i].y, this.doorsPoints[i].z), 30,
             // {
             //     color: [255, 165, 0, 50],
@@ -51,6 +53,7 @@ class Doors {
         }
     }
 }
+new Doors();
 
 // open = false
 // mp.game.object.doorControl(door._model, door._position.x, door._position.y, door._position.z, false, 0.0, 50.0, 0.0);
