@@ -11,11 +11,9 @@ class Doors {
             "playerEnterColshape" : (player, shape) => {
                 if (!player.loggedIn) return;
 
-                console.log("test");
-
                 player.doorId = shape.doorId;
 
-                player.notify(`press E for baiser ta mère`);
+                player.notify(`press E for baiser ta mère : ${player.doorId}`);
             },
             "playerExitColshape" : (player, shape) => {
                 if (!player.loggedIn) return;
@@ -24,6 +22,7 @@ class Doors {
             },
             
 			"sKeys-E" : (player) => {
+                console.log("press E");
                 if (!player.loggedIn || !player.doorId) return;
                 
                 for(let i = 0; i < this.doorsPoints; i++)
@@ -37,10 +36,9 @@ class Doors {
     }
 
     createShapes() {
-        // console.log("createShapes");
         for(let i = 0; i < this.doorsPoints.length; i++) {
             
-            const marker = mp.markers.new(1, new mp.Vector3(this.doorsPoints[i].x, this.doorsPoints[i].y, this.doorsPoints[i].z), 3,
+            const marker = mp.markers.new(1, new mp.Vector3(this.doorsPoints[i].x, this.doorsPoints[i].y, this.doorsPoints[i].z - 1), 3,
             {
                 color: [255, 165, 0, 50],
                 visible: true,
@@ -48,8 +46,6 @@ class Doors {
 
             const colshape = mp.colshapes.newSphere(this.doorsPoints[i].x, this.doorsPoints[i].y, this.doorsPoints[i].z, 3);
             colshape.doorId = i;
-
-            // console.log('new door : ' + colshape);
         }
     }
 }
