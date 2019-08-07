@@ -214,7 +214,9 @@ const app = new Vue({
         this.timer = setInterval(this.updatePlayerMessages, 500);
 
         window.addEventListener('keydown', (e) => {
-            console.log(e.key);
+            
+            mp.gui.cursor.visible = false;
+
             if(e.key == 'Backspace') {
                 var reply = document.getElementById("reply");
 
@@ -309,6 +311,8 @@ const app = new Vue({
                 // NOUVELLE CONVERSATION
                 if(this.currentTab == 31)
                 {
+                    mp.gui.cursor.visible = true;
+
                     if(document.activeElement.id == 'btnNewSms')
                     {
                         const data = {
@@ -332,6 +336,8 @@ const app = new Vue({
                         this.newMessage = '';
 
                         mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
+
+                        mp.gui.cursor.visible = false;
                     }
                 } 
                 if(this.currentTab == 30) 
