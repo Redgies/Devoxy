@@ -21,8 +21,8 @@
                 </div>
                 <ul>
                     <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
-                        <div class="avatar">{{talk.firstName | firstLetter }}{{ talk.lastName | firstLetter }}</div>
-                        <h3 >{{ talk.firstName }} {{ talk.lastName | anonyme }}</h3>
+                        <div class="avatar">NA</div>
+                        <h3 >{{ talk.firstName }} {{ talk.lastName }}</h3>
                         <span class="time">{{ talk.time | format }}</span>
                         <i class="fa fa-chevron-right"></i>
                         <p>{{ talk.text }}</p>
@@ -400,7 +400,7 @@
                                 this.currentTab = 3;
                                 this.currentLi = 0;
 
-                                mp.game.graphics.notify("~r~Vous ne pouvez pas vous envoyer de SMS.");
+                                // mp.game.graphics.notify("~r~Vous ne pouvez pas vous envoyer de SMS.");
                                 return 1;
                             }
 
