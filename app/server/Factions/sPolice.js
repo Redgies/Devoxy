@@ -29,14 +29,24 @@ class Police extends faction {
     }
 
     changeClothesMan(player) {
-        // if(player.rank == 1)
-        // {
+        if(player.rank == 1)
+        {
             player.setProp(0, 46, 0);
-            player.setClothes(8, 58, 0, 2);
+            player.setClothes(8, 58, 0, 2); // ceinture
             player.setClothes(6, 25, 0, 2);
             player.setClothes(4, 35, 0, 2);
-            player.setClothes(11, 48, 0, 2);
-        // }
+            player.setClothes(11, 55, 0, 2);
+            // player.setClothes(10, 8, 0, 2);
+        }
+        if(player.rank == 2 || player.rank == 3)
+        {
+            player.setProp(0, 46, 0);
+            player.setClothes(8, 58, 0, 2); 
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 35, 0, 2);
+            player.setClothes(11, 55, 0, 2);
+            // player.setClothes(10, 8, 0, 2);
+        }
 	}
 
 	changeClothesWoman(player) {
