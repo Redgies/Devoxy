@@ -37,6 +37,7 @@ class PlayerSingleton {
         player.adminLvl = d[0].adminlvl;
         player.phone = d[0].phone;
         player.lang = d[0].lang;
+        player.fly = false;
         player.loyality = d[0].loyality;
         player.updateName();
         player.tp(JSON.parse(d[0].position));
@@ -75,7 +76,7 @@ class PlayerSingleton {
         player.lastName = false;
         player.loyality = 0;
         player.adminLvl = 0;
-        player.fly = 0;
+        player.fly = false;
         player.phone = 0;
         player.faction = {};
         player.canOpen = {};

@@ -12,7 +12,7 @@ class NoClip {
                 player.call("cNoclip-Update", [player.fly]);
 
             },
-            'saveCamCoords' : (player, position, pointAtCoord, name = 'No name') => {
+            "saveCamCoords" : (player, position, pointAtCoord, name = 'No name') => {
                 const pos = JSON.parse(position);
                 const point = JSON.parse(pointAtCoord);
             
@@ -26,7 +26,7 @@ class NoClip {
             }
         });
         mp.events.addCommand(
-            'savecam', (player, name = 'No name') => {
+            "savecam", (player, name = 'No name') => {
                 if(player.adminLvl < 1) return;
                 player.call('getCamCoords', [name]);
         });
