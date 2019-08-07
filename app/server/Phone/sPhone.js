@@ -193,7 +193,7 @@ class Phone {
 
 async function updateContact(d)
 {
-    await misc.query(`UPDATE phoneContacts SET phone = '${d.phone}', firstName = '${d.fisrtName}', lastName = '${d.lastName}' WHERE id = '${d.id}'`);
+    await misc.query(`UPDATE phoneContacts SET phone = '${d.phone}', firstName = '${d.firstName}', lastName = '${d.lastName}' WHERE id = '${d.id}'`);
 }
 
 async function createTalk(d)
