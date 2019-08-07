@@ -1,3 +1,5 @@
+const misc = require('../../sMisc');
+
 class Doors {
     constructor() {
         this.doorsPoints = [
