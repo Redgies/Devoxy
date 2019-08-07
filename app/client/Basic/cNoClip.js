@@ -27,15 +27,15 @@ mp.events.add({
 
     const player = mp.players.local;
 
-    if (!fly.flying && !controls.isControlPressed(0, controlsIds.Space)) {
-      const position = mp.players.local.position;
-      position.z = mp.game.gameplay.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
-      mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
-    }
-   
-    // if (fly.flying) {
-    //   let updated = false;
+    // if (!fly.flying && !controls.isControlPressed(0, controlsIds.Space)) {
     //   const position = mp.players.local.position;
+    //   position.z = mp.game.gameplay.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
+    //   mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
+    // }
+   
+    if (fly.flying) {
+      let updated = false;
+      const position = mp.players.local.position;
     
     //   if (controls.isControlPressed(0, controlsIds.W)) {
     //     if (fly.f < 8.0) { fly.f *= 1.025; }
@@ -85,10 +85,10 @@ mp.events.add({
     //     fly.h = 2.0;
     //   }
     
-    //   if (updated) {
-    //     mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
-    //   }
-    // }
+      if(updated) {
+        mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
+      }
+    }
   },
   "cNoclip-Update" : (fly) => {
     global.fly = fly;
