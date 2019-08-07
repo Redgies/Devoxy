@@ -1,7 +1,6 @@
 
 const misc = require('../sMisc');
 
-const police = require('./sPolice');
 // const clothes = require('../Character/sClothes');
 // const i18n = require('../sI18n');
 const vehicleSingletone = require('../Basic/Vehicles/sVehicleSingletone');

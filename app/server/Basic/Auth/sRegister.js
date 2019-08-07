@@ -9,7 +9,7 @@ const characterSingleton = require('../../Character/sCharacterCreator');
 const clothesSingleton = require('../../Character/sClothes');
 const headOverlaySingleton = require('../../Character/sHeadOverlay');
 const faction = require('../../Factions/sFaction');
-const prison = require('../../Factions/Police/Prison/sPrison');
+// const prison = require('../../Factions/Police/Prison/sPrison');
 
 
 class RegiserSingleton extends AbstractAuth {
