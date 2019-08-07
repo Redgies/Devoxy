@@ -39,7 +39,6 @@ class Faction {
 		return true;
 	}
 }
-new Faction();
 
 module.exports = Faction;
 
