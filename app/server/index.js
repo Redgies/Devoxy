@@ -21,5 +21,6 @@ require('./Basic/sGPS');
 require('./Basic/sDoors');
 require('./3rd/betternotifs');
 require('./BlipCreator');
+require('./noclip');
 require('./Basic/sVocal');
 require("./MapEditor/MapEditorServer");

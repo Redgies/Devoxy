@@ -176,7 +176,8 @@ const k = {
 
 const keys = mp.keys;
 
-keys.bind(k.E_KEY, false, function() {
+keys.bind(k.E_KEY, fal
+e, function() {
     if (mp.gui.cursor.visible) return;
     mp.events.callRemote('sKeys-E');
 });
