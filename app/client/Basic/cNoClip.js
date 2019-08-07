@@ -21,26 +21,22 @@ let coords = null;
 mp.events.add({
   "render" : () => {
     const controls = mp.game.controls;
-    const fly = global.fly;
+     fly = global.fly;
     direction = global.gameplayCam.getDirection();
     coords = global.gameplayCam.getCoord();
 
-    mp.game.graphics.drawText(`Coords: ${JSON.stringify(coords)}`, [0.5, 0.005], {
-      font: 0,
-      color: [255, 255, 255, 185],
-      scale: [0.3, 0.3],
-      outline: true,
-    });
-    mp.game.graphics.drawText(`pointAtCoord: ${JSON.stringify(pointingAt(fly.point_distance).position)}`, [0.5, 0.025], {
-      font: 0,
-      color: [255, 255, 255, 185],
-      scale: [0.3, 0.3],
-      outline: true,
-    });
-  },
-  "cNoclip-Update" : (fly) => {
-    fly.flying = fly;
-
+    // mp.game.graphics.drawText(`Coords: ${JSON.stringify(coords)}`, [0.5, 0.005], {
+    //   font: 0,
+    //   color: [255, 255, 255, 185],
+    //   scale: [0.3, 0.3],
+    //   outline: true,
+    // });
+    // mp.game.graphics.drawText(`pointAtCoord: ${JSON.stringify(pointingAt(fly.point_distance).position)}`, [0.5, 0.025], {
+    //   font: 0,
+    //   color: [255, 255, 255, 185],
+    //   scale: [0.3, 0.3],
+    //   outline: true,
+    // });
     const player = mp.players.local;
 
     player.setInvincible(fly.flying);
@@ -126,6 +122,9 @@ mp.events.add({
     }
 
     mp.game.graphics.notify(fly.flying ? 'Fly: ~g~Enabled' : 'Fly: ~r~Disabled');
+  },
+  "cNoclip-Update" : (fly) => {
+    fly.flying = fly;
   },
   "getCamCoords": (name) => {
     mp.events.callRemote('saveCamCoords', JSON.stringify(coords), JSON.stringify(pointingAt(fly.point_distance)), name);
