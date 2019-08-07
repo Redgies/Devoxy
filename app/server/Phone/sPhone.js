@@ -203,7 +203,7 @@ class Phone {
 
 async function createContact(d)
 {
-    await mysc.query(`INSERT INTO phoneContacts (user_id, phone, firstName, lastName) VALUES ('${d.guid}', '${d.phone}', '${d.firstName}', '${d.lastName}')`);
+    await misc.query(`INSERT INTO phoneContacts (user_id, phone, firstName, lastName) VALUES ('${d.guid}', '${d.phone}', '${d.firstName}', '${d.lastName}')`);
 }
 
 async function updateContact(d)
