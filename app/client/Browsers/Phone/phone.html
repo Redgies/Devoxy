@@ -22,8 +22,7 @@
                 <ul>
                     <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
                         <div class="avatar">NA</div>
-                        <h3 v-if="phone == talk.sender">{{ talk.receiver }}</h3>
-                        <h3 v-else>{{ talk.sender }}</h3>
+                        <h3 >{{ talk.firstName }} {{ talk.lastName }}</h3>
                         <span class="time">{{ talk.time | format }}</span>
                         <i class="fa fa-chevron-right"></i>
                         <p>{{ talk.text }}</p>
@@ -341,7 +340,21 @@
                     // ENTRER DANS LES MESSAGES
                     if (this.homeFooterSelection == 3) {
                         for (let i = 0; i < this.d.talks.length; i++) {
-                            if (this.currentLi == i) this.currentTalk = this.d.talks[i].id;
+                            if(this.currentLi == i) this.currentTalk = this.d.talks[i].id;
+
+                            var contactNumber = this.phone == this.d.talks[i].sender ? this.d.talks[i].receiver : this.d.stalks[i].sender;
+
+                            this.d.talks[i].firstName = contactNumber;
+                            this.d.talks[i].lastName = 'A';
+
+                            for(let j = 0; j < this.d.contacts.length; j++)
+                            {
+                                if(contactNumber == this.d.contacts[j].phone)
+                                {
+                                    this.d.talks[i].firstName = this.d.contacts[j].firstName;
+                                    this.d.talks[i].lastName = this.d.contacts[j].lastName;
+                                }
+                            }
                         }
 
                         this.homeFooterSelection = 0;
@@ -372,6 +385,7 @@
                             if(i != this.currentLi) continue;
 
                             this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
+                            this.talkName = this.talkNumber;
 
                             for(let j = 0; j < this.d.contacts.length; j++) {
                                 if (this.talkNumber == this.d.contacts[j].phone) {
