@@ -184,11 +184,11 @@ mp.events.add("pointingStop", (player) => {
     player.stopAnimation();
 });
 
-mp.events.add(
-    "playerDeath": (player) => {
+mp.events.add({
+    "playerDeath" : (player) => {
         player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
     },
-    "sHospital-SpawnAfterDeath": (player) => {
+    "sHospital-SpawnAfterDeath" : (player) => {
         if (!player.loggedIn) return;
         player.spawn(new mp.Vector3(player.position));
         player.health = 1;
@@ -203,7 +203,7 @@ mp.events.add(
         player.tp(tp);
         misc.log.debug(`${player.name} transfered to Hospital. Fine: $${pay}`);
     }
-);
+});
 
 // Save Player bei allem möglichem
 
