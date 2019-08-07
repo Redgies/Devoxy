@@ -355,3 +355,13 @@
     line-height: 29px;
     text-indent: 26px;
 }
+
+.btn-confirm {
+    background: #0984e3;
+    position: absolute;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    bottom: 0px;
+    width: 100%;
+}
