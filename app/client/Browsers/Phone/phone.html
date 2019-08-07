@@ -243,6 +243,7 @@
             newMessage: '',
             newNumber: '000000',
             textMessage: '',
+            contactId: 0,
             contactPhone: '',
             contactFirstName: '',
             contactLastName: '',
@@ -349,7 +350,6 @@
                         this.homeFooterSelection = 0;
                         this.currentLi = 0;
                         return this.currentTab = 32;
-                        
                     }
 
                     // ENTRER DANS LES MESSAGES
@@ -373,10 +373,31 @@
                                 this.contactPhone = this.d.contacts[i].phone;
                                 this.contactFirstName = this.d.contacts[i].firstName;
                                 this.contactLastName = this.d.contacts[i].lastName;
+                                this.contactId = this.d.contacts[i].id;
                             }
                         }
                         this.currentTab = 34;
+
+                        mp.trigger("cShowCursor");
+
                         return 1;
+                    }
+
+                    // UPDATE UN CONTACT
+                    if(this.currentTab == 34)
+                    {
+                        if(document.activeElement.id == 'confirmUpdateContact') {
+                            const data = {
+                                id: this.contactId,
+                                phone: this.contactPhone,
+                                firstName: this.contactFirstName,
+                                lastName: this.contactLastName,
+                            }
+
+                            mp.trigger("cMisc-CallServerEvent", "sPhone-updateContact", JSON.stringify(data));
+
+                            mp.trigger("cHideCursor");
+                        }
                     }
 
 

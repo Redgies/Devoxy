@@ -33,6 +33,16 @@ class Phone {
                 misc.log.debug(`${player.name} update phone`);
             },
 
+            "sPhone-updateContact": (player, str) => {
+                const d = JSON.parse(str);
+
+                updateContact(d);
+
+                let execute = `app.d.contact = ${this.getContactsForPlayer(player)};`;
+                player.call("cPhone-Update", [execute]);
+                misc.log.debug(`${player.name} phone update contact`);
+            },
+
             "sPhone-sendMessage": (player, str) => {
                 const d = JSON.parse(str);
 
@@ -172,6 +182,7 @@ class Phone {
             if(contactsList[i].guid !== player.guid) continue;
 
 			const mVar = { 
+                id: contactsList[i].id,
                 phone: contactsList[i].phone,
                 firstName: contactsList[i].firstName,
                 lastName: contactsList[i].lastName,
@@ -185,12 +196,15 @@ class Phone {
 	}
 }
 
+async function updateContact(d)
+{
+    await misc.query(`UPDATE phoneContacts SET phone = '${d.phone}', firstName = '${d.fisrtName}', lastName = '${d.lastName}' WHERE id = '${d.id}'`);
+}
+
 async function createTalk(d)
 {
     await misc.query(`INSERT INTO phoneTalks (sender, receiver) VALUES ('${d.sender}', '${d.receiver}');`);
     const data = await misc.query(`SELECT id FROM phoneTalks ORDER BY id DESC LIMIT 1`);
-
-    console.log(data[0].id)
 
     await misc.query(`INSERT INTO phoneMessages (talk, sender, receiver, text) VALUES ('${data[0].id}', '${d.sender}', '${d.receiver}', '${d.text}');`);
 }
