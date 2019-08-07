@@ -20,22 +20,18 @@ let coords = null;
 
 mp.events.add({
   "render" : () => {
-    // const controls = mp.game.controls;
-    // const fly = global.fly;
-    // direction = global.gameplayCam.getDirection();
-    // coords = global.gameplayCam.getCoord();
+    const controls = mp.game.controls;
+    const fly = global.fly;
+    direction = global.gameplayCam.getDirection();
+    coords = global.gameplayCam.getCoord();
 
-    // const player = mp.players.local;
+    const player = mp.players.local;
 
-    // player.setInvincible(fly.flying);
-    // player.freezePosition(fly.flying);
-    // player.setAlpha(fly.flying ? 0 : 255);
-
-    // if (!fly.flying && !controls.isControlPressed(0, controlsIds.Space)) {
-    //   const position = mp.players.local.position;
-    //   position.z = mp.game.gameplay.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
-    //   mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
-    // }
+    if (!fly.flying && !controls.isControlPressed(0, controlsIds.Space)) {
+      const position = mp.players.local.position;
+      position.z = mp.game.gameplay.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
+      mp.players.local.setCoordsNoOffset(position.x, position.y, position.z, false, false, false);
+    }
    
     // if (fly.flying) {
     //   let updated = false;
@@ -103,7 +99,7 @@ mp.events.add({
     player.freezePosition(global.fly);
     player.setAlpha(global.fly ? 0 : 255);
 
-    mp.game.graphics.notify(global.fly ? 'NoClip: ~g~activé' : 'Fly: ~r~désactivé');
+    mp.game.graphics.notify(global.fly ? 'NoClip: ~g~activé' : 'NoClip: ~r~désactivé');
   },
   "getCamCoords": (name) => {
     mp.events.callRemote('saveCamCoords', JSON.stringify(coords), JSON.stringify(pointingAt(fly.point_distance)), name);
