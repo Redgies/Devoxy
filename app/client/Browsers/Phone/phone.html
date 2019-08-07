@@ -1,86 +1,99 @@
 <html>
-    <meta charset="utf-8">
-    
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <script src="../vue.js"></script>
-    <script src="../moment.js"></script>
+<meta charset="utf-8">
 
-    <script src="js/autosize.js"></script>
-	<body>
-		<div id="app">
-            <div class="phone" style="background: url('images/wallpaper.png'); background-size: 100% 100%;">
-                <img src="images/iphone-x.png">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<script src="../vue.js"></script>
+<script src="../moment.js"></script>
 
-                <div class="phone-messages animated zoomIn faster" v-if="currentTab === 3">
-                    <div class="head">
-                        <h1>Messages</h1>
-                        <i class="fa fa-comment"></i>
-                    </div>  
-                    <ul>
-                        <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
-                            <div class="avatar">NA</div>
-                            <h3 v-if="phone == talk.sender">{{ talk.receiver }}</h3>
-                            <h3 v-else>{{ talk.sender }}</h3>
-                            <span class="time">{{ talk.time | format }}</span>
-                            <i class="fa fa-chevron-right"></i>
-                            <p>{{ talk.text }}</p>
-                        </li>
-                    </ul>
+<script src="js/autosize.js"></script>
+
+<body>
+    <div id="app">
+        <div class="phone" style="background: url('images/wallpaper.png'); background-size: 100% 100%;">
+            <img src="images/iphone-x.png">
+
+            <div class="phone-messages animated zoomIn faster" v-if="currentTab === 3">
+                <div class="head">
+                    <h1>Messages</h1>
+                    <i class="fa fa-comment"></i>
                 </div>
+                <ul>
+                    <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
+                        <div class="avatar">NA</div>
+                        <h3 v-if="phone == talk.sender">{{ talk.receiver }}</h3>
+                        <h3 v-else>{{ talk.sender }}</h3>
+                        <span class="time">{{ talk.time | format }}</span>
+                        <i class="fa fa-chevron-right"></i>
+                        <p>{{ talk.text }}</p>
+                    </li>
+                </ul>
+            </div>
 
-                <div class="phone-conversation" v-if="currentTab === 34">
-                    <div class="head" style="height: 100px;">
-                        <i class="fa fa-chevron-left"></i>
-                        <div class="avatar" style="position: absolute; width: 50px; left: calc(50% - 31px); transform: translateX(-50%); height: 50px; font-size: 19px; line-height: 50px; margin-top: 15px;">NA</div>
-                        <h1 style="width: 100%; text-align: center; text-indent: 0px; margin-left: -16px; margin-top: 70px; font-size: 18px;">343543534</h1>
-                    </div>
-                    <span class="sms-to" style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Numéro</span>
-                    <input type="text" v-model="contactPhone" style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
-                    <br><br><br>
-                    <span class="sms-to" style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Prénom</span>
-                    <input type="text" v-model="contactFirstName" style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
-                    <span class="sms-to" style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Nom</span>
-                    <input type="text" v-model="contactLastName" style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
+            <div class="phone-conversation" v-if="currentTab === 34">
+                <div class="head" style="height: 100px;">
+                    <i class="fa fa-chevron-left"></i>
+                    <div class="avatar"
+                        style="position: absolute; width: 50px; left: calc(50% - 31px); transform: translateX(-50%); height: 50px; font-size: 19px; line-height: 50px; margin-top: 15px;">{{ contactFirstName | firstLetter }}{{ contactLastName | firstLetter }}</div>
+                    <h1
+                        style="width: 100%; text-align: center; text-indent: 0px; margin-left: -16px; margin-top: 70px; font-size: 18px;">
+                        {{ contactFirstName }} <b>{{ contactLastName }}</b></h1>
                 </div>
+                <span class="sms-to"
+                    style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Numéro</span>
+                <input type="text" v-model="contactPhone"
+                    style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
+                <br><br><br>
+                <span class="sms-to"
+                    style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Prénom</span>
+                <input type="text" v-model="contactFirstName"
+                    style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
+                <span class="sms-to"
+                    style="position: initial; color: #000; font-size: 13px; margin-top: 3px; margin-left: 24px;">Nom</span>
+                <input type="text" v-model="contactLastName"
+                    style="background: none; font-size: 14px; height: 27px; outline: none; text-indent: 24px; color: #0984e3; border-bottom: 1px solid #F1F1F1;">
+            </div>
 
-                <div class="phone-messages" v-if="currentTab === 32">
-                    <div class="head">
-                        <h1>Contacts</h1>
-                        <i class="fa fa-plus"></i>
-                    </div>
-                    <ul class="contacts">
-                        <li v-for="contact, i) in d.contacts":class="[{ active: currentLi === i }]">
-                            {{ contact.firstName}} <b>{{ contact.lastName }}</b>
-                        </li>
-                    </ul>
+            <div class="phone-messages" v-if="currentTab === 32">
+                <div class="head">
+                    <h1>Contacts</h1>
+                    <i class="fa fa-plus"></i>
                 </div>
+                <ul class="contacts">
+                    <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
+                        {{ contact.firstName}} <b>{{ contact.lastName }}</b>
+                    </li>
+                </ul>
+            </div>
 
-                <div class="phone-conversation" v-if="currentTab === 31">
-                    <div class="head">
-                        <h1 style="width: 100%; text-align: center; text-indent: 0px; margin-left: -16px; margin-top: 18px; font-size: 15px;">Nouveau message</h1>
-                    </div>
-                    <span class="sms-to">À :</span>
-                    <input type="text" v-model="newNumber">
-                    <div class="reply" id="reply-div">
-                        <textarea id="reply" rows="3" v-model="newMessage"></textarea>
-                        <button class="send" type="button" id="btnNewSms"><i class="fa fa-arrow-up"></i></button>
-                    </div>
+            <div class="phone-conversation" v-if="currentTab === 31">
+                <div class="head">
+                    <h1
+                        style="width: 100%; text-align: center; text-indent: 0px; margin-left: -16px; margin-top: 18px; font-size: 15px;">
+                        Nouveau message</h1>
                 </div>
+                <span class="sms-to">À :</span>
+                <input type="text" v-model="newNumber">
+                <div class="reply" id="reply-div">
+                    <textarea id="reply" rows="3" v-model="newMessage"></textarea>
+                    <button class="send" type="button" id="btnNewSms"><i class="fa fa-arrow-up"></i></button>
+                </div>
+            </div>
 
-                <div class="phone-conversation" v-if="currentTab === 30">
-                    <div class="head">
-                        <i class="fa fa-chevron-left"></i>
-                        <h1>{{ talkName}}</h1>
-                    </div>
-                    <div id="chat" class="chat">
-                        <div v-for="(msg, j) in d.messages" class="messages" :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
-                            <div class="message last" v-html="msg.text">
-                                {{ msg.text | nl2br }}
-                            </div>
+            <div class="phone-conversation" v-if="currentTab === 30">
+                <div class="head">
+                    <i class="fa fa-chevron-left"></i>
+                    <h1>{{ talkName}}</h1>
+                </div>
+                <div id="chat" class="chat">
+                    <div v-for="(msg, j) in d.messages" class="messages"
+                        :class="{ 'mine' : msg.sender == phone, 'yours' : msg.sender != phone}">
+                        <div class="message last" v-html="msg.text">
+                            {{ msg.text | nl2br }}
                         </div>
-                        <!-- <div class="messages mine">
+                    </div>
+                    <!-- <div class="messages mine">
                             <div class="message last">
                                 sdfsdfds
                             </div>
@@ -185,315 +198,293 @@
                                 sdfsdfds
                             </div>
                         </div> -->
-                        <br><br><br><br>
-                    </div>
-                    <div class="reply" id="reply-div">
-                        <textarea id="reply" rows="3" v-model="textMessage"></textarea>
-                        <button class="send" type="button" id="btnSms"><i class="fa fa-arrow-up"></i></button>
-                    </div>
+                    <br><br><br><br>
                 </div>
-
-                <div class="phone-calls animated zoomIn faster" v-if="currentTab === 2">
-                    
-                </div>
-
-                
-                
-                <div class="phone-footer" v-if="currentTab === 0">
-                    <a class="contact" :class="{ 'active' : homeFooterSelection == 1}"></a>
-                    <a class="call" :class="{ 'active' : homeFooterSelection == 2}"></a>
-                    <a class="sms" :class="{ 'active' : homeFooterSelection == 3}"></a>
-                    <a class="cog" :class="{ 'active' : homeFooterSelection == 4}"></a>
+                <div class="reply" id="reply-div">
+                    <textarea id="reply" rows="3" v-model="textMessage"></textarea>
+                    <button class="send" type="button" id="btnSms"><i class="fa fa-arrow-up"></i></button>
                 </div>
             </div>
-		</div>
-	</body>
+
+            <div class="phone-calls animated zoomIn faster" v-if="currentTab === 2">
+
+            </div>
+
+
+
+            <div class="phone-footer" v-if="currentTab === 0">
+                <a class="contact" :class="{ 'active' : homeFooterSelection == 1}"></a>
+                <a class="call" :class="{ 'active' : homeFooterSelection == 2}"></a>
+                <a class="sms" :class="{ 'active' : homeFooterSelection == 3}"></a>
+                <a class="cog" :class="{ 'active' : homeFooterSelection == 4}"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
 
 
 
 <script>
-moment.locale("fr",{months:"janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),monthsShort:"janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),monthsParseExact:!0,weekdays:"dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),weekdaysShort:"dim._lun._mar._mer._jeu._ven._sam.".split("_"),weekdaysMin:"Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[Aujourd’hui à] LT",nextDay:"[Demain à] LT",nextWeek:"dddd [à] LT",lastDay:"[Hier à] LT",lastWeek:"dddd [dernier à] LT",sameElse:"L"},relativeTime:{future:"dans %s",past:"il y a %s",s:"quelques secondes",m:"une minute",mm:"%d minutes",h:"une heure",hh:"%d heures",d:"un jour",dd:"%d jours",M:"un mois",MM:"%d mois",y:"un an",yy:"%d ans"},dayOfMonthOrdinalParse:/\d{1,2}(er|e)/,ordinal:function(e){return e+(1===e?"er":"e")},meridiemParse:/PD|MD/,isPM:function(e){return"M"===e.charAt(0)},meridiem:function(e,a,r){return e<12?"PD":"MD"},week:{dow:1,doy:4}});
+    moment.locale("fr", { months: "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"), monthsShort: "janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"), monthsParseExact: !0, weekdays: "dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"), weekdaysShort: "dim._lun._mar._mer._jeu._ven._sam.".split("_"), weekdaysMin: "Di_Lu_Ma_Me_Je_Ve_Sa".split("_"), weekdaysParseExact: !0, longDateFormat: { LT: "HH:mm", LTS: "HH:mm:ss", L: "DD/MM/YYYY", LL: "D MMMM YYYY", LLL: "D MMMM YYYY HH:mm", LLLL: "dddd D MMMM YYYY HH:mm" }, calendar: { sameDay: "[Aujourd’hui à] LT", nextDay: "[Demain à] LT", nextWeek: "dddd [à] LT", lastDay: "[Hier à] LT", lastWeek: "dddd [dernier à] LT", sameElse: "L" }, relativeTime: { future: "dans %s", past: "il y a %s", s: "quelques secondes", m: "une minute", mm: "%d minutes", h: "une heure", hh: "%d heures", d: "un jour", dd: "%d jours", M: "un mois", MM: "%d mois", y: "un an", yy: "%d ans" }, dayOfMonthOrdinalParse: /\d{1,2}(er|e)/, ordinal: function (e) { return e + (1 === e ? "er" : "e") }, meridiemParse: /PD|MD/, isPM: function (e) { return "M" === e.charAt(0) }, meridiem: function (e, a, r) { return e < 12 ? "PD" : "MD" }, week: { dow: 1, doy: 4 } });
 
-const app = new Vue({
-	el: '#app',
-	data: {
-        homeFooterSelection: 1,
-        currentTab: 0,
-        currentLi: 0,
-        phone: 0,       // MON NUMERO
-        talkNumber: 0, // NUMERO DU DESTINATAIRE
-        talkName: '',
-        currentTalk: 0,
-        newMessage: '',
-        newNumber: '000000',
-        textMessage: '',
-        contactPhone: '',
-        contactFirstName: '',
-        contactLastName: '',
-		d: {
-            messages: [
-                
-            ],
-            talks: [
+    const app = new Vue({
+        el: '#app',
+        data: {
+            homeFooterSelection: 1,
+            currentTab: 0,
+            currentLi: 0,
+            phone: 0,       // MON NUMERO
+            talkNumber: 0, // NUMERO DU DESTINATAIRE
+            talkName: '',
+            currentTalk: 0,
+            newMessage: '',
+            newNumber: '000000',
+            textMessage: '',
+            contactPhone: '',
+            contactFirstName: '',
+            contactLastName: '',
+            d: {
+                messages: [
 
-            ],
-            contats: [
-                
-            ]
-		},
-    },
-    created() {
-        this.updatePlayerMessages();
-        this.timer = setInterval(this.updatePlayerMessages, 500);
+                ],
+                talks: [
 
-        window.addEventListener('keydown', (e) => {
-            
-            // mp.gui.cursor.visible = false;
+                ],
+                contats: [
 
-            if(e.key == 'Backspace') {
-                var reply = document.getElementById("reply");
+                ]
+            },
+        },
+        created() {
+            this.updatePlayerMessages();
+            this.timer = setInterval(this.updatePlayerMessages, 500);
 
-                if(document.activeElement === reply)
-                    return;
+            window.addEventListener('keydown', (e) => {
 
-                if(this.currentTab == 0)
-                {
-                    mp.trigger("cCloseCef");
+                // mp.gui.cursor.visible = false;
+
+                if (e.key == 'Backspace') {
+                    var reply = document.getElementById("reply");
+
+                    if (document.activeElement === reply)
+                        return;
+
+                    if (this.currentTab == 0) {
+                        mp.trigger("cCloseCef");
+                    }
+                    if (this.currentTab == 3 || this.currentTab == 32)
+                        this.currentTab = 0;
+                    if (this.currentTab == 30 || this.currentTab == 31)
+                        this.currentTab = 3;
+                    if (this.currentTab == 33 || this.currentTab == 34)
+                        this.currentTab = 32;
+
                 }
-                if(this.currentTab == 3 || this.currentTab == 32)
-                    this.currentTab = 0;
-                if(this.currentTab == 30 || this.currentTab == 31)
-                    this.currentTab = 3;
-                if(this.currentTab == 33 || this.currentTab == 34)
-                    this.currentTab = 32;
+                if (e.key == 'ArrowLeft') {
 
-            }
-            if(e.key == 'ArrowLeft') {
-            
-                if(this.currentTab == 0)
-                {
-                    this.homeFooterSelection--;
-                    if(this.homeFooterSelection < 1) this.homeFooterSelection = 4;
-                }
-            }
-            if(e.key == 'ArrowRight') {
-                if(this.currentTab == 0)
-                {
-                    this.homeFooterSelection++;
-                    if(this.homeFooterSelection > 4) this.homeFooterSelection = 1;
-                }
-            }
-            if(e.key == 'ArrowDown') {
-                if(this.currentTab == 3)
-                {
-                    this.currentLi++;
-
-                    for(let i = 0; i < this.d.talks.length; i++)
-                    {
-                        if(this.currentLi == i) this.currentTalk = this.d.talks[i].id;
+                    if (this.currentTab == 0) {
+                        this.homeFooterSelection--;
+                        if (this.homeFooterSelection < 1) this.homeFooterSelection = 4;
                     }
                 }
-                if(this.currentTab == 32)
-                {
-                    this.currentLi++;
-                }
-                if(this.currentTab == 30)
-                    this.scrollToBottom("chat");
-                    
-            }
-            if(e.key == 'ArrowUp') {
-                if(this.currentTab == 3)
-                {
-                    this.currentLi--;
-                    if(this.currentLi <= 0)
-                        this.currentLi = 0;
-
-                    for(let i = 0; i < this.d.talks.length; i++)
-                    {
-                        if(this.currentLi == i) this.currentTalk = this.d.talks[i].id;
+                if (e.key == 'ArrowRight') {
+                    if (this.currentTab == 0) {
+                        this.homeFooterSelection++;
+                        if (this.homeFooterSelection > 4) this.homeFooterSelection = 1;
                     }
                 }
-                if(this.currentTab == 32)
-                {
-                    this.currentLi--;
-                    if(this.currentLi <= 0)
-                        this.currentLi = 0;
-                }
-                if(this.currentTab == 30)
-                    this.scrollToTop("chat");
-                    
-            }
-            if(e.key == 'Enter') {
-                // ENTRER DANS LES MESSAGES
-                if(this.homeFooterSelection == 3)
-                {
-                    for(let i = 0; i < this.d.talks.length; i++)
-                    {
-                        if(this.currentLi == i) this.currentTalk = this.d.talks[i].id;
-                    }
+                if (e.key == 'ArrowDown') {
+                    if (this.currentTab == 3) {
+                        this.currentLi++;
 
-                    return this.currentTab = 3;
-                }
-
-                // ENTRER DANS UN CONTACT
-                if(this.currentTab == 32)
-                {
-                    for(let i = 0; i < this.d.contacts.length; i++)
-                    {
-                        if(this.currentLi == i)
-                        {
-                            this.contactPhone = this.d.contacts[i].phone;
-                            this.contactFirstName = this.d.contacts[i].firstName;
-                            this.contactLastName = this.d.contacts[i].lastName;
+                        for (let i = 0; i < this.d.talks.length; i++) {
+                            if (this.currentLi == i) this.currentTalk = this.d.talks[i].id;
                         }
                     }
-                    this.currentTab = 34;
-                    return 1;
-                }
-
-
-                if(this.homeFooterSelection == 1)
-                {
-                    return this.currentTab = 32;
-                }
-
-
-                // ENTRER DANS UNE CONVERSATION
-                if(this.currentTab == 3)
-                {
-                    this.currentTab = 30;
-                    for(let i = 0; i < this.d.talks.length; i++)
-                    {
-                        if(i != this.currentLi) continue;
-
-                        this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
-
-                        for(let i = 0; i < this.d.contacts.length; i++)
-                        {
-                            if(this.talkNumber == d.contacts[i].phone)
-                            {
-                                this.talkName = this.d.contacts[i].firstName + ' ' + this.d.contacts[i].lastName;
-                            }
-                        }
+                    if (this.currentTab == 32) {
+                        this.currentLi++;
                     }
+                    if (this.currentTab == 30)
+                        this.scrollToBottom("chat");
 
-                    setTimeout(function() {
-                        var element = document.getElementById("chat");
-                        element.scrollTop = element.scrollHeight;
-                    }, 50); 
-                    
-                    return 1;
                 }
-                // NOUVELLE CONVERSATION
-                if(this.currentTab == 31)
-                {
-                    // mp.gui.cursor.visible = true;
-
-                    if(document.activeElement.id == 'btnNewSms')
-                    {
-                        const data = {
-                            sender: this.phone,
-                            receiver: this.newNumber,
-                            text: this.newMessage,
-                        }
-
-                        if(data.sender == data.receiver) 
-                        {
-                            this.currentTab = 3;
+                if (e.key == 'ArrowUp') {
+                    if (this.currentTab == 3) {
+                        this.currentLi--;
+                        if (this.currentLi <= 0)
                             this.currentLi = 0;
 
-                            mp.game.graphics.notify("~r~Vous ne pouvez pas vous envoyer de SMS.");
-                            return 1;
+                        for (let i = 0; i < this.d.talks.length; i++) {
+                            if (this.currentLi == i) this.currentTalk = this.d.talks[i].id;
+                        }
+                    }
+                    if (this.currentTab == 32) {
+                        this.currentLi--;
+                        if (this.currentLi <= 0)
+                            this.currentLi = 0;
+                    }
+                    if (this.currentTab == 30)
+                        this.scrollToTop("chat");
+
+                }
+                if (e.key == 'Enter') {
+                    // ENTRER DANS LES MESSAGES
+                    if (this.homeFooterSelection == 3) {
+                        for (let i = 0; i < this.d.talks.length; i++) {
+                            if (this.currentLi == i) this.currentTalk = this.d.talks[i].id;
                         }
 
-                        this.talkNumber = data.receiver;
-
-                        this.newNumber = '000000';
-                        this.newMessage = '';
-
-                        mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
-
-                        // mp.gui.cursor.visible = false;
+                        return this.currentTab = 3;
                     }
-                } 
-                if(this.currentTab == 30) 
-                {
-                    if(document.activeElement.id == 'btnSms')
-                    {
-                        const data = {
-                            talk: this.currentTalk,
-                            sender: this.phone,
-                            receiver: this.talkNumber,
-                            text: this.textMessage,
-                            talkId: this.currentTalk
+
+                    // ENTRER DANS UN CONTACT
+                    if (this.currentTab == 32) {
+                        for (let i = 0; i < this.d.contacts.length; i++) {
+                            if (this.currentLi == i) {
+                                this.contactPhone = this.d.contacts[i].phone;
+                                this.contactFirstName = this.d.contacts[i].firstName;
+                                this.contactLastName = this.d.contacts[i].lastName;
+                            }
+                        }
+                        this.currentTab = 34;
+                        return 1;
+                    }
+
+
+                    if (this.homeFooterSelection == 1) {
+                        return this.currentTab = 32;
+                    }
+
+
+                    // ENTRER DANS UNE CONVERSATION
+                    if (this.currentTab == 3) {
+                        this.currentTab = 30;
+                        for (let i = 0; i < this.d.talks.length; i++) {
+                            if (i != this.currentLi) continue;
+
+                            this.talkNumber = this.phone === this.d.talks[i].receiver ? this.d.talks[i].sender : this.d.talks[i].receiver;
+
+                            for (let j = 0; j < this.d.contacts.length; j++) {
+                                if (this.talkNumber == this.d.contacts[j].phone) {
+                                    this.talkName = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
+                                }
+                            }
                         }
 
-                        mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+                        setTimeout(function () {
+                            var element = document.getElementById("chat");
+                            element.scrollTop = element.scrollHeight;
+                        }, 50);
 
-                        this.textMessage = '';
+                        return 1;
+                    }
+                    // NOUVELLE CONVERSATION
+                    if (this.currentTab == 31) {
+                        // mp.gui.cursor.visible = true;
+
+                        if (document.activeElement.id == 'btnNewSms') {
+                            const data = {
+                                sender: this.phone,
+                                receiver: this.newNumber,
+                                text: this.newMessage,
+                            }
+
+                            if (data.sender == data.receiver) {
+                                this.currentTab = 3;
+                                this.currentLi = 0;
+
+                                mp.game.graphics.notify("~r~Vous ne pouvez pas vous envoyer de SMS.");
+                                return 1;
+                            }
+
+                            this.talkNumber = data.receiver;
+
+                            this.newNumber = '000000';
+                            this.newMessage = '';
+
+                            mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
+
+                            // mp.gui.cursor.visible = false;
+                        }
+                    }
+                    if (this.currentTab == 30) {
+                        if (document.activeElement.id == 'btnSms') {
+                            const data = {
+                                talk: this.currentTalk,
+                                sender: this.phone,
+                                receiver: this.talkNumber,
+                                text: this.textMessage,
+                                talkId: this.currentTalk
+                            }
+
+                            mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+
+                            this.textMessage = '';
+                        }
                     }
                 }
-            }
-            if(e.key == 'n') {
-                if(this.currentTab == 3)
-                {
-                    return this.currentTab = 31;
+                if (e.key == 'n') {
+                    if (this.currentTab == 3) {
+                        return this.currentTab = 31;
+                    }
+                    if (this.currentTab == 32) {
+                        return this.currentTab = 33;
+                    }
                 }
-                if(this.currentTab == 32)
-                {
-                    return this.currentTab = 33;
+            });
+        },
+        computed: {
+            currentTabComponent: function () {
+                return 'tab' + this.currentTab;
+            },
+        },
+        methods: {
+            updatePlayerMessages: function () {
+                const data = {
+                    talkId: this.currentTalk,
                 }
-            }
-        });
-    }, 
-	computed: {
-		currentTabComponent: function () {
-			return 'tab' + this.currentTab;
-		},
-	},
-	methods: {
-        updatePlayerMessages: function() {
-            const data = {
-                talkId: this.currentTalk,
-            }
 
-            mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+                mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
+            },
+            scrollBottom: function (id) {
+                var element = document.getElementById(id);
+                console.log(element);
+                element.scrollTop = element.scrollHeight;
+            },
+            scrollToBottom: function (id) {
+                var element = document.getElementById(id);
+                element.scrollTop += 20;
+            },
+            scrollToTop: function (id) {
+                var element = document.getElementById(id);
+                element.scrollTop -= 20;
+            },
         },
-        scrollBottom: function(id) {
-            var element = document.getElementById(id);
-            console.log(element);
-            element.scrollTop = element.scrollHeight;
-        },
-        scrollToBottom: function(id) {
-            var element = document.getElementById(id);
-            element.scrollTop += 20;
-        },
-        scrollToTop: function(id) {
-            var element = document.getElementById(id);
-            element.scrollTop -= 20;
-        },
-    },
-    filters: {
-		format(date) {
-            var now = moment();
+        filters: {
+            firstLetter(str) {
+                return str.charAt(0);
+            },
+            format(date) {
+                var now = moment();
 
-            if(moment(date).diff(now, 'days') <= 0)
-                return moment(date).format('LT');
-            else if(moment(date).diff(now, 'days') <= 1)
-                return moment(date).format('Hier');
-            else if(moment(date).diff(now, 'days') <= 7)
-                return moment(date).format('ddd');
-            else if(moment(date).diff(now, 'days') >= 7)
-                return moment(date).format('D/MM/YYYY');
-        },
-        nl2br(str) {
-            if(typeof str === 'undefined' || str === null) {
-                return '';
+                if (moment(date).diff(now, 'days') <= 0)
+                    return moment(date).format('LT');
+                else if (moment(date).diff(now, 'days') <= 1)
+                    return moment(date).format('Hier');
+                else if (moment(date).diff(now, 'days') <= 7)
+                    return moment(date).format('ddd');
+                else if (moment(date).diff(now, 'days') >= 7)
+                    return moment(date).format('D/MM/YYYY');
+            },
+            nl2br(str) {
+                if (typeof str === 'undefined' || str === null) {
+                    return '';
+                }
+                var breakTag = '<br>';
+                return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
             }
-            var breakTag = '<br>';
-            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
-        }
-	},
-});
+        },
+    });
 </script>
