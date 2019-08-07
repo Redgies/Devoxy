@@ -24,7 +24,7 @@ require('./fingerpointing');
 require("./nativeui");
 require('./voice.js');
 require('./BlipCreator/index');
-require('./Basic/sNoClip');
+require('./Basic/cNoClip');
 require('./Basic/cNametag');
 // require("./MapEditor/MapEditor");
 // require("./MapEditor/object_data");
