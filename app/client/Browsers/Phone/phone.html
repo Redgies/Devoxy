@@ -311,8 +311,10 @@
                         this.currentTab = 0;
                     if (this.currentTab == 30 || this.currentTab == 31)
                         this.currentTab = 3;
-                    if (this.currentTab == 33 || this.currentTab == 34)
+                    if (this.currentTab == 33 || this.currentTab == 34 || this.currentTab == 35)
                         this.currentTab = 32;
+                    if(this.currentTab == 34 || this.currentTab == 35) 
+                        mp.trigger("cShowCursor");
 
                     mp.trigger("cHideCursor");
 
@@ -412,6 +414,7 @@
                     // UPDATE UN CONTACT
                     if(this.currentTab == 34)
                     {
+                        mp.trigger("cShowCursor");
                         if(document.activeElement.id == 'confirmUpdateContact') {
                             const data = {
                                 id: this.contactId,
@@ -429,6 +432,7 @@
                     // NOUVEAU CONTACT
                     if(this.currentTab == 35)
                     {
+                        mp.trigger("cShowCursor");
                         if(document.activeElement.id == 'confirmCreateContact') {
                             const data = {
                                 phone: this.contactPhone,

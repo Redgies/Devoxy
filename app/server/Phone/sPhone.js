@@ -38,7 +38,7 @@ class Phone {
 
                 updateContact(d);
 
-                let execute = `app.d.contact = ${this.getContactsForPlayer(player)};`;
+                let execute = `app.d.contacts = ${this.getContactsForPlayer(player)};`;
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} phone update contact`);
             },
@@ -50,7 +50,7 @@ class Phone {
 
                 createContact(d);
 
-                let execute = `app.d.contact = ${this.getContactsForPlayer(player)};`;
+                let execute = `app.d.contacts = ${this.getContactsForPlayer(player)};`;
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} phone create contact`);
             },
@@ -63,7 +63,7 @@ class Phone {
                 console.log("fdp fdp fdp");
 
                 let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
-                execute += `app.d.contact = ${this.getContactsForPlayer(player)};`;
+                execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
 
                 player.call("cPhone-Update", [execute]);
                 misc.log.debug(`${player.name} send message`);
