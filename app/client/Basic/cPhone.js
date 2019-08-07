@@ -8,6 +8,5 @@ mp.events.add({
 	},
 	"cPhone-Update" : (inject) => {
 		misc.injectCef(inject);
-	}
-	
+	}	
 });

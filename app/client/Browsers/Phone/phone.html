@@ -261,9 +261,6 @@
             this.timer = setInterval(this.updatePlayerMessages, 3000);
 
             window.addEventListener('keydown', (e) => {
-
-                // mp.gui.cursor.visible = false;
-
                 if (e.key == 'Backspace') {
                     var reply = document.getElementById("reply");
 
@@ -366,6 +363,8 @@
                     if(this.currentTab == 3) {
                         this.currentTab = 30;
 
+                        mp.trigger("cShowCursor");
+
                         for(let i = 0; i < this.d.talks.length; i++) {
                             if(i != this.currentLi) continue;
 
@@ -388,7 +387,7 @@
                     }
                     // NOUVELLE CONVERSATION
                     if (this.currentTab == 31) {
-                        // mp.gui.cursor.visible = true;
+                        mp.trigger("cShowCursor");
 
                         if (document.activeElement.id == 'btnNewSms') {
                             const data = {
@@ -412,7 +411,7 @@
 
                             mp.trigger("cMisc-CallServerEvent", "sPhone-newMessage", JSON.stringify(data));
 
-                            // mp.gui.cursor.visible = false;
+                            mp.trigger("cHideCursor");
                         }
                     }
                     if (this.currentTab == 30) {
@@ -426,6 +425,8 @@
                             }
 
                             mp.trigger("cMisc-CallServerEvent", "sPhone-sendMessage", JSON.stringify(data));
+
+                            mp.trigger("cHideCursor");
 
                             this.textMessage = '';
                         }
