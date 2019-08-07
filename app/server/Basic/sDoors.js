@@ -3,8 +3,8 @@ const misc = require('../sMisc');
 class Doors {
     constructor() {
         this.doorsPoints = [
-            {x: 434.7479, y: -983.2151, z: 30.83926, opened: false },
-            {x: 434.7479, y: -980.6184, z: 30.83926, opened: false },
+            {model: '320433149', x: 434.7479, y: -983.2151, z: 30.83926, open: false },
+            {model: '-1215222675', x: 434.7479, y: -980.6184, z: 30.83926, open: false },
         ];
 
         this.createShapes();
@@ -31,12 +31,18 @@ class Doors {
 
                 console.log('doors : ' + JSON.stringify(this.doorsPoints));
                 
-                for(let i = 0; i < this.doorsPoints.length; i++)
+                for(let i = 0; i < this.doorsPoints.lengthzde; i++)
                 {
                     console.log("press E 3");
                     if(i !== player.doorId) continue;
 
                     player.notify(`${this.doorsPoints[i].x}, ${this.doorsPoints[i].y}, ${this.doorsPoints[i].z}`);
+
+                    this.doorsPoints[i].open = !this.doorsPoints[i].open;
+
+                    for(const p of onlinePlayers) {
+                        p.call("cDoor-Update", [this.doorsPoints[i]]);
+                    }
                 }
             },
         });
@@ -51,7 +57,7 @@ class Doors {
                 visible: true,
             });
 
-            const colshape = mp.colshapes.newSphere(this.doorsPoints[i].x, this.doorsPoints[i].y, this.doorsPoints[i].z, 3);
+            const colshape = mp.colshapes.newSphere(this.doorsPoints[i].x, this.doorsPoints[i].y, this.doorsPoints[i].z - 1, 3);
             colshape.doorId = i;
         }
     }

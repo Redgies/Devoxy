@@ -1,12 +1,7 @@
 const misc = require('../cMisc');
 
 mp.events.add({
-	"cPhone-Open" : (inject) => {
-		misc.prepareToCef(0, false, true, true);
-		misc.openCef("package://RP/Browsers/Phone/phone.html");
-		misc.injectCef(inject);
+	"cDoor-Update" : (d) => {
+        mp.game.object.doorControl(d.model, d.x, d.y, d.z, d.open, 0.0, 50.0, 0.0);
 	},
-	"cPhone-Update" : (inject) => {
-		misc.injectCef(inject);
-	}	
 });
