@@ -14,6 +14,7 @@ class Faction {
 		this.ranks = ranks;
 
 		vehicleSingletone.loadFactionVehicles(this.id);
+		this.createEvents();
 
 		factionsList.push(this);
 	}
