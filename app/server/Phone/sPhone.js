@@ -47,9 +47,10 @@ class Phone {
                 let execute = '';
 
                 for(let i = 0; i < talksList.length; i++) {
-                    if((talksList[i].sender === d.sender || talksList[i].receiver === d.sender) &&
-                    (talksList[i].sender === d.receiver || talksList[i].receiver === d.receiver))
+                    if((talksList[i].sender == d.sender || talksList[i].receiver == d.sender) &&
+                    (talksList[i].sender == d.receiver || talksList[i].receiver == d.receiver))
                     {
+                        console.log("exist : " + talksList[i].id);
                         exist = talksList[i].id;
                         break;
                     }
