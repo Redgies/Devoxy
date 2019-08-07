@@ -37,23 +37,23 @@ mp.events.add({
       let updated = false;
       const position = mp.players.local.position;
     
-    //   if (controls.isControlPressed(0, controlsIds.W)) {
-    //     if (fly.f < 8.0) { fly.f *= 1.025; }
+      if(controls.isControlPressed(0, controlsIds.W)) {
+        if (fly.f < 8.0) { fly.f *= 1.025; }
     
-    //     position.x += direction.x * fly.f;
-    //     position.y += direction.y * fly.f;
-    //     position.z += direction.z * fly.f;
-    //     updated = true;
-    //   } else if (controls.isControlPressed(0, controlsIds.S)) {
-    //     if (fly.f < 8.0) { fly.f *= 1.025; }
+        position.x += direction.x * fly.f;
+        position.y += direction.y * fly.f;
+        position.z += direction.z * fly.f;
+        updated = true;
+      } else if (controls.isControlPressed(0, controlsIds.S)) {
+        if (fly.f < 8.0) { fly.f *= 1.025; }
     
-    //     position.x -= direction.x * fly.f;
-    //     position.y -= direction.y * fly.f;
-    //     position.z -= direction.z * fly.f;
-    //     updated = true;
-    //   } else {
-    //     fly.f = 2.0;
-    //   }
+        position.x -= direction.x * fly.f;
+        position.y -= direction.y * fly.f;
+        position.z -= direction.z * fly.f;
+        updated = true;
+      } else {
+        fly.f = 2.0;
+      }
     
     //   if (controls.isControlPressed(0, controlsIds.A)) {
     //     if (fly.l < 8.0) { fly.l *= 1.025; }
@@ -91,7 +91,7 @@ mp.events.add({
     }
   },
   "cNoclip-Update" : (fly) => {
-    global.fly = fly;
+    global.fly.flying = fly;
     
     const player = mp.players.local;
   
