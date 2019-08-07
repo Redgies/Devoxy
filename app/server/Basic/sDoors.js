@@ -25,10 +25,13 @@ class Doors {
             
 			"sKeys-E" : (player) => {
                 console.log("press E");
-                if (!player.loggedIn || !player.doorId) return;
+                if(!player.loggedIn || !player.doorId) return;
+
+                console.log("press E 2");
                 
                 for(let i = 0; i < this.doorsPoints; i++)
                 {
+                    console.log("press E 3");
                     if(i !== player.doorId) continue;
 
                     player.notify(`${this.doorsPoints[i].x}, ${this.doorsPoints[i].y}, ${this.doorsPoints[i].z}`);
