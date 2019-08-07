@@ -22,8 +22,7 @@ class Faction {
 	createEvents() {
 		mp.events.addCommand({	
 			"invite" : (player, target) => {
-				player.notify("test");
-				if(!misc.isValueNumber(target) || !this.isInThisFaction(leader)) return;
+				if(!misc.isValueNumber(target) || !this.isInThisFaction(player)) return;
 
 				player.notify("faction : " + this.name);
 			},
