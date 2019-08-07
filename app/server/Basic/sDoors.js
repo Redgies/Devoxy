@@ -11,6 +11,8 @@ class Doors {
             "playerEnterColshape" : (player, shape) => {
                 if (!player.loggedIn) return;
 
+                console.log("test");
+
                 player.doorId = shape.doorId;
 
                 player.notify(`${i18n.get('basic', 'pressEToOpenMenu', player.lang)}`);
@@ -36,7 +38,7 @@ class Doors {
 
     createShapes() {
         for(let i = 0; i < this.doorsPoints.length; i++) {
-            const marker = mp.markers.new(1, new mp.Vector3(this.doorsPoints[i].x, this.doorsPoints[i].y, this.doorsPoints[i].z), 3,
+            const marker = mp.markers.new(1, new mp.Vector3(this.doorsPoints[i].x, this.doorsPoints[i].y, this.doorsPoints[i].z), 30,
             {
                 color: [255, 165, 0, 50],
                 visible: true,
