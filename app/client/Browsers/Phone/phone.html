@@ -21,8 +21,8 @@
                 </div>
                 <ul>
                     <li v-for="(talk, i) in d.talks" :class="[{ active: currentLi === i }]">
-                        <!-- <div class="avatar">{{ talk.firstName | firstLetter }}{{ talk.lastNames | secondLetter }}</div> -->
-                        <!-- <h3 >{{ talk.firstName }} {{ talk.lastName | anonyme }}</h3> -->
+                        <div class="avatar">{{ talk.firstName | firstLetter }}{{ talk.lastName | secondLetter }}</div>
+                        <h3>{{ talk.firstName }} {{ talk.lastName | anonyme }}</h3>
                         <span class="time">{{ talk.time | format }}</span>
                         <i class="fa fa-chevron-right"></i>
                         <p>{{ talk.text }}</p>
