@@ -10,6 +10,9 @@ class Doors {
         this.createShapes();
 
         mp.events.add({
+            "playerJoin" : player => {
+                player.call("cDoor-Create", [this.doorsPoints]);
+            },
             "playerEnterColshape" : (player, shape) => {
                 if (!player.loggedIn) return;
 
@@ -24,16 +27,10 @@ class Doors {
             },
             
 			"sKeys-E" : (player) => {
-                console.log("press E");
                 if(!player.loggedIn || !player.doorId) return;
 
-                console.log("press E 2");
-
-                console.log('doors : ' + JSON.stringify(this.doorsPoints));
-                
                 for(let i = 0; i < this.doorsPoints.length; i++)
                 {
-                    console.log("press E 3");
                     if(i !== player.doorId) continue;
 
                     player.outputChatBox(`${this.doorsPoints[i].x}, ${this.doorsPoints[i].y}, ${this.doorsPoints[i].z}, open : ${this.doorsPoints[i].open}`);
