@@ -103,7 +103,7 @@ class VehicleSingleton {
 					price: 1,
 					ownerId: 0,
 					whoCanOpen: JSON.stringify([player.guid]),
-					factionName: '',
+					factionId: 0,
 					numberPlate: this.generateRandomNumberPlate(),
 					primaryColor: JSON.stringify([ misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159) ]),
 					secondaryColor: JSON.stringify([ misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159) ]),
@@ -127,7 +127,7 @@ class VehicleSingleton {
 					price: 1,
 					ownerId: 0,
 					whoCanOpen: JSON.stringify([player.guid]),
-					factionName: '',
+					factionId: 0,
 					numberPlate: this.generateRandomNumberPlate(),
 					primaryColor: JSON.stringify([ misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159) ]),
 					secondaryColor: JSON.stringify([ misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159) ]),
@@ -288,8 +288,8 @@ class VehicleSingleton {
 		for (const d of data) new Vehicle(d);
 	}
 
-	async loadFactionVehicles(name) {
-		const vehicles = await misc.query(`SELECT * FROM vehicles WHERE factionName = '${name}'`);
+	async loadFactionVehicles(id) {
+		const vehicles = await misc.query(`SELECT * FROM vehicles WHERE factionId = '${name}'`);
 		for (const veh of vehicles) new Vehicle(veh);
 	}
 

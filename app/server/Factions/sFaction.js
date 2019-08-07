@@ -2,7 +2,9 @@
 const misc = require('../sMisc');
 // const clothes = require('../Character/sClothes');
 // const i18n = require('../sI18n');
-// const vehicleSingletone = require('../Basic/Vehicles/sVehicleSingletone');
+const vehicleSingletone = require('../Basic/Vehicles/sVehicleSingletone');
+
+const Police = require('./sPolice');
 
 const factionsList = [];
 
@@ -11,6 +13,29 @@ class Faction {
 		this.id = id;
 		this.name = name;
 		this.ranks = ranks;
+
+		vehicleSingletone.loadFactionVehicles(this.id);
+
+		factionsList.push(this);
+	}
+
+	createEvents() {
+		mp.events.addCommand({	
+			"invite" : (player, target) => {
+				if(!misc.isValueNumber(target) || !this.isInThisFaction(leader)) return;
+
+				player.notify("faction : " + this.name);
+			},
+		});
+
+		mp.events.add({
+			
+		});
+	}
+
+	isInThisFaction(player) {
+		if(!player.faction || player.faction !== this.id) return false;
+		return true;
 	}
 }
 new Faction();

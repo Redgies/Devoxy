@@ -35,6 +35,8 @@ class PlayerSingleton {
         player.firstName = d[0].firstName;
         player.lastName = d[0].lastName;
         player.adminLvl = d[0].adminlvl;
+        player.faction = d[0].faction;
+        player.rank = d[0].rank;
         player.phone = d[0].phone;
         player.lang = d[0].lang;
         player.fly = false;
@@ -76,9 +78,10 @@ class PlayerSingleton {
         player.lastName = false;
         player.loyality = 0;
         player.adminLvl = 0;
+        player.faction = 0;
+        player.rank = 0;
         player.fly = false;
         player.phone = 0;
-        player.faction = {};
         player.canOpen = {};
         player.canEnter = {};
         player.job = {};
