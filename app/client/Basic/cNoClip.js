@@ -21,7 +21,7 @@ let coords = null;
 mp.events.add({
   "render" : () => {
     const controls = mp.game.controls;
-     fly = global.fly;
+    const fly = global.fly;
     direction = global.gameplayCam.getDirection();
     coords = global.gameplayCam.getCoord();
 
