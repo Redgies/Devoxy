@@ -81,7 +81,7 @@ class Police extends faction {
             player.setClothes(3, 11, 0, 2);
             player.setClothes(7, 125, 0, 2);
         }
-        if(player.rank == 6)
+        if(player.rank == 7)
         {
             // player.setProp(0, 46, 0);
             // player.setClothes(8, 58, 0, 2); 
