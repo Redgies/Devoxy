@@ -191,6 +191,10 @@ class ChatSingleton {
 				}	
 			},
 
+			'c': (player, fullText, arg1, arg2, arg3, arg4) => {
+				player.setClothes(arg1, arg2, arg3, arg4);
+			},
+
 			'kill': (player, fullText, arg1) =>	{
 				if(player.adminLvl < 1) return;
 				if(!arg1)
