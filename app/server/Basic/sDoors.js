@@ -31,12 +31,12 @@ class Doors {
 
                 console.log('doors : ' + JSON.stringify(this.doorsPoints));
                 
-                for(let i = 0; i < this.doorsPoints.lengthzde; i++)
+                for(let i = 0; i < this.doorsPoints.length; i++)
                 {
                     console.log("press E 3");
                     if(i !== player.doorId) continue;
 
-                    player.notify(`${this.doorsPoints[i].x}, ${this.doorsPoints[i].y}, ${this.doorsPoints[i].z}`);
+                    player.outputChatBox(`${this.doorsPoints[i].x}, ${this.doorsPoints[i].y}, ${this.doorsPoints[i].z}`);
 
                     this.doorsPoints[i].open = !this.doorsPoints[i].open;
 
