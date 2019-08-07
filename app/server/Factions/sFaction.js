@@ -6,7 +6,7 @@ const misc = require('../sMisc');
 
 const factionsList = [];
 
-class Faction {
+class faction {
 	constructor() {
 
 	}
