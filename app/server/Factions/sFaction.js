@@ -22,7 +22,7 @@ class Faction {
 	createEvents() {
 		mp.events.addCommand({	
 			"invite" : (player, target) => {
-				// if(!misc.isValueNumber(target) || !this.isInThisFaction(player)) return;
+				if(!misc.isValueNumber(target) || !this.isInThisFaction(player)) return;
 
 				player.notify("faction : " + this.name);
 			},
@@ -34,6 +34,8 @@ class Faction {
 	}
 
 	isInThisFaction(player) {
+		player.outputChatBox("player faction : " + player.faction);
+		player.outputChatBox("this.id : " + this.id);
 		if(!player.faction || player.faction !== this.id) return false;
 		return true;
 	}
