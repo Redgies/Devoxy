@@ -11,12 +11,13 @@ const factionData = {
         "Lieutenant",
         "Capitaine",
         "Commissaire",
-    ]
+    ],
+    maxRank: 6,
 }
 
 class Police extends faction {
 	constructor() {
-        super(factionData.id, factionData.name, factionData.ranks);
+        super(factionData.id, factionData.name, factionData.ranks, factionData.maxRank);
     }
 }
 const police = new Police();

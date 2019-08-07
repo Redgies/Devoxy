@@ -8,10 +8,11 @@ const vehicleSingletone = require('../Basic/Vehicles/sVehicleSingletone');
 const factionsList = [];
 
 class Faction {
-	constructor(id, name, ranks) {
+	constructor(id, name, ranks, maxRank) {
 		this.id = id;
 		this.name = name;
 		this.ranks = ranks;
+		this.maxRank = maxRank;
 
 		vehicleSingletone.loadFactionVehicles(this.id);
 		this.createEvents();
@@ -24,7 +25,7 @@ class Faction {
 			"invite" : (player, target) => {
 				target = misc.findPlayerByIdOrNickname(target);
 				if(!target)	return player.notify("~r~Ce joueur n'est pas connecté.");
-				if(!this.isInThisFaction(player)) return;
+				if(!this.isInThisFaction(player) || !this.isFactionLeader(player)) return;
 
 				player.notify("faction : " + this.name);
 				player.notify("rank : " + this.ranks[player.rank]);
@@ -40,6 +41,11 @@ class Faction {
 		player.outputChatBox("player faction : " + player.faction);
 		player.outputChatBox("this.id : " + this.id);
 		if(!player.faction || player.faction !== this.id) return false;
+		return true;
+	}
+
+	isFactionLeader(player) {
+		if(player.rank < this.maxRank) return false;
 		return true;
 	}
 }
