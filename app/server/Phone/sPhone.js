@@ -129,6 +129,8 @@ class Phone {
     getTalksForPlayer(player) {
         const playerTalks = [];
 
+        console.log("loadtalks");
+
         for (let i = 0; i < talksList.length; i++) {
 
             if(talksList[i].sender !== player.phone && talksList[i].receiver !== player.phone) continue;
@@ -140,8 +142,10 @@ class Phone {
                 text: talksList[i].text,
                 time: talksList[i].time,
                 firstName: (player.phone == talksList[i].sender ? talksList[i].receiver : talksList[i].sender),
-                lastName: 'A',
+                lastName: 'A'
             }
+
+            console.log("first mVar");
 
             for(let j = 0; j < contactsList.length; i++)
             {
