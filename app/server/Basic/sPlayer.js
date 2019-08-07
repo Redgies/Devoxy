@@ -184,21 +184,26 @@ mp.events.add("pointingStop", (player) => {
     player.stopAnimation();
 });
 
-mp.events.add("playerDeath", (player) => {
-    if (!player.loggedIn) return;
-    player.spawn(new mp.Vector3(player.position));
-    player.health = 1;
-    player.call("cHospital-DisableHealthRegeneration");
-    player.healingSpeed = 0;
-    const posToDrop = { x: -498.184, y: -335.741, z: 34.502 };
-    const dist = player.dist(posToDrop);
-    const pay = misc.roundNum(dist / 20);
-    player.newFine(pay, `${i18n.get('sHospital', 'transferTo', player.lang)}`);
+mp.events.add(
+    "playerDeath": (player) => {
+        player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
+    },
+    "sHospital-SpawnAfterDeath": (player) => {
+        if (!player.loggedIn) return;
+        player.spawn(new mp.Vector3(player.position));
+        player.health = 1;
+        player.call("cHospital-DisableHealthRegeneration");
+        player.healingSpeed = 0;
+        const posToDrop = { x: -498.184, y: -335.741, z: 34.502 };
+        const dist = player.dist(posToDrop);
+        const pay = misc.roundNum(dist / 20);
+        player.newFine(pay, `${i18n.get('sHospital', 'transferTo', player.lang)}`);
 
-    const tp = { x: 275.446, y: -1361.11, z: 24.5378, rot: 46.77, dim: 0 };
-    player.tp(tp);
-    misc.log.debug(`${player.name} transfered to Hospital. Fine: $${pay}`);
-});
+        const tp = { x: 275.446, y: -1361.11, z: 24.5378, rot: 46.77, dim: 0 };
+        player.tp(tp);
+        misc.log.debug(`${player.name} transfered to Hospital. Fine: $${pay}`);
+    }
+);
 
 // Save Player bei allem möglichem
 
