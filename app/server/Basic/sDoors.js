@@ -36,8 +36,16 @@ class Doors {
 
     createShapes() {
         for(let i = 0; i < this.doorsPoints.length; i++) {
+            const marker = mp.markers.new(1, new mp.Vector3(this.doorsPoints[i].x, this.doorsPoints[i].y, this.doorsPoints[i].z), 3,
+            {
+                color: [255, 165, 0, 50],
+                visible: true,
+            });
+
             const colshape = mp.colshapes.newSphere(this.doorsPoints[i].x, this.doorsPoints[i].y, this.doorsPoints[i].z, 3);
             colshape.doorId = i;
+
+            console.log('new door : ' + colshape);
         }
     }
 }
