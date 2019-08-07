@@ -47,15 +47,12 @@ class Faction {
 	}
 
 	createServicePoint(pos) {
-		console.log("create service point : " + JSON.stringify(pos));
 		this.serviceShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
 		this.serviceMarker = mp.markers.new(1, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
 		{
-			color: [255, 255, 0, 15],
+			color: [0, 184, 148, 15],
 			visible: true,
 		});
-
-		console.log(JSON.stringify(this.serviceMarker));z
 	}
 
 	updateServiceMarker(player) {
@@ -289,7 +286,7 @@ module.exports = Faction;
 
 async function loadUser(player) {
 	for (const f of factionsList) {
-		// if (f.isInThisFaction(player)) return f.updateServiceMarker(player);
+		if (f.isInThisFaction(player)) return f.updateServiceMarker(player);
 	}
 }
 module.exports.loadUser = loadUser;
