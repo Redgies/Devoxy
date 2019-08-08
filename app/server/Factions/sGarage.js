@@ -62,10 +62,13 @@ class Garage {
 	{
 		const d = this.getElevatorEnterPos(floor);
 
+		console.log("tp : " + JSON.stringify(d));
+
 		player.tp(d);
 	}
 
 	getElevatorEnterPos(floor) {
+		console.log("getElevatorEnterPos");
 		let pos = {
 			x: 0,
 			y: 0,
