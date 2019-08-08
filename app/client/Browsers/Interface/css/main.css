@@ -194,6 +194,10 @@ input[type="text"]
     padding: 5px 10px;
     text-transform: uppercase;
     border: none;
+    display: block;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
 }
 .btn-valid:hover {
     background: #74b9ff;
