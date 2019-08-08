@@ -28,6 +28,16 @@ const factionData = {
         x: 452.194, 
         y: -980.08, 
         z: 30.69,
+    },
+    blip: {
+        scale: 1,
+        color: 38,
+        model: 526, 
+        pos: {
+            x: 445.839,
+            y: -996.392,
+        } 
+
     }
 }
 
@@ -39,6 +49,18 @@ class Police extends faction {
         this.createServicePoint(factionData.servicePoint);
         this.createGiletPoint(factionData.giletPoint);
         this.createWeaponPoint(factionData.weaponPoint);
+        this.createBlip();
+    }
+
+    createBlip()
+    {
+        this.blip = mp.blips.new(factionData.blip.model, new mp.Vector3(factionData.blip.pos.x, factionData.blip.pos.y, 0),
+        {   
+            scale: factionData.blip.scale,
+            name: factionData.name,
+            color: factionData.blip.color,
+            shortRange: true,
+        });
     }
 
     createEvents() {
