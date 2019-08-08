@@ -13,6 +13,10 @@ class ChatSingleton {
 		});
 
 		mp.events.addCommand({
+			'dim' : (player, fullText) => {
+				player.dimension = 0;
+				player.notify("Vous avez changé de dimension.");
+			},
 			'me' : (player, fullText) => {
 				if(!fullText) return player.notify("Veuillez entrer un message.");
 				this.sayME(player, fullText);
