@@ -7,16 +7,30 @@
 	<body>
         <div class="container">
             <div class="bar"><i class="fas fa-briefcase"></i> <span style="color: #0984e3">Chômeur</span></div>
-            <div class="bar"><i class="fas fa-dollar-sign" style="margin-left: 4px; margin-right: 15px;"></i> <span style="color: #00b894">1 000 000</span></div>
-            <div class="bar spedo"><i class="fas fa-tachometer-alt"></i> <span class="kmh">100Km/h</span></div>
-            <div class="bar tank"><i class="fas fa-gas-pump" style="margin-top: 6px; margin-left: 3px;"></i> <div class="line1"><div class="inline1"></div></div></div>
+            <div class="bar"><i class="fas fa-dollar-sign" style="margin-left: 4px; margin-right: 15px;"></i> <span class="money" style="color: #00b894">1 000 000</span></div>
+            <div class="bar spedo" style="display: none;"><i class="fas fa-tachometer-alt"></i> <span class="kmh">100Km/h</span></div>
+            <div class="bar tank" style="display: none;"><i class="fas fa-gas-pump" style="margin-top: 6px; margin-left: 3px;"></i> <div class="line1"><div class="inline1"></div></div></div>
         </div>
 	</body>
 </html>
 
 <script>
-    function update(speed, gas)
-    {			
+    function formatNumber(number)
+    {
+        number = number.toFixed(2) + '';
+        x = number.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ' ' + '$2');
+        }
+        return x1 + x2;
+    }
+
+    function update(speed, gas, money)
+    {	
+        document.getElementsByClassName('money')[0].innerHTML = formatNumber(money);		
         document.getElementsByClassName('kmh')[0].innerHTML = speed + "Km/h";
         document.getElementsByClassName('inline1')[0].style.width = gas + "%";
     }

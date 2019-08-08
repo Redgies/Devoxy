@@ -1,21 +1,21 @@
 
 const misc = require('../cMisc');
 
-let money;
+// let money;
 
 mp.events.add(
 {
-	"cMoney-Update" : (value) => money = value,
+	// "cMoney-Update" : (value) => money = value,
 	
-	"render" : () => {
-		if (money >= 0 && mp.gui.cursor.visible === false) {
-			mp.game.graphics.drawText(`$${misc.prettify(money)}              `, [0.940, 0.050], { 
-				font: 7, 
-				color: [115, 186, 131, 255], 
-				scale: [0.7, 0.7], 
-			});
-		}
-	},
+	// "render" : () => {
+	// 	if (money >= 0 && mp.gui.cursor.visible === false) {
+	// 		mp.game.graphics.drawText(`$${misc.prettify(money)}              `, [0.940, 0.050], { 
+	// 			font: 7, 
+	// 			color: [115, 186, 131, 255], 
+	// 			scale: [0.7, 0.7], 
+	// 		});
+	// 	}
+	// },
 
 	"cMoney-ShowATM" : (lang, execute) => {
 		misc.prepareToCef(1);
