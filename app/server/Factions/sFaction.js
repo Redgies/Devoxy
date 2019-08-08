@@ -36,30 +36,6 @@ class Faction {
 				player.notify('rank : ' + target.rank);
 			}
 		});
-
-		mp.events.add({
-			"playerEnterColshape" : (player, shape) => {
-				if(!player.loggedIn || !this.isInThisFaction(player)) return;
-
-				if(shape === this.serviceShape)
-				{
-					player.canChangeClothes = true;
-					player.notify("Appuyez ~b~E ~w~pour vous mettre en service.")
-				}
-			},
-			"playerExitColshape" : (player, shape) => {
-				if(!player.loggedIn || !this.isInThisFaction(player)) return;
-				
-				if(shape == this.clothingShape)
-					player.canChangeClothes = false;
-			},
-			"sKeys-E" : (player) => {
-				if(!player.loggedIn || !this.isInThisFaction(player)) return;
-
-				if(player.canChangeClothes)
-					this.changeClothes(player);
-			},
-		});
 	}
 
 	isInThisFaction(player) {
@@ -72,26 +48,7 @@ class Faction {
 		return true;
 	}
 
-	createServicePoint(pos) {
-		this.serviceShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
-		this.serviceMarker = mp.markers.new(1, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
-		{
-			color: [0, 184, 148, 100],
-			visible: true,
-		});
-		this.serviceLabel = mp.labels.new("[service]", new mp.Vector3(pos.x, pos.y, pos.z),
-		{
-			los: false,
-			font: 2,
-			drawDistance: 5,
-			color: [255, 255, 255, 255],
-		});
-	}
 
-	updateServiceMarker(player) {
-		if(this.isInThisFaction(player)) this.serviceMarker.showFor(player);
-		else this.serviceMarker.hideFor(player);
-	}
 
 	changeClothes(player) {
 		if(this.isWorking(player)) {
@@ -337,8 +294,8 @@ module.exports = Faction;
 
 
 async function loadUser(player) {
-	for (const f of factionsList) {
-		if (f.isInThisFaction(player)) return f.updateServiceMarker(player);
-	}
+	// for (const f of factionsList) {
+	// 	if (f.isInThisFaction(player)) return f.updateServiceMarker(player);
+	// }
 }
 module.exports.loadUser = loadUser;
