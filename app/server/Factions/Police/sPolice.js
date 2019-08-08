@@ -37,7 +37,6 @@ const factionData = {
             x: 445.839,
             y: -996.392,
         } 
-
     }
 }
 

@@ -1,0 +1,58 @@
+<html>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/main.css">
+  	<script src="../vue.js"></script>
+	<body>
+		<div id="app">
+            <div class="panel">
+                <div class="panel-head">
+                    <h1>Interface</h1>
+                    <div class="close" @click="exit">X</div>
+                </div>
+                <div class="panel-body" style="width: 70%; float: left; background: #fff">
+                    <div class="items">
+                        <div class="item" @click="currentTab = 1">
+                            <img src="images/backpack.png">
+                            <span class="title">Inventaire</span>
+                        </div>
+                        <div class="item" @click="currentTab = 2">
+                            <img src="images/give-money.png">
+                            <span class="title">Donner de l'argent</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" style="width: 30%; float: right; text-align: center; padding: 10px;">
+                    <!-- DONNER DE L'ARGENT -->
+                    <div v-if="currentTab == 2">
+                        <h1 class="title-right">Don d'argent</h1>
+                        <p class="p-right">Vous allez donner de l'argent à Nitram Domenia</p>
+                        <input type="text" value="0">
+                        <button type="button" class="btn-valid">Valider</button>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</body>
+</html>
+
+<script>
+const app = new Vue({
+    el: '#app',
+    data: {
+        currentTab: 0,
+        d: {
+            players: [
+
+            ]
+        }
+    },
+	methods: {
+		onlinePlayers: function(str) {
+            this.d.players = JSON.parse(str);
+        },
+        exit: function() {
+			mp.trigger("cCloseCef"); 
+		},
+	}
+});
+</script>
