@@ -11,6 +11,9 @@
 			</div>
 		
 			<section class="items">
+				<div class="item" v-if="floor < 0" @click="enter(0)">
+					<div>RDC</div>
+				</div>
 				<div class="item" v-for="floor in floors" @click="enter(floor)">
 					<div>{{ floor }}</div>
 				</div>
@@ -27,6 +30,7 @@ const app = new Vue({
 	el: '#app',
 	data: {
 		id: 0,
+		floor: 0,
 		title: "LS Hospital Garage",
 		css: "",
 		titleInfo: "choose the floor", 

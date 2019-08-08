@@ -44,15 +44,16 @@ class Garage {
 				if(!player.loggedIn) return;
 
 				if(player.canUseElevator)
-					this.openElevator(player);
+					this.openElevator(player, player.dimension);
 			},
 		});
 	}
 
-	openElevator(player)
+	openElevator(player, dim)
 	{
 		player.notify("openElevator");
 		let execute = `app.id = ${this.garage.id};`;
+		execute += `app.floor = '${dim}';`;
 		execute += `app.title = '${this.garage.title}';`;
 		execute += `app.css = 'LSPoliceDepartmentGarage.css';`;
 		player.call("cGarage-ShowVisitorsGarageMenu", [execute]);
@@ -60,7 +61,6 @@ class Garage {
 
 	enterGarage(player, floor)
 	{
-		console.log("enterGarage => floor : " + floor);
 		const d = this.getElevatorEnterPos(floor);
 
 		player.tp(d);
@@ -68,7 +68,6 @@ class Garage {
 
 	getElevatorEnterPos(floor) {
 		if(!misc.isValueNumber(floor)) return;
-		console.log("getElevatorEnterPos");
 
 		let pos = {
 			x: 0,
@@ -85,11 +84,8 @@ class Garage {
 		}
 		else 
 		{
-			console.log("this.garage.startDim : " + this.garage.startDim + " floor : " + Math.abs(floor));
 			pos = this.garage.elevator.underground;
 			pos.dim = this.garage.startDim + Math.abs(floor) - 1;
-
-			console.log("pos.dim : " + pos.dim);
 		}
 		return pos;
 	}
@@ -98,31 +94,11 @@ class Garage {
 	{
 		this.eTopShape = mp.colshapes.newSphere(elevator.top.x, elevator.top.y, elevator.top.z, 1);
 
-		0, 10, 11, 12, 13, 14, 15
-		this.eTopMarker = mp.markers.new(1, new mp.Vector3(elevator.top.x, elevator.top.y, elevator.top.z - 1), 0.75, 
-		{
-			color: [0, 184, 148, 50],
-			visible: true,
-		});
-
-		this.eUndergroundShape1 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, 10);
-		this.eUndergroundShape2 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + 1);
-		this.eUndergroundShape3 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + 2);
-		this.eUndergroundShape4 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + 3);
-		this.eUndergroundShape5 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + 4);
-
-		this.eUndergroundMarker = mp.markers.new(1, new mp.Vector3(elevator.underground.x, elevator.underground.y, elevator.underground.z - 1), 0.75, 
-		{
-			color: [0, 184, 148, 50],
-			visible: true,
-		});
-
-		this.eUndergroundMarker2 = mp.markers.new(1, new mp.Vector3(elevator.underground.x, elevator.underground.y, elevator.underground.z - 1), 0.75, 
-		{
-			dimension: 10,
-			color: [0, 184, 148, 50],
-			visible: true,
-		});
+		this.eUndergroundShape1 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.garage.startDim);
+		this.eUndergroundShape2 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.garage.startDim + 1);
+		this.eUndergroundShape3 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.garagestartDim + 2);
+		this.eUndergroundShape4 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.garagestartDim + 3);
+		this.eUndergroundShape5 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.garagestartDim + 4);
 	}
 
 	// createGarage() {
