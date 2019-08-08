@@ -26,10 +26,13 @@
         }
         return x1 + x2;
     }
-
-    function update(speed, gas, money)
-    {	
-        document.getElementsByClassName('money')[0].innerHTML = formatNumber(money);		
+    
+    function updateMoney(updateMoney)
+    {
+        document.getElementsByClassName('money')[0].innerHTML = formatNumber(money);
+    }
+    function update(speed, gas)
+    {			
         document.getElementsByClassName('kmh')[0].innerHTML = speed + "Km/h";
         document.getElementsByClassName('inline1')[0].style.width = gas + "%";
     }
