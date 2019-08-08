@@ -161,6 +161,9 @@ class Police extends faction {
     }
 
     takeWeapons(player) {
+        if(!this.isWorking(player))
+            return player.notify("~r~Vous devez être en service.");
+
         player.removeAllWeapons();
 
         player.giveWeapon(0x678B81B1, 1);
@@ -176,7 +179,8 @@ class Police extends faction {
         }
         if(player.rank >= 3)
         {
-            player.giveWeapon(0x497FACC3, 20);
+            player.giveWeapon(0x497FACC3, 5);
+            player.giveWeapon(0xA0973D5E, 5);
         }
         if(player.rank >= 4)
         {
