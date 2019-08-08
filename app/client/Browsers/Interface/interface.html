@@ -44,6 +44,7 @@ const app = new Vue({
     },
 	methods: {
         targetPlayer: function(str) {
+            alert(str);
             this.target = JSON.parse(str);
         },
         exit: function() {
