@@ -10,7 +10,9 @@ class Interface {
 
                 // player.target = target;
 
+
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
+                execute += `app.targetId = ${target.id}`;
 
                 // let execute = `app.phone = ${player.phone};`;
                 // execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
@@ -25,7 +27,7 @@ class Interface {
 
                 console.log("data : " + data);
 
-                let target = findPlayerByIdOrNickname(d.id);
+                let target = misc.findPlayerByIdOrNickname(d.id);
                 if(!target) return;
 
                 player.target.money.cash += parseInt(d.money);

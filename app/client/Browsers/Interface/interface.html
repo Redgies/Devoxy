@@ -42,6 +42,7 @@ const app = new Vue({
         currentTab: 0,
         target: [],
         moneyToGive: 0,
+        targetId: 0,
     },
 	methods: {
         giveMoney: function() {
@@ -55,7 +56,7 @@ const app = new Vue({
         targetPlayer: function(str) {
             this.target = JSON.parse(str);
 
-            alert(this.target.id);
+            alert(this.targetId);
         },
         exit: function() {
 			mp.trigger("cCloseCef"); 
