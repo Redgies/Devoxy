@@ -8,6 +8,8 @@ class Interface {
 
                 let target = misc.getNearestPlayer(player, 3);
 
+                console.log(JSON.stringify(target));
+
                 let execute = `app.currentTab = 0;`;
                 execute += `app.target = ${target};`
 
