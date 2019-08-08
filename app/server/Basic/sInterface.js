@@ -35,8 +35,9 @@ class Interface {
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
                 if(!target) return;
 
-                target.money.cash += parseInt(d.money);
-                player.money.cash -= parseInt(d.money);
+                target.changeMoney(+d.money);
+                player.changeMoney(-d.money);
+
                 console.log("sInterface-giveMoney id : " + target.id + " money : " + d.money);
                 // let execute = `app.whoName = '${player.name}';`;
                 // execute += `app.whoId = ${player.target.id};`;
