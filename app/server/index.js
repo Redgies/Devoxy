@@ -13,7 +13,7 @@ require('./Business/sCommercialCarDealership');
 require('./Business/sGasStation');
 require('./Jobs/sOrangeCollector');
 require('./Jobs/sCluckinBellCourier');
-require('./Factions/sFactions');
+require('./Factions/sFaction');
 require('./Factions/sGarage');
 require('./Basic/sMenu');
 require('./Basic/sTab');
