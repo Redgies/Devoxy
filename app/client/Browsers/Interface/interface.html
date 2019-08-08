@@ -75,6 +75,7 @@ const app = new Vue({
         },
         targetVehicle: function(str) {
             this.vehicle = JSON.parse(str);
+            alert(this.vehicle.numberPlate);
         },
         exit: function() {
 			mp.trigger("cCloseCef"); 
