@@ -43,20 +43,31 @@ class Police extends faction {
                 if(shape === this.serviceShape)
                 {
                     player.canChangeClothes = true;
-                    player.notify("Appuyez ~b~E ~w~pour vous mettre en service.")
+                    player.notify("Appuyez ~b~E ~w~pour vous mettre en service.");
                 }
+
+                if(shape === this.giletShape)
+                {
+                    player.notify("Appuyez ~b~E ~w~pour équiper un gilet.");
+                    player.canTakeGilet = true;
+                }
+                
             },
             "playerExitColshape" : (player, shape) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
                 
-                if(shape == this.serviceShape)
+                if(shape === this.serviceShape)
                     player.canChangeClothes = false;
+                if(shape === this.giletShape)
+                    player.canTakeGilet = false;
             },
             "sKeys-E" : (player) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
     
                 if(player.canChangeClothes)
                     this.changeClothes(player);
+                if(player.giletShape)
+                    this.takeGilet(player);
             },
         });
 
@@ -75,7 +86,7 @@ class Police extends faction {
 		this.serviceShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
 		this.serviceMarker = mp.markers.new(1, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
 		{
-			color: [0, 184, 148, 100],
+			color: [0, 184, 148, 50],
 			visible: true,
 		});
 		this.serviceLabel = mp.labels.new("[service]", new mp.Vector3(pos.x, pos.y, pos.z),
@@ -91,7 +102,7 @@ class Police extends faction {
 		this.giletShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
 		this.giletMarker = mp.markers.new(1, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
 		{
-			color: [0, 184, 148, 100],
+			color: [9, 132, 227, 50],
 			visible: true,
 		});
 		this.giletLabel = mp.labels.new("[gilet]", new mp.Vector3(pos.x, pos.y, pos.z),
@@ -101,7 +112,21 @@ class Police extends faction {
 			drawDistance: 5,
 			color: [255, 255, 255, 255],
 		});
-	}
+    }
+    
+    takeGilet(player) {
+        if(player.rank <= 1)
+            return player.notify("~r~Le gilet est accessible à partir du grade Officier.");
+        if(!this.isWorking(player))
+            return player.notify("~r~Vous devez être en service.");
+
+        player.armour = 50;
+
+        if(player.model === 1885233650)
+            player.setClothes(8, 131, 0, 2); 
+        else 
+            player.setClothes(8, 161, 0, 2); 
+    }
 
     changeClothesMan(player) {
         if(player.rank == 1)
@@ -156,7 +181,7 @@ class Police extends faction {
             player.setClothes(4, 35, 0, 2);
             player.setClothes(11, 26, 0, 2);
             player.setClothes(3, 11, 0, 2);
-            player.setClothes(7, 95, 0, 2);
+            player.setClothes(7, 125, 0, 2);
         }
         if(player.rank == 7)
         {
@@ -165,7 +190,7 @@ class Police extends faction {
             player.setClothes(11, 13, 0, 2);
             player.setClothes(3, 11, 0, 2);
             player.setClothes(7, 125, 0, 2);
-            player.setClothes(8, 0, 0, 2);
+            player.setClothes(8, 15, 0, 2);
 
             player.armour = 100;
         }
