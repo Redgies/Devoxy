@@ -23,7 +23,7 @@
                             <img src="images/id-card.png">
                             <span class="title">Carte d'identité</span>
                         </div>
-                        <div class="item" @click="currentTab = 4">
+                        <div class="item" @click="currentTab = 4" v-if="target.faction == 1 && target.working == 1">
                             <img src="images/license-plate.png">
                             <span class="title">Carte grise</span>
                         </div>
@@ -75,7 +75,7 @@ const app = new Vue({
         },
         targetVehicle: function(str) {
             this.vehicle = JSON.parse(str);
-            alert(this.vehicle.numberPlate);
+            // alert(this.vehicle.numberPlate);
         },
         exit: function() {
 			mp.trigger("cCloseCef"); 
