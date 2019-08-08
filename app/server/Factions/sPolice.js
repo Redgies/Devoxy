@@ -66,7 +66,7 @@ class Police extends faction {
     
                 if(player.canChangeClothes)
                     this.changeClothes(player);
-                if(player.giletShape)
+                if(player.canTakeGilet)
                     this.takeGilet(player);
             },
         });
