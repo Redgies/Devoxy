@@ -16,6 +16,8 @@ class Interface {
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
                 execute += `app.targetVehicle('${JSON.stringify(veh)}');`;
 
+                console.log(JSON.stringify(veh));
+
                 player.call("cInterface-Open", [execute]);
                 misc.log.debug(`${player.name} opens interface`);
             },
