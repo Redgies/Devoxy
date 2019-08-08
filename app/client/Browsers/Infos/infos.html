@@ -1,0 +1,33 @@
+<html>
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/247ab50e3d.js"></script>
+      
+	<body>
+        <div class="container">
+            <div class="bar"><i class="fas fa-briefcase"></i> <span style="color: #0984e3">Chômeur</span></div>
+            <div class="bar"><i class="fas fa-dollar-sign" style="margin-left: 4px;"></i> <span style="color: #00b894">1 000 000</span></div>
+            <div class="bar spedo"><i class="fas fa-tachometer-alt"></i> <span class="kmh">100Km/h</span></div>
+            <div class="bar tank"><i class="fas fa-gas-pump" style="margin-top: 6px; margin-left: 3px;"></i> <div class="line1"><div class="inline1"></div></div></div>
+        </div>
+	</body>
+</html>
+
+<script>
+    function update(speed, gas)
+    {			
+        document.getElementsByClassName('kmh')[0].innerHTML = speed + "Km/h";
+        document.getElementsByClassName('inline1')[0].style.width = gas + "%";
+    }
+    
+    function hideSpeedo() {
+        document.getElementsByClassName('spedo')[0].style.display = "none";
+        document.getElementsByClassName('tank')[0].style.display = "none";
+    }
+    
+    function showSpeedo() {
+        document.getElementsByClassName('spedo')[0].style.display = "block";
+        document.getElementsByClassName('tank')[0].style.display = "block";
+    }
+</script>

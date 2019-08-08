@@ -43,7 +43,7 @@
                         <h1 class="title-right">Inventaire</h1>
                     </div>
                     <!-- DONNER DE L'ARGENT -->
-                    <div v-if="currentTab == 2 && target.length >= 1">
+                    <div v-if="currentTab == 2 && target.guid">
                         <h1 class="title-right">Don d'argent</h1>
                         <p class="p-right">Vous allez donner de l'argent à {{ target.firstName }} {{ target.lastName }}</p>
                         <input type="text" v-model="moneyToGive" oninput="this.value = Math.abs(this.value)">
@@ -86,7 +86,9 @@ const app = new Vue({
         currentTab: 0,
         target: [
         ],
-        vehicle: [],
+        vehicle: [
+
+        ],
         moneyToGive: 0,
         walkingStyle: [
             {name: "Nosrmal", animset: null},
