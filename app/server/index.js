@@ -14,8 +14,6 @@ require('./Business/sGasStation');
 require('./Jobs/sOrangeCollector');
 require('./Jobs/sCluckinBellCourier');
 require('./Factions/sPolice');
-require('./Factions/sGarage');
-require('./Factions/sBuilding');
 require('./Basic/sMenu');
 require('./Basic/sTab');
 require('./Phone/sPhone');
