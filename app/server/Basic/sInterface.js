@@ -19,6 +19,8 @@ class Interface {
             "sInterface-giveMoney": (player, data) => {
                 const d = JSON.parse(data);
 
+                d.money = Math.abs(d.money);
+
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
                 if(!target) return;
                 if(player.money.cash < d.money)
