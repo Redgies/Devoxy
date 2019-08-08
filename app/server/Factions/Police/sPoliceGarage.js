@@ -1,6 +1,9 @@
 const garage = require('../sGarage');
 
 const garageData = {
+	id: 1,
+	title: 'Los Santos Police Departement',
+	startDim: 10,
 	elevator: {
 		top: {x: 445.839, y: -996.392, z: 30.69 },
 		underground: {x: 241.378, y: -1004.781, z: -99 }

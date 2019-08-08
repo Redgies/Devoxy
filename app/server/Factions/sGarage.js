@@ -1,12 +1,16 @@
 
 const misc= require('../sMisc');
 
+const garagesList = [];
+
 class Garage {
 	constructor(garageData) {
 		this.garage = garageData;
 
 		this.createGarageElevatorShapes(this.garage.elevator);
 		this.createEvents();
+
+		garagesList.push(this);
 	}
 
 	createEvents()
@@ -44,10 +48,32 @@ class Garage {
 	openElevator(player)
 	{
 		player.notify("openElevator");
-		let execute = `app.id = 0;`;
-		execute += `app.title = 'test';`;
+		let execute = `app.id = ${this.garage.id};`;
+		execute += `app.title = '${this.garage.title}';`;
 		execute += `app.css = 'LSPoliceDepartmentGarage.css';`;
 		player.call("cGarage-ShowVisitorsGarageMenu", [execute]);
+	}
+
+	enterGarage(player, floor)
+	{
+		const d = this.getElevatorEnterPos(floor);
+		player.tp(d);
+	}
+
+	getElevatorEnterPos(floor) {
+		if(!misc.isValueNumber(floor)) return false;
+
+		if(floor === 0)
+		{
+			const pos = this.garage.top;
+			pos.dim = 0;
+		}
+		else 
+		{
+			const pos = this.garage.underground;
+			pos.dim = this.garage.startDim + Math.abs(floor) - 1;
+		}
+		return pos;
 	}
 
 	createGarageElevatorShapes(elevator)
@@ -204,13 +230,21 @@ class Garage {
 }
 module.exports = Garage;
 
+function getGarage(id) {
+	for (let i = 0; i < garagesList.length; i++) {
+		if (garagesList[i].garage.id === id) {
+			return garagesList[i];
+		}
+	}
+}
+module.exports.getGarage = getGarage;
 
-mp.events.add({
+
+mp.events.add({	
 	"sGarage-EnterVisitorsGarage" : (player, id, floor) => {
-		const g = sBuilding.getBuilding(id);
+		const g = Garage.getGarage(id);
 		g.enterGarage(player, floor);
 	},
-
 	"sGarage-EnterFloorByVisitorsLift" : (player, id, floor) => {
 		const g = sBuilding.getBuilding(id);
 		g.enterLift(player, floor);
