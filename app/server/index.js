@@ -13,8 +13,7 @@ require('./Business/sCommercialCarDealership');
 require('./Business/sGasStation');
 require('./Jobs/sOrangeCollector');
 require('./Jobs/sCluckinBellCourier');
-require('./Factions/sFaction');
-require('./Factions/sGarage');
+
 require('./Basic/sMenu');
 require('./Basic/sTab');
 require('./Phone/sPhone');
@@ -25,3 +24,7 @@ require('./BlipCreator');
 require('./Basic/sNoClip');
 require('./Basic/sVocal');
 require("./MapEditor/MapEditorServer");
+
+require('./Factions/sFaction');
+require('./Factions/sGarage');
+require('./Factions/Police/sPolice');
