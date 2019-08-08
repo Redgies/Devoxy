@@ -29,7 +29,7 @@ class Faction {
 			},
 			"r" : (player, fullText) => {
 				const currentTime = misc.getTime();
-				const str = `!{#74b9ff}[${currentTime}] ${this.ranks[player.rank]} | ${playert.name} : ${fullText}`;
+				const str = `!{#74b9ff}[${currentTime}] ${this.ranks[player.rank]} | ${player.name} : ${fullText}`;
 
 				for(const p of mp.players.toArray()) {
 					if(p.faction !== this.id || !this.isWorking(p)) continue;
