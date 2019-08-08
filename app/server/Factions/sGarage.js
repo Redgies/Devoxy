@@ -116,6 +116,13 @@ class Garage {
 			color: [0, 184, 148, 50],
 			visible: true,
 		});
+
+		this.eUndergroundMarker2 = mp.markers.new(1, new mp.Vector3(elevator.underground.x, elevator.underground.y, elevator.underground.z - 1), 0.75, 
+		{
+			dimension: this.startDim,
+			color: [0, 184, 148, 50],
+			visible: true,
+		});
 	}
 
 	// createGarage() {
