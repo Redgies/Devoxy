@@ -19,9 +19,13 @@
                             <img src="images/give-money.png">
                             <span class="title">Donner de l'argent</span> 
                         </div>
-                        <div class="item" @click="currentTab = 3 && target.faction == 1 && target.working == 1">
+                        <div class="item" @click="currentTab = 3" v-if="target.faction == 1 && target.working == 1">
                             <img src="images/id-card.png">
                             <span class="title">Carte d'identité</span>
+                        </div>
+                        <div class="item" @click="currentTab = 4">
+                            <img src="images/license-plate.png">
+                            <span class="title">Carte grise</span>
                         </div>
                     </div>
                 </div>
@@ -33,10 +37,15 @@
                         <input type="text" v-model="moneyToGive" oninput="this.value = Math.abs(this.value)">
                         <button type="button" class="btn-valid" @click="giveMoney()">Valider</button>
                     </div>
-                     <!-- CARTE D'IDENTITE -->
+                    <!-- CARTE D'IDENTITE -->
                     <div v-if="currentTab == 3">
                         <h1 class="title-right">Carte d'identité</h1>
-                        <p class="p-right"><b>Prénom :</b> {{ target.firstName }} <br> <b>Nom :</b> {{ target.lastName }} <br><br><b<GUID :</b></b></p>
+                        <p class="p-right"><b>Prénom :</b> {{ target.firstName }} <br> <b>Nom :</b> {{ target.lastName }} <br><br><b>GUID :</b> {{ target.guid }}</b></p>
+                    </div>
+                    <!-- CARTE GRISE -->
+                    <div v-if="currentTab == 4">
+                        <h1 class="title-right">Carte grise</h1>
+                        <p class="p-right"><b>Plaque :</b> {{ vehicle.numberPlate }}</b></p>
                     </div>
                 </div>
             </div>
@@ -50,6 +59,7 @@ const app = new Vue({
     data: {
         currentTab: 0,
         target: [],
+        vehicle: [],
         moneyToGive: 0,
     },
 	methods: {
@@ -62,6 +72,9 @@ const app = new Vue({
         },
         targetPlayer: function(str) {
             this.target = JSON.parse(str);
+        },
+        targetVehicle: function(str) {
+            this.vehicle = JSON.parse(str);
         },
         exit: function() {
 			mp.trigger("cCloseCef"); 

@@ -170,6 +170,7 @@ input[type="text"]
     font-size: 12px;
     color: #848484;
     display: inline-block;
+    outline: none;
 }
 
 .title-right {

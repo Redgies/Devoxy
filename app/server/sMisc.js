@@ -49,6 +49,24 @@ class MiscSingleton {
 		return currentTarget;
 	}
 
+	getNearestVehicle(player, range)
+	{
+		let currentTarget = null;
+		let dist = range;
+		mp.vehicles.forEachInRange(player.position, range,
+			(_vehicle) => {
+				let _dist = _vehicle.dist(player.position);
+				if(_dist < dist)
+				{
+					currentTarget = _vehicle;
+					dist = _dist;
+				}
+			}
+		);
+		
+		return currentTarget;
+	}
+
 	findPlayerByIdOrNickname(playerName) {
 		let foundPlayer = null;
 	
