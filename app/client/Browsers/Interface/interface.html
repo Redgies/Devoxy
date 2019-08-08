@@ -27,7 +27,7 @@
                         <h1 class="title-right">Don d'argent</h1>
                         <p class="p-right">Vous allez donner de l'argent à {{ target.firstName }} {{ target.lastName }}</p>
                         <input type="text" value="0" v-model="moneyToGive">
-                        <button type="button" class="btn-valid" @click="giveMoney(moneyToGive)">Valider</button>
+                        <button type="button" class="btn-valid" @click="giveMoney()">Valider</button>
                     </div>
                 </div>
             </div>
@@ -44,8 +44,8 @@ const app = new Vue({
         moneyToGive: 0,
     },
 	methods: {
-        giveMoney: function(money) {
-            mp.trigger("cMisc-CallServerEvent", "sInterface-giveMoney", money);
+        giveMoney: function() {
+            mp.trigger("cMisc-CallServerEvent", "sInterface-giveMoney", this.moneyToGive);
         },
         targetPlayer: function(str) {
             this.target = JSON.parse(str);
