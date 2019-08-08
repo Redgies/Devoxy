@@ -23,6 +23,11 @@ const factionData = {
         x: 457.351, 
         y: -988.938, 
         z: 30.69,
+    },
+    weaponPoint: {
+        x: 452.194, 
+        y: -980.08, 
+        z: 30.69,
     }
 }
 
@@ -33,6 +38,7 @@ class Police extends faction {
         this.createEvents();
         this.createServicePoint(factionData.servicePoint);
         this.createGiletPoint(factionData.giletPoint);
+        this.createWeaponPoint(factionData.weaponPoint);
     }
 
     createEvents() {
@@ -51,6 +57,12 @@ class Police extends faction {
                     player.notify("Appuyez ~b~E ~w~pour équiper un gilet.");
                     player.canTakeGilet = true;
                 }
+
+                if(shape === this.weaponShape)
+                {
+                    player.notify("Appuyez ~b~E ~w~pour équiper vos armes.");
+                    player.canTakeWeapon = true;
+                }
                 
             },
             "playerExitColshape" : (player, shape) => {
@@ -60,6 +72,8 @@ class Police extends faction {
                     player.canChangeClothes = false;
                 if(shape === this.giletShape)
                     player.canTakeGilet = false;
+                if(shape === this.weaponShape)
+                    player.canTakeWeapon = false;
             },
             "sKeys-E" : (player) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
@@ -68,6 +82,8 @@ class Police extends faction {
                     this.changeClothes(player);
                 if(player.canTakeGilet)
                     this.takeGilet(player);
+                if(player.canTakeWeapon)
+                    this.takeWeapons(player);
             },
         });
 
@@ -113,6 +129,22 @@ class Police extends faction {
 			color: [255, 255, 255, 255],
 		});
     }
+
+    createWeaponPoint(pos) {
+		this.weaponShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
+		this.weaponMarker = mp.markers.new(1, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
+		{
+			color: [9, 132, 227, 50],
+			visible: true,
+		});
+		this.weaponLabel = mp.labels.new("[armurerie]", new mp.Vector3(pos.x, pos.y, pos.z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 5,
+			color: [255, 255, 255, 255],
+		});
+    }
     
     takeGilet(player) {
         if(player.rank <= 1)
@@ -126,6 +158,34 @@ class Police extends faction {
             player.setClothes(8, 131, 0, 2); 
         else 
             player.setClothes(8, 161, 0, 2); 
+    }
+
+    takeWeapons(player) {
+        player.removeAllWeapons();
+
+        player.giveWeapon(0x678B81B1, 1);
+        player.giveWeapon(0x3656C8C1, 100);
+
+        if(player.rank == 1)
+        {
+            player.giveWeapon(0x1B06D571, 150);
+        }
+        if(player.rank >= 2)
+        {
+            player.giveWeapon(0x99AEEB3B, 150);
+        }
+        if(player.rank >= 3)
+        {
+            player.giveWeapon(0x497FACC3, 20);
+        }
+        if(player.rank >= 4)
+        {
+            player.giveWeapon(0x1D073A89, 100);
+        }
+        if(player.rank >= 6)
+        {
+            player.giveWeapon(0xEFE7E2DF, 300);
+        }
     }
 
     changeClothesMan(player) {

@@ -41,11 +41,10 @@ class Faction {
 		return true;
 	}
 
-
-
 	changeClothes(player) {
 		if(this.isWorking(player)) {
 			this.setWorking(player, false);
+			player.armour = 0;
 			return clothes.loadPlayerClothes(player);
 		}
 		this.setWorking(player, true);
