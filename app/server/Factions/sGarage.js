@@ -76,6 +76,7 @@ class Garage {
 		}
 		else 
 		{
+			console.log("this.garage.startDim : " + this.garage.startDim);
 			pos = this.garage.underground;
 			pos.dim = this.garage.startDim + Math.abs(floor) - 1;
 		}
