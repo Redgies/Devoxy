@@ -14,7 +14,7 @@
 				<div class="item" v-if="dim != 0" @click="enter(dim)">
 					<div>RDC</div>
 				</div>
-				<div class="item" v-for="floor in floors" @click="enter(floor)">
+				<div class="item" v-for="floor in floors" @click="enter(0)">
 					<div>{{ floor }}</div>
 				</div>
 			</section>
