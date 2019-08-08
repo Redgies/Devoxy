@@ -67,7 +67,7 @@ class Garage {
 		if(!misc.isValueNumber(floor)) return;
 		console.log("getElevatorEnterPos");
 
-		const pos = {
+		let pos = {
 			x: 0,
 			y: 0,
 			z: 0,
