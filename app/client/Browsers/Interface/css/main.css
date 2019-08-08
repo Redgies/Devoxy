@@ -203,3 +203,15 @@ input[type="text"]
 .btn-valid:hover {
     background: #74b9ff;
 }
+
+.walk-style {
+    font-size: 12px;
+    width: 100%;
+    display: block;
+    background: #f0f0f0;
+    padding: 3px;
+    margin-bottom: 3px;
+}
+.walk-style:hover {
+    background: #f5f5f5;
+}

@@ -25,6 +25,7 @@ require("./nativeui");
 require('./voice.js');
 require('./BlipCreator/index');
 require('./Basic/cNoClip');
+require('./Basic/cNoClip');
 require('./Basic/cNametag');
 require('./Basic/cInterface');
 require('./StaticAttachments');

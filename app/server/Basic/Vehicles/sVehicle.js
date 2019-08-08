@@ -44,14 +44,14 @@ class Vehicle {
 			if (vehicle.locked) {
 				this.unlock();
 
-				player.notifyWithPicture("Véhicule", "vérouillage", `${this.title} : portes ~g~ouvertes`, "CHAR_LS_CUSTOMS");
+				player.notifyWithPicture("Véhicule", "", `${this.title} : portes ~g~ouvertes`, "CHAR_LS_CUSTOMS");
 //				player.outputChatBox(`${this.title} !{0, 200, 0}${i18n.get('sVehicle', 'unlocked', player.lang)}`);
 				// player.notifyWithPicture("Info", "", `${this.title} ~g~${i18n.get('sVehicle', 'unlocked', player.lang)}.`, "CHAR_PROPERTY_ARMS_TRAFFICKING");
 			}
 			else {
 				this.lock();
 
-				player.notifyWithPicture("Véhicule", "vérouillage", `${this.title} : portes ~r~fermées`, "CHAR_LS_CUSTOMS");
+				player.notifyWithPicture("Véhicule", "", `${this.title} : portes ~r~fermées`, "CHAR_LS_CUSTOMS");
 //				player.outputChatBox(`${this.title} !{200, 0, 0}${i18n.get('sVehicle', 'locked', player.lang)}`);
 				// player.notifyWithPicture("Info", "", `${this.title} ~r~${i18n.get('sVehicle', 'locked', player.lang)}`, "CHAR_PROPERTY_ARMS_TRAFFICKING");
 			}

@@ -46,7 +46,7 @@ mp.events.add({
         position.z -= direction.z * fly.f;
         updated = true;
       } else {
-        fly.f = 2.0;
+        fly.f = 1.0;
       }
     
       if (controls.isControlPressed(0, controlsIds.A)) {
@@ -62,7 +62,7 @@ mp.events.add({
         position.y -= direction.x * fly.l;
         updated = true;
       } else {
-        fly.l = 2.0;
+        fly.l = 1.0;
       }
     
       if (controls.isControlPressed(0, controlsIds.Space)) {
@@ -76,7 +76,7 @@ mp.events.add({
         position.z -= fly.h;
         updated = true;
       } else {
-        fly.h = 2.0;
+        fly.h = 1.0;
       }
     
       if(updated) {

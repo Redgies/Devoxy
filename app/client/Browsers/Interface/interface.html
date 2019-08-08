@@ -11,6 +11,10 @@
                 </div>
                 <div class="panel-body" style="width: 70%; float: left; background: #fff">
                     <div class="items">
+                        <div class="item" @click="currentTab = 5">
+                            <img src="images/walk.png">
+                            <span class="title">Style de marche</span>
+                        </div>
                         <div class="item" @click="currentTab = 1">
                             <img src="images/backpack.png">
                             <span class="title">Inventaire</span>
@@ -29,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-body" style="width: 30%; float: right; text-align: center; padding: 10px;">
+                <div class="panel-body" style="width: 30%; float: right; text-align: center; padding: 10px; height: calc(100% - 35px); overflow-y: scroll;">
                     <!-- DONNER DE L'ARGENT -->
                     <div v-if="currentTab == 2">
                         <h1 class="title-right">Don d'argent</h1>
@@ -46,6 +50,13 @@
                     <div v-if="currentTab == 4">
                         <h1 class="title-right">Carte grise</h1>
                         <p class="p-right"><b>Plaque :</b> {{ vehicle.numberPlate }}</b></p>
+                    </div>                    
+                    <!-- STYLE DE MARCHE -->
+                    <div v-if="currentTab == 5">
+                        <h1 class="title-right">Style de marche</h1>
+                        <a v-for="(walk, i) in walkingStyle" class="walk-style" @click="setWalking(i)">
+                            {{ walk.name }}
+                        </a>
                     </div>
                 </div>
             </div>
@@ -61,8 +72,27 @@ const app = new Vue({
         target: [],
         vehicle: [],
         moneyToGive: 0,
+        walkingStyle: [
+            {name: "Nosrmal", animset: null},
+            {name: "Brave", animset: "move_m@brave"},
+            {name: "Confident", animset: "move_m@confident"},
+            {name: "Drunk", animset: "move_m@drunk@verydrunk"},
+            {name: "Fat", animset: "move_m@fat@a"},
+            {name: "Gangster", animset: "move_m@shadyped@a"},
+            {name: "Hurry", animset: "move_m@hurry@a"},
+            {name: "Injured", animset: "move_m@injured"},
+            {name: "Intimidated", animset: "move_m@intimidation@1h"},
+            {name: "Quick", animset: "move_m@quick"},
+            {name: "Sad", animset: "move_m@sad@a"},
+            {name: "Tough", animset: "move_m@tool_belt@a"}
+        ]
     },
 	methods: {
+        setWalking: function(walking) {
+            walkingStyle[walking].animset;
+
+            mp.trigger("cMisc-CallServerEvent", "sInterface-setWalking", walkingStyle[walking].animset);
+        },
         giveMoney: function() {
             const data = {
                 money: this.moneyToGive,

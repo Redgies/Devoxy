@@ -21,6 +21,9 @@ class Interface {
                 player.call("cInterface-Open", [execute]);
                 misc.log.debug(`${player.name} opens interface`);
             },
+            "sInterface-setWalking": (player, data) => {
+                player.data.walkingStyle = data;
+            },
             "sInterface-giveMoney": (player, data) => {
                 const d = JSON.parse(data);
 
