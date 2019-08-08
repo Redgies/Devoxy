@@ -19,6 +19,10 @@
                             <img src="images/give-money.png">
                             <span class="title">Donner de l'argent</span>
                         </div>
+                        <div class="item" @click="currentTab = 3">
+                            <img src="images/id-card.png">
+                            <span class="title">Carte d'identité</span>
+                        </div>
                     </div>
                 </div>
                 <div class="panel-body" style="width: 30%; float: right; text-align: center; padding: 10px;">
@@ -28,6 +32,11 @@
                         <p class="p-right">Vous allez donner de l'argent à {{ target.firstName }} {{ target.lastName }}</p>
                         <input type="text" v-model="moneyToGive">
                         <button type="button" class="btn-valid" @click="giveMoney()">Valider</button>
+                    </div>
+                     <!-- CARTE D'IDENTITE -->
+                    <div v-if="currentTab == 3 && target.faction == 1 && target.working == 1">
+                        <h1 class="title-right">Carte d'identité</h1>
+                        <p class="p-right"><b>Prénom :</b> {{ target.firstName }} <br> <b>Nom :</b> {{ target.lastName }}</p>
                     </div>
                 </div>
             </div>

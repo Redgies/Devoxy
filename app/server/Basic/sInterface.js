@@ -23,6 +23,8 @@ class Interface {
 
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
                 if(!target) return;
+                if(typeof d.money != "number") return;
+                if(d.money <= 0) return;
                 if(player.money.cash < d.money)
                     return player.notify("~r~Vous n'avez pas assez sur vous.");
 
