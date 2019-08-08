@@ -8,7 +8,7 @@ class Interface {
 
                 let target = misc.getNearestPlayer(player, 1);
 
-                player.target = target;
+                // player.target = target;
 
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
 
@@ -20,10 +20,10 @@ class Interface {
                 player.call("cInterface-Open", [execute]);
                 misc.log.debug(`${player.name} opens interface`);
             },
-            "sInterface-giveMoney": (player, money) => {
+            "sInterface-giveMoney": (player, target, money) => {
                 player.target.money.cash += parseInt(money);
                 player.money.cash -= parseInt(money);
-                // console.log("sInterface-giveMoney id : " + player.target.id + " money : " + money);
+                console.log("sInterface-giveMoney id : " + target.id + " money : " + money);
                 // let execute = `app.whoName = '${player.name}';`;
                 // execute += `app.whoId = ${player.target.id};`;
                 // execute += `app.wantText = 'Veux te donner de l'oseil kwa;`;

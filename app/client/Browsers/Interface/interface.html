@@ -45,7 +45,7 @@ const app = new Vue({
     },
 	methods: {
         giveMoney: function() {
-            mp.trigger("cMisc-CallServerEvent", "sInterface-giveMoney", this.moneyToGive);
+            mp.trigger("cMisc-CallServerEvent", "sInterface-giveMoney", this.target.id, this.moneyToGive);
             this.exit();
         },
         targetPlayer: function(str) {
