@@ -10,7 +10,7 @@ class Interface {
 
                 console.log("target id : " + target.id);
 
-                player.target = target.id;
+                player.targetId = target.id;
 
 
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
@@ -26,9 +26,11 @@ class Interface {
             "sInterface-giveMoney": (player, data) => {
                 const d = JSON.parse(data);
 
+                console.log("player.targetId : " + player.targetId);
+
                 console.log("data : " + data);
 
-                let target = misc.findPlayerByIdOrNickname(player.target);
+                let target = misc.findPlayerByIdOrNickname(player.targetId);
                 if(!target) return;
 
                 target.money.cash += parseInt(d.money);
