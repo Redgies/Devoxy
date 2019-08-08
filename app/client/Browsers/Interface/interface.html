@@ -40,9 +40,12 @@ const app = new Vue({
     el: '#app',
     data: {
         currentTab: 0,
-        target: 0,
+        target: [],
     },
 	methods: {
+        targetPlayer: function(str) {
+            this.target = JSON.parse(str);
+        },
         exit: function() {
 			mp.trigger("cCloseCef"); 
 		},

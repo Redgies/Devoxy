@@ -8,10 +8,7 @@ class Interface {
 
                 let target = misc.getNearestPlayer(player, 1);
 
-                console.log(JSON.stringify(target));
-
-                let execute = `app.currentTab = 0;`;
-                execute += `app.target = ${target};`
+                let execute = `app.targetPlayer('${target}');`;
 
                 // let execute = `app.phone = ${player.phone};`;
                 // execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
