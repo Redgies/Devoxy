@@ -63,14 +63,16 @@ class Garage {
 	getElevatorEnterPos(floor) {
 		if(!misc.isValueNumber(floor)) return false;
 
+		let pos;
+
 		if(floor === 0)
 		{
-			const pos = this.garage.top;
+			pos = this.garage.top;
 			pos.dim = 0;
 		}
 		else 
 		{
-			const pos = this.garage.underground;
+			pos = this.garage.underground;
 			pos.dim = this.garage.startDim + Math.abs(floor) - 1;
 		}
 		return pos;
