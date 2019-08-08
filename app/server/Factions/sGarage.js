@@ -50,7 +50,7 @@ class Garage {
 			"playerExitColshape" : (player, shape) => {
                 if(!player.loggedIn) return;
                 
-                if(shape === this.eTopShape || shape === this.eUndergroundShape)
+                if(shape === this.eTopShape || shape === this.eUndergroundShape1 || shape === this.eUndergroundShape2 || shape === this.eUndergroundShape3 || shape === this.eUndergroundShape4 || shape === this.eUndergroundShape5 || shape === this.eGarageUndergroundExit1 || shape === this.eGarageUndergroundExit2 || shape === this.eGarageUndergroundExit3 || shape === this.eGarageUndergroundExit4 || shape === this.eGarageUndergroundExit5) 
                     player.canUseElevator = false;
             },
 			"sKeys-E" : (player) => {
