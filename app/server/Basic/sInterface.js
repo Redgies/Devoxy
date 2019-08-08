@@ -8,11 +8,11 @@ class Interface {
 
                 let target = misc.getNearestPlayer(player, 1);
 
-                // player.target = target;
+                console.log("target id : " + target.id);
 
 
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
-                execute += `app.targetId = ${target.id}`;
+                execute += `app.targetId = ${target.id};`;
 
                 // let execute = `app.phone = ${player.phone};`;
                 // execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
