@@ -5,8 +5,8 @@ const garageData = {
 	title: 'Los Santos Police Departement',
 	startDim: 10,
 	elevator: {
-		top: {x: 445.839, y: -996.392, z: 30.69 },
-		underground: {x: 241.378, y: -1004.781, z: -99 }
+		top: {x: 445.839, y: -996.392, z: 30.69, rot: 10 },
+		underground: {x: 241.378, y: -1004.781, z: -99, rot: 88.36 }
 	}
 }
 

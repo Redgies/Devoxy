@@ -56,11 +56,15 @@ class Garage {
 
 	enterGarage(player, floor)
 	{
+		console.log("enterGarage");
 		const d = this.getElevatorEnterPos(floor);
+
+		console.lod("d : " + JSON.stringify(d));
 		player.tp(d);
 	}
 
 	getElevatorEnterPos(floor) {
+		console.log("getElevatorEnterPos");
 		if(!misc.isValueNumber(floor)) return false;
 
 		let pos;
