@@ -56,7 +56,7 @@ class Garage {
 
 	enterGarage(player, floor)
 	{
-		console.log("enterGarage");
+		console.log("enterGarage => floor : " + floor);
 		const d = this.getElevatorEnterPos(floor);
 
 		console.lod("d : " + JSON.stringify(d));
