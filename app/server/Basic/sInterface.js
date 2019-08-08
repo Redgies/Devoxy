@@ -6,6 +6,8 @@ class Interface {
             "sKeys-F3" : (player) => {
                 if(!player.loggedIn) return;
 
+                let execute;
+
                 // let execute = `app.phone = ${player.phone};`;
                 // execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
                 // execute += `app.d.talks = ${this.getTalksForPlayer(player)};`;
