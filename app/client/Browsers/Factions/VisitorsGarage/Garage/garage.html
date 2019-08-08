@@ -11,10 +11,10 @@
 			</div>
 		
 			<section class="items">
-				<div class="item" v-if="dim != 0" @click="enter(dim)">
+				<div class="item" v-if="dim != 0" @click="enter(0)">
 					<div>RDC</div>
 				</div>
-				<div class="item" v-for="floor in floors" @click="enter(0)">
+				<div class="item" v-for="floor in floors" @click="enter(floor)">
 					<div>{{ floor }}</div>
 				</div>
 			</section>
