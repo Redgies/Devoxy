@@ -74,7 +74,7 @@ class Garage {
 			dim: 0,
 		};
 
-		// console.log("floor :" + floor);
+		console.log("floor :" + floor);
 
 		if(floor === 0)
 		{
