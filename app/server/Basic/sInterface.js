@@ -20,10 +20,12 @@ class Interface {
                 player.call("cInterface-Open", [execute]);
                 misc.log.debug(`${player.name} opens interface`);
             },
-            "sInterface-giveMoney": (player, target, money) => {
-                player.target.money.cash += parseInt(money);
-                player.money.cash -= parseInt(money);
-                console.log("sInterface-giveMoney id : " + target.id + " money : " + money);
+            "sInterface-giveMoney": (player, data) => {
+                const d = JSON.parse(data);
+
+                player.target.money.cash += parseInt(d.money);
+                player.money.cash -= parseInt(d.money);
+                console.log("sInterface-giveMoney id : " + d.id + " money : " + d.money);
                 // let execute = `app.whoName = '${player.name}';`;
                 // execute += `app.whoId = ${player.target.id};`;
                 // execute += `app.wantText = 'Veux te donner de l'oseil kwa;`;
