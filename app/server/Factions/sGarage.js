@@ -24,11 +24,15 @@ class Garage {
                     player.canUseElevator = true;
                     player.notify("Appuyez ~b~E ~w~pour descendre dans le garage.");
 				}
-				if(shape === this.eUndergroundShape)
-                {
-                    player.canUseElevator = true;
-                    player.notify("Appuyez ~b~E ~w~pour sortir du garage.");
-                }
+
+				for(let i = 0; i < 5; i++)
+				{
+					if(shape === this.eUndergroundShape[i])
+					{
+						player.canUseElevator = true;
+						player.notify("Appuyez ~b~E ~w~pour sortir du garage.");
+					}
+				}
 			},
 			"playerExitColshape" : (player, shape) => {
                 if(!player.loggedIn) return;
@@ -58,7 +62,7 @@ class Garage {
 	{
 		console.log("enterGarage => floor : " + floor);
 		const d = this.getElevatorEnterPos(floor);
-		
+
 		player.tp(d);
 	}
 
@@ -93,13 +97,18 @@ class Garage {
 	createGarageElevatorShapes(elevator)
 	{
 		this.eTopShape = mp.colshapes.newSphere(elevator.top.x, elevator.top.y, elevator.top.z, 1);
+
+		0, 10, 11, 12, 13, 14, 15
 		this.eTopMarker = mp.markers.new(1, new mp.Vector3(elevator.top.x, elevator.top.y, elevator.top.z - 1), 0.75, 
 		{
 			color: [0, 184, 148, 50],
 			visible: true,
 		});
 
-		this.eUndergroundShape = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1);
+		for(let i = 0; i < 5; i++)
+		{
+			this.eUndergroundShape[i] = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + i);
+		}
 		this.eUndergroundMarker = mp.markers.new(1, new mp.Vector3(elevator.underground.x, elevator.underground.y, elevator.underground.z - 1), 0.75, 
 		{
 			color: [0, 184, 148, 50],
