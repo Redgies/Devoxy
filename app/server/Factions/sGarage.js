@@ -51,7 +51,6 @@ class Garage {
 
 	openElevator(player, dim)
 	{
-		player.notify("openElevator");
 		let execute = `app.id = ${this.garage.id};`;
 		execute += `app.floor = '${dim}';`;
 		execute += `app.title = '${this.garage.title}';`;
