@@ -67,7 +67,13 @@ class Garage {
 		if(!misc.isValueNumber(floor)) return;
 		console.log("getElevatorEnterPos");
 
-		let pos = {};
+		let pos = {
+			x: 0,
+			y: 0,
+			z: 0,
+			rot: 0,
+			dim: 0,
+		};
 
 		if(floor === 0)
 		{
@@ -76,9 +82,9 @@ class Garage {
 		}
 		else 
 		{
-			console.log("this.garage.startDim : " + this.garage.startDim);
+			console.log("this.garage.startDim : " + this.garage.startDim + " floor : " + Math.abs(floor));
 			pos = this.garage.underground;
-			pos.dim = this.garage.startDim + Math.abs(-1) - 1;
+			pos.dim = this.garage.startDim + Math.abs(floor) - 1;
 
 			console.log("pos.dim : " + pos.dim);
 		}
