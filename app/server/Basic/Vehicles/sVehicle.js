@@ -21,7 +21,7 @@ class Vehicle {
 		vehicle.price = d.price;
 		vehicle.ownerId = d.ownerId;
 		vehicle.whoCanOpen = JSON.parse(d.whoCanOpen);
-		vehicle.factionName = d.factionName;
+		vehicle.factionId = d.factionId;
 		vehicle.windowsOpened = [false, false, false, false];
 		vehicle.numberPlate = d.numberPlate;
 
@@ -32,7 +32,7 @@ class Vehicle {
 		vehicle.canOpen = function(player) {
 			if(player.dimension !== this.dimension) return false;
 			if(player.aduty) return true;
-			if(player.faction.name && player.faction.name === this.factionName) return true;
+			if(player.faction && player.faction === this.factionId) return true;
 			for (const p of this.whoCanOpen) {
 				if (p !== player.guid) continue;
 				return true;

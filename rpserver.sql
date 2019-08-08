@@ -217,7 +217,7 @@ CREATE TABLE `vehicles` (
   `price` int(255) NOT NULL,
   `ownerId` int(255) NOT NULL,
   `whoCanOpen` text NOT NULL,
-  `factionName` varchar(255) DEFAULT NULL,
+  `factionId` int(255) DEFAULT NULL,
   `primaryColor` text NOT NULL,
   `secondaryColor` text NOT NULL,
   `numberPlate` varchar(10) NOT NULL,
