@@ -47,7 +47,7 @@ const app = new Vue({
 	methods: {
         giveMoney: function() {
             const data = {
-                id: this.target.id,
+                id: this.targetId,
                 money: this.moneyToGive,
             }
             mp.trigger("cMisc-CallServerEvent", "sInterface-giveMoney", JSON.stringify(data));

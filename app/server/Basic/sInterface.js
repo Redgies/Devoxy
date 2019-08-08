@@ -12,7 +12,7 @@ class Interface {
 
 
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
-                execute += `app.targetId = ${target.id};`;
+                execute += `app.targetId = '${target.id}';`;
 
                 // let execute = `app.phone = ${player.phone};`;
                 // execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
