@@ -6,7 +6,10 @@ class Interface {
             "sKeys-F3" : (player) => {
                 if(!player.loggedIn) return;
 
+                let target = player.getNearestPlayerTo();
+
                 let execute = `app.currentTab = 0;`;
+                execute += `app.target = ${target};`
 
                 // let execute = `app.phone = ${player.phone};`;
                 // execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
