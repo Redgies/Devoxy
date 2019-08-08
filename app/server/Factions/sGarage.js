@@ -36,13 +36,14 @@ class Garage {
 				if(!player.loggedIn) return;
 
 				if(player.canUseElevator)
-					this.openElevator();
+					this.openElevator(player);
 			},
 		});
 	}
 
-	openElevator()
+	openElevator(player)
 	{
+		player.notify("openElevator");
 		let execute = `app.id = 0;`;
 		execute += `app.title = 'test';`;
 		execute += `app.css = 'LSPoliceDepartmentGarage.css';`;
@@ -58,8 +59,8 @@ class Garage {
 			visible: true,
 		});
 
-		this.eUndergroundShape = mp.colshapes.newSphere(elevator.top.x, elevator.top.y, elevator.top.z, 1);
-		this.eUndergroundMarker = mp.markers.new(1, new mp.Vector3(elevator.top.x, elevator.top.y, elevator.top.z - 1), 0.75, 
+		this.eUndergroundShape = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1);
+		this.eUndergroundMarker = mp.markers.new(1, new mp.Vector3(elevator.underground.x, elevator.underground.y, elevator.underground.z - 1), 0.75, 
 		{
 			color: [0, 184, 148, 50],
 			visible: true,
