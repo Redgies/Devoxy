@@ -23,6 +23,8 @@ class Interface {
             "sInterface-giveMoney": (player, data) => {
                 const d = JSON.parse(data);
 
+                console.log("data : " + data);
+
                 player.target.money.cash += parseInt(d.money);
                 player.money.cash -= parseInt(d.money);
                 console.log("sInterface-giveMoney id : " + d.id + " money : " + d.money);
