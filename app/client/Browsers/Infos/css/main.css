@@ -16,29 +16,29 @@
     color: #fff;
     text-indent: 15px;
     display: block;
-    height: 25px;
-    font-size: 16px;
-    line-height: 29px;
-    width: 200px;
+    height: 30px;
+    font-size: 19px;
+    line-height: 34px;
+    width: 250px;
     background: rgb(131,58,180);
-    background: linear-gradient(90deg, rgba(131,58,180,0) 0%, rgba(0,0,0,1) 13%, rgba(0,0,0,1) 99%);
+    background: linear-gradient(90deg, rgba(131,58,180,0) 0%, rgba(0,0,0,1) 16%, rgba(0,0,0,1) 99%);
     margin-bottom: 4px;
     position: relative;
 }
 
 .container .bar i {
-    font-size: 14px;
-    margin-right: 5px;
+    font-size: 16px;
+    margin-right: 10px;
 }
 
 .line1 {
     position: absolute;
     background: #fff;
-    width: calc(100% - 63px);
+    width: calc(100% - 70px);
     height: 8px;
     top: calc(50% - 1px);
     border-radius: 5vw;
-    right: 8px;
+    right: 10px;
     transform: translateY(-50%);
 }
 
