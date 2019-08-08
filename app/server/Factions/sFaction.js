@@ -15,6 +15,8 @@ class Faction {
 
 		vehicleSingletone.loadFactionVehicles(this.id);
 
+		this.createEvents();
+
 		factionsList.push(this);
 	}
 
@@ -28,6 +30,15 @@ class Faction {
 				// player.notify("faction : " + this.name);
 				// player.notify("rank : " + this.ranks[player.rank]);
 			},
+			"r" : (player, fullText) => {
+				const currentTime = misc.getTime();
+				const str = `!{#74b9ff}[${currentTime}] ${this.ranks[p.rank]} | ${p.name} : ${fullText}`;
+
+				for(const p of mp.players.toArray()) {
+					if(p.faction !== this.id || !this.isWorking(p)) continue;
+					p.outputChatBox(str);
+				}
+			}
 		});
 	}
 
@@ -43,6 +54,9 @@ class Faction {
 
 	changeClothes(player) {
 		if(this.isWorking(player)) {
+			if(player.faction === 1)
+				player.removeAllWeapons();
+				
 			this.setWorking(player, false);
 			player.armour = 0;
 			return clothes.loadPlayerClothes(player);
