@@ -5,5 +5,8 @@ mp.events.add({
 		misc.prepareToCef(0, true, true, true);
 		misc.openCef("package://RP/Browsers/Interface/interface.html");
 		misc.injectCef(inject);
-	},
+    },
+    "cInterface-giveMoney": (money) => {
+        
+    }
 });

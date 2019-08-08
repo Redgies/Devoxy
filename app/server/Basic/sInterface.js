@@ -8,6 +8,8 @@ class Interface {
 
                 let target = misc.getNearestPlayer(player, 1);
 
+                player.target = target;
+
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
 
                 // let execute = `app.phone = ${player.phone};`;
@@ -17,6 +19,21 @@ class Interface {
 
                 player.call("cInterface-Open", [execute]);
                 misc.log.debug(`${player.name} opens interface`);
+            },
+            "sInterface-giveMoney": (player, money) => {
+                let execute = `app.whoName = '${player.name}';`;
+                execute += `app.whoId = ${target.id};`;
+                execute += `app.wantText = 'Veux te donner de l'oseil kwa;`;
+                execute += `app.price = ${money};`;
+                patient.call("cMisc-CreateChooseWindow", [target.lang, execute, "sHospital-ConfirmIncreaseHealingEvent", "sHospital-RejectDoctorOffer"]);
+        
+                // const d = JSON.parse(str);
+
+                // updateContact(d);
+
+                // let execute = `app.d.contacts = ${this.getContactsForPlayer(player)};`;
+                // player.call("cPhone-Update", [execute]);
+                // misc.log.debug(`${player.name} phone update contact`);
             },
         });
     }
