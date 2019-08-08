@@ -26,7 +26,7 @@ class Interface {
                 execute += `app.whoId = ${player.target.id};`;
                 execute += `app.wantText = 'Veux te donner de l'oseil kwa;`;
                 execute += `app.price = ${money};`;
-                patient.call("cMisc-CreateChooseWindow", [player.target.lang, execute, "sHospital-ConfirmIncreaseHealingEvent", "sHospital-RejectDoctorOffer"]);
+                player.target.call("cMisc-CreateChooseWindow", [player.target.lang, execute, "sHospital-ConfirmIncreaseHealingEvent", "sHospital-RejectDoctorOffer"]);
         
                 // const d = JSON.parse(str);
 
