@@ -54,6 +54,8 @@ const app = new Vue({
         },
         targetPlayer: function(str) {
             this.target = JSON.parse(str);
+
+            alert(this.target.id);
         },
         exit: function() {
 			mp.trigger("cCloseCef"); 

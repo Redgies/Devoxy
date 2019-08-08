@@ -25,6 +25,9 @@ class Interface {
 
                 console.log("data : " + data);
 
+                let target = findPlayerByIdOrNickname(d.id);
+                if(!target) return;
+
                 player.target.money.cash += parseInt(d.money);
                 player.money.cash -= parseInt(d.money);
                 console.log("sInterface-giveMoney id : " + d.id + " money : " + d.money);
