@@ -2,7 +2,7 @@ const misc = require('../cMisc');
 
 mp.events.add({
 
-	"cGarage-ShowVisitorsGarageMenu" : (lang, execute) => {
+	"cGarage-ShowVisitorsGarageMenu" : (execute) => {
 		misc.prepareToCef(1);
 		misc.openCef("package://RP/Browsers/Factions/VisitorsGarage/Garage/garage.html");
 		misc.injectCef(execute);
