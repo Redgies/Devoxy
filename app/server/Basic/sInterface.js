@@ -11,16 +11,7 @@ class Interface {
                 if(target)
                     player.targetId = target.id;
 
-                console.log("target id : " + target.id);
-
-
-
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
-
-                // let execute = `app.phone = ${player.phone};`;
-                // execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
-                // execute += `app.d.talks = ${this.getTalksForPlayer(player)};`;
-                // execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
 
                 player.call("cInterface-Open", [execute]);
                 misc.log.debug(`${player.name} opens interface`);
@@ -28,31 +19,16 @@ class Interface {
             "sInterface-giveMoney": (player, data) => {
                 const d = JSON.parse(data);
 
-                console.log("player.targetId : " + player.targetId);
-
-                console.log("data : " + data);
-
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
                 if(!target) return;
+                if(player.money.cash < d.money)
+                    return player.notify("~r~Vous n'avez pas assez sur vous.");
 
                 target.changeMoney(+d.money);
+                target.notifyWithPicture("Banque", "", `${player.name} vous a donné ${d.money}$.`, "CHAR_BANK_FLEECA");
+
                 player.changeMoney(-d.money);
-
-                console.log("sInterface-giveMoney id : " + target.id + " money : " + d.money);
-                // let execute = `app.whoName = '${player.name}';`;
-                // execute += `app.whoId = ${player.target.id};`;
-                // execute += `app.wantText = 'Veux te donner de l'oseil kwa;`;
-                // execute += `app.priceText = 'nike ta mère'`;
-                // execute += `app.price = ${money};`;
-                // player.target.call("cMisc-CreateChooseWindow", [player.lang, execute, "test", "test"]);
-        
-                // const d = JSON.parse(str);
-
-                // updateContact(d);
-
-                // let execute = `app.d.contacts = ${this.getContactsForPlayer(player)};`;
-                // player.call("cPhone-Update", [execute]);
-                // misc.log.debug(`${player.name} phone update contact`);
+                player.notifyWithPicture("Banque", "", `Vous avez donné ${d.money}$ à ${target.name}.`, "CHAR_BANK_FLEECA");
             },
         });
     }
