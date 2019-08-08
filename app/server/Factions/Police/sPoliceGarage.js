@@ -10,9 +10,9 @@ const garageData = {
 	},
 	garage: {
 		topEnter: {x: 449.796, y: -996.585, z: 25.769, rot: 176.45 },
-		topExit: {x: 433.836, y: -996.6, z: 25.77, rot: 173.91},
-		undergroundEnter: {x: 224.534, y: -1002.863, z: -99.768, rot: 358.82},
-		undergroundExit: {x: 232.041, y: -1003.626, z: -99.768, rot: 179.56},
+		topExit: {x: 431.37, y: -997.774, z: 24.986, rot: 180.1},
+		undergroundEnter: {x: 224.534, y: -1002.863, z: -99.768 - 1, rot: 358.82},
+		undergroundExit: {x: 232.041, y: -1003.626, z: -99.768 - 1, rot: 179.56},
 	}	
 }
 

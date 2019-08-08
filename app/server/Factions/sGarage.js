@@ -131,7 +131,7 @@ class Garage {
 		this.eUndergroundShape4 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.garagestartDim + 3);
 		this.eUndergroundShape5 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.garagestartDim + 4);
 
-		this.eGarageTopEnter = mp.colshapes.newSphere(garage.topEnter.x, garage.topEnter.y, garage.topEnter.z, 1);
+		this.eGarageTopEnter = mp.colshapes.newSphere(garage.topEnter.x, garage.topEnter.y, garage.topEnter.z, 5);
 
 		this.eGarageUndergroundExit1 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim);
 		this.eGarageUndergroundExit2 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim + 1);
