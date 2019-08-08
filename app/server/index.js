@@ -25,6 +25,5 @@ require('./Basic/sNoClip');
 require('./Basic/sVocal');
 require("./MapEditor/MapEditorServer");
 
-require('./Factions/sFaction');
 require('./Factions/sGarage');
 require('./Factions/Police/sPolice');

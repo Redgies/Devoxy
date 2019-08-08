@@ -1,4 +1,3 @@
-
 const misc = require('../sMisc');
 const clothes = require('../Character/sClothes');
 const vehicleSingletone = require('../Basic/Vehicles/sVehicleSingletone');
