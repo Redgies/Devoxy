@@ -27,7 +27,7 @@ class Interface {
                 execute += `app.wantText = 'Veux te donner de l'oseil kwa;`;
                 execute += `app.priceText = 'nike ta mère'`;
                 execute += `app.price = ${money};`;
-                player.target.call("cMisc-CreateChooseWindow", [player.lang, execute, "sHospital-ConfirmIncreaseHealingEvent", "sHospital-RejectDoctorOffer"]);
+                player.target.call("cMisc-CreateChooseWindow", [player.lang, execute, "test", "test"]);
         
                 // const d = JSON.parse(str);
 

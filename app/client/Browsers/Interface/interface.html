@@ -46,6 +46,7 @@ const app = new Vue({
 	methods: {
         giveMoney: function() {
             mp.trigger("cMisc-CallServerEvent", "sInterface-giveMoney", this.moneyToGive);
+            this.exit();
         },
         targetPlayer: function(str) {
             this.target = JSON.parse(str);
