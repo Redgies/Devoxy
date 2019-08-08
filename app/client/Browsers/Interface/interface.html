@@ -34,8 +34,12 @@
                     </div>
                 </div>
                 <div class="panel-body" style="width: 30%; float: right; text-align: center; padding: 10px; height: calc(100% - 35px); overflow-y: scroll;">
+                    <!-- INVENTAIRE -->
+                    <div v-if="currentTab == 1">
+                        <h1 class="title-right">Inventaire</h1>
+                    </div>
                     <!-- DONNER DE L'ARGENT -->
-                    <div v-if="currentTab == 2">
+                    <div v-if="currentTab == 2 && target.length >= 1">
                         <h1 class="title-right">Don d'argent</h1>
                         <p class="p-right">Vous allez donner de l'argent à {{ target.firstName }} {{ target.lastName }}</p>
                         <input type="text" v-model="moneyToGive" oninput="this.value = Math.abs(this.value)">
@@ -69,7 +73,8 @@ const app = new Vue({
     el: '#app',
     data: {
         currentTab: 0,
-        target: [],
+        target: [
+        ],
         vehicle: [],
         moneyToGive: 0,
         walkingStyle: [
@@ -92,6 +97,8 @@ const app = new Vue({
             this.walkingStyle[walking].animset;
 
             mp.trigger("cMisc-CallServerEvent", "sInterface-setWalking", this.walkingStyle[walking].animset);
+
+            this.exit();
         },
         giveMoney: function() {
             const data = {

@@ -7,16 +7,18 @@ class Interface {
                 if(!player.loggedIn) return;
 
                 let target = misc.getNearestPlayer(player, 1);
+                if(!target)
+                    target = [];
                 // let target = player;
                 let veh = misc.getNearestVehicle(player, 3);
+                if(!veh)
+                    veh = [];
 
                 if(target)
                     player.targetId = target.id;
 
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
                 execute += `app.targetVehicle('${JSON.stringify(veh)}');`;
-
-                console.log(JSON.stringify(veh));
 
                 player.call("cInterface-Open", [execute]);
                 misc.log.debug(`${player.name} opens interface`);
