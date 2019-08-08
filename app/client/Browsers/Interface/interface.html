@@ -89,9 +89,9 @@ const app = new Vue({
     },
 	methods: {
         setWalking: function(walking) {
-            walkingStyle[walking].animset;
+            this.walkingStyle[walking].animset;
 
-            mp.trigger("cMisc-CallServerEvent", "sInterface-setWalking", walkingStyle[walking].animset);
+            mp.trigger("cMisc-CallServerEvent", "sInterface-setWalking", this.walkingStyle[walking].animset);
         },
         giveMoney: function() {
             const data = {
