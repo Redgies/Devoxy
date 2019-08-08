@@ -105,7 +105,7 @@ class Garage {
 			visible: true,
 		});
 
-		this.eUndergroundShape1 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim);
+		this.eUndergroundShape1 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, 10);
 		this.eUndergroundShape2 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + 1);
 		this.eUndergroundShape3 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + 2);
 		this.eUndergroundShape4 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + 3);
@@ -119,7 +119,7 @@ class Garage {
 
 		this.eUndergroundMarker2 = mp.markers.new(1, new mp.Vector3(elevator.underground.x, elevator.underground.y, elevator.underground.z - 1), 0.75, 
 		{
-			dimension: this.startDim,
+			dimension: 10,
 			color: [0, 184, 148, 50],
 			visible: true,
 		});
