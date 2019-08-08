@@ -160,7 +160,7 @@ class Garage {
 	// }
 
 }
-module.exports = garage;
+module.exports = Garage;
 
 
 mp.events.add({
