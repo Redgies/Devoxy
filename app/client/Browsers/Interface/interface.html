@@ -26,7 +26,7 @@
                     <div v-if="currentTab == 2">
                         <h1 class="title-right">Don d'argent</h1>
                         <p class="p-right">Vous allez donner de l'argent à {{ target.firstName }} {{ target.lastName }}</p>
-                        <input type="text" value="0" v-model="moneyToGive">
+                        <input type="text" v-model="moneyToGive">
                         <button type="button" class="btn-valid" @click="giveMoney()">Valider</button>
                     </div>
                 </div>

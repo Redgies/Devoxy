@@ -25,6 +25,7 @@ class Interface {
                 let execute = `app.whoName = '${player.name}';`;
                 execute += `app.whoId = ${player.target.id};`;
                 execute += `app.wantText = 'Veux te donner de l'oseil kwa;`;
+                execute += `app.priceText = 'nike ta mère'`;
                 execute += `app.price = ${money};`;
                 player.target.call("cMisc-CreateChooseWindow", [player.target.lang, execute, "sHospital-ConfirmIncreaseHealingEvent", "sHospital-RejectDoctorOffer"]);
         
