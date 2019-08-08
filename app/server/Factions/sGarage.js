@@ -27,7 +27,7 @@ class Garage {
 
 				for(let i = 0; i < 5; i++)
 				{
-					if(shape === this.eUndergroundShape[i])
+					if(shape === this.eUndergroundShape1 || shape === this.eUndergroundShape2 || shape === this.eUndergroundShape3 || shape === this.eUndergroundShape4 || shape === this.eUndergroundShape5)
 					{
 						player.canUseElevator = true;
 						player.notify("Appuyez ~b~E ~w~pour sortir du garage.");
@@ -105,10 +105,12 @@ class Garage {
 			visible: true,
 		});
 
-		for(let i = 0; i < 5; i++)
-		{
-			this.eUndergroundShape[i] = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + i);
-		}
+		this.eUndergroundShape1 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim);
+		this.eUndergroundShape2 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + 1);
+		this.eUndergroundShape3 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + 2);
+		this.eUndergroundShape4 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + 3);
+		this.eUndergroundShape5 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.startDim + 4);
+
 		this.eUndergroundMarker = mp.markers.new(1, new mp.Vector3(elevator.underground.x, elevator.underground.y, elevator.underground.z - 1), 0.75, 
 		{
 			color: [0, 184, 148, 50],
