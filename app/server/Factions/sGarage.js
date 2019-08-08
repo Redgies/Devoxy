@@ -52,7 +52,7 @@ class Garage {
 	openElevator(player, dim)
 	{
 		let execute = `app.id = ${this.garage.id};`;
-		execute += `app.floor = '${dim}';`;
+		execute += `app.dim = '${dim}';`;
 		execute += `app.title = '${this.garage.title}';`;
 		execute += `app.css = 'LSPoliceDepartmentGarage.css';`;
 		player.call("cGarage-ShowVisitorsGarageMenu", [execute]);
@@ -78,7 +78,7 @@ class Garage {
 
 		if(floor === 0)
 		{
-			pos = this.garage.top;
+			pos = this.garage.elevator.top;
 			pos.dim = 0;
 		}
 		else 
