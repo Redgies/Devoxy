@@ -25,14 +25,14 @@ class cVehicle {
 			
 			"render" : () => {
 				this.setLightMultiplier();
-				this.showSpeed();
-				this.showFuel();
+				// this.showSpeed();
+				// this.showFuel();
 				this.showBrakeLights();
 			},
 		});
 	}
 
-	setFuel(fuel, fuelRate, showSpeed) {
+	setFuel(fuel, fuelRate) {
 		if (typeof fuel !== "number") return this.fuel = null;
 		this.fuel = fuel; 
 		this.fuelRate = fuelRate;
@@ -42,33 +42,33 @@ class cVehicle {
 		if (player.vehicle) player.vehicle.setLightMultiplier(4);
 	}
 
-	showSpeed() {
-		const vehicle = player.vehicle;
-		if (!vehicle || mp.gui.cursor.visible) return;
-		this.speed = misc.roundNum(vehicle.getSpeed() * 4);
-		mp.game.graphics.drawText("     Speed: " + this.speed + " km/h", [0.920, 0.835], { 
-			font: 1, 
-			color: [255, 255, 255, 255], 
-			scale: [0.6, 0.6], 
-		});
-	}
+	// showSpeed() {
+	// 	const vehicle = player.vehicle;
+	// 	if (!vehicle || mp.gui.cursor.visible) return;
+	// 	this.speed = misc.roundNum(vehicle.getSpeed() * 4);
+	// 	mp.game.graphics.drawText("     Speed: " + this.speed + " km/h", [0.920, 0.835], { 
+	// 		font: 1, 
+	// 		color: [255, 255, 255, 255], 
+	// 		scale: [0.6, 0.6], 
+	// 	});
+	// }
 
-	showFuel() {
-		const vehicle = player.vehicle;
-		if (mp.gui.cursor.visible || !vehicle || this.fuel === null || !vehicle.getIsEngineRunning()) return;
-		mp.game.graphics.drawText("         Fuel: " + this.fuel.toFixed(1) + " L", [0.927, 0.80], { 
-			font: 1, 
-			color: [255, 255, 255, 255], 
-			scale: [0.6, 0.6], 
-		});
-		const rpm = misc.roundNum(vehicle.rpm * 5000);
-		let gear = vehicle.gear;
-		if (gear === 0) gear = 1;
+	// showFuel() {
+	// 	const vehicle = player.vehicle;
+	// 	if (mp.gui.cursor.visible || !vehicle || this.fuel === null || !vehicle.getIsEngineRunning()) return;
+	// 	mp.game.graphics.drawText("         Fuel: " + this.fuel.toFixed(1) + " L", [0.927, 0.80], { 
+	// 		font: 1, 
+	// 		color: [255, 255, 255, 255], 
+	// 		scale: [0.6, 0.6], 
+	// 	});
+	// 	const rpm = misc.roundNum(vehicle.rpm * 5000);
+	// 	let gear = vehicle.gear;
+	// 	if (gear === 0) gear = 1;
 	
-		this.fuel -= (rpm + (this.speed * 400)) / gear * this.fuelRate * Math.pow(5, -13);
+	// 	this.fuel -= (rpm + (this.speed * 400)) / gear * this.fuelRate * Math.pow(5, -13);
 	
-		if (this.fuel < 0.1) mp.events.callRemote('sVehicle-SetFuel', vehicle, this.fuel);
-	}
+	// 	if (this.fuel < 0.1) mp.events.callRemote('sVehicle-SetFuel', vehicle, this.fuel);
+	// }
 
 	showBrakeLights() {
 		if (!player.vehicle || this.speed !== 0) return;
