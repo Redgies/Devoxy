@@ -21,11 +21,12 @@ class Interface {
                 misc.log.debug(`${player.name} opens interface`);
             },
             "sInterface-giveMoney": (player, money) => {
+                console.log("sInterface-giveMoney id : " + player.target.id);
                 let execute = `app.whoName = '${player.name}';`;
-                execute += `app.whoId = ${target.id};`;
+                execute += `app.whoId = ${player.target.id};`;
                 execute += `app.wantText = 'Veux te donner de l'oseil kwa;`;
                 execute += `app.price = ${money};`;
-                patient.call("cMisc-CreateChooseWindow", [target.lang, execute, "sHospital-ConfirmIncreaseHealingEvent", "sHospital-RejectDoctorOffer"]);
+                patient.call("cMisc-CreateChooseWindow", [player.target.lang, execute, "sHospital-ConfirmIncreaseHealingEvent", "sHospital-RejectDoctorOffer"]);
         
                 // const d = JSON.parse(str);
 
