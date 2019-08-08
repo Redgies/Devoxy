@@ -27,3 +27,4 @@ require("./MapEditor/MapEditorServer");
 
 require('./Factions/sGarage');
 require('./Factions/Police/sPolice');
+require('./Factions/Police/sPoliceGarage');
