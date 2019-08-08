@@ -8,6 +8,8 @@ mp.events.add({
     "cMoney-Update" : (value) => money = value,
     "render": () =>
     {
+        speedo.execute(`update(0, 0, ${money});`);  
+        
         if(player.vehicle && player.vehicle.getPedInSeat(-1) === player.handle)
             {
                 if(showed === false)
