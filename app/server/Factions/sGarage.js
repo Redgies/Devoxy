@@ -6,6 +6,47 @@ class Garage {
 		this.garage = garageData;
 
 		this.createGarageElevatorShapes(this.garage.elevator);
+		this.createEvents();
+	}
+
+	createEvents()
+	{
+		mp.events.add({
+			"playerEnterColshape" : (player, shape) => {
+                if(!player.loggedIn) return;
+    
+                if(shape === this.eTopShape)
+                {
+                    player.canUseElevator = true;
+                    player.notify("Appuyez ~b~E ~w~pour descendre dans le garage.");
+				}
+				if(shape === this.eUndergroundShape)
+                {
+                    player.canUseElevator = true;
+                    player.notify("Appuyez ~b~E ~w~pour sortir du garage.");
+                }
+			},
+			"playerExitColshape" : (player, shape) => {
+                if(!player.loggedIn) return;
+                
+                if(shape === this.eTopShape || shape === this.eUndergroundShape)
+                    player.canUseElevator = false;
+            },
+			"sKeys-E" : (player) => {
+				if(!player.loggedIn) return;
+
+				if(player.canUseElevator)
+					this.openElevator();
+			},
+		});
+	}
+
+	openElevator()
+	{
+		let execute = `app.id = 0;`;
+		execute += `app.title = 'test';`;
+		execute += `app.css = 'LSPoliceDepartmentGarage.css';`;
+		player.call("cGarage-ShowVisitorsGarageMenu", [execute]);
 	}
 
 	createGarageElevatorShapes(elevator)
