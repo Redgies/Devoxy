@@ -1,6 +1,8 @@
 
 const misc= require('../sMisc');
 
+require('./Police/sPolice');
+
 class Garage {
 	constructor(garageData) {
 		this.garage = garageData;
