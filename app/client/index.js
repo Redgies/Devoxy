@@ -27,6 +27,8 @@ require('./BlipCreator/index');
 require('./Basic/cNoClip');
 require('./Basic/cNametag');
 require('./Basic/cInterface');
+require('./EpicAttachments');
+require('./StaticAttachments');
 // require("./MapEditor/MapEditor");
 // require("./MapEditor/object_data");
 // require("./MapEditor/Natives");
