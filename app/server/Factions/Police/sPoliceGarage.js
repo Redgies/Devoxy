@@ -7,7 +7,13 @@ const garageData = {
 	elevator: {
 		top: {x: 445.839, y: -996.392, z: 30.69, rot: 10 },
 		underground: {x: 241.378, y: -1004.781, z: -99, rot: 88.36 }
-	}
+	},
+	garage: {
+		topEnter: {x: 449.796, y: -996.585, z: 25.769, rot: 176.45 },
+		topExit: {x: 433.836, y: -996.6, z: 25.77, rot: 173.91},
+		undergroundEnter: {x: 224.534, y: -1002.863, z: -99.768, rot: 358.82},
+		undergroundExit: {x: 232.041, y: -1003.626, z: -99.768, rot: 179.56},
+	}	
 }
 
 // const garageData = {

@@ -7,7 +7,7 @@ class Garage {
 	constructor(garageData) {
 		this.garage = garageData;
 
-		this.createGarageElevatorShapes(this.garage.elevator);
+		this.createGarageElevatorShapes(this.garage);
 		this.createEvents();
 
 		garagesList.push(this);
@@ -25,13 +25,26 @@ class Garage {
                     player.notify("Appuyez ~b~E ~w~pour descendre dans le garage.");
 				}
 
-				for(let i = 0; i < 5; i++)
+				if(shape === this.eUndergroundShape1 || shape === this.eUndergroundShape2 || shape === this.eUndergroundShape3 || shape === this.eUndergroundShape4 || shape === this.eUndergroundShape5)
 				{
-					if(shape === this.eUndergroundShape1 || shape === this.eUndergroundShape2 || shape === this.eUndergroundShape3 || shape === this.eUndergroundShape4 || shape === this.eUndergroundShape5)
-					{
-						player.canUseElevator = true;
-						player.notify("Appuyez ~b~E ~w~pour sortir du garage.");
-					}
+					player.canUseElevator = true;
+					player.notify("Appuyez ~b~E ~w~pour sortir du garage.");
+				}
+
+				if(shape === this.eGarageTopEnter)
+				{
+					if(!player.isDriver()) return;
+
+					player.canUseElevator = true;
+					player.notify("Appuyez ~b~E ~w~pour descendre votre véhicule au garage.");
+				}
+
+				if(shape === this.eGarageUndergroundExit1 || shape === this.eGarageUndergroundExit2 || shape === this.eGarageUndergroundExit3 || shape === this.eGarageUndergroundExit4 || shape === this.eGarageUndergroundExit5)
+				{
+					if(!player.isDriver()) return;
+
+					player.canUseElevator = true;
+					player.notify("Appuyez ~b~E ~w~pour remonter votre véhicule.");
 				}
 			},
 			"playerExitColshape" : (player, shape) => {
@@ -62,13 +75,13 @@ class Garage {
 	{
 		const d = this.getElevatorEnterPos(floor);
 
-		console.log("tp : " + JSON.stringify(d));
-
-		player.tp(d);
+		if(player.isDriver())
+			player.tpWithVehicle(d);
+		else 	
+			player.tp(d);
 	}
 
 	getElevatorEnterPos(floor) {
-		console.log("getElevatorEnterPos");
 		let pos = {
 			x: 0,
 			y: 0,
@@ -77,7 +90,20 @@ class Garage {
 			dim: 0,
 		};
 
-		console.log("floor :" + floor);
+		if(player.isDriver())
+		{
+			if(floor === 0)
+			{
+				pos = this.garage.garage.topExit;
+				pos.dim = 0;
+			}
+			else 
+			{
+				pos = this.garage.garage.undergroundEnter;
+				pos.dim = this.garage.startDim + Math.abs(floor) - 1;
+			}
+			return pos;
+		}
 
 		if(floor === 0)
 		{
@@ -92,8 +118,11 @@ class Garage {
 		return pos;
 	}
 
-	createGarageElevatorShapes(elevator)
+	createGarageElevatorShapes(d)
 	{
+		let elevator = d.elevator;
+		let garage = d.garage;
+
 		this.eTopShape = mp.colshapes.newSphere(elevator.top.x, elevator.top.y, elevator.top.z, 1);
 
 		this.eUndergroundShape1 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.garage.startDim);
@@ -101,6 +130,14 @@ class Garage {
 		this.eUndergroundShape3 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.garagestartDim + 2);
 		this.eUndergroundShape4 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.garagestartDim + 3);
 		this.eUndergroundShape5 = mp.colshapes.newSphere(elevator.underground.x, elevator.underground.y, elevator.underground.z, 1, this.garagestartDim + 4);
+
+		this.eGarageTopEnter = mp.colshapes.newSphere(garage.topEnter.x, garage.topEnter.y, garage.topEnter.z, 1);
+
+		this.eGarageUndergroundExit1 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim);
+		this.eGarageUndergroundExit2 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim + 1);
+		this.eGarageUndergroundExit3 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim + 2);
+		this.eGarageUndergroundExit4 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim + 3);
+		this.eGarageUndergroundExit5 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim + 4);
 	}
 
 	// createGarage() {

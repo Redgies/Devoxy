@@ -30,7 +30,7 @@ const factionData = {
         z: 30.69,
     },
     blip: {
-        scale: 1,
+        scale: 0.8,
         color: 38,
         model: 526, 
         pos: {
