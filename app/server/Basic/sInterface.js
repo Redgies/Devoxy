@@ -26,6 +26,9 @@ class Interface {
             "sInterface-setWalking": (player, data) => {
                 player.data.walkingStyle = data;
             },
+            "sInterface-setMood": (player, data) => {
+                player.data.moodStyle = data;
+            },
             "sInterface-giveMoney": (player, data) => {
                 const d = JSON.parse(data);
 

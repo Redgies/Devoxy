@@ -1,5 +1,5 @@
 function setWalkingStyle(player, style) {
-    if (!style) {
+    if(!style) {
         player.resetMovementClipset(0.0);
     } else {
         if (!mp.game.streaming.hasClipSetLoaded(style)) {
@@ -11,6 +11,18 @@ function setWalkingStyle(player, style) {
     }
 }
 
+function setMood(player, mood) {
+    if(!mood) {
+        player.clearFacialIdleAnimOverride();
+    } else {
+        mp.game.invoke("0xFFC24B988B938B38", player.handle, mood, 0);
+    }
+}
+
 mp.events.addDataHandler("walkingStyle", (entity, value) => {
     if (entity.type === "player") setWalkingStyle(entity, value);
+});
+
+mp.events.addDataHandler("moodStyle", (entity, value) => {
+    if (entity.type === "player") setMood(entity, value);
 });

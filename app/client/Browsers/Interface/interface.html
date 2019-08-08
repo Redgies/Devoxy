@@ -15,6 +15,10 @@
                             <img src="images/walk.png">
                             <span class="title">Style de marche</span>
                         </div>
+                        <div class="item" @click="currentTab = 6">
+                            <img src="images/smile.png">
+                            <span class="title">Style d'humeur</span>
+                        </div>
                         <div class="item" @click="currentTab = 1">
                             <img src="images/backpack.png">
                             <span class="title">Inventaire</span>
@@ -62,6 +66,13 @@
                             {{ walk.name }}
                         </a>
                     </div>
+                    <!-- STYLE DE HUMEUR -->
+                    <div v-if="currentTab == 6">
+                            <h1 class="title-right">Style d'humeur</h1>
+                            <a v-for="(mood, i) in moodStyle" class="walk-style" @click="setMood(i)">
+                                {{mood.name }}
+                            </a>
+                        </div>
                 </div>
             </div>
 		</div>
@@ -90,6 +101,16 @@ const app = new Vue({
             {name: "Quick", animset: "move_m@quick"},
             {name: "Sad", animset: "move_m@sad@a"},
             {name: "Tough", animset: "move_m@tool_belt@a"}
+        ],
+        moodStyle: [
+            {name: "Normal", animname: null },
+            {name: "Aiming", animname: "mood_aiming_1" },
+            {name: "Angry", animname: "mood_angry_1" },
+            {name: "Drunk", animname: "mood_drunk_1" },
+            {name: "Happy", animname: "mood_happy_1" },
+            {name: "Injured", animname: "mood_injured_1" },
+            {name: "Stressed", animname: "mood_stressed_1" },
+            {name: "Sulking", animname: "mood_sulk_1" },
         ]
     },
 	methods: {
@@ -97,6 +118,13 @@ const app = new Vue({
             this.walkingStyle[walking].animset;
 
             mp.trigger("cMisc-CallServerEvent", "sInterface-setWalking", this.walkingStyle[walking].animset);
+
+            this.exit();
+        },
+        setMood: function(mood) {
+            this.moodStyle[mood].animname;
+
+            mp.trigger("cMisc-CallServerEvent", "sInterface-setMood", this.moodStyle[mood].animname);
 
             this.exit();
         },
