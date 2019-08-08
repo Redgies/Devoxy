@@ -76,6 +76,8 @@ class Garage {
 			dim: 0,
 		};
 
+		console.log("floor :" + floor);
+
 		if(floor === 0)
 		{
 			pos = this.garage.elevator.top;

@@ -7,11 +7,11 @@
 			<link rel="stylesheet" :href="css">
 			<div class="b-title">
 				{{ title }}<br>
-				<span>{{ titleInfo }} - floor : {{ dim }}</span>
+				<span>{{ titleInfo }}</span>
 			</div>
 		
 			<section class="items">
-				<div class="item" v-if="dim != 0" @click="enter(0)">
+				<div class="item" v-if="dim != 0" @click="enter(dim)">
 					<div>RDC</div>
 				</div>
 				<div class="item" v-for="floor in floors" @click="enter(floor)">
@@ -33,7 +33,7 @@ const app = new Vue({
 		dim: 0,
 		title: "LS Hospital Garage",
 		css: "",
-		titleInfo: "choose the floor", 
+		titleInfo: "Choisissez le niveau", 
 		floors: [-1, -2, -3, -4, -5],
 
 	},
