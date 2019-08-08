@@ -20,7 +20,6 @@ require('./Phone/sPhone');
 require('./Basic/sGPS');
 require('./Basic/sDoors');
 require('./3rd/betternotifs');
-require('./BlipCreator');
 require('./Basic/sNoClip');
 require('./Basic/sVocal');
 require("./MapEditor/MapEditorServer");
