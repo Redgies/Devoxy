@@ -28,13 +28,6 @@ class Faction {
 				// player.notify("faction : " + this.name);
 				// player.notify("rank : " + this.ranks[player.rank]);
 			},
-			"rank" : (player, fullText, target, rank) => {
-				target = misc.findPlayerByIdOrNickname(target);
-
-				target.rank = parseInt(rank);
-
-				player.notify('rank : ' + target.rank);
-			}
 		});
 	}
 
