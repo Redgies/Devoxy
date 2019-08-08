@@ -10,9 +10,10 @@ class Interface {
 
                 console.log("target id : " + target.id);
 
+                player.target = target.id;
+
 
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
-                execute += `app.targetId = '${target.id}';`;
 
                 // let execute = `app.phone = ${player.phone};`;
                 // execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
@@ -27,10 +28,10 @@ class Interface {
 
                 console.log("data : " + data);
 
-                let target = misc.findPlayerByIdOrNickname(d.id);
+                let target = misc.findPlayerByIdOrNickname(player.target);
                 if(!target) return;
 
-                player.target.money.cash += parseInt(d.money);
+                target.money.cash += parseInt(d.money);
                 player.money.cash -= parseInt(d.money);
                 console.log("sInterface-giveMoney id : " + d.id + " money : " + d.money);
                 // let execute = `app.whoName = '${player.name}';`;

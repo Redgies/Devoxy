@@ -42,12 +42,10 @@ const app = new Vue({
         currentTab: 0,
         target: [],
         moneyToGive: 0,
-        targetId: 0,
     },
 	methods: {
         giveMoney: function() {
             const data = {
-                id: this.targetId,
                 money: this.moneyToGive,
             }
             mp.trigger("cMisc-CallServerEvent", "sInterface-giveMoney", JSON.stringify(data));
@@ -55,8 +53,6 @@ const app = new Vue({
         },
         targetPlayer: function(str) {
             this.target = JSON.parse(str);
-
-            alert(this.targetId);
         },
         exit: function() {
 			mp.trigger("cCloseCef"); 
