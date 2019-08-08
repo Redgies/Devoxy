@@ -73,7 +73,7 @@ class Garage {
 
 	enterGarage(player, floor)
 	{
-		const d = this.getElevatorEnterPos(floor);
+		const d = this.getElevatorEnterPos(player, floor);
 
 		if(player.isDriver())
 			player.tpWithVehicle(d);
@@ -81,7 +81,7 @@ class Garage {
 			player.tp(d);
 	}
 
-	getElevatorEnterPos(floor) {
+	getElevatorEnterPos(player, floor) {
 		let pos = {
 			x: 0,
 			y: 0,
