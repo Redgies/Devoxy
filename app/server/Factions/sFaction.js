@@ -15,20 +15,17 @@ class Faction {
 
 		vehicleSingletone.loadFactionVehicles(this.id);
 
-		this.createEvents();
+		this.createFactionEvents();
 
 		factionsList.push(this);
 	}
 
-	createEvents() {
+	createFactionEvents() {
 		mp.events.addCommand({	
 			"invite" : (player, fullText, target) => {
 				target = misc.findPlayerByIdOrNickname(target);
 				if(!target)	return player.notify("~r~Ce joueur n'est pas connecté.");
-				if(!this.isInThisFaction(player) || !this.isFactionLeader(player)) return;
-
-				// player.notify("faction : " + this.name);
-				// player.notify("rank : " + this.ranks[player.rank]);
+				if(!this.isInThisFaction(player) || !this.isFactionLeader(player)) return;t
 			},
 			"r" : (player, fullText) => {
 				const currentTime = misc.getTime();
