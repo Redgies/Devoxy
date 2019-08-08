@@ -6,7 +6,7 @@ class Interface {
             "sKeys-F3" : (player) => {
                 if(!player.loggedIn) return;
 
-                let target = player.getNearestPlayerTo();
+                let target = misc.getNearestPlayer(player, 3);
 
                 let execute = `app.currentTab = 0;`;
                 execute += `app.target = ${target};`
