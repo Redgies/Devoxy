@@ -8,9 +8,11 @@ class Interface {
 
                 let target = misc.getNearestPlayer(player, 1);
 
+                if(target)
+                    player.targetId = target.id;
+
                 console.log("target id : " + target.id);
 
-                player.targetId = target.id;
 
 
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
@@ -35,7 +37,7 @@ class Interface {
 
                 target.money.cash += parseInt(d.money);
                 player.money.cash -= parseInt(d.money);
-                console.log("sInterface-giveMoney id : " + d.id + " money : " + d.money);
+                console.log("sInterface-giveMoney id : " + target.id + " money : " + d.money);
                 // let execute = `app.whoName = '${player.name}';`;
                 // execute += `app.whoId = ${player.target.id};`;
                 // execute += `app.wantText = 'Veux te donner de l'oseil kwa;`;
