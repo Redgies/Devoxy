@@ -18,9 +18,6 @@ class Interface {
                     veh.number = veh.numberPlate;
                 }
 
-
-                console.log("target : " + JSON.stringify(target));
-
                 if(target)
                     player.targetId = target.id;
 
@@ -39,6 +36,8 @@ class Interface {
             },
             "sInterface-setCuff": (player, data) => {
                 const d = JSON.parse(data);
+
+                console.log("cuffed : " + data);
 
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
 
