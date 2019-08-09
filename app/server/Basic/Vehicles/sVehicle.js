@@ -24,6 +24,8 @@ class Vehicle {
 		vehicle.whoCanOpen = JSON.parse(d.whoCanOpen);
 		vehicle.factionId = d.factionId;
 		vehicle.windowsOpened = [false, false, false, false];
+		vehicle.ownerName = '';
+		vehicle.getOwner(vehicle.ownerId);
 
 		const primaryColor = JSON.parse(d.primaryColor);
 		const secondaryColor = JSON.parse(d.secondaryColor);
@@ -44,14 +46,14 @@ class Vehicle {
 			if (vehicle.locked) {
 				this.unlock();
 
-				player.notifyWithPicture("Véhicule", "", `${this.title} : portes ~g~ouvertes`, "CHAR_LS_CUSTOMS");
+				player.notifyWithPicture("Véhicule", "", `${this.title} : ~g~ouvert`, "CHAR_LS_CUSTOMS");
 //				player.outputChatBox(`${this.title} !{0, 200, 0}${i18n.get('sVehicle', 'unlocked', player.lang)}`);
 				// player.notifyWithPicture("Info", "", `${this.title} ~g~${i18n.get('sVehicle', 'unlocked', player.lang)}.`, "CHAR_PROPERTY_ARMS_TRAFFICKING");
 			}
 			else {
 				this.lock();
 
-				player.notifyWithPicture("Véhicule", "", `${this.title} : portes ~r~fermées`, "CHAR_LS_CUSTOMS");
+				player.notifyWithPicture("Véhicule", "", `${this.title} : ~r~fermé`, "CHAR_LS_CUSTOMS");
 //				player.outputChatBox(`${this.title} !{200, 0, 0}${i18n.get('sVehicle', 'locked', player.lang)}`);
 				// player.notifyWithPicture("Info", "", `${this.title} ~r~${i18n.get('sVehicle', 'locked', player.lang)}`, "CHAR_PROPERTY_ARMS_TRAFFICKING");
 			}
@@ -119,7 +121,11 @@ class Vehicle {
 			this.destroy();
 		}
 
-		return vehicle;
+		vehicle.getOwner = async function(guid) {
+			const d = await misc.query(`SELECT firstName, lastName FROM users WHERE id = ${guid}`);
+			vehicle.ownerName = d[0].firstName + ' ' + d[0].lastName;
+		}
+ 		return vehicle;
 	}
 
 }
