@@ -1,4 +1,4 @@
-require("../ScaleForm/Scaleform.js");
+const messageScaleform = require("../ScaleForm/Scaleform.js");
 require("../ScaleForm/BigMessage.js");
 require("../ScaleForm/MidsizedMessage.js");
 
