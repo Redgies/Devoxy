@@ -41,7 +41,7 @@ class Interface {
 
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
 
-                if(d.cuffed)
+                if(d.cuffed == 1)
                 {
                     console.log("cuff target");
                     target.setCuff(true);
