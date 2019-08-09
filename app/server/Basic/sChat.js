@@ -126,6 +126,8 @@ class ChatSingleton {
 			}, 
 
 			'cuff' : (player, fullText) => {
+				player.cuffed = !player.cuffed;
+				
 				if(player.cuffed)
 				{
 					player.notify("cuff");
