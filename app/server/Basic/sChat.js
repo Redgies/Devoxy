@@ -126,24 +126,7 @@ class ChatSingleton {
 			}, 
 
 			'cuff' : (player, fullText) => {
-				player.cuffed = !player.cuffed;
-				
-				if(player.cuffed)
-				{
-					player.notify("cuff");
-					player.setClothes(7, 41, 0, 2);
-					player.call("cCuff");
-					player.playAnimation('mp_arresting', 'idle', 1, 49);
-				}
-				else 
-				{
-					player.notify("uncuff");
-					player.setClothes(7, 0, 0, 2);
-					player.call("cUnCuff");
-					player.stopAnimation();
-				}
-				// player.setEnableHandcuffs(1); //client side
-
+				player.setCuff();
 			},
 
 			'rapport': (player, fullText) => {

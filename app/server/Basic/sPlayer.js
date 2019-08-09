@@ -99,6 +99,23 @@ class PlayerSingleton {
             if (d.dim) this.dimension = d.dim;
         }
 
+        player.setCuff() = function() {
+            player.cuffed = !player.cuffed;
+				
+            if(player.cuffed)
+            {
+                player.setClothes(7, 41, 0, 2);
+                player.call("cCuff");
+                player.playAnimation('mp_arresting', 'idle', 1, 49);
+            }
+            else 
+            {
+                player.setClothes(7, 0, 0, 2);
+                player.call("cUnCuff");
+                player.stopAnimation();
+            }
+        }
+
         player.tpWithVehicle = function(d) {
             if (!this.isDriver() || !this.vehicle) return;
             this.vehicle.position = new mp.Vector3(d);
