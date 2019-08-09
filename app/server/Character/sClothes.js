@@ -242,7 +242,7 @@ class ClothesSingletone {
 		}
 
 		if (d[0].ears) {
-			const glasses = JSON.parse(d[0].ears);
+			const ears = JSON.parse(d[0].ears);
 			ears.title = "Ears";
 			this.setClothes(player, ears);
 		}
@@ -251,6 +251,7 @@ class ClothesSingletone {
 			const watches = JSON.parse(d[0].watches);
 			watches.title = "Watches";
 			this.setClothes(player, watches);
+	
 		}
 
 		if (d[0].tops) {
