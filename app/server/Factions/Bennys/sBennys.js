@@ -2,7 +2,7 @@ const misc = require('../../sMisc');
 const faction = require('../sFaction');
 
 const factionData = {
-    id: 1,
+    id: 2,
     name: "Benny's Original Motor Works",
     ranks: [
         "Dépanneur",
