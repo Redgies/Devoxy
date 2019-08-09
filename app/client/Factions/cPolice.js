@@ -19,7 +19,6 @@ mp.events.add(
 	"render": () => {
 		if(player.cuffed === true)
 		{
-			mp.gui.chat.push("cuffed");
 			mp.game.controls.disableControlAction(0, 22, true); // disable jump
 			mp.game.controls.disableControlAction(0, 21, true); // disable sprint
 			mp.game.controls.disableControlAction(0, 24, true); // disable attack
@@ -42,7 +41,6 @@ mp.events.add(
 		else 
 		{
 			mp.game.controls.enableAllControlActions(0);
-			mp.gui.chat.push("uncuffed");
 		}
 	}
 

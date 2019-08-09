@@ -65,10 +65,11 @@ class Police extends faction {
     createEvents() {
         mp.events.add({
             "playerExitVehicle" : (player) => {
-                if(player.cuffed)
-                    DeferredPermissionRequest;
-
+                if(player.cuffed) player.cuffed(true);
             },  
+            "playerDeath" : (player) => {
+                player.cuffed(false);
+            },
             "playerEnterColshape" : (player, shape) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
     
