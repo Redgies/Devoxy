@@ -27,11 +27,11 @@
                             <img src="images/give-money.png">
                             <span class="title">Donner de l'argent</span> 
                         </div>
-                        <div class="item" @click="currentTab = 3" v-if="target.faction == 1 && target.working == 1">
+                        <div class="item" @click="currentTab = 3" v-if="player.faction == 1 && player.working == 1">
                             <img src="images/id-card.png">
                             <span class="title">Carte d'identité</span>
                         </div>
-                        <div class="item" @click="currentTab = 4" v-if="target.faction == 1 && target.working == 1">
+                        <div class="item" @click="currentTab = 4" v-if="player.faction == 1 && player.working == 1">
                             <img src="images/license-plate.png">
                             <span class="title">Carte grise</span>
                         </div>
@@ -89,6 +89,9 @@ const app = new Vue({
         vehicle: [
 
         ],
+        player: [
+
+        ],
         moneyToGive: 0,
         walkingStyle: [
             {name: "Nosrmal", animset: null},
@@ -136,6 +139,9 @@ const app = new Vue({
             }
             mp.trigger("cMisc-CallServerEvent", "sInterface-giveMoney", JSON.stringify(data));
             this.exit();
+        },
+        playerInfos: function(str) {
+            this.player = JSON.parse(str);
         },
         targetPlayer: function(str) {
             this.target = JSON.parse(str);

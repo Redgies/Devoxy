@@ -18,7 +18,7 @@ mp.events.add({
                     showed = true;
                 }
 
-                let vel1 = Math.ceil(player.vehicle.getSpeed() * (player.vehicle.getSpeed() / 20) * 2)
+                let vel1 = Math.ceil(player.vehicle.getSpeed() * (player.vehicle.getSpeed() / 20) * 2);
                 let vel = (vel1).toFixed(0);
                 let gas = player.vehicle.getPetrolTankHealth();
                 gas = gas < 0 ? 0: gas / 10;

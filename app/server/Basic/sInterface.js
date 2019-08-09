@@ -14,11 +14,15 @@ class Interface {
                 if(!veh)
                     veh = [];
 
+                console.log("veh : " + veh);
+
+
                 if(target)
                     player.targetId = target.id;
 
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
                 execute += `app.targetVehicle('${JSON.stringify(veh)}');`;
+                execute += `app.playerInfos('${JSON.stringify(player)}');`;
 
                 player.call("cInterface-Open", [execute]);
                 misc.log.debug(`${player.name} opens interface`);
