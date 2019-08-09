@@ -27,6 +27,10 @@ mp.events.add(
 				misc.createCam(camD.x, camD.y, camD.z + 0.7, camD.rx, camD.ry, camD.rz, camD.viewangle - 25);
 				break;
 
+			case "Watches":
+				misc.createCam(camD.x, camD.y, camD.z + 0.4, camD.rx, camD.ry, camD.rz, camD.viewangle - 10);
+				break;
+
 			case "Tops":
 				misc.createCam(camD.x, camD.y, camD.z + 0.4, camD.rx, camD.ry, camD.rz, camD.viewangle - 10);
 				break;

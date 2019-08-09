@@ -10,6 +10,7 @@
 				<div class="item buttons" @click="showHats">{{ hatsText }}</div>
 				<div class="item buttons" @click="showGlasses">{{ glassesText }}</div>
 				<div class="item buttons" @click="showEars">{{ earsText }}</div>
+				<div class="item buttons" @click="showEars">{{ watchesText }}</div>
 				<div class="item buttons" @click="showTops">{{ topsText }}</div>
 				<div class="item buttons" @click="showLegs">{{ legsText }}</div>
 				<div class="item buttons" @click="showFeet">{{ feetText }}</div>
@@ -61,6 +62,8 @@ const app = new Vue({
 		camRotation: 0,
 		hats: false,
 		glasses: false,
+		ears: false,
+		watches: false,
 		tops:false,
 		legs: false,
 		feet: false,
@@ -76,6 +79,7 @@ const app = new Vue({
 		hatsText: "Hats",
 		glassesText: "Glasses",
 		earsText: "Ears",
+		watchesText: "Watches",
 		topsText: "Tops",
 		legsText: "Legs",
 		feetText: "Feet",
@@ -121,6 +125,11 @@ const app = new Vue({
 		showEars: function() {
 			this.currentTitle = "Ears";
 			this.currentArr = this.ears;
+			this.setCurrentStartSettings();
+		},
+		showWatches: function() {
+			this.currentTitle = "Watches";
+			this.currentArr = this.watches;
 			this.setCurrentStartSettings();
 		},
 		showTops: function() {
@@ -254,6 +263,11 @@ function loadMans() {
 		{	id: 4, name: "Boucle d'oreille 1", 		color: 0, colors: [1], 									price: 100,  },
 	];
 
+	app.watches = [
+		{	id: 2, name: "Rien", color: 0, colors: [0], 									price: 0,  },
+		{	id: 0, name: "Philip Patek Tourbillon", 		color: 0, colors: [1], 									price: 20000,  },
+	];
+
 	app.tops = [	
 	{	id: 0, name: "Simple T-Shirt", color: 0, colors: [0, 1, 2, 3, 4, 5, 7, 8, 11], price: 650, torso: 0, undershirt: 15, underColor: 0, underColors: [0], 		},
 	{	id: 1, name: "Simple T-Shirt", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14], price: 550, torso: 0, undershirt: 15, underColor: 0, underColors: [0], 		},
@@ -299,6 +313,11 @@ function loadWomans() {
 		{	id: 4, name: "Boucle d'oreille 1", 		color: 0, colors: [1], 									price: 100,  },
 	];
 
+	app.watches = [
+		{	id: 1, name: "Rien", color: 0, colors: [0], 									price: 0,  },
+		{	id: 2, name: "Montre 1", 		color: 0, colors: [1], 									price: 400,  },
+	];
+
 	app.tops = [	
 	{	id: 0, name: "Simple T-Shirt", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], price: 500, torso: 0, undershirt: 15, underColor: 0, underColors: [0], 		},
 	{	id: 2, name: "Simple T-Shirt", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], price: 650, torso: 2, undershirt: 15, underColor: 0, underColors: [0], 		},
@@ -325,6 +344,7 @@ function loadRusLang() {
 	app.hatsText = "Головные уборы";
 	app.glassesText = "Очки";
 	app.ears = "Ears";
+	app.watches = "Watches";
 	app.topsText = "Верхняя одежда";
 	app.legsText = "Брюки";
 	app.feetText = "Обувь";
@@ -340,6 +360,7 @@ function loadGerLang() {
 	app.hatsText = "Kopfbedeckungen";
 	app.glassesText = "Brillen";
 	app.ears = "Ears";
+	app.watches = "Watches";
 	app.topsText = "Oberbekleidung";
 	app.legsText = "Hosen";
 	app.feetText = "Schuhe";
@@ -355,6 +376,7 @@ function loadBrLang() {
 	app.hatsText = "Chapéus";
 	app.glassesText = "Óculos";
 	app.ears = "Ears";
+	app.watches = "Watches";
 	app.topsText = "Torso";
 	app.legsText = "Pernas";
 	app.feetText = "Pés";
