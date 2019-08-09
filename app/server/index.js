@@ -28,6 +28,8 @@ require('./Phone/sPhone');
 require('./3rd/betternotifs');
 require("./MapEditor/MapEditorServer");
 
+require('./Houses/sHouses');
+
 require('./Factions/sGarage');
 require('./Factions/Police/sPolice');
 require('./Factions/Police/sPoliceGarage');

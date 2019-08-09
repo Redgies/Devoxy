@@ -102,18 +102,6 @@ class ChatSingleton {
                 misc.log.debug(`${player.name} teleported to ${target.name}.`);
             },
 
-            'tptest': (player, fullText) => {
-                if (player.adminLvl < 1) return;
-                const pos = {
-                    x: -785.066,
-                    y: 323.642,
-                    z: 211.997,
-                    rot: 266.24,
-                    dimension: 0
-                }
-                player.tp(pos);
-            },
-
             'admin': (player, fullText) => {
                 if (player.adminLvl < 1) return;
                 if (fullText.length < 1)

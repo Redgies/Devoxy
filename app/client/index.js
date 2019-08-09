@@ -30,6 +30,7 @@ require('./Basic/cNametag');
 require('./Basic/cInfos');
 require('./Basic/cInterface');
 require('./StaticAttachments');
+require('./Houses/cHouses.js');
 // require('./ScaleForm/cScaleForm');
 // require('./Basic/cDeath');
 // require("./MapEditor/MapEditor");
