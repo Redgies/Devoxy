@@ -16,12 +16,10 @@ class Interface {
                     veh = [];
                 else {
                     veh.number = veh.numberPlate;
-
-                    console.log("veh name : " + veh.ownerName);
                 }
 
-                console.log("veh : " + JSON.stringify(veh));
 
+                console.log("target : " + JSON.stringify(target));
 
                 if(target)
                     player.targetId = target.id;

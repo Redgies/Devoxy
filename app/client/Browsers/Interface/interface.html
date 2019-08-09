@@ -35,11 +35,11 @@
                             <img src="images/license-plate.png">
                             <span class="title">Carte grise</span>
                         </div>
-                        <div class="item" @click="currentTab = 7" v-if="target.guid && target.cuffed == 0">
+                        <div class="item" @click="currentTab = 7" v-if="target.cuffed == 0 && target.guid">
                             <img src="images/handcuffs.png">
                             <span class="title">Menotter</span>
                         </div>
-                        <div class="item" @click="currentTab = 8" v-if="target.guid && target.cuffed == 1">
+                        <div class="item" @click="currentTab = 8" v-if="target.cuffed == 1 && target.guid">
                             <img src="images/handcuffs.png">
                             <span class="title">Démenotter</span>
                         </div>

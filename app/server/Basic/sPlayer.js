@@ -82,6 +82,7 @@ class PlayerSingleton {
         player.vip = 0;
         player.faction = 0;
         player.rank = 0;
+        player.cuffed = 0;
         player.fly = false;
         player.phone = 0;
         player.canOpen = {};
