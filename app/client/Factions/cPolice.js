@@ -39,25 +39,8 @@ mp.events.add(
 		}
 		else 
 		{
+			mp.game.controls.enableAllControlActions(0);
 			mp.gui.chat.push("uncuffed");
-			mp.game.controls.disableControlAction(0, 22, false); // disable jump
-			mp.game.controls.disableControlAction(0, 21, false); // disable sprint
-			mp.game.controls.disableControlAction(0, 24, false); // disable attack
-			mp.game.controls.disableControlAction(0, 25, false); // disable aim
-			mp.game.controls.disableControlAction(0, 47, false); // disable weapon
-			mp.game.controls.disableControlAction(0, 58, false); // disable weapon
-			mp.game.controls.disableControlAction(0, 263, false); // disable melee
-			mp.game.controls.disableControlAction(0, 264, false); // disable melee
-			mp.game.controls.disableControlAction(0, 257, false); // disable melee
-			mp.game.controls.disableControlAction(0, 140, false); // disable melee
-			mp.game.controls.disableControlAction(0, 141, false); // disable melee
-			mp.game.controls.disableControlAction(0, 142, false); // disable melee
-			mp.game.controls.disableControlAction(0, 143, false); // disable melee
-			mp.game.controls.disableControlAction(0, 32, false); // move (w)
-			mp.game.controls.disableControlAction(0, 34, false); // move (a)
-			mp.game.controls.disableControlAction(0, 33, false); // move (s)
-			mp.game.controls.disableControlAction(0, 35, false); // move (d)
-			mp.game.controls.disableControlAction(0, 37, false);
 		}
 	}
 
