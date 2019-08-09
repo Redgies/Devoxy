@@ -119,15 +119,6 @@ class Police extends faction {
 
                 player.notify('rank : ' + target.rank);
             },
-            "911" : (player, fullText) => {
-				const currentTime = misc.getTime();
-
-				for(const p of mp.players.toArray()) {
-                    if(p.faction !== 1 || !this.isWorking(p)) continue;
-                    
-					// p.notifyWithPicture("Appel 911", "De : " + p.name, fullText, "CHAR_CALL911");
-				}
-			}
         });
     }
 
