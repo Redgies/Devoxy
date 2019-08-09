@@ -2,6 +2,7 @@
 const misc = require('../cMisc');
 
 player = mp.players.local;
+player.cuffed = false;
 
 mp.events.add(
 {
