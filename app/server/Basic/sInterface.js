@@ -14,7 +14,7 @@ class Interface {
                 if(!veh)
                     veh = [];
                 else {
-                    veh.numberPlate = veh.numberPlate;
+                    veh.number = veh.numberPlate;
                 }
 
                 console.log("veh : " + JSON.stringify(veh));
