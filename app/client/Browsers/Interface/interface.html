@@ -35,11 +35,11 @@
                             <img src="images/license-plate.png">
                             <span class="title">Carte grise</span>
                         </div>
-                        <div class="item" @click="currentTab = 7" v-if="target.cuffed == 0 && target.guid">
+                        <div class="item" @click="setCuff(1)" v-if="target.cuffed == 0 && target.guid">
                             <img src="images/handcuffs.png">
                             <span class="title">Menotter</span>
                         </div>
-                        <div class="item" @click="currentTab = 8" v-if="target.cuffed == 1 && target.guid">
+                        <div class="item" @click="setCuff(0)" v-if="target.cuffed == 1 && target.guid">
                             <img src="images/handcuffs.png">
                             <span class="title">Démenotter</span>
                         </div>
@@ -146,6 +146,13 @@ const app = new Vue({
                 money: this.moneyToGive,
             }
             mp.trigger("cMisc-CallServerEvent", "sInterface-giveMoney", JSON.stringify(data));
+            this.exit();
+        },
+        setCuff: function(cuffed) {
+            const data = {
+                cuffed: cuffed,
+            }
+            mp.trigger("cMisc-CallServerEvent", "sInterface-setCuff", JSON.stringify(cuffed));
             this.exit();
         },
         playerInfos: function(str) {

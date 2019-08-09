@@ -37,6 +37,16 @@ class Interface {
             "sInterface-setMood": (player, data) => {
                 player.data.moodStyle = data;
             },
+            "sInterface-setCuff": (player, data) => {
+                const d = JSON.parse(data);
+
+                let target = misc.findPlayerByIdOrNickname(player.targetId);
+
+                if(d.cuffed)
+                    target.setCuff(true);
+                else 
+                    target.setCuff(false);
+            },
             "sInterface-giveMoney": (player, data) => {
                 const d = JSON.parse(data);
 
