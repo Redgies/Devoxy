@@ -6,8 +6,8 @@ const factionData = {
     name: "Benny's Original Motor Works",
     ranks: [
         "Dépanneur",
-        "Carrossier",
         "Mécanicien",
+        "Carrossier",
         "Pimper",
         "Chef d'équipe",
         "Directeur",
