@@ -229,6 +229,7 @@
                         }
                     };
                     mp.trigger("cMisc-CallServerEvent", "sInterface-setColor", JSON.stringify(data));
+                    this.exit();
                 },
                 playerInfos: function (str) {
                     this.player = JSON.parse(str);
