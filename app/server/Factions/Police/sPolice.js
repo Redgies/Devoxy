@@ -67,9 +67,6 @@ class Police extends faction {
             "playerExitVehicle" : (player) => {
                 if(player.cuffed) player.setCuff(true);
             },  
-            // "playerDeath" : (player) => {
-            //     player.setCuff(false);
-            // },
             "playerEnterColshape" : (player, shape) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
     
