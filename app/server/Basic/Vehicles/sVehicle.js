@@ -25,7 +25,6 @@ class Vehicle {
 		vehicle.factionId = d.factionId;
 		vehicle.windowsOpened = [false, false, false, false];
 		vehicle.ownerName = '';
-		vehicle.getOwner(vehicle.ownerId);
 
 		const primaryColor = JSON.parse(d.primaryColor);
 		const secondaryColor = JSON.parse(d.secondaryColor);
