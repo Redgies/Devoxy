@@ -40,7 +40,7 @@ mp.events.add("playerDeath", (player, reason, killer) => {
 
     if (textTimer) clearTimeout(textTimer);
     textTimer = setTimeout(function() {
-        mp.game.ui.messages.showShard("~r~Wasted", (killer ? `${killer.handle == player.handle ? `You committed suicide.` : getDeathMessage(killer.name, reason)}` : "You died."));
+        // mp.game.ui.messages.showShard("~r~Wasted", (killer ? `${killer.handle == player.handle ? `You committed suicide.` : getDeathMessage(killer.name, reason)}` : "You died."));
     }, scriptConstants.textDelay);
 });
 
