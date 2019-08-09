@@ -283,10 +283,11 @@ class VehicleSingleton {
 
     async loadPlayerVehicles(id) {
         const data = await misc.query(`SELECT V.*, U.firstName, U.lastName FROM vehicles V, users U WHERE V.ownerId = ${id} AND V.ownerId = U.id`);
-        for (const veh of mp.vehicles.toArray()) {
-            for (const d of data) {
+        for (const d of data) {
+            for (const veh of mp.vehicles.toArray()) {
                 if (d.id === veh.guid) continue;
                 new Vehicle(d);
+                break;
             }
         }
     }
