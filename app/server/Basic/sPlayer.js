@@ -41,6 +41,7 @@ class PlayerSingleton {
         player.lang = d[0].lang;
         player.fly = false;
         player.loyality = d[0].loyality;
+        player.vip = d[0].vip;
         player.updateName();
         player.tp(JSON.parse(d[0].position));
         player.health = d[0].health;
@@ -78,6 +79,7 @@ class PlayerSingleton {
         player.lastName = false;
         player.loyality = 0;
         player.adminLvl = 0;
+        player.vip = 0;
         player.faction = 0;
         player.rank = 0;
         player.fly = false;

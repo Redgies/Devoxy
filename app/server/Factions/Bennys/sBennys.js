@@ -109,7 +109,7 @@ class Bennys extends faction {
         {
             player.setProp(0, 46, 0);
             player.setClothes(6, 25, 0, 2);
-            player.setClothes(4, 35, 0, 2);
+            player.setClothes(4, 41, 0, 2);
             player.setClothes(11, 55, 0, 2);
             player.setClothes(7, 0, 0, 2);
         }

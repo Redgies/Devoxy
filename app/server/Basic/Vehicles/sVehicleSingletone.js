@@ -114,8 +114,7 @@ class VehicleSingleton {
 			},
 		
 			'veh' : (player) => {  // Temporary vehicle spawning
-				if (player.adminLvl < 1) return;
-				if (player.health < 5) return;
+				if (player.vip < 1) return;
 				const d = {
 					model: 'faggio2',
 					coord: misc.getPlayerCoordJSON(player),
