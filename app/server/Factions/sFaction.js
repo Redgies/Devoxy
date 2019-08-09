@@ -60,6 +60,8 @@ class Faction {
 		if(this.isWorking(player)) {
 			if(player.faction === 1)
 				player.removeAllWeapons();
+			if(player.faction === 2)
+				player.removeWeapon(0x19044EE0);
 				
 			this.setWorking(player, false);
 			player.armour = 0;
