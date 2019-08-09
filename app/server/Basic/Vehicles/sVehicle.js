@@ -63,6 +63,10 @@ class Vehicle {
 			if (this.getOccupants().length === 0) this.blinkLights(); 
 		}
 
+		vehicle.setColor = function() {
+			vehicle.primaryColor
+		}
+
 		vehicle.unlock = function() {
 			if (this.getOccupants().length === 0) {
 				this.blinkLights();

@@ -277,7 +277,7 @@ class VehicleSingleton {
 			}
 			const f = vehicle.fuel;
 			const id = vehicle.guid;
-			misc.query(`UPDATE vehicles SET coord = '${JSON.stringify(obj)}', fuel = '${f}' WHERE id = '${id}'`);
+			misc.query(`UPDATE vehicles SET coord = '${JSON.stringify(obj)}', fuel = '${f}', primaryColor = '${JSON.stringify(vehicle.primaryColor)}', secondaryColor = '${JSON.stringify(vehicle.secondaryColor)}', WHERE id = '${id}'`);
 //			vehicle.destroy();
 		}
 	}
