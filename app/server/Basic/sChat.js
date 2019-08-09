@@ -105,10 +105,10 @@ class ChatSingleton {
             'tptest': (player, fullText) => {
                 if (player.adminLvl < 1) return;
                 const pos = {
-                    x: -786.8663,
-                    y: 315.7642,
-                    z: 217.6385,
-                    rot: 0,
+                    x: -785.066,
+                    y: 323.642,
+                    z: 211.997,
+                    rot: 266.24,
                     dimension: 0
                 }
                 player.tp(pos);
