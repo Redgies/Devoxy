@@ -28,6 +28,8 @@ class Vehicle {
 
 		const primaryColor = JSON.parse(d.primaryColor);
 		const secondaryColor = JSON.parse(d.secondaryColor);
+		vehicle.primaryColor = primaryColor;
+		vehicle.secondaryColor = secondaryColor;
 		vehicle.setColorRGB(primaryColor[0], primaryColor[1], primaryColor[2], secondaryColor[0], secondaryColor[1], secondaryColor[2]);
 
 		vehicle.canOpen = function(player) {
@@ -61,6 +63,10 @@ class Vehicle {
 		
 		vehicle.lock = function() {
 			if (this.getOccupants().length === 0) this.blinkLights(); 
+		}
+
+		vehicle.setColor = function() {
+			vehicle.primaryColor
 		}
 
 		vehicle.unlock = function() {

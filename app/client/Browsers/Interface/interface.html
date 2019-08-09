@@ -1,173 +1,252 @@
 <html>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/main.css">
-  	<script src="../vue.js"></script>
-	<body>
-		<div id="app">
-            <div class="panel">
-                <div class="panel-head">
-                    <h1>Interface</h1>
-                    <div class="close" @click="exit">X</div>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/main.css">
+<link href="css/color-picker.min.css" rel="stylesheet">
+<script src="../vue.js"></script>
+<script src="js/color-picker.min.js"></script>
+<body>
+<div id="app">
+    <div class="panel">
+        <div class="panel-head">
+            <h1>Interface</h1>
+            <div class="close" @click="exit">X</div>
+        </div>
+        <div class="panel-body" style="width: 70%; float: left; background: #fff">
+            <div class="items">
+                <div class="item" @click="currentTab = 5">
+                    <img src="images/walk.png">
+                    <span class="title">Style de marche</span>
                 </div>
-                <div class="panel-body" style="width: 70%; float: left; background: #fff">
-                    <div class="items">
-                        <div class="item" @click="currentTab = 5">
-                            <img src="images/walk.png">
-                            <span class="title">Style de marche</span>
-                        </div>
-                        <div class="item" @click="currentTab = 6">
-                            <img src="images/smile.png">
-                            <span class="title">Style d'humeur</span>
-                        </div>
-                        <div class="item" @click="currentTab = 1">
-                            <img src="images/backpack.png">
-                            <span class="title">Inventaire</span>
-                        </div>
-                        <div class="item" @click="currentTab = 2" v-if="target.guid">
-                            <img src="images/give-money.png">
-                            <span class="title">Donner de l'argent</span> 
-                        </div>
-                        <div class="item" @click="currentTab = 3" v-if="player.faction == 1 && player.working == 1 && target.guid">
-                            <img src="images/id-card.png">
-                            <span class="title">Carte d'identité</span>
-                        </div>
-                        <div class="item" @click="currentTab = 4" v-if="player.faction == 1 && player.working == 1 && vehicle.guid">
-                            <img src="images/license-plate.png">
-                            <span class="title">Carte grise</span>
-                        </div>
-                        <div class="item" @click="setCuff(1)" v-if="player.faction == 1 && player.working == 1 && target.cuffed == 0 && target.guid">
-                            <img src="images/handcuffs.png">
-                            <span class="title">Menotter</span>
-                        </div>
-                        <div class="item" @click="setCuff(0)" v-if="player.faction == 1 && player.working == 1 && target.cuffed == 1 && target.guid">
-                            <img src="images/handcuffs.png">
-                            <span class="title">Démenotter</span>
-                        </div>
-                    </div>
+                <div class="item" @click="currentTab = 6">
+                    <img src="images/smile.png">
+                    <span class="title">Style d'humeur</span>
                 </div>
-                <div class="panel-body" style="width: 30%; float: right; text-align: center; padding: 10px; height: calc(100% - 35px); overflow-y: scroll;">
-                    <!-- INVENTAIRE -->
-                    <div v-if="currentTab == 1">
-                        <h1 class="title-right">Inventaire</h1>
-                    </div>
-                    <!-- DONNER DE L'ARGENT -->
-                    <div v-if="currentTab == 2">
-                        <h1 class="title-right">Don d'argent</h1>
-                        <p class="p-right">Vous allez donner de l'argent à {{ target.firstName }} {{ target.lastName }}</p>
-                        <input type="text" v-model="moneyToGive" oninput="this.value = Math.abs(this.value)">
-                        <button type="button" class="btn-valid" @click="giveMoney()">Valider</button>
-                    </div>
-                    <!-- CARTE D'IDENTITE -->
-                    <div v-if="currentTab == 3">
-                        <h1 class="title-right">Carte d'identité</h1>
-                        <p class="p-right"><b>Prénom :</b> {{ target.firstName }} <br> <b>Nom :</b> {{ target.lastName }} <br><br><b>GUID :</b> {{ target.guid }}</b></p>
-                    </div>
-                    <!-- CARTE GRISE -->
-                    <div v-if="currentTab == 4">
-                        <h1 class="title-right">Carte grise</h1>
-                        <p class="p-right"><b>Modèle :</b> {{ vehicle.title }}</b><br><b>Plaque :</b> {{ vehicle.number }}</b><br><br><b>Propriétaire :</b> {{ vehicle.ownerName }}</b></p>
-                    </div>                    
-                    <!-- STYLE DE MARCHE -->
-                    <div v-if="currentTab == 5">
-                        <h1 class="title-right">Style de marche</h1>
-                        <a v-for="(walk, i) in walkingStyle" class="walk-style" @click="setWalking(i)">
-                            {{ walk.name }}
-                        </a>
-                    </div>
-                    <!-- STYLE DE HUMEUR -->
-                    <div v-if="currentTab == 6">
-                            <h1 class="title-right">Style d'humeur</h1>
-                            <a v-for="(mood, i) in moodStyle" class="walk-style" @click="setMood(i)">
-                                {{mood.name }}
-                            </a>
-                        </div>
+                <div class="item" @click="currentTab = 1">
+                    <img src="images/backpack.png">
+                    <span class="title">Inventaire</span>
+                </div>
+                <div class="item" @click="currentTab = 2" v-if="target.guid">
+                    <img src="images/give-money.png">
+                    <span class="title">Donner de l'argent</span>
+                </div>
+                <div class="item" @click="currentTab = 3"
+                     v-if="player.faction == 1 && player.working == 1 && target.guid">
+                    <img src="images/id-card.png">
+                    <span class="title">Carte d'identité</span>
+                </div>
+                <div class="item" @click="currentTab = 4"
+                     v-if="player.faction == 1 && player.working == 1 && vehicle.guid">
+                    <img src="images/license-plate.png">
+                    <span class="title">Carte grise</span>
+                </div>
+                <div class="item" @click="setRepair()"
+                     v-if="player.faction == 2 && player.working == 1 && vehicle.guid">
+                    <img src="images/tools.png">
+                    <span class="title">Réparer</span>
+                </div>
+                <div class="item" @click="initColor()" v-if="player.faction == 2 && player.working == 1 && player.rank >= 3 && vehicle.guid">
+                    <img src="images/spray.png">
+                    <span class="title">Couleur</span>
+                </div>
+                <div class="item" @click="setCuff(1)"
+                     v-if="player.faction == 1 && player.working == 1 && target.cuffed == 0 && target.guid">
+                    <img src="images/handcuffs.png">
+                    <span class="title">Menotter</span>
+                </div>
+                <div class="item" @click="setCuff(0)"
+                     v-if="player.faction == 1 && player.working == 1 && target.cuffed == 1 && target.guid">
+                    <img src="images/handcuffs.png">
+                    <span class="title">Démenotter</span>
                 </div>
             </div>
-		</div>
-	</body>
+        </div>
+        <div class="panel-body"
+             style="width: 30%; float: right; text-align: center; padding: 10px; height: calc(100% - 35px); overflow-y: scroll;">
+            <!-- INVENTAIRE -->
+            <div v-if="currentTab == 1">
+                <h1 class="title-right">Inventaire</h1>
+            </div>
+            <!-- DONNER DE L'ARGENT -->
+            <div v-if="currentTab == 2">
+                <h1 class="title-right">Don d'argent</h1>
+                <p class="p-right">Vous allez donner de l'argent à {{ target.firstName }} {{ target.lastName }}</p>
+                <input type="text" v-model="moneyToGive" oninput="this.value = Math.abs(this.value)">
+                <button type="button" class="btn-valid" @click="giveMoney()">Valider</button>
+            </div>
+            <!-- CARTE D'IDENTITE -->
+            <div v-if="currentTab == 3">
+                <h1 class="title-right">Carte d'identité</h1>
+                <p class="p-right"><b>Prénom :</b> {{ target.firstName }} <br> <b>Nom :</b> {{ target.lastName }}
+                    <br><br><b>GUID :</b> {{ target.guid }}</b></p>
+            </div>
+            <!-- CARTE GRISE -->
+            <div v-if="currentTab == 4">
+                <h1 class="title-right">Carte grise</h1>
+                <p class="p-right"><b>Modèle :</b> {{ vehicle.title }}</b><br><b>Plaque :</b> {{ vehicle.number }}</b>
+                    <br><br><b>Propriétaire :</b> {{ vehicle.ownerName }}</b></p>
+            </div>
+            <!-- STYLE DE MARCHE -->
+            <div v-if="currentTab == 5">
+                <h1 class="title-right">Style de marche</h1>
+                <a v-for="(walk, i) in walkingStyle" class="walk-style" @click="setWalking(i)">
+                    {{ walk.name }}
+                </a>
+            </div>
+            <!-- STYLE DE HUMEUR -->
+            <div v-if="currentTab == 6">
+                <h1 class="title-right">Style d'humeur</h1>
+                <a v-for="(mood, i) in moodStyle" class="walk-style" @click="setMood(i)">
+                    {{mood.name }}
+                </a>
+            </div>
+            <!-- COULEUR VEHICULE-->
+            <div v-if="currentTab == 7">
+                <h1 class="title-right">Couleur du véhicule</h1>
+                <br>
+                <p class="p-right">Couleur primaire :</p>
+                <input type="text" v-model="color1" id="color1">
+                <br><br><br>
+                <p class="p-right">Couleur secondaire :</p>
+                <input type="text" v-model="color2" id="color2">
+                <br><br>
+                <button type="button" class="btn-valid" @click="setColor()">Valider</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>
 
 <script>
-const app = new Vue({
-    el: '#app',
-    data: {
-        currentTab: 0,
-        target: [
-        ],
-        vehicle: [
+    const app = new Vue({
+            el: '#app',
+            data: {
+                currentTab: 0,
+                target: [],
+                vehicle: [],
+                player: [],
+                moneyToGive: 0,
+                color1: '#000000',
+                color2: '#000000',
+                walkingStyle: [
+                    {name: "Nosrmal", animset: null},
+                    {name: "Brave", animset: "move_m@brave"},
+                    {name: "Confident", animset: "move_m@confident"},
+                    {name: "Drunk", animset: "move_m@drunk@verydrunk"},
+                    {name: "Fat", animset: "move_m@fat@a"},
+                    {name: "Gangster", animset: "move_m@shadyped@a"},
+                    {name: "Hurry", animset: "move_m@hurry@a"},
+                    {name: "Injured", animset: "move_m@injured"},
+                    {name: "Intimidated", animset: "move_m@intimidation@1h"},
+                    {name: "Quick", animset: "move_m@quick"},
+                    {name: "Sad", animset: "move_m@sad@a"},
+                    {name: "Tough", animset: "move_m@tool_belt@a"}
+                ],
+                moodStyle: [
+                    {name: "Normal", animname: null},
+                    {name: "Aiming", animname: "mood_aiming_1"},
+                    {name: "Angry", animname: "mood_angry_1"},
+                    {name: "Drunk", animname: "mood_drunk_1"},
+                    {name: "Happy", animname: "mood_happy_1"},
+                    {name: "Injured", animname: "mood_injured_1"},
+                    {name: "Stressed", animname: "mood_stressed_1"},
+                    {name: "Sulking", animname: "mood_sulk_1"},
+                ]
+            },
+            methods: {
+                initColor: function () {
+                    this.currentTab = 7;
+                    setTimeout(function(){
+                        var picker = new CP(document.getElementById('color1'));
+                        picker.on("change", function (color) {
+                            this.source.value = '#' + color;
+                        });
 
-        ],
-        player: [
 
-        ],
-        moneyToGive: 0,
-        walkingStyle: [
-            {name: "Nosrmal", animset: null},
-            {name: "Brave", animset: "move_m@brave"},
-            {name: "Confident", animset: "move_m@confident"},
-            {name: "Drunk", animset: "move_m@drunk@verydrunk"},
-            {name: "Fat", animset: "move_m@fat@a"},
-            {name: "Gangster", animset: "move_m@shadyped@a"},
-            {name: "Hurry", animset: "move_m@hurry@a"},
-            {name: "Injured", animset: "move_m@injured"},
-            {name: "Intimidated", animset: "move_m@intimidation@1h"},
-            {name: "Quick", animset: "move_m@quick"},
-            {name: "Sad", animset: "move_m@sad@a"},
-            {name: "Tough", animset: "move_m@tool_belt@a"}
-        ],
-        moodStyle: [
-            {name: "Normal", animname: null },
-            {name: "Aiming", animname: "mood_aiming_1" },
-            {name: "Angry", animname: "mood_angry_1" },
-            {name: "Drunk", animname: "mood_drunk_1" },
-            {name: "Happy", animname: "mood_happy_1" },
-            {name: "Injured", animname: "mood_injured_1" },
-            {name: "Stressed", animname: "mood_stressed_1" },
-            {name: "Sulking", animname: "mood_sulk_1" },
-        ]
-    },
-	methods: {
-        setWalking: function(walking) {
-            this.walkingStyle[walking].animset;
+                        var picker2 = new CP(document.getElementById('color2'));
+                        picker2.on("change", function (color) {
+                            this.source.value = '#' + color;
+                        });
+                    }, 500)
 
-            mp.trigger("cMisc-CallServerEvent", "sInterface-setWalking", this.walkingStyle[walking].animset);
 
-            this.exit();
-        },
-        setMood: function(mood) {
-            this.moodStyle[mood].animname;
 
-            mp.trigger("cMisc-CallServerEvent", "sInterface-setMood", this.moodStyle[mood].animname);
+                },
 
-            this.exit();
-        },
-        giveMoney: function() {
-            const data = {
-                money: this.moneyToGive,
+                hexToRgb: function hexToRgb(hex) {
+                    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                    return result ? {
+                        r: parseInt(result[1], 16),
+                        g: parseInt(result[2], 16),
+                        b: parseInt(result[3], 16)
+                    } : null;
+                },
+                setWalking: function (walking) {
+                    this.walkingStyle[walking].animset;
+
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-setWalking", this.walkingStyle[walking].animset);
+
+                    this.exit();
+                },
+                setMood: function (mood) {
+                    this.moodStyle[mood].animname;
+
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-setMood", this.moodStyle[mood].animname);
+
+                    this.exit();
+                },
+                giveMoney: function () {
+                    const data = {
+                        money: this.moneyToGive,
+                    }
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-giveMoney", JSON.stringify(data));
+                    this.exit();
+                },
+                setCuff: function (cuffed) {
+                    const data = {
+                        cuffed: cuffed,
+                    }
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-setCuff", JSON.stringify(cuffed));
+                    this.exit();
+                },
+                setRepair: function () {
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-setRepair");
+                    this.exit();
+                },
+                setColor: function () {
+                    var color1 = document.getElementById('color1');
+                    var color2 = document.getElementById('color2');
+                    const data = {
+                        color1: {
+                            r: this.hexToRgb(color1.value).r,
+                            g: this.hexToRgb(color1.value).g,
+                            b: this.hexToRgb(color1.value).b,
+                        },
+                        color2: {
+                            r: this.hexToRgb(color2.value).r,
+                            g: this.hexToRgb(color2.value).g,
+                            b: this.hexToRgb(color2.value).b,
+                        }
+                    };
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-setColor", JSON.stringify(data));
+                    this.exit();
+                },
+                playerInfos: function (str) {
+                    this.player = JSON.parse(str);
+                },
+                targetPlayer: function (str) {
+                    this.target = JSON.parse(str);
+                },
+                targetVehicle: function (str) {
+                    this.vehicle = JSON.parse(str);
+                    // alert(this.vehicle.numberPlate);
+                },
+                exit: function () {
+                    mp.trigger("cCloseCef");
+                },
             }
-            mp.trigger("cMisc-CallServerEvent", "sInterface-giveMoney", JSON.stringify(data));
-            this.exit();
-        },
-        setCuff: function(cuffed) {
-            const data = {
-                cuffed: cuffed,
-            }
-            mp.trigger("cMisc-CallServerEvent", "sInterface-setCuff", JSON.stringify(cuffed));
-            this.exit();
-        },
-        playerInfos: function(str) {
-            this.player = JSON.parse(str);
-        },
-        targetPlayer: function(str) {
-            this.target = JSON.parse(str);
-        },
-        targetVehicle: function(str) {
-            this.vehicle = JSON.parse(str);
-            // alert(this.vehicle.numberPlate);
-        },
-        exit: function() {
-			mp.trigger("cCloseCef"); 
-		},
-	}
-});
+        })
+    ;
 </script>
+
+

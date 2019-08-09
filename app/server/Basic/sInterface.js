@@ -3,22 +3,22 @@ const misc = require('../sMisc');
 class Interface {
     constructor() {
         mp.events.add({
-            "sKeys-F3" : (player) => {
-                if(!player.loggedIn) return;
+            "sKeys-F3": (player) => {
+                if (!player.loggedIn) return;
 
                 let target = player;
                 // let target = misc.getNearestPlayer(player, 1);
-                if(!target)
+                if (!target)
                     target = [];
-            
+
                 let veh = misc.getNearestVehicle(player, 3);
-                if(!veh)
+                if (!veh)
                     veh = [];
                 else {
                     veh.number = veh.numberPlate;
                 }
 
-                if(target)
+                if (target)
                     player.targetId = target.id;
 
                 let execute = `app.targetPlayer('${JSON.stringify(target)}');`;
@@ -34,6 +34,17 @@ class Interface {
             "sInterface-setMood": (player, data) => {
                 player.data.moodStyle = data;
             },
+            "sInterface-setRepair": (player) => {
+                let veh = misc.getNearestVehicle(player, 3);
+                veh.repair();
+            },
+            "sInterface-setColor": (player, data) => {
+                const d = JSON.parse(data);
+                let veh = misc.getNearestVehicle(player, 3);
+                veh.setColorRGB(d.color1.r, d.color1.g, d.color1.b, d.color2.r, d.color2.g, d.color2.b);
+                veh.primaryColor = [d.color1.r, d.color1.g, d.color1.b];
+                veh.secondaryColor = [d.color2.r, d.color2.g, d.color2.b];
+            },
             "sInterface-setCuff": (player, data) => {
                 const d = JSON.parse(data);
 
@@ -41,13 +52,10 @@ class Interface {
 
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
 
-                if(d == 1)
-                {
+                if (d == 1) {
                     console.log("cuff target");
                     target.setCuff(true);
-                }
-                else 
-                {
+                } else {
                     console.log("uncuff target");
                     target.setCuff(false);
                 }
@@ -58,10 +66,10 @@ class Interface {
                 d.money = Math.abs(d.money);
 
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
-                if(!target) return;
-                if(typeof d.money != "number") return;
-                if(d.money <= 0) return;
-                if(player.money.cash < d.money)
+                if (!target) return;
+                if (typeof d.money != "number") return;
+                if (d.money <= 0) return;
+                if (player.money.cash < d.money)
                     return player.notify("~r~Vous n'avez pas assez sur vous.");
 
                 target.changeMoney(+d.money);

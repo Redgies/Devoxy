@@ -266,6 +266,11 @@ keys.bind(k.F6_KEY, false, function() {
     mp.events.callRemote('sKeys-F6');
 });
 
+keys.bind(k.F8_KEY, false, function() {
+    if (mp.gui.cursor.visible) return;
+    mp.events.callRemote('sKeys-F8');
+});
+
 keys.bind(k.F2_KEY, false, function() {
     if (mp.gui.cursor.visible) return;
     mp.events.callRemote('sKeys-F2');
