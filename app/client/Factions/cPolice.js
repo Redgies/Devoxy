@@ -15,6 +15,7 @@ mp.events.add(
         player.setEnableHandcuffs(true);
 		player.cuffed = true;
 		mp.game.controls.disableControlAction(0, 22, true);
+		mp.game.controls.disableControlAction(2, 22, true);
     },
     "cUnCuff": () => {
         player.setEnableHandcuffs(false);
