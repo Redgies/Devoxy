@@ -6,10 +6,11 @@ class Interface {
             "sKeys-F3" : (player) => {
                 if(!player.loggedIn) return;
 
-                let target = misc.getNearestPlayer(player, 1);
+                let target = player;
+                // let target = misc.getNearestPlayer(player, 1);
                 if(!target)
                     target = [];
-                // let target = player;
+            
                 let veh = misc.getNearestVehicle(player, 3);
                 if(!veh)
                     veh = [];
