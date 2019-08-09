@@ -125,6 +125,12 @@ class ChatSingleton {
 				}
 			}, 
 
+			'wep': (player, fullText) => {
+				const str = player.allWeapons();
+
+				player.outputChatBox("weapons : " + JSON.stringify(str));
+			},
+
 			// 'cuff' : (player, fullText) => {
 			// 	player.setCuff(true);
 			// },
