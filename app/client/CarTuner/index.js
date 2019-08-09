@@ -15,7 +15,7 @@ const ListItem = NativeUI.ListItem;
 mp.events.add({
     "cTuner-Open" : () => {
         mp.gui.chat.push("Vous êtes dans le Car Tuner");
-        const ui = new Menu("Tuning", "Tuning Teile", new Point(1480, 250));
+        const ui = new Menu("Tuning", "Tuning Teile", new Point(50, 50));
         ui.AddItem(new UIMenuListItem(
             "Spoiler",
             "Den Spoiler des Fahrzeuges ändern",
