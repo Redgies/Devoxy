@@ -1,5 +1,5 @@
 // Native UI
-const NativeUI = require("../nativeui");
+const NativeUI = require("../nativeui/index.js");
 const Menu = NativeUI.Menu;
 const UIMenuItem = NativeUI.UIMenuItem;
 const UIMenuListItem = NativeUI.UIMenuListItem;
@@ -14,6 +14,7 @@ const ListItem = NativeUI.ListItem;
 // Tuning
 
 mp.keys.bind(0x77, true, () => {
+    alert('test');
     const ui = new Menu("Tuning", "Tuning Teile", new Point(1480, 250));
     ui.AddItem(new UIMenuListItem(
         "Spoiler",
