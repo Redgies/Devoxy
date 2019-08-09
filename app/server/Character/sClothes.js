@@ -25,7 +25,7 @@ class ClothesSingletone {
 
 		this.manWatches = [
 			{	id: 2, name: "Rien", color: 0, colors: [0], 									price: 0,  },
-			{	id: 0, name: "Montre 1", 		color: 0, colors: [1], 									price: 400,  },
+			{	id: 0, name: "Philip patek Tourbillon", 		color: 0, colors: [1], 									price: 20000,  },
 		];
 
 		this.manTops = [	
