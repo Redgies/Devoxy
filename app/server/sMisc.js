@@ -1,5 +1,3 @@
-
-
 const log4js = require('log4js');
 const mysql = require("./sMysql");
 
@@ -16,177 +14,182 @@ logger.fatal('Cheese was breeding ground for listeria.');
 
 
 class MiscSingleton {
-	constructor() {
-		log4js.configure({
-			appenders: { 
-				file: { type: 'file', filename: `serverLogs.log` },
-				console: { type: 'console' },
-			},
-			categories: { default: { appenders: ['file', 'console'], level: 'debug' } }
-		  });
-		this.log = log4js.getLogger();
-		this.log.fatal("Server Started");
-	}
+    constructor() {
+        log4js.configure({
+            appenders: {
+                file: {type: 'file', filename: `serverLogs.log`},
+                console: {type: 'console'},
+            },
+            categories: {default: {appenders: ['file', 'console'], level: 'debug'}}
+        });
+        this.log = log4js.getLogger();
+        this.log.fatal("Server Started");
+    }
 
-	getNearestPlayer(player, range)
-	{
-		let currentTarget = null;
-		let dist = range;
-		mp.players.forEachInRange(player.position, range,
-			(_player) => {
-			    if(player != _player)
-				{
-					let _dist = _player.dist(player.position);
-					if(_dist < dist)
-					{
-						currentTarget = _player;
-						dist = _dist;
-					}
-				}
-			}
-		);
+    getNearestPlayer(player, range) {
+        let currentTarget = null;
+        let dist = range;
+        mp.players.forEachInRange(player.position, range,
+            (_player) => {
+                if (player != _player) {
+                    let _dist = _player.dist(player.position);
+                    if (_dist < dist) {
+                        currentTarget = _player;
+                        dist = _dist;
+                    }
+                }
+            }
+        );
 
-		return currentTarget;
-	}
+        return currentTarget;
+    }
 
-	getNearestVehicle(player, range)
-	{
-		let currentTarget = null;
-		let dist = range;
-		mp.vehicles.forEachInRange(player.position, range,
-			(_vehicle) => {
-				let _dist = _vehicle.dist(player.position);
-				if(_dist < dist)
-				{
-					currentTarget = _vehicle;
-					dist = _dist;
-				}
-			}
-		);
-		
-		return currentTarget;
-	}
+    getNearestVehicle(player, range) {
+        let currentTarget = null;
+        let dist = range;
+        mp.vehicles.forEachInRange(player.position, range,
+            (_vehicle) => {
+                let _dist = _vehicle.dist(player.position);
+                if (_dist < dist) {
+                    currentTarget = _vehicle;
+                    dist = _dist;
+                }
+            }
+        );
 
-	findPlayerByIdOrNickname(playerName) {
-		let foundPlayer = null;
-	
-		if(playerName == parseInt(playerName)) {
-			foundPlayer = mp.players.at(playerName);
-		}
-		if(!foundPlayer) {
-			mp.players.forEach((_player) => {
-			if (_player.name === playerName) {
-				foundPlayer = _player;
-			}
-			});
-		}
+        return currentTarget;
+    }
 
-		return foundPlayer;
-	}
-	
-	dbquery(query) {
-		return new Promise( (r, j) => mysql.query(query, null , (err, data) => {
-			if (err) {
-				this.log.error(query);
-				return j(err);
-			}
-			r(data);
-		}))
-	}
+    findVehiclesById(guid) {
+        let foundVehicle = null;
 
-	// simpleQuery(query) {
-	// 	mysql.query(query, function (error, results) {
-	// 		if (error) throw error;
-	// 		console.log('The solution is: ', results[0].solution);
-	// 	  });
-	// }
+        for (const veh of mp.vehicles.toArray()) {
+            if (guid !== veh.guid) continue;
+            foundVehicle = veh;
+        }
+        return foundVehicle;
+    }
 
-	async query(query) {
-		const start = new Date().getTime(); 
-		const data = await this.dbquery(query);
-		const time = new Date().getTime() - start;
-		if (time >= 500) {
-			this.log.warn(`'${query}' ends with: ${time / 1000}s`);
-		}
-		else {
-			this.log.trace(`'${query}' ends with: ${time / 1000}s`);
-		}
-		return data;
-	}
+    findPlayerByIdOrNickname(playerName) {
+        let foundPlayer = null;
 
-	roundNum(number, ends = 0) {
-		return parseFloat(number.toFixed(ends));
-	}
+        if (playerName == parseInt(playerName)) {
+            foundPlayer = mp.players.at(playerName);
+        }
+        if (!foundPlayer) {
+            mp.players.forEach((_player) => {
+                if (_player.name === playerName) {
+                    foundPlayer = _player;
+                }
+            });
+        }
 
-	isValueNumber(value) {
-		if (typeof value !== "number") return false;
-		return true;
-	}
+        return foundPlayer;
+    }
 
-	isValueString(value) {
-		if (typeof value !== "string") return false;
-		return true;
-	}
+    dbquery(query) {
+        return new Promise((r, j) => mysql.query(query, null, (err, data) => {
+            if (err) {
+                this.log.error(query);
+                return j(err);
+            }
+            r(data);
+        }))
+    }
 
-	getRandomInt(min = 0, max = 100) {
-		return Math.floor(Math.random() * (max - min + 1)) + min;
-	}
+    // simpleQuery(query) {
+    // 	mysql.query(query, function (error, results) {
+    // 		if (error) throw error;
+    // 		console.log('The solution is: ', results[0].solution);
+    // 	  });
+    // }
 
-	getPlayersInRange(position, range) {
-		if (!this.isValueNumber(range)) return false;
-		const players = mp.players.toArray();
-		const playersInRange = [];
-		for (const player of players) {
-			if (player.dist(position) < range) {
-				playersInRange.push(player);
-			}
-		}
-		return playersInRange;
-	}
+    async query(query) {
+        const start = new Date().getTime();
+        const data = await this.dbquery(query);
+        const time = new Date().getTime() - start;
+        if (time >= 500) {
+            this.log.warn(`'${query}' ends with: ${time / 1000}s`);
+        } else {
+            this.log.trace(`'${query}' ends with: ${time / 1000}s`);
+        }
+        return data;
+    }
 
-	getNearestPlayerInRange(position, range) {
-		const playersInRange = this.getPlayersInRange(position, range);
-		if (!playersInRange) return false;
-		let nearestPlayer = 0;
-		for (const player of playersInRange) {
-			if (player.dist(position) < playersInRange[nearestPlayer].dist(position)) {
-				nearestPlayer = playersInRange.indexOf(player);
-			}
-		}
-		return playersInRange[nearestPlayer];
-	}
+    roundNum(number, ends = 0) {
+        return parseFloat(number.toFixed(ends));
+    }
 
-	getTime() {
-		const currentTime = new Date();
-		let h = currentTime.getHours();
-		let m = currentTime.getMinutes();
-		let s = currentTime.getSeconds();
-		if (h < 10) h = `0${h}`;
-		if (m < 10) m = `0${m}`;
-		if (s < 10) s = `0${s}`;
-		return `${h}:${m}:${s}`;
-	}
+    isValueNumber(value) {
+        if (typeof value !== "number") return false;
+        return true;
+    }
 
-	getPlayerByGuid(id) {
-		const players = mp.players.toArray();
-		for (const player of players) {
-			if (player.guid === id) return player;
-		}
-		return false;
-	}
+    isValueString(value) {
+        if (typeof value !== "string") return false;
+        return true;
+    }
 
-	getPlayerCoordJSON(player) {
-		const obj = { 
-			x: player.position.x, 
-			y: player.position.y, 
-			z: player.position.z, 
-			rot: player.heading, 
-			dim: player.dimension, 
-		}
-		if (player.vehicle) obj.rot = player.vehicle.rotation.z;
-		return JSON.stringify(obj);
-	}
+    getRandomInt(min = 0, max = 100) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    getPlayersInRange(position, range) {
+        if (!this.isValueNumber(range)) return false;
+        const players = mp.players.toArray();
+        const playersInRange = [];
+        for (const player of players) {
+            if (player.dist(position) < range) {
+                playersInRange.push(player);
+            }
+        }
+        return playersInRange;
+    }
+
+    getNearestPlayerInRange(position, range) {
+        const playersInRange = this.getPlayersInRange(position, range);
+        if (!playersInRange) return false;
+        let nearestPlayer = 0;
+        for (const player of playersInRange) {
+            if (player.dist(position) < playersInRange[nearestPlayer].dist(position)) {
+                nearestPlayer = playersInRange.indexOf(player);
+            }
+        }
+        return playersInRange[nearestPlayer];
+    }
+
+    getTime() {
+        const currentTime = new Date();
+        let h = currentTime.getHours();
+        let m = currentTime.getMinutes();
+        let s = currentTime.getSeconds();
+        if (h < 10) h = `0${h}`;
+        if (m < 10) m = `0${m}`;
+        if (s < 10) s = `0${s}`;
+        return `${h}:${m}:${s}`;
+    }
+
+    getPlayerByGuid(id) {
+        const players = mp.players.toArray();
+        for (const player of players) {
+            if (player.guid === id) return player;
+        }
+        return false;
+    }
+
+    getPlayerCoordJSON(player) {
+        const obj = {
+            x: player.position.x,
+            y: player.position.y,
+            z: player.position.z,
+            rot: player.heading,
+            dim: player.dimension,
+        }
+        if (player.vehicle) obj.rot = player.vehicle.rotation.z;
+        return JSON.stringify(obj);
+    }
 
 }
+
 const miscSingleton = new MiscSingleton();
 module.exports = miscSingleton;
