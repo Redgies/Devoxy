@@ -14,7 +14,7 @@ mp.events.add(
         player.cuffed = false;
 	},
 	"render": () => {
-		if(player.cuffed)
+		if(player.cuffed === 1)
 		{
 			mp.game.controls.disableControlAction(0, 22, true); // disable jump
 			mp.game.controls.disableControlAction(0, 21, true); // disable sprint
