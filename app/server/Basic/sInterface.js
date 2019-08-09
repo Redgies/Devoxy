@@ -42,9 +42,15 @@ class Interface {
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
 
                 if(d.cuffed)
+                {
+                    console.log("cuff target");
                     target.setCuff(true);
+                }
                 else 
+                {
+                    console.log("uncuff target");
                     target.setCuff(false);
+                }
             },
             "sInterface-giveMoney": (player, data) => {
                 const d = JSON.parse(data);
