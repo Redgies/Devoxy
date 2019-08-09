@@ -15,6 +15,7 @@ class Vehicle {
 		});
 		vehicle.guid = d.id;
 		vehicle.title = d.title;
+		vehicle.numberPlate = d.numberPlate;
 		vehicle.fuel = d.fuel;
 		vehicle.fuelTank = d.fuelTank;
 		vehicle.fuelRate = d.fuelRate;
@@ -23,7 +24,6 @@ class Vehicle {
 		vehicle.whoCanOpen = JSON.parse(d.whoCanOpen);
 		vehicle.factionId = d.factionId;
 		vehicle.windowsOpened = [false, false, false, false];
-		vehicle.numberPlate = d.numberPlate;
 
 		const primaryColor = JSON.parse(d.primaryColor);
 		const secondaryColor = JSON.parse(d.secondaryColor);
