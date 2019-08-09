@@ -1,5 +1,5 @@
 // Native UI
-const NativeUI = require("../nativeui/index.js");
+const NativeUI = require("../nativeui/");
 const Menu = NativeUI.Menu;
 const UIMenuItem = NativeUI.UIMenuItem;
 const UIMenuListItem = NativeUI.UIMenuListItem;
@@ -14,8 +14,8 @@ const ListItem = NativeUI.ListItem;
 // Tuning
 mp.events.add({
     "cTuner-Open" : () => {
-        const ui = new Menu("Tuning", "Tuning Teile", new Point(1480, 250));
         mp.gui.chat.push("Vous êtes dans le Car Tuner");
+        const ui = new Menu("Tuning", "Tuning Teile", new Point(1480, 250));
         ui.AddItem(new UIMenuListItem(
             "Spoiler",
             "Den Spoiler des Fahrzeuges ändern",
