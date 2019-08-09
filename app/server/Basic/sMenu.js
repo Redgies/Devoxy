@@ -16,7 +16,7 @@ class Menu {
                 if (player.vehicle) execute += `app.d.currentVehicleId = ${player.vehicle.id};`;
                 execute += `app.loadVehicles('${vehicleAPI.getVehiclesForPlayerMenu(player.guid)}');`;
                 execute += `app.loadPassengers('${vehicleAPI.getPassengersForPlayerMenu(player)}');`;
-                execute += `app.loadViolations('${JSON.stringify(player.jail.violations)}');`;
+                // execute += `app.loadViolations('${JSON.stringify(player.jail.violations)}');`;
                 player.call("cMenu-Open", [player.lang, execute]);
                 misc.log.debug(`${player.name} opens menu`);
             },

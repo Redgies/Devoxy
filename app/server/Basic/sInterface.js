@@ -13,6 +13,9 @@ class Interface {
                 let veh = misc.getNearestVehicle(player, 3);
                 if(!veh)
                     veh = [];
+                else {
+                    veh.numberPlate = veh.numberPlate;
+                }
 
                 console.log("veh : " + JSON.stringify(veh));
 
