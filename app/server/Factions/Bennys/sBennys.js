@@ -109,15 +109,17 @@ class Bennys extends faction {
         {
             player.setClothes(4, 90, 0, 2);
             player.setClothes(11, 1, 0, 2);
+            player.setClothes(3, 11, 0, 2);
         }
         if(player.rank == 2)
         {
-            player.setClothes(4, 98, 0, 1);
+            player.setClothes(4, 98, 0, 2);
             player.setClothes(11, 242, 0, 2);
+            player.setClothes(3, 11, 0, 2);
         }
         if(player.rank == 3)
         {
-            player.setClothes(4, 98, 0, 1);
+            player.setClothes(4, 98, 0, 2);
             player.setClothes(11, 242, 0, 2);
         }
         if(player.rank == 4)
