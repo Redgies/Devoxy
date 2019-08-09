@@ -105,8 +105,12 @@ class ChatSingleton {
 
 			'tptest' : (player, fullText) => {
 				if(player.adminLvl <1) return;
-				player.position = new mp.Vector3(-786.8663, 315.7642, 217.6385);
-				player.health = 100;
+				const pos = {
+					position: {x: -786.8663, y: 315.7642, z: 217.6385},
+					rot: 0,
+					dimension: 0
+				}
+				player.tp(pos);
 			},
 
 			'admin' : (player, fullText) => {
