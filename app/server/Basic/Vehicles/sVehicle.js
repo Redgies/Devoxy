@@ -123,6 +123,8 @@ class Vehicle {
 		vehicle.getOwner = async function(guid) {
 			const d = await misc.query(`SELECT firstName, lastName FROM users WHERE id = ${guid}`);
 			vehicle.ownerName = d[0].firstName + ' ' + d[0].lastName;
+
+			console.log("name : " + vehicle.ownerName);
 		}
  		return vehicle;
 	}
