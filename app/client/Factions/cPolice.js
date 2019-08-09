@@ -12,6 +12,7 @@ mp.events.add(
 		misc.injectCef(inject);
 	}, */
 	"cCuff": () => {        
+		alert("cuff");
         player.setEnableHandcuffs(true);
 		player.cuffed = true;
 		mp.game.controls.disableControlAction(0, 22, true);
