@@ -44,8 +44,8 @@
                     <img src="images/tools.png">
                     <span class="title">Réparer</span>
                 </div>
-                <div class="item" @click="initColor()">
-                    <img src="images/tools.png">
+                <div class="item" @click="initColor()" v-if="player.faction == 2 && player.working == 1 && player.rank >= 3 && vehicle.guid">
+                    <img src="images/spray.png">
                     <span class="title">Couleur</span>
                 </div>
                 <div class="item" @click="setCuff(1)"
