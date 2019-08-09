@@ -1,5 +1,6 @@
 mp.events.add({
-    "sKeys-F3": (player) => {
+    "sKeys-F8": (player) => {
+        player.notify("yo poto");
         player.call("cTuner-Open", []);
     }
 });
