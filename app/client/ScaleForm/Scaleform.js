@@ -42,4 +42,4 @@ class BasicScaleform {
     }
 }
 
-exports = messageScaleform;
+exports = BasicScaleform;
