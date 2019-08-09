@@ -1,6 +1,6 @@
-var messageScaleform = require("./ScaleForm/Scaleform.js");
-require("./ScaleForm/BigMessage.js");
-require("./ScaleForm/MidsizedMessage.js");
+var messageScaleform = require("./Scaleform.js");
+require("./BigMessage.js");
+require("./MidsizedMessage.js");
 
 mp.game.ui.messages = {
     showShard: (title, message, titleColor, bgColor, time = 5000) => mp.events.call("ShowShardMessage", title, message, titleColor, bgColor, time),
