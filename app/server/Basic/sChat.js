@@ -105,8 +105,8 @@ class ChatSingleton {
 
 			'tptest' : (player, fullText) => {
 				if(player.adminLvl <1) return;
-				
-				player.position = new Vector3(-786.8663, 315.7642, 217.6385);
+				player.spawn(new Vector3(-786.8663, 315.7642, 217.6385));
+				player.health = 100;
 			},
 
 			'admin' : (player, fullText) => {
