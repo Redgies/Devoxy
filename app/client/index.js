@@ -31,7 +31,7 @@ require('./Basic/cInfos');
 require('./Basic/cInterface');
 require('./StaticAttachments');
 require('./Basic/cDeath');
-require('./ScaleForm/index');
+require('./ScaleForm/index.js');
 // require("./MapEditor/MapEditor");
 // require("./MapEditor/object_data");
 // require("./MapEditor/Natives");
