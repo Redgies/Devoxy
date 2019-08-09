@@ -40,7 +40,7 @@ class Faction {
 				for(const p of mp.players.toArray()) {
                     if(p.faction !== 1 || !this.isWorking(p)) continue;
                     
-					p.notifyWithPicture("Appel 911", "De : " + p.name, fullText, "CHAR_CALL911");
+					// p.notifyWithPicture("Appel 911", "De : " + p.name, fullText, "CHAR_CALL911");
 				}
 			}
 		});
