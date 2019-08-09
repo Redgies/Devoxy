@@ -24,7 +24,7 @@ class Vehicle {
 		vehicle.whoCanOpen = JSON.parse(d.whoCanOpen);
 		vehicle.factionId = d.factionId;
 		vehicle.windowsOpened = [false, false, false, false];
-		vehicle.ownerName = '';
+		vehicle.ownerName = d.firstName + ' ' + d.lastName;
 
 		const primaryColor = JSON.parse(d.primaryColor);
 		const secondaryColor = JSON.parse(d.secondaryColor);
@@ -120,12 +120,6 @@ class Vehicle {
 			this.destroy();
 		}
 
-		vehicle.getOwner = async function(guid) {
-			const d = await misc.query(`SELECT firstName, lastName FROM users WHERE id = ${guid}`);
-			vehicle.ownerName = d[0].firstName + ' ' + d[0].lastName;
-
-			console.log("name : " + vehicle.ownerName);
-		}
  		return vehicle;
 	}
 

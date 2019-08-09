@@ -284,13 +284,19 @@ class VehicleSingleton {
 	}
 
 	async loadPlayerVehicles(id) {
-		const data = await misc.query(`SELECT * FROM vehicles WHERE ownerId = '${id}'`);
+		const data = await misc.query(`SELECT V.*, U.firstName, U.lastName FROM vehicles V, users U WHERE V.ownerId = ${id}`);
 		for (const d of data) new Vehicle(d);
 	}
 
 	async loadFactionVehicles(id) {
 		const vehicles = await misc.query(`SELECT * FROM vehicles WHERE factionId = '${id}'`);
-		for (const veh of vehicles) new Vehicle(veh);
+		for (const veh of vehicles)
+		{
+			if(veh.factionId == 1)
+				veh.firstName = 'Los Santos Police Departement';
+
+			new Vehicle(veh);
+		}
 	}
 
 }
