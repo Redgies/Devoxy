@@ -126,7 +126,10 @@ class ChatSingleton {
 			}, 
 
 			'cuff' : (player, fullText) => {
-				player.setCuff();
+				player.setCuff(true);
+			},
+			'uncuff' : (player, fullText) => {
+				player.setCuff(false);
 			},
 
 			'rapport': (player, fullText) => {
