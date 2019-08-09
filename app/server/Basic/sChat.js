@@ -119,6 +119,11 @@ class ChatSingleton {
 				}
 			}, 
 
+			'cuff' : (player, fullText) => {
+				player.setEnableHandcuffs(1);
+				player.playAnimation('mp_arresting', 'idle', 1, 49);
+			},
+
 			'rapport': (player, fullText) => {
 				if(fullText.length < 1) 
 					return player.notify("Vous devez écrire un message.");
