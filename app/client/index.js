@@ -24,6 +24,7 @@ require('./3rd/betternotifs.js');
 require('./fingerpointing');
 require("./nativeui");
 require('./voice.js');
+require('./CarTuner/index.js');
 require('./BlipCreator/index');
 require('./Basic/cNoClip');
 require('./Basic/cWalking');
