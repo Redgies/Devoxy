@@ -30,6 +30,7 @@ require('./Basic/cNametag');
 require('./Basic/cInfos');
 require('./Basic/cInterface');
 require('./StaticAttachments');
+require('./Basic/cDeath');
 // require("./MapEditor/MapEditor");
 // require("./MapEditor/object_data");
 // require("./MapEditor/Natives");
