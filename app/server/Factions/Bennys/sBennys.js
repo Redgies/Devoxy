@@ -110,24 +110,36 @@ class Bennys extends faction {
             player.setClothes(4, 90, 0, 2);
             player.setClothes(11, 1, 0, 2);
             player.setClothes(3, 0, 0, 2);
+            player.giveWeapon(0x19044EE0, 1);
         }
         if(player.rank == 2)
         {
             player.setClothes(4, 98, 1, 2);
             player.setClothes(11, 242, 0, 2);
             player.setClothes(3, 0, 0, 2);
+            player.giveWeapon(0x19044EE0, 1);
         }
         if(player.rank == 3)
         {
-            player.setClothes(4, 98, 2, 2);
+            player.setClothes(4, 98, 1, 2);
             player.setClothes(11, 242, 0, 2);
             player.setClothes(3, 0, 0, 2);
+            player.giveWeapon(0x19044EE0, 1);
         }
         if(player.rank == 4)
         {
-            player.setClothes(4, 98, 3, 1);
+            player.setClothes(4, 98, 1, 1);
             player.setClothes(11, 241, 0, 2);
             player.setClothes(3, 0, 0, 2);
+            player.giveWeapon(0x19044EE0, 1);
+        }
+        if(player.rank == 5)
+        {
+            player.giveWeapon(0x19044EE0, 1);
+        }
+        if(player.rank == 6)
+        {
+            player.giveWeapon(0x19044EE0, 1);
         }
 	}
 
@@ -167,22 +179,6 @@ class Bennys extends faction {
             player.setClothes(11, 48, 0, 2);
             player.setClothes(10, 7, 1, 2);
             player.setClothes(7, 0, 0, 2);
-        }
-        if(player.rank == 5)
-        {
-            player.setProp(0, 45, 0);
-            player.setClothes(8, 35, 0, 2); 
-            player.setClothes(6, 25, 0, 2);
-            player.setClothes(4, 77, 0, 2);
-            player.setClothes(11, 85, 0, 2);
-            player.setClothes(7, 0, 0, 2);
-        }
-        if(player.rank == 6)
-        {
-            player.setClothes(6, 25, 0, 2);
-            player.setClothes(4, 77, 0, 2);
-            player.setClothes(11, 43, 0, 2);
-            player.setClothes(7, 95, 0, 2);
         }
 	}
 }
