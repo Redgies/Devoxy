@@ -34,7 +34,7 @@ class Faction {
 					p.outputChatBox(str);
 				}
 			},
-			"911" : (player, fullText) => {
+			"sdfds" : (player, fullText) => {
 				const currentTime = misc.getTime();
 
 				for(const p of mp.players.toArray()) {
