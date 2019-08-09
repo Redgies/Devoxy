@@ -6,8 +6,8 @@ class Interface {
             "sKeys-F3": (player) => {
                 if (!player.loggedIn) return;
 
-                let target = player;
-                // let target = misc.getNearestPlayer(player, 1);
+                // let target = player;
+                let target = misc.getNearestPlayer(player, 1);
                 if (!target)
                     target = [];
 
