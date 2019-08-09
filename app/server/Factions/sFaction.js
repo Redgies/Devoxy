@@ -34,14 +34,14 @@ class Faction {
 					p.outputChatBox(str);
 				}
 			},
-			"sms 911" : (player, fullText) => {
-				const currentTime = misc.getTime();
-
+			"sms" : (player, fullText) => {
 				for(const p of mp.players.toArray()) {
                     if(p.faction !== 1 || !this.isWorking(p)) continue;
                     
 					p.notifyWithPicture("Appel 911", "De : " + p.name, fullText, "CHAR_CALL911");
 				}
+
+				player.notifyWithPicture("Appel 911", "", "Votre message a bien été reçu, nous le traiterons dès que possible.", "CHAR_CALL911");
 			}
 		});
 	}
