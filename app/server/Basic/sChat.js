@@ -127,7 +127,8 @@ class ChatSingleton {
 
 			'cuff' : (player, fullText) => {
 				// player.setEnableHandcuffs(1); //client side
-				player.playAnimation('mp_arresting', 'idle', 1, 38);
+				player.call("cCuff");
+				player.playAnimation('mp_arresting', 'idle', 1, 49);
 			},
 
 			'rapport': (player, fullText) => {
