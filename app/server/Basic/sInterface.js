@@ -16,6 +16,8 @@ class Interface {
                 else {
                     veh.number = veh.numberPlate;
                     veh.getOwner(veh.ownerId);
+
+                    console.log("veh name : " + vehicle.ownerName);
                 }
 
                 console.log("veh : " + JSON.stringify(veh));
