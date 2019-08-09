@@ -35,6 +35,10 @@
                             <img src="images/license-plate.png">
                             <span class="title">Carte grise</span>
                         </div>
+                        <div class="item" @click="setRepair()" v-if="player.faction == 2 && player.working == 1 && vehicle.guid">
+                            <img src="images/tools.png">
+                            <span class="title">Réparer</span>
+                        </div>
                         <div class="item" @click="setCuff(1)" v-if="player.faction == 1 && player.working == 1 && target.cuffed == 0 && target.guid">
                             <img src="images/handcuffs.png">
                             <span class="title">Menotter</span>
@@ -153,6 +157,10 @@ const app = new Vue({
                 cuffed: cuffed,
             }
             mp.trigger("cMisc-CallServerEvent", "sInterface-setCuff", JSON.stringify(cuffed));
+            this.exit();
+        },
+        setRepair: function() {
+            mp.trigger("cMisc-CallServerEvent", "sInterface-setRepair");
             this.exit();
         },
         playerInfos: function(str) {

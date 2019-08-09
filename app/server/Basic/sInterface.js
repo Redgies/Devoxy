@@ -34,6 +34,10 @@ class Interface {
             "sInterface-setMood": (player, data) => {
                 player.data.moodStyle = data;
             },
+            "sInterface-setRepair": (player) => {
+                let veh = misc.getNearestVehicle(player, 3);
+                veh.repair();
+            },
             "sInterface-setCuff": (player, data) => {
                 const d = JSON.parse(data);
 
