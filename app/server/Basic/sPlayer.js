@@ -99,9 +99,9 @@ class PlayerSingleton {
             if (d.dim) this.dimension = d.dim;
         }
 
-        player.setCuff() = function(cuffed) {
+        player.setCuff = function(cuffed) {
             player.cuffed = cuffed;
-            	
+
             if(player.cuffed)
             {
                 player.setClothes(7, 41, 0, 2);
