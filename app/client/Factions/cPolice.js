@@ -4,6 +4,8 @@ const misc = require('../cMisc');
 player = mp.players.local;
 player.cuffed = false;
 
+mp.game.controls.enableAllControlActions(0);
+
 mp.events.add(
 {
 	"cCuff": () => {        
