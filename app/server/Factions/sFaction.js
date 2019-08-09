@@ -33,7 +33,7 @@ class Faction {
 					if(p.faction !== this.id || !this.isWorking(p)) continue;
 					p.outputChatBox(str);
 				}
-			}
+			},
 		});
 	}
 

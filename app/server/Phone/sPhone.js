@@ -10,7 +10,7 @@ class Phone {
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
 
-                console.log("test");
+                if(player.cuffed) return player.notify("~r~Vous ne pouvez pas utiliser votre téléphone en étant menotter.");
 
                 let execute = `app.phone = ${player.phone};`;
                 execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
