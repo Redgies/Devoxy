@@ -14,7 +14,7 @@ class Interface {
                 if(!veh)
                     veh = [];
 
-                console.log("veh : " + veh);
+                console.log("veh : " + JSON.stringify(veh));
 
 
                 if(target)

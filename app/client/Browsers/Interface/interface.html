@@ -23,15 +23,15 @@
                             <img src="images/backpack.png">
                             <span class="title">Inventaire</span>
                         </div>
-                        <div class="item" @click="currentTab = 2">
+                        <div class="item" @click="currentTab = 2" v-if="target.guid">
                             <img src="images/give-money.png">
                             <span class="title">Donner de l'argent</span> 
                         </div>
-                        <div class="item" @click="currentTab = 3" v-if="player.faction == 1 && player.working == 1">
+                        <div class="item" @click="currentTab = 3" v-if="player.faction == 1 && player.working == 1 && target.guid">
                             <img src="images/id-card.png">
                             <span class="title">Carte d'identité</span>
                         </div>
-                        <div class="item" @click="currentTab = 4" v-if="player.faction == 1 && player.working == 1">
+                        <div class="item" @click="currentTab = 4" v-if="player.faction == 1 && player.working == 1 && vehicle.id">
                             <img src="images/license-plate.png">
                             <span class="title">Carte grise</span>
                         </div>
@@ -43,7 +43,7 @@
                         <h1 class="title-right">Inventaire</h1>
                     </div>
                     <!-- DONNER DE L'ARGENT -->
-                    <div v-if="currentTab == 2 && target.guid">
+                    <div v-if="currentTab == 2">
                         <h1 class="title-right">Don d'argent</h1>
                         <p class="p-right">Vous allez donner de l'argent à {{ target.firstName }} {{ target.lastName }}</p>
                         <input type="text" v-model="moneyToGive" oninput="this.value = Math.abs(this.value)">
