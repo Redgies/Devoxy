@@ -103,15 +103,9 @@ class ChatSingleton {
 				misc.log.debug(`${player.name} teleported to ${target.name}.`);
 			},
 
-			'tptest' : (player, fullText, arg1) => {
+			'tptest' : (player, fullText) => {
 				if(player.adminLvl <1) return;
-				if(!arg1)
-					return player.notify("Utilisez /tptest id");
-
-				const target = this.findPlayerByIdOrNickname(arg1);
-				if(!target)
-					return player.notify("Ce joueur n'est pas connecté.");
-
+				
 				player.position = new Vector3(-786.8663, 315.7642, 217.6385);
 			},
 
