@@ -18,6 +18,11 @@ class ClothesSingletone {
 			{	id: 2, name: "Glasses №2", 		color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 	price: 450,  },
 		];
 
+		this.manEars = [
+			{	id: 0, name: "Rien", color: 0, colors: [0], 									price: 0,  },
+			{	id: 4, name: "Boucle d'oreille 1", 		color: 0, colors: [1], 									price: 100,  },
+		];
+
 		this.manTops = [	
 			{	id: 0, name: "Simple T-Shirt", color: 0, colors: [0, 1, 2, 3, 4, 5, 7, 8, 11], price: 650, torso: 0, undershirt: 15, underColor: 0, underColors: [0], 		},
 			{	id: 1, name: "Simple T-Shirt", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14], price: 550, torso: 0, undershirt: 15, underColor: 0, underColors: [0], 		},
@@ -56,6 +61,11 @@ class ClothesSingletone {
 			{	id: 21, name: "Glasses №2", 	color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 		price: 450,  },
 		];
 
+		this.womanEars = [
+			{	id: 0, name: "Rien", color: 0, colors: [0], 									price: 0,  },
+			{	id: 4, name: "Boucle d'oreille 1", 		color: 0, colors: [1], 									price: 100,  },
+		];
+
 		this.womanTops = [	
 			{	id: 0, name: "Simple T-Shirt", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], price: 500, torso: 0, undershirt: 15, underColor: 0, underColors: [0], 		},
 			{	id: 2, name: "Simple T-Shirt", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], price: 650, torso: 2, undershirt: 15, underColor: 0, underColors: [0], 		},
@@ -85,6 +95,10 @@ class ClothesSingletone {
 		else if (title === "Glasses") {
 			if (player.model === 1885233650) return this.manGlasses[number].price;
 			else return this.womanGlasses[number].price;
+		}
+		else if (title === "Ears") {
+			if (player.model === 1885233650) return this.manEars[number].price;
+			else return this.womanEars[number].price;
 		}
 		else if (title === "Tops") {
 			if (player.model === 1885233650) return this.manTops[number].price;
@@ -117,6 +131,9 @@ class ClothesSingletone {
 		else if (title === "Glasses") {
 			player.setProp(1, this.manGlasses[d.number].id, d.color);
 		}
+		else if (title === "Ears") {
+			player.setProp(2, this.manEars[d.number].id, d.color);
+		}
 		else if (title === "Tops") {
 			player.setClothes(11, this.manTops[d.number].id, d.color, 0);
 			player.setClothes(3, this.manTops[d.number].torso, 0, 0);
@@ -136,6 +153,9 @@ class ClothesSingletone {
 		}
 		else if (title === "Glasses") {
 			player.setProp(1, this.womanGlasses[d.number].id, d.color);
+		}
+		else if (title === "Ears") {
+			player.setProp(2, this.womanEars[d.number].id, d.color);
 		}
 		else if (title === "Tops") {
 			player.setClothes(11, this.womanTops[d.number].id, d.color, 0);
@@ -161,6 +181,9 @@ class ClothesSingletone {
 		else if (d.title === "Glasses") {
 			await misc.query(`UPDATE usersClothes SET glasses = '${JSON.stringify(obj)}' WHERE id = ${player.guid}`);
 		}
+		else if (d.title === "Ears") {
+			await misc.query(`UPDATE usersClothes SET ears = '${JSON.stringify(obj)}' WHERE id = ${player.guid}`);
+		}
 		else if (d.title === "Tops") {
 			obj.underColor = d.underColor;
 				await misc.query(`UPDATE usersClothes SET tops = '${JSON.stringify(obj)}' WHERE id = ${player.guid}`);
@@ -178,11 +201,11 @@ class ClothesSingletone {
 		obj = JSON.stringify(obj);
 		let tops = { number: 0,	color: 0, underColor: 0	};
 		tops = JSON.stringify(tops);
-		await misc.query(`INSERT INTO usersClothes (id, hats, glasses, tops, legs, feet) VALUES ('${id}', '${obj}', '${obj}', '${tops}', '${obj}', '${obj}');`);
+		await misc.query(`INSERT INTO usersClothes (id, hats, glasses, ears, tops, legs, feet) VALUES ('${id}', '${obj}', '${obj}', '${obj}', '${tops}', '${obj}', '${obj}');`);
 	}
 
 	async loadPlayerClothes(player) {
-		const d = await misc.query(`SELECT hats, glasses, tops, legs, feet FROM usersClothes WHERE id = '${player.guid}'`);
+		const d = await misc.query(`SELECT hats, glasses, ears, tops, legs, feet FROM usersClothes WHERE id = '${player.guid}'`);
 		if(d[0].hats) {
 			const hats = JSON.parse(d[0].hats);
 			hats.title = "Hats";
@@ -194,7 +217,13 @@ class ClothesSingletone {
 			glasses.title = "Glasses";
 			this.setClothes(player, glasses);
 		}
-	
+
+		if (d[0].ears) {
+			const glasses = JSON.parse(d[0].ears);
+			ears.title = "Ears";
+			this.setClothes(player, ears);
+		}
+
 		if (d[0].tops) {
 			const tops = JSON.parse(d[0].tops);
 			tops.title = "Tops";
