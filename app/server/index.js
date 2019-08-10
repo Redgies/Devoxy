@@ -7,7 +7,7 @@ require('./Business/sBateauDealership');
 require('./Business/sTruckDealership');
 require('./Business/sCommercialCarDealership');
 require('./Business/sGasStation');
-require('./Business/sAmmunation');
+require('./Business/sAmmunations');
 
 require('./Basic/sMenu');
 require('./Basic/sInterface');
