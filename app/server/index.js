@@ -13,6 +13,7 @@ require('./Basic/sInterface');
 require('./Basic/sTab');
 require('./Basic/sGPS');
 require('./Basic/sDoors');
+require('./Basic/sBlip');
 require('./Basic/sNoClip');
 require('./Basic/sVocal');
 require('./Basic/Auth/sLogin');
