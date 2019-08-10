@@ -76,3 +76,21 @@ function addWeapons()
 	}
 }
 
+let attachmentStates = [];
+let attachmentNames = [];
+
+function initMenu()
+{
+	addMisc();
+	addWeapons();
+
+	let attachments = mp.attachmentMngr.getAttachments();
+
+	for(let i of Object.values(attachments))
+	{
+		attachmentNames.push(i.id);
+		attachmentStates.push(false);
+	}
+}
+
+initMenu();
