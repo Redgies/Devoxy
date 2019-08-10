@@ -52,7 +52,7 @@ class Interface {
             "sInterface-setTunning": (player, mod, modvalue) => {
                 let veh = misc.getNearestVehicle(player, 3);
                 if (mod === parseInt(46)) {
-                    veh.setWindowTint(parseInt(modvalue));
+                    veh.windowTint(parseInt(modvalue));
                 } else {
 
                     veh.setMod(parseInt(mod), parseInt(modvalue));
