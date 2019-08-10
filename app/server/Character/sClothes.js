@@ -214,7 +214,7 @@ class ClothesSingletone {
 
         this.womanNeck = [
             {id: 0, name: "Rien", color: 0, colors: [0], price: 0,},
-            {id: 16, name: "Chaîne en argent", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7], price: 2000,},
+            {id: 35, name: "Chaîne en argent", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7], price: 2000,},
         ];
 
         this.womanTops = [
@@ -359,7 +359,7 @@ class ClothesSingletone {
         } else if (title === "Watches") {
             player.setProp(6, this.manWatches[d.number].id, d.color);
         } else if (title === "Neck") {
-            player.setClothes(7, this.manTops[d.number].id, d.color, 0);
+            player.setClothes(7, this.manNeck[d.number].id, d.color, 0);
         } else if (title === "Tops") {
             player.setClothes(11, this.manTops[d.number].id, d.color, 0);
             player.setClothes(3, this.manTops[d.number].torso, 0, 0);
@@ -381,7 +381,7 @@ class ClothesSingletone {
         } else if (title === "Watches") {
             player.setProp(6, this.womanWatches[d.number].id, d.color);
         } else if (title === "Neck") {
-            player.setClothes(7, this.womanTops[d.number].id, d.color, 0);
+            player.setClothes(7, this.womanNeck[d.number].id, d.color, 0);
         } else if (title === "Tops") {
             player.setClothes(11, this.womanTops[d.number].id, d.color, 0);
             player.setClothes(3, this.womanTops[d.number].torso, 0, 0);
