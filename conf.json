@@ -1,7 +1,7 @@
 {
 	"maxplayers": 100,
 	"name": "[en developpement] [freeaccess] Devoxy.fr - Choisis ta vie",
-	"language": "fr",
+	"langage": "fr",
 	"gamemode": "roleplay",
 	"stream-distance": 500.0,
 	"announce": true,
