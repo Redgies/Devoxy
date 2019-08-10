@@ -71,7 +71,7 @@ mp.events.addCommand({
 		const id = business.getCountOfBusinesses() + 1;
 		const coord = misc.getPlayerCoordJSON(player);
 		const price = Number(enteredprice.replace(/\D+/g,""));
-		const query1 = misc.query(`INSERT INTO business (title, coord, price) VALUES ('Ammunation, '${coord}', '${price}');`);
+		const query1 = misc.query(`INSERT INTO business (title, coord, price) VALUES ('Ammunation', '${coord}', '${price}');`);
 		const query2 = misc.query(`INSERT INTO ammunations (id) VALUES ('${id}');`);	
 		await Promise.all([query1, query2]);
 		player.outputChatBox("!{#4caf50} Ammunation successfully created!");
@@ -79,6 +79,9 @@ mp.events.addCommand({
 });
 
 /* 
+
+INSERT INTO business (title, coord, price) VALUES ('Ammunation, '{"x":24.146728515625,"y":-1105.6436767578125,"z":29.797008514404297,"rot":149.843994140625,"dim":0}', '500')
+
 
 How to add new gas station:
 
