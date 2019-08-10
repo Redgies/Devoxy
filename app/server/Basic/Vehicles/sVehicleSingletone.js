@@ -258,7 +258,7 @@ class VehicleSingleton {
         }
         await misc.query(`INSERT INTO vehicles 
 			(model, title, fuel, fuelTank, fuelRate, price, ownerId, whoCanOpen, primaryColor, secondaryColor, tunning, numberPlate, coord) VALUES
-			('${d.model}', '${d.title}', '${d.fuel}', '${d.fuelTank}', '${d.fuelRate}', '${d.price}', '${d.ownerId}', '${d.whoCanOpen}', '${d.primaryColor}', '${d.secondaryColor}', '${d.tunning}' '${d.numberPlate}', '${coord}')`);
+			('${d.model}', '${d.title}', '${d.fuel}', '${d.fuelTank}', '${d.fuelRate}', '${d.price}', '${d.ownerId}', '${d.whoCanOpen}', '${d.primaryColor}', '${d.secondaryColor}', '${d.tunning}', '${d.numberPlate}', '${coord}')`);
 
         const car = await misc.query(`SELECT * FROM vehicles WHERE ownerId = '${player.guid}' ORDER BY id DESC LIMIT 1`);
         new Vehicle(car[0]);
