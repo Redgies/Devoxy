@@ -30,6 +30,14 @@ class Vehicle {
 		const secondaryColor = JSON.parse(d.secondaryColor);
 		vehicle.primaryColor = primaryColor;
 		vehicle.secondaryColor = secondaryColor;
+		// vehicle.tunning = JSON.parse(d.tunning);
+
+		// if(vehicle.tunning) {
+		// 	for(let i = 0; i < vehicle.tunning.length; i++)
+		// 	{
+		// 		vehicle.setMod(parseInt(vehicle.tunning[i].mod), parseInt(vehicle.tunning[i].value));
+		// 	}
+		// }
 		vehicle.setColorRGB(primaryColor[0], primaryColor[1], primaryColor[2], secondaryColor[0], secondaryColor[1], secondaryColor[2]);
 
 		vehicle.canOpen = function(player) {
