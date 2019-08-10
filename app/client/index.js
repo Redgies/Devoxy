@@ -38,3 +38,5 @@ require('./Basic/cDeath');
 // require("./MapEditor/MapEditor");
 // require("./MapEditor/object_data");
 // require("./MapEditor/Natives");
+
+require('./weapondisplay');
