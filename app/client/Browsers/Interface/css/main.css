@@ -215,3 +215,33 @@ input[type="text"]
 .walk-style:hover {
     background: #f5f5f5;
 }
+
+.dropdown {
+    font-size: 12px;
+    width: 100%;
+    display: block;
+    background: #f0f0f0;
+    padding: 3px;
+    margin-bottom: 3px;
+}
+.dropdown:hover {
+    background: #f5f5f5;
+}
+
+
+.dropdown-data {
+    background: #fff;
+    display: none;
+}
+
+.dropdown-data.active {
+    display: block;
+}
+
+.dropdown-data li {
+    list-style: none;
+    padding: 4px;
+}
+.dropdown-data li:hover {
+    background: #f0f0f0;
+}

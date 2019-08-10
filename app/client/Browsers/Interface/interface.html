@@ -63,6 +63,10 @@
                     <img src="images/destroy.png">
                     <span class="title">Détruire</span>
                 </div>
+                <div class="item" @click="currentTab = 8">
+                    <img src="images/spoiler.png">
+                    <span class="title">Tunning</span>
+                </div>
             </div>
         </div>
         <div class="panel-body"
@@ -116,6 +120,20 @@
                 <br><br>
                 <button type="button" class="btn-valid" @click="setColor()">Valider</button>
             </div>
+             <!-- TUNNING -->
+             <div v-if="currentTab == 8">
+                <h1 class="title-right">Tunning</h1>
+                <div v-for="(tun, i) in tunning" class="dropdown" @click="toggleTunning(tun.title)">
+                    {{ tun.title }}
+                    <div class="dropdown-data" v-bind:id="tun.title">
+                        <li v-for="(d, j) in tun.data" @click="setTunning(d.model, d.value)">
+                            {{ d.title }}
+                        </li>
+                    </div>
+                </div>
+
+                
+            </div>
         </div>
     </div>
 </div>
@@ -156,9 +174,33 @@
                     {name: "Injured", animname: "mood_injured_1"},
                     {name: "Stressed", animname: "mood_stressed_1"},
                     {name: "Sulking", animname: "mood_sulk_1"},
-                ]
+                ],
+                tunning : [
+                    {
+                        title: "Spoiler",
+                        data: [
+                            {title: "Spoiler -1", model: 0, value: -1},
+                            {title: "Spoiler 0", model: 0, value: 0},
+                            {title: "Spoiler 1", model: 0, value: 1},
+                            {title: "Spoiler 2", model: 0, value: 2},
+                            {title: "Spoiler 3", model: 0, value: 3},
+                            {title: "Spoiler 4", model: 0, value: 4},
+                            {title: "Spoiler 5", model: 0, value: 5},
+                            {title: "Spoiler 6", model: 0, value: 6},
+                            {title: "Spoiler 7", model: 0, value: 7},
+                            {title: "Spoiler 8", model: 0, value: 8},
+                        ]   
+                    }
+                ],
             },
             methods: {
+                toggleTunning: function(elem) {
+                    var element = document.getElementById(elem);
+                    element.classList.toggle("active");
+                },
+                setTunning: function(model, value) {
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-setTunning", model, value);
+                },
                 initColor: function () {
                     this.currentTab = 7;
                     setTimeout(function(){
@@ -173,9 +215,6 @@
                             this.source.value = '#' + color;
                         });
                     }, 500)
-
-
-
                 },
 
                 hexToRgb: function hexToRgb(hex) {
