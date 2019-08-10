@@ -20,7 +20,7 @@ class CarDealership extends business {
 		const fullPrice = carPrice + shopTax;
 		const canBuy = await player.changeMoney(-fullPrice);
 
-		const tuning = [
+		const tunning = [
 			{mod: 0, value: -1},
 			{mod: 1, value: -1},
 			{mod: 2, value: -1},
