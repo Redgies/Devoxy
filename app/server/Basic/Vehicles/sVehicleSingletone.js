@@ -239,7 +239,7 @@ class VehicleSingleton {
         return JSON.stringify(playerPassengers);
     }
 
-    async saveNewCar(player, model, coord, color = false) {
+    async saveNewCar(player, model, coord, color = false, tunning) {
         const carData = vehiclesDataSingleton.getData(model);
         if (!color) color = [misc.getRandomInt(0, 255), misc.getRandomInt(0, 255), misc.getRandomInt(0, 255)];
         const d = {
@@ -253,11 +253,12 @@ class VehicleSingleton {
             whoCanOpen: JSON.stringify([player.guid]),
             primaryColor: JSON.stringify(color),
             secondaryColor: JSON.stringify(color),
+            tunning: JSON.stringify(tunning),
             numberPlate: this.generateRandomNumberPlate(),
         }
         await misc.query(`INSERT INTO vehicles 
-			(model, title, fuel, fuelTank, fuelRate, price, ownerId, whoCanOpen, primaryColor, secondaryColor, numberPlate, coord) VALUES
-			('${d.model}', '${d.title}', '${d.fuel}', '${d.fuelTank}', '${d.fuelRate}', '${d.price}', '${d.ownerId}', '${d.whoCanOpen}', '${d.primaryColor}', '${d.secondaryColor}', '${d.numberPlate}', '${coord}')`);
+			(model, title, fuel, fuelTank, fuelRate, price, ownerId, whoCanOpen, primaryColor, secondaryColor, tunning, numberPlate, coord) VALUES
+			('${d.model}', '${d.title}', '${d.fuel}', '${d.fuelTank}', '${d.fuelRate}', '${d.price}', '${d.ownerId}', '${d.whoCanOpen}', '${d.primaryColor}', '${d.secondaryColor}', '${d.tunning}' '${d.numberPlate}', '${coord}')`);
 
         const car = await misc.query(`SELECT * FROM vehicles WHERE ownerId = '${player.guid}' ORDER BY id DESC LIMIT 1`);
         new Vehicle(car[0]);
@@ -276,7 +277,7 @@ class VehicleSingleton {
             }
             const f = vehicle.fuel;
             const id = vehicle.guid;
-            misc.query(`UPDATE vehicles SET coord = '${JSON.stringify(obj)}', fuel = '${f}', primaryColor = '${JSON.stringify(vehicle.primaryColor)}', secondaryColor = '${JSON.stringify(vehicle.secondaryColor)}' WHERE id = '${id}'`);
+            misc.query(`UPDATE vehicles SET coord = '${JSON.stringify(obj)}', fuel = '${f}', primaryColor = '${JSON.stringify(vehicle.primaryColor)}', secondaryColor = '${JSON.stringify(vehicle.secondaryColor)}', tunning = '${JSON.stringify(vehicle.tunning)}' WHERE id = '${id}'`);
             // vehicle.destroy();
         }
     }

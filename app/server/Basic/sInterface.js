@@ -53,19 +53,24 @@ class Interface {
                 let veh = misc.getNearestVehicle(player, 3);
                 veh.setMod(parseInt(mod), parseInt(modvalue));
 
+                for(let i = 0; i < veh.tunning.length; i++)
+                {
+                    if(veh.tunning[i].mod === mod)
+                    {
+                        veh.tunning[i].mod = mod;
+                        veh.tunning[i].value = modvalue;
+                    }
+                }
+
             },
             "sInterface-setCuff": (player, data) => {
                 const d = JSON.parse(data);
 
-                console.log("cuffed : " + data);
-
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
 
                 if (d == 1) {
-                    console.log("cuff target");
                     target.setCuff(true);
                 } else {
-                    console.log("uncuff target");
                     target.setCuff(false);
                 }
             },
