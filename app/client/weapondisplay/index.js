@@ -1,4 +1,4 @@
-require("./static-attachments");
+require("../static-attachments");
 
 mp.events.add("registerWeaponAttachments", (json) => {
     let data = JSON.parse(json);
