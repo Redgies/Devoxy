@@ -34,8 +34,6 @@ class Vehicle {
 		vehicle.secondaryColor = secondaryColor;
 		vehicle.tunning = JSON.parse(d.tunning);
 
-		console.log(d.tunning);
-
 		if(vehicle.tunning) {
 			for(let i = 0; i < vehicle.tunning.length; i++)
 			{
