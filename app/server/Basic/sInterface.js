@@ -49,6 +49,10 @@ class Interface {
                 veh.primaryColor = [d.color1.r, d.color1.g, d.color1.b];
                 veh.secondaryColor = [d.color2.r, d.color2.g, d.color2.b];
             },
+            "sInterface-setTunning": (player, mod, modvalue) => {
+                let veh = misc.getNearestVehicle(player, 3);
+                veh.setMod(parseInt(mod), parseInt(modvalue));
+            },
             "sInterface-setCuff": (player, data) => {
                 const d = JSON.parse(data);
 
