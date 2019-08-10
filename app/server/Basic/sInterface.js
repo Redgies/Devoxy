@@ -38,6 +38,10 @@ class Interface {
                 let veh = misc.getNearestVehicle(player, 3);
                 veh.repair();
             },
+            "sInterface-setDestroy": (player) => {
+                let veh = misc.getNearestVehicle(player, 3);
+                veh.destroy();
+            },
             "sInterface-setColor": (player, data) => {
                 const d = JSON.parse(data);
                 let veh = misc.getNearestVehicle(player, 3);
