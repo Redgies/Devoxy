@@ -34,7 +34,7 @@ class Vehicle {
 		vehicle.secondaryColor = secondaryColor;
 		vehicle.tunning = JSON.parse(d.tunning);
 
-		if(vehicle.tunning) {
+		if(vehicle.tunning.length >= 1) {
 			for(let i = 0; i < vehicle.tunning.length; i++)
 			{
 				vehicle.setMod(parseInt(vehicle.tunning[i].mod), parseInt(vehicle.tunning[i].value));
