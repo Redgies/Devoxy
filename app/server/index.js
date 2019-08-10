@@ -36,5 +36,3 @@ require('./Factions/Police/sPoliceGarage');
 require('./Factions/Bennys/sBennys');
 
 require('./StaticAttachments');
-
-require('./CarTuner');
