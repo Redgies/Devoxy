@@ -39,4 +39,6 @@ require('./Basic/cDeath');
 // require("./MapEditor/object_data");
 // require("./MapEditor/Natives");
 
-require('./weapondisplay');
+require("./static-attachments");
+require("./weapondisplay");
+require("./epic-attachments");
