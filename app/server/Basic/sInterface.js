@@ -52,10 +52,11 @@ class Interface {
             "sInterface-setTunning": (player, mod, modvalue) => {
                 let veh = misc.getNearestVehicle(player, 3);
                 if (mod === parseInt(46)) {
-                    veh.windowTint(parseInt(mod), parseInt(modvalue));
-                }
+                    veh.setWindowTint(parseInt(modvalue));
+                } else {
 
-                veh.setMod(parseInt(mod), parseInt(modvalue));
+                    veh.setMod(parseInt(mod), parseInt(modvalue));
+                }
             },
             "sInterface-setCuff": (player, data) => {
                 const d = JSON.parse(data);
