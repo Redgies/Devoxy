@@ -36,5 +36,3 @@ require('./Factions/sGarage');
 require('./Factions/Police/sPolice');
 require('./Factions/Police/sPoliceGarage');
 require('./Factions/Bennys/sBennys');
-
-require('./weapondisplay');
