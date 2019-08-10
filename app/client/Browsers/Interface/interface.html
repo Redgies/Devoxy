@@ -35,7 +35,7 @@
                     <span class="title">Carte d'identité</span>
                 </div>
                 <div class="item" @click="currentTab = 4"
-                     v-if="player.faction == 1 && player.working == 1 && vehicle.guid">
+                     v-if="(player.faction == 1 && player.working == 1 && vehicle.guid) || player.adminLvl >= 1">
                     <img src="images/license-plate.png">
                     <span class="title">Carte grise</span>
                 </div>
@@ -57,6 +57,11 @@
                      v-if="player.faction == 1 && player.working == 1 && target.cuffed == 1 && target.guid">
                     <img src="images/handcuffs.png">
                     <span class="title">Démenotter</span>
+                </div>
+                <div class="item" @click="setDestroy()"
+                     v-if="player.adminLvl >= 3">
+                    <img src="images/destroy.png">
+                    <span class="title">Détruire</span>
                 </div>
             </div>
         </div>
@@ -211,6 +216,10 @@
                 },
                 setRepair: function () {
                     mp.trigger("cMisc-CallServerEvent", "sInterface-setRepair");
+                    this.exit();
+                },
+                setDestroy: function () {
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-setDestroy");
                     this.exit();
                 },
                 setColor: function () {

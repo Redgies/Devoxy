@@ -13,6 +13,8 @@ require('./Basic/sInterface');
 require('./Basic/sTab');
 require('./Basic/sGPS');
 require('./Basic/sDoors');
+require('./Basic/sBlip');
+require('./Basic/sCrouch');
 require('./Basic/sNoClip');
 require('./Basic/sVocal');
 require('./Basic/Auth/sLogin');
@@ -36,5 +38,3 @@ require('./Factions/Police/sPoliceGarage');
 require('./Factions/Bennys/sBennys');
 
 require('./StaticAttachments');
-
-require('./CarTuner');
