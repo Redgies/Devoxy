@@ -1,4 +1,4 @@
-const weaponData = require("./weaponData");
+const weaponData = require("./weaponData.json");
 
 const PistolAttachmentPos = new mp.Vector3(0.02, 0.06, 0.1);
 const PistolAttachmentRot = new mp.Vector3(-100.0, 0.0, 0.0);

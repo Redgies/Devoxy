@@ -95,7 +95,7 @@ function initMenu()
 
 initMenu();
 
-const NativeUI = require("./nativeui");
+const NativeUI = require("../nativeui");
 const UIMenu = NativeUI.Menu;
 const UIMenuItem = NativeUI.UIMenuItem;
 const UIMenuCheckboxItem = NativeUI.UIMenuCheckboxItem;
