@@ -28,9 +28,13 @@ class Vehicle {
 
 		const primaryColor = JSON.parse(d.primaryColor);
 		const secondaryColor = JSON.parse(d.secondaryColor);
+
+
 		vehicle.primaryColor = primaryColor;
 		vehicle.secondaryColor = secondaryColor;
 		// vehicle.tunning = JSON.parse(d.tunning);
+
+		// console.log(JSON.parse(d.tunning));
 
 		// if(vehicle.tunning) {
 		// 	for(let i = 0; i < vehicle.tunning.length; i++)
