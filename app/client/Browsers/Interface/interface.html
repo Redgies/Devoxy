@@ -8,7 +8,7 @@
 <body>
 <div id="app">
     <div class="tunning" v-if="currentTab == 8">
-        <h1 class="title-right"><i class="fas fa-angle-left" @click="currentTab = 0" style="font-size: 24px; float: left; margin-top: -3px; margin-right: 10px;"></i> Tunning</h1>
+        <h1 class="title-right"><i class="fas fa-angle-left" @click="currentTab = 0" style="font-size: 24px; float: left; margin-top: -3px;margin-right: 10px;"></i> Tunning</h1>
         <div v-for="(tun, i) in tunning" class="dropdown" @click="toggleTunning(tun.title)">
             {{ tun.title }}
             <div class="dropdown-data" v-bind:id="tun.title">
@@ -47,7 +47,7 @@
                     <span class="title">Carte d'identité</span>
                 </div>
                 <div class="item" @click="currentTab = 4"
-                     v-if="((player.faction == 1 && player.working == 1 &&) || (player.adminLvl >= 1)) && vehicle.guid">
+                     v-if="(player.faction == 1 && player.working == 1 && vehicle.guid) || player.adminLvl >= 1">
                     <img src="images/license-plate.png">
                     <span class="title">Carte grise</span>
                 </div>
@@ -75,8 +75,7 @@
                     <img src="images/destroy.png">
                     <span class="title">Détruire</span>
                 </div>
-                <div class="item" @click="currentTab = 8"
-                    v-if="player.faction == 2 && player.working == 1 && player.rank >= 4 && vehicle.guid">
+                <div class="item" @click="currentTab = 8">
                     <img src="images/spoiler.png">
                     <span class="title">Tunning</span>
                 </div>
