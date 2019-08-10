@@ -38,4 +38,3 @@ require('./Factions/Police/sPoliceGarage');
 require('./Factions/Bennys/sBennys');
 
 require('./weapondisplay');
-require('./StaticAttachments');
