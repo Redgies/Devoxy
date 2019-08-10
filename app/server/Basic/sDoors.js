@@ -13,7 +13,6 @@ class Doors {
             {id: 7, model: 631614199, x: 461.8065, y: -1001.302, z: 25.06443, open: false, faction: 1 }, // COMICO CELLULE 3
             {id: 8, model: -550347177, x: -356.0905, y: -134.7714, z: 40.01295, open: true, faction: 2 }, // LOS SANTOS CUSTOM NORD DE LA VILLE
             //{id: 9, model: -550347177, x: -1145.898, y: -1991.144, z: 14.18357, open: true, faction: 2 }, // LOS SANTOS CUSTOM AEROPORT
-            {id: 9, model: 123, x: -205.6828, y: -1310.683, z: 30.29572, open: true, faction: 2 },
         ];
 
         this.createShapes();
