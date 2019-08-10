@@ -453,7 +453,7 @@ class ClothesSingletone {
         }
 
         if (d[0].neck) {
-            const watches = JSON.parse(d[0].neck);
+            const neck = JSON.parse(d[0].neck);
             neck.title = "Cou";
             this.setClothes(player, neck);
         }
