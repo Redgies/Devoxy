@@ -33,19 +33,6 @@ class Ammunation extends business {
 }
 
 mp.events.add({
-	"playerEnterColshape" : (player, colshape) => {
-		if (!player.loggedIn) return;
-		if (player.vehicle && colshape.gasStationFillingId) {
-			const shop = business.getBusiness(colshape.gasStationFillingId);
-			player.notify(`${i18n.get('sGasStation', 'fuelPrice', player.lang)}: ~g~$${shop.fuelprice}`);
-		}
-	},
-	
-	"playerExitColshape" : (player, colshape) => {
-		if (!player.loggedIn) return;
-		if (player.vehicle && colshape.gasStationFillingId) player.notify(`~g~${i18n.get('sGasStation', 'goodJourney', player.lang)}`);
-	},
-
 	"sGasStation-FillUp" : (player, str) => {
 		const id = player.canOpen.businessBuyerMenu;
 		if (!id) return;
