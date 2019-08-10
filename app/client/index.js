@@ -27,6 +27,7 @@ require('./voice.js');
 require('./BlipCreator/index');
 require('./Basic/cNoClip');
 require('./Basic/cWalking');
+require('./Basic/cCrouch');
 require('./Basic/cNametag');
 require('./Basic/cInfos');
 require('./Basic/cInterface');
