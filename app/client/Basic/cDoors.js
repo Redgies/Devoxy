@@ -1,7 +1,7 @@
 const misc = require('../cMisc');
 
 const doors = [];
-mp.game.object.addDoorToSystem(123, lr_prop_supermod_door_01, -205.6828, -1310.683, 30.29572, 1, 1, 1);
+
 mp.events.add({
 	"cDoor-Update" : (d) => {
         mp.game.object.doorControl(d.model, d.x, d.y, d.z, d.open, 0.0, 0.0, 0.0);
