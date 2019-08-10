@@ -126,7 +126,7 @@ class ChatSingleton {
 			}, 
 
 			'wep': (player, fullText) => {
-				const str = player.weapons;
+				const str = player.weapons.all;
 
 				player.outputChatBox("weapons : " + JSON.stringify(str));
 			},
