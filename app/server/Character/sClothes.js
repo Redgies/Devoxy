@@ -325,7 +325,7 @@ class ClothesSingletone {
         } else if (title === "Watches") {
             if (player.model === 1885233650) return this.manWatches[number].price;
             else return this.womanWatches[number].price;
-        } else if (title === "Cou") {
+        } else if (title === "Neck") {
             if (player.model === 1885233650) return this.manNeck[number].price;
             else return this.womanNeck[number].price;
         } else if (title === "Tops") {
@@ -358,8 +358,8 @@ class ClothesSingletone {
             player.setProp(2, this.manEars[d.number].id, d.color);
         } else if (title === "Watches") {
             player.setProp(6, this.manWatches[d.number].id, d.color);
-        } else if (title === "Cou") {
-            player.setClothes(7, this.manNeck[d.number].id, d.color);
+        } else if (title === "Neck") {
+            player.setClothes(7, this.manTops[d.number].id, d.color, 0);
         } else if (title === "Tops") {
             player.setClothes(11, this.manTops[d.number].id, d.color, 0);
             player.setClothes(3, this.manTops[d.number].torso, 0, 0);
@@ -380,8 +380,8 @@ class ClothesSingletone {
             player.setProp(2, this.womanEars[d.number].id, d.color);
         } else if (title === "Watches") {
             player.setProp(6, this.womanWatches[d.number].id, d.color);
-        } else if (title === "Cou") {
-            player.setClothes(7, this.womanNeck[d.number].id, d.color);
+        } else if (title === "Neck") {
+            player.setClothes(7, this.womanTops[d.number].id, d.color, 0);
         } else if (title === "Tops") {
             player.setClothes(11, this.womanTops[d.number].id, d.color, 0);
             player.setClothes(3, this.womanTops[d.number].torso, 0, 0);
@@ -406,7 +406,7 @@ class ClothesSingletone {
             await misc.query(`UPDATE usersClothes SET ears = '${JSON.stringify(obj)}' WHERE id = ${player.guid}`);
         } else if (d.title === "Watches") {
             await misc.query(`UPDATE usersClothes SET watches = '${JSON.stringify(obj)}' WHERE id = ${player.guid}`);
-        } else if (d.title === "Cou") {
+        } else if (d.title === "Neck") {
             await misc.query(`UPDATE usersClothes SET neck = '${JSON.stringify(obj)}' WHERE id = ${player.guid}`);
         } else if (d.title === "Tops") {
             obj.underColor = d.underColor;
@@ -454,7 +454,7 @@ class ClothesSingletone {
 
         if (d[0].neck) {
             const neck = JSON.parse(d[0].neck);
-            neck.title = "Cou";
+            neck.title = "Neck";
             this.setClothes(player, neck);
         }
 

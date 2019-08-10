@@ -31,7 +31,7 @@ mp.events.add(
 				misc.createCam(camD.x, camD.y, camD.z + 0.4, camD.rx, camD.ry, camD.rz, camD.viewangle - 10);
 				break;
 
-			case "Cou":
+			case "Neck":
 				misc.createCam(camD.x, camD.y, camD.z + 0.4, camD.rx, camD.ry, camD.rz, camD.viewangle - 10);
 				break;
 
