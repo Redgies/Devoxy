@@ -161,34 +161,10 @@ class ClothesSingletone {
         ];
 
         this.manFeet = [
-            {
-                id: 1,
-                name: "Sneakers",
-                color: 0,
-                colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-                price: 600,
-            },
-            {
-                id: 3,
-                name: "Sneakers",
-                color: 0,
-                colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-                price: 550,
-            },
-            {
-                id: 4,
-                name: "High Sneakers",
-                color: 0,
-                colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-                price: 500,
-            },
-            {
-                id: 5,
-                name: "Bedroom Slippers",
-                color: 0,
-                colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-                price: 400,
-            },
+            {	id: 0, name: "Sneakers", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], price: 600,  },
+            {	id: 1, name: "Vans", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], price: 550,  },
+            {	id: 2, name: "High Sneakers", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], price: 500,  },
+            {	id: 5, name: "Tongs", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], price: 400,  },
         ];
 
 
