@@ -1,6 +1,6 @@
 const misc = require('../../sMisc');
 const faction = require('../sFaction');
-const clothes = require('../Character/sClothes');
+const clothes = require('../../Character/sClothes');
 
 const factionData = {
     id: 1,
