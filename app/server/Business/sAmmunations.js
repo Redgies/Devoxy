@@ -12,6 +12,10 @@ class Ammunation extends business {
     }
 
     async buyNewWeapon(player, hash, price) {
+
+        console.log("price : " + parseInt(price));
+
+
 		const shopTax = misc.roundNum(parseInt(price) * this.margin / 400);
 		const fullPrice = parseInt(price) + shopTax;
 		const canBuy = await player.changeMoney(-fullPrice);
