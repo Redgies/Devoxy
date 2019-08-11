@@ -48,6 +48,8 @@ class PlayerSingleton {
         player.health = d[0].health;
         player.pWeapons = JSON.parse(d[0].weapons);
 
+        console.log(player.pWeapons);
+
         for(let i = 0; i < player.pWeapons.length; i++)
         {
             player.giveWeapon(player.pWeapons[i].hash, player.pWeapons[i].ammo);
