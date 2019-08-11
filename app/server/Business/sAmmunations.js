@@ -60,6 +60,7 @@ class Ammunation extends business {
 
 mp.events.add({
 	"sAmmunations-BuyWeapon" : (player, str) => {
+        console.log(str);
 		const d = JSON.parse(str);
 		const shop = business.getBusiness(d.id);
 		shop.buyNewWeapon(player, d.hash, d.price);

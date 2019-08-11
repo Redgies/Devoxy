@@ -170,12 +170,10 @@ const app = new Vue({
 		buyWeapon: function(hash) {
 			const obj = { hash: hash, id: this.id, price: this.price };
 			mp.trigger("cMisc-CallServerEvent", "sAmmunations-BuyWeapon", JSON.stringify(obj));
-			this.exit();
         },
 		buyAmmo: function(hash) {
 			const obj = { hash: hash, id: this.id, price: this.ammo };
 			mp.trigger("cMisc-CallServerEvent", "sAmmunations-BuyAmmo", JSON.stringify(obj));
-			this.exit();
 		},
 		exit: function() {
 			mp.trigger("cCloseCef");
