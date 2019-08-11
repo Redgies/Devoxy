@@ -86,7 +86,7 @@ class Police extends faction {
 
                 player.notify(fullText)
 
-                let message = fullText.substr(target.length, fullText.length);
+                let message = fullText.substr(target.length - 1, fullText.length);
 
                 if(message.length <= 0)
                     return player.notify("~r~Utilisez /delit id message");
