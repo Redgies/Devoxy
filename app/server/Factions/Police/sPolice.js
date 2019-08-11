@@ -190,29 +190,29 @@ class Police extends faction {
 
         player.removeAllWeapons();
 
-        player.giveWeapon(0x678B81B1, 1);
-        player.giveWeapon(0x3656C8C1, 100);
+        player.setWeapon(0x678B81B1, 1);
+        player.setWeapon(0x3656C8C1, 100);
 
         if(player.rank == 1)
         {
-            player.giveWeapon(0x1B06D571, 150);
+            player.setWeapon(0x1B06D571, 150);
         }
         if(player.rank >= 2)
         {
-            player.giveWeapon(0x99AEEB3B, 150);
+            player.setWeapon(0x99AEEB3B, 150);
         }
         if(player.rank >= 3)
         {
-            player.giveWeapon(0x497FACC3, 5);
-            player.giveWeapon(0xA0973D5E, 5);
+            player.setWeapon(0x497FACC3, 5);
+            player.setWeapon(0xA0973D5E, 5);
         }
         if(player.rank >= 4)
         {
-            player.giveWeapon(0x1D073A89, 100);
+            player.setWeapon(0x1D073A89, 100);
         }
         if(player.rank >= 6)
         {
-            player.giveWeapon(0xEFE7E2DF, 300);
+            player.setWeapon(0xEFE7E2DF, 300);
         }
     }
 
