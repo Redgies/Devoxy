@@ -26,11 +26,14 @@ class Ammunation extends business {
     }
     
     async buyNewAmmo(player, hash, price) {
+
+        if (!player.hasWeapon(parseInt(hash))) return;
+
 		const shopTax = misc.roundNum(parseInt(price) * this.margin / 400);
 		const fullPrice = parseInt(price) + shopTax;
 		const canBuy = await player.changeMoney(-fullPrice);
 
-		if (!canBuy) return;
+        if (!canBuy) return;
         await this.addMoneyToBalance(shopTax);
         
         player.setWeaponAmmo(parseInt(hash), +15);
