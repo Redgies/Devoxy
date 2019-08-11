@@ -71,12 +71,12 @@
                     <span class="title">Démenotter</span>
                 </div>
                 <div class="item" @click="currentTab = 9"
-                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 4">
-                    <img src="images/handcuffs.png">
+                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 4 && target.guid">
+                    <img src="images/gun.png">
                     <span class="title">Port d'arme</span>
                 </div>
                 <div class="item" @click="currentTab = 10"
-                    v-if="player.faction == 1 && player.working == 1 && target.guid">
+                    v-if="player.faction == 1 && player.working == 1 && target.guid && target.guid">
                     <img src="images/search.png">
                     <span class="title">Fouiller</span>
                 </div>
@@ -145,7 +145,7 @@
             <!-- PERMIS PORT D'ARME -->
             <div v-if="currentTab == 9">
                 <h1 class="title-right">Permis port d'armes</h1>
-                <p class="p-right">Vous allez {{ target.permis ? 'donner' : 'retirer' }} le permis port d'arme à {{ target.firstName }} {{ target.lastName }}</p>
+                <p class="p-right">Vous allez {{ target.permis ? 'retirer' : 'donner' }} le permis port d'arme à {{ target.firstName }} {{ target.lastName }}</p>
                 <button type="button" class="btn-valid" @click="giveGunLicence()">Valider</button>
             </div>
             <!-- FOUILLE -->
@@ -497,9 +497,79 @@
             filters: {
                  weaponName: function(str) {
                     return str;
-                    // switch(str) {
-                    //     case: 
-                    // }
+                    switch(str) {
+                        case 2460120199:
+                            str = 'Dague de cavalerie antique';
+                            break;
+                        case 2508868239:
+                            str = 'Batte';
+                            break;
+                        case 4192643659:
+                            str = 'Bouteille cassée';
+                            break;
+                        case 2227010557:
+                            str = 'Pied de biche';
+                            break;
+                        case 2343591895:
+                            str = 'Lampe torche';
+                            break;
+                        case 1141786504:
+                            str = 'Club de golf';
+                            break;
+                        case 1317494643:
+                            str = 'Marteau';
+                            break;
+                        case 4191993645:
+                            str = 'Hachette';
+                            break;
+                        case 3638508604:
+                            str = 'Poing américain';
+                            break;
+                        case 2578778090:
+                            str = 'Couteau';
+                            break;
+                        case 3713923289:
+                            str = 'Machette';
+                            break;
+                        case 3756226112:
+                            str = 'Couteau';
+                            break;
+                        case 1737195953:
+                            str = 'Mattraque';
+                            break;
+                        case 419712736:
+                            str = 'Clé anglaise';
+                            break;
+                        case 453432689:
+                            str = 'Pistolet';
+                            break;
+                        case 3219281620:
+                            str = 'Pistolet MK2';
+                            break;
+                        case 1593441988:
+                            str = 'Pistolet de Combat';
+                            break;
+                        case 2578377531:
+                            str = 'Desert Eagle';
+                            break;
+                        case 324215364:
+                            str = 'UZI';
+                            break;
+                        case 4024951519:
+                            str = 'SMG d\'assaut';
+                            break;
+                        case 487013001:
+                            str = 'Fusil à pompe';
+                            break;
+                        case 2828843422:
+                            str = 'Musket';
+                            break;
+                        default: 
+                            str = 'Arme illégale en ville';
+                            break;
+
+                        return str;
+                    }
                 }
             },
             methods: {

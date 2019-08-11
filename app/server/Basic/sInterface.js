@@ -86,7 +86,7 @@ class Interface {
                 }
                 else
                 {
-                    target.notifyWithPicture("Banque", "", `${player.name} vous a retiré le permis de port d'armes.`, "CHAR_CALL911");
+                    target.notifyWithPicture("Police", "", `${player.name} vous a retiré le permis de port d'armes.`, "CHAR_CALL911");
                 }
 
             },
