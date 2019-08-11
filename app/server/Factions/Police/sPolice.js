@@ -84,14 +84,14 @@ class Police extends faction {
 				if(!target)
                     return player.notify("~r~Cette personne n'est pas connecté.");
 
-                player.notify(fullText);
+                player.notify(fullText)
 
-                let message = fullText.substr(target.length + 1, fullText.length);
+                let message = fullText.substr(target.length, fullText.length);
 
                 if(message.length <= 0)
                     return player.notify("~r~Utilisez /delit id message");
 
-                target.addDelit(message);
+                target.addDelit(message.replace(/'/g, ' '));
                 player.notifyWithPicture("Police", "", `Vous avez ajouté un délit à ${target.name} : ${message}.`, "CHAR_CALL911");
             }
         });
