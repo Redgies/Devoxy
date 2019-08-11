@@ -26,6 +26,15 @@ class Faction {
 		});
 			
 		mp.events.addCommand({	
+            "r" : (player, fullText) => {
+                const currentTime = misc.getTime();
+                const str = `!{#74b9ff}[${currentTime}] [RADIO] ${this.ranks[player.rank - 1]} | ${player.name} : ${fullText}`;
+    
+                for(const p of mp.players.toArray()) {
+                    if(p.faction !== player.faction) continue;
+                    p.outputChatBox(str);
+                }
+            },
 			"invite": (player, fullText, target) => {
                 target = misc.findPlayerByIdOrNickname(target);
                 if(!target) return;
@@ -55,7 +64,7 @@ class Faction {
 			},
 			"virer": (player, fullText, target) => {
                 target = misc.findPlayerByIdOrNickname(target);
-				if(!target || !rank) return;
+				if(!target) return;
 				if(target == player) return;
 				if(!target.loggedIn) return player.notify("~r~Cette personne n'est pas connecté.");
 
