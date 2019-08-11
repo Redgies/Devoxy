@@ -154,7 +154,7 @@ class Hospital extends faction {
 		});
 	}
 
-	createExitPoint(pos) {
+	createEnterPoint(pos) {
 		this.enterShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
 		this.enterMarker = mp.markers.new(0, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
 		{
