@@ -50,7 +50,7 @@ class PlayerSingleton {
 
         for(let i = 0; i < player.pWeapons.length; i++)
         {
-            console.log(player.pWeapons[i]);
+            console.log("hash : " + player.pWeapons[i].hash = " ammo : " + player.pWeapons[i].ammo);
             player.giveWeapon(player.pWeapons[i].hash, player.pWeapons[i].ammo);
         }
 
