@@ -35,7 +35,7 @@ class Ammunation extends business {
         if (!canBuy) return;
         await this.addMoneyToBalance(shopTax);
         
-        player.setWeaponAmmo(parseInt(hash), +15);
+        player.giveWeapon(parseInt(hash), 15);
 
 		player.notify(`~g~${i18n.get('basic', 'success', player.lang)}`);
 	}
@@ -95,9 +95,9 @@ mp.events.addCommand({
 	},	
 });
 
-mp.events.addCommand('weapon', (player) => {
-    player.giveWeapon(3220176749, 1000);
-})
+// mp.events.addCommand('weapon', (player) => {
+//     player.giveWeapon(3220176749, 1000);
+// })
 
 /* 
 

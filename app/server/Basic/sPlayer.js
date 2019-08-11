@@ -43,6 +43,7 @@ class PlayerSingleton {
         player.fly = false;
         player.loyality = d[0].loyality;
         player.vip = d[0].vip;
+        player.permis = d[0].permis;
         player.updateName();
         player.tp(JSON.parse(d[0].position));
         player.health = d[0].health;
@@ -89,6 +90,7 @@ class PlayerSingleton {
         player.faction = 0;
         player.rank = 0;
         player.cuffed = 0;
+        player.permis = 0;
         player.fly = false;
         player.phone = 0;
         player.canOpen = {};
