@@ -224,7 +224,7 @@ class PlayerSingleton {
             if (!this.loggedIn) return;
             
             const newDelit = { comment };
-            this.delits.push(newViolation);
+            this.delits.push(newDelit);
 
             player.notifyWithPicture("Police", "nouveau délit", `Vous êtes accusé de meurte.`, "CHAR_CALL911");
             misc.log.debug(`${this.name} get new delit : ${comment}`);	
