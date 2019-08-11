@@ -197,6 +197,10 @@ class ChatSingleton {
 				misc.log.debug(`GUID of ${target.name} [${target.id}] is ${target.guid}`);
 			},
 
+			'phone': (player, fullText) => {
+				player.outputChatBox("ton numéro : " + player.phone);
+			},
+
 			'aduty': (player, fullText) => {
 				if(player.adminLvl < 1) return;
 
