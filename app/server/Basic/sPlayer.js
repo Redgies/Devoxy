@@ -121,8 +121,7 @@ class PlayerSingleton {
                 if(player.pWeapons[i].hash === hash)
                 {
                     player.pWeapons[i].ammo = 0;
-                    let hasWeapon = true;
-                    continue;
+                    hasWeapon = true;
                 }
             }
 

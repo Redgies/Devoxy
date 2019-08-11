@@ -63,6 +63,15 @@ class Interface {
                 }
 
             },
+            "sInterface-newConfiscate": (player) => {
+                let target = misc.findPlayerByIdOrNickname(player.targetId);
+                if(!target) return;
+
+                target.resetAllWeapons();
+
+                target.notifyWithPicture("Police", "", `${player.name} vous a retiré vos armes.`, "CHAR_CALL911");
+                player.notifyWithPicture("Police", "", `Vous avez retiré les armes de ${target.name}.`, "CHAR_CALL911");
+            },
             "sInterface-setCuff": (player, data) => {
                 const d = JSON.parse(data);
 
