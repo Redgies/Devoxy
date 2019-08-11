@@ -101,11 +101,6 @@ class PlayerSingleton {
             player.pWeapons = [];
         }
 
-        player.updateWeapon = function() {
-            player.call("cPlayer-getWeaponAmmo");
-            // player.outputChatBox("weapon hash : " + JSON.stringify(player.weapon) + " ammo : " + player.getWeaponAmmo(player.weapon));
-        }
-
         player.setWeapon = function(hash, ammo) {
             player.giveWeapon(hash, ammo);
 
@@ -115,7 +110,7 @@ class PlayerSingleton {
             {
                 if(player.pWeapons[i].hash === hash)
                 {
-                    player.pWeapons[i].ammo += ammo;
+                    player.pWeapons[i].ammo = 0;
                     let hasWeapon = true;
                     continue;
                 }
@@ -125,7 +120,7 @@ class PlayerSingleton {
             {
                 const newWep = {
                     hash: hash,
-                    ammo: ammo
+                    ammo: 0
                 }
 
                 player.pWeapons.push(newWep);
@@ -297,13 +292,3 @@ function playerExitVehicleHandler(player) {
 }
 
 mp.events.add("playerExitVehicle", playerExitVehicleHandler);
-
-
-setInterval(function() {
-    for(const p of mp.players.toArray())
-    {
-        if(!p.loggedIn) continue;
-
-        p.updateWeapon();
-    }
-}, 1000);
