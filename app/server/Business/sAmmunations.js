@@ -3,7 +3,6 @@ const misc = require('../sMisc');
 const i18n = require('../sI18n');
 
 
-
 class Ammunation extends business {
 	
 	setLocalSettings() {
@@ -53,7 +52,7 @@ class Ammunation extends business {
 		execute += `app.margin = ${this.margin};`;
 
 		player.call("cAmmunations-OpenBuyerMenu", [player.lang, execute]);
-		misc.log.debug(`${player.name} enter a avions dealership menu`);s
+		misc.log.debug(`${player.name} enter ammunation`);
 	}	
 
 }
