@@ -76,6 +76,23 @@ class Police extends faction {
     }
 
     createEvents() {
+        mp.events.addCommand({	
+			"delit": (player, fullText, target) => {
+                if(!this.isInThisFaction(player) || !this.isWorking(player)) return;
+
+                const target = this.findPlayerByIdOrNickname(arg1);
+				if(!target)
+                    return player.notify("~r~Cette personne n'est pas connecté.");
+
+                let message = fullText.substr(0, target.length + 1);
+
+                if(message.length <= 0)
+                    return player.notify("~r~Utilisez /delit <id> <message>");
+
+                target.addDelit(message);
+                player.notifyWithPicture("Police", "", `Vous avez ajouté un délit à ${target.name} : ${message}.`, "CHAR_CALL911");
+            }
+        });
         mp.events.add({
             "playerExitVehicle" : (player) => {
                 if(player.cuffed) player.setCuff(true);
