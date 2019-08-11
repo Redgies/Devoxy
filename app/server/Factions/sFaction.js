@@ -345,9 +345,10 @@ mp.events.addCommand({
 	"r" : (player, fullText) => {
 		const currentTime = misc.getTime();
 		
-		for(const p of mp.players.toArray()) {
+		for (const p of mp.players.toArray()) {
 			for (const f of factionsList) {
-				if(player.faction == p.faction)
+				if(player.faction !== f.id) continue; 
+				if((player.faction == p.faction))
 				{
 					const str = `!{#74b9ff}[${currentTime}] [RADIO] ${f.getRank(player)} | ${player.name} : ${fullText}`;
 					p.outputChatBox(str);

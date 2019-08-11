@@ -87,8 +87,8 @@ class Interface {
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
                 if(!target) return;
 
-                if(!target.canGoToJail) return target.notify("~r~Cette personne n'est pas en cellule.");
-                if(target.delits.length <= 0) return target.notify("~r~Cette personne n'a pas de délits.");
+                if(!target.canGoToJail) return player.notify("~r~Cette personne n'est pas en cellule.");
+                if(target.delits.length <= 0) return player.notify("~r~Cette personne n'a pas de délits.");
 
                 target.notifyWithPicture("Police", "", `${player.name} vous a envoyé en prison.`, "CHAR_CALL911");
                 player.notifyWithPicture("Police", "", `Vous avez envoyé ${target.name} en prison.`, "CHAR_CALL911");
