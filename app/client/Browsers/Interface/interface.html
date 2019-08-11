@@ -590,6 +590,7 @@
                 },
                 newJail: function() {
                     mp.trigger("cMisc-CallServerEvent", "sInterface-setJail");
+                    this.exit();
                 },
                 newConfiscate: function() {
                     mp.trigger("cMisc-CallServerEvent", "sInterface-newConfiscate");

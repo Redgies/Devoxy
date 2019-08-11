@@ -164,6 +164,24 @@ class PlayerSingleton {
             this.heading = 180.3;
             this.dimension = 0;
 
+
+            if(player.model === 1885233650)
+            {
+                player.setClothes(11, 5, 0, 0); // tops
+                player.setClothes(3, 5, 0, 0);
+                player.setClothes(8, 5, 0, 0);
+                player.setClothes(4, 3, 7, 0); // legs
+                player.setClothes(6, 5, 0, 0); // shoes
+            }
+            else
+            {
+                player.setClothes(11, 5, 0, 0); // tops
+                player.setClothes(3, 4, 0, 0);
+                player.setClothes(8, 5, 0, 0);
+                player.setClothes(4, 3, 15, 0); // legs
+                player.setClothes(6, 5, 0, 0); // shoes
+            }
+
             player.setClothes(7, 0, 0, 2);
             player.call("cUnCuff");
             player.stopAnimation();

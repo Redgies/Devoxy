@@ -1,5 +1,6 @@
 const misc = require('../../sMisc');
 const faction = require('../sFaction');
+const clothes = require('../Character/sClothes');
 
 const factionData = {
     id: 1,
@@ -152,6 +153,8 @@ class Police extends faction {
                     player.tp(pos);
 
                     player.notify("~g~Vous êtes maintenant libre.");
+
+                    clothes.loadPlayerClothes(player);
                 }
 
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
