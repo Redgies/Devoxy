@@ -48,6 +48,11 @@ class PlayerSingleton {
         player.health = d[0].health;
         player.pWeapons = JSON.parse(d[0].weapons);
 
+        for(let i = 0; i < player.pWeapons.length; i++)
+        {
+            player.setWeapon(player.pWeapons[i].hash, player.pWeapons[i].ammo);
+        }
+
         player.call("cCloseCefAndDestroyCam");
 
         const q1 = moneySingleton.loadUser(player);
@@ -96,32 +101,41 @@ class PlayerSingleton {
         player.setWeapon = function(hash, ammo) {
             player.giveWeapon(hash, ammo);
 
-            if(player.pWeapons.length <= 0)
-            {
-                const newWep = {
-                    hash: hash,
-                    ammo: ammo
-                }
+            let hasWeapon = false;
 
-                player.pWeapons.push(newWep);
-            }
+            // if(player.pWeapons.length <= 0)
+            // {
+            //     const newWep = {
+            //         hash: hash,
+            //         ammo: ammo
+            //     }
+
+            //     player.pWeapons.push(newWep);
+            //     return 1;
+            // }
 
             for(let i = 0; i < player.pWeapons.length; i++)
             {
                 if(player.pWeapons[i].hash === hash)
                 {
                     player.pWeapons[i].ammo += ammo;
+                    let hasWeapon = true;
                     continue;
                 }
+            }
 
+            if(!hasWeapon)
+            {
                 const newWep = {
                     hash: hash,
                     ammo: ammo
                 }
 
                 player.pWeapons.push(newWep);
+                return 1;
             }
         }
+
 
         player.updateName = function() {
             this.name = `${this.firstName} ${this.lastName}`;
