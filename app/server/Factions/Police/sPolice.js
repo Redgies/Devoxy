@@ -130,14 +130,6 @@ class Police extends faction {
                     player.canTakeWeapon = false;
             },
             "sKeys-E" : (player) => {
-                if(!player.loggedIn || !this.isInThisFaction(player)) return;
-    
-                if(player.canChangeClothes)
-                    this.changeClothes(player);
-                if(player.canTakeGilet)
-                    this.takeGilet(player);
-                if(player.canTakeWeapon)
-                    this.takeWeapons(player);
                 if(player.canPayCaution) 
                 {
                     let caution = player.delits.length * 2500;
@@ -155,10 +147,21 @@ class Police extends faction {
                         rot: 269.27
                     }
 
+                    player.delits = [];
+
                     player.tp(pos);
 
                     player.notify("~g~Vous êtes maintenant libre.");
                 }
+
+                if(!player.loggedIn || !this.isInThisFaction(player)) return;
+    
+                if(player.canChangeClothes)
+                    this.changeClothes(player);
+                if(player.canTakeGilet)
+                    this.takeGilet(player);
+                if(player.canTakeWeapon)
+                    this.takeWeapons(player);
             },
         });
     }
