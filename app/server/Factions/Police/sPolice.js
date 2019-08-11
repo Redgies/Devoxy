@@ -80,6 +80,12 @@ class Police extends faction {
                 if(player.cuffed) player.setCuff(true);
             },  
             "playerEnterColshape" : (player, shape) => {
+                if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
+                {
+                    player.notify("tu es en cellule");
+                    player.canGoToJail = true; 
+                }
+
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
     
                 if(shape === this.serviceShape)
@@ -99,15 +105,15 @@ class Police extends faction {
                     player.notify("Appuyez ~b~E ~w~pour équiper vos armes.");
                     player.canTakeWeapon = true;
                 }
-
-                if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
-                {
-                    player.notify("tu es en cellule");
-                    player.canGoToJail = true; 
-                }
-
             },
             "playerExitColshape" : (player, shape) => {
+                if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
+                {
+                    player.canGoToJail = false; 
+
+                    player.notify("tu es plus sen cellule");
+                }
+
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
                 
                 if(shape === this.serviceShape)
@@ -116,10 +122,6 @@ class Police extends faction {
                     player.canTakeGilet = false;
                 if(shape === this.weaponShape)
                     player.canTakeWeapon = false;
-                if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
-                    player.canGoToJail = false; 
-
-                    player.notify("tu es plus en cellule");
             },
             "sKeys-E" : (player) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
@@ -135,9 +137,9 @@ class Police extends faction {
     }
 
     createCellulesPoint(cellules) {
-        this.cellule1 = mp.colshapes.newSphere(cellules[0].x, cellules[0].y, cellules[0].z, 3);
-        this.cellule2 = mp.colshapes.newSphere(cellules[1].x, cellules[1].y, cellules[2].z, 3);
-        this.cellule3 = mp.colshapes.newSphere(cellules[2].x, cellules[2].y, cellules[2].z, 3);
+        this.cellule1 = mp.colshapes.newSphere(cellules[0].x, cellules[0].y, cellules[0].z, 2);
+        this.cellule2 = mp.colshapes.newSphere(cellules[1].x, cellules[1].y, cellules[2].z, 2);
+        this.cellule3 = mp.colshapes.newSphere(cellules[2].x, cellules[2].y, cellules[2].z, 2);
 
         this.cellule1Label = mp.labels.new("[cellule 1]", new mp.Vector3(cellules[0].x, cellules[0].y, cellules[0].z),
 		{
