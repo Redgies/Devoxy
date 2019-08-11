@@ -267,7 +267,17 @@ mp.events.add({
         misc.log.debug(`${player.name} transfered to Hospital. Fine: $${pay}`);
 
         player.setCuff(false);
-    }
+    },
+    "playerQuit" : (player) => {
+        if (!player.loggedIn) return;
+        playerSingleton.saveAccount(player);
+        const onlinePlayers = mp.players.toArray();
+        if (onlinePlayers.length < 30) {
+            for (const p of onlinePlayers) {
+                p.outputChatBox(`[${misc.getTime()}] ${player.name} ${i18n.get('sLogin', 'disconnected', p.lang)}`);
+            }
+        } 
+    },
 });
 
 // Save Player bei allem möglichem
