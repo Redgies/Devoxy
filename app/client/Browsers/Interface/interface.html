@@ -47,7 +47,7 @@
                     <span class="title">Carte d'identité</span>
                 </div>
                 <div class="item" @click="currentTab = 4"
-                     v-if="(player.faction == 1 && player.working == 1 && vehicle.guid) || player.adminLvl >= 1">
+                     v-if="((player.faction == 1 && player.working == 1) || player.adminLvl >= 1) && vehicle.guid">
                     <img src="images/license-plate.png">
                     <span class="title">Carte grise</span>
                 </div>
@@ -81,7 +81,7 @@
                     <span class="title">Fouiller</span>
                 </div>
                 <div class="item" @click="setDestroy()"
-                     v-if="player.adminLvl >= 3">
+                     v-if="player.adminLvl >= 3 && vehicle.guid">
                     <img src="images/destroy.png">
                     <span class="title">Détruire</span>
                 </div>
@@ -496,7 +496,6 @@
             },
             filters: {
                  weaponName: function(str) {
-                    return str;
                     switch(str) {
                         case 2460120199:
                             str = 'Dague de cavalerie antique';
