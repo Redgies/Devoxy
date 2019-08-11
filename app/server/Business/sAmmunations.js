@@ -46,7 +46,7 @@ async function loadShops() {
 	const d = await misc.query("SELECT * FROM business INNER JOIN ammunations ON business.id = ammunations.id");
 	for (let i = 0; i < d.length; i++) {
 		const shop = new Ammunation(d[i]);
-		shop.createFillingColshape();
+		// shop.createFillingColshape();
 	}
 }
 loadShops();

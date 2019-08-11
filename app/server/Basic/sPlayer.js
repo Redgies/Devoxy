@@ -46,7 +46,6 @@ class PlayerSingleton {
         player.updateName();
         player.tp(JSON.parse(d[0].position));
         player.health = d[0].health;
-
         player.pWeapons = JSON.parse(d[0].weapons);
 
         player.call("cCloseCefAndDestroyCam");
