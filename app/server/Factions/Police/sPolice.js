@@ -80,7 +80,7 @@ class Police extends faction {
 			"delit": (player, fullText, target) => {
                 if(!this.isInThisFaction(player) || !this.isWorking(player)) return;
 
-                const target = this.findPlayerByIdOrNickname(arg1);
+                target = this.findPlayerByIdOrNickname(arg1);
 				if(!target)
                     return player.notify("~r~Cette personne n'est pas connecté.");
 
