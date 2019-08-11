@@ -90,6 +90,10 @@ class Interface {
                 if(!target.canGoToJail) return player.notify("~r~Cette personne n'est pas en cellule.");
                 if(target.delits.length <= 0) return player.notify("~r~Cette personne n'a pas de délits.");
 
+                target.jailed = 1;
+
+                target.tpToJail();
+
                 target.notifyWithPicture("Police", "", `${player.name} vous a envoyé en prison.`, "CHAR_CALL911");
                 player.notifyWithPicture("Police", "", `Vous avez envoyé ${target.name} en prison.`, "CHAR_CALL911");
             },

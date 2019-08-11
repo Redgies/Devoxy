@@ -148,6 +148,8 @@ class ChatSingleton {
 				const currentTime = misc.getTime();
 
 				for(const p of onlinePlayers) {
+					if(p.adminLvl < 1) continue;
+					
 					p.outputChatBox(`!{#fdcb6e}[${currentTime}] [RAPPORT] ${player.name} [${player.id}] : ${fullText}`);
 				}
 			},

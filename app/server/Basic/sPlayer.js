@@ -46,10 +46,16 @@ class PlayerSingleton {
         player.vip = d[0].vip;
         player.permis = d[0].permis;
         player.updateName();
-        player.tp(JSON.parse(d[0].position));
+        
         player.health = d[0].health;
         player.pWeapons = JSON.parse(d[0].weapons);
         player.delits = JSON.parse(d[0].delits);
+        player.jailed = d[0].jailed;
+
+        if(player.jailed)
+            player.tpToJail();
+        else 
+            player.tp(JSON.parse(d[0].position));
 
         player.call("cCloseCefAndDestroyCam");
 
@@ -100,6 +106,7 @@ class PlayerSingleton {
         player.job = {};
         player.pWeapons = [];
         player.delits = [];
+        player.jailed = 0;
 
         player.resetAllWeapons = function() {
             player.removeAllWeapons();
@@ -150,6 +157,12 @@ class PlayerSingleton {
             this.heading = d.rot;
             this.dimension = 0;
             if (d.dim) this.dimension = d.dim;
+        }
+
+        player.tpToJail = function() {
+            this.position = new mp.Vector3(1691.678, 2565.581, 45.565);
+            this.heading = 180.3;
+            this.dimension = 0;
         }
 
         player.setCuff = function(cuffed) {
@@ -271,7 +284,12 @@ mp.events.add("pointingStop", (player) => {
 
 mp.events.add({
     "playerDeath" : (player, reason, killer) => {
-        player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
+        if(player.jailed)
+            player.tpToJail();
+        else 
+        {
+            player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
+        }
 
         if (!killer || player === killer) return;
         // if (killer.faction == 1 && killer.working == true) return;
