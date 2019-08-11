@@ -163,6 +163,10 @@ class PlayerSingleton {
             this.position = new mp.Vector3(1691.678, 2565.581, 45.565);
             this.heading = 180.3;
             this.dimension = 0;
+            
+            player.setClothes(7, 0, 0, 2);
+            player.call("cUnCuff");
+            player.stopAnimation();
         }
 
         player.setCuff = function(cuffed) {
@@ -226,7 +230,7 @@ class PlayerSingleton {
 
         player.saveBasicData = function() {
             const pos = this.getCurrentPos(0.1);
-            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}', delits = '${JSON.stringify(this.delits)}' WHERE id = '${this.guid}'`);
+            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}', delits = '${JSON.stringify(this.delits)}', jailed = '${this.jailed}' WHERE id = '${this.guid}'`);
         }
 
         player.isDriver = function() {
