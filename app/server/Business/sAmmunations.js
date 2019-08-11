@@ -3,14 +3,43 @@ const misc = require('../sMisc');
 const i18n = require('../sI18n');
 
 
-
 class Ammunation extends business {
 	
 	setLocalSettings() {
 		this.buyerColshape.gasStationId = this.id;
 		this.blip.model = 556;
 		this.blip.name = `Ammunation`;
+    }
+
+    async buyNewWeapon(player, hash, price) {
+		const shopTax = misc.roundNum(parseInt(price) * this.margin / 400);
+		const fullPrice = parseInt(price) + shopTax;
+		const canBuy = await player.changeMoney(-fullPrice);
+
+		if (!canBuy) return;
+        await this.addMoneyToBalance(shopTax);
+        
+        player.setWeapon(parseInt(hash), 15);
+
+		player.notifyWithPicture("Ammunation", "", `Vous avez acheté une nouvelle arme pour ~g~${parseInt(price)}$`, "CHAR_AMMUNATION");
+    }
+    
+    async buyNewAmmo(player, hash, price) {
+
+        if (!player.hasWeapon(parseInt(hash))) return;
+
+		const shopTax = misc.roundNum(parseInt(price) * this.margin / 400);
+		const fullPrice = parseInt(price) + shopTax;
+		const canBuy = await player.changeMoney(-fullPrice);
+
+        if (!canBuy) return;
+        await this.addMoneyToBalance(shopTax);
+        
+        player.giveWeapon(parseInt(hash), 15);
+
+		player.notifyWithPicture("Ammunation", "", `Vous avez acheté une boîte de munition pour ~g~${parseInt(price)}$`, "CHAR_AMMUNATION");
 	}
+    
 
 	async setMargin(ownerId, newMargin) {
 		await super.setMargin(ownerId, newMargin);
@@ -18,39 +47,27 @@ class Ammunation extends business {
 	}
 
 	openBuyerMenu(player) {
-		if (player.vehicle) return;
-		const cars = JSON.stringify(this.getCarsCanFillUp());
-	
+        if (player.vehicle) return;
+        
 		let execute = `app.id = ${this.id};`;
 		execute += `app.margin = ${this.margin};`;
-		execute += `app.updatePriceForLitre();`;
-		execute += `app.updateCars('${cars}');`
-		
-		player.call("cGasStation-OpenBuyerMenu", [player.lang, execute, this.camData]);
-		misc.log.debug(`${player.name} enter a gas station menu`);
+
+		player.call("cAmmunations-OpenBuyerMenu", [player.lang, execute]);
+		misc.log.debug(`${player.name} enter ammunation`);
 	}	
 
 }
 
 mp.events.add({
-	"playerEnterColshape" : (player, colshape) => {
-		if (!player.loggedIn) return;
-		if (player.vehicle && colshape.gasStationFillingId) {
-			const shop = business.getBusiness(colshape.gasStationFillingId);
-			player.notify(`${i18n.get('sGasStation', 'fuelPrice', player.lang)}: ~g~$${shop.fuelprice}`);
-		}
-	},
-	
-	"playerExitColshape" : (player, colshape) => {
-		if (!player.loggedIn) return;
-		if (player.vehicle && colshape.gasStationFillingId) player.notify(`~g~${i18n.get('sGasStation', 'goodJourney', player.lang)}`);
-	},
-
-	"sGasStation-FillUp" : (player, str) => {
-		const id = player.canOpen.businessBuyerMenu;
-		if (!id) return;
-		const shop = business.getBusiness(id);
-		shop.fillUpCar(player, str);
+	"sAmmunations-BuyWeapon" : (player, str) => {
+		const d = JSON.parse(str);
+		const shop = business.getBusiness(d.id);
+		shop.buyNewWeapon(player, d.hash, d.price);
+    },
+	"sAmmunations-BuyAmmo" : (player, str) => {
+		const d = JSON.parse(str);
+		const shop = business.getBusiness(d.id);
+		shop.buyNewAmmo(player, d.hash, d.price);
 	},
 });
 
@@ -59,7 +76,7 @@ async function loadShops() {
 	const d = await misc.query("SELECT * FROM business INNER JOIN ammunations ON business.id = ammunations.id");
 	for (let i = 0; i < d.length; i++) {
 		const shop = new Ammunation(d[i]);
-		shop.createFillingColshape();
+		// shop.createFillingColshape();
 	}
 }
 loadShops();
@@ -77,6 +94,10 @@ mp.events.addCommand({
 		player.outputChatBox("!{#4caf50} Ammunation successfully created!");
 	},	
 });
+
+// mp.events.addCommand('weapon', (player) => {
+//     player.giveWeapon(3220176749, 1000);
+// })
 
 /* 
 

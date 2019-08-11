@@ -19,9 +19,11 @@ class PlayerSingleton {
             rot: 48, 
             dim: 0, 
         }
+        const weapons = [];
+        const delits = [];
         await misc.query(`INSERT INTO users 
-        (email, firstName, lastName, password, ip, regdate, position, socialclub) VALUES 
-        ('${email}', '${firstName}', '${lastName}', '${pass}', '${player.ip}', '${new Date().toLocaleString()}', '${JSON.stringify(firstSpawn)}', '${player.socialClub}')`);
+        (email, firstName, lastName, password, ip, regdate, position, socialclub, weapons, delits) VALUES 
+        ('${email}', '${firstName}', '${lastName}', '${pass}', '${player.ip}', '${new Date().toLocaleString()}', '${JSON.stringify(firstSpawn)}', '${player.socialClub}', '${JSON.stringify(weapons)}', '${JSON.stringify(delits)}')`);
 
         misc.log.debug(`New Account: ${email} | ${firstName} ${lastName}`);
     }
@@ -42,9 +44,13 @@ class PlayerSingleton {
         player.fly = false;
         player.loyality = d[0].loyality;
         player.vip = d[0].vip;
+        player.permis = d[0].permis;
         player.updateName();
         player.tp(JSON.parse(d[0].position));
         player.health = d[0].health;
+        player.pWeapons = JSON.parse(d[0].weapons);
+        player.delits = JSON.parse(d[0].delits);
+
         player.call("cCloseCefAndDestroyCam");
 
         const q1 = moneySingleton.loadUser(player);
@@ -57,7 +63,10 @@ class PlayerSingleton {
         // const q8 = prison.loadUser(player);
         await Promise.all([q1, q2, q3, q4, q5, q6]);
 
-        console.log(player.phone);
+        for(let i = 0; i < player.pWeapons.length; i++)
+        {
+            player.giveWeapon(parseInt(player.pWeapons[i].hash), parseInt(player.pWeapons[i].ammo));
+        }
 
         misc.log.debug(`${player.name} logged in`);
     }
@@ -83,11 +92,54 @@ class PlayerSingleton {
         player.faction = 0;
         player.rank = 0;
         player.cuffed = 0;
+        player.permis = 0;
         player.fly = false;
         player.phone = 0;
         player.canOpen = {};
         player.canEnter = {};
         player.job = {};
+        player.pWeapons = [];
+        player.delits = [];
+
+        player.resetAllWeapons = function() {
+            player.removeAllWeapons();
+
+            player.pWeapons = [];
+        }
+
+        player.hasWeapon = function(hash) {
+            for(let i = 0; i < player.pWeapons.length; i++)
+            {
+                if(player.pWeapons[i].hash === hash) return 1;
+            }
+            return 0;
+        }
+
+        player.setWeapon = function(hash, ammo) {
+            player.giveWeapon(hash, ammo);
+
+            let hasWeapon = false;
+
+            for(let i = 0; i < player.pWeapons.length; i++)
+            {
+                if(player.pWeapons[i].hash === hash)
+                {
+                    player.pWeapons[i].ammo = 0;
+                    hasWeapon = true;
+                }
+            }
+
+            if(!hasWeapon)
+            {
+                const newWep = {
+                    hash: hash,
+                    ammo: 0
+                }
+
+                player.pWeapons.push(newWep);
+                return 1;
+            }
+        }
 
 
         player.updateName = function() {
@@ -161,12 +213,22 @@ class PlayerSingleton {
 
         player.saveBasicData = function() {
             const pos = this.getCurrentPos(0.1);
-            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}' WHERE id = '${this.guid}'`);
+            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}', delits = '${JSON.stringify(this.delits)}' WHERE id = '${this.guid}'`);
         }
 
         player.isDriver = function() {
             if (!this.vehicle || this.seat !== -1) return false;
             return true;
+        }
+
+        player.addDelit = function(comment) {
+            if (!this.loggedIn) return;
+            
+            const newDelit = { comment };
+            this.delits.push(newDelit);
+
+            player.notifyWithPicture("Police", "nouveau délit", `Vous êtes accusé de meurte.`, "CHAR_CALL911");
+            misc.log.debug(`${this.name} get new delit : ${comment}`);	
         }
         
     }
@@ -208,8 +270,13 @@ mp.events.add("pointingStop", (player) => {
 });
 
 mp.events.add({
-    "playerDeath" : (player) => {
+    "playerDeath" : (player, reason, killer) => {
         player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
+
+        if (!killer || player === killer) return;
+        // if (killer.faction == 1 && killer.working == true) return;
+
+        killer.addDelit("Accusation de meurte");
     },
     "sHospital-SpawnAfterDeath" : (player) => {
         if (!player.loggedIn) return;
@@ -228,7 +295,17 @@ mp.events.add({
         misc.log.debug(`${player.name} transfered to Hospital. Fine: $${pay}`);
 
         player.setCuff(false);
-    }
+    },
+    "playerQuit" : (player) => {
+        if (!player.loggedIn) return;
+        playerSingleton.saveAccount(player);
+        const onlinePlayers = mp.players.toArray();
+        if (onlinePlayers.length < 30) {
+            for (const p of onlinePlayers) {
+                p.outputChatBox(`[${misc.getTime()}] ${player.name} ${i18n.get('sLogin', 'disconnected', p.lang)}`);
+            }
+        } 
+    },
 });
 
 // Save Player bei allem möglichem
@@ -242,7 +319,7 @@ function playerStartEnterVehicleHandler(player) {
 //    player.outputChatBox(`${i18n.get('sLogin', 'saveGame', player.lang)}`);
 }
  
- mp.events.add("playerStartEnterVehicle", playerStartEnterVehicleHandler);
+mp.events.add("playerStartEnterVehicle", playerStartEnterVehicleHandler);
 
 // Save by exit Vehicle
 function playerExitVehicleHandler(player) {
@@ -252,5 +329,4 @@ function playerExitVehicleHandler(player) {
 //    player.outputChatBox(`${i18n.get('sLogin', 'saveGame', player.lang)}`);
 }
 
-    mp.events.add("playerExitVehicle", playerExitVehicleHandler);
-
+mp.events.add("playerExitVehicle", playerExitVehicleHandler);

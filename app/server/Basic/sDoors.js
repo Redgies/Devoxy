@@ -12,6 +12,9 @@ class Doors {
             {id: 6, model: 631614199, x: 461.8065, y: -997.6583, z: 25.06443, open: false, faction: 1 }, // COMICO CELLULE 2
             {id: 7, model: 631614199, x: 461.8065, y: -1001.302, z: 25.06443, open: false, faction: 1 }, // COMICO CELLULE 3
             {id: 8, model: -550347177, x: -356.0905, y: -134.7714, z: 40.01295, open: true, faction: 2 }, // LOS SANTOS CUSTOM NORD DE LA VILLE
+            {id: 9, model: 741314661, x: 1844.998, y: 2597.482, z: 44.63626, open: false, faction: 1 }, // PRISON
+            {id: 10, model: 741314661, x: 1818.543, y: 2597.482, z: 44.60749, open: false, faction: 1 }, // PRISON
+            {id: 11, model: 741314661, x: 1806.939, y: 2616.975, z: 44.60093, open: false, faction: 1 }, // PRISON
             //{id: 9, model: -550347177, x: -1145.898, y: -1991.144, z: 14.18357, open: true, faction: 2 }, // LOS SANTOS CUSTOM AEROPORT
         ];
 

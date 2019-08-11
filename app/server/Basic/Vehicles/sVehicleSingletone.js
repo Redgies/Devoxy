@@ -103,6 +103,7 @@ class VehicleSingleton {
                     ownerId: 0,
                     whoCanOpen: JSON.stringify([player.guid]),
                     factionId: 0,
+                    tunning: JSON.stringify([]),
                     numberPlate: this.generateRandomNumberPlate(),
                     primaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
                     secondaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
@@ -114,6 +115,7 @@ class VehicleSingleton {
 
             'veh': (player) => {  // Temporary vehicle spawning
                 if (player.vip < 1) return;
+                if (player.locationVip) return player.notify("~r~Vous avez déjà un scooter de location.");
                 const d = {
                     model: 'faggio2',
                     coord: misc.getPlayerCoordJSON(player),
@@ -134,6 +136,7 @@ class VehicleSingleton {
                 misc.log.debug(`${player.name} spawned faggio2`);
                 player.notify(`${i18n.get('sVehicle', 'helpUnlock', player.lang)}`);
                 player.notify(`${i18n.get('sVehicle', 'helpEngine', player.lang)}`);
+                player.locationVip = 1;
             },
 
             'tp': (player, fullText, a, b, c) => {

@@ -1,6 +1,7 @@
 
 const i18n = require('../sI18n');
 const misc = require('../sMisc');
+const Faction = require('../Factions/sFaction.js');
 const graylog = require('../sGraylog');
 const time = require('./sTime');  
 
@@ -137,6 +138,7 @@ class ChatSingleton {
 			// 'uncuff' : (player, fullText) => {
 			// 	player.setCuff(false);
 			// },
+			
 
 			'rapport': (player, fullText) => {
 				if(fullText.length < 1) 

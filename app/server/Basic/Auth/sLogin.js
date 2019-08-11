@@ -96,15 +96,4 @@ mp.events.add({
     "sLogin-TryValidateCodeAndLogIn" : async (player, obj) => {
         loginSingleton.tryValidateCodeAndLogIn(player, obj);
     },
-
-    "playerQuit" : (player) => {
-        if (!player.loggedIn) return;
-        playerSingleton.saveAccount(player);
-        const onlinePlayers = mp.players.toArray();
-        if (onlinePlayers.length < 30) {
-            for (const p of onlinePlayers) {
-                p.outputChatBox(`[${misc.getTime()}] ${player.name} ${i18n.get('sLogin', 'disconnected', p.lang)}`);
-            }
-        } 
-    },
 });

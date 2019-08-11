@@ -63,6 +63,15 @@ class Interface {
                 }
 
             },
+            "sInterface-newConfiscate": (player) => {
+                let target = misc.findPlayerByIdOrNickname(player.targetId);
+                if(!target) return;
+
+                target.resetAllWeapons();
+
+                target.notifyWithPicture("Police", "", `${player.name} vous a retiré vos armes.`, "CHAR_CALL911");
+                player.notifyWithPicture("Police", "", `Vous avez retiré les armes de ${target.name}.`, "CHAR_CALL911");
+            },
             "sInterface-setCuff": (player, data) => {
                 const d = JSON.parse(data);
 
@@ -73,6 +82,32 @@ class Interface {
                 } else {
                     target.setCuff(false);
                 }
+            },
+            "sInterface-setJail": (player) => {
+                let target = misc.findPlayerByIdOrNickname(player.targetId);
+                if(!target) return;
+
+                if(!target.canGoToJail) return player.notify("~r~Cette personne n'est pas en cellule.");
+                if(target.delits.length <= 0) return player.notify("~r~Cette personne n'a pas de délits.");
+
+                target.notifyWithPicture("Police", "", `${player.name} vous a envoyé en prison.`, "CHAR_CALL911");
+                player.notifyWithPicture("Police", "", `Vous avez envoyé ${target.name} en prison.`, "CHAR_CALL911");
+            },
+            "sInterface-giveGunLicence": (player) => {
+                let target = misc.findPlayerByIdOrNickname(player.targetId);
+                if (!target) return;
+
+                target.permis = !target.permis;
+
+                if(target.permis)
+                {
+                    target.notifyWithPicture("Police", "", `${player.name} vous a donné le permis de port d'armes.`, "CHAR_CALL911");
+                }
+                else
+                {
+                    target.notifyWithPicture("Police", "", `${player.name} vous a retiré le permis de port d'armes.`, "CHAR_CALL911");
+                }
+
             },
             "sInterface-giveMoney": (player, data) => {
                 const d = JSON.parse(data);

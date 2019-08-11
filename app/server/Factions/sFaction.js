@@ -19,31 +19,74 @@ class Faction {
 	}
 
 	createFactionEvents() {
+		mp.events.add({
+            "playerQuit" : (player) => {
+				this.setWorking(player, false);
+			},  
+		});
+			
 		mp.events.addCommand({	
-			"invite" : (player, fullText, target) => {
-				target = misc.findPlayerByIdOrNickname(target);
-				if(!target)	return player.notify("~r~Ce joueur n'est pas connecté.");
-				if(!this.isInThisFaction(player) || !this.isFactionLeader(player)) return;t
-			},
-			"r" : (player, fullText) => {
-				const currentTime = misc.getTime();
-				const str = `!{#74b9ff}[${currentTime}] [RADIO] ${this.ranks[player.rank - 1]} | ${player.name} : ${fullText}`;
+			"invite": (player, fullText, target) => {
+                target = misc.findPlayerByIdOrNickname(target);
+                if(!target) return;
 
-				for(const p of mp.players.toArray()) {
-					if(p.faction !== this.id || !this.isWorking(p)) continue;
-					p.outputChatBox(str);
-				}
+				if(!this.isInThisFaction(player) || !this.isFactionLeader(player)) return;
+                if(!target.loggedIn) return player.notify("~r~Cette personne n'est pas connecté.");
+                if(target.faction != 0) return player.notify("~r~Cette personne a déjà une faction.");
+
+				target.faction = this.id;
+				target.rank = 1;
+
+				player.notify(`~g~Vous avez invité ${target.name} dans ${this.name}.`);
+				target.notify(`~g~${player.name} vous a invité dans ${this.name}.`);
+			},
+			"rank": (player, fullText, target, rank) => {
+                target = misc.findPlayerByIdOrNickname(target);
+				if(!target || !rank) return;
+				if(target == player) return;
+				if(!target.loggedIn) return player.notify("~r~Cette personne n'est pas connecté.");
+				
+				if(!this.isInThisFaction(player) || !this.isFactionLeader(player) || !this.isInThisFaction(target)) return;
+
+				target.rank = parseInt(rank);
+
+				player.notify(`~g~Vous passez ${target.name} au rang de ${this.ranks[target.rank - 1]}.`);
+				target.notify(`~g~${player.name} vous a passé au rang de ${this.ranks[target.rank - 1]}.`);				
+			},
+			"virer": (player, fullText, target) => {
+                target = misc.findPlayerByIdOrNickname(target);
+				if(!target) return;
+				if(target == player) return;
+				if(!target.loggedIn) return player.notify("~r~Cette personne n'est pas connecté.");
+
+				if(!this.isInThisFaction(player) || !this.isFactionLeader(player) || !this.isInThisFaction(target)) return;
+			
+				this.setWorking(target, false);
+				this.changeClothes(target);
+
+				target.faction = 0;
+				target.rank = 0;
+
+				player.notify(`~g~Vous virez ${target.name} de la faction.`);
+				target.notify(`~g~${player.name} vous a viré de la faction.`);		
 			},
 			"sms" : (player, fullText) => {
+				if(fullText.length <= 0) return player.notify("~r~Vous devez saisir un message.");
+
 				for(const p of mp.players.toArray()) {
                     if(p.faction !== 1 || !this.isWorking(p)) continue;
                     
-					p.notifyWithPicture("Appel 911", p.name, fullText, "CHAR_CALL911");
+					p.notifyWithPicture("Appel 911", player.name, fullText, "CHAR_CALL911");
 				}
 
 				player.notifyWithPicture("Appel 911", "", "Votre message a bien été reçu, nous le traiterons dès que possible.", "CHAR_CALL911");
 			}
 		});
+	}
+
+	getRank(player) {
+		if (!this.isInThisFaction(player)) return;
+		return this.ranks[player.rank - 1];
 	}
 
 	isInThisFaction(player) {
@@ -59,9 +102,7 @@ class Faction {
 	changeClothes(player) {
 		if(this.isWorking(player)) {
 			if(player.faction === 1)
-				player.removeAllWeapons();
-			if(player.faction === 2)
-				player.removeWeapon(0x19044EE0);
+				player.resetAllWeapons();
 				
 			this.setWorking(player, false);
 			player.armour = 0;
@@ -182,10 +223,6 @@ module.exports = Faction;
 // 		player.faction.working = status;
 // 	}
 
-// 	getRank(player) {
-// 		if (!this.isInThisFaction(player)) return;
-// 		return player.faction.rank;
-// 	}
 
 // 	setRank(leader, id, value) {
 // 		if (!misc.isValueNumber(id) || !misc.isValueNumber(value) || !this.isInThisFaction(leader) || this.getRank(leader) < 9) return;
@@ -303,6 +340,23 @@ module.exports = Faction;
 // 	await misc.query(`INSERT INTO usersFaction (id, info) VALUES ('${id}', '[]')`);
 // }
 // module.exports.createNewUser = createNewUser;
+
+mp.events.addCommand({
+	"r" : (player, fullText) => {
+		const currentTime = misc.getTime();
+		
+		for (const p of mp.players.toArray()) {
+			for (const f of factionsList) {
+				if(player.faction !== f.id) continue; 
+				if((player.faction == p.faction))
+				{
+					const str = `!{#74b9ff}[${currentTime}] [RADIO] ${f.getRank(player)} | ${player.name} : ${fullText}`;
+					p.outputChatBox(str);
+				}
+			}
+		}
+	},
+});
 
 
 async function loadUser(player) {

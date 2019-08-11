@@ -29,6 +29,17 @@ const factionData = {
         y: -980.08, 
         z: 30.69,
     },
+    prisonEnter: {
+        x: 1691.678, 
+        y: 2565.581, 
+        z: 45.565, 
+        rot: 180.3,
+    },
+    cellulesPoint: [
+        {x: 459.551, y: -1001.676, z: 24.915},
+        {x: 459.165, y: -997.912, z: 24.915},
+        {x: 460.044, y: -994.33, z: 24.915},
+    ],
     blip: {
         scale: 0.8,
         color: 38,
@@ -48,6 +59,7 @@ class Police extends faction {
         this.createServicePoint(factionData.servicePoint);
         this.createGiletPoint(factionData.giletPoint);
         this.createWeaponPoint(factionData.weaponPoint);
+        this.createCellulesPoint(factionData.cellulesPoint);
         this.createBlip();
     }
 
@@ -68,6 +80,12 @@ class Police extends faction {
                 if(player.cuffed) player.setCuff(true);
             },  
             "playerEnterColshape" : (player, shape) => {
+                if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
+                {
+                    player.notify("tu es en cellule");
+                    player.canGoToJail = true; 
+                }
+
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
     
                 if(shape === this.serviceShape)
@@ -87,9 +105,15 @@ class Police extends faction {
                     player.notify("Appuyez ~b~E ~w~pour équiper vos armes.");
                     player.canTakeWeapon = true;
                 }
-                
             },
             "playerExitColshape" : (player, shape) => {
+                if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
+                {
+                    player.canGoToJail = false; 
+
+                    player.notify("tu es plus sen cellule");
+                }
+
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
                 
                 if(shape === this.serviceShape)
@@ -110,16 +134,36 @@ class Police extends faction {
                     this.takeWeapons(player);
             },
         });
+    }
 
-        mp.events.addCommand({	
-            "rank" : (player, fullText, target, rank) => {
-                target = misc.findPlayerByIdOrNickname(target);
+    createCellulesPoint(cellules) {
+        this.cellule1 = mp.colshapes.newSphere(cellules[0].x, cellules[0].y, cellules[0].z, 2);
+        this.cellule2 = mp.colshapes.newSphere(cellules[1].x, cellules[1].y, cellules[2].z, 2);
+        this.cellule3 = mp.colshapes.newSphere(cellules[2].x, cellules[2].y, cellules[2].z, 2);
 
-                target.rank = parseInt(rank);
-
-                player.notify('rank : ' + target.rank);
-            },
+        this.cellule1Label = mp.labels.new("[cellule 1]", new mp.Vector3(cellules[0].x, cellules[0].y, cellules[0].z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 3,
+			color: [255, 255, 255, 255],
         });
+        
+        this.cellule2Label = mp.labels.new("[cellule 2]", new mp.Vector3(cellules[1].x, cellules[1].y, cellules[2].z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 3,
+			color: [255, 255, 255, 255],
+        });
+        
+        this.cellule3Label = mp.labels.new("[cellule 3]", new mp.Vector3(cellules[2].x, cellules[2].y, cellules[2].z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 3,
+			color: [255, 255, 255, 255],
+		});
     }
 
     createServicePoint(pos) {
@@ -188,31 +232,31 @@ class Police extends faction {
         if(!this.isWorking(player))
             return player.notify("~r~Vous devez être en service.");
 
-        player.removeAllWeapons();
+        player.resetAllWeapons();
 
-        player.giveWeapon(0x678B81B1, 1);
-        player.giveWeapon(0x3656C8C1, 100);
+        player.setWeapon(0x678B81B1, 1);
+        player.setWeapon(0x3656C8C1, 100);
 
         if(player.rank == 1)
         {
-            player.giveWeapon(0x1B06D571, 150);
+            player.setWeapon(0x1B06D571, 150);
         }
         if(player.rank >= 2)
         {
-            player.giveWeapon(0x99AEEB3B, 150);
+            player.setWeapon(0x99AEEB3B, 150);
         }
         if(player.rank >= 3)
         {
-            player.giveWeapon(0x497FACC3, 5);
-            player.giveWeapon(0xA0973D5E, 5);
+            player.setWeapon(0x497FACC3, 5);
+            player.setWeapon(0xA0973D5E, 5);
         }
         if(player.rank >= 4)
         {
-            player.giveWeapon(0x1D073A89, 100);
+            player.setWeapon(0x1D073A89, 100);
         }
         if(player.rank >= 6)
         {
-            player.giveWeapon(0xEFE7E2DF, 300);
+            player.setWeapon(0xEFE7E2DF, 300);
         }
     }
 

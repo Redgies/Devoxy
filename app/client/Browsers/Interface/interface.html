@@ -47,7 +47,7 @@
                     <span class="title">Carte d'identité</span>
                 </div>
                 <div class="item" @click="currentTab = 4"
-                     v-if="(player.faction == 1 && player.working == 1 && vehicle.guid) || player.adminLvl >= 1">
+                     v-if="((player.faction == 1 && player.working == 1) || player.adminLvl >= 1) && vehicle.guid">
                     <img src="images/license-plate.png">
                     <span class="title">Carte grise</span>
                 </div>
@@ -70,12 +70,32 @@
                     <img src="images/handcuffs.png">
                     <span class="title">Démenotter</span>
                 </div>
+                <div class="item" @click="currentTab = 9"
+                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 4 && target.guid">
+                    <img src="images/gun.png">
+                    <span class="title">Port d'arme</span>
+                </div>
+                <div class="item" @click="currentTab = 10"
+                    v-if="player.faction == 1 && player.working == 1 && target.guid && target.guid">
+                    <img src="images/search.png">
+                    <span class="title">Fouiller</span>
+                </div>
+                <div class="item" @click="newConfiscate()"
+                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 2 && target.guid && target.guid">
+                    <img src="images/hold.png">
+                    <span class="title">Confisquer les armes</span>
+                </div>
+                <div class="item" @click="newJail()"
+                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 2 && target.guid && target.guid">
+                    <img src="images/prison.png">
+                    <span class="title">Mettre en prison</span>
+                </div>
                 <div class="item" @click="setDestroy()"
-                     v-if="player.adminLvl >= 3">
+                     v-if="player.adminLvl >= 3 && vehicle.guid">
                     <img src="images/destroy.png">
                     <span class="title">Détruire</span>
                 </div>
-                <div class="item" @click="currentTab = 8">
+                <div class="item" @click="currentTab = 8" v-if="player.faction == 2 && player.working == 1 && player.rank >= 4 && vehicle.guid">
                     <img src="images/spoiler.png">
                     <span class="title">Tunning</span>
                 </div>
@@ -97,7 +117,7 @@
             <!-- CARTE D'IDENTITE -->
             <div v-if="currentTab == 3">
                 <h1 class="title-right">Carte d'identité</h1>
-                <p class="p-right"><b>Prénom :</b> {{ target.firstName }} <br> <b>Nom :</b> {{ target.lastName }}
+                <p class="p-right"><b>Prénom :</b> {{ target.firstName }} <br> <b>Nom :</b> {{ target.lastName }}<br><b>Permis port d'arme :</b> {{ target.permis ? 'oui' : 'non' }}<br><br><b>Délits : </b> {{ target.delits.length }}
                     <br><br><b>GUID :</b> {{ target.guid }}</b></p>
             </div>
             <!-- CARTE GRISE -->
@@ -132,7 +152,18 @@
                 <br><br>
                 <button type="button" class="btn-valid" @click="setColor()">Valider</button>
             </div>
-             <!-- TUNNING -->
+            <!-- PERMIS PORT D'ARME -->
+            <div v-if="currentTab == 9">
+                <h1 class="title-right">Permis port d'armes</h1>
+                <p class="p-right">Vous allez {{ target.permis ? 'retirer' : 'donner' }} le permis port d'arme à {{ target.firstName }} {{ target.lastName }}</p>
+                <button type="button" class="btn-valid" @click="giveGunLicence()">Valider</button>
+            </div>
+            <!-- FOUILLE -->
+            <div v-if="currentTab == 10">
+                <h1 class="title-right">Fouille</h1>
+                <div v-for="(wep, i) in target.pWeapons">
+                    <p>{{ wep.hash | weaponName }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -152,18 +183,18 @@
                 color1: '#000000',
                 color2: '#000000',
                 walkingStyle: [
-                    {name: "Nosrmal", animset: null},
+                    {name: "Normal", animset: null},
                     {name: "Brave", animset: "move_m@brave"},
-                    {name: "Confident", animset: "move_m@confident"},
-                    {name: "Drunk", animset: "move_m@drunk@verydrunk"},
-                    {name: "Fat", animset: "move_m@fat@a"},
+                    {name: "Homosexuel", animset: "move_m@confident"},
+                    {name: "Bourré", animset: "move_m@drunk@verydrunk"},
+                    {name: "Gros", animset: "move_m@fat@a"},
                     {name: "Gangster", animset: "move_m@shadyped@a"},
-                    {name: "Hurry", animset: "move_m@hurry@a"},
+                    {name: "Pressé", animset: "move_m@hurry@a"},
                     {name: "Injured", animset: "move_m@injured"},
-                    {name: "Intimidated", animset: "move_m@intimidation@1h"},
-                    {name: "Quick", animset: "move_m@quick"},
-                    {name: "Sad", animset: "move_m@sad@a"},
-                    {name: "Tough", animset: "move_m@tool_belt@a"}
+                    {name: "Intimité", animset: "move_m@intimidation@1h"},
+                    {name: "Rapide", animset: "move_m@quick"},
+                    {name: "Triste", animset: "move_m@sad@a"},
+                    {name: "Gros dur", animset: "move_m@tool_belt@a"}
                 ],
                 moodStyle: [
                     {name: "Normal", animname: null},
@@ -473,6 +504,82 @@
                     }
                 ],
             },
+            filters: {
+                 weaponName: function(str) {
+                    switch(str) {
+                        case 2460120199:
+                            result = 'Dague de cavalerie antique';
+                            break;
+                        case 2508868239:
+                            result = 'Batte';
+                            break;
+                        case 4192643659:
+                            result = 'Bouteille cassée';
+                            break;
+                        case 2227010557:
+                            result = 'Pied de biche';
+                            break;
+                        case 2343591895:
+                            result = 'Lampe torche';
+                            break;
+                        case 1141786504:
+                            result = 'Club de golf';
+                            break;
+                        case 1317494643:
+                            result = 'Marteau';
+                            break;
+                        case 4191993645:
+                            result = 'Hachette';
+                            break;
+                        case 3638508604:
+                            result = 'Poing américain';
+                            break;
+                        case 2578778090:
+                            result = 'Couteau';
+                            break;
+                        case 3713923289:
+                            result = 'Machette';
+                            break;
+                        case 3756226112:
+                            result = 'Couteau';
+                            break;
+                        case 1737195953:
+                            result = 'Mattraque';
+                            break;
+                        case 419712736:
+                            result = 'Clé anglaise';
+                            break;
+                        case 453432689:
+                            result = 'Pistolet';
+                            break;
+                        case 3219281620:
+                            result = 'Pistolet MK2';
+                            break;
+                        case 1593441988:
+                            result = 'Pistolet de Combat';
+                            break;
+                        case 2578377531:
+                            result = 'Desert Eagle';
+                            break;
+                        case 324215364:
+                            result = 'UZI';
+                            break;
+                        case 4024951519:
+                            result = 'SMG d\'assaut';
+                            break;
+                        case 487013001:
+                            result = 'Fusil à pompe';
+                            break;
+                        case 2828843422:
+                            result = 'Musket';
+                            break;
+                        default: 
+                            result = 'Arme illégale en ville';
+                            break;
+                    }
+                    return result;
+                }
+            },
             methods: {
                 toggleTunning: function(elem) {
                     var element = document.getElementById(elem);
@@ -480,6 +587,13 @@
                 },
                 setTunning: function(model, value) {
                     mp.trigger("cMisc-CallServerEvent", "sInterface-setTunning", model, value);
+                },
+                newJail: function() {
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-setJail");
+                },
+                newConfiscate: function() {
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-newConfiscate");
+                    this.exit();
                 },
                 initColor: function () {
                     this.currentTab = 7;
@@ -517,6 +631,10 @@
 
                     mp.trigger("cMisc-CallServerEvent", "sInterface-setMood", this.moodStyle[mood].animname);
 
+                    this.exit();
+                },
+                giveGunLicence: function() {
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-giveGunLicence");
                     this.exit();
                 },
                 giveMoney: function () {
