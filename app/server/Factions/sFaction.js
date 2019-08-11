@@ -26,10 +26,49 @@ class Faction {
 		});
 			
 		mp.events.addCommand({	
-			"invite" : (player, fullText, target) => {
-				target = misc.findPlayerByIdOrNickname(target);
-				if(!target)	return player.notify("~r~Ce joueur n'est pas connecté.");
-				if(!this.isInThisFaction(player) || !this.isFactionLeader(player)) return;t
+			"invite": (player, fullText, target) => {
+                target = misc.findPlayerByIdOrNickname(target);
+                if(!target) return;
+
+				if(!this.isInThisFaction(player) || !this.isFactionLeader(player)) return;
+                if(!target.loggedIn) return player.notify("~r~Cette personne n'est pas connecté.");
+                if(target.faction != 0) return player.notify("~r~Cette personne a déjà une faction.");
+
+				target.faction = this.id;
+				target.rank = 1;
+
+				player.notify(`~g~Vous avez invité ${target.name} dans ${this.name}.`);
+				player.notify(`~g~${player.name} vous a invité dans ${this.name}.`);
+			},
+			"rank": (player, fullText, target, rank) => {
+                target = misc.findPlayerByIdOrNickname(target);
+				if(!target || !rank) return;
+				if(target == player) return;
+				if(!target.loggedIn) return player.notify("~r~Cette personne n'est pas connecté.");
+				
+				if(!this.isInThisFaction(player) || !this.isFactionLeader(player) || !this.isInThisFaction(target)) return;
+
+				target.rank = parseInt(rank);
+
+				player.notify(`~g~Vous passez ${target.name} au rang de ${this.ranks[player.rank - 1]}.`);
+				player.notify(`~g~${player.name} vous a passé au rang de ${this.ranks[player.rank - 1]}.`);				
+			},
+			"virer": (player, fullText, target) => {
+                target = misc.findPlayerByIdOrNickname(target);
+				if(!target || !rank) return;
+				if(target == player) return;
+				if(!target.loggedIn) return player.notify("~r~Cette personne n'est pas connecté.");
+
+				if(!this.isInThisFaction(player) || !this.isFactionLeader(player) || !this.isInThisFaction(target)) return;
+			
+				this.setWorking(target, false);
+				this.changeClothes(target);
+
+				target.faction = 0;
+				target.rank = 0;
+
+				player.notify(`~g~Vous virez ${target.name} de la faction.`);
+				player.notify(`~g~${player.name} vous a viré de la faction.`);		
 			},
 			"r" : (player, fullText) => {
 				const currentTime = misc.getTime();
@@ -41,7 +80,7 @@ class Faction {
 				}
 			},
 			"sms" : (player, fullText) => {
-				if(strlen(fullText) <= 0) return player.notify("~r~Vous devez saisir un message.");
+				if(fullText.length <= 0) return player.notify("~r~Vous devez saisir un message.");
 
 				for(const p of mp.players.toArray()) {
                     if(p.faction !== 1 || !this.isWorking(p)) continue;

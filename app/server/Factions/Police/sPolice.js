@@ -104,7 +104,7 @@ class Police extends faction {
                 {
                     player.canGoToJail = true; 
                 }
-                
+
             },
             "playerExitColshape" : (player, shape) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
@@ -127,16 +127,6 @@ class Police extends faction {
                     this.takeGilet(player);
                 if(player.canTakeWeapon)
                     this.takeWeapons(player);
-            },
-        });
-
-        mp.events.addCommand({	
-            "rank" : (player, fullText, target, rank) => {
-                target = misc.findPlayerByIdOrNickname(target);
-
-                target.rank = parseInt(rank);
-
-                player.notify('rank : ' + target.rank);
             },
         });
     }
