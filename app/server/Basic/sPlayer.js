@@ -47,7 +47,7 @@ class PlayerSingleton {
         player.tp(JSON.parse(d[0].position));
         player.health = d[0].health;
 
-        player.weapons = JSON.parse(d[0].weapons);
+        player.pWeapons = JSON.parse(d[0].weapons);
 
         player.call("cCloseCefAndDestroyCam");
 
@@ -97,11 +97,11 @@ class PlayerSingleton {
         player.setWeapon = function(hash, ammo) {
             player.giveWeapon(hash, ammo);
 
-            for(let i = 0; i < player.weapons.length; i++)
+            for(let i = 0; i < player.pWeapons.length; i++)
             {
-                if(player.weapons[i].hash === hash)
+                if(player.pWeapons[i].hash === hash)
                 {
-                    player.weapons[i].ammo += ammo;
+                    player.pWeapons[i].ammo += ammo;
                     continue;
                 }
 
@@ -110,7 +110,7 @@ class PlayerSingleton {
                     ammo: ammo
                 }
 
-                player.weapons.push(newWep);
+                player.pWeapons.push(newWep);
             }
         }
 
@@ -185,7 +185,7 @@ class PlayerSingleton {
 
         player.saveBasicData = function() {
             const pos = this.getCurrentPos(0.1);
-            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.weapons)}' WHERE id = '${this.guid}'`);
+            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}' WHERE id = '${this.guid}'`);
         }
 
         player.isDriver = function() {
