@@ -42,6 +42,11 @@ const factionData = {
             x: 445.839,
             y: -996.392,
         } 
+    },
+    cautionPoint: {
+        x: 1689.233, 
+        y: 2529.437, 
+        z: 45.565
     }
 }
 
@@ -54,6 +59,7 @@ class Police extends faction {
         this.createGiletPoint(factionData.giletPoint);
         this.createWeaponPoint(factionData.weaponPoint);
         this.createCellulesPoint(factionData.cellulesPoint);
+        this.createCautionPoint(factionData.cautionPoint);
         this.createBlip();
     }
 
@@ -77,6 +83,11 @@ class Police extends faction {
                 if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
                 {
                     player.canGoToJail = true; 
+                }
+                if(shape == this.cautionShape) 
+                {
+                    player.canPayCaution = true;
+                    player.notifyWithPicture("Police", "", `Votre caution pour être libéré s'élève à ~g~${player.delits.length * 2500}$.`, "CHAR_CALL911");
                 }
 
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
@@ -104,6 +115,10 @@ class Police extends faction {
                 {
                     player.canGoToJail = false; 
                 }
+                if(shape == this.cautionShape) 
+                {
+                    player.canPayCaution = false;
+                }
 
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
                 
@@ -125,6 +140,22 @@ class Police extends faction {
                     this.takeWeapons(player);
             },
         });
+    }
+
+    createCautionPoint(pos) {
+        this.cautionShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
+        this.cautionLabel = mp.labels.new("[caution]", new mp.Vector3(pos.x, pos.y, pos.z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 3,
+			color: [255, 255, 255, 255],
+        });
+        this.cautionMarker = mp.markers.new(1, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
+		{
+			color: [255, 255, 255, 50],
+			visible: true,
+		});
     }
 
     createCellulesPoint(cellules) {

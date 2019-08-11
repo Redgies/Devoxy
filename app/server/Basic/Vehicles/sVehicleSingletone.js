@@ -140,7 +140,7 @@ class VehicleSingleton {
             },
 
             'tp': (player, fullText, a, b, c) => {
-                if (player.adminLvl < 1) return;
+                if (player.adminLvl < 3) return;
                 player.position = new mp.Vector3(+a, +b, +c);
             },
 

@@ -163,10 +163,12 @@ class PlayerSingleton {
             this.position = new mp.Vector3(1691.678, 2565.581, 45.565);
             this.heading = 180.3;
             this.dimension = 0;
-            
+
             player.setClothes(7, 0, 0, 2);
             player.call("cUnCuff");
             player.stopAnimation();
+
+            player.resetAllWeapons();
         }
 
         player.setCuff = function(cuffed) {
