@@ -311,11 +311,6 @@ class Police extends faction {
         {
             player.setWeapon(0x99AEEB3B, 150);
         }
-        if(player.rank >= 3)
-        {
-            player.setWeapon(0x497FACC3, 5);
-            player.setWeapon(0xA0973D5E, 5);
-        }
         if(player.rank >= 4)
         {
             player.setWeapon(0x1D073A89, 100);

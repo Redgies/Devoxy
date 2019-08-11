@@ -175,7 +175,7 @@
                 <h1 class="title-right">Délits</h1>
                 <p class="p-right">Liste des délits de {{ target.firstName }} {{ target.lastName }}</p>
                 <div v-for="(delit, i) in target.delits">
-                    <p>{{ delit.comment }}</p>
+                    <p>- {{ delit.comment }}</p>
                 </div>
             </div>
         </div>

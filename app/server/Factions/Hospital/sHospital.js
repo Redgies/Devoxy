@@ -1,214 +1,263 @@
 const misc = require('../../sMisc');
-const sFaction = require('../sFaction');
-const hospitalBuilding = require('./sHospitalBuilding');
-const hospitalVisitorsGarage = require('./sHospitalVisitorsGarage');
-const i18n = require('../../sI18n');
+const faction = require('../sFaction');
+const clothes = require('../../Character/sClothes');
 
+const factionData = {
+    id: 4,
+    name: "Emergency Medical Services",
+    ranks: [
+        "Infirmier", 
+        "Médecin",
+        "Urgentiste",
+        "Médecin en chef",
+        "Directeur",
+    ],
+    maxRank: 5,
+    servicePoint: {
+		x:266.443, 
+		y: -1365.262, 
+		z: 24.538
+	},
+	exitPoint: {
+		x: 275.66, 
+		y: -1361.243, 
+		z: 24.538,
+		rot: 47.5,
+	},
+	enterPoint: {
+		x: 294.39, 
+		y: -1448.559, 
+		z: 29.967, 
+		rot: 315.6,
+	},
+    blip: {
+        scale: 0.8,
+        color: 49,
+        model: 80, 
+        pos: {
+			x: 303.802, 
+			y: -1443.077
+        } 
+    },
+}
 
-
-
-class Hospital extends sFaction {
+class Hospital extends faction {
 	constructor() {
-		super("Hospital");
+		super(factionData.id, factionData.name, factionData.ranks, factionData.maxRank);
 
-		mp.events.add({
-			"playerDeath" : (player, reason, killer) => {
-				player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
-				let killername;
-				if (killer) killername = killer.name;
-				misc.log.debug(`${player.name} death! Reason: ${reason}, killer: ${killername}`);
-			},
-
-			"sHospital-SpawnAfterDeath" : (player) => {
-				this.spawnAfterDeath(player);
-			},
-
-			"sKeys-F4" : (player) => {
-				if (!player.loggedIn) return;
-				this.openInteractionMenu(player);
-			},
-			
-			"sHospital-IncreaseHealingSpeed" : (player, id) => {
-				if (!player.loggedIn) return;
-				this.tryIncreaseHealingSpeed(player, id);
-			},
-		
-			"sHospital-ConfirmIncreaseHealingEvent" : (player, id) => {
-				if (!player.loggedIn) return;
-				this.confirmIncreaseHealingSpeed(player, id);
-			},
-		
-			"sHospital-Heal" : (player, id) => {
-				if (!player.loggedIn) return;
-				this.tryHeal(player, id);
-			},
-		
-			"sHospital-RejectDoctorOffer" : (player, id) => {
-				if (!player.loggedIn) return;
-				this.rejectDoctorOffer(player, id);
-			},
-		
-			"sHospital-ConfirmHealEvent" : (player, id) => {
-				if (!player.loggedIn) return;
-				this.confirmHeal(player, id);
-			},
-			
-		});
-
-		const pos = {x: 268.457, y: -1365.145, z: 24.538, rot: 144.58};
-		this.createClothingShape(pos);
 		this.createEvents();
+		this.createServicePoint(factionData.servicePoint);
+		this.createExitPoint(factionData.exitPoint);
+		this.createEnterPoint(factionData.enterPoint);
+		this.createBlip();
 	}
 
-	spawnAfterDeath(player) {
-		if (!player.loggedIn) return;
-		player.spawn(new mp.Vector3(player.position));
-		player.health = 1;
-		player.call("cHospital-DisableHealthRegeneration");
-		player.healingSpeed = 0;
-		const posToDrop = { x: -498.184, y: -335.741, z: 34.502 };
-		const dist = player.dist(posToDrop);
-		const pay = misc.roundNum(dist / 20);
-		player.newFine(pay, `${i18n.get('sHospital', 'transferTo', player.lang)}`);
+	createBlip() {
+        this.blip = mp.blips.new(factionData.blip.model, new mp.Vector3(factionData.blip.pos.x, factionData.blip.pos.y, 0),
+        {   
+            scale: factionData.blip.scale,
+            name: factionData.name,
+            color: factionData.blip.color,
+            shortRange: true,
+        });
+    }
 
-		const tp = { x: 275.446, y: -1361.11, z: 24.5378, rot: 46.77, dim: 0 };
-		player.tp(tp);
-		misc.log.debug(`${player.name} transfered to Hospital. Fine: $${pay}`);
+    createEvents() {
+		mp.events.add({
+            "playerEnterColshape" : (player, shape) => {
+				if(shape === this.exitShape)
+                {
+                    player.canExitHospital = true;
+				}
+				if(shape === this.enterShape)
+                {
+                    player.canEnterHospital = true;
+				}
+
+                if(!player.loggedIn || !this.isInThisFaction(player)) return;
+    
+                if(shape === this.serviceShape)
+                {
+                    player.canChangeClothes = true;
+                    player.notify("Appuyez ~b~E ~w~pour vous mettre en service.");
+                }
+            },
+            "playerExitColshape" : (player, shape) => {
+				if(shape === this.exitShape)
+                {
+                    player.canExitHospital = false;
+				}
+				if(shape === this.enterShape)
+                {
+                    player.canEnterHospital = false;
+				}
+
+                if(!player.loggedIn || !this.isInThisFaction(player)) return;
+                
+                if(shape === this.serviceShape)
+                    player.canChangeClothes = false;
+            },
+            "sKeys-E" : (player) => {
+                if(!player.loggedIn || !this.isInThisFaction(player)) return;
+    
+                if(player.canChangeClothes)
+					this.changeClothes(player);
+					
+				if(player.canExitHospital)
+				{
+					const pos = {
+						x: enterPoint.x,
+						y: enterPoint.y,
+						z: enterPoint.z,
+						rot: enterPoint.rot,
+					}
+
+					player.tp(pos);
+				}
+				if(player.canEnterHospital)
+				{
+					const pos = {
+						x: exitPoint.x,
+						y: exitPoint.y,
+						z: exitPoint.z,
+						rot: exitPoint.rot,
+					}
+
+					player.tp(pos);
+				}
+            },
+        });
 	}
 
+	createServicePoint(pos) {
+		this.serviceShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
+		this.serviceMarker = mp.markers.new(1, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
+		{
+			color: [0, 184, 148, 50],
+			visible: true,
+		});
+		this.serviceLabel = mp.labels.new("[service]", new mp.Vector3(pos.x, pos.y, pos.z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 5,
+			color: [255, 255, 255, 255],
+		});
+	}
+
+	createExitPoint(pos) {
+		this.exitShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
+		this.exitMarker = mp.markers.new(0, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
+		{
+			color: [116, 185, 255, 50],
+			visible: true,
+		});
+	}
+
+	createExitPoint(pos) {
+		this.enterShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
+		this.enterMarker = mp.markers.new(0, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
+		{
+			color: [116, 185, 255, 50],
+			visible: true,
+		});
+	}
+	
 	changeClothesMan(player) {
-		player.setClothes(11, 12, 0, 0); // Tops
-		player.setClothes(3, 12, 0, 0); // Tops
-		player.setClothes(8, 12, 0, 0); // Tops
-
-		player.setClothes(4, 20, 0, 0); // Legs
+        if(player.rank == 1)
+        {
+            player.setProp(0, 46, 0);
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 35, 0, 2);
+            player.setClothes(11, 55, 0, 2);
+            player.setClothes(7, 0, 0, 2);
+        }
+        if(player.rank == 2)
+        {
+            player.setProp(0, 46, 0);
+            player.setClothes(8, 129, 0, 2); 
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 35, 0, 2);
+            player.setClothes(11, 55, 0, 2);
+            player.setClothes(7, 0, 0, 2);
+        }
+        if(player.rank == 3)
+        {
+            player.setProp(0, 46, 0);
+            player.setClothes(8, 58, 0, 2); 
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 35, 0, 2);
+            player.setClothes(11, 55, 0, 2);
+            player.setClothes(7, 0, 0, 2);
+        }
+        if(player.rank == 4)
+        {
+            player.setProp(0, 46, 0);
+            player.setClothes(8, 58, 0, 2); 
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 35, 0, 2);
+            player.setClothes(11, 55, 0, 2);
+            player.setClothes(10, 8, 1, 2);
+            player.setClothes(7, 0, 0, 2);
+        }
+        if(player.rank == 5)
+        {
+            player.setProp(0, 46, 0);
+            player.setClothes(8, 58, 0, 2); 
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 35, 0, 2);
+            player.setClothes(11, 43, 0, 2);
+            player.setClothes(3, 11, 0, 2);
+            player.setClothes(7, 0, 0, 2);
+        }
 	}
 
 	changeClothesWoman(player) {
-		player.setClothes(11, 27, 0, 0); // Tops
-		player.setClothes(3, 0, 0, 0); // Tops
-		player.setClothes(8, 2, 0, 0); // Tops
-
-		player.setClothes(4, 23, 0, 0); // Legs
+        if(player.rank == 1)
+        {
+            player.setProp(0, 45, 0);
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 77, 0, 2);
+            player.setClothes(11, 48, 0, 2);
+            player.setClothes(7, 0, 0, 2);
+        }
+        if(player.rank == 2)
+        {
+            player.setProp(0, 45, 0);
+            player.setClothes(8, 152, 0, 2); 
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 77, 0, 2);
+            player.setClothes(11, 48, 0, 2);
+            player.setClothes(7, 0, 0, 2);
+        }
+        if(player.rank == 3)
+        {
+            player.setProp(0, 45, 0);
+            player.setClothes(8, 35, 0, 2); 
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 77, 0, 2);
+            player.setClothes(11, 48, 0, 2);
+            player.setClothes(7, 0, 0, 2);
+        }
+        if(player.rank == 4)
+        {
+            player.setProp(0, 45, 0);
+            player.setClothes(8, 35, 0, 2); 
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 77, 0, 2);
+            player.setClothes(11, 48, 0, 2);
+            player.setClothes(10, 7, 1, 2);
+            player.setClothes(7, 0, 0, 2);
+        }
+        if(player.rank == 5)
+        {
+            player.setProp(0, 45, 0);
+            player.setClothes(8, 35, 0, 2); 
+            player.setClothes(6, 25, 0, 2);
+            player.setClothes(4, 77, 0, 2);
+            player.setClothes(11, 85, 0, 2);
+            player.setClothes(7, 0, 0, 2);
+        }
 	}
-
-	openInteractionMenu(player) {
-		if (!this.isInThisFaction(player) || !this.isWorking(player)) return;
-		const nearestPlayer = misc.getNearestPlayerInRange(player.position, 1);
-		if (!nearestPlayer) return;
-		let execute = `app.patientId = ${nearestPlayer.id};`;
-		execute += `app.patientName = '${nearestPlayer.name}';`;	
-		player.call("cHospital-ShowDoctorMenu", [player.lang, execute]);
-	}
-
-	rejectDoctorOffer(patient, id) {
-		const doctor = mp.players.at(id);
-		if (!doctor || !this.isSellerClientRight(doctor, patient)) return;
-		patient.notify(`${i18n.get('basic', 'youRejectedOffer', patient.lang)} ${doctor.name}!`);
-		doctor.notify(`${patient.name} ${i18n.get('basic', 'rejectedYourOffer', doctor.lang)}!`);
-		this.resetCurrentSeller(patient);
-		this.resetCurrentClient(doctor);
-	}
-
-	confirmIncreaseHealingSpeed(patient, id) {
-		const doctor = mp.players.at(id);
-		if (!doctor || !this.isSellerClientRight(doctor, patient) || !patient.healingSpeed || !this.isDistanceRight(doctor, patient, true)) return;
-		this.successConfirmEvent(doctor, patient, 500, 5);
-	}
-
-	tryIncreaseHealingSpeed(doctor, id) {
-		const patient = mp.players.at(id);
-		if (!this.isInThisFaction(doctor) || !this.isWorking(doctor) || !patient || !this.isDistanceRight(doctor, patient)) return;
-		if (!patient.healingSpeed) {
-			doctor.notify(`~r~${patient.name} ${i18n.get('sHospital', 'isntHealing', doctor.lang)}!`);
-			patient.notify(`~r~${i18n.get('sHospital', 'youArentHealing', patient.lang)}!`);
-			return;
-		}
-		if (!this.setCurrentClient(doctor, patient)) return;
-		let execute = `app.whoName = '${doctor.name}';`;
-		execute += `app.whoId = ${doctor.id};`;
-		execute += `app.wantText = '${i18n.get('sHospital', 'wantsIncreaseHealing', patient.lang)}';`;
-		execute += `app.price = 500;`;
-		patient.call("cMisc-CreateChooseWindow", [patient.lang, execute, "sHospital-ConfirmIncreaseHealingEvent", "sHospital-RejectDoctorOffer"]);
-	}
-
-	async successConfirmEvent(doctor, patient, price, healSpeed) {
-		const canBuy = await patient.changeMoney(-price);
-		if (!canBuy) return;
-		patient.healingSpeed = healSpeed;
-		doctor.changeMoney(price);
-		this.resetCurrentSeller(patient);
-		this.resetCurrentClient(doctor);
-		doctor.notify(`~g~${patient.name} ${i18n.get('basic', 'confirmedYourOffer', doctor.lang)}!`);
-		patient.notify(`~g~${i18n.get('basic', 'youConfirmedOffer', patient.lang)} ${doctor.name}!`);
-		misc.log.debug(`${patient.name} healed by ${doctor.name}. Price: ${price}`);
-	}
-
-	tryHeal(doctor, id) {
-		const patient = mp.players.at(id);
-		if (!this.isInThisFaction(doctor) || !this.isWorking(doctor) || !patient || !this.isDistanceRight(doctor, patient)) return;
-		if (!patient.healingSpeed) {
-			doctor.notify(`~r~${patient.name} ${i18n.get('sHospital', 'isntHealing', doctor.lang)}!`);
-			patient.notify(`~r~${i18n.get('sHospital', 'youArentHealing', patient.lang)}!`);
-			return;
-		}
-		if (!this.setCurrentClient(doctor, patient)) return;
-		let execute = `app.whoName = '${doctor.name}';`;
-		execute += `app.whoId = ${doctor.id};`;
-		execute += `app.wantText = '${i18n.get('sHospital', 'wantsHeal', patient.lang)}';`;
-		execute += `app.price = 5000;`;
-		patient.call("cMisc-CreateChooseWindow", [patient.lang, execute, "sHospital-ConfirmHealEvent", "sHospital-RejectDoctorOffer"]);
-	}
-
-	confirmHeal(patient, id) {
-		const doctor = mp.players.at(id);
-		if (!doctor || !this.isSellerClientRight(doctor, patient) || !patient.healingSpeed || !this.isDistanceRight(doctor, patient, true)) return;
-		this.successConfirmEvent(doctor, patient, 5000, 100);
-	}
-
 }
 const hospital = new Hospital();
-
-
-
-
-
-function loadUser(player) {
-	player.call("cHospital-DisableHealthRegeneration");
-	player.healingSpeed = 0;
-	player.canStartHeal = false;
-
-	player.stopHealing = function() {
-		if (this.healingSpeed === 0) return;
-		this.healingSpeed = 0;
-		this.outputChatBox(`!{0, 200, 0}${i18n.get('sHospital', 'finishedHealing', this.lang)}!`);
-		misc.log.debug(`${this.name} finished healing. HP: ${this.health}`);
-	}
-	
-	player.startHealing = function() {
-		if (this.healingSpeed > 0) return;
-		this.healingSpeed = 25;
-		player.outputChatBox(`!{0, 200, 0}${i18n.get('sHospital', 'startedHealing', this.lang)}!`);
-		misc.log.debug(`${this.name} start healing. HP: ${this.health}`);
-	}
-
-	player.addHP = function() {
-		if (this.healingSpeed === 0) return;
-		this.health += this.healingSpeed;
-		this.notify(`~g~+ ${this.healingSpeed}hp`);
-		misc.log.debug(`${this.name} got ${this.healingSpeed}hp. Total: ${this.health}`);
-		if (this.health <= 100) return;
-		this.health = 100;
-		this.stopHealing();
-	}
-}
-module.exports.loadUser = loadUser;
-
-
-
-mp.events.addCommand({
-	'sethospitalleader' : async (player, id) => {
-		if (player.adminLvl < 1) return;
-		hospital.setAsLeader(player, +id);
-	},	
-});
