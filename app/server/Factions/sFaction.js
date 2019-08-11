@@ -342,12 +342,12 @@ module.exports = Faction;
 // module.exports.createNewUser = createNewUser;
 
 mp.events.addCommand({
-	'r' : (player, fullText) => {
+	"r" : (player, fullText) => {
 		const currentTime = misc.getTime();
 		
 		for(const p of mp.players.toArray()) {
 			for (const f of factionsList) {
-				if(player.faction == f.isInThisFaction(p))
+				if(player.faction == p.faction)
 				{
 					const str = `!{#74b9ff}[${currentTime}] [RADIO] ${f.getRank(player)} | ${player.name} : ${fullText}`;
 					p.outputChatBox(str);
