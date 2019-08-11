@@ -48,12 +48,6 @@ class PlayerSingleton {
         player.health = d[0].health;
         player.pWeapons = JSON.parse(d[0].weapons);
 
-        for(let i = 0; i < player.pWeapons.length; i++)
-        {
-            console.log("hash : " + player.pWeapons[i].hash + " ammo : " + player.pWeapons[i].ammo);
-            player.giveWeapon(parseInt(player.pWeapons[i].hash), parseInt(player.pWeapons[i].ammo));
-        }
-
         player.call("cCloseCefAndDestroyCam");
 
         const q1 = moneySingleton.loadUser(player);
@@ -66,7 +60,11 @@ class PlayerSingleton {
         // const q8 = prison.loadUser(player);
         await Promise.all([q1, q2, q3, q4, q5, q6]);
 
-        console.log(player.phone);
+        for(let i = 0; i < player.pWeapons.length; i++)
+        {
+            console.log("hash : " + player.pWeapons[i].hash + " ammo : " + player.pWeapons[i].ammo);
+            player.giveWeapon(player.pWeapons[i].hash.toString(16), parseInt(player.pWeapons[i].ammo));
+        }
 
         misc.log.debug(`${player.name} logged in`);
     }
