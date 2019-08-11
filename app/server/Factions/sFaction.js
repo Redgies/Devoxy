@@ -19,6 +19,12 @@ class Faction {
 	}
 
 	createFactionEvents() {
+		mp.events.add({
+            "playerQuit" : (player) => {
+				this.setWorking(player, false);
+			},  
+		});
+			
 		mp.events.addCommand({	
 			"invite" : (player, fullText, target) => {
 				target = misc.findPlayerByIdOrNickname(target);
@@ -59,9 +65,7 @@ class Faction {
 	changeClothes(player) {
 		if(this.isWorking(player)) {
 			if(player.faction === 1)
-				player.removeAllWeapons();
-			if(player.faction === 2)
-				player.removeWeapon(0x19044EE0);
+				player.resetAllWeapons();
 				
 			this.setWorking(player, false);
 			player.armour = 0;

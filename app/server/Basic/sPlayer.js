@@ -62,7 +62,6 @@ class PlayerSingleton {
 
         for(let i = 0; i < player.pWeapons.length; i++)
         {
-            console.log("hash : " + player.pWeapons[i].hash + " ammo : " + player.pWeapons[i].ammo);
             player.giveWeapon(parseInt(player.pWeapons[i].hash), parseInt(player.pWeapons[i].ammo));
         }
 
@@ -96,25 +95,21 @@ class PlayerSingleton {
         player.canEnter = {};
         player.job = {};
 
+        player.resetAllWeapons = function() {
+            player.removeAllWeapons();
+
+            player.pWeapons = [];
+        }
+
+        player.updateWeapon() 
+        {
+            player.outputChatBox("weapon hash : " + JSON.stringify(player.weapon));
+        }
 
         player.setWeapon = function(hash, ammo) {
             player.giveWeapon(hash, ammo);
 
-
-            console.log("giveWeapon : " + hash);
-
             let hasWeapon = false;
-
-            // if(player.pWeapons.length <= 0)
-            // {
-            //     const newWep = {
-            //         hash: hash,
-            //         ammo: ammo
-            //     }
-
-            //     player.pWeapons.push(newWep);
-            //     return 1;
-            // }
 
             for(let i = 0; i < player.pWeapons.length; i++)
             {
@@ -291,7 +286,7 @@ function playerStartEnterVehicleHandler(player) {
 //    player.outputChatBox(`${i18n.get('sLogin', 'saveGame', player.lang)}`);
 }
  
- mp.events.add("playerStartEnterVehicle", playerStartEnterVehicleHandler);
+mp.events.add("playerStartEnterVehicle", playerStartEnterVehicleHandler);
 
 // Save by exit Vehicle
 function playerExitVehicleHandler(player) {
@@ -301,5 +296,14 @@ function playerExitVehicleHandler(player) {
 //    player.outputChatBox(`${i18n.get('sLogin', 'saveGame', player.lang)}`);
 }
 
-    mp.events.add("playerExitVehicle", playerExitVehicleHandler);
+mp.events.add("playerExitVehicle", playerExitVehicleHandler);
 
+
+setInterval(function() {
+    for(const p of mp.players.toArray())
+    {
+        if(!p.loggedIn) continue;
+
+        p.updateWeapon();
+    }
+}, 1000);

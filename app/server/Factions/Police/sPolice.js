@@ -188,7 +188,7 @@ class Police extends faction {
         if(!this.isWorking(player))
             return player.notify("~r~Vous devez être en service.");
 
-        player.removeAllWeapons();
+        player.resetAllWeapons();
 
         player.setWeapon(0x678B81B1, 1);
         player.setWeapon(0x3656C8C1, 100);
