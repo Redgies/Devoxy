@@ -84,7 +84,9 @@ class Police extends faction {
 				if(!target)
                     return player.notify("~r~Cette personne n'est pas connecté.");
 
-                let message = fullText.substr(target.length, fullText.length);
+                player.notify(fullText);
+
+                let message = fullText.substr(target.length + 1, fullText.length);
 
                 if(message.length <= 0)
                     return player.notify("~r~Utilisez /delit id message");
