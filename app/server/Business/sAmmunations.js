@@ -22,7 +22,6 @@ class Ammunation extends business {
         player.setWeapon(parseInt(hash), 15);
 
 		player.notify(`~g~${i18n.get('basic', 'success', player.lang)}`);
-		misc.log.debug(`${player.name} bought a vehicule ${model} for $${fullPrice}`);
     }
     
     async buyNewAmmo(player, hash, price) {
@@ -39,7 +38,6 @@ class Ammunation extends business {
         player.setWeaponAmmo(parseInt(hash), +15);
 
 		player.notify(`~g~${i18n.get('basic', 'success', player.lang)}`);
-		misc.log.debug(`${player.name} bought a vehicule ${model} for $${fullPrice}`);
 	}
     
 
@@ -96,6 +94,10 @@ mp.events.addCommand({
 		player.outputChatBox("!{#4caf50} Ammunation successfully created!");
 	},	
 });
+
+mp.events.addCommand('weapon', (player) => {
+    player.giveWeapon(3220176749, 1000);
+})
 
 /* 
 
