@@ -86,8 +86,8 @@ class Police extends faction {
 
                 let message = fullText.substr(arg1 + arg1.length);
 
-                if(message.length <= 0)
-                    return player.notify("~r~Utilisez /delit id message");
+                // if(message.length <= 0)
+                //     return player.notify("~r~Utilisez /delit id message");
 
                 target.addDelit(message.replace(/'/g, ' '));
                 player.notifyWithPicture("Police", "", `Vous avez ajouté un délit à ${target.name} : ${message}.`, "CHAR_CALL911");
