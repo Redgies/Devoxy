@@ -10,7 +10,36 @@ class Ammunation extends business {
 		this.buyerColshape.gasStationId = this.id;
 		this.blip.model = 556;
 		this.blip.name = `Ammunation`;
+    }
+
+    async buyNewWeapon(player, hash, price) {
+		const shopTax = misc.roundNum(price * this.margin / 400);
+		const fullPrice = price + shopTax;
+		const canBuy = await player.changeMoney(-fullPrice);
+
+		if (!canBuy) return;
+        await this.addMoneyToBalance(shopTax);
+        
+        player.setWeapon(parseInt(hash), 15);
+
+		player.notify(`~g~${i18n.get('basic', 'success', player.lang)}`);
+		misc.log.debug(`${player.name} bought a vehicule ${model} for $${fullPrice}`);
+    }
+    
+    async buyNewAmmo(player, hash, price) {
+		const shopTax = misc.roundNum(price * this.margin / 400);
+		const fullPrice = price + shopTax;
+		const canBuy = await player.changeMoney(-fullPrice);
+
+		if (!canBuy) return;
+        await this.addMoneyToBalance(shopTax);
+        
+        player.setWeaponAmmo(parseInt(hash), 15);
+
+		player.notify(`~g~${i18n.get('basic', 'success', player.lang)}`);
+		misc.log.debug(`${player.name} bought a vehicule ${model} for $${fullPrice}`);
 	}
+    
 
 	async setMargin(ownerId, newMargin) {
 		await super.setMargin(ownerId, newMargin);
@@ -30,11 +59,10 @@ class Ammunation extends business {
 }
 
 mp.events.add({
-	"sGasStation-FillUp" : (player, str) => {
-		const id = player.canOpen.businessBuyerMenu;
-		if (!id) return;
-		const shop = business.getBusiness(id);
-		shop.fillUpCar(player, str);
+	"sAmmunations-BuyWeapon" : (player, str) => {
+		const d = JSON.parse(str);
+		const shop = business.getBusiness(d.id);
+		shop.buyNewWeapon(player, d.hash, d.price);
 	},
 });
 
