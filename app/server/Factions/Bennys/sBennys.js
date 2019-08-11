@@ -75,13 +75,15 @@ class Bennys extends faction {
             },
         });
 
-        mp.events.addCommand({	
-            "rank" : (player, fullText, target, rank) => {
-                target = misc.findPlayerByIdOrNickname(target);
-
-                target.rank = parseInt(rank);
-
-                player.notify('rank : ' + target.rank);
+        mp.events.addCommand({		
+            "r" : (player, fullText) => {
+                const currentTime = misc.getTime();
+                const str = `!{#74b9ff}[${currentTime}] [RADIO] ${this.ranks[player.rank - 1]} | ${player.name} : ${fullText}`;
+    
+                for(const p of mp.players.toArray()) {
+                    if(p.faction !== this.id && !this.isWorking(p)) continue;
+                    p.outputChatBox(str);
+                }
             }
         });
     }

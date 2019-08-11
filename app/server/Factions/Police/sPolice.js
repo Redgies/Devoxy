@@ -75,6 +75,18 @@ class Police extends faction {
     }
 
     createEvents() {
+        mp.events.addCommand({	
+            "r" : (player, fullText) => {
+                const currentTime = misc.getTime();
+                const str = `!{#74b9ff}[${currentTime}] [RADIO] ${this.ranks[player.rank - 1]} | ${player.name} : ${fullText}`;
+    
+                for(const p of mp.players.toArray()) {
+                    if(p.faction !== this.id && !this.isWorking(p)) continue;
+                    p.outputChatBox(str);
+                }
+            }
+        });
+
         mp.events.add({
             "playerExitVehicle" : (player) => {
                 if(player.cuffed) player.setCuff(true);

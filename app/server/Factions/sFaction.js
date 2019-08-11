@@ -70,15 +70,6 @@ class Faction {
 				player.notify(`~g~Vous virez ${target.name} de la faction.`);
 				player.notify(`~g~${player.name} vous a viré de la faction.`);		
 			},
-			"r" : (player, fullText) => {
-				const currentTime = misc.getTime();
-				const str = `!{#74b9ff}[${currentTime}] [RADIO] ${this.ranks[player.rank - 1]} | ${player.name} : ${fullText}`;
-
-				for(const p of mp.players.toArray()) {
-					if(p.faction !== this.id && !this.isWorking(p)) continue;
-					p.outputChatBox(str);
-				}
-			},
 			"sms" : (player, fullText) => {
 				if(fullText.length <= 0) return player.notify("~r~Vous devez saisir un message.");
 

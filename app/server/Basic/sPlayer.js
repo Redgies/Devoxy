@@ -20,9 +20,10 @@ class PlayerSingleton {
             dim: 0, 
         }
         const weapons = [];
+        const delits = [];
         await misc.query(`INSERT INTO users 
-        (email, firstName, lastName, password, ip, regdate, position, socialclub, weapons) VALUES 
-        ('${email}', '${firstName}', '${lastName}', '${pass}', '${player.ip}', '${new Date().toLocaleString()}', '${JSON.stringify(firstSpawn)}', '${player.socialClub}', '${JSON.stringify(weapons)}')`);
+        (email, firstName, lastName, password, ip, regdate, position, socialclub, weapons, delits) VALUES 
+        ('${email}', '${firstName}', '${lastName}', '${pass}', '${player.ip}', '${new Date().toLocaleString()}', '${JSON.stringify(firstSpawn)}', '${player.socialClub}', '${JSON.stringify(weapons)}', '${JSON.stringify(delits)}')`);
 
         misc.log.debug(`New Account: ${email} | ${firstName} ${lastName}`);
     }
@@ -274,7 +275,7 @@ mp.events.add({
 
         if (!killer || player === killer) return;
         // if (killer.faction == 1 && killer.working == true) return;
-        
+
         killer.addDelit("Accusation de meurte");
     },
     "sHospital-SpawnAfterDeath" : (player) => {
