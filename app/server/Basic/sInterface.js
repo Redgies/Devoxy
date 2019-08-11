@@ -74,6 +74,22 @@ class Interface {
                     target.setCuff(false);
                 }
             },
+            "sInterface-giveGunLicence": (player) => {
+                let target = misc.findPlayerByIdOrNickname(player.targetId);
+                if (!target) return;
+
+                target.permis = !target.permis;
+
+                if(target.permis)
+                {
+                    target.notifyWithPicture("Police", "", `${player.name} vous a donné le permis de port d'armes.`, "CHAR_CALL911");
+                }
+                else
+                {
+                    target.notifyWithPicture("Banque", "", `${player.name} vous a retiré le permis de port d'armes.`, "CHAR_CALL911");
+                }
+
+            },
             "sInterface-giveMoney": (player, data) => {
                 const d = JSON.parse(data);
 

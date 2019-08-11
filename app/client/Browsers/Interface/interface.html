@@ -70,12 +70,22 @@
                     <img src="images/handcuffs.png">
                     <span class="title">Démenotter</span>
                 </div>
+                <div class="item" @click="currentTab = 9"
+                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 4">
+                    <img src="images/handcuffs.png">
+                    <span class="title">Port d'arme</span>
+                </div>
+                <div class="item" @click="currentTab = 9"
+                    v-if="player.faction == 1 && player.working == 1 && target.guid">
+                    <img src="images/search.png">
+                    <span class="title">Fouiller</span>
+                </div>
                 <div class="item" @click="setDestroy()"
                      v-if="player.adminLvl >= 3">
                     <img src="images/destroy.png">
                     <span class="title">Détruire</span>
                 </div>
-                <div class="item" @click="currentTab = 8">
+                <div class="item" @click="currentTab = 8" v-if="player.faction == 2 && player.working == 1 && player.rank >= 4 && vehicle.guid">
                     <img src="images/spoiler.png">
                     <span class="title">Tunning</span>
                 </div>
@@ -132,7 +142,18 @@
                 <br><br>
                 <button type="button" class="btn-valid" @click="setColor()">Valider</button>
             </div>
-             <!-- TUNNING -->
+            <!-- PERMIS PORT D'ARME -->
+            <div v-if="currentTab == 8">
+                <h1 class="title-right">Permis port d'armes</h1>
+                <p class="p-right">Vous allez {{ target.permis ? 'donner' : 'retirer' le permis port d'arme à {{ target.firstName }} {{ target.lastName }}</p>
+                <button type="button" class="btn-valid" @click="giveGunLicence()">Valider</button>
+            </div>
+            <!-- FOUILLE -->
+            <div v-if="currentTab == 9">
+                <h1 class="title-right">Fouille</h1>
+                <div v-for="(wep, i) in target.pWeapons">
+                    <p>{{ wep.hash }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -517,6 +538,10 @@
 
                     mp.trigger("cMisc-CallServerEvent", "sInterface-setMood", this.moodStyle[mood].animname);
 
+                    this.exit();
+                },
+                giveGunLicence: function() {
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-giveGunLicence");
                     this.exit();
                 },
                 giveMoney: function () {
