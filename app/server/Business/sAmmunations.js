@@ -12,8 +12,8 @@ class Ammunation extends business {
     }
 
     async buyNewWeapon(player, hash, price) {
-		const shopTax = misc.roundNum(price * this.margin / 400);
-		const fullPrice = price + shopTax;
+		const shopTax = misc.roundNum(parseInt(price) * this.margin / 400);
+		const fullPrice = parseInt(price) + shopTax;
 		const canBuy = await player.changeMoney(-fullPrice);
 
 		if (!canBuy) return;
@@ -26,8 +26,8 @@ class Ammunation extends business {
     }
     
     async buyNewAmmo(player, hash, price) {
-		const shopTax = misc.roundNum(price * this.margin / 400);
-		const fullPrice = price + shopTax;
+		const shopTax = misc.roundNum(parseInt(price) * this.margin / 400);
+		const fullPrice = parseInt(price) + shopTax;
 		const canBuy = await player.changeMoney(-fullPrice);
 
 		if (!canBuy) return;
