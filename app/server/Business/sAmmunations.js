@@ -63,6 +63,11 @@ mp.events.add({
 		const d = JSON.parse(str);
 		const shop = business.getBusiness(d.id);
 		shop.buyNewWeapon(player, d.hash, d.price);
+    },
+	"sAmmunations-BuyAmmo" : (player, str) => {
+		const d = JSON.parse(str);
+		const shop = business.getBusiness(d.id);
+		shop.buyNewAmmo(player, d.hash, d.price);
 	},
 });
 
