@@ -41,10 +41,12 @@ class Faction {
 				}
 			},
 			"sms" : (player, fullText) => {
+				if(strlen(fullText) <= 0) return player.notify("~r~Vous devez saisir un message.");
+
 				for(const p of mp.players.toArray()) {
                     if(p.faction !== 1 || !this.isWorking(p)) continue;
                     
-					p.notifyWithPicture("Appel 911", p.name, fullText, "CHAR_CALL911");
+					p.notifyWithPicture("Appel 911", player.name, fullText, "CHAR_CALL911");
 				}
 
 				player.notifyWithPicture("Appel 911", "", "Votre message a bien été reçu, nous le traiterons dès que possible.", "CHAR_CALL911");
