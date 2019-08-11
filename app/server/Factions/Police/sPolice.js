@@ -29,6 +29,17 @@ const factionData = {
         y: -980.08, 
         z: 30.69,
     },
+    prisonEnter: {
+        x: 1691.678, 
+        y: 2565.581, 
+        z: 45.565, 
+        rot: 180.3,
+    },
+    cellulesPoint: [
+        {x: 459.551, y: -1001.676, z: 24.915},
+        {x: 459.165, y: -997.912, z: 24.915},
+        {x: 460.044, y: -994.33, z: 24.915},
+    ],
     blip: {
         scale: 0.8,
         color: 38,
@@ -48,6 +59,7 @@ class Police extends faction {
         this.createServicePoint(factionData.servicePoint);
         this.createGiletPoint(factionData.giletPoint);
         this.createWeaponPoint(factionData.weaponPoint);
+        this.createCellulesPoint(factionData.cellulesPoint);
         this.createBlip();
     }
 
@@ -120,6 +132,36 @@ class Police extends faction {
                 player.notify('rank : ' + target.rank);
             },
         });
+    }
+
+    createCellulesPoint(cellules) {
+        this.cellule1 = mp.colshapes.newSphere(cellules[0].x, cellules[0].y, cellules[0].z, 3);
+        this.cellule2 = mp.colshapes.newSphere(cellules[1].x, cellules[1].y, cellules[2].z, 3);
+        this.cellule3 = mp.colshapes.newSphere(cellules[2].x, cellules[2].y, cellules[2].z, 3);
+
+        this.cellule1Label = mp.labels.new("[cellule 1]", new mp.Vector3(cellules[0].x, cellules[0].y, cellules[0].z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 3,
+			color: [255, 255, 255, 255],
+        });
+        
+        this.cellule2Label = mp.labels.new("[cellule 2]", new mp.Vector3(cellules[1].x, cellules[1].y, cellules[2].z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 3,
+			color: [255, 255, 255, 255],
+        });
+        
+        this.cellule3Label = mp.labels.new("[cellule 3]", new mp.Vector3(cellules[2].x, cellules[2].y, cellules[2].z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 3,
+			color: [255, 255, 255, 255],
+		});
     }
 
     createServicePoint(pos) {

@@ -273,6 +273,8 @@ mp.events.add({
         player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
 
         if (!killer || player === killer) return;
+        // if (killer.faction == 1 && killer.working == true) return;
+        
         killer.addDelit("Accusation de meurte");
     },
     "sHospital-SpawnAfterDeath" : (player) => {
