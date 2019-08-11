@@ -52,11 +52,11 @@
                     <span class="title">Carte grise</span>
                 </div>
                 <div class="item" @click="setRepair()"
-                     v-if="player.faction == 2 && player.working == 1 && vehicle.guid">
+                     v-if="((player.faction == 2) || player.faction == 3) && player.working == 1 && vehicle.guid">
                     <img src="images/tools.png">
                     <span class="title">Réparer</span>
                 </div>
-                <div class="item" @click="initColor()" v-if="player.faction == 2 && player.working == 1 && player.rank >= 3 && vehicle.guid">
+                <div class="item" @click="initColor()" v-if="((player.faction == 2) || player.faction == 3) && player.working == 1 && player.rank >= 3 && vehicle.guid">
                     <img src="images/spray.png">
                     <span class="title">Couleur</span>
                 </div>
@@ -95,7 +95,7 @@
                     <img src="images/destroy.png">
                     <span class="title">Détruire</span>
                 </div>
-                <div class="item" @click="currentTab = 8" v-if="player.faction == 2 && player.working == 1 && player.rank >= 4 && vehicle.guid">
+                <div class="item" @click="currentTab = 8" v-if="((player.faction == 2) || player.faction == 3) && player.working == 1 && player.rank >= 4 && vehicle.guid">
                     <img src="images/spoiler.png">
                     <span class="title">Tunning</span>
                 </div>
