@@ -83,6 +83,15 @@ class Interface {
                     target.setCuff(false);
                 }
             },
+            "sInterface-setJail": (player) => {
+                let target = misc.findPlayerByIdOrNickname(player.targetId);
+                if(!target) return;
+
+                if(target.delits.length <= 0) return target.notify("~r~Ce joueur n'a pas de délits.");
+
+                target.notifyWithPicture("Police", "", `${player.name} vous a envoyé en prison.`, "CHAR_CALL911");
+                player.notifyWithPicture("Police", "", `Vous avez envoyé ${target.name} en prison.`, "CHAR_CALL911");
+            },
             "sInterface-giveGunLicence": (player) => {
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
                 if (!target) return;

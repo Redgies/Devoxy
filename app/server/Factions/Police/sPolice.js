@@ -99,6 +99,11 @@ class Police extends faction {
                     player.notify("Appuyez ~b~E ~w~pour équiper vos armes.");
                     player.canTakeWeapon = true;
                 }
+
+                if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
+                {
+                    player.canGoToJail = true; 
+                }
                 
             },
             "playerExitColshape" : (player, shape) => {
@@ -110,6 +115,8 @@ class Police extends faction {
                     player.canTakeGilet = false;
                 if(shape === this.weaponShape)
                     player.canTakeWeapon = false;
+                if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
+                    player.canGoToJail = false; 
             },
             "sKeys-E" : (player) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
