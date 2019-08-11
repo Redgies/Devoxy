@@ -101,10 +101,10 @@ class Hospital extends faction {
 				if(player.canExitHospital)
 				{
 					const pos = {
-						x: enterPoint.x,
-						y: enterPoint.y,
-						z: enterPoint.z,
-						rot: enterPoint.rot,
+						x: factionData.enterPoint.x,
+						y: factionData.enterPoint.y,
+						z: factionData.enterPoint.z,
+						rot: factionData.enterPoint.rot,
 					}
 
 					player.tp(pos);
@@ -112,15 +112,15 @@ class Hospital extends faction {
 				if(player.canEnterHospital)
 				{
 					const pos = {
-						x: exitPoint.x,
-						y: exitPoint.y,
-						z: exitPoint.z,
-						rot: exitPoint.rot,
+						x: factionData.exitPoint.x,
+						y: factionData.exitPoint.y,
+						z: factionData.exitPoint.z,
+						rot: factionData.exitPoint.rot,
 					}
 
 					player.tp(pos);
 				}
-				
+
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
     
                 if(player.canChangeClothes)
