@@ -63,7 +63,7 @@ class PlayerSingleton {
         for(let i = 0; i < player.pWeapons.length; i++)
         {
             console.log("hash : " + player.pWeapons[i].hash + " ammo : " + player.pWeapons[i].ammo);
-            player.giveWeapon(parseInt(1737195953), parseInt(player.pWeapons[i].ammo));
+            player.giveWeapon(parseInt(player.pWeapons[i].hash), parseInt(player.pWeapons[i].ammo));
         }
 
         misc.log.debug(`${player.name} logged in`);
