@@ -35,5 +35,11 @@ mp.events.add({
 		misc.prepareToCef(500);
 		misc.openCef("package://RP/Browsers/Business/TruckDealership/ccd.html", lang);
 		misc.injectCef(inject);
+	},
+
+	"cAmmunations-OpenBuyerMenu" : (lang, inject) => {
+		misc.prepareToCef(500);
+		misc.openCef("package://RP/Browsers/Business/Ammunations/ammunation.html", lang);
+		misc.injectCef(inject);
 	}
 });
