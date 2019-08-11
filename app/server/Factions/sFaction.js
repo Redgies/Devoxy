@@ -38,7 +38,7 @@ class Faction {
 				target.rank = 1;
 
 				player.notify(`~g~Vous avez invité ${target.name} dans ${this.name}.`);
-				player.notify(`~g~${player.name} vous a invité dans ${this.name}.`);
+				target.notify(`~g~${player.name} vous a invité dans ${this.name}.`);
 			},
 			"rank": (player, fullText, target, rank) => {
                 target = misc.findPlayerByIdOrNickname(target);
@@ -50,8 +50,8 @@ class Faction {
 
 				target.rank = parseInt(rank);
 
-				player.notify(`~g~Vous passez ${target.name} au rang de ${this.ranks[player.rank - 1]}.`);
-				player.notify(`~g~${player.name} vous a passé au rang de ${this.ranks[player.rank - 1]}.`);				
+				player.notify(`~g~Vous passez ${target.name} au rang de ${this.ranks[target.rank - 1]}.`);
+				target.notify(`~g~${player.name} vous a passé au rang de ${this.ranks[target.rank - 1]}.`);				
 			},
 			"virer": (player, fullText, target) => {
                 target = misc.findPlayerByIdOrNickname(target);
@@ -68,7 +68,7 @@ class Faction {
 				target.rank = 0;
 
 				player.notify(`~g~Vous virez ${target.name} de la faction.`);
-				player.notify(`~g~${player.name} vous a viré de la faction.`);		
+				target.notify(`~g~${player.name} vous a viré de la faction.`);		
 			},
 			"sms" : (player, fullText) => {
 				if(fullText.length <= 0) return player.notify("~r~Vous devez saisir un message.");
@@ -340,6 +340,22 @@ module.exports = Faction;
 // 	await misc.query(`INSERT INTO usersFaction (id, info) VALUES ('${id}', '[]')`);
 // }
 // module.exports.createNewUser = createNewUser;
+
+mp.events.addCommand({
+	'r' : (player, fullText) => {
+		const currentTime = misc.getTime();
+		
+		for(const p of mp.players.toArray()) {
+			for (const f of factionsList) {
+				if(player.faction == f.isInThisFaction(p))
+				{
+					const str = `!{#74b9ff}[${currentTime}] [RADIO] ${f.getRank(player)} | ${player.name} : ${fullText}`;
+					p.outputChatBox(str);
+				}
+			}
+		}
+	},
+});
 
 
 async function loadUser(player) {
