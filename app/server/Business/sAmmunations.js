@@ -18,16 +18,18 @@ class Ammunation extends business {
 	}
 
 	openBuyerMenu(player) {
-		if (player.vehicle) return;
-		const cars = JSON.stringify(this.getCarsCanFillUp());
+        if (player.vehicle) return;
+        
+        player.notify("sdfsdfd");
+		// const cars = JSON.stringify(this.getCarsCanFillUp());
 	
-		let execute = `app.id = ${this.id};`;
-		execute += `app.margin = ${this.margin};`;
-		execute += `app.updatePriceForLitre();`;
-		execute += `app.updateCars('${cars}');`
+		// let execute = `app.id = ${this.id};`;
+		// execute += `app.margin = ${this.margin};`;
+		// execute += `app.updatePriceForLitre();`;
+		// execute += `app.updateCars('${cars}');`
 		
-		player.call("cGasStation-OpenBuyerMenu", [player.lang, execute, this.camData]);
-		misc.log.debug(`${player.name} enter a gas station menu`);
+		// player.call("cGasStation-OpenBuyerMenu", [player.lang, execute, this.camData]);
+		// misc.log.debug(`${player.name} enter a gas station menu`);
 	}	
 
 }
