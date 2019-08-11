@@ -7,7 +7,7 @@ mp.events.add({
         var weapon_hash = player.weapon;
 
         let ammoClip = player.getAmmoInClip(weapon_hash);
-        let ammo = player.getWeaponAmmo();
+        // let ammo = player.getWeaponAmmo();
 
         mp.gui.chat.push("ammo : " + ammo + " - " + ammoClip);
     },
