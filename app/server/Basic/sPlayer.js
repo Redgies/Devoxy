@@ -284,12 +284,7 @@ mp.events.add("pointingStop", (player) => {
 
 mp.events.add({
     "playerDeath" : (player, reason, killer) => {
-        if(player.jailed)
-            player.tpToJail();
-        else 
-        {
-            player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
-        }
+        player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
 
         if (!killer || player === killer) return;
         // if (killer.faction == 1 && killer.working == true) return;
@@ -300,6 +295,9 @@ mp.events.add({
         if (!player.loggedIn) return;
 
         player.spawn(new mp.Vector3(player.position));
+
+        if(player.jailed) return player.tpToJail();
+
         player.health = 1;
         player.call("cHospital-DisableHealthRegeneration");
         player.healingSpeed = 0;
