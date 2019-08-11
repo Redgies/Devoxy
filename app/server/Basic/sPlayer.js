@@ -102,7 +102,7 @@ class PlayerSingleton {
         }
 
         player.updateWeapon = function() {
-            player.outputChatBox("weapon hash : " + JSON.stringify(player.weapon));
+            player.outputChatBox("weapon hash : " + JSON.stringify(player.weapon) + " ammo : " + player.weaponAmmo);
         }
 
         player.setWeapon = function(hash, ammo) {
