@@ -48,10 +48,10 @@ class PlayerSingleton {
         player.health = d[0].health;
         player.pWeapons = JSON.parse(d[0].weapons);
 
-        for(let i = 0; i < player.pWeapons.length; i++)
-        {
-            player.setWeapon(player.pWeapons[i].hash, player.pWeapons[i].ammo);
-        }
+        // for(let i = 0; i < player.pWeapons.length; i++)
+        // {
+        //     player.setWeapon(player.pWeapons[i].hash, player.pWeapons[i].ammo);
+        // }
 
         player.call("cCloseCefAndDestroyCam");
 
