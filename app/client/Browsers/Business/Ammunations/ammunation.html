@@ -24,13 +24,13 @@
                             </div>
 						</div>
                         <a class="veh-item" v-if="wep.ammo >= 1">
-                            <span @click="buyAmmo(wep.hash)">Acheter des munitions</span>
+                            <span @click="buyAmmo(wep.hash, wep.ammo)">Acheter des munitions</span>
                         </a>
                         <a v-else>
                             <br><br>
                         </a>
                         <a class="veh-item">
-                            <span @click="buyWeapon(wep.hash)">Acheter l'arme</span>
+                            <span @click="buyWeapon(wep.hash, wep.price)">Acheter l'arme</span>
                         </a>
 					</div>
 				</div>
@@ -167,12 +167,12 @@ const app = new Vue({
 			const separator = " ";
 			return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + separator);
 		},
-		buyWeapon: function(hash) {
-			const obj = { hash: hash, id: this.id, price: this.price };
+		buyWeapon: function(hash, price) {
+			const obj = { hash: hash, id: this.id, price: price };
 			mp.trigger("cMisc-CallServerEvent", "sAmmunations-BuyWeapon", JSON.stringify(obj));
         },
-		buyAmmo: function(hash) {
-			const obj = { hash: hash, id: this.id, price: this.ammo };
+		buyAmmo: function(hash, price) {
+			const obj = { hash: hash, id: this.id, price: price };
 			mp.trigger("cMisc-CallServerEvent", "sAmmunations-BuyAmmo", JSON.stringify(obj));
 		},
 		exit: function() {
