@@ -96,6 +96,16 @@ class PlayerSingleton {
         player.setWeapon = function(hash, ammo) {
             player.giveWeapon(hash, ammo);
 
+            if(player.pWeapons.length <= 0)
+            {
+                const newWep = {
+                    hash: hash,
+                    ammo: ammo
+                }
+
+                player.pWeapons.push(newWep);
+            }
+
             for(let i = 0; i < player.pWeapons.length; i++)
             {
                 if(player.pWeapons[i].hash === hash)
