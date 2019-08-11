@@ -12,10 +12,6 @@ class Ammunation extends business {
     }
 
     async buyNewWeapon(player, hash, price) {
-
-        console.log("price : " + parseInt(price));
-
-
 		const shopTax = misc.roundNum(parseInt(price) * this.margin / 400);
 		const fullPrice = parseInt(price) + shopTax;
 		const canBuy = await player.changeMoney(-fullPrice);
@@ -37,7 +33,7 @@ class Ammunation extends business {
 		if (!canBuy) return;
         await this.addMoneyToBalance(shopTax);
         
-        player.setWeaponAmmo(parseInt(hash), 15);
+        player.setWeaponAmmo(parseInt(hash), +15);
 
 		player.notify(`~g~${i18n.get('basic', 'success', player.lang)}`);
 		misc.log.debug(`${player.name} bought a vehicule ${model} for $${fullPrice}`);
@@ -63,7 +59,6 @@ class Ammunation extends business {
 
 mp.events.add({
 	"sAmmunations-BuyWeapon" : (player, str) => {
-        console.log(str);
 		const d = JSON.parse(str);
 		const shop = business.getBusiness(d.id);
 		shop.buyNewWeapon(player, d.hash, d.price);
