@@ -76,19 +76,24 @@
                     <span class="title">Port d'arme</span>
                 </div>
                 <div class="item" @click="currentTab = 10"
-                    v-if="player.faction == 1 && player.working == 1 && target.guid && target.guid">
+                    v-if="player.faction == 1 && player.working == 1 && target.guid">
                     <img src="images/search.png">
                     <span class="title">Fouiller</span>
                 </div>
                 <div class="item" @click="newConfiscate()"
-                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 2 && target.guid && target.guid">
+                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 2 && target.guid">
                     <img src="images/hold.png">
                     <span class="title">Confisquer les armes</span>
                 </div>
                 <div class="item" @click="newJail()"
-                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 2 && target.guid && target.guid">
+                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 2 && target.guid">
                     <img src="images/prison.png">
                     <span class="title">Mettre en prison</span>
+                </div>
+                <div class="item" @click="currentTab = 11"
+                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 2 && target.guid">
+                    <img src="images/danger.png">
+                    <span class="title">Délits</span>
                 </div>
                 <div class="item" @click="setDestroy()"
                      v-if="player.adminLvl >= 3 && vehicle.guid">
@@ -163,6 +168,14 @@
                 <h1 class="title-right">Fouille</h1>
                 <div v-for="(wep, i) in target.pWeapons">
                     <p>{{ wep.hash | weaponName }}</p>
+                </div>
+            </div>
+            <!-- DELITS -->
+            <div v-if="currentTab == 10">
+                <h1 class="title-right">Délits</h1>
+                <p class="p-right">Liste des délits de {{ target.firstName }} {{ target.lastName }}</p>
+                <div v-for="(delit, i) in target.delits">
+                    <p>{{ delit }}</p>
                 </div>
             </div>
         </div>

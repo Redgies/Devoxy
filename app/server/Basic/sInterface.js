@@ -95,7 +95,9 @@ class Interface {
                 target.tpToJail();
 
                 target.notifyWithPicture("Police", "", `${player.name} vous a envoyé en prison.`, "CHAR_CALL911");
-                player.notifyWithPicture("Police", "", `Vous avez envoyé ${target.name} en prison.`, "CHAR_CALL911");
+                player.notifyWithPicture("Police", "", `Vous avez envoyé ${target.name} en prison (~g~+5000$~w~).`, "CHAR_CALL911");
+
+                player.changeMoney(+2500);
             },
             "sInterface-giveGunLicence": (player) => {
                 let target = misc.findPlayerByIdOrNickname(player.targetId);
