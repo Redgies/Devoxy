@@ -1,7 +1,7 @@
 
 const i18n = require('../sI18n');
 const misc = require('../sMisc');
-const Faction = require('../Faction/sFactions.js');
+const Faction = require('../Factions/sFactions.js');
 const graylog = require('../sGraylog');
 const time = require('./sTime');  
 
