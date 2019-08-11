@@ -26,15 +26,6 @@ class Faction {
 		});
 			
 		mp.events.addCommand({	
-            "r" : (player, fullText) => {
-                const currentTime = misc.getTime();
-                const str = `!{#74b9ff}[${currentTime}] [RADIO] ${this.ranks[player.rank - 1]} | ${player.name} : ${fullText}`;
-    
-                for(const p of mp.players.toArray()) {
-                    if(p.faction !== player.faction) continue;
-                    p.outputChatBox(str);
-                }
-            },
 			"invite": (player, fullText, target) => {
                 target = misc.findPlayerByIdOrNickname(target);
                 if(!target) return;
@@ -91,6 +82,11 @@ class Faction {
 				player.notifyWithPicture("Appel 911", "", "Votre message a bien été reçu, nous le traiterons dès que possible.", "CHAR_CALL911");
 			}
 		});
+	}
+
+	getRank(player) {
+		if (!this.isInThisFaction(player)) return;
+		return this.ranks[player.rank - 1];
 	}
 
 	isInThisFaction(player) {
@@ -227,10 +223,6 @@ module.exports = Faction;
 // 		player.faction.working = status;
 // 	}
 
-// 	getRank(player) {
-// 		if (!this.isInThisFaction(player)) return;
-// 		return player.faction.rank;
-// 	}
 
 // 	setRank(leader, id, value) {
 // 		if (!misc.isValueNumber(id) || !misc.isValueNumber(value) || !this.isInThisFaction(leader) || this.getRank(leader) < 9) return;

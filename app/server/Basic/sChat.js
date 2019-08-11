@@ -1,6 +1,7 @@
 
 const i18n = require('../sI18n');
 const misc = require('../sMisc');
+const Faction = require('../Faction/sFactions.js');
 const graylog = require('../sGraylog');
 const time = require('./sTime');  
 
@@ -137,6 +138,17 @@ class ChatSingleton {
 			// 'uncuff' : (player, fullText) => {
 			// 	player.setCuff(false);
 			// },
+
+			"r" : (player, fullText) => {
+                const currentTime = misc.getTime();
+                const str = `!{#74b9ff}[${currentTime}] [RADIO] ${Faction.getRank(player)} | ${player.name} : ${fullText}`;
+    
+                for(const p of mp.players.toArray()) {
+                    if(p.faction !== player.faction) continue;
+                    p.outputChatBox(str);
+                }
+			},
+			
 
 			'rapport': (player, fullText) => {
 				if(fullText.length < 1) 
