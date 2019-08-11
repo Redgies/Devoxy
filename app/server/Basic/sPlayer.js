@@ -219,6 +219,16 @@ class PlayerSingleton {
             if (!this.vehicle || this.seat !== -1) return false;
             return true;
         }
+
+        player.addDelit = function(comment) {
+            if (!this.loggedIn) return;
+            
+            const newDelit = { comment };
+            this.delits.push(newViolation);
+
+            player.notifyWithPicture("Police", "nouveau délit", `Vous êtes accusé de meurte.`, "CHAR_CALL911");
+            misc.log.debug(`${this.name} get new delit : ${comment}`);	
+        }
         
     }
 
@@ -259,8 +269,11 @@ mp.events.add("pointingStop", (player) => {
 });
 
 mp.events.add({
-    "playerDeath" : (player) => {
+    "playerDeath" : (player, reason, killer) => {
         player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
+
+        if (!killer || player === killer) return;
+        killer.addDelit("Accusation de meurte");
     },
     "sHospital-SpawnAfterDeath" : (player) => {
         if (!player.loggedIn) return;
