@@ -171,11 +171,11 @@
                 </div>
             </div>
             <!-- DELITS -->
-            <div v-if="currentTab == 10">
+            <div v-if="currentTab == 11">
                 <h1 class="title-right">Délits</h1>
                 <p class="p-right">Liste des délits de {{ target.firstName }} {{ target.lastName }}</p>
                 <div v-for="(delit, i) in target.delits">
-                    <p>{{ delit }}</p>
+                    <p>{{ delit.comment }}</p>
                 </div>
             </div>
         </div>
