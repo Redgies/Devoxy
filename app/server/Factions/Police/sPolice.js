@@ -138,6 +138,27 @@ class Police extends faction {
                     this.takeGilet(player);
                 if(player.canTakeWeapon)
                     this.takeWeapons(player);
+                if(player.canPayCaution) 
+                {
+                    let caution = player.delits.length * 2500;
+                    if (player.money.cash < caution)
+                        return player.notify("~r~Vous n'avez pas assez sur vous.");
+
+                    player.changeMoney(-caution);
+
+                    player.jailed = 0;
+
+                    const pos = {
+                        x: 1846.348, 
+                        y: 2585.804, 
+                        z: 45.672,
+                        rot: 269.27
+                    }
+
+                    player.tp(pos);
+
+                    player.notify("~g~Vous êtes maintenant libre.");
+                }
             },
         });
     }
