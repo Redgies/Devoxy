@@ -77,14 +77,14 @@ class Police extends faction {
 
     createEvents() {
         mp.events.addCommand({	
-			"delit": (player, fullText, target) => {
+			"delit": (player, fullText, arg1) => {
                 if(!this.isInThisFaction(player) || !this.isWorking(player)) return;
 
-                target = misc.findPlayerByIdOrNickname(target);
+                target = misc.findPlayerByIdOrNickname(arg1);
 				if(!target)
                     return player.notify("~r~Cette personne n'est pas connecté.");
 
-                let message = fullText.substr(target + target.length);
+                let message = fullText.substr(arg1 + arg1.length);
 
                 if(message.length <= 0)
                     return player.notify("~r~Utilisez /delit id message");
