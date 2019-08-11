@@ -98,11 +98,6 @@ class Hospital extends faction {
                     player.canChangeClothes = false;
             },
             "sKeys-E" : (player) => {
-                if(!player.loggedIn || !this.isInThisFaction(player)) return;
-    
-                if(player.canChangeClothes)
-					this.changeClothes(player);
-					
 				if(player.canExitHospital)
 				{
 					const pos = {
@@ -125,6 +120,11 @@ class Hospital extends faction {
 
 					player.tp(pos);
 				}
+				
+                if(!player.loggedIn || !this.isInThisFaction(player)) return;
+    
+                if(player.canChangeClothes)
+					this.changeClothes(player);
             },
         });
 	}
