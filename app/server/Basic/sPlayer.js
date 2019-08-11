@@ -102,7 +102,8 @@ class PlayerSingleton {
         }
 
         player.updateWeapon = function() {
-            player.outputChatBox("weapon hash : " + JSON.stringify(player.weapon) + " ammo : " + player.getWeaponAmmo(player.weapon));
+            player.call("cPlayer-getWeaponAmmo");
+            // player.outputChatBox("weapon hash : " + JSON.stringify(player.weapon) + " ammo : " + player.getWeaponAmmo(player.weapon));
         }
 
         player.setWeapon = function(hash, ammo) {
