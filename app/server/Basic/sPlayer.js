@@ -48,6 +48,7 @@ class PlayerSingleton {
         player.tp(JSON.parse(d[0].position));
         player.health = d[0].health;
         player.pWeapons = JSON.parse(d[0].weapons);
+        player.delits = JSON.parse(d[0].delits);
 
         player.call("cCloseCefAndDestroyCam");
 
@@ -96,6 +97,8 @@ class PlayerSingleton {
         player.canOpen = {};
         player.canEnter = {};
         player.job = {};
+        player.pWeapons = [];
+        player.delits = [];
 
         player.resetAllWeapons = function() {
             player.removeAllWeapons();
@@ -209,7 +212,7 @@ class PlayerSingleton {
 
         player.saveBasicData = function() {
             const pos = this.getCurrentPos(0.1);
-            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}' WHERE id = '${this.guid}'`);
+            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}', delits = '${JSON.stringify(this.delits)}' WHERE id = '${this.guid}'`);
         }
 
         player.isDriver = function() {
