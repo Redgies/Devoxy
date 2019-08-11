@@ -102,6 +102,7 @@ class Police extends faction {
 
                 if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
                 {
+                    player.notify("tu es en cellule");
                     player.canGoToJail = true; 
                 }
 
@@ -117,6 +118,8 @@ class Police extends faction {
                     player.canTakeWeapon = false;
                 if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
                     player.canGoToJail = false; 
+
+                    player.notify("tu es plus en cellule");
             },
             "sKeys-E" : (player) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
