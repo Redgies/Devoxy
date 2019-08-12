@@ -10,7 +10,8 @@ mp.events.add({
     "cJob-Update" : (value) => job = value,
     "render": () =>
     {
-        speedo.execute(`updateMoney(${money});`);    
+        speedo.execute(`updateMoney(${money});`);  
+        speedo.execute(`alert("test");`);  
 
         if(player.vehicle && player.vehicle.getPedInSeat(-1) === player.handle)
             {

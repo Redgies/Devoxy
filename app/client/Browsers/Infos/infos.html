@@ -17,9 +17,12 @@
     function formatNumber(num) {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
     }
-    function updateMoney(money, job)
+    function updateMoney(money)
     {
         document.getElementsByClassName('money')[0].innerHTML = formatNumber(money);
+    }
+    function updateJob(job) 
+    {
         document.getElementsByClassName('job')[0].innerHTML = job;
     }
     function update(speed, gas)
