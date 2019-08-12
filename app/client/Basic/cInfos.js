@@ -14,13 +14,11 @@ mp.events.add({
     },
     "playerStartTalking": (p) => 
     {
-        if(p == player)
-            mp.gui.chat.push("je parle");
+        p.playFacialAnim("mic_chatter", "mp_facial");
     },
     "playerStopTalking": (p) => 
     {
-        if(p == player)
-            mp.gui.chat.push("je parle plus");
+        p.playFacialAnim("mood_normal_1", "facials@gen_male@variations@normal");
     },
     "render": () =>
     {
