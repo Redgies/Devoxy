@@ -14,12 +14,12 @@ mp.events.add({
     },
     "playerStartTalking": (p) => 
     {
-        if(p == playerStartTalking)
+        if(p == player)
             mp.gui.chat.push("je parle");
     },
     "playerStopTalking": (p) => 
     {
-        if(p == playerStartTalking)
+        if(p == player)
             mp.gui.chat.push("je parle plus");
     },
     "render": () =>
