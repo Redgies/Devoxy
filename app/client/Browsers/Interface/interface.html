@@ -95,6 +95,11 @@
                     <img src="images/danger.png">
                     <span class="title">Délits</span>
                 </div>
+                <div class="item" @click="setSoin()"
+                    v-if="player.faction == 4 && player.working == 1 && target.guid">
+                    <img src="images/heart.png">
+                    <span class="title">Soigner</span>
+                </div>
                 <div class="item" @click="setDestroy()"
                      v-if="player.adminLvl >= 3 && vehicle.guid">
                     <img src="images/destroy.png">
@@ -607,6 +612,10 @@
                 },
                 newConfiscate: function() {
                     mp.trigger("cMisc-CallServerEvent", "sInterface-newConfiscate");
+                    this.exit();
+                },
+                setSoin: function() {
+                    mp.trigger("cMisc-CallServerEvent", "sInterface-setSoin");
                     this.exit();
                 },
                 initColor: function () {

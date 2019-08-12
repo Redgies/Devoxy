@@ -74,16 +74,6 @@ class LsCustom extends faction {
                     this.changeClothes(player);
             },
         });
-
-        mp.events.addCommand({	
-            "rank" : (player, fullText, target, rank) => {
-                target = misc.findPlayerByIdOrNickname(target);
-
-                target.rank = parseInt(rank);
-
-                player.notify('rank : ' + target.rank);
-            }
-        });
     }
 
     createServicePoint(pos) {

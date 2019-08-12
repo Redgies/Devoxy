@@ -72,6 +72,15 @@ class Interface {
                 target.notifyWithPicture("Police", "", `${player.name} vous a retiré vos armes.`, "CHAR_CALL911");
                 player.notifyWithPicture("Police", "", `Vous avez retiré les armes de ${target.name}.`, "CHAR_CALL911");
             },
+            "sInterface-setSoin": (player) => {
+                let target = misc.findPlayerByIdOrNickname(player.targetId);
+                if(!target) return;
+
+                target.health = 100;
+
+                target.notify(`~g~${player.name} vous a soigné.`);
+                player.notify(`~g~Vous avez soigné ${target.name}.`);
+            },
             "sInterface-setCuff": (player, data) => {
                 const d = JSON.parse(data);
 

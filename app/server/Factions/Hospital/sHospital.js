@@ -208,11 +208,11 @@ class Hospital extends faction {
 	changeClothesMan(player) {
         if(player.rank == 1)
         {
-            player.setProp(0, 46, 0);
-            player.setClothes(6, 25, 0, 2);
-            player.setClothes(4, 35, 0, 2);
-            player.setClothes(11, 55, 0, 2);
-            player.setClothes(7, 0, 0, 2);
+			player.setClothes(6, 54, 0, 2); // SHOES
+			player.setClothes(4, 49, 0, 2);  // LEGS
+			player.setClothes(11, 250, 0, 2); // TOP
+			player.setClothes(8, 129, 0, 2); // CEINTURE RADIO
+            player.setClothes(10, 57, 0, 2); // PARAMEDIC
         }
         if(player.rank == 2)
         {
@@ -257,11 +257,7 @@ class Hospital extends faction {
 	changeClothesWoman(player) {
         if(player.rank == 1)
         {
-            player.setProp(0, 45, 0);
-            player.setClothes(6, 25, 0, 2);
-            player.setClothes(4, 77, 0, 2);
-            player.setClothes(11, 48, 0, 2);
-            player.setClothes(7, 0, 0, 2);
+			player.setClothes(10, 66, 0, 2); // PARAMEDIC
         }
         if(player.rank == 2)
         {
