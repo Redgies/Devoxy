@@ -30,6 +30,11 @@ const factionData = {
 		z: 29.967, 
 		rot: 315.6,
 	},
+	soinsPoint: {
+		x: 264.499, 
+		y: -1355.101, 
+		z: 24.538
+	},
     blip: {
         scale: 0.8,
         color: 49,
@@ -49,6 +54,7 @@ class Hospital extends faction {
 		this.createServicePoint(factionData.servicePoint);
 		this.createExitPoint(factionData.exitPoint);
 		this.createEnterPoint(factionData.enterPoint);
+		this.createSoinsPoint(factionData.soinsPoint);
 		this.createBlip();
 	}
 
@@ -73,6 +79,11 @@ class Hospital extends faction {
                 {
                     player.canEnterHospital = true;
 				}
+				if(shape === this.soinsShape)
+                {
+					player.canSoinsHospital = true;
+					player.notify("Appuyez ~b~E ~w~pour vous soigner (~g~500$~w~).");
+				}
 
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
     
@@ -90,6 +101,10 @@ class Hospital extends faction {
 				if(shape === this.enterShape)
                 {
                     player.canEnterHospital = false;
+				}
+				if(shape === this.soinsShape)
+                {
+                    player.canSoinsHospital = false;
 				}
 
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
@@ -120,6 +135,17 @@ class Hospital extends faction {
 
 					player.tp(pos);
 				}
+				if(player.canSoinsHospital)
+				{
+					if (player.money.cash < 500)
+                    return player.notify("~r~Vous n'avez pas assez sur vous.");
+
+					player.changeMoney(-500);
+					player.health = 100;
+
+					player.notify("~g~Vous êtes maintent soigné.");
+               	 	
+				}
 
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
     
@@ -137,6 +163,22 @@ class Hospital extends faction {
 			visible: true,
 		});
 		this.serviceLabel = mp.labels.new("[service]", new mp.Vector3(pos.x, pos.y, pos.z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 5,
+			color: [255, 255, 255, 255],
+		});
+	}
+
+	createSoinsPoint(pos) {
+		this.soinsShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
+		this.soinsMarker = mp.markers.new(1, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
+		{
+			color: [0, 184, 148, 50],
+			visible: true,
+		});
+		this.soinsLabel = mp.labels.new("[soins]", new mp.Vector3(pos.x, pos.y, pos.z),
 		{
 			los: false,
 			font: 2,

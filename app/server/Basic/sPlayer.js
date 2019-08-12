@@ -322,13 +322,9 @@ mp.events.add({
 
         if(player.jailed) return player.tpToJail();
 
-        player.health = 1;
+        player.health = 100;
         player.call("cHospital-DisableHealthRegeneration");
-        player.healingSpeed = 0;
-        const posToDrop = { x: -498.184, y: -335.741, z: 34.502 };
-        const dist = player.dist(posToDrop);
-        const pay = misc.roundNum(dist / 20);
-        player.newFine(pay, `${i18n.get('sHospital', 'transferTo', player.lang)}`);
+        player.newFine(5000, `${i18n.get('sHospital', 'transferTo', player.lang)}`);
 
         const tp = { x: 275.446, y: -1361.11, z: 24.5378, rot: 46.77, dim: 0 };
         player.tp(tp);
