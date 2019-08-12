@@ -15,12 +15,12 @@
 
 <script>
     function formatNumber(num) {
-        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
     }
-    function updateMoney(money = 0, job = 0)
+    function updateMoney(money, job)
     {
         alert("test");
-        // document.getElementsByClassName('money')[0].innerHTML = formatNumber(money);
+        document.getElementsByClassName('money')[0].innerHTML = formatNumber(money);
         document.getElementsByClassName('job')[0].innerHTML = job + ' + ' + money; 
     }
     function update(speed, gas)
