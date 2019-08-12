@@ -16,9 +16,10 @@ mp.events.add({
     {
         mp.gui.chat.push("je parle");
     },
-    "playerStopTalking": (player) => 
+    "playerStopTalking": (p) => 
     {
-        mp.gui.chat.push("je parle plus");
+        if(p == playerStartTalking)
+            mp.gui.chat.push("je parle plus");
     },
     "render": () =>
     {
