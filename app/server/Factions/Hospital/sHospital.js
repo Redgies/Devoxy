@@ -217,19 +217,19 @@ class Hospital extends faction {
         }
         if(player.rank == 2)
         {
-			player.setClothes(3, 15, 0, 2); // TORSO
-			player.setClothes(6, 54, 0, 2); // SHOES
-			player.setClothes(4, 49, 0, 2);  // LEGS
-			player.setClothes(11, 250, 0, 2); // TOP
+			player.setClothes(3, 85, 0, 2); // TORSO
+			player.setClothes(6, 8, 0, 2); // SHOES
+			player.setClothes(4, 96, 0, 2);  // LEGS
+			player.setClothes(11, 250, 1, 2); // TOP
 			player.setClothes(8, 129, 0, 2); // CEINTURE RADIO
             player.setClothes(10, 57, 0, 2); // PARAMEDIC
         }
         if(player.rank == 3)
         {
-			player.setClothes(3, 15, 0, 2); // TORSO
-			player.setClothes(6, 54, 0, 2); // SHOES
-			player.setClothes(4, 49, 0, 2);  // LEGS
-			player.setClothes(11, 250, 0, 2); // TOP
+			player.setClothes(3, 85, 0, 2); // TORSO
+			player.setClothes(6, 8, 0, 2); // SHOES
+			player.setClothes(4, 96, 0, 2);  // LEGS
+			player.setClothes(11, 250, 2, 2); // TOP
 			player.setClothes(8, 129, 0, 2); // CEINTURE RADIO
             player.setClothes(10, 57, 0, 2); // PARAMEDIC
         }
