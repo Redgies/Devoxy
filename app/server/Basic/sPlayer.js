@@ -69,8 +69,11 @@ class PlayerSingleton {
         // const q8 = prison.loadUser(player);
         await Promise.all([q1, q2, q3, q4, q5, q6]);
 
-        const job = faction.getFactionName(player);
-        console.log("job + " + job);
+        let job = 'Chômeur';
+        if(player.faction != 0)
+        {
+            job = faction.getFactionName(player);
+        }
         player.call("cJob-Update", [job]);
 
         for(let i = 0; i < player.pWeapons.length; i++)
@@ -299,6 +302,10 @@ mp.events.addCommand({
         misc.log.debug(str);
     },
     
+});
+
+mp.events.add("anim", (dict, name, speed, flag) => {
+    player.playAnimation(dict.toString(), name.toString(), speed, flag);
 });
 
 mp.events.add("fpsync.update", (player, camPitch, camHeading) => {

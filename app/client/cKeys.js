@@ -186,14 +186,6 @@ keys.bind(k.K_KEY, false, function() {
     mp.events.callRemote('sKeys-K');
 });
 
-keys.bind(k.Y_KEY, false, function()  {
-    if (mp.gui.cursor.visible) return;
-
-    var localPlayer = mp.players.local;
-    
-    localPlayer.taskHandsUp(-1, localPlayer.handle, 0, false);
-});
-
 keys.bind(k.J_KEY, false, function() {
     if (mp.gui.cursor.visible) return;
     mp.events.callRemote('sKeys-J');
@@ -287,4 +279,14 @@ keys.bind(k.F2_KEY, false, function() {
 keys.bind(k.F3_KEY, false, function() {
     if (mp.gui.cursor.visible) return;
     mp.events.callRemote('sKeys-F3');
+});
+
+keys.bind(k.Y_KEY, !0, function()  {
+    if (mp.gui.cursor.visible) return;
+    mp.events.callRemote("anim", "anim@move_hostages@male", "male_idle", -1, 49);
+});
+
+keys.bind(k.Y_KEY, !1, function()  {
+    if (mp.gui.cursor.visible) return;
+    mp.events.callRemote("anim", "anim@move_hostages@male", "male_idle1", -1, 49)
 });

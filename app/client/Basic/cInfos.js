@@ -11,7 +11,6 @@ mp.events.add({
     },
     "cJob-Update" : (value) => {
         job = value;
-        mp.gui.chat.push("job :" + job);
     },
     "render": () =>
     {
