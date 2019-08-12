@@ -50,10 +50,6 @@ for (let i = 0; i < voiceChat_PlayerReadyForOtherPlayer.length; i++) {
 // Voice chat ID assignation server
 var server = PeerServer({
     port: 9999,
-    ssl: {
-        key: fs.readFileSync('/etc/ssl/private/ssl-cert-snakeoil.key'),
-        cert: fs.readFileSync('/etc/apache2/ssl.crl/ca-bundle.crl')
-    },
     path: '/voice'
 });
 
