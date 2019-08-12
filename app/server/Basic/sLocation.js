@@ -10,11 +10,11 @@ class Location {
     {
         this.pos = {};
         this.pos.x = d.pos.x;
-        // this.pos.y = d.pos.y;
-        // this.pos.z = d.pos.z;
+        this.pos.y = d.pos.y;
+        this.pos.z = d.pos.z;
 
-        // this.createEvents();
-        // this.createShape();
+        this.createEvents();
+        this.createShape();
     }
 
     createEvents() {
