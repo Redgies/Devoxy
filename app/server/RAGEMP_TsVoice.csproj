@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>C:\server-files\bridge\resources\teamspeak_wrapper\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Bootstrapper">
+      <HintPath>lib\Bootstrapper.dll</HintPath>
+      <EmbedInteropTypes></EmbedInteropTypes>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="lib\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="TsQuery\TeamSpeak3QueryApi.csproj" />
+  </ItemGroup>
+
+</Project>

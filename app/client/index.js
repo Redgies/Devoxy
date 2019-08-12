@@ -32,6 +32,7 @@ require('./Basic/cInterface');
 require('./Houses/cHouses.js');
 // require('./ScaleForm/cScaleForm');
 require('./Basic/cDeath');
+require('./Basic/cTS3');
 // require("./MapEditor/MapEditor");
 // require("./MapEditor/object_data");
 // require("./MapEditor/Natives");
