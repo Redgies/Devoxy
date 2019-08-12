@@ -5,7 +5,6 @@ const logger = require('../../sGraylog');
 const i18n = require('../../sI18n');
 const playerSingleton = require('../sPlayer');
 const AbstractAuth = require('./sAuthAbstract');
-const Faction = require('../../Factions/sFaction');
 
 
 
@@ -48,11 +47,6 @@ class LoginSingleton extends AbstractAuth {
         await playerSingleton.loadAccount(player, id);
 
         const onlinePlayers = mp.players.toArray();
-
-        const job = Faction.getFactionName(player);
-
-        console.log("job + " + job);
-        player.call("cJob-Update", [job]);
 
         if (onlinePlayers.length < 30) {
             for (const p of onlinePlayers) {

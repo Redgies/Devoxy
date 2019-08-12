@@ -69,6 +69,10 @@ class PlayerSingleton {
         // const q8 = prison.loadUser(player);
         await Promise.all([q1, q2, q3, q4, q5, q6]);
 
+        const job = faction.getFactionName(player);
+        console.log("job + " + job);
+        player.call("cJob-Update", [job]);
+
         for(let i = 0; i < player.pWeapons.length; i++)
         {
             player.giveWeapon(parseInt(player.pWeapons[i].hash), parseInt(player.pWeapons[i].ammo));
