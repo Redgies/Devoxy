@@ -1,5 +1,5 @@
 const misc = require('../sMisc');
-const Vehicle = require('./sVehicle');
+const Vehicle = require('./Vehicles/sVehicle');
 
 const locationsData = [
     {pos: {x:-1038.748, y: -2731.016, z: 20.169}} // AEROPORT
