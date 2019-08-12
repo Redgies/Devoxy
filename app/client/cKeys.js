@@ -186,6 +186,14 @@ keys.bind(k.K_KEY, false, function() {
     mp.events.callRemote('sKeys-K');
 });
 
+keys.bind(k.Y_KEY, false, function()  {
+    if (mp.gui.cursor.visible) return;
+
+    var localPlayer = mp.players.local;
+    
+    localPlayer.taskHandsUp(-1, localPlayer.handle, 0, false);
+});
+
 keys.bind(k.J_KEY, false, function() {
     if (mp.gui.cursor.visible) return;
     mp.events.callRemote('sKeys-J');
