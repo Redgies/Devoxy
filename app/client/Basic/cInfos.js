@@ -14,6 +14,7 @@ mp.events.add({
     },
     "render": () =>
     {
+        mp.gui.chat.push("vocal : " + player.isVoiceActive);
         speedo.execute(`updateMoney(${money}, '${job}');`);  
 
         if(player.vehicle && player.vehicle.getPedInSeat(-1) === player.handle)
