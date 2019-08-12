@@ -3,7 +3,7 @@ let showed = false;
 let player = mp.players.local;
 
 let money;
-let job;
+let job = 'Chômeur';
 
 mp.events.add({
     "cMoney-Update" : (value) => money = value,
@@ -13,7 +13,7 @@ mp.events.add({
     },
     "render": () =>
     {
-        speedo.execute(`updateMoney(${money}, 'ta grand mère');`);  
+        speedo.execute(`updateMoney(${money}, ${job});`);  
 
         if(player.vehicle && player.vehicle.getPedInSeat(-1) === player.handle)
             {
