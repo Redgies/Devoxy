@@ -208,7 +208,7 @@ class Hospital extends faction {
 	changeClothesMan(player) {
         if(player.rank == 1)
         {
-			player.setClothes(3, 15, 0, 2); // TORSO
+			player.setClothes(3, 85, 0, 2); // TORSO
 			player.setClothes(6, 8, 0, 2); // SHOES
 			player.setClothes(4, 96, 0, 2);  // LEGS
 			player.setClothes(11, 250, 0, 2); // TOP
