@@ -619,7 +619,7 @@ const i18n = {
 		},
 
 		transferTo: {
-			eng: 'Transfert à l\'hopital',
+			eng: 'Transfert aux urgences',
 			rus: 'Перевоз к больнице',
 			ger: 'Transfer ins Krankenhaus',
 			br: 'Transferência para o hospital', 
