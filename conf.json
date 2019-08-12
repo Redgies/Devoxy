@@ -6,7 +6,6 @@
 	"stream-distance": 500.0,
 	"announce": true,
 	"port": 22005,
-	"csharp": "enabled",
 	"bind": "91.121.7.136",
 	"voice-chat": true,
 	"voice-chat-sample-rate": 48000
