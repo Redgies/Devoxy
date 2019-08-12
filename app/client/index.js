@@ -24,7 +24,7 @@ require('./Basic/cGPS');
 require('./3rd/betternotifs.js');
 require('./fingerpointing');
 require("./nativeui");
-require('./voice.js');
+require('./Bassic/cVoice');
 require('./Basic/cNoClip');
 require('./Basic/cWalking');
 require('./Basic/cNametag');
