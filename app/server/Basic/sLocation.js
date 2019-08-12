@@ -8,7 +8,8 @@ const locationsData = [
 class Location {
     constructor(d)
     {
-        this.x = d.pos.x;
+        this.pos = {};
+        this.pos.x = d.pos.x;
         // this.pos.y = d.pos.y;
         // this.pos.z = d.pos.z;
 
