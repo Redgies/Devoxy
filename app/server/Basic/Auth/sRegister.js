@@ -104,8 +104,8 @@ mp.events.add({
         player.spawn(new mp.Vector3(3222, 5376, 20));
         player.dimension = 1001;
         playerSingleton.loadPlayerTemplate(player);
-        player.call("cLogin-ShowLoginWindow");
         player.call("cPeds-Init");
+        player.call("cLogin-ShowLoginWindow");
     },
 
     "sRegister-TryGetCodeToRegister" : async (player, email) => {
