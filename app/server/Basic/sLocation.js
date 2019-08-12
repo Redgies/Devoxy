@@ -21,7 +21,7 @@ class Location {
         mp.events.add({
             "playerEnterColshape" : (player, shape) => {
                 if(shape === this.shape) {
-                    player.notifyWithPicture("Appuyez ~b~E~w~ pour louer un véhicule (~g~500$~w~)");
+                    player.notify("Appuyez ~b~E~w~ pour louer un véhicule (~g~500$~w~)");
                     player.canLocate = true;
                 }
             },
