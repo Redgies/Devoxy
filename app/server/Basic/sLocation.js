@@ -21,7 +21,7 @@ class Location {
         mp.events.add({
             "playerEnterColshape" : (player, shape) => {
                 if(shape === this.shape) {
-                    player.notify("Appuyez ~b~E~w~ pour louer un véhicule (~g~500$~w~)");
+                    player.notify("Appuyez ~b~E~w~ pour louer un véhicule (~g~500$~w~).");
                     player.canLocate = true;
                 }
             },
@@ -50,7 +50,7 @@ class Location {
                         ownerId: 0,
                         whoCanOpen: JSON.stringify([player.guid]),
                         factionId: 0,
-                        numberPlate: this.generateRandomNumberPlate(),
+                        numberPlate: 'LOCATION',
                         primaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
                         secondaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
                     }
