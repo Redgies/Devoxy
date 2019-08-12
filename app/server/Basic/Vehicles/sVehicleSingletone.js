@@ -89,7 +89,7 @@ class VehicleSingleton {
 
         mp.events.addCommand({
             'v': (player, fullText, model) => {
-                if (player.adminLvl < 1) return;
+                if (player.adminLvl < 3) return;
                 if (!model) return player.notify("Model required");
                 const d = {
                     model,
@@ -128,6 +128,7 @@ class VehicleSingleton {
                     ownerId: 0,
                     whoCanOpen: JSON.stringify([player.guid]),
                     factionId: 0,
+                    tunning: JSON.stringify([]),
                     numberPlate: this.generateRandomNumberPlate(),
                     primaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
                     secondaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
@@ -140,7 +141,7 @@ class VehicleSingleton {
             },
 
             'tp': (player, fullText, a, b, c) => {
-                if (player.adminLvl < 1) return;
+                if (player.adminLvl < 3) return;
                 player.position = new mp.Vector3(+a, +b, +c);
             },
 

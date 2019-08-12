@@ -72,6 +72,15 @@ class Interface {
                 target.notifyWithPicture("Police", "", `${player.name} vous a retiré vos armes.`, "CHAR_CALL911");
                 player.notifyWithPicture("Police", "", `Vous avez retiré les armes de ${target.name}.`, "CHAR_CALL911");
             },
+            "sInterface-setSoin": (player) => {
+                let target = misc.findPlayerByIdOrNickname(player.targetId);
+                if(!target) return;
+
+                target.health = 100;
+
+                target.notify(`~g~${player.name} vous a soigné.`);
+                player.notify(`~g~Vous avez soigné ${target.name}.`);
+            },
             "sInterface-setCuff": (player, data) => {
                 const d = JSON.parse(data);
 
@@ -90,8 +99,14 @@ class Interface {
                 if(!target.canGoToJail) return player.notify("~r~Cette personne n'est pas en cellule.");
                 if(target.delits.length <= 0) return player.notify("~r~Cette personne n'a pas de délits.");
 
+                target.jailed = 1;
+
+                target.tpToJail();
+
                 target.notifyWithPicture("Police", "", `${player.name} vous a envoyé en prison.`, "CHAR_CALL911");
-                player.notifyWithPicture("Police", "", `Vous avez envoyé ${target.name} en prison.`, "CHAR_CALL911");
+                player.notifyWithPicture("Police", "", `Vous avez envoyé ${target.name} en prison (~g~+5000$~w~).`, "CHAR_CALL911");
+
+                player.changeMoney(+5000);
             },
             "sInterface-giveGunLicence": (player) => {
                 let target = misc.findPlayerByIdOrNickname(player.targetId);

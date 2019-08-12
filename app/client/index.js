@@ -1,5 +1,6 @@
 require('./cKeys');
 require('./Basic/cLogin');
+require('./Basic/cPeds');
 require('./Basic/cMoney');
 require('./Character/cCharacterCreator');
 require('./Business/cBusiness');
@@ -22,9 +23,7 @@ require('./Basic/cDoors.js');
 require('./Basic/cGPS');
 require('./3rd/betternotifs.js');
 require('./fingerpointing');
-require("./nativeui");
-require('./voice.js');
-require('./BlipCreator/index');
+require('./Basic/cVoice');
 require('./Basic/cNoClip');
 require('./Basic/cWalking');
 require('./Basic/cNametag');

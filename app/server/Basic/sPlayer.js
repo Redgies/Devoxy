@@ -13,10 +13,10 @@ class PlayerSingleton {
 
     async createNewUser(player, email, firstName, lastName, pass) {
         const firstSpawn = { 
-            x: -164, 
-            y: 6426, 
-            z: 32, 
-            rot: 48, 
+            x: -1037.844, 
+            y: -2738.01, 
+            z: 20.169, 
+            rot: 319.86,
             dim: 0, 
         }
         const weapons = [];
@@ -46,10 +46,16 @@ class PlayerSingleton {
         player.vip = d[0].vip;
         player.permis = d[0].permis;
         player.updateName();
-        player.tp(JSON.parse(d[0].position));
+        
         player.health = d[0].health;
         player.pWeapons = JSON.parse(d[0].weapons);
         player.delits = JSON.parse(d[0].delits);
+        player.jailed = d[0].jailed;
+
+        if(player.jailed)
+            player.tpToJail();
+        else 
+            player.tp(JSON.parse(d[0].position));
 
         player.call("cCloseCefAndDestroyCam");
 
@@ -62,6 +68,13 @@ class PlayerSingleton {
         // const q7 = hospital.loaddUser(player);
         // const q8 = prison.loadUser(player);
         await Promise.all([q1, q2, q3, q4, q5, q6]);
+
+        let job = 'Chômeur';
+        if(player.faction != 0)
+        {
+            job = faction.getFactionName(player);
+        }
+        player.call("cJob-Update", [job]);
 
         for(let i = 0; i < player.pWeapons.length; i++)
         {
@@ -100,6 +113,7 @@ class PlayerSingleton {
         player.job = {};
         player.pWeapons = [];
         player.delits = [];
+        player.jailed = 0;
 
         player.resetAllWeapons = function() {
             player.removeAllWeapons();
@@ -150,6 +164,36 @@ class PlayerSingleton {
             this.heading = d.rot;
             this.dimension = 0;
             if (d.dim) this.dimension = d.dim;
+        }
+
+        player.tpToJail = function() {
+            this.position = new mp.Vector3(1691.678, 2565.581, 45.565);
+            this.heading = 180.3;
+            this.dimension = 0;
+
+
+            if(player.model === 1885233650)
+            {
+                player.setClothes(11, 5, 0, 0); // tops
+                player.setClothes(3, 5, 0, 0);
+                player.setClothes(8, 5, 0, 0);
+                player.setClothes(4, 3, 7, 0); // legs
+                player.setClothes(6, 5, 0, 0); // shoes
+            }
+            else
+            {
+                player.setClothes(11, 5, 0, 0); // tops
+                player.setClothes(3, 4, 0, 0);
+                player.setClothes(8, 5, 0, 0);
+                player.setClothes(4, 3, 15, 0); // legs
+                player.setClothes(6, 5, 0, 0); // shoes
+            }
+
+            player.setClothes(7, 0, 0, 2);
+            player.call("cUnCuff");
+            player.stopAnimation();
+
+            player.resetAllWeapons();
         }
 
         player.setCuff = function(cuffed) {
@@ -213,7 +257,7 @@ class PlayerSingleton {
 
         player.saveBasicData = function() {
             const pos = this.getCurrentPos(0.1);
-            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}', delits = '${JSON.stringify(this.delits)}' WHERE id = '${this.guid}'`);
+            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}', delits = '${JSON.stringify(this.delits)}', jailed = '${this.jailed}' WHERE id = '${this.guid}'`);
         }
 
         player.isDriver = function() {
@@ -227,7 +271,7 @@ class PlayerSingleton {
             const newDelit = { comment };
             this.delits.push(newDelit);
 
-            player.notifyWithPicture("Police", "nouveau délit", `Vous êtes accusé de meurte.`, "CHAR_CALL911");
+            player.notifyWithPicture("Police", "nouveau délit", comment, "CHAR_CALL911");
             misc.log.debug(`${this.name} get new delit : ${comment}`);	
         }
         
@@ -260,6 +304,10 @@ mp.events.addCommand({
     
 });
 
+mp.events.add("anim", (player, dict, name, speed, flag) => {
+    player.playAnimation(dict.toString(), name.toString(), speed, flag);
+});
+
 mp.events.add("fpsync.update", (player, camPitch, camHeading) => {
     mp.players.call(player.streamedPlayers, "fpsync.update", [player.id, camPitch, camHeading]);
 
@@ -273,6 +321,8 @@ mp.events.add({
     "playerDeath" : (player, reason, killer) => {
         player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
 
+        player.resetAllWeapons();
+
         if (!killer || player === killer) return;
         // if (killer.faction == 1 && killer.working == true) return;
 
@@ -282,13 +332,12 @@ mp.events.add({
         if (!player.loggedIn) return;
 
         player.spawn(new mp.Vector3(player.position));
-        player.health = 1;
+
+        if(player.jailed) return player.tpToJail();
+
+        player.health = 100;
         player.call("cHospital-DisableHealthRegeneration");
-        player.healingSpeed = 0;
-        const posToDrop = { x: -498.184, y: -335.741, z: 34.502 };
-        const dist = player.dist(posToDrop);
-        const pay = misc.roundNum(dist / 20);
-        player.newFine(pay, `${i18n.get('sHospital', 'transferTo', player.lang)}`);
+        player.newFine(5000, `${i18n.get('sHospital', 'transferTo', player.lang)}`);
 
         const tp = { x: 275.446, y: -1361.11, z: 24.5378, rot: 46.77, dim: 0 };
         player.tp(tp);

@@ -3,12 +3,28 @@ let showed = false;
 let player = mp.players.local;
 
 let money;
+let job = 'Chômeur';
 
 mp.events.add({
-    "cMoney-Update" : (value) => money = value,
+    "cMoney-Update" : (value) => { 
+        money = value
+    },
+    "cJob-Update" : (value) => {
+        job = value;
+    },
+    "playerStartTalking": (p) => 
+    {
+        if(p == player)
+            mp.gui.chat.push("je parle");
+    },
+    "playerStopTalking": (p) => 
+    {
+        if(p == player)
+            mp.gui.chat.push("je parle plus");
+    },
     "render": () =>
     {
-        speedo.execute(`updateMoney(${money});`);  
+        speedo.execute(`updateMoney(${money}, '${job}');`);  
 
         if(player.vehicle && player.vehicle.getPedInSeat(-1) === player.handle)
             {

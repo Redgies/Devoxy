@@ -75,10 +75,10 @@ class RegiserSingleton extends AbstractAuth {
         const q2 = characterSingleton.createNewUser(data[0].id);
         const q3 = clothesSingleton.createNewUser(data[0].id);
         const q4 = headOverlaySingleton.createNewUser(data[0].id);
-        const q5 = faction.createNewUser(data[0].id);
-        const q6 = prison.createNewUser(data[0].id);
+        // const q5 = faction.createNewUser(data[0].id);
+        // const q6 = prison.createNewUser(data[0].id);
         
-        await Promise.all([q1, q2, q3, q4, q5, q6]);
+        await Promise.all([q1, q2, q3, q4]);
 
         const mail = {
             from: `${mailer.getMailAdress()}`,
@@ -104,6 +104,7 @@ mp.events.add({
         player.spawn(new mp.Vector3(3222, 5376, 20));
         player.dimension = 1001;
         playerSingleton.loadPlayerTemplate(player);
+        player.call("cPeds-Init");
         player.call("cLogin-ShowLoginWindow");
     },
 

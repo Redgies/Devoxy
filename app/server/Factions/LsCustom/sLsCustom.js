@@ -4,6 +4,7 @@ const faction = require('../sFaction');
 const factionData = {
     id: 3,
     name: "Los Santos Custom",
+    surname: "LS Cus.",
     ranks: [
         "Dépanneur",
         "Mécanicien",
@@ -31,7 +32,7 @@ const factionData = {
 
 class LsCustom extends faction {
 	constructor() {
-        super(factionData.id, factionData.name, factionData.ranks, factionData.maxRank);
+        super(factionData.id, factionData.name, factionData.surname, factionData.ranks, factionData.maxRank);
 
         this.createEvents();
         this.createServicePoint(factionData.servicePoint);
@@ -79,16 +80,6 @@ class LsCustom extends faction {
                     this.changeClothes(player);
             },
         });
-
-        mp.events.addCommand({	
-            "rank" : (player, fullText, target, rank) => {
-                target = misc.findPlayerByIdOrNickname(target);
-
-                target.rank = parseInt(rank);
-
-                player.notify('rank : ' + target.rank);
-            }
-        });
     }
 
     createServicePoint(pos) {
@@ -107,44 +98,30 @@ class LsCustom extends faction {
 		});
     }
 
-
-
     changeClothesMan(player) {
         if(player.rank == 1)
         {
             player.setClothes(4, 90, 0, 2);
             player.setClothes(11, 1, 0, 2);
             player.setClothes(3, 0, 0, 2);
-            player.giveWeapon(0x19044EE0, 1);
         }
         if(player.rank == 2)
         {
             player.setClothes(4, 98, 1, 2);
             player.setClothes(11, 242, 0, 2);
             player.setClothes(3, 0, 0, 2);
-            player.giveWeapon(0x19044EE0, 1);
         }
         if(player.rank == 3)
         {
             player.setClothes(4, 98, 1, 2);
             player.setClothes(11, 242, 0, 2);
             player.setClothes(3, 0, 0, 2);
-            player.giveWeapon(0x19044EE0, 1);
         }
         if(player.rank == 4)
         {
             player.setClothes(4, 98, 1, 1);
             player.setClothes(11, 241, 0, 2);
             player.setClothes(3, 0, 0, 2);
-            player.giveWeapon(0x19044EE0, 1);
-        }
-        if(player.rank == 5)
-        {
-            player.giveWeapon(0x19044EE0, 1);
-        }
-        if(player.rank == 6)
-        {
-            player.giveWeapon(0x19044EE0, 1);
         }
 	}
 

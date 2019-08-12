@@ -10,6 +10,7 @@ class Phone {
             "sKeys-F6" : (player) => {
                 if(!player.loggedIn) return;
 
+                if(player.jailed) return player.notify("~r~Vous n'avez pas de téléphone en prison.");
                 if(player.cuffed) return player.notify("~r~Vous ne pouvez pas utiliser votre téléphone en étant menotter.");
 
                 let execute = `app.phone = ${player.phone};`;

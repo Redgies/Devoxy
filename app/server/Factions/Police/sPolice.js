@@ -1,9 +1,11 @@
 const misc = require('../../sMisc');
 const faction = require('../sFaction');
+const clothes = require('../../Character/sClothes');
 
 const factionData = {
     id: 1,
     name: "Los Santos Police Departement",
+    surname: "LSPD",
     ranks: [
         "Cadet",
         "Officier", 
@@ -29,12 +31,6 @@ const factionData = {
         y: -980.08, 
         z: 30.69,
     },
-    prisonEnter: {
-        x: 1691.678, 
-        y: 2565.581, 
-        z: 45.565, 
-        rot: 180.3,
-    },
     cellulesPoint: [
         {x: 459.551, y: -1001.676, z: 24.915},
         {x: 459.165, y: -997.912, z: 24.915},
@@ -48,18 +44,24 @@ const factionData = {
             x: 445.839,
             y: -996.392,
         } 
+    },
+    cautionPoint: {
+        x: 1689.233, 
+        y: 2529.437, 
+        z: 45.565
     }
 }
 
 class Police extends faction {
 	constructor() {
-        super(factionData.id, factionData.name, factionData.ranks, factionData.maxRank);
+        super(factionData.id, factionData.name, factionData.surname, factionData.ranks, factionData.maxRank);
 
         this.createEvents();
         this.createServicePoint(factionData.servicePoint);
         this.createGiletPoint(factionData.giletPoint);
         this.createWeaponPoint(factionData.weaponPoint);
         this.createCellulesPoint(factionData.cellulesPoint);
+        this.createCautionPoint(factionData.cautionPoint);
         this.createBlip();
     }
 
@@ -75,6 +77,23 @@ class Police extends faction {
     }
 
     createEvents() {
+        mp.events.addCommand({	
+			"delit": (player, fullText, arg1) => {
+                if(!this.isInThisFaction(player) || !this.isWorking(player)) return;
+
+                let target = misc.findPlayerByIdOrNickname(arg1);
+				if(!target)
+                    return player.notify("~r~Cette personne n'est pas connecté.");
+
+                let message = fullText.substr(arg1.length + 1, fullText.length);
+
+                // if(message.length <= 0)
+                //     return player.notify("~r~Utilisez /delit id message");
+
+                target.addDelit(message.replace(/'/g, ' '));
+                player.notifyWithPicture("Police", "", `Vous avez ajouté un délit à ${target.name} : ${message}.`, "CHAR_CALL911");
+            }
+        });
         mp.events.add({
             "playerExitVehicle" : (player) => {
                 if(player.cuffed) player.setCuff(true);
@@ -83,6 +102,11 @@ class Police extends faction {
                 if(shape === this.cellule1 || shape === this.cellule2 || shape === this.cellule3)
                 {
                     player.canGoToJail = true; 
+                }
+                if(shape == this.cautionShape) 
+                {
+                    player.canPayCaution = true;
+                    player.notifyWithPicture("Police", "", `Votre caution pour être libéré s'élève à ~g~${player.delits.length * 2500}$.`, "CHAR_CALL911");
                 }
 
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
@@ -110,6 +134,10 @@ class Police extends faction {
                 {
                     player.canGoToJail = false; 
                 }
+                if(shape == this.cautionShape) 
+                {
+                    player.canPayCaution = false;
+                }
 
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
                 
@@ -121,6 +149,32 @@ class Police extends faction {
                     player.canTakeWeapon = false;
             },
             "sKeys-E" : (player) => {
+                if(player.canPayCaution) 
+                {
+                    let caution = player.delits.length * 2500;
+                    if (player.money.cash < caution)
+                        return player.notify("~r~Vous n'avez pas assez sur vous.");
+
+                    player.changeMoney(-caution);
+
+                    player.jailed = 0;
+
+                    const pos = {
+                        x: 1846.348, 
+                        y: 2585.804, 
+                        z: 45.672,
+                        rot: 269.27
+                    }
+
+                    player.delits = [];
+
+                    player.tp(pos);
+
+                    player.notify("~g~Vous êtes maintenant libre.");
+
+                    clothes.loadPlayerClothes(player);
+                }
+
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
     
                 if(player.canChangeClothes)
@@ -131,6 +185,22 @@ class Police extends faction {
                     this.takeWeapons(player);
             },
         });
+    }
+
+    createCautionPoint(pos) {
+        this.cautionShape = mp.colshapes.newSphere(pos.x, pos.y, pos.z, 1);
+        this.cautionLabel = mp.labels.new("[caution]", new mp.Vector3(pos.x, pos.y, pos.z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 3,
+			color: [255, 255, 255, 255],
+        });
+        this.cautionMarker = mp.markers.new(1, new mp.Vector3(pos.x, pos.y, pos.z - 1), 0.75, 
+		{
+			color: [255, 255, 255, 50],
+			visible: true,
+		});
     }
 
     createCellulesPoint(cellules) {
@@ -241,11 +311,6 @@ class Police extends faction {
         if(player.rank >= 2)
         {
             player.setWeapon(0x99AEEB3B, 150);
-        }
-        if(player.rank >= 3)
-        {
-            player.setWeapon(0x497FACC3, 5);
-            player.setWeapon(0xA0973D5E, 5);
         }
         if(player.rank >= 4)
         {

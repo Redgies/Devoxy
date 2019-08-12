@@ -16,11 +16,12 @@ require('./Basic/sGPS');
 require('./Basic/sDoors');
 require('./Basic/sBlip');
 require('./Basic/sNoClip');
-require('./Basic/sVocal');
 require('./Basic/Auth/sLogin');
 require('./Basic/Auth/sRegister');
 require('./Basic/sChat');
+require('./Basic/sLocation');
 require('./Basic/Money/sATM');
+require('./Basic/sVoice');
 
 require('./Jobs/sOrangeCollector');
 require('./Jobs/sCluckinBellCourier');
@@ -37,3 +38,4 @@ require('./Factions/Police/sPolice');
 require('./Factions/Police/sPoliceGarage');
 require('./Factions/Bennys/sBennys');
 require('./Factions/LsCustom/sLsCustom');
+require('./Factions/Hospital/sHospital');

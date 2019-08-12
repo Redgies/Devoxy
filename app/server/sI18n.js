@@ -363,7 +363,7 @@ const i18n = {
 		},
 
 		newFine: {
-			eng: 'New fine',
+			eng: 'Nouvelle facture',
 			rus: 'Новый штраф',
 			ger: 'Neue Strafe',
 			br: 'Nova multa', 
@@ -619,7 +619,7 @@ const i18n = {
 		},
 
 		transferTo: {
-			eng: 'Transfer to Hospital',
+			eng: 'Transfert aux urgences',
 			rus: 'Перевоз к больнице',
 			ger: 'Transfer ins Krankenhaus',
 			br: 'Transferência para o hospital', 
