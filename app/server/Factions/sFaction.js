@@ -5,9 +5,10 @@ const vehicleSingletone = require('../Basic/Vehicles/sVehicleSingletone');
 const factionsList = [];
 
 class Faction {
-	constructor(id, name, ranks, maxRank) {
+	constructor(id, name, surname,  ranks, maxRank) {
 		this.id = id;
 		this.name = name;
+		this.surname = surname;
 		this.ranks = ranks;
 		this.maxRank = maxRank;
 
@@ -364,7 +365,7 @@ mp.events.addCommand({
 function getFactionName(player)
 {
 	for (const f of factionsList) {
-		if (f.isInThisFaction(player)) return f.name;
+		if (f.isInThisFaction(player)) return f.surname + ' | ' + f.getRank(player);
 	}
 }
 module.exports.getFactionName = getFactionName;

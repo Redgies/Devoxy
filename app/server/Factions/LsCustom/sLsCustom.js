@@ -4,6 +4,7 @@ const faction = require('../sFaction');
 const factionData = {
     id: 3,
     name: "Los Santos Custom",
+    surname: "LS Cus.",
     ranks: [
         "Dépanneur",
         "Mécanicien",
@@ -31,7 +32,7 @@ const factionData = {
 
 class LsCustom extends faction {
 	constructor() {
-        super(factionData.id, factionData.name, factionData.ranks, factionData.maxRank);
+        super(factionData.id, factionData.name, factionData.surname, factionData.ranks, factionData.maxRank);
 
         this.createEvents();
         this.createServicePoint(factionData.servicePoint);

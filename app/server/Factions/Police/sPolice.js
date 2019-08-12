@@ -5,6 +5,7 @@ const clothes = require('../../Character/sClothes');
 const factionData = {
     id: 1,
     name: "Los Santos Police Departement",
+    surname: "LSPD",
     ranks: [
         "Cadet",
         "Officier", 
@@ -53,7 +54,7 @@ const factionData = {
 
 class Police extends faction {
 	constructor() {
-        super(factionData.id, factionData.name, factionData.ranks, factionData.maxRank);
+        super(factionData.id, factionData.name, factionData.surname, factionData.ranks, factionData.maxRank);
 
         this.createEvents();
         this.createServicePoint(factionData.servicePoint);
