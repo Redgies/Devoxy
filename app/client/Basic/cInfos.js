@@ -6,7 +6,9 @@ let money;
 let job = 'Chômeur';
 
 mp.events.add({
-    "cMoney-Update" : (value) => money = value,
+    "cMoney-Update" : (value) => { 
+        money = value
+    },
     "cJob-Update" : (value) => {
         job = value;
         mp.gui.chat.push("job :" + job);
