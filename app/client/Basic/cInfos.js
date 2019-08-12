@@ -14,13 +14,11 @@ mp.events.add({
     },
     "playerStartTalking": (p) => 
     {
-        if(p == player)
-            mp.gui.chat.push("je parle");
+        mp.gui.chat.push(`${p.name} parle`);
     },
     "playerStopTalking": (p) => 
     {
-        if(p == player)
-            mp.gui.chat.push("je parle plus");
+        mp.gui.chat.push(`${p.name} ferme sa putin de gueule`);
     },
     "render": () =>
     {
