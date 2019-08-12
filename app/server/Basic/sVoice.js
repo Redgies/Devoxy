@@ -6,7 +6,7 @@
 var fs = require('fs');
 var PeerServer = require('peer').PeerServer;
 
-
+const MAX_PLAYERS = 200;
 //
 //  Var(s)  BEGIN
 //
