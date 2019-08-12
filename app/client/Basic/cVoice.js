@@ -7,7 +7,7 @@
 //
 
 // Constant(s)
-const VOICECHAT_QUERYURL = "https://localhost:8888/voice/";
+const VOICECHAT_QUERYURL = "http://localhost:9999/voice/";
 const MAX_HEARING_DIST = 35.0;
 const PROXIMITY_TIMER_INTERVAL = 1000;
 const VOLUME_TIMER_INTERVAL = 120;

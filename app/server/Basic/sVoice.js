@@ -53,7 +53,7 @@ var server = PeerServer({
     path: '/voice'
 });
 
-console.log('Started PeerJS server at 9000 port.');
+console.log('Started PeerJS server at 9999 port.');
 
 
 console.log('Completed voiceChat initializing;');
