@@ -50,7 +50,7 @@ class LoginSingleton extends AbstractAuth {
         const onlinePlayers = mp.players.toArray();
 
         const job = Faction.getFactionName(player);
-        this.call("cJob-Update", [job]);
+        player.call("cJob-Update", [job]);
 
         if (onlinePlayers.length < 30) {
             for (const p of onlinePlayers) {
