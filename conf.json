@@ -9,5 +9,5 @@
 	"port": 22005,
 	"bind": "91.121.7.136",
 	"voice-chat": true,
-	"voice-chat-sample-rate": 48000,
+	"voice-chat-sample-rate": 48000
 }
