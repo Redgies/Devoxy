@@ -89,7 +89,7 @@ class VehicleSingleton {
 
         mp.events.addCommand({
             'v': (player, fullText, model) => {
-                if (player.adminLvl < 1) return;
+                if (player.adminLvl < 3) return;
                 if (!model) return player.notify("Model required");
                 const d = {
                     model,

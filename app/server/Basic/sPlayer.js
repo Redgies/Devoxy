@@ -13,10 +13,10 @@ class PlayerSingleton {
 
     async createNewUser(player, email, firstName, lastName, pass) {
         const firstSpawn = { 
-            x: -164, 
-            y: 6426, 
-            z: 32, 
-            rot: 48, 
+            x: -1037.844, 
+            y: -2738.01, 
+            z: 20.169, 
+            rot: 319.86,
             dim: 0, 
         }
         const weapons = [];
