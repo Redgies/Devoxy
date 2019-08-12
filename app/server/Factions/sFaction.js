@@ -23,6 +23,9 @@ class Faction {
             "playerQuit" : (player) => {
 				this.setWorking(player, false);
 			},  
+			"playerRead" : (player) => {
+
+			}
 		});
 			
 		mp.events.addCommand({	
@@ -357,6 +360,15 @@ mp.events.addCommand({
 		}
 	},
 });
+
+function getFactionName(player)
+{
+	for (const f of factionsList) {
+		if (f.isInThisFaction(player)) return f.name;
+	}
+}
+module.exports.getFactionName = getFactionName;
+
 
 
 async function loadUser(player) {

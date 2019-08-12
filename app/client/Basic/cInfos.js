@@ -6,6 +6,7 @@ let money;
 
 mp.events.add({
     "cMoney-Update" : (value) => money = value,
+    "cJob-Update" : (value) => job = value,
     "render": () =>
     {
         speedo.execute(`updateMoney(${money});`);  
