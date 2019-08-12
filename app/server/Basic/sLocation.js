@@ -81,6 +81,7 @@ class Location {
 
 for(let i = 0; i < locationsData.length; i++)
 {
+    console.log("new location");
     new Location(locationsData[i]);
 }
 
