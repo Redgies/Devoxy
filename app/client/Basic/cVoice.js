@@ -1,7 +1,7 @@
 const Use3d = true;
 const UseAutoVolume = false;
 
-const MaxRange = 50.0;
+const MaxRange = 20.0;
 
 mp.keys.bind(0x73, true, function() {
     mp.voiceChat.muted = !mp.voiceChat.muted;

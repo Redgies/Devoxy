@@ -19,7 +19,7 @@ mp.events.add({
     "playerStopTalking": (player) => 
     {
         mp.gui.chat.push("je parle plus");
-    }
+    },
     "render": () =>
     {
         speedo.execute(`updateMoney(${money}, '${job}');`);  
