@@ -304,7 +304,7 @@ mp.events.addCommand({
     
 });
 
-mp.events.add("anim", (dict, name, speed, flag) => {
+mp.events.add("anim", (player, dict, name, speed, flag) => {
     player.playAnimation(dict.toString(), name.toString(), speed, flag);
 });
 
