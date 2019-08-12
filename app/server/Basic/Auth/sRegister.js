@@ -105,6 +105,7 @@ mp.events.add({
         player.dimension = 1001;
         playerSingleton.loadPlayerTemplate(player);
         player.call("cLogin-ShowLoginWindow");
+        player.call("cPeds-Init");
     },
 
     "sRegister-TryGetCodeToRegister" : async (player, email) => {

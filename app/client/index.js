@@ -1,5 +1,6 @@
 require('./cKeys');
 require('./Basic/cLogin');
+require('./Basic/cPeds');
 require('./Basic/cMoney');
 require('./Character/cCharacterCreator');
 require('./Business/cBusiness');
