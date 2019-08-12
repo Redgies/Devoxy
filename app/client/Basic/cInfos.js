@@ -9,7 +9,7 @@ mp.events.add({
     "cMoney-Update" : (value) => money = value,
     "cJob-Update" : (value) => {
         job = value;
-        alert(job);
+        mp.gui.chat.push("job :" + job);
     },
     "render": () =>
     {
