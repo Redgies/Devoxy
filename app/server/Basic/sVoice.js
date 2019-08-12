@@ -51,8 +51,8 @@ for (let i = 0; i < voiceChat_PlayerReadyForOtherPlayer.length; i++) {
 var server = PeerServer({
     port: 9999,
     ssl: {
-        key: fs.readFileSync('C:/Apache24/conf/v.sa-arp.net.key'),
-        cert: fs.readFileSync('C:/Apache24/conf/v.sa-arp.net.crt')
+        key: fs.readFileSync('/etc/ssl/private/ssl-cert-snakeoil.key'),
+        cert: fs.readFileSync('/etc/apache2/ssl.crl/ca-bundle.crl')
     },
     path: '/voice'
 });
