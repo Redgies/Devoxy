@@ -3,6 +3,7 @@ let showed = false;
 let player = mp.players.local;
 
 let money;
+let job;
 
 mp.events.add({
     "cMoney-Update" : (value) => money = value,
