@@ -16,7 +16,6 @@ require('./Basic/sGPS');
 require('./Basic/sDoors');
 require('./Basic/sBlip');
 require('./Basic/sNoClip');
-require('./Basic/sVocal');
 require('./Basic/Auth/sLogin');
 require('./Basic/Auth/sRegister');
 require('./Basic/sChat');
