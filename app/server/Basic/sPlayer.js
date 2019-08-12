@@ -321,6 +321,8 @@ mp.events.add({
     "playerDeath" : (player, reason, killer) => {
         player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
 
+        player.resetAllWeapons();
+
         if (!killer || player === killer) return;
         // if (killer.faction == 1 && killer.working == true) return;
 

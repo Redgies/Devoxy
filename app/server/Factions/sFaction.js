@@ -23,10 +23,7 @@ class Faction {
 		mp.events.add({
             "playerQuit" : (player) => {
 				this.setWorking(player, false);
-			},  
-			"playerRead" : (player) => {
-
-			}
+			}, 
 		});
 			
 		mp.events.addCommand({	
