@@ -229,16 +229,16 @@ class Hospital extends faction {
 			player.setClothes(3, 85, 0, 2); // TORSO
 			player.setClothes(6, 8, 0, 2); // SHOES
 			player.setClothes(4, 96, 0, 2);  // LEGS
-			player.setClothes(11, 13, 1, 2); // TOP
+			player.setClothes(11, 13, 0, 2); // TOP
 			player.setClothes(8, 129, 0, 2); // CEINTURE RADIO
             player.setClothes(10, 57, 0, 2); // PARAMEDIC
         }
         if(player.rank == 4)
         {
-			player.setClothes(3, 15, 0, 2); // TORSO
-			player.setClothes(6, 54, 0, 2); // SHOES
-			player.setClothes(4, 49, 0, 2);  // LEGS
-			player.setClothes(11, 250, 0, 2); // TOP
+			player.setClothes(3, 85, 0, 2); // TORSO
+			player.setClothes(6, 8, 0, 2); // SHOES
+			player.setClothes(4, 96, 0, 2);  // LEGS
+			player.setClothes(11, 13, 0, 2); // TOP
 			player.setClothes(8, 129, 0, 2); // CEINTURE RADIO
             player.setClothes(10, 57, 0, 2); // PARAMEDIC
         }
@@ -248,43 +248,37 @@ class Hospital extends faction {
         if(player.rank == 1)
         {
 			player.setClothes(10, 66, 0, 2); // PARAMEDIC
+			player.setClothes(6, 1, 0, 2); // SHOES
+			player.setClothes(4, 23, 0, 2);  // LEGS
+			player.setClothes(11, 258, 0, 2); // TOP
         }
         if(player.rank == 2)
         {
-            player.setProp(0, 45, 0);
-            player.setClothes(8, 152, 0, 2); 
-            player.setClothes(6, 25, 0, 2);
-            player.setClothes(4, 77, 0, 2);
-            player.setClothes(11, 48, 0, 2);
-            player.setClothes(7, 0, 0, 2);
+			player.setClothes(10, 66, 0, 2); // PARAMEDIC
+			player.setClothes(6, 1, 0, 2); // SHOES
+			player.setClothes(4, 23, 0, 2);  // LEGS
+			player.setClothes(11, 258, 0, 2); // TOP
         }
         if(player.rank == 3)
         {
-            player.setProp(0, 45, 0);
-            player.setClothes(8, 35, 0, 2); 
-            player.setClothes(6, 25, 0, 2);
-            player.setClothes(4, 77, 0, 2);
-            player.setClothes(11, 48, 0, 2);
-            player.setClothes(7, 0, 0, 2);
+			player.setClothes(10, 66, 0, 2); // PARAMEDIC
+			player.setClothes(6, 1, 0, 2); // SHOES
+			player.setClothes(4, 23, 0, 2);  // LEGS
+			player.setClothes(11, 258, 0, 2); // TOP
         }
         if(player.rank == 4)
         {
-            player.setProp(0, 45, 0);
-            player.setClothes(8, 35, 0, 2); 
-            player.setClothes(6, 25, 0, 2);
-            player.setClothes(4, 77, 0, 2);
-            player.setClothes(11, 48, 0, 2);
-            player.setClothes(10, 7, 1, 2);
-            player.setClothes(7, 0, 0, 2);
+			player.setClothes(10, 66, 0, 2); // PARAMEDIC
+			player.setClothes(6, 1, 0, 2); // SHOES
+			player.setClothes(4, 23, 0, 2);  // LEGS
+			player.setClothes(11, 258, 0, 2); // TOP
         }
         if(player.rank == 5)
         {
-            player.setProp(0, 45, 0);
-            player.setClothes(8, 35, 0, 2); 
-            player.setClothes(6, 25, 0, 2);
-            player.setClothes(4, 77, 0, 2);
-            player.setClothes(11, 85, 0, 2);
-            player.setClothes(7, 0, 0, 2);
+			player.setClothes(10, 66, 0, 2); // PARAMEDIC
+			player.setClothes(6, 1, 0, 2); // SHOES
+			player.setClothes(4, 23, 0, 2);  // LEGS
+			player.setClothes(11, 258, 0, 2); // TOP
         }
 	}
 }
