@@ -128,6 +128,7 @@ class VehicleSingleton {
                     ownerId: 0,
                     whoCanOpen: JSON.stringify([player.guid]),
                     factionId: 0,
+                    tunning: JSON.stringify([]),
                     numberPlate: this.generateRandomNumberPlate(),
                     primaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
                     secondaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),

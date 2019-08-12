@@ -52,10 +52,12 @@ class Location {
                         whoCanOpen: JSON.stringify([player.guid]),
                         factionId: 0,
                         numberPlate: 'LOCATION',
+                        tunning: JSON.stringify([]),
                         primaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
                         secondaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
                     }
-                    new Vehicle(d);
+                    const vehicle = new Vehicle(d);
+                    player.putIntoVehicle(vehicle, -1);
                     misc.log.debug(`${player.name} spawned faggio2`);
 
                     player.changeMoney(-price);
