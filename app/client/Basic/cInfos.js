@@ -12,9 +12,10 @@ mp.events.add({
     "cJob-Update" : (value) => {
         job = value;
     },
-    "playerStartTalking": (player) => 
+    "playerStartTalking": (p) => 
     {
-        mp.gui.chat.push("je parle");
+        if(p == playerStartTalking)
+            mp.gui.chat.push("je parle");
     },
     "playerStopTalking": (p) => 
     {
