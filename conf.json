@@ -3,10 +3,11 @@
 	"name": "[en developpement] [freeaccess] Devoxy.fr - Choisis ta vie",
 	"language": "fr",
 	"gamemode": "roleplay",
+	"csharp" : true,
 	"stream-distance": 500.0,
 	"announce": true,
 	"port": 22005,
 	"bind": "91.121.7.136",
 	"voice-chat": true,
-	"voice-chat-sample-rate": 48000
+	"voice-chat-sample-rate": 48000,
 }
