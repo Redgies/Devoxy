@@ -7,8 +7,8 @@ const braquageData = [
     {id: 3, name: 'Superette', model: 351, price: 6000, pos: {x: -709.421, y: -904.421, z: 19.216}, color: 2, time: 45, text: 'Braquage en cours à la ~g~superette verte~w~.'}, 
     {id: 4, name: 'Superette', model: 351, price: 6000, pos: {x: 1159.85, y: -313.997, z: 69.205}, color: 5, time: 45, text: 'Braquage en cours à la ~y~superette jaune~w~.'} ,
     {id: 5, name: 'Bijouterie', model: 351, price: 11000, pos: {x: -630.854, y: -228.175, z: 38.057}, color: 4, time: 120, text: 'Braquage en cours à la bijouterie.'},
-    {id: 6, name: 'Banque 1', model: 500, price: 30000, pos: {x: -630.854, y: -228.175, z: 38.057}, color: 52, time: 300, text: 'Braquage en cours à la banque 1.'},
-    {id: 7, name: 'Banque 2 ', model: 500, price: 30000, pos: {x: -630.854, y: -228.175, z: 38.057}, color: 52, time: 300, text: 'Braquage en cours à la banque.'} 
+    {id: 6, name: 'Banque 1', model: 500, price: 30000, pos: {x: -1211.235, y: -335.391, z: 37.781}, color: 69, time: 300, text: 'Braquage en cours à la banque 1.'},
+    {id: 7, name: 'Banque 2 ', model: 500, price: 30000, pos: {x: -2957.646, y: 481.879, z: 15.697}, color: 69, time: 300, text: 'Braquage en cours à la banque.'} 
 ];
 class Braquage {
     constructor(d)
