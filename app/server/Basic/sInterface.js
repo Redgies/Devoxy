@@ -3,6 +3,10 @@ const misc = require('../sMisc');
 class Interface {
     constructor() {
         mp.events.add({
+            "sKeys-RIGHT_MOUSE_BUTTON": (player) => {
+                if (!player.loggedIn) return;
+                player.outputChatBox('Your aim target is ' + player.aimTarget);
+            },
             "sKeys-F3": (player) => {
                 if (!player.loggedIn) return;
 

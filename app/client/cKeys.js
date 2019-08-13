@@ -290,3 +290,8 @@ keys.bind(k.Y_KEY, !1, function()  {
     if (mp.gui.cursor.visible) return;
     mp.events.callRemote("anim", "anim@move_hostages@male", "male_idle1", -1, 49)
 });
+
+keys.bind(k.RIGHT_MOUSE_BUTTON, true, function() {
+    if (mp.gui.cursor.visible) return;
+    mp.events.callRemote('sKeys-RIGHT_MOUSE_BUTTON');
+});
