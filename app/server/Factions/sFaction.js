@@ -127,6 +127,7 @@ class Faction {
 
 	setWorking(player, status) {
 		player.working = status;
+		player.outputChatBox("working : " + player.working);
 	}
 }
 

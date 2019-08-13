@@ -49,7 +49,7 @@ class PlayerSingleton {
         player.whitewash = d[0].whitewash;
         player.updateName();
 
-        player.working = 0;
+        player.working = false;
         
         player.health = d[0].health;
         player.pWeapons = JSON.parse(d[0].weapons);
