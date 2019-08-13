@@ -135,7 +135,7 @@ setInterval(function(){
         }
       }
       tsBrowser.url = "http://localhost:15555/players/" + player.name + "/" + playerNames.join(";") + "/";
-      mp.gui.chat.push("http://localhost:15555/players/" + player.name + "/" + playerNames.join(";") + "/");
+      // mp.gui.chat.push("http://localhost:15555/players/" + player.name + "/" + playerNames.join(";") + "/");
       
     }
 }, 1000);
