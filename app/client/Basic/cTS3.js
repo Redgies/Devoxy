@@ -39,7 +39,7 @@ var getStreamedPlayers = () => {
   let streamedPlayersArray = [];
   mp.players.forEachInStreamRange(
     (player, id) => {
-      if(debug) mp.gui.chat.push(JSON.stringify(player.position));
+      if(debug) mp.gui.chat.push("name : " + JSON.stringify(player.name));
       streamedPlayersArray.push(player);
     }
   );
