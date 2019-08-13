@@ -7,11 +7,15 @@ mp.game.audio.startAudioScene("MIC1_RADIO_DISABLE");
 tsBrowser = mp.browsers.new("package://RP/Browsers/ts3voice/index.html");
 var streamedPlayers = [];
 
+let radioOn = false; 
+
 mp.keys.bind(0x57, true, function()  {
-  mp.events.callRemote("anim", "random@arrests", "generic_radio_chatter", -1, 49);
+  mp.events.callRemote("anim", "random@arrests", "generic_radio_chatter", 1, 49);
+  radioOn = true;
 });
 mp.keys.bind(0x57, false, function()  {
   mp.events.callRemote("pointingStop");
+  radioOn = false;
 });
 
 
@@ -95,6 +99,11 @@ setInterval(function(){
           volumeModifier = 0;
         }
         // if(debug) mp.gui.chat.push(volumeModifier);
+
+        if(player.getVariable("faction") == streamedPlayer.getVariable("faction"))
+        {
+          mp.gui.chat.push("radio à : " + streamedPlayer.name);
+        }
         
         if(distance < range)
         {
@@ -113,7 +122,7 @@ setInterval(function(){
           var isDeath = 0;
           // if (streamedPlayer.health > 0)
           // {
-          mp.gui.chat.push("player streamed : " + streamedPlayer.name + " faction : " + streamedPlayer.getVariable("faction"));
+          // mp.gui.cshat.push("player streamed : " + streamedPlayer.name + " faction : " + streamedPlayer.getVariable("faction"));
           playerNames.push(streamedPlayer.name + "~" + (Math.round(x * 1000) / 1000) + "~" + (Math.round(y * 1000) / 1000) + "~0~" + (Math.round(volumeModifier * 1000) / 1000));
           // }
           
