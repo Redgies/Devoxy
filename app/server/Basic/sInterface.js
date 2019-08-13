@@ -5,7 +5,11 @@ class Interface {
         mp.events.add({
             "sKeys-RIGHT_MOUSE_BUTTON": (player) => {
                 if (!player.loggedIn) return;
-                player.outputChatBox('Your aim target is ' + player.aimTarget);
+                let playerIsAiming = player.isAiming
+                if (playerIsAiming)
+                  player.outputChatBox('You are aiming right now!');
+                else
+                  player.outputChatBox('You are not aiming right now!');
             },
             "sKeys-F3": (player) => {
                 if (!player.loggedIn) return;
