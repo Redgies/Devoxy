@@ -110,7 +110,7 @@ setInterval(function(){
           }
           else
           {
-            volumeModifier = -10;
+            volumeModifier = -10000000;
           }
 
           playerNames.push(streamedPlayer.name + "~0~0~0~" + volumeModifier);
