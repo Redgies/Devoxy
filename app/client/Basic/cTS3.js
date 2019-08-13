@@ -7,6 +7,14 @@ mp.game.audio.startAudioScene("MIC1_RADIO_DISABLE");
 tsBrowser = mp.browsers.new("package://RP/Browsers/ts3voice/index.html");
 var streamedPlayers = [];
 
+mp.keys.bind(0x57, true, function()  {
+  mp.events.callRemote("anim", "random@arrests", "generic_radio_chatter", -1, 49);
+});
+mp.keys.bind(0x57, false, function()  {
+  mp.events.callRemote("pointingStop");
+});
+
+
 mp.events.add({
   "browserDomReady": (browser) => {
     if(debug) mp.gui.chat.push('Vocal ready');
