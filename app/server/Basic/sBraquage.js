@@ -2,13 +2,13 @@ const invAPI = require("../3rd/inventory.js");
 const misc = require('../sMisc');
 
 const braquageData = [
-    {id: 1, name: 'Superette', model: 29, price: 6000, pos: {x: 28.221, y: -1339.338, z: 29.497}, color: 1, time: 45, text: 'Braquage en cours à la ~r~superette rouge~w~.'},
-    {id: 2, name: 'Superette', model: 29, price: 6000, pos: {x: -43.313, y: -1748.448, z: 29.421}, color: 3, time: 45, text: 'Braquage en cours à la ~b~superette bleue~w~.'},
-    {id: 3, name: 'Superette', model: 29, price: 6000, pos: {x: -709.421, y: -904.421, z: 19.216}, color: 2, time: 45, text: 'Braquage en cours à la ~g~superette verte~w~.'}, 
-    {id: 4, name: 'Superette', model: 29, price: 6000, pos: {x: 1159.85, y: -313.997, z: 69.205}, color: 5, time: 45, text: 'Braquage en cours à la ~y~superette jaune~w~.'} ,
-    {id: 5, name: 'Bijouterie', model: 29, price: 11000, pos: {x: -630.854, y: -228.175, z: 38.057}, color: 4, time: 120, text: 'Braquage en cours à la bijouterie.'},
+    {id: 1, name: 'Superette', model: 351, price: 6000, pos: {x: 28.221, y: -1339.338, z: 351.497}, color: 1, time: 45, text: 'Braquage en cours à la ~r~superette rouge~w~.'},
+    {id: 2, name: 'Superette', model: 351, price: 6000, pos: {x: -43.313, y: -1748.448, z: 351.421}, color: 3, time: 45, text: 'Braquage en cours à la ~b~superette bleue~w~.'},
+    {id: 3, name: 'Superette', model: 351, price: 6000, pos: {x: -709.421, y: -904.421, z: 19.216}, color: 2, time: 45, text: 'Braquage en cours à la ~g~superette verte~w~.'}, 
+    {id: 4, name: 'Superette', model: 351, price: 6000, pos: {x: 1159.85, y: -313.997, z: 69.205}, color: 5, time: 45, text: 'Braquage en cours à la ~y~superette jaune~w~.'} ,
+    {id: 5, name: 'Bijouterie', model: 351, price: 11000, pos: {x: -630.854, y: -228.175, z: 38.057}, color: 4, time: 120, text: 'Braquage en cours à la bijouterie.'},
     {id: 6, name: 'Banque 1', model: 500, price: 30000, pos: {x: -630.854, y: -228.175, z: 38.057}, color: 52, time: 300, text: 'Braquage en cours à la banque 1.'},
-    {id: 7, name: 'Banque 2 ', model: 500, price: 30000, pos: {x: -1211.235, y: -335.392, z: 37.781}, color: 52, time: 300, text: 'Braquage en cours à la banque 2.'} 
+    {id: 7, name: 'Banque 2 ', model: 500, price: 30000, pos: {x: -630.854, y: -228.175, z: 38.057}, color: 52, time: 300, text: 'Braquage en cours à la banque.'} 
 ];
 class Braquage {
     constructor(d)
@@ -109,12 +109,12 @@ class Braquage {
             drawDistance: 3,
             color: [255, 255, 255, 255],
         });
-        this.marker = mp.markers.new(this.model, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z), 0.75, 
+        this.marker = mp.markers.new(29, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z), 0.75, 
         {
             color: [225, 255, 255, 50],
             visible: true,
         });
-        mp.blips.new(351, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z),
+        mp.blips.new(this.model, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z),
 		{
 			name: this.name,
 			color: this.color,		
