@@ -104,7 +104,7 @@ setInterval(function(){
         {
           volumeModifier = 1;
           playerNames.push(streamedPlayer.name + "~0~0~0~" + (Math.round(volumeModifier * 1000) / 1000));
-          // mp.gui.chat.push("radio à : " + streamedPlayer.name);
+          continue;
         }
         
         if(distance < range)
