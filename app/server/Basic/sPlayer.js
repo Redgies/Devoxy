@@ -53,7 +53,7 @@ class PlayerSingleton {
         player.delits = JSON.parse(d[0].delits);
         player.jailed = d[0].jailed;
 
-        player._inventory = d[0].inventory;
+        player._inventory = JSON.parse(d[0].inventory);
 
         if(player.jailed)
             player.tpToJail();
