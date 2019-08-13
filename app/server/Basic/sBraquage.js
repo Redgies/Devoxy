@@ -1,7 +1,7 @@
 const misc = require('../sMisc');
 
 const braquageData = [
-    {pos: {x: 28.221, y: -1339.338, z: 29.497}, color: 1} 
+    {pos: {x: 28.221, y: -1339.338, z: 29.497}, color: 1, time: 30} 
 ];
 
 
@@ -13,8 +13,49 @@ class Braquage {
         this.pos.y = d.pos.y;
         this.pos.z = d.pos.z;
         this.color = d.color;
+        this.timer = 0;
+        this.time = d.time;
 
         this.createShape();
+        this.createEvents();
+    }
+
+    createEvents()
+    {
+        mp.events.add({
+            "playerEnterColshape" : (player, shape) => {
+                if(shape === this.shape) {
+                    player.notify("Appuyez ~b~E~w~ pour commencer le braquage.");
+                    player.canBraquage = true;
+                }
+            },
+            "playerExitColshape" : (player, shape) => {
+                if(shape === this.shape)
+                    player.canBraquage = false;
+            },
+            "sKeys-E" : (player) => {
+                if(player.canBraquage) 
+                {
+                    let playerWeapon = player.weapon;
+
+                    if(playerWeapon == 2725352035) return player.notify("~r~Vous n'avez pas d'armes en mains.");
+
+                    this.timer = this.time;
+
+                    let timing = setInterval(() => {
+                        this.timer--;
+
+                        player.notify(`Il reste ${this.timer} secondes.`);
+
+                        if(this.timer <= 0) 
+                        {
+                            player.notify(`Braquage terminé bogoss !`);
+                            clearInterval(timing);
+                        }
+                    }, 1000);
+                }
+            },
+        });        
     }
 
     createShape()
@@ -37,7 +78,7 @@ class Braquage {
 			name: "Superette",
 			color: this.color,		
 			shortRange: true,
-			scale: 0.9,
+			scale: 1,
 		});
     }
 }
