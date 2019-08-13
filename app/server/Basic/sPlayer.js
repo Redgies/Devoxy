@@ -59,6 +59,7 @@ class PlayerSingleton {
 
         player.call("cCloseCefAndDestroyCam");
         player.call("cFaction-Update", [player.faction]);
+        player.setVariable('faction', player.faction);
 
         const q1 = moneySingleton.loadUser(player);
         const q2 = characterSingleton.loadPlayerBody(player);
