@@ -20,6 +20,19 @@ mp.events.add('browserDomReady', (browser) => {
     refresh = 1;
 });
 
+mp.events.add('Teamspeak_LipSync', (player) => {
+  // RAGE.Elements.Player player = RAGE.Elements.Entities.Players.GetAtRemote(Convert.ToUInt16(args[0]));
+  // if (player != null)
+  // {
+  //     bool speak = Convert.ToBoolean(args[1].ToString());
+
+  //     if (speak)
+  //         player.PlayFacialAnim("mic_chatter", "mp_facial");
+  //     else
+  //         player.PlayFacialAnim("mood_normal_1", "facials@gen_male@variations@normal");
+  // }
+  mp.gui.chat.push("player : " + JSON.stringify(player));
+});
 
 // mp.events.add('entityStreamIn', (entity) => {
 //   if(entity.type == "player"){
