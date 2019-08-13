@@ -1,9 +1,10 @@
 const misc = require('../sMisc');
 
 const braquageData = [
-    {pos: {x: 28.221, y: -1339.338, z: 29.497}, color: 1, time: 30} 
+    {pos: {x: 28.221, y: -1339.338, z: 29.497}, color: 1, time: 30, text: 'Braquage en cours à la ~r~superette rouge~w~.'} 
 ];
 
+let timing;
 
 class Braquage {
     constructor(d)
@@ -15,6 +16,7 @@ class Braquage {
         this.color = d.color;
         this.timer = 0;
         this.time = d.time;
+        this.text = d.text;
 
         this.createShape();
         this.createEvents();
@@ -24,7 +26,6 @@ class Braquage {
     {
         mp.events.add({
             "playerEnterColshape" : (player, shape) => {
-                player.notify("ntm");
                 if(shape === this.shape) {
                     player.notify("Appuyez ~b~E~w~ pour commencer le braquage.");
                     player.canBraquage = true;
@@ -32,7 +33,13 @@ class Braquage {
             },
             "playerExitColshape" : (player, shape) => {
                 if(shape === this.shape)
+                {
+                    if(player.canBraquage)
+                    {
+                        clearInterval(timing); 
+                    }
                     player.canBraquage = false;
+                }
             },
             "sKeys-E" : (player) => {
                 if(player.canBraquage) 
@@ -41,14 +48,20 @@ class Braquage {
 
                     if(playerWeapon == 2725352035) return player.notify("~r~Vous n'avez pas d'armes en mains.");
 
+                    for(const p of mp.players.toArray()) {
+                        if(p.faction !== 1 || p.working !== 1) continue;
+                        
+                        p.notifyWithPicture("Appel 911", "Braquage", this.text, "CHAR_CALL911");
+                    }
+
                     this.timer = this.time;
 
-                    let timing = setInterval(() => {
+                    timing = setInterval(() => {
                         this.timer--;
 
-                        player.notify(`Il reste ${this.timer} secondes.`);
+                        player.notify(`Il reste ~b~${this.timer} ~w~secondes.`);
 
-                        if(this.timer <= 0) 
+                        if(this.timer <= 1) 
                         {
                             player.notify(`Braquage terminé bogoss !`);
                             clearInterval(timing);
@@ -61,7 +74,7 @@ class Braquage {
 
     createShape()
     {
-        this.shape = mp.colshapes.newSphere(this.pos.x, this.pos.y, this.pos.z, 1);
+        this.shape = mp.colshapes.newSphere(this.pos.x, this.pos.y, this.pos.z, 3);
         this.label = mp.labels.new("[braquage]", new mp.Vector3(this.pos.x, this.pos.y, this.pos.z),
         {
             los: false,
