@@ -58,7 +58,7 @@ class PlayerSingleton {
             player.tp(JSON.parse(d[0].position));
 
         player.call("cCloseCefAndDestroyCam");
-        this.call("cFaction-Update", [player.faction]);
+        player.call("cFaction-Update", [player.faction]);
 
         const q1 = moneySingleton.loadUser(player);
         const q2 = characterSingleton.loadPlayerBody(player);
