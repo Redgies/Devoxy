@@ -20,6 +20,15 @@ mp.events.add({
         player.unsetWeapon(playerWeapon);
 
         player.outputChatBox("weapon : " + playerWeapon);
+    },
+    "sInventory-useItem": (player, key) => {
+        const inventory = player.getInventory();
+
+        inventory.forEach((item, index) => {
+            if(key !== index) continue;
+
+
+        });
     }
 });
 
@@ -48,7 +57,11 @@ invAPI.on("inventoryReplaced", (player, oldInventory, newInventory) => {
 });
 
 invAPI.addItem("weapon_dagger", "Dagues", "");
-invAPI.addItem("weapon_bat", "Batte", "");
+
+invAPI.addItem("weapon_bat", "Batte", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(2508868239, 1);
+    player.removeItem(inventoryIndex);
+});
 
 invAPI.addItem("item_male_hoodie", "Hoodie (Male)", "A hoodie for freemode male model.", (player, inventoryIndex, itemKey, data) => {
     if (player.model !== mp.joaat("mp_m_freemode_01")) {
