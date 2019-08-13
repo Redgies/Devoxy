@@ -4,6 +4,16 @@ mp.events.add({
     "sInventory-getWeapon": (player) => {
         let playerWeapon = player.weapon;
 
+        switch(playerWeapon)
+        {
+            case 2460120199:
+                player.giveItem("weapon_dagger", "Dagues", 1);
+                break;
+            case 2508868239:
+                player.giveItem("weapon_bat", "Batte", 1);
+                break;
+        }
+
         player.outputChatBox("weapon : " + playerWeapon);
     }
 });
@@ -31,6 +41,9 @@ invAPI.on("itemRemovedCompletely", (player, key, data) => {
 invAPI.on("inventoryReplaced", (player, oldInventory, newInventory) => {
     console.log(`${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`);
 });
+
+invAPI.addItem("weapon_dagger", "Dagues", "");
+invAPI.addItem("weapon_bat", "Batte", "");
 
 invAPI.addItem("item_male_hoodie", "Hoodie (Male)", "A hoodie for freemode male model.", (player, inventoryIndex, itemKey, data) => {
     if (player.model !== mp.joaat("mp_m_freemode_01")) {
