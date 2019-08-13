@@ -60,6 +60,7 @@ class PlayerSingleton {
         else 
             player.tp(JSON.parse(d[0].position));
 
+        players.call("createPed");
         player.call("cCloseCefAndDestroyCam");
         player.call("cFaction-Update", [player.faction]);
         player.setVariable('faction', player.faction);
