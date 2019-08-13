@@ -265,9 +265,4 @@ mp.Player.prototype.removeItem = function(itemIdx, amount = 1) {
     }
 };
 
-// RAGEMP Events
-mp.events.add("playerJoin", (player) => {
-    player._inventory = [];
-});
-
 module.exports = inventoryScript;

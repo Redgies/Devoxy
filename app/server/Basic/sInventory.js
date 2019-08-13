@@ -24,23 +24,23 @@ invAPI.on("inventoryReplaced", (player, oldInventory, newInventory) => {
     console.log(`${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`);
 });
 
-invAPI.addItem("item_dirty_money", "Argent à blanchir", "A hoodie for freemode male model.", (player, inventoryIndex, itemKey, data) => {
-    // if (player.model !== mp.joaat("mp_m_freemode_01")) {
-    //     player.outputChatBox("Can't use this item with your current model.");
-    //     return;
-    // }
+invAPI.addItem("item_male_hoodie", "Hoodie (Male)", "A hoodie for freemode male model.", (player, inventoryIndex, itemKey, data) => {
+    if (player.model !== mp.joaat("mp_m_freemode_01")) {
+        player.outputChatBox("Can't use this item with your current model.");
+        return;
+    }
 
-    let value = 0;
-    if (data && data.hasOwnProperty("value")) texture = data.value;
+    let texture = 0;
+    if (data && data.hasOwnProperty("texture")) texture = data.texture;
 
-    // player.setClothes(11, 7, texture, 2);
-    // player.outputChatBox(`Now wearing: Hoodie with texture variation ${texture}.`);
-    // player.removeItem(inventoryIndex);
+    player.setClothes(11, 7, texture, 2);
+    player.outputChatBox(`Now wearing: Hoodie with texture variation ${texture}.`);
+    player.removeItem(inventoryIndex);
 });
 
-mp.events.addCommand("givedirtymoney", (player, _, value) => {
-    const giveItemResult = player.giveItem("item_dirty_money", 1, {
-        value: Number(value)
+mp.events.addCommand("givehoodie", (player, _, texture) => {
+    const giveItemResult = player.giveItem("item_male_hoodie", 1, {
+        texture: Number(texture)
     });
 
     if (giveItemResult) {
