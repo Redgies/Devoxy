@@ -38,6 +38,9 @@ class Faction {
 				target.faction = this.id;
 				target.rank = 1;
 
+				target.call("cFaction-Update", [target.faction]);
+				target.setVariable('faction', target.faction);
+
 				player.notify(`~g~Vous avez invité ${target.name} dans ${this.name}.`);
 				target.notify(`~g~${player.name} vous a invité dans ${this.name}.`);
 			},
@@ -67,6 +70,9 @@ class Faction {
 
 				target.faction = 0;
 				target.rank = 0;
+
+				target.call("cFaction-Update", [target.faction]);
+				target.setVariable('faction', target.faction);
 
 				player.notify(`~g~Vous virez ${target.name} de la faction.`);
 				target.notify(`~g~${player.name} vous a viré de la faction.`);		
