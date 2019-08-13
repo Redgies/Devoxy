@@ -7,7 +7,7 @@ mp.events.add({
         let playerWeapon = player.weapon;
 
         if(playerWeapon == 2725352035) return;
-        // if(player.faction == 1 && player.working) return;
+        if(player.faction == 1 && player.working) return;
 
         switch(playerWeapon)
         {

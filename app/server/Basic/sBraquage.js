@@ -62,7 +62,7 @@ class Braquage {
                     if(this.finish) return player.notify("~r~Vous ne pouvez pas encore braquer.");
 
                     for(const p of mp.players.toArray()) {
-                        if(p.faction !== 1 || p.working !== 1) continue;
+                        if(p.faction !== 1 || !sp.working) continue;
                     
                         p.notifyWithPicture("Appel 911", "Braquage", this.text, "CHAR_CALL911");
                     }
