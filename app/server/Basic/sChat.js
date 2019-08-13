@@ -247,7 +247,7 @@ class ChatSingleton {
 			},
 			
 			'work': (player, fullText) => {
-				player.outputChatBox("working : " player.working);
+				player.outputChatBox("working : " + player.working);
 			},
 
 			'kick': (player, fullText, arg1, arg2) =>	{
