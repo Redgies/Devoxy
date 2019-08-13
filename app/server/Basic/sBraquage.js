@@ -14,7 +14,6 @@ class Braquage {
         this.pos.z = d.pos.z;
         this.color = d.color;
 
-        this.createEvents();
         this.createShape();
     }
 
