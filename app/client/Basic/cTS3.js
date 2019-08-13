@@ -112,7 +112,6 @@ setInterval(function(){
         {
           // var subPos = streamedPlayerPos.Subtract(playerPos);
           var subPos = {};
-          if(debug) mp.gui.chat.push("player streamed : " + JSON.stringify(streamedPlayer.name));
           subPos.x = streamedPlayerPos.x - playerPos.x;
           subPos.y = streamedPlayerPos.y - playerPos.y;
           subPos.z = streamedPlayerPos.z - playerPos.z;
@@ -126,7 +125,8 @@ setInterval(function(){
           var isDeath = 0;
           if (streamedPlayer.health > 0)
           {
-            playerNames.push(streamedPlayers[i].name + "~" + (Math.round(x * 1000) / 1000) + "~" + (Math.round(y * 1000) / 1000) + "~0~" + (Math.round(volumeModifier * 1000) / 1000));
+            if(debug) mp.gui.chat.push("player streamed : " + JSON.stringify(streamedPlayer.name));
+            playerNames.push(streamedPlayer.name + "~" + (Math.round(x * 1000) / 1000) + "~" + (Math.round(y * 1000) / 1000) + "~0~" + (Math.round(volumeModifier * 1000) / 1000));
           }
           
         }
