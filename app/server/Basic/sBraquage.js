@@ -2,11 +2,11 @@ const invAPI = require("../3rd/inventory.js");
 const misc = require('../sMisc');
 
 const braquageData = [
-    {id: 1, pos: {x: 28.221, y: -1339.338, z: 29.497}, color: 1, time: 30, text: 'Braquage en cours à la ~r~superette rouge~w~.'},
-    {id: 2, pos: {x: -43.313, y: -1748.448, z: 29.421}, color: 3, time: 30, text: 'Braquage en cours à la ~b~superette bleue~w~.'},
-    {id: 3, pos: {x: -709.421, y: -904.421, z: 19.216}, color: 2, time: 30, text: 'Braquage en cours à la ~g~superette verte~w~.'}, 
-    {id: 4, pos: {x: 1159.85, y: -313.997, z: 69.205}, color: 5, time: 30, text: 'Braquage en cours à la ~y~superette jaune~w~.'} ,
-    {id: 5, pos: {x: -1220.265, y: -915.818, z: 11.326}, color: 7, time: 30, text: 'Braquage en cours à la ~p~superette violette~w~.'} 
+    {id: 1, name: 'Superette', price: 6000, pos: {x: 28.221, y: -1339.338, z: 29.497}, color: 1, time: 45, text: 'Braquage en cours à la ~r~superette rouge~w~.'},
+    {id: 2, name: 'Superette', price: 6000, pos: {x: -43.313, y: -1748.448, z: 29.421}, color: 3, time: 45, text: 'Braquage en cours à la ~b~superette bleue~w~.'},
+    {id: 3, name: 'Superette', price: 6000, pos: {x: -709.421, y: -904.421, z: 19.216}, color: 2, time: 45, text: 'Braquage en cours à la ~g~superette verte~w~.'}, 
+    {id: 4, name: 'Superette', price: 6000, pos: {x: 1159.85, y: -313.997, z: 69.205}, color: 5, time: 45, text: 'Braquage en cours à la ~y~superette jaune~w~.'} ,
+    {id: 5, name: 'Bijouterie', price: 11000, pos: {x: -630.854, y: -228.175, z: 38.057}, color: 4, time: 120, text: 'Braquage en cours à la bijouterie.'} 
 ];
 class Braquage {
     constructor(d)
@@ -23,6 +23,8 @@ class Braquage {
         this.used = 0;
         this.finish = 0;
         this.timing;
+        this.name = d.name;
+        this.price = d.price;
 
         this.createShape();
         this.createEvents();
@@ -60,7 +62,7 @@ class Braquage {
                     if(this.finish) return player.notify("~r~Vous ne pouvez pas encore braquer.");
 
                     for(const p of mp.players.toArray()) {
-                        if(p.faction !== 1 && p.working !== 1 && !this.used) continue;
+                        if(p.faction !== 1 || p.working !== 1) continue;
                     
                         p.notifyWithPicture("Appel 911", "Braquage", this.text, "CHAR_CALL911");
                     }
@@ -76,8 +78,8 @@ class Braquage {
 
                         if(this.timer <= 1) 
                         {
-                            player.notify(`Braquage terminé beau goss (~g~+6000$ en argent sale~g~).`);
-                            player.giveItem("item_dirty_money", "Argent sale", 6000);
+                            player.notify(`Braquage terminé beau goss (~g~+${this.price}$ en argent sale~g~).`);
+                            player.giveItem("item_dirty_money", "Argent sale", this.price);
                             clearInterval(this.timing);
 
                             this.used = 0;
@@ -111,7 +113,7 @@ class Braquage {
         });
         mp.blips.new(351, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z),
 		{
-			name: "Superette",
+			name: this.name,
 			color: this.color,		
 			shortRange: true,
 			scale: 1,

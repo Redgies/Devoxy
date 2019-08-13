@@ -44,8 +44,11 @@ class Blanchir {
                             player.changeMoney(+amount);
 
                             player.notify(`Vous avez blanchi de l'argent sale (~g~+${amount}$~w~).`);
+                            return 1;
                         }
                     });
+
+                    player.notify("~r~Vous n'avez rien à blanchir.");
                 }
             },
         });        
