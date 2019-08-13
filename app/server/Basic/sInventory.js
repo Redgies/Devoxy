@@ -24,9 +24,9 @@ invAPI.on("inventoryReplaced", (player, oldInventory, newInventory) => {
     console.log(`${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`);
 });
 
-mp.events.addCommand("givehoodie", (player, _, texture) => {
+mp.events.addCommand("givehoodie", (player, _) => {
     const giveItemResult = player.giveItem("item_male_hoodie", 1, {
-        texture: Number(texture)
+        texture: 1
     });
 
     if (giveItemResult) {
