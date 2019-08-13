@@ -71,7 +71,7 @@ setInterval(function(){
       var streamedPlayers = getStreamedPlayers();
 
       var playerNames = new Array();
-      if(debug) mp.gui.chat.push("streamedd player : " + JSON.stringify(streamedPlayers[0].name));
+    //   if(debug) mp.gui.chat.push("streamedd player : " + JSON.stringify(streamedPlayers[0].name));
       
       // if (API.hasEntitySyncedData(player, "CALLING_PLAYER_NAME") && API.hasEntitySyncedData(player, "CALL_IS_STARTED") && API.getEntitySyncedData(player, "CALL_IS_STARTED").toString() == "1")
       // {
@@ -83,6 +83,7 @@ setInterval(function(){
       // }
       for (var i = 0; i < streamedPlayers.length; i++)
       {
+        var streamedPlayer = streamedPlayers[i];
         var streamedPlayerPos = streamedPlayers[i].position;
         var distance = mp.game.gameplay.getDistanceBetweenCoords(playerPos.x, playerPos.y, playerPos.z, streamedPlayerPos.x, streamedPlayerPos.y, streamedPlayerPos.z, false);
         // if(debug) mp.gui.chat.push(distance);
@@ -107,11 +108,11 @@ setInterval(function(){
         }
         // if(debug) mp.gui.chat.push(volumeModifier);
         
-        if (distance < range)
+        if(distance < range)
         {
           // var subPos = streamedPlayerPos.Subtract(playerPos);
           var subPos = {};
-          if(debug) mp.gui.chat.push(JSON.stringify(streamedPlayers));
+          if(debug) mp.gui.chat.push("player streamed : " + JSON.stringify(streamedPlayer));
           subPos.x = streamedPlayerPos.x - playerPos.x;
           subPos.y = streamedPlayerPos.y - playerPos.y;
           subPos.z = streamedPlayerPos.z - playerPos.z;
@@ -123,7 +124,7 @@ setInterval(function(){
           y = y * 10 / range;
           
           var isDeath = 0;
-          if (streamedPlayers[i].health > 0)
+          if (streamedPlayer.health > 0)
           {
             playerNames.push(streamedPlayers[i].name + "~" + (Math.round(x * 1000) / 1000) + "~" + (Math.round(y * 1000) / 1000) + "~0~" + (Math.round(volumeModifier * 1000) / 1000));
           }
