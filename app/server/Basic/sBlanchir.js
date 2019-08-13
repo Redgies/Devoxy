@@ -38,6 +38,8 @@ class Blanchir {
                         {
                             let amount = player.getItemAmount(itemKey);
 
+                            player.outputChatBox("salut pd : " + amount);
+
                             player.removeItem(item.key, amount);
                             player.changeMoney(+amount);
 
@@ -51,7 +53,7 @@ class Blanchir {
 
     createShape()
     {
-        this.shape = mp.colshapes.newSphere(this.pos.x, this.pos.y, this.pos.z, 3);
+        this.shape = mp.colshapes.newSphere(this.pos.x, this.pos.y, this.pos.z, 1);
         this.label = mp.labels.new("[blanchiement]", new mp.Vector3(this.pos.x, this.pos.y, this.pos.z),
         {
             los: false,
@@ -59,7 +61,7 @@ class Blanchir {
             drawDistance: 3,
             color: [255, 255, 255, 255],
         });
-        this.marker = mp.markers.new(1, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z), 0.75, 
+        this.marker = mp.markers.new(1, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z - 1), 0.75, 
         {
             color: [225, 255, 255, 50],
             visible: true,
