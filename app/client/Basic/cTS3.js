@@ -71,7 +71,7 @@ setInterval(function(){
       var streamedPlayers = getStreamedPlayers();
 
       var playerNames = new Array();
-      if(debug) mp.gui.chat.push("streamedd player : " + JSON.stringify(streamedPlayers));
+      if(debug) mp.gui.chat.push("streamedd player : " + JSON.stringify(streamedPlayers[0].name));
       
       // if (API.hasEntitySyncedData(player, "CALLING_PLAYER_NAME") && API.hasEntitySyncedData(player, "CALL_IS_STARTED") && API.getEntitySyncedData(player, "CALL_IS_STARTED").toString() == "1")
       // {
