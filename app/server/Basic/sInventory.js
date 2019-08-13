@@ -145,17 +145,22 @@ mp.events.add({
         if(!target) return;
 
         let itemKey = 0;
+        let amount = 0;
 
         inventory.forEach((item, index) => {
             if(key == index)
                 itemKey = item.key;
         });
 
-        player.notify(`~g~Vous avez donné à 1x ${invAPI.getItemName(itemKey)} à ${target.name}.`);
-        target.notify(`~g~${player.name} vous a donné 1x ${invAPI.getItemName(itemKey)}.`);
+        if(itemKey == 'item_dirty_money')
+            amount = player.getItemAmount(itemKey);
 
-        player.removeItem(key, 1);
-        target.giveItem(itemKey, invAPI.getItemName(itemKey), 1);
+
+        player.notify(`~g~Vous avez donné à ${amount}x ${invAPI.getItemName(itemKey)} à ${target.name}.`);
+        target.notify(`~g~${player.name} vous a donné ${amount}x ${invAPI.getItemName(itemKey)}.`);
+
+        player.removeItem(key, amount);
+        target.giveItem(itemKey, invAPI.getItemName(itemKey), amount);
     },
     "sInventory-deleteItem": (player, key) => {
         const inventory = player.getInventory();
@@ -352,5 +357,4 @@ invAPI.addItem("weapon_musket", "Musket", "", (player, inventoryIndex, itemKey, 
 invAPI.addItem("item_dirty_money", "Argent sale", "", (player, inventoryIndex, itemKey, data) => {
     // player.armour = 100;
     // player.outputChatBox("Armor refilled.");
-    player.removeItem(inventoryIndex);
 });
