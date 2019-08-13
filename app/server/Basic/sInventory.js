@@ -18,8 +18,6 @@ mp.events.add({
         }
 
         player.unsetWeapon(playerWeapon);
-
-        // player.outputChatBox("weapon : " + playerWeapon);
     },
     "sInventory-useItem": (player, key) => {
         const inventory = player.getInventory();
@@ -27,6 +25,23 @@ mp.events.add({
         inventory.forEach((item, index) => {
             if(key == index) player.useItem(index);
         });
+    },
+    "sInventory-giveItem": (player, key) => {
+        let target = misc.findPlayerByIdOrNickname(player.targetId);
+        if(!target) return;
+
+        let itemKey = 0;
+
+        inventory.forEach((item, index) => {
+            if(key == index)
+                itemKey = item.key;
+        });
+
+        player.notify(`~g~Vous avez donné à 1x ${invAPI.getItemName(itemKey)} à ${target.name}.`);
+        target.notify(`~g~${player.name} vous a donné 1x ${invAPI.getItemName(itemKey)}.`);
+
+        player.removeItem(key, 1);
+        target.giveItem(itemKey, invAPI.getItemName(itemKey), 1);
     },
     "sInventory-deleteItem": (player, key) => {
         const inventory = player.getInventory();
