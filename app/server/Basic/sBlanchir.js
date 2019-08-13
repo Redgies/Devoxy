@@ -34,13 +34,11 @@ class Blanchir {
                     if(!player.whitewash) return player.notify("~r~Vous devez faire appel à un blanchisseur.");
 
                     const inventory = player.getInventory();
-                    
+
                     inventory.forEach((item, index) => {
                         if(item.key == "item_dirty_money")
                         {
-                            let amount = player.getItemAmount(itemKey);
-
-                            player.outputChatBox("salut pd : " + amount);
+                            let amount = player.getItemAmount(item.key);
 
                             player.removeItem(item.key, amount);
                             player.changeMoney(+amount);
