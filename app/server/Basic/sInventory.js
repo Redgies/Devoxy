@@ -29,7 +29,7 @@ mp.events.add({
         });
     },
     "sInventory-deleteItem": (player, key) => {
-        player.notify(`~g~~Vous avez jeté ${player.getItemAmount(key)}x ${invAPI.getItemName(key)}.`);
+        player.notify(`~g~Vous avez jeté ${player.getItemAmount(key)}x ${invAPI.getItemName(key)}.`);
         player.removeItem(key, player.getItemAmount(key));
     }
 });
