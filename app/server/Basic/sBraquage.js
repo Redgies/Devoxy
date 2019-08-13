@@ -27,12 +27,12 @@ class Braquage {
             drawDistance: 3,
             color: [255, 255, 255, 255],
         });
-        this.marker = mp.markers.new(29, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z - 1), 0.75, 
+        this.marker = mp.markers.new(29, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z), 0.75, 
         {
             color: [225, 255, 255, 50],
             visible: true,
         });
-        mp.blips.new(351, new mp.Vector3(x, y, z),
+        mp.blips.new(351, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z),
 		{
 			name: "Superette",
 			color: this.color,		
