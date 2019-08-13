@@ -22,6 +22,8 @@ class MoneySingletone {
 		}
 		player.updateCash();
 
+		this.call("cFaction-Update", [this.faction]);
+
 		player.changeMoney = async function(value) {
 			if (!misc.isValueNumber(value)) return false;
 			if (this.money.cash + value < 0) {

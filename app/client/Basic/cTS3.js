@@ -2,54 +2,25 @@ var tsBrowser = null;
 var refresh = 0;
 var oldDateTime = 0;
 var debug = 0;
-/* disable police & ambiant city sounds */
 mp.game.audio.startAudioScene("FBI_HEIST_H5_MUTE_AMBIENCE_SCENE");
 mp.game.audio.startAudioScene("MIC1_RADIO_DISABLE");
 tsBrowser = mp.browsers.new("package://RP/Browsers/ts3voice/index.html");
 var streamedPlayers = [];
-// mp.events.add("playerSpawn", playerSpawn);
-// function playerSpawn(player){
-//   var res = API.getScreenResolution();
-//   tsBrowser = API.createCefBrowser(0, 0, false);
-// }
-mp.events.add('browserDomReady', (browser) => {
+
+mp.events.add({
+  "browserDomReady": (browser) => {
     if(debug) mp.gui.chat.push('Vocal ready');
 
     mp.discord.update('Joue à Devoxy.fr', mp.players.local.name);
 
     refresh = 1;
+  },
+  "cFaction-Update": (value) => {
+    mp.players.local.faction = value;
+    mp.gui.chat.push("faction : " + mp.players.local.faction);
+  }
 });
 
-mp.events.add('Teamspeak_LipSync', (Teamspeak_LipSync) => {
-  mp.gui.chat.push("test");
-  // RAGE.Elements.Player player = RAGE.Elements.Entities.Players.GetAtRemote(Convert.ToUInt16(args[0]));
-  // if (player != null)
-  // {
-  //     bool speak = Convert.ToBoolean(args[1].ToString());
-
-  //     if (speak)
-  //         player.PlayFacialAnim("mic_chatter", "mp_facial");
-  //     else
-  //         player.PlayFacialAnim("mood_normal_1", "facials@gen_male@variations@normal");
-  // }
-});
-
-// mp.events.add('entityStreamIn', (entity) => {
-//   if(entity.type == "player"){
-//     streamedPlayers.push(entity);
-//   }  
-// });
-
-// mp.events.add('entityStreamOut', (entity) => {
-//   if(entity.type == "player"){
-//     streamedPlayers.forEach(function(key, val){
-//       if(val.id == entity.id) {
-//         delete streamedPlayers[key];
-//       }
-//     })
-    
-//   }  
-// });
 
 var getStreamedPlayers = () => {
   let streamedPlayersArray = [];
@@ -71,6 +42,7 @@ var getStreamedPlayers = () => {
 
 
 setInterval(function(){
+  mp.gui.chat.push("faction : " + mp.players.local.faction);
     // var dateTime = API.getGameTime();
     if (refresh == 1)// && (dateTime - oldDateTime) >= 500)
     {
