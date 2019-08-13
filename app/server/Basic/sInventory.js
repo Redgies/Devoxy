@@ -29,8 +29,8 @@ mp.events.add({
         });
     },
     "sInventory-deleteItem": (player, key) => {
-        player.notify(`~g~~Vous avez jeté ${player.getItemAmount(key)}x ${player.getItemName(key)}.`);
-        player.removeItem(key, player.getItemAmount(key));
+        player.notify(`~g~~Vous avez jeté ${invAPI.getItemAmount(key)}x ${invAPI.getItemName(key)}.`);
+        player.removeItem(key, invAPI.getItemAmount(key));
     }
 });
 
