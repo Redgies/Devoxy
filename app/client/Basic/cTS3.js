@@ -102,6 +102,15 @@ setInterval(function(){
         }
         // if(debug) mp.gui.chat.push(volumeModifier);
 
+        if(player.getVariable("faction") == streamedPlayer.getVariable("faction"))
+        {
+          if(streamedPlayer.getVariable("radioOn") == 1)
+          {
+            playerNames.push(streamedPlayer.name + "~0~0~0~" + 1);
+            continue;
+          }
+        }
+
         if(distance < range)
         {
           // var subPos = streamedPlayerPos.Subtract(playerPos);
@@ -122,15 +131,6 @@ setInterval(function(){
           // mp.gui.cshat.push("player streamed : " + streamedPlayer.name + " faction : " + streamedPlayer.getVariable("faction"));
           playerNames.push(streamedPlayer.name + "~" + (Math.round(x * 1000) / 1000) + "~" + (Math.round(y * 1000) / 1000) + "~0~" + (Math.round(volumeModifier * 1000) / 1000));
           // }
-          continue;
-        }
-
-        if(player.getVariable("faction") == streamedPlayer.getVariable("faction"))
-        {
-          if(streamedPlayer.getVariable("radioOn") == 1)
-          {
-            playerNames.push(streamedPlayer.name + "~0~0~0~" + 1);
-          }
           continue;
         }
       }
