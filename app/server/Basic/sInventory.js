@@ -348,3 +348,9 @@ invAPI.addItem("weapon_musket", "Musket", "", (player, inventoryIndex, itemKey, 
     player.setWeapon(2828843422, 0);
     player.removeItem(inventoryIndex);
 });
+
+invAPI.addItem("item_dirty_money", "Argent sale", "", (player, inventoryIndex, itemKey, data) => {
+    // player.armour = 100;
+    // player.outputChatBox("Armor refilled.");
+    player.removeItem(inventoryIndex);
+});

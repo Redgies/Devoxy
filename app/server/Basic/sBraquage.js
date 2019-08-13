@@ -50,8 +50,7 @@ class Braquage {
 
                     for(const p of mp.players.toArray()) {
                         if(p.faction !== 1) continue;
-                        
-                        p.notify("ta mère");
+                    
                         p.notifyWithPicture("Appel 911", "Braquage", this.text, "CHAR_CALL911");
                     }
 
@@ -64,7 +63,10 @@ class Braquage {
 
                         if(this.timer <= 1) 
                         {
-                            player.notify(`Braquage terminé bogoss !`);
+                            player.notify(`Braquage terminé beau goss (~g~+6000$ en argent sale~g~).`);
+                            player.giveItem("item_dirty_monet", 1, {
+                                money: 6000
+                            });
                             clearInterval(timing);
                             player.canBraquage = false;
                         }
