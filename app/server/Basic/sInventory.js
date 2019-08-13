@@ -1,4 +1,6 @@
 const invAPI = require("../3rd/inventory.js");
+const misc = require('../sMisc');
+
 
 mp.events.add({
     "sInventory-getWeapon": (player) => {
