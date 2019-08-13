@@ -15,6 +15,8 @@ var streamedPlayers = [];
 mp.events.add('browserDomReady', (browser) => {
     if(debug) mp.gui.chat.push('Vocal ready');
 
+    mp.gyu.chat.push(JSON.stringify(browser));
+
     mp.discord.update('Joue à Devoxy.fr', mp.players.local.name);
 
     refresh = 1;
