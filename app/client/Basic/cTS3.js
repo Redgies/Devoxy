@@ -1,7 +1,7 @@
 var tsBrowser = null;
 var refresh = 0;
 var oldDateTime = 0;
-var debug = 0;
+var debug = 1;
 /* disable police & ambiant city sounds */
 mp.game.audio.startAudioScene("FBI_HEIST_H5_MUTE_AMBIENCE_SCENE");
 mp.game.audio.startAudioScene("MIC1_RADIO_DISABLE");
