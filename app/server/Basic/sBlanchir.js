@@ -43,7 +43,7 @@ class Blanchir {
                             player.removeItem(item.key, amount);
                             player.changeMoney(+amount);
 
-                            player.notify(`~g~Vous avez blanchi de l'argent sale (+${amount}$).`);
+                            player.notify(`Vous avez blanchi de l'argent sale (~g~+${amount}$~w~).`);
                         }
                     });
                 }
