@@ -47,8 +47,6 @@ class Blanchir {
                             return 1;
                         }
                     });
-
-                    player.notify("~r~Vous n'avez rien à blanchir.");
                 }
             },
         });        
