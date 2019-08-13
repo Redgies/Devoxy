@@ -19,7 +19,7 @@ mp.events.add({
 
         player.unsetWeapon(playerWeapon);
 
-        player.outputChatBox("weapon : " + playerWeapon);
+        // player.outputChatBox("weapon : " + playerWeapon);
     },
     "sInventory-useItem": (player, key) => {
         const inventory = player.getInventory();
@@ -30,6 +30,9 @@ mp.events.add({
     },
     "sInventory-deleteItem": (player, key) => {
         key = parseInt(key);
+
+        player.outputChatBox("key : " + key);
+
         player.notify(`~g~Vous avez jeté ${player.getItemAmount(key)}x ${invAPI.getItemName(key)}.`);
         player.removeItem(key, player.getItemAmount(key));
     }
