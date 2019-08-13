@@ -38,7 +38,7 @@ mp.events.add({
 
 var getStreamedPlayers = () => {
   let streamedPlayersArray = [];
-  mp.players.forEachInStreamRange(
+  mp.players.forEach(
     (player, id) => {
     //   if(debug) mp.gui.chat.push("name : " + JSON.stringify(player.name));
       streamedPlayersArray.push(player);
@@ -91,7 +91,7 @@ setInterval(function(){
         // if(debug) mp.gui.chat.push(distance);
         var voiceRange = "Weit";//API.getEntitySyncedData(streamedPlayers[i], "VOICE_RANGE");
         var volumeModifier = 1;
-        var range = 25;
+        var w = 25;
         if (distance > 5)
         {
           volumeModifier = (distance * -5 / 10);
