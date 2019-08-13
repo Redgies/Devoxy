@@ -20,7 +20,8 @@ mp.events.add('browserDomReady', (browser) => {
     refresh = 1;
 });
 
-mp.events.add('Teamspeak_LipSync', (player) => {
+mp.events.add('Teamspeak_LipSync', (Teamspeak_LipSync) => {
+  mp.gui.chat.push("test");
   // RAGE.Elements.Player player = RAGE.Elements.Entities.Players.GetAtRemote(Convert.ToUInt16(args[0]));
   // if (player != null)
   // {
@@ -79,9 +80,6 @@ setInterval(function(){
       if(debug) mp.gui.chat.push(JSON.stringify(player.position));
       var playerPos = player.position;
       var playerRot = player.getHeading();
-
-
-      mp.gui.chat.push("parle : " + player.speak);
 
       if(debug) mp.gui.chat.push(player.dimension);
 
