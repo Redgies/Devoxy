@@ -119,15 +119,15 @@
                 <!-- <a v-for="(item, i) in player._inventory" class="walk-style">
                     {{ item.name }} - {{ item.amount }}
                 </a> -->
-                <div v-for="(item, i) in player._inventory" class="item walk-style" @click="invChoice = 1">
+                <div v-for="(item, i) in player._inventory" class="item walk-style" @click="invChoice = 1; itemSelected = i;">
                     <span class="qty" style="float: left;">{{ item.amount }}</span>
                     {{ item.name }}
                 </div>
                 <button v-if="invChoice == 0" type="button" @click="getWeapon()" style="position: absolute;bottom: 0;width: 30%;right: 0%;text-align: center;background: #0984e3;color: #Fff;font-weight: bold;border: none;padding: 10px;">Ranger l'arme dans les mains</button>
                 <div v-else style="position: absolute; bottom: 0;">
-                    <button @click="giveItem(i)">Donner</button>
-                    <button @click="useItem(i)">Utiliser</button>
-                    <button @click="deleteItem(i)">Jeter</button>
+                    <button @click="giveItem()">Donner</button>
+                    <button @click="useItem()">Utiliser</button>
+                    <button @click="deleteItem()">Jeter</button>
                 </div>
             </div>
             <!-- DONNER DE L'ARGENT -->
@@ -211,6 +211,7 @@
                 vehicle: [],
                 player: [],
                 moneyToGive: 0,
+                itemSelected: 0,
                 invChoice: 0,
                 color1: '#000000',
                 color2: '#000000',
@@ -619,14 +620,14 @@
                 getWeapon: function() {
                     mp.trigger("cMisc-CallServerEvent", "sInventory-getWeapon");
                 },
-                useItem: function(key) {
-                    mp.trigger("cMisc-CallServerEvent", "sInventory-useItem", key);
+                useItem: function() {
+                    mp.trigger("cMisc-CallServerEvent", "sInventory-useItem", this.itemSelected);
                 },
-                giveItem: function(key) {
-                    mp.trigger("cMisc-CallServerEvent", "sInventory-giveItem", key);
+                giveItem: function() {
+                    mp.trigger("cMisc-CallServerEvent", "sInventory-giveItem", this.itemSelected);
                 },
-                deleteItem: function(key) {
-                    mp.trigger("cMisc-CallServerEvent", "sInventory-deleteItem", key);
+                deleteItem: function() {
+                    mp.trigger("cMisc-CallServerEvent", "sInventory-deleteItem", this.itemSelected);
                 },
                 initColor: function () {
                     this.currentTab = 7;
