@@ -45,13 +45,13 @@ class ATMSingletone {
 	createATM(x, y, z) {
 		const shape = mp.colshapes.newSphere(x, y, z, 0.5);
 		shape.atm = true;
-		mp.blips.new(500, new mp.Vector3(x, y, z),
-		{
-			name: "ATM",
-			color: 2,		
-			shortRange: true,
-			scale: 0.75,
-		});
+		// mp.blips.new(500, new mp.Vector3(x, y, z),
+		// {
+		// 	name: "ATM",
+		// 	color: 2,		
+		// 	shortRange: true,
+		// 	scale: 0.75,
+		// });
 	}
 
 

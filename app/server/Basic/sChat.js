@@ -246,10 +246,6 @@ class ChatSingleton {
 				misc.log.debug(`${player.name} killed ${target.name}`);
 			},
 			
-			'work': (player, fullText) => {
-				player.outputChatBox("working : " + player.working);
-			},
-
 			'kick': (player, fullText, arg1, arg2) =>	{
 				if(player.adminLvl < 1) return;
 				if(fullText.length < 3 || !arg1 || !arg2)

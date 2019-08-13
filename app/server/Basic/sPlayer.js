@@ -353,7 +353,7 @@ mp.events.add({
         player.resetAllWeapons();
 
         if (!killer || player === killer) return;
-        // if (killer.faction == 1 && killer.working == true) return;
+        if (killer.faction == 1 && killer.working == true) return;
 
         killer.addDelit("Accusation de meurte");
     },
