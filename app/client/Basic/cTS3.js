@@ -7,14 +7,16 @@ mp.game.audio.startAudioScene("MIC1_RADIO_DISABLE");
 tsBrowser = mp.browsers.new("package://RP/Browsers/ts3voice/index.html");
 var streamedPlayers = [];
 
-let radioOn = false; 
-
 mp.keys.bind(0x57, true, function()  {
-  mp.events.callRemote("anim", "random@arrests", "generic_radio_chatter", 1, 49);
+  if(mp.players.local.vehicle == null) {
+    mp.events.callRemote("anim", "random@arrests", "generic_radio_chatter", 1, 49);
+  }
   mp.events.callRemote("radioOn");
 });
 mp.keys.bind(0x57, false, function()  {
-  mp.events.callRemote("pointingStop");
+  if(mp.players.local.vehicle == null) {
+    mp.events.callRemote("pointingStop");
+  }
   mp.events.callRemote("radioOff");
 });
 
@@ -125,7 +127,7 @@ setInterval(function(){
 
         if(player.getVariable("faction") == streamedPlayer.getVariable("faction"))
         {
-          if(streamedPlayer.getVariable("radioOn") == true)
+          if(streamedPlayer.getVariable("radioOn") == 1)
           {
             volumeModifier = 1;
           }
