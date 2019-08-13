@@ -24,6 +24,7 @@ class Braquage {
     {
         mp.events.add({
             "playerEnterColshape" : (player, shape) => {
+                player.notify("ntm");
                 if(shape === this.shape) {
                     player.notify("Appuyez ~b~E~w~ pour commencer le braquage.");
                     player.canBraquage = true;
