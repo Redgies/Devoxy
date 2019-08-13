@@ -112,7 +112,7 @@ setInterval(function(){
         {
           // var subPos = streamedPlayerPos.Subtract(playerPos);
           var subPos = {};
-          if(debug) mp.gui.chat.push("player streamed : " + JSON.stringify(streamedPlayer));
+          if(debug) mp.gui.chat.push("player streamed : " + JSON.stringify(streamedPlayer.name));
           subPos.x = streamedPlayerPos.x - playerPos.x;
           subPos.y = streamedPlayerPos.y - playerPos.y;
           subPos.z = streamedPlayerPos.z - playerPos.z;
