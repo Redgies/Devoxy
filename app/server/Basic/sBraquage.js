@@ -49,7 +49,7 @@ class Braquage {
                     if(playerWeapon == 2725352035) return player.notify("~r~Vous n'avez pas d'armes en mains.");
 
                     for(const p of mp.players.toArray()) {
-                        if(p.faction !== 1 || p.working !== 1) continue;
+                        if(p.faction !== 1) continue;
                         
                         p.notifyWithPicture("Appel 911", "Braquage", this.text, "CHAR_CALL911");
                     }
@@ -65,6 +65,7 @@ class Braquage {
                         {
                             player.notify(`Braquage terminé bogoss !`);
                             clearInterval(timing);
+                            player.canBraquage = false;
                         }
                     }, 1000);
                 }
