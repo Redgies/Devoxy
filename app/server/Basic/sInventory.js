@@ -16,7 +16,106 @@ mp.events.add({
                 break;
             case 2508868239:
                 player.giveItem("weapon_bat", "Batte", 1);
+                break;  
+            case 4192643659:
+                player.giveItem("weapon_bottle", "Bouteille", 1);
+                break;	   
+            case 2227010557:
+                player.giveItem("weapon_crowbar", "Pied de biche", 1);
                 break;
+            case 2343591895:
+                player.giveItem("weapon_flashlight", "Torche", 1);
+                break;
+            case 1141786504:
+                player.giveItem("weapon_golfclub", "Club golf", 1);
+                break;
+            case 1317494643:
+                player.giveItem("weapon_hammer", "Marteau", 1);
+                break;
+            case 4191993645:
+                player.giveItem("weapon_hatchet", "Hache", 1);
+                break; 
+            case 3638508604:
+                player.giveItem("weapon_knuckle", "Poing Americain", 1);
+                break;
+            case 2578778090:
+                player.giveItem("weapon_knife", "Couteau cranté", 1);
+                break;
+            case 3713923289:
+                player.giveItem("weapon_machete", "Machete", 1);
+                break;
+            case 3756226112:
+                player.giveItem("weapon_switchblade", "Couteau cran d'arret", 1);
+                break;
+            case 1737195953:
+                player.giveItem("weapon_nightstick", "Matraque", 1);
+                break;
+            case 419712736:
+                player.giveItem("weapon_wrench", "Clé outil", 1);
+                break;
+            case 3219281620:
+                player.giveItem("weapon_pistol_mk2", "Pistolet MK II", 1);
+                break;
+            case 584646201:
+                player.giveItem("weapon_appistol", "Pistolet Semi-auto", 1);
+                break;
+            case 3523564046:
+                player.giveItem("weapon_heavypistol", "Colt 45", 1);
+                break;
+            case 3415619887:
+                player.giveItem("weapon_revolver_mk2", "Revolver", 1);
+                break;		
+            case 324215364:
+                player.giveItem("weapon_microsmg", "Micro SMG", 1);
+                break;			
+            case 736523883:
+                player.giveItem("weapon_smg", "SMG", 1);
+                break;					
+            case 2024373456:
+                player.giveItem("weapon_smg_mk2", "SMG MK II", 1);
+                break;				
+            case 3173288789:
+                player.giveItem("weapon_minismg", "Mini SMG", 1);
+                break;			
+            case 487013001:
+                player.giveItem("weapon_pumpshotgun", "Fusil a Pompe", 1);
+                break;			
+            case 1432025498:
+                player.giveItem("weapon_pumpshotgun_mk2", "Fusil a Pompe MK II", 1);
+                break;				
+            case 2017895192:
+                player.giveItem("weapon_sawnoffshotgun", "Fusil a Pompe Mini", 1);
+                break;				
+            case 4019527611:
+                player.giveItem("weapon_dbshotgun", "Pompe Double Canon", 1);
+                break;				
+            case 3220176749:
+                player.giveItem("weapon_assaultrifle", "Fusil D'assault AK47", 1);
+                break;		
+            case 4024951519:
+                player.giveItem("weapon_assaultsmg", "Fusil d'assault", 1);
+                break;
+            case 3231910285:
+                player.giveItem("weapon_specialcarbine", "Fusil d'assault MK II", 1);
+                break;							
+            case 100416529:
+                player.giveItem("weapon_sniperrifle", "Sniper", 1);
+                break;				
+            case 205991906:
+                player.giveItem("weapon_heavysniper", "Sniper MK II", 1);
+                break;				
+            case 615608432:
+                player.giveItem("weapon_molotov", "Cocktail Molotov", 1);
+                break;		
+            case 4256991824:
+                player.giveItem("weapon_smokegrenade", "Grenade Fumigene", 1);
+                break;		
+            case 883325847:
+                player.giveItem("weapon_petrolcan", "Gericane Essence", 1);
+                break;				
+            case 4222310262:
+                player.giveItem("gadget_parachute", "Parachute", 1);
+                break;	    	
         }
 
         player.unsetWeapon(playerWeapon);
@@ -30,7 +129,7 @@ mp.events.add({
     },
     "sInventory-giveItem": (player, key) => {
         const inventory = player.getInventory();
-        
+
         let target = misc.findPlayerByIdOrNickname(player.targetId);
         if(!target) return;
 
@@ -86,45 +185,144 @@ invAPI.on("inventoryReplaced", (player, oldInventory, newInventory) => {
     console.log(`${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`);
 });
 
-invAPI.addItem("weapon_dagger", "Dagues", "");
-
+invAPI.addItem("weapon_dagger", "Dagues", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(2460120199, 1);
+    player.removeItem(inventoryIndex);
+});
 invAPI.addItem("weapon_bat", "Batte", "", (player, inventoryIndex, itemKey, data) => {
     player.setWeapon(2508868239, 1);
     player.removeItem(inventoryIndex);
 });
-
-invAPI.addItem("item_male_hoodie", "Hoodie (Male)", "A hoodie for freemode male model.", (player, inventoryIndex, itemKey, data) => {
-    if (player.model !== mp.joaat("mp_m_freemode_01")) {
-        player.outputChatBox("Can't use this item with your current model.");
-        return;
-    }
-
-    let texture = 0;
-    if (data && data.hasOwnProperty("texture")) texture = data.texture;
-
-    player.setClothes(11, 7, texture, 2);
-    player.outputChatBox(`Now wearing: Hoodie with texture variation ${texture}.`);
+invAPI.addItem("weapon_bottle", "Bouteille", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(4192643659, 1);
     player.removeItem(inventoryIndex);
 });
-
-mp.events.addCommand("givehoodie", (player, _, texture) => {
-    const giveItemResult = player.giveItem("item_male_hoodie", "NOM DE l'ITEM", 1, {
-        texture: Number(texture)
-    });
-
-    if (giveItemResult) {
-        player.outputChatBox(`Received a male hoodie with texture variation ${texture}.`);
-    } else {
-        player.outputChatBox("Failed to give item.");
-    }
+invAPI.addItem("weapon_crowbar", "Pied de biche", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(2227010557, 1);
+    player.removeItem(inventoryIndex);
 });
-
-mp.events.addCommand("inventory", (player) => {
-    const inventory = player.getInventory();
-
-    player.outputChatBox("Your inventory:");
-    inventory.forEach((item, index) => {
-        player.outputChatBox(`${index} | ${invAPI.getItemName(item.key)} (${item.key}) | ${item.amount}x`);
-    });
+invAPI.addItem("weapon_flashlight", "Torche", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(2343591895, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_golfclub", "Club golf", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(1141786504, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_hammer", "Marteau", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(1317494643, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_hatchet", "Hache", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(4191993645, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_knuckle", "Poing Americain", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(3638508604, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_knife", "Couteau cranté", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(2578778090, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_machete", "Machete", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(3713923289, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_switchblade", "Couteau cran d'arret", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(3756226112, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_nightstick", "Matraque", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(1737195953, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_wrench", "Clé outil", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(419712736, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_pistol_mk2", "Pistolet MK II", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(3219281620, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_appistol", "Pistolet Semi-auto", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(584646201, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_heavypistol", "Colt 45", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(3523564046, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_revolver_mk2", "Revolver", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(3415619887, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_microsmg", "Micro SMG", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(324215364, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_smg", "SMG", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(736523883, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_smg_mk2", "SMG MK II", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(2024373456, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_minismg", "Mini SMG", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(324215364, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_pumpshotgun", "Fusil a Pompe", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(487013001, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_pumpshotgun_mk2", "Fusil a Pompe MK II", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(1432025498, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_sawnoffshotgun", "Fusil a Pompe Mini", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(2017895192, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_dbshotgun", "Pompe Double Canon", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(4019527611, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_assaultrifle", "Fusil D'assault AK47", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(3220176749, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_assaultsmg", "Fusil d'assault", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(4024951519, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_specialcarbine", "Fusil d'assault MK II", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(3231910285, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_sniperrifle", "Sniper", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(100416529, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_heavysniper", "Sniper MK II", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(205991906, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_molotov", "Cocktail Molotov", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(615608432, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_smokegrenade", "Grenade Fumigene", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(4256991824, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_petrolcan", "Gericane Essence", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(883325847, 1);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("gadget_parachute", "Parachute", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(4222310262, 1);
+    player.removeItem(inventoryIndex);
 });
 
