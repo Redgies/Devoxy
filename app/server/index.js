@@ -20,7 +20,7 @@ require('./Basic/Auth/sLogin');
 require('./Basic/Auth/sRegister');
 require('./Basic/sChat');
 require('./Basic/sLocation');
-equire('./Basic/sInventory');
+require('./Basic/sInventory');
 require('./Basic/Money/sATM');
 
 require('./Jobs/sOrangeCollector');
