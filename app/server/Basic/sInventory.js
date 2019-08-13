@@ -24,11 +24,13 @@ mp.events.add({
     "sInventory-useItem": (player, key) => {
         const inventory = player.getInventory();
 
-        player.outputChatBox("useitem : " + key);
-
         inventory.forEach((item, index) => {
             if(key == index) player.useItem(index);
         });
+    },
+    "sInventory-deleteItem": (player, key) => {
+        player.notify(`~g~~Vous avez jeté ${player.getItemAmount(key)}x ${player.getItemName(key)}.`);
+        player.removeItem(key, player.getItemAmount(key));
     }
 });
 
