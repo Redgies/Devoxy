@@ -102,7 +102,9 @@ setInterval(function(){
 
         if(player.getVariable("faction") == streamedPlayer.getVariable("faction") && radioOn)
         {
-          mp.gui.chat.push("radio à : " + streamedPlayer.name);
+          volumeModifier = 1;
+          playerNames.push(streamedPlayer.name + "~0~0~0~" + (Math.round(volumeModifier * 1000) / 1000));
+          // mp.gui.chat.push("radio à : " + streamedPlayer.name);
         }
         
         if(distance < range)
