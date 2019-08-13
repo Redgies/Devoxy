@@ -30,8 +30,8 @@ invAPI.addItem("item_dirty_money", "Argent à blanchir", "A hoodie for freemode 
     //     return;
     // }
 
-    // let texture = 0;
-    // if (data && data.hasOwnProperty("texture")) texture = data.texture;
+    let value = 0;
+    if (data && data.hasOwnProperty("value")) texture = data.value;
 
     // player.setClothes(11, 7, texture, 2);
     // player.outputChatBox(`Now wearing: Hoodie with texture variation ${texture}.`);
@@ -40,7 +40,7 @@ invAPI.addItem("item_dirty_money", "Argent à blanchir", "A hoodie for freemode 
 
 mp.events.addCommand("givedirtymoney", (player, _, value) => {
     const giveItemResult = player.giveItem("item_dirty_money", 1, {
-        texture: Number(value)
+        value: Number(value)
     });
 
     if (giveItemResult) {
