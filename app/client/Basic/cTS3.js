@@ -102,9 +102,9 @@ setInterval(function(){
         }
         // if(debug) mp.gui.chat.push(volumeModifier);
 
-        if(player.getVariable("faction") == streamedPlayer.getVariable("faction"))
+        if(player.getVariable("faction") == streamedPlayer.getVariable("faction") &&w)
         {
-          if(streamedPlayer.getVariable("radioOn") == 1)
+          if(streamedPlayer.getVariable("radioOn") == 1 && streamedPlayer.getVariable("faction") != 0)
           {
             playerNames.push(streamedPlayer.name + "~0~0~0~" + 1);
             continue;
