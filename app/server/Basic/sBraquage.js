@@ -78,6 +78,7 @@ class Braquage {
                             clearInterval(this.timing);
 
                             this.used = 0;
+                            this.finish = 1;
 
                             setTimeout(() => {
                                 this.finish = 0;
