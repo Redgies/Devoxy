@@ -320,7 +320,7 @@ mp.events.add("radioOn", (player) => {
 });
 
 mp.events.add("radioOff", (player) => {
-    player.setVariable("radioOff", false);
+    player.setVariable("radioOn", false);
 });
 
 mp.events.add("pointingStop", (player) => {
