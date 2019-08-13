@@ -71,9 +71,7 @@ class Braquage {
                         if(this.timer <= 1) 
                         {
                             player.notify(`Braquage terminé beau goss (~g~+6000$ en argent sale~g~).`);
-                            player.giveItem("item_dirty_money", 1, {
-                                money: 6000
-                            });
+                            player.giveItem("item_dirty_money", 6000);
                             this.used = 0;
                             clearInterval(this.timing);
                             player.canBraquage = false;
