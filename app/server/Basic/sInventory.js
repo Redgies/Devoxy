@@ -1,5 +1,13 @@
 const invAPI = require("../3rd/inventory.js");
 
+mp.events.add({
+    "sInventory-getWeapon": (player) => {
+        let playerWeapon = player.weapon;
+
+        player.outputChatBox("weapon : " + playerWeapon);
+    }
+});
+
 invAPI.on("itemDefined", (key, name, description) => {
     console.log(`Item defined, key: ${key} | name: ${name} | description: ${description}`);
 });
@@ -39,7 +47,7 @@ invAPI.addItem("item_male_hoodie", "Hoodie (Male)", "A hoodie for freemode male 
 });
 
 mp.events.addCommand("givehoodie", (player, _, texture) => {
-    const giveItemResult = player.giveItem("item_male_hoodie", 1, {
+    const giveItemResult = player.giveItem("item_male_hoodie", "NOM DE l'ITEM", 1, {
         texture: Number(texture)
     });
 
