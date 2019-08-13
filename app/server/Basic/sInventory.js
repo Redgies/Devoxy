@@ -4,6 +4,9 @@ mp.events.add({
     "sInventory-getWeapon": (player) => {
         let playerWeapon = player.weapon;
 
+        if(playerWeapon == 2725352035) return;
+        // if(player.faction == 1 && player.working) return;
+
         switch(playerWeapon)
         {
             case 2460120199:
@@ -13,6 +16,8 @@ mp.events.add({
                 player.giveItem("weapon_bat", "Batte", 1);
                 break;
         }
+
+        player.unsetWeapon(playerWeapon);
 
         player.outputChatBox("weapon : " + playerWeapon);
     }

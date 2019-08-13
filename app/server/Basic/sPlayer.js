@@ -134,6 +134,18 @@ class PlayerSingleton {
             return 0;
         }
 
+        player.unsetWeapon = function(hash) {
+            player.removeWeapon(hash);
+
+            for(let i = 0; i < player.pWeapons.length; i++)
+            {
+                if(player.pWeapons[i].hash === hash)
+                {
+                    player.pWeapons.splice(i, 1);
+                }
+            }
+        }
+
         player.setWeapon = function(hash, ammo) {
             player.giveWeapon(hash, ammo);
 
