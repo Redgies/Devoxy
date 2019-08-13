@@ -91,7 +91,7 @@ setInterval(function(){
         // if(debug) mp.gui.chat.push(distance);
         var voiceRange = "Weit";//API.getEntitySyncedData(streamedPlayers[i], "VOICE_RANGE");
         var volumeModifier = 1;
-        var w = 25;
+        var range = 25;
         if (distance > 5)
         {
           volumeModifier = (distance * -5 / 10);
