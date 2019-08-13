@@ -616,15 +616,19 @@
                 },
                 getWeapon: function() {
                     mp.trigger("cMisc-CallServerEvent", "sInventory-getWeapon");
+                    this.exit();
                 },
                 useItem: function() {
                     mp.trigger("cMisc-CallServerEvent", "sInventory-useItem", this.itemSelected);
+                    this.exit();
                 },
                 giveItem: function() {
                     mp.trigger("cMisc-CallServerEvent", "sInventory-giveItem", this.itemSelected);
+                    this.exit();
                 },
                 deleteItem: function() {
                     mp.trigger("cMisc-CallServerEvent", "sInventory-deleteItem", this.itemSelected);
+                    this.exit();
                 },
                 initColor: function () {
                     this.currentTab = 7;

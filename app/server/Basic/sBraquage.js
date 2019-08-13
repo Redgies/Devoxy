@@ -2,10 +2,12 @@ const invAPI = require("../3rd/inventory.js");
 const misc = require('../sMisc');
 
 const braquageData = [
-    {pos: {x: 28.221, y: -1339.338, z: 29.497}, color: 1, time: 30, text: 'Braquage en cours à la ~r~superette rouge~w~.'} 
+    {pos: {x: 28.221, y: -1339.338, z: 29.497}, color: 1, time: 30, text: 'Braquage en cours à la ~r~superette rouge~w~.'},
+    {pos: {x: -43.313, y: -1748.448, z: 29.421}, color: 3, time: 30, text: 'Braquage en cours à la ~b~superette bleue~w~.'},
+    {pos: {x: -709.421, y: -904.421, z: 19.216}, color: 2, time: 30, text: 'Braquage en cours à la ~g~superette verte~w~.'}, 
+    {pos: {x: 1159.85, y: -313.997, z: 69.205}, color: 5, time: 30, text: 'Braquage en cours à la ~g~superette jaune~w~.'} ,
+    {pos: {x: -1220.433, y: -911.623, z: 12.326}, color: 7, time: 30, text: 'Braquage en cours à la ~g~superette violette~w~.'} 
 ];
-
-
 class Braquage {
     constructor(d)
     {
