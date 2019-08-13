@@ -21,7 +21,7 @@ class Ammunation extends business {
         
         player.setWeapon(parseInt(hash), 15);
 
-		player.notifyWithPicture("Ammunation", "", `Vous avez acheté une nouvelle arme pour ~g~${parseInt(price)}$`, "CHAR_AMMUNATION");
+		player.notifyWithPicture("Ammunation", "", `Vous avez acheté une nouvelle arme pour ~g~${parseInt(fullPrice)}$`, "CHAR_AMMUNATION");
     }
     
     async buyNewAmmo(player, hash, price) {
@@ -37,7 +37,7 @@ class Ammunation extends business {
         
         player.giveWeapon(parseInt(hash), 15);
 
-		player.notifyWithPicture("Ammunation", "", `Vous avez acheté une boîte de munition pour ~g~${parseInt(price)}$`, "CHAR_AMMUNATION");
+		player.notifyWithPicture("Ammunation", "", `Vous avez acheté une boîte de munition pour ~g~${parseInt(fullPrice)}$`, "CHAR_AMMUNATION");
 	}
     
 

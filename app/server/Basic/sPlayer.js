@@ -360,7 +360,7 @@ mp.events.add({
 
         if(player.jailed) return player.tpToJail();
 
-        player.health = 100;
+        player.health = 50;
         player.call("cHospital-DisableHealthRegeneration");
         player.newFine(5000, `${i18n.get('sHospital', 'transferTo', player.lang)}`);
 
