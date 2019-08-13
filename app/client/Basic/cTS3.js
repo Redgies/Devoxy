@@ -100,7 +100,7 @@ setInterval(function(){
         }
         // if(debug) mp.gui.chat.push(volumeModifier);
 
-        if(streamedPlayer.name = player.name)
+        if(streamedPlayer.name == player.name)
         {
           playerNames.push(streamedPlayer.name + "~0~0~0~0");
           continue;
