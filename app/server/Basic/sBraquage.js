@@ -18,6 +18,7 @@ class Braquage {
         this.time = d.time;
         this.text = d.text;
         this.used = 0;
+        this.finish = 0;
         this.timing;
 
         this.createShape();
@@ -52,6 +53,7 @@ class Braquage {
 
                     if(playerWeapon == 2725352035) return player.notify("~r~Vous n'avez pas d'armes en mains.");
                     if(this.used) return player.notify("~r~Il y a déjà un braquage en cours.");
+                    if(this.finish) return player.notify("~r~Vous ne pouvez pas encore braquer.");
 
                     for(const p of mp.players.toArray()) {
                         if(p.faction !== 1) continue;
@@ -72,8 +74,13 @@ class Braquage {
                         {
                             player.notify(`Braquage terminé beau goss (~g~+6000$ en argent sale~g~).`);
                             player.giveItem("item_dirty_money", "Argent sale", 6000);
-                            this.used = 0;
                             clearInterval(this.timing);
+
+                            this.used = 0;
+
+                            this.timing = setInterval(() => {
+                                this.finish = 0;
+                            }, 30000);
                             player.canBraquage = false;
                         }
                     }, 1000);
