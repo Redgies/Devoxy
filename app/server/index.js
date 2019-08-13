@@ -21,7 +21,6 @@ require('./Basic/Auth/sRegister');
 require('./Basic/sChat');
 require('./Basic/sLocation');
 require('./Basic/Money/sATM');
-require('./Basic/sVoice');
 
 require('./Jobs/sOrangeCollector');
 require('./Jobs/sCluckinBellCourier');

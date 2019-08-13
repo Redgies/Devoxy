@@ -23,7 +23,6 @@ require('./Basic/cDoors.js');
 require('./Basic/cGPS');
 require('./3rd/betternotifs.js');
 require('./fingerpointing');
-require('./Basic/cVoice');
 require('./Basic/cNoClip');
 require('./Basic/cWalking');
 require('./Basic/cNametag');
