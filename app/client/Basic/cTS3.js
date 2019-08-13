@@ -31,7 +31,6 @@ mp.events.add('Teamspeak_LipSync', (player) => {
   //     else
   //         player.PlayFacialAnim("mood_normal_1", "facials@gen_male@variations@normal");
   // }
-  mp.gui.chat.push("player : " + JSON.stringify(player));
 });
 
 // mp.events.add('entityStreamIn', (entity) => {
@@ -80,6 +79,9 @@ setInterval(function(){
       if(debug) mp.gui.chat.push(JSON.stringify(player.position));
       var playerPos = player.position;
       var playerRot = player.getHeading();
+
+
+      mp.gui.chat.push("parle : " + player.speak);
 
       if(debug) mp.gui.chat.push(player.dimension);
 
