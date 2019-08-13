@@ -24,6 +24,8 @@ mp.events.add({
     "sInventory-useItem": (player, key) => {
         const inventory = player.getInventory();
 
+        player.outputChatBox("useitem : " + key);
+
         inventory.forEach((item, index) => {
             if(key == index) player.useItem(index);
         });
