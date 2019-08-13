@@ -100,7 +100,7 @@ setInterval(function(){
         }
         // if(debug) mp.gui.chat.push(volumeModifier);
 
-        if(player.getVariable("faction") == streamedPlayer.getVariable("faction"))
+        if(player.getVariable("faction") == streamedPlayer.getVariable("faction") && radioOn)
         {
           mp.gui.chat.push("radio à : " + streamedPlayer.name);
         }
