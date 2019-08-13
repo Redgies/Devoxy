@@ -27,7 +27,7 @@ mp.events.add({
         inventory.forEach((item, index) => {
             if(key !== index) continue;
 
-
+            player.useItem(index);
         });
     }
 });
