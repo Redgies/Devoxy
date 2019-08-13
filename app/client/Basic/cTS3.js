@@ -71,7 +71,7 @@ setInterval(function(){
       var streamedPlayers = getStreamedPlayers();
 
       var playerNames = new Array();
-      if(debug) mp.gui.chat.push(streamedPlayers);
+      if(debug) mp.gui.chat.push("streamedd player : " + JSON.stringify(streamedPlayers));
       
       // if (API.hasEntitySyncedData(player, "CALLING_PLAYER_NAME") && API.hasEntitySyncedData(player, "CALL_IS_STARTED") && API.getEntitySyncedData(player, "CALL_IS_STARTED").toString() == "1")
       // {
@@ -111,7 +111,7 @@ setInterval(function(){
         {
           // var subPos = streamedPlayerPos.Subtract(playerPos);
           var subPos = {};
-          if(debug) mp.gui.chat.push(JSON.stringify(streamedPlayers.name));
+          if(debug) mp.gui.chat.push(JSON.stringify(streamedPlayers));
           subPos.x = streamedPlayerPos.x - playerPos.x;
           subPos.y = streamedPlayerPos.y - playerPos.y;
           subPos.z = streamedPlayerPos.z - playerPos.z;
