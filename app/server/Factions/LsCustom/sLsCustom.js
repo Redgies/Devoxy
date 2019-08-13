@@ -70,11 +70,6 @@ class LsCustom extends faction {
             },
             "sKeys-E" : (player) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
-                if(player.working === 1) {
-                    player.notify('Vous quittez votre service');
-                } else {
-                    player.notify('Vous entrez en service');
-                }
 
                 if(player.canChangeClothes)
                     this.changeClothes(player);
