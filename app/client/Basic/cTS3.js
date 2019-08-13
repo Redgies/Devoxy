@@ -1,7 +1,7 @@
 var tsBrowser = null;
 var refresh = 0;
 var oldDateTime = 0;
-var debug = 1;
+var debug = 0;
 /* disable police & ambiant city sounds */
 mp.game.audio.startAudioScene("FBI_HEIST_H5_MUTE_AMBIENCE_SCENE");
 mp.game.audio.startAudioScene("MIC1_RADIO_DISABLE");
@@ -90,14 +90,6 @@ setInterval(function(){
         var voiceRange = "Weit";//API.getEntitySyncedData(streamedPlayers[i], "VOICE_RANGE");
         var volumeModifier = 1;
         var range = 25;
-        if (voiceRange == "Weit")
-        {
-          range = 50;
-        }
-        else if (voiceRange == "Kurz")
-        {
-          range = 5;
-        }
         if (distance > 5)
         {
           volumeModifier = (distance * -5 / 10);
@@ -125,8 +117,8 @@ setInterval(function(){
           var isDeath = 0;
           // if (streamedPlayer.health > 0)
           // {
-            if(debug) mp.gui.chat.push("player streamed : " + JSON.stringify(streamedPlayer.name));
-            playerNames.push(streamedPlayer.name + "~" + (Math.round(x * 1000) / 1000) + "~" + (Math.round(y * 1000) / 1000) + "~0~" + (Math.round(volumeModifier * 1000) / 1000));
+            // if(debug) mp.gui.chat.push("player streamed : " + JSON.stringify(streamedPlayer.name));
+          playerNames.push(streamedPlayer.name + "~" + (Math.round(x * 1000) / 1000) + "~" + (Math.round(y * 1000) / 1000) + "~0~" + (Math.round(volumeModifier * 1000) / 1000));
           // }
           
         }
