@@ -31,14 +31,15 @@ mp.events.add({
     "sInventory-deleteItem": (player, key) => {
         const inventory = player.getInventory();
 
+        let itemKey = 0;
 
         inventory.forEach((item, index) => {
             if(key == index)
-                key = item.key;
+                itemKey = item.key;
         });
 
-        player.notify(`~g~Vous avez jeté ${player.getItemAmount(key)}x ${invAPI.getItemName(key)}.`);
-        player.removeItem(key, player.getItemAmount(key));
+        player.notify(`~g~Vous avez jeté ${player.getItemAmount(itemKey)}x ${invAPI.getItemName(itemKey)}.`);
+        player.removeItem(key, player.getItemAmount(itemKey));
     }
 });
 
