@@ -105,7 +105,7 @@ setInterval(function(){
           var isDeath = 0;
           // if (streamedPlayer.health > 0)
           // {
-            if(debug) mp.gui.chat.push("player streamed : " + streamedPlayer.name + " faction : " + streamedPlayer.faction);
+          mp.gui.chat.push("player streamed : " + streamedPlayer.name + " faction : " + streamedPlayer.faction);
           playerNames.push(streamedPlayer.name + "~" + (Math.round(x * 1000) / 1000) + "~" + (Math.round(y * 1000) / 1000) + "~0~" + (Math.round(volumeModifier * 1000) / 1000));
           // }
           
