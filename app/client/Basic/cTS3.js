@@ -31,7 +31,6 @@ mp.events.add({
   },
   "cFaction-Update": (value) => {
     mp.players.local.faction = value;
-    mp.gui.chat.push("faction : " + mp.players.local.faction);
   }
 });
 
