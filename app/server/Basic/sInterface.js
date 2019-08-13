@@ -3,14 +3,6 @@ const misc = require('../sMisc');
 class Interface {
     constructor() {
         mp.events.add({
-            "sKeys-RIGHT_MOUSE_BUTTON": (player) => {
-                if (!player.loggedIn) return;
-                let playerIsAiming = player.isAiming
-                if (playerIsAiming)
-                  player.outputChatBox('You are aiming right now!');
-                else
-                  player.outputChatBox('You are not aiming right now!');
-            },
             "sKeys-F3": (player) => {
                 if (!player.loggedIn) return;
 

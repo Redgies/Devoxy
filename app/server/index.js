@@ -22,6 +22,7 @@ require('./Basic/sChat');
 require('./Basic/sLocation');
 require('./Basic/sInventory');
 require('./Basic/Money/sATM');
+require('./Basic/sBraquage');
 
 require('./Jobs/sOrangeCollector');
 require('./Jobs/sCluckinBellCourier');
