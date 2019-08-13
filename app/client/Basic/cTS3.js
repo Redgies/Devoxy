@@ -131,10 +131,6 @@ setInterval(function(){
           {
             volumeModifier = 1;
           }
-          else
-          {
-            volumeModifier = -10000;
-          }
 
           playerNames.push(streamedPlayer.name + "~0~0~0~" + (Math.round(volumeModifier * 1000) / 1000));
           continue;
