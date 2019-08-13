@@ -29,6 +29,8 @@ mp.events.add({
         });
     },
     "sInventory-giveItem": (player, key) => {
+        const inventory = player.getInventory();
+        
         let target = misc.findPlayerByIdOrNickname(player.targetId);
         if(!target) return;
 
