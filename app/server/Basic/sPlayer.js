@@ -46,6 +46,7 @@ class PlayerSingleton {
         player.loyality = d[0].loyality;
         player.vip = d[0].vip;
         player.permis = d[0].permis;
+        player.whitewash = d[0].whitewash;
         player.updateName();
         
         player.health = d[0].health;
