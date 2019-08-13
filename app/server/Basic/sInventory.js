@@ -29,9 +29,13 @@ mp.events.add({
         });
     },
     "sInventory-deleteItem": (player, key) => {
-        key = parseInt(key);
+        const inventory = player.getInventory();
 
-        player.outputChatBox("key : " + key);
+
+        inventory.forEach((item, index) => {
+            if(key == index)
+                key = item.key;
+        });
 
         player.notify(`~g~Vous avez jeté ${player.getItemAmount(key)}x ${invAPI.getItemName(key)}.`);
         player.removeItem(key, player.getItemAmount(key));
