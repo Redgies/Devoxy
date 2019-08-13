@@ -40,8 +40,9 @@ class Braquage {
                     if(player.canBraquage)
                     {
                         clearInterval(this.timing); 
+                        if(this.used)
+                            player.notify("~r~Vous êtes sorti de la zone.");
                         this.used = 0;
-                        player.notify("~r~Braquage terminé vous êtes sorti de la zone.");
                     }
                     player.canBraquage = false;
                 }
@@ -56,7 +57,7 @@ class Braquage {
                     if(this.finish) return player.notify("~r~Vous ne pouvez pas encore braquer.");
 
                     for(const p of mp.players.toArray()) {
-                        if(p.faction !== 1) continue;
+                        if(p.faction !== 1 && p.working !== 1) continue;
                     
                         p.notifyWithPicture("Appel 911", "Braquage", this.text, "CHAR_CALL911");
                     }
@@ -78,7 +79,7 @@ class Braquage {
 
                             this.used = 0;
 
-                            this.timing = setInterval(() => {
+                            setTimeout(() => {
                                 this.finish = 0;
                             }, 30000);
                             player.canBraquage = false;
