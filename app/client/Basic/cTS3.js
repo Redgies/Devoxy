@@ -11,11 +11,11 @@ let radioOn = false;
 
 mp.keys.bind(0x57, true, function()  {
   mp.events.callRemote("anim", "random@arrests", "generic_radio_chatter", 1, 49);
-  radioOn = true;
+  mp.events.callRemote("radioOn");
 });
 mp.keys.bind(0x57, false, function()  {
   mp.events.callRemote("pointingStop");
-  radioOn = false;
+  mp.events.callRemote("radioOff");
 });
 
 
@@ -125,7 +125,15 @@ setInterval(function(){
 
         if(player.getVariable("faction") == streamedPlayer.getVariable("faction"))
         {
-          volumeModifier = 1;
+          if(streamedPlayer.name.getVariable("radioOn") == true)
+          {
+            volumeModifier = 1;
+          }
+          else
+          {
+            volumeModifier = -100;
+          }
+
           playerNames.push(streamedPlayer.name + "~0~0~0~" + (Math.round(volumeModifier * 1000) / 1000));
           continue;
         }

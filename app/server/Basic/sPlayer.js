@@ -315,6 +315,14 @@ mp.events.add("fpsync.update", (player, camPitch, camHeading) => {
 
 });
 
+mp.events.add("radioOn", (player) => {
+    player.setVariable("radioOn", true);
+});
+
+mp.events.add("radioOn", (player) => {
+    player.setVariable("radioOn", false);
+});
+
 mp.events.add("pointingStop", (player) => {
     player.stopAnimation();
 });
