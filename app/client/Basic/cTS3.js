@@ -125,7 +125,7 @@ setInterval(function(){
 
         if(player.getVariable("faction") == streamedPlayer.getVariable("faction"))
         {
-          if(streamedPlayer.name.getVariable("radioOn") == true)
+          if(streamedPlayer.getVariable("radioOn") == true)
           {
             volumeModifier = 1;
           }
