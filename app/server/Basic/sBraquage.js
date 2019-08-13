@@ -51,6 +51,7 @@ class Braquage {
                     for(const p of mp.players.toArray()) {
                         if(p.faction !== 1) continue;
                         
+                        p.notify("ta mère");
                         p.notifyWithPicture("Appel 911", "Braquage", this.text, "CHAR_CALL911");
                     }
 
