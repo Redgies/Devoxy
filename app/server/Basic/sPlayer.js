@@ -21,9 +21,10 @@ class PlayerSingleton {
         }
         const weapons = [];
         const delits = [];
+        const inventory = []
         await misc.query(`INSERT INTO users 
-        (email, firstName, lastName, password, ip, regdate, position, socialclub, weapons, delits) VALUES 
-        ('${email}', '${firstName}', '${lastName}', '${pass}', '${player.ip}', '${new Date().toLocaleString()}', '${JSON.stringify(firstSpawn)}', '${player.socialClub}', '${JSON.stringify(weapons)}', '${JSON.stringify(delits)}')`);
+        (email, firstName, lastName, password, ip, regdate, position, socialclub, weapons, delits, inventory) VALUES 
+        ('${email}', '${firstName}', '${lastName}', '${pass}', '${player.ip}', '${new Date().toLocaleString()}', '${JSON.stringify(firstSpawn)}', '${player.socialClub}', '${JSON.stringify(weapons)}', '${JSON.stringify(delits)}', '${JSON.stringify(inventory)}')`);
 
         misc.log.debug(`New Account: ${email} | ${firstName} ${lastName}`);
     }
@@ -51,6 +52,8 @@ class PlayerSingleton {
         player.pWeapons = JSON.parse(d[0].weapons);
         player.delits = JSON.parse(d[0].delits);
         player.jailed = d[0].jailed;
+
+        player._inventory = d[0].inventory;
 
         if(player.jailed)
             player.tpToJail();
@@ -259,7 +262,7 @@ class PlayerSingleton {
 
         player.saveBasicData = function() {
             const pos = this.getCurrentPos(0.1);
-            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}', delits = '${JSON.stringify(this.delits)}', jailed = '${this.jailed}' WHERE id = '${this.guid}'`);
+            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}', delits = '${JSON.stringify(this.delits)}', jailed = '${this.jailed}', inventory = '${JSON.stringify(this._inventory)}' WHERE id = '${this.guid}'`);
         }
 
         player.isDriver = function() {
