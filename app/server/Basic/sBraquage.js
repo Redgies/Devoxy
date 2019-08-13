@@ -5,7 +5,6 @@ const braquageData = [
     {pos: {x: 28.221, y: -1339.338, z: 29.497}, color: 1, time: 30, text: 'Braquage en cours à la ~r~superette rouge~w~.'} 
 ];
 
-let timing;
 
 class Braquage {
     constructor(d)
@@ -18,6 +17,8 @@ class Braquage {
         this.timer = 0;
         this.time = d.time;
         this.text = d.text;
+        this.used = 0;
+        this.timing;
 
         this.createShape();
         this.createEvents();
@@ -37,7 +38,9 @@ class Braquage {
                 {
                     if(player.canBraquage)
                     {
-                        clearInterval(timing); 
+                        clearInterval(this.timing); 
+                        this.used = 0;
+                        player.notify("~r~Braquage terminé vous êtes sorti de la zone.");
                     }
                     player.canBraquage = false;
                 }
@@ -48,6 +51,7 @@ class Braquage {
                     let playerWeapon = player.weapon;
 
                     if(playerWeapon == 2725352035) return player.notify("~r~Vous n'avez pas d'armes en mains.");
+                    if(this.used) return player.notify("~r~Il y a déjà un braquage en cours.");
 
                     for(const p of mp.players.toArray()) {
                         if(p.faction !== 1) continue;
@@ -55,9 +59,11 @@ class Braquage {
                         p.notifyWithPicture("Appel 911", "Braquage", this.text, "CHAR_CALL911");
                     }
 
+                    this.used = 1;
+
                     this.timer = this.time;
 
-                    timing = setInterval(() => {
+                    this.timing = setInterval(() => {
                         this.timer--;
 
                         player.notify(`Il reste ~b~${this.timer} ~w~secondes.`);
@@ -65,10 +71,11 @@ class Braquage {
                         if(this.timer <= 1) 
                         {
                             player.notify(`Braquage terminé beau goss (~g~+6000$ en argent sale~g~).`);
-                            player.giveItem("item_dirty_monet", 1, {
+                            player.giveItem("item_dirty_money", 1, {
                                 money: 6000
                             });
-                            clearInterval(timing);
+                            this.used = 0;
+                            clearInterval(this.timing);
                             player.canBraquage = false;
                         }
                     }, 1000);
