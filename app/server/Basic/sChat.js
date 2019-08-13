@@ -245,6 +245,10 @@ class ChatSingleton {
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a tué.`);
 				misc.log.debug(`${player.name} killed ${target.name}`);
 			},
+			
+			'work': (player, fullText) => {
+				player.outputChatBox("working : " player.working);
+			},
 
 			'kick': (player, fullText, arg1, arg2) =>	{
 				if(player.adminLvl < 1) return;
