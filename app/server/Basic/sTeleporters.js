@@ -1,7 +1,8 @@
 const misc = require('../sMisc');
 
 const teleporters = [
-    {id: 1, enter: {x: -1044.319, y: -231.174, z: 39.014}, exit: {x: -1045.97, y: -231.915, z: 39.014}} 
+    {id: 1, enter: {x: -1044.319, y: -231.174, z: 39.014}, exit: {x: -1045.97, y: -231.915, z: 39.014}},
+    {id: 2, enter: {x: -1080.868, y: -259.95, z: 37.809}, exit: {x: -1081.818, y: -258.402, z: 37.76}} 
 ]
 
 class Teleporter {
@@ -23,10 +24,10 @@ class Teleporter {
                 if (!player.loggedIn) return;
 
                 if(shape == this.enterShape)
-                    player.canEnter = 1;
+                    player.canEnter = this.id;
 
                 if(shape == this.exitShape)
-                    player.canExit = 1;
+                    player.canExit = this.id;
             },
             "playerExitColshape" : (player, shape) => {
                 if (!player.loggedIn) return;
@@ -41,7 +42,7 @@ class Teleporter {
 			"sKeys-E" : (player) => {
                 if(!player.loggedIn) return;
 
-                if(player.canEnter)
+                if(player.canEnter == this.id)
                 {
                     const d = {
                         x: this.exit.x, 
@@ -50,7 +51,7 @@ class Teleporter {
                     }
                     player.tp(d);
                 }
-                if(player.canExit)
+                if(player.canExit == this.id)
                 {
                     const d = {
                         x: this.enter.x, 

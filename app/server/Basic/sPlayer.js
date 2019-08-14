@@ -57,6 +57,7 @@ class PlayerSingleton {
         player.jailed = d[0].jailed;
 
         player._inventory = JSON.parse(d[0].inventory);
+        player.canMakeAnnounce = 0;
 
         if(player.jailed)
             player.tpToJail();

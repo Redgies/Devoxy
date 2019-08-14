@@ -165,7 +165,7 @@ class ChatSingleton {
 				const currentTime = misc.getTime();
 	
 				for(const p of onlinePlayers) {
-					p.outputChatBox(`!{#d63031}[${currentTime}] [ANNONCE] ${player.name} [${player.id}] : ${fullText}`);
+					p.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN OOC] ${player.name} [${player.id}] : ${fullText}`);
 				}
 			},
 
