@@ -84,7 +84,7 @@ class Mafia1 extends faction {
 
                 player.outputChatBox("data : " + data);
 
-                const d = JSON.parse(d);
+                const d = JSON.parse(data);
                 const inventory = player.getInventory();
 
                 inventory.forEach((item, index) => {
