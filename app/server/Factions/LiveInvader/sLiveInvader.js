@@ -1,5 +1,5 @@
 const misc = require('../../sMisc');
-const time = require('../../sTime');
+const time = require('../Basic/sTime');
 const faction = require('../sFaction');
 const clothes = require('../../Character/sClothes');
 
