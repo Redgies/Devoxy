@@ -56,9 +56,9 @@ class Mafia1 extends faction {
             "playerExitColshape" : (player, shape) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
                 
-                if(shape === this.createShape)
+                if(shape === this.matosShape)
                     player.canBuyMatos = false;
-                if(shape === this.canCreateWeapon)
+                if(shape === this.createShape)
                     player.canCreateWeapon = false;
             },
             "sKeys-E" : (player) => {
@@ -76,7 +76,7 @@ class Mafia1 extends faction {
                 }
                 if(player.canCreateWeapon)
                 {
-                    player.call("cMafia-Open", [execute]);
+                    player.call("cMafia-Open", []);
                 }
             },
             "sMafia-buyWeapon" : (player, data) => {
