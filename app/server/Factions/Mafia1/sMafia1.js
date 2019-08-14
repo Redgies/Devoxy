@@ -96,7 +96,7 @@ class Mafia1 extends faction {
                         player.setWeapon(d.hash, 0);
 
                         player.notify(`Vous avez fabriqué une arme pour (~g~+${d.price} matos~w~).`);
-                        break;
+                        return 1;
                     }
                 });
             }
