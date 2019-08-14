@@ -6,6 +6,8 @@ const teleporters = [
 
 class Teleporter {
     constructor(d) {
+
+        console.log("le monopole");
         
         this.id = d.id;
         this.enter = {};
