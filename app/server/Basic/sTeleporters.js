@@ -6,8 +6,6 @@ const teleporters = [
 
 class Teleporter {
     constructor(d) {
-
-        console.log("le monopole");
         
         this.id = d.id;
         this.enter = {};
@@ -41,7 +39,7 @@ class Teleporter {
             },
             
 			"sKeys-E" : (player) => {
-                if(!player.loggedIn || !player.doorId) return;
+                if(!player.loggedIn) return;
 
                 if(player.canEnter)
                 {
