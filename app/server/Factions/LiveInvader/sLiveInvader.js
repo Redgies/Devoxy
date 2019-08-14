@@ -1,4 +1,5 @@
 const misc = require('../../sMisc');
+const time = require('../../Basic/sTime');
 const faction = require('../sFaction');
 const clothes = require('../../Character/sClothes');
 
@@ -91,7 +92,7 @@ class LifeInvader extends faction {
 			color: [9, 132, 227, 50],
 			visible: true,
 		});
-		this.announceLabel = mp.labels.new("[/annonce]", new mp.Vector3(pos.x, pos.y, pos.z),
+		this.announceLabel = mp.labels.new("[annonce]", new mp.Vector3(pos.x, pos.y, pos.z),
 		{
 			los: false,
 			font: 2,
