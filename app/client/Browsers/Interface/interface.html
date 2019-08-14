@@ -172,8 +172,8 @@
             <!-- ANIMATIONS -->
             <div v-if="currentTab == 61">
                 <h1 class="title-right">Animations</h1>
-                <a v-for="(mood, i) in animsList" class="walk-style" @click="setAnimation(i)">
-                    {{mood.name }}
+                <a v-for="(anim, i) in animsList" class="walk-style" @click="setAnimation(i)">
+                    {{anim.title }}
                 </a>
             </div>
             <!-- COULEUR VEHICULE-->
