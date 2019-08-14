@@ -82,10 +82,12 @@ class Mafia1 extends faction {
             "sMafia-buyWeapon" : (player, data) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
 
+                player.outputChatbox("data : " + data);
+
                 const d = JSON.parse(d);
                 const inventory = player.getInventory();
 
-                sinventory.forEach((item, index) => {
+                inventory.forEach((item, index) => {
                     if(item.key == "item_matos")
                     {
                         let amount = player.getItemAmount(item.key);
