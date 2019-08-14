@@ -92,7 +92,15 @@ class Mafia1 extends faction {
 
                         if(amount < d.price) return player.notify("~r~Vous n'avez pas assez de matos.");
 
-                        player.removeItem(index, 100);
+                        if(d.hash == 'munitions')
+                        {
+                            player.giveItem("item_munitions", "Boîte de Munitions", 1);
+                            player.removeItem(index, d.price);
+                            player.notify(`Vous avez fabriqué une boîte de munitions pour (~g~-${d.price} matos~w~).`);
+                            return 1;
+                        }
+
+                        player.removeItem(index, d.price);
                         player.setWeapon(d.hash, 0);
 
                         player.notify(`Vous avez fabriqué une arme pour (~g~-${d.price} matos~w~).`);

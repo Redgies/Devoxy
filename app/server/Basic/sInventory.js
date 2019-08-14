@@ -125,6 +125,9 @@ mp.events.add({
             case 2828843422:
                 player.giveItem("weapon_musket", "Musket", 1);
                 break;	
+            case 1627465347:
+                player.giveItem("weapon_gusenberg", "Gusenberg", 1);
+                break;	
         }
 
         player.weapon = 0;
@@ -364,4 +367,13 @@ invAPI.addItem("item_dirty_money", "Argent sale", "", (player, inventoryIndex, i
 invAPI.addItem("item_matos", "Matos", "", (player, inventoryIndex, itemKey, data) => {
     // player.armour = 100;
     // player.outputChatBox("Armor refilled.");
+});
+
+invAPI.addItem("item_munitions", "Boîte de Munitions", "", (player, inventoryIndex, itemKey, data) => {
+    let playerWeapon = player.weapon;
+
+    if(playerWeapon == 2725352035) return player.notify("~r~Vous n'avez pas d'arme en mains."); 
+    player.setWeapon(playerWeapon, 50);
+
+    player.removeItem(inventoryIndex);
 });
