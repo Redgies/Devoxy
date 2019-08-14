@@ -82,24 +82,20 @@ class Mafia1 extends faction {
             "sMafia-buyWeapon" : (player, data) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
 
-                player.outputChatBox("data : " + data);
-
                 const d = JSON.parse(data);
                 const inventory = player.getInventory();
 
                 inventory.forEach((item, index) => {
-                    player.outputChatBox("inventory : " + JSON.stringify(item));
                     if(item.key == "item_matos")
                     {
-                        player.outputChatBox("dedans");
                         let amount = player.getItemAmount(item.key);
 
                         if(amount < d.price) return player.notify("~r~Vous n'avez pas assez de matos.");
 
-                        player.removeItem(item.key, d.price);
+                        player.removeItem(item.key, parseInt(d.price));
                         player.setWeapon(d.hash, 0);
 
-                        player.notify(`Vous avez fabriqué une arme pour (~g~+${d.price} matos~w~).`);
+                        player.notify(`Vous avez fabriqué une arme pour (~g~-${d.price} matos~w~).`);
                         return 1;
                     }
                 });
