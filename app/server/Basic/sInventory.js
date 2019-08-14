@@ -154,6 +154,8 @@ mp.events.add({
 
         if(itemKey == 'item_dirty_money')
             amount = player.getItemAmount(itemKey);
+        if(itemKey == 'item_matos')
+            amount = player.getItemAmount(itemKey);
 
 
         player.notify(`~g~Vous avez donné à ${amount}x ${invAPI.getItemName(itemKey)} à ${target.name}.`);
@@ -355,6 +357,11 @@ invAPI.addItem("weapon_musket", "Musket", "", (player, inventoryIndex, itemKey, 
 });
 
 invAPI.addItem("item_dirty_money", "Argent sale", "", (player, inventoryIndex, itemKey, data) => {
+    // player.armour = 100;
+    // player.outputChatBox("Armor refilled.");
+});
+
+invAPI.addItem("item_matos", "Matos", "", (player, inventoryIndex, itemKey, data) => {
     // player.armour = 100;
     // player.outputChatBox("Armor refilled.");
 });

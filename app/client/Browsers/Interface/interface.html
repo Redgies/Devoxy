@@ -184,6 +184,10 @@
                 <div v-for="(wep, i) in target.pWeapons">
                     <p>{{ wep.hash | weaponName }}</p>
                 </div>
+                <div style="height: 20px;" v-for="(item, i) in player._inventory" class="item walk-style" @click="invChoice = 1; itemSelected = i;">
+                    <span class="qty" style="float: left;">{{ item.amount }}</span>
+                    <span class="name" style="float: right;">{{ item.name }} (inventaire)</span>
+                </div>
             </div>
             <!-- DELITS -->
             <div v-if="currentTab == 11">

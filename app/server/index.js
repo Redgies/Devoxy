@@ -41,3 +41,4 @@ require('./Factions/Police/sPoliceGarage');
 require('./Factions/Bennys/sBennys');
 require('./Factions/LsCustom/sLsCustom');
 require('./Factions/Hospital/sHospital');
+require('./Factions/Mafia1/sMafia1');
