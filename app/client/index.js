@@ -14,6 +14,7 @@ require('./Factions/cGarage.js');
 require('./Factions/cHospital.js');
 require('./Factions/cPolice');
 require('./Factions/cPrison.js');
+require('./Factions/cMafia.js');
 require('./Basic/cMenu');
 require('./Basic/cTab.js');
 require('./Basic/cPhone.js');

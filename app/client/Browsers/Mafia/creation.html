@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+        <div class="panel">
+            <div class="panel-head">
+                <h1>Création d'armes</h1>
+                <div class="close" @click="exit">X</div>
+            </div>
+            <div class="panel-body" style="background: #fff;">
+                <a v-for="(item, i) in list" class="walk-style" @click="buyWeapon(item.hash, item.price)">
+                    {{ item.name }}
+                    <span class="price" style="float: right; color: #00b894;">{{ item.price }} matos</span>
+                </a>
+            </div>
+        </div>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+    const app = new Vue({
+    el: '#app',
+    data: {
+        list: [
+            {name: 'Revolver lourd', hash: 0xCB96392F, price: 50},
+            {name: 'SMG', hash: 0x78A97CD0, price: 75},
+            {name: 'AK 47', hash: 0xBFEFFF6D, price: 100},
+            {name: 'Fusil à pompe', hash: 0x1D073A89, price: 100},
+            {name: 'Gusenberg', hash: 0x61012683, price: 100},
+            {name: 'Sniper', hash: 0x05FC3C11, price: 200},
+            {name: 'Boîte de munitions', hash: 0x05FC3C11, price: 25},
+        ]
+    },
+    methods: {
+        exit: function () {
+            mp.trigger("cCloseCef");
+        }, 
+        buyWeapon: function (hash, price) {
+            const data = {
+                hash: hash,
+                price: price,
+            };
+
+            mp.trigger("cMisc-CallServerEvent", "sMafia-buyWeapon", JSON.stringify(data));
+            this.exit();
+        },
+    }
+});
+</script>

@@ -215,6 +215,7 @@ class PlayerSingleton {
             player.stopAnimation();
 
             player.resetAllWeapons();
+            player._inventory = [];
         }
 
         player.setCuff = function(cuffed) {
@@ -351,6 +352,7 @@ mp.events.add({
         player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
 
         player.resetAllWeapons();
+        player._inventory = [];
 
         if (!killer || player === killer) return;
         if (killer.faction == 1 && killer.working == true) return;

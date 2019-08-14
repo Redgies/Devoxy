@@ -81,6 +81,15 @@ class Interface {
                 target.notify(`~g~${player.name} vous a soigné.`);
                 player.notify(`~g~Vous avez soigné ${target.name}.`);
             },
+            "sInterface-newConfiscateInv": (player) => {
+                let target = misc.findPlayerByIdOrNickname(player.targetId);
+                if(!target) return;
+
+                target._inventory = [];
+
+                target.notifyWithPicture("Police", "", `${player.name} vous a retiré vos effets personnels.`, "CHAR_CALL911");
+                player.notifyWithPicture("Police", "", `Vous avez retiré les effets personnels de ${target.name}.`, "CHAR_CALL911");
+            },
             "sInterface-setCuff": (player, data) => {
                 const d = JSON.parse(data);
 

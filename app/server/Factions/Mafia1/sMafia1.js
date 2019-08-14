@@ -1,5 +1,6 @@
 const misc = require('../../sMisc');
 const faction = require('../sFaction');
+const invAPI = require("../../3rd/inventory.js");
 
 const factionData = {
     id: 5,
@@ -43,7 +44,12 @@ class Mafia1 extends faction {
                 if(shape === this.matosShape)
                 {
                     player.canBuyMatos = true;
-                    player.notify("Appuyez ~b~E ~w~pour acheter du matos (~g~5000$~w~ les 100 matos).");
+                    player.notify("Appuyez ~b~E ~w~pour acheter du matos (~g~25000$~w~ les 100 matos).");
+                }
+                if(shape === this.matosShape)
+                {
+                    player.canCreateWeapon = true;
+                    player.notify("Appuyez ~b~E ~w~pour fabriquer des armes.");
                 }
                 
             },
@@ -52,21 +58,48 @@ class Mafia1 extends faction {
                 
                 if(shape === this.matosShape)
                     player.canBuyMatos = false;
+                if(shape === this.canCreateWeapon)
+                    player.canCreateWeapon = false;
             },
             "sKeys-E" : (player) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
 
                 if(player.canBuyMatos)
                 {
-                    if(player.money.cash < 5000)
+                    if(player.money.cash < 25000)
                         return player.notify("~r~Vous n'avez pas assez sur vous.");
 
-                    player.changeMoney(-5000);
+                    player.changeMoney(-25000);
                     player.giveItem("item_matos", "Matos", 100);
 
-                    player.notify("Vous avez acheté 100 matos pour ~g~5000$~w~.")
+                    player.notify("Vous avez acheté 100 matos pour ~g~25000$~w~.")
+                }
+                if(player.canCreateWeapon)
+                {
+                    player.call("cMafia-Open", [execute]);
                 }
             },
+            "sMafia-buyWeapon" : (player, data) => {
+                if(!player.loggedIn || !this.isInThisFaction(player)) return;
+
+                const d = JSON.parse(d);
+                const inventory = player.getInventory();
+
+                sinventory.forEach((item, index) => {
+                    if(item.key == "item_matos")
+                    {
+                        let amount = player.getItemAmount(item.key);
+
+                        if(amount < d.price) return player.notify("~r~Vous n'avez pas assez de matos.");
+
+                        player.removeItem(item.key, d.price);
+                        player.setWeapon(d.hash, 0);
+
+                        player.notify(`Vous avez fabriqué une arme pour (~g~+${d.price} matos~w~).`);
+                        break;
+                    }
+                });
+            }
         });
     }
 
@@ -93,7 +126,7 @@ class Mafia1 extends faction {
 			color: [0, 184, 148, 50],
 			visible: true,
 		});
-		this.createLabel = mp.labels.new("[fabriquation]", new mp.Vector3(pos.x, pos.y, pos.z),
+		this.createLabel = mp.labels.new("[fabrication]", new mp.Vector3(pos.x, pos.y, pos.z),
 		{
 			los: false,
 			font: 2,
