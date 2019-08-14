@@ -330,7 +330,7 @@ mp.events.addCommand({
 });
 
 mp.events.add("anim", (player, dict, name, speed, flag) => {
-    player.playAnimation(dict.toString(), name.toString(), speed, flag);
+    player.playAnimation(dict.toString(), name.toString(), speed, flag);s
 });
 
 mp.events.add("fpsync.update", (player, camPitch, camHeading) => {

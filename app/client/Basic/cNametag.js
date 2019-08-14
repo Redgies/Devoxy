@@ -4,7 +4,7 @@
 // const border = 0.001;
 // const color = [255,255,255,255];
 
-// mp.nametags.enabled = false;
+mp.nametags.enabled = false;
 
 let disableRegeneration = (player) => {
     let veh = player.getVariable('veh');
