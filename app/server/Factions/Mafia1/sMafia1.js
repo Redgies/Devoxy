@@ -88,8 +88,10 @@ class Mafia1 extends faction {
                 const inventory = player.getInventory();
 
                 inventory.forEach((item, index) => {
+                    player.outputChatBox("inventory : " + JSON.stringify(item));
                     if(item.key == "item_matos")
                     {
+                        player.outputChatBox("dedans");
                         let amount = player.getItemAmount(item.key);
 
                         if(amount < d.price) return player.notify("~r~Vous n'avez pas assez de matos.");
