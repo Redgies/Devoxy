@@ -4,15 +4,15 @@ const invAPI = require("../../3rd/inventory.js");
 
 const factionData = {
     id: 5,
-    name: "Mafia 1",
-    surname: "mafia 1",
+    name: "Cartel Madrazo",
+    surname: "Madrazo",
     ranks: [
-        "Dépanneur",
-        "Mécanicien",
-        "Carrossier",
-        "Pimper",
-        "Chef d'équipe",
-        "Directeur",
+        "Associé",
+        "Soldat",
+        "Capos",
+        "Sous Boss",
+        "Le Consigliere",
+        "Parrain",
     ],
     maxRank: 6,
     matosPoint: {

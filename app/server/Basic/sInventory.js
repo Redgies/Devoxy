@@ -157,7 +157,11 @@ mp.events.add({
 
         if(itemKey == 'item_dirty_money')
             amount = player.getItemAmount(itemKey);
-        if(itemKey == 'item_matos')
+        else if(itemKey == 'item_matos')
+            amount = player.getItemAmount(itemKey);
+        else if(itemKey == 'item_munitions')
+            amount = 1;
+        else 
             amount = player.getItemAmount(itemKey);
 
 
@@ -356,6 +360,10 @@ invAPI.addItem("weapon_combatpistol", "Pistolet de combat", "", (player, invento
 });
 invAPI.addItem("weapon_musket", "Musket", "", (player, inventoryIndex, itemKey, data) => {
     player.setWeapon(2828843422, 0);
+    player.removeItem(inventoryIndex);
+});
+invAPI.addItem("weapon_gusenberg", "Gusenberg", "", (player, inventoryIndex, itemKey, data) => {
+    player.setWeapon(1627465347, 0);
     player.removeItem(inventoryIndex);
 });
 
