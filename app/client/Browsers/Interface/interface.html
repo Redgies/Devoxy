@@ -764,7 +764,8 @@
                     this.exit();
                 },
                 setAnimation: function (index) {
-                    mp.events.callRemote("anim", this.animsList[index].p1, this.animsList[index].p2, this.animsList[index].p3, this.animsList[index].p4);
+                    mp.events.callRemote("anim", "random@arrests", "generic_radio_chatter", 1, 49);
+                    // mp.events.callRemote("anim", this.animsList[index].p1, this.animsList[index].p2, this.animsList[index].p3, this.animsList[index].p4);
                     this.exit();
                 },
                 giveGunLicence: function() {
