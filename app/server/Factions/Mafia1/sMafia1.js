@@ -46,7 +46,7 @@ class Mafia1 extends faction {
                     player.canBuyMatos = true;
                     player.notify("Appuyez ~b~E ~w~pour acheter du matos (~g~25000$~w~ les 100 matos).");
                 }
-                if(shape === this.matosShape)
+                if(shape === this.createShape)
                 {
                     player.canCreateWeapon = true;
                     player.notify("Appuyez ~b~E ~w~pour fabriquer des armes.");
@@ -56,7 +56,7 @@ class Mafia1 extends faction {
             "playerExitColshape" : (player, shape) => {
                 if(!player.loggedIn || !this.isInThisFaction(player)) return;
                 
-                if(shape === this.matosShape)
+                if(shape === this.createShape)
                     player.canBuyMatos = false;
                 if(shape === this.canCreateWeapon)
                     player.canCreateWeapon = false;
