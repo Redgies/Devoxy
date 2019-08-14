@@ -5,7 +5,7 @@ const clothes = require('../../Character/sClothes');
 
 const factionData = {
     id: 6,
-    name: "Live Invader",
+    name: "Life Invader",
     surname: "Life Inv.",
     ranks: [
         "Cadet",

@@ -85,6 +85,8 @@ class PlayerSingleton {
             job = faction.getFactionName(player);
         }
         player.call("cJob-Update", [job]);
+        player.call("cId-Update", [player.id]);
+        player.call("cGuid-Update", [player.guid]);
 
         for(let i = 0; i < player.pWeapons.length; i++)
         {

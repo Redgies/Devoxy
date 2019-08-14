@@ -162,7 +162,7 @@ mp.events.add({
         else if(itemKey == 'item_munitions')
             amount = 1;
         else 
-            amount = player.getItemAmount(itemKey);
+            amount = 1;
 
 
         player.notify(`~g~Vous avez donné à ${amount}x ${invAPI.getItemName(itemKey)} à ${target.name}.`);

@@ -4,6 +4,8 @@ let player = mp.players.local;
 
 let money;
 let job = 'Chômeur';
+let id;
+let guid;
 
 mp.events.add({
     "cMoney-Update" : (value) => { 
@@ -11,6 +13,12 @@ mp.events.add({
     },
     "cJob-Update" : (value) => {
         job = value;
+    },
+    "cId-Update" : (value) => {
+        id = value;
+    },
+    "cGuid-Update" : (value) => {
+        guid = value;
     },
     "playerStartTalking": (p) => 
     {
@@ -22,7 +30,7 @@ mp.events.add({
     },
     "render": () =>
     {
-        speedo.execute(`updateMoney(${money}, '${job}');`);  
+        speedo.execute(`updateMoney(${money}, '${job}', ${id}, ${guid});`);  
 
         if(player.vehicle && player.vehicle.getPedInSeat(-1) === player.handle)
             {
