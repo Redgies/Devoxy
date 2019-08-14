@@ -14,6 +14,7 @@ class Teleporter {
         this.enter.x = d.enter.x;
         this.enter.y = d.enter.y;
         this.enter.z = d.enter.z;
+        this.exit = {};
         this.exit.x = d.exit.x;
         this.exit.y = d.exit.y;
         this.exit.z = d.exit.z;
