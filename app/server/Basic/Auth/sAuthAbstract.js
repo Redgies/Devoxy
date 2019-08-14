@@ -41,12 +41,12 @@ class AbstractAuth {
     }
 
     checkCode(player, code) {
-        if (!this.canCheckCode(player)) return false;
-        if (player.verificationCode !== code) {
-            player.verificationCodeTries++;
-            this.showError(player, `Code incorrect !`);
-            return false;
-        }
+        // if (!this.canCheckCode(player)) return false;
+        // if (player.verificationCode !== code) {
+        //     player.verificationCodeTries++;
+        //     this.showError(player, `Code incorrect !`);
+        //     return false;
+        // }
         return true;
     }
 }
