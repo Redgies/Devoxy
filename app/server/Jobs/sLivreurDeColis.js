@@ -3,15 +3,25 @@ const i18n = require('../sI18n');
 const Job = require('./sJob');
 const Vehicle = require('../Basic/Vehicles/sVehicle');
 
-class Pizza extends Job {
+class LivreurDeColis extends Job {
     constructor() {
-        const d = {name: "Livreur de pizza", x: -1182.947, y: -884.062, z: 13.755, rot: 0, dim: 0}
+        const d = {name: "Livreur de colis", x: -423.005, y: -2788.771, z: 6, rot: 0, dim: 0, blipmodel: 688}
         super(d);
-        this.posToDrop = {x: -1176.807, y: -890.748, z: 13.807};
-        this.posToGetVehicle = {x: -1174.217, y: -874.52, z: 14.118};
+        this.posToDrop = {x: -444.86, y: -2791.573, z: 6};
+        this.posToGetVehicle = {x: -415.95, y: -2796.662, z: 6};
         this.checkPoints = [
-            {x: -1206.693, y: -1263.474, z: 6.963},
-            {x: -1108.959, y: -1527.616, z: 6.78},
+            {x: 140.984, y: -1729.193, z: 29.097},
+            {x: 274.43, y: -1893.985, z: 26.727},
+            {x: 279.063, y: -1034.578, z: 29.081},
+            {x: -798.165, y: -584.821, z: 30.103},
+            {x: -1327.371, y: -394.552, z: 36.446},
+            {x: -1531.44, y: -441.668, z: 34.965},
+            {x: -1495.026, y: -385.891, z: 39.984},
+            {x: 524.47, y: -179.459, z: 53.791},
+            {x: -212.958, y: -1306.048, z: 31.346},
+            {x: -366.412, y: -131.672, z: 45.38},
+            {x: -1238.802, y: -295.31, z: 37.542},
+            {x: -2193.458, y: -375.794, z: 13.231},
         ];
         this.treeMarkersList = [];
 
@@ -20,9 +30,9 @@ class Pizza extends Job {
             "playerEnterColshape": (player, shape) => {
                 if (!player.loggedIn || !this.isPlayerWorksHere(player)) return;
                 if (shape.orangeCollectorTree === player.job.activeTree) {
-                    player.call("cMisc-CallServerEvenWithTimeout", ["sPizza-EnteredTreeShape", 2400]);
+                    player.call("cMisc-CallServerEvenWithTimeout", ["sLivreurDeColis-EnteredTreeShape", 2400]);
                 } else if (shape === this.dropShape) {
-                    player.call("cMisc-CallServerEvenWithTimeout", ["sPizza-EnteredDropShape", 2400]);
+                    player.call("cMisc-CallServerEvenWithTimeout", ["sLivreurDeColis-EnteredDropShape", 2400]);
                 } else if (shape === this.vehicleShape) {
                     player.canGetVehicle = true;
                 }
@@ -38,10 +48,10 @@ class Pizza extends Job {
                 if (player.canGetVehicle) {
                     if (player.locationJob) return player.notify("~r~Vous avez déjà un véhicule de travail.");
                     const d = {
-                        model: 'faggio3',
-                        coord: JSON.stringify({x: -1169.767, y: -879.483, z: 13.638, rot: 117.68}),
+                        model: 'benson',
+                        coord: JSON.stringify({x: -406.577, y: -2798.557, z: 5.977, rot: 314.49}),
                         id: 0,
-                        title: 'Faggio 3',
+                        title: 'Benson',
                         fuel: 1,
                         fuelTank: 5,
                         fuelRate: 0,
@@ -58,19 +68,19 @@ class Pizza extends Job {
                 }
 
             },
-            "sPizza-EnteredTreeShape": (player) => {
+            "sLivreurDeColis-EnteredTreeShape": (player) => {
                 this.enteredTreeShape(player);
             },
 
-            "sPizza-EnteredDropShape": (player) => {
+            "sLivreurDeColis-EnteredDropShape": (player) => {
                 this.enteredDropShape(player);
             },
 
-            "sPizza-StartWork": (player) => {
+            "sLivreurDeColis-StartWork": (player) => {
                 this.startWork(player);
             },
 
-            "sPizza-FinishWork": (player) => {
+            "sLivreurDeColis-FinishWork": (player) => {
                 this.finishWork(player);
             },
 
@@ -137,11 +147,11 @@ class Pizza extends Job {
     pressedKeyOnMainShape(player) {
         let execute = '';
         if (player.job.name === this.name) execute = `app.loadFinish();`;
-        player.call("cPizza-OpenMainMenu", [player.lang, execute]);
+        player.call("cLivreurDeColis-OpenMainMenu", [player.lang, execute]);
     }
 
     startWork(player) {
-        if (player.loyality < 40) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 40 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
+        if (player.loyality < 20) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 20 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
         super.startWork(player);
         player.job = {name: this.name, collected: 0, activeTree: false};
         this.createRandomCheckPoint(player);
@@ -169,6 +179,8 @@ class Pizza extends Job {
         if (i === player.job.activeTree) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         this.treeMarkersList[i].marker.showFor(player);
+        this.treeMarkersList[i].blip.routeFor(player, 60, 0.7);
+        player.routeBlip = this.treeMarkersList[i].blip;
         player.job.activeTree = i;
         return i;
     }
@@ -186,18 +198,18 @@ class Pizza extends Job {
         player.notify(`Vous avez livrés ~g~${player.job.collected} ~w~adresses.`);
         if (player.job.collected < 10) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
-        player.notify(`~g~Vous n'avez plus de pizza, retournez à la pizzeria.`);
+        player.notify(`~g~Vous n'avez plus de colis, retournez au bureau.`);
         this.dropMarker.routeFor(player, 60, 0.7);
     }
 
     enteredDropShape(player) {
         player.stopAnimation();
-        if (player.job.collected === 0) return player.notify(`Vous n'avez pas livré de pizza !`);
-        const earnedMoney = player.vip ? (player.job.collected * 220 * 1.10) : player.job.collected * 220;
+        if (player.job.collected === 0) return player.notify(`Vous n'avez pas livré de colis !`);
+        const earnedMoney = player.vip ? (player.job.collected * 280 * 1.10) : player.job.collected * 280;
         player.changeMoney(earnedMoney);
         player.notify(`Vous gagnez ~g~$${earnedMoney} ! ~w~Continuez !`);
-        if (player.loyality < 60) player.addLoyality(player.job.collected / 10);
-        misc.log.debug(`${player.name} earned $${earnedMoney} at livreur de pizzas job!`);
+        if (player.loyality < 30) player.addLoyality(player.job.collected / 10);
+        misc.log.debug(`${player.name} gagne $${earnedMoney} en tant que livreur de colis!`);
         player.job.collected = 0;
         if (!player.job.activeTree) this.createRandomCheckPoint(player);
     }
@@ -205,6 +217,7 @@ class Pizza extends Job {
     finishWork(player) {
         this.hideActiveCheckPoint(player);
         this.dropMarker.hideFor(player);
+        player.routeBlip.unrouteFor(player);
         player.locationJob.destroy();
         player.locationJob = 0;
         super.finishWork(player);
@@ -213,4 +226,4 @@ class Pizza extends Job {
 
 }
 
-new Pizza();
+new LivreurDeColis();

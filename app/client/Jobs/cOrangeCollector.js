@@ -20,7 +20,7 @@ mp.events.add({
     },
     "cPizza-OpenMainMenu" : (lang, inject) => {
         misc.prepareToCef();
-        misc.openCef("package://RP/Browsers/Jobs/Pizza/collector.html", lang);
+        misc.openCef("package://RP/Browsers/Jobs/LivreurDeColis/collector.html", lang);
         misc.injectCef(inject);
     },
     "cBus-OpenMainMenu" : (lang, inject) => {
