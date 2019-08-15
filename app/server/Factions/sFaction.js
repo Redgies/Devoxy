@@ -371,6 +371,28 @@ module.exports = Faction;
 // module.exports.createNewUser = createNewUser;
 
 mp.events.addCommand({
+	"makeleader" : (player, fullText, arg1, arg2) => {
+		if(player.adminLvl < 3) return;
+		if(!arg1 || !arg2)
+			return player.notify("Utilisez /makeleader id faction");
+
+		const target = this.findPlayerByIdOrNickname(arg1);
+		if(!target)
+			return player.notify("Ce joueur n'est pas connecté.");
+
+		for (const f of factionsList) {
+			if(parseInt(arg2) !== f.id) continue; 
+
+			target.faction = f.id;
+			target.rank = f.maxRank;
+
+			const currentTime = misc.getTime();
+			
+			player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez passsé ${target.name} leader de la faction ${f.name}.`);
+			target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a passé leader de la faction ${f.name}.`);
+			misc.log.debug(`${player.name} make leader ${f.name} for ${target.name}`);
+		}
+	},
 	"r" : (player, fullText) => {
 		const currentTime = misc.getTime();
 		

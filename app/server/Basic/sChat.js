@@ -259,7 +259,7 @@ class ChatSingleton {
 
 				const currentTime = misc.getTime();
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez passsé ${target.name} VIP ${arg2}.`);
-				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a passé VIP ${arg1}.`);
+				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a passé VIP ${arg2}.`);
 				misc.log.debug(`${player.name} make vip ${arg2} for ${target.name}`);
 			},
 
