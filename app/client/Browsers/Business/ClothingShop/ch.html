@@ -29,12 +29,6 @@
                 <div class="arrow r-arrow" @click="nextColor">></div>
             </div>
 
-            <div class="item b" v-if="currentTitle === 'Tops'">
-                <div class="arrow l-arrow" @click="prevUnderColor"><</div>
-                {{ underColorText }}
-                <div class="arrow r-arrow" @click="nextUnderColor">></div>
-            </div>
-
             <div class="item b buy" @click="buy">
                 <div> {{ buyText }}</div>
                 <div>{{ showPrice() }}</div>
@@ -86,7 +80,6 @@
             legsText: "Legs",
             feetText: "Feet",
             colorText: "Color:",
-            underColorText: "Undershirt Color",
             buyText: "Buy",
             resetText: "Reset All",
             exitText: "Exit",
