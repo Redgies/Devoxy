@@ -32,7 +32,7 @@ const i18n = {
 		},
 
 		workingOnOtherJob: {
-			eng: 'You are already working on other job',
+			eng: 'Vous travaillez déjà sur un autre job.',
 			rus: 'Вы уже работаете на другой работе',
 			ger: 'Du arbeitest bereits an einem anderen Job',
 			br: 'Você já está trabalhando em alguma empresa', 
@@ -42,7 +42,7 @@ const i18n = {
 		},
 
 		earned1: {
-			eng: 'You earned',
+			eng: 'Vous gagnez',
 			rus: 'Вы заработали',
 			ger: 'Du hast verdient',
 			br: 'Você ganhou', 
@@ -52,7 +52,7 @@ const i18n = {
 		},
 
 		earned2: {
-			eng: 'Keep it up',
+			eng: 'Continuez',
 			rus: 'Продолжайте в том же духе',
 			ger: 'Mach weiter',
 			br: 'Continue assim, bom trabalho', 
@@ -62,7 +62,7 @@ const i18n = {
 		},
 
 		needMoreLoyality1: {
-			eng: 'You need at least',
+			eng: 'Vous devez avoir au moins',
 			rus: 'Вам необходимо минимум',
 			ger: 'Du brauchst wenigstens',
 			br: 'Você precisa de pelo menos', 
@@ -72,7 +72,7 @@ const i18n = {
 		},
 
 		needMoreLoyality2: {
-			eng: 'loyality points',
+			eng: 'points de loyauté',
 			rus: 'очков лояльности',
 			ger: 'treuepunkte',
 			br: 'pontos de fidelidade', 
@@ -692,7 +692,7 @@ const i18n = {
 
 	sJob: {
 		start: {
-			eng: 'You started work as',
+			eng: 'Vous avez commencé à travailler en tant que',
 			rus: 'Вы устроились работать как ',
 			ger: '',
 			br: '', 
@@ -703,7 +703,7 @@ const i18n = {
 
 
 		finish: {
-			eng: 'You finished work as',
+			eng: 'Vous avez fini de travailler en tant que',
 			rus: 'Вы уволились с работы',
 			ger: '',
 			br: '', 
@@ -717,7 +717,7 @@ const i18n = {
 
 	sOrangeCollector: {
 		collected1: {
-			eng: 'You have',
+			eng: 'Vous avez',
 			rus: 'У вас в корзине',
 			ger: 'Du hast',
 			br: 'Você tem', 
@@ -727,7 +727,7 @@ const i18n = {
 		},
 
 		collected2: {
-			eng: 'oranges in your bucket',
+			eng: 'oranges dans votre panier',
 			rus: 'апельсинов',
 			ger: 'orangen in deinem eimer',
 			br: 'laranjas no seu balde', 
@@ -737,7 +737,7 @@ const i18n = {
 		},
 
 		full: {
-			eng: 'Your bucket is full! Take it to the trailer',
+			eng: 'Votre panier est plein! Amenez-le à la remorque',
 			rus: 'Ваша корзина заполнена! Отнесите ее к трейлеру',
 			ger: 'Dein Eimer ist voll! Bring es zum Trailer',
 			br: 'Seu balde está cheio! Leve para o trailer', 
@@ -747,7 +747,7 @@ const i18n = {
 		},
 
 		empty: {
-			eng: 'Your bucket is empty',
+			eng: 'Votre pannier est vide.',
 			rus: 'Ваша корзина пуста',
 			ger: 'Dein Eimer ist leer',
 			br: 'Seu balde está vazio', 

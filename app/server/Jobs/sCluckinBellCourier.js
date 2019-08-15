@@ -5,7 +5,7 @@ const Job = require('./sJob');
 
 class ClickinBellCourier extends Job {
     constructor() {
-        const d = { name: "Cluckin Bell Courier", x: -145.918, y: 6303.983, z: 31.559, rot: 131.94, dim: 0 }
+        const d = { name: "Livreur de journaux", x: -145.918, y: 6303.983, z: 31.559, rot: 131.94, dim: 0 }
         super(d);
         this.getOrderCoord = { x: -139.975, y: 6301.485, z: 31.488, rot: 134.19 };
         this.deliveryPoints = [
@@ -139,7 +139,7 @@ class ClickinBellCourier extends Job {
     }
 
     startWork(player) {
-        if (player.loyality < 5) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 5 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
+        if (player.loyality < 20) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 5 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
         super.startWork(player);
         player.job = { name: this.name, currentOrder: false, canGetNewOrder: false };
         this.getOrderMarker.showFor(player);

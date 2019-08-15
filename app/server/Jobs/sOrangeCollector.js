@@ -9,6 +9,7 @@ class OrangeCollector extends Job {
         const d = { name: "Ramasseur d'Oranges", x: 405.676, y: 6526.119, z: 27.709, rot: 0, dim: 0 }
         super(d);
         this.posToDrop = {x: 331.74, y: 6541.576, z: 28.417};
+        this.posToGetVehicle = {x: 402.508, y: 6513.289, z: 27.775};
         this.checkPoints = [
             {x: 378.583, y: 6517.85, z: 27.7 },
             {x: 378.304, y: 6506.14, z: 27.7 },
@@ -43,13 +44,49 @@ class OrangeCollector extends Job {
                 if (shape.orangeCollectorTree === player.job.activeTree) {
                     player.playAnimation('anim@mp_snowball', 'pickup_snowball', 1, 47);
                     player.call("cMisc-CallServerEvenWithTimeout", ["sOrangeCollector-EnteredTreeShape", 2400]);
-                    }
+                }
                 else if (shape === this.dropShape) {
                     player.playAnimation('anim@mp_snowball', 'pickup_snowball', 1, 47);
                     player.call("cMisc-CallServerEvenWithTimeout", ["sOrangeCollector-EnteredDropShape", 2400]);
                 }
+                else if (shape === this.vehicleShape) {
+                    player.canGetVehicle = true;  
+                    player.outputChatBox("true");
+                } 
             },
+            "playerExitColshape" : (player, shape) => {
+                if (shape === this.vehicleShape) {
+                    player.canGetVehicle = false; 
+                    player.outputChatBox("false"); 
+                } 
+            },
+            "sKeys-E" : (player) => {
+                if (!player.loggedIn || player.vehicle || !this.isPlayerWorksHere(player)) return;
+               
+                if(player.canGetVehicle)
+                {
+                    if (player.locationJob) return player.notify("~r~Vous avez déjà un véhicule de travail.");
+                    const d = {
+                        model: 'faggio2',
+                        coord: {x: 395.912, y: 6514.077, z: 27.776, rot: 175.7},
+                        id: 0,
+                        title: 'Pegassi Faggio',
+                        fuel: 1,
+                        fuelTank: 5,
+                        fuelRate: 2,
+                        price: 1,
+                        ownerId: 0,
+                        whoCanOpen: JSON.stringify([player.guid]),
+                        factionId: 0,
+                        tunning: JSON.stringify([]),
+                        numberPlate: this.generateRandomNumberPlate(),
+                        primaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
+                        secondaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
+                    }
+                    player.locationJob = new Vehicle(d);
+                }
 
+            },
             "sOrangeCollector-EnteredTreeShape" : (player) => {
                 this.enteredTreeShape(player);
             },
@@ -70,6 +107,16 @@ class OrangeCollector extends Job {
 
         this.createMenuToDrop();
         this.createCheckpoints();
+        this.createGetVehicle();
+    }
+
+    createGetVehicle() {
+        this.vehicleMarker = mp.markers.new(1, new mp.Vector3(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z - 1), 0.75,
+        {
+            color: [255, 255, 255, 100],
+            visible: false,
+        });
+        this.vehicleShape = mp.colshapes.newSphere(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z, 1);        
     }
 
     setLocalSettings() {
@@ -107,6 +154,7 @@ class OrangeCollector extends Job {
     }
 
     startWork(player) {
+        if (player.loyality < 0) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 5 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
         super.startWork(player);
         player.job = { name: this.name, collected: 0, activeTree: false };
         this.createRandomCheckPoint(player);
@@ -157,7 +205,7 @@ class OrangeCollector extends Job {
     enteredDropShape(player) {
         player.stopAnimation();
         if (player.job.collected === 0) return player.notify(`${i18n.get('sOrangeCollector', 'empty', player.lang)}!`);
-        const earnedMoney = player.job.collected * 160;
+        const earnedMoney = player.vip ? (player.job.collected * 160 * 1.10) : player.job.collected * 160;
         player.changeMoney(earnedMoney);
         player.notify(`${i18n.get('basic', 'earned1', player.lang)} ~g~$${earnedMoney}! ~w~${i18n.get('basic', 'earned2', player.lang)}!`);
         if (player.loyality < 50) player.addLoyality(player.job.collected / 10);
@@ -169,6 +217,7 @@ class OrangeCollector extends Job {
     finishWork(player) {
         this.hideActiveCheckPoint(player);
         this.dropMarker.hideFor(player);
+        player.locationJob.destroy();
         super.finishWork(player);
     }
 

@@ -202,7 +202,7 @@ class ChatSingleton {
 			},
 
 			'phone': (player, fullText) => {
-				player.outputChatBox("ton numéro : " + player.phone);
+				player.outputChatBox("Votre numéro de téléphone est : " + player.phone);
 			},
 
 			'aduty': (player, fullText) => {
