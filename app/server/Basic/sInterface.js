@@ -29,7 +29,7 @@ class Interface {
                 misc.log.debug(`${player.name} opens interface`);
             },
             "sInterface-setWalking": (player, data) => {
-                player.data.walkingStyle = data;
+                player.data.walkStyle = data;
             },
             "sInterface-setMood": (player, data) => {
                 player.data.moodStyle = data;

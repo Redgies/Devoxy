@@ -19,7 +19,7 @@ function setMood(player, mood) {
     }
 }
 
-mp.events.addDataHandler("walkingStyle", (entity, value) => {
+mp.events.addDataHandler("walkStyle", (entity, value) => {
     if (entity.type === "player") setWalkingStyle(entity, value);
 });
 

@@ -388,7 +388,7 @@ mp.events.add({
     
             const tp = { x: 275.446, y: -1361.11, z: 24.5378, rot: 46.77, dim: 0 };
             player.tp(tp);
-            misc.log.debug(`${player.name} transfered to Hospital. Fine: $${pay}`);
+            misc.log.debug(`${player.name} transfered to Hospital. Fine: $5000`);
         }
 
         player.setCuff(false);
