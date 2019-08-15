@@ -5,7 +5,7 @@ const Vehicle = require('../Basic/Vehicles/sVehicle');
 
 class Bus extends Job {
     constructor() {
-        const d = {name: "Chauffeur de Bus", x: 450.842, y: -650.804, z: 28.445, rot: 0, dim: 0, blipmodel: 689}
+        const d = {name: "Chauffeur de Bus", x: 450.842, y: -650.804, z: 28.445, rot: 0, dim: 0, blipmodel: 690}
         super(d);
         this.posToDrop = {x: 463.859, y: -622.322, z: 28.4};
         this.posToGetVehicle = {x: 450.594, y: -643.683, z: 28.487};
@@ -13,6 +13,7 @@ class Bus extends Job {
             {x: 308.647, y: -762.751, z: 29.244},
             {x: 117.585, y: -785.561, z: 31.298},
             {x: -171.037, y: -816.288, z: 31.186},
+            {x: -487.902, y: -805.703, z: 30.568},
             {x: -506.235, y: 18.672, z: 44.737},
             {x: -685.978, y: -279.696, z: 35.968},
             {x: -652.984, y: -606.963, z: 33.233},
@@ -28,9 +29,9 @@ class Bus extends Job {
             "playerEnterColshape": (player, shape) => {
                 if (!player.loggedIn || !this.isPlayerWorksHere(player)) return;
                 if (shape.orangeCollectorTree === player.job.activeTree) {
-                    player.call("cMisc-CallServerEvenWithTimeout", ["sBus-EnteredTreeShape", 2400]);
+                    player.call("cMisc-CallServerEvenWithTimeout", ["sBus-EnteredTreeShape", 100]);
                 } else if (shape === this.dropShape) {
-                    player.call("cMisc-CallServerEvenWithTimeout", ["sBus-EnteredDropShape", 2400]);
+                    player.call("cMisc-CallServerEvenWithTimeout", ["sBus-EnteredDropShape", 100]);
                 } else if (shape === this.vehicleShape) {
                     player.canGetVehicle = true;
                 }
@@ -191,7 +192,7 @@ class Bus extends Job {
     enteredTreeShape(player) {
         player.job.collected += 1;
         player.notify(`Vous avez passé ~g~${player.job.collected} ~w~arrêts.`);
-        if (player.job.collected < 9) return this.createRandomCheckPoint(player);
+        if (player.job.collected < 10) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Votre ligne est terminé, retournez au dépôt.`);
         this.dropMarker.routeFor(player, 60, 0.7);
