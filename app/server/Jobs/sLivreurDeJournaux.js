@@ -5,7 +5,7 @@ const Vehicle = require('../Basic/Vehicles/sVehicle');
 
 class LivreurDeJourneaux extends Job {
     constructor() {
-        const d = {name: "Livreur de journaux", x: -318.839, y: -609.888, z: 33.558, rot: 0, dim: 0}
+        const d = {name: "Livreur de journaux", x: -318.839, y: -609.888, z: 33.558, rot: 0, dim: 0, blipmodel: 687}
         super(d);
         this.posToDrop = {x: -292.263, y: -600.794, z: 33.553};
         this.posToGetVehicle = {x: -311.542, y: -607.759, z: 33.557};

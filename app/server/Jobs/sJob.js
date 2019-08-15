@@ -22,11 +22,9 @@ mp.events.add({
         const job = getJobByName(player.canOpen.job);
         job.enteredMainShape(player);
     },
-
     "playerExitColshape" : (player, shape) => {
         if (shape.job) player.canOpen.job = false;
     },
-    
     "sKeys-E" : (player) => {
         if (!player.loggedIn || !player.canOpen.job) return;
         if (player.job.name && player.job.name !== player.canOpen.job) return player.notify(`~r~${i18n.get('basic', 'workingOnOtherJob', player.lang)}!`);
@@ -43,7 +41,7 @@ class Job {
     constructor(d) {
         this.name = d.name;
         this.mainMenu = { x: d.x, y: d.y, z: d.z, rot: d.rot, dim: d.dim };
-        //this.blipModel = d.blipmodel;
+        this.blipModel = d.blipmodel;
 
         this.createMainEntities();
         jobsList.push(this);
@@ -66,7 +64,7 @@ class Job {
         this.mainShape = mp.colshapes.newSphere(this.mainMenu.x, this.mainMenu.y, this.mainMenu.z, 1);
         this.mainShape.job = this.name;
     
-        this.blip = mp.blips.new(40, new mp.Vector3(this.mainMenu.x, this.mainMenu.y, this.mainMenu.z),
+        this.blip = mp.blips.new(this.blipModel, new mp.Vector3(this.mainMenu.x, this.mainMenu.y, this.mainMenu.z),
         {	
             name: this.name,
             shortRange: true,
