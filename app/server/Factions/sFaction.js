@@ -373,7 +373,7 @@ mp.events.addCommand({
 
 			if(player.faction != 0)
 			{
-				job = f.getFactionName(target);
+				job = f.surname + ' | ' + f.getRank(player);
 			}
 			player.call("cJob-Update", [job]);
 
