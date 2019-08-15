@@ -5,42 +5,37 @@ const Vehicle = require('../Basic/Vehicles/sVehicle');
 
 class Pizza extends Job {
     constructor() {
-        const d = { name: "Livreur de pizza", x: -1182.947, y: -884.062, z: 13.755, rot: 0, dim: 0, blipmodel: 688}
+        const d = {name: "Livreur de pizza", x: -1182.947, y: -884.062, z: 13.755, rot: 0, dim: 0, blipmodel: 688}
         super(d);
         this.posToDrop = {x: -1176.807, y: -890.748, z: 13.807};
         this.posToGetVehicle = {x: -1174.217, y: -874.52, z: 14.118};
         this.checkPoints = [
-            {x: -1206.693, y: -1263.474, z: 6.963 },
-            {x: -1108.959, y: -1527.616, z: 6.78 },
+            {x: -1206.693, y: -1263.474, z: 6.963},
+            {x: -1108.959, y: -1527.616, z: 6.78},
         ];
         this.treeMarkersList = [];
 
 
         mp.events.add({
-            "playerEnterColshape" : (player, shape) => {
+            "playerEnterColshape": (player, shape) => {
                 if (!player.loggedIn || !this.isPlayerWorksHere(player)) return;
                 if (shape.orangeCollectorTree === player.job.activeTree) {
                     player.call("cMisc-CallServerEvenWithTimeout", ["sPizza-EnteredTreeShape", 2400]);
-                }
-                else if (shape === this.dropShape) {
+                } else if (shape === this.dropShape) {
                     player.call("cMisc-CallServerEvenWithTimeout", ["sPizza-EnteredDropShape", 2400]);
-                }
-                else if (shape === this.vehicleShape) {
+                } else if (shape === this.vehicleShape) {
                     player.canGetVehicle = true;
-                    player.outputChatBox("true");
                 }
             },
-            "playerExitColshape" : (player, shape) => {
+            "playerExitColshape": (player, shape) => {
                 if (shape === this.vehicleShape) {
                     player.canGetVehicle = false;
-                    player.outputChatBox("false");
                 }
             },
-            "sKeys-E" : (player) => {
+            "sKeys-E": (player) => {
                 if (!player.loggedIn || player.vehicle || !this.isPlayerWorksHere(player)) return;
 
-                if(player.canGetVehicle)
-                {
+                if (player.canGetVehicle) {
                     if (player.locationJob) return player.notify("~r~Vous avez déjà un véhicule de travail.");
                     const d = {
                         model: 'faggio3',
@@ -63,19 +58,19 @@ class Pizza extends Job {
                 }
 
             },
-            "sPizza-EnteredTreeShape" : (player) => {
+            "sPizza-EnteredTreeShape": (player) => {
                 this.enteredTreeShape(player);
             },
 
-            "sPizza-EnteredDropShape" : (player) => {
+            "sPizza-EnteredDropShape": (player) => {
                 this.enteredDropShape(player);
             },
 
-            "sPizza-StartWork" : (player) => {
+            "sPizza-StartWork": (player) => {
                 this.startWork(player);
             },
 
-            "sPizza-FinishWork" : (player) => {
+            "sPizza-FinishWork": (player) => {
                 this.finishWork(player);
             },
 
@@ -102,11 +97,6 @@ class Pizza extends Job {
         this.vehicleShape = mp.colshapes.newSphere(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z, 1);
     }
 
-    setLocalSettings() {
-        this.blip.model = 514;
-        this.blip.color = 17;
-    }
-
     createMenuToDrop() {
         this.dropMarker = mp.markers.new(1, new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z - 1), 0.75,
             {
@@ -130,8 +120,15 @@ class Pizza extends Job {
                     color: [255, 165, 0, 50],
                     visible: false,
                 });
+            const blip = mp.blips.new(1, new mp.Vector3(this.checkPoints[i].x, this.checkPoints[i].y, this.checkPoints[i].z), {
+                shortRange: true,
+                scale: 0,
+                color: 60,
+            });
             marker.orangeCollectorTree = i;
-            this.treeMarkersList.push(marker);
+
+            const obj = {marker, blip};
+            this.treeMarkersList.push(obj);
             const colshape = mp.colshapes.newSphere(this.checkPoints[i].x, this.checkPoints[i].y, this.checkPoints[i].z, 3);
             colshape.orangeCollectorTree = i;
         }
@@ -146,7 +143,7 @@ class Pizza extends Job {
     startWork(player) {
         if (player.loyality < 40) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 40 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
         super.startWork(player);
-        player.job = { name: this.name, collected: 0, activeTree: false };
+        player.job = {name: this.name, collected: 0, activeTree: false};
         this.createRandomCheckPoint(player);
         this.dropMarker.showFor(player);
     }
@@ -214,4 +211,5 @@ class Pizza extends Job {
 
 
 }
+
 new Pizza();

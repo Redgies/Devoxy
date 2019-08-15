@@ -5,7 +5,7 @@ const Vehicle = require('../Basic/Vehicles/sVehicle');
 
 class LivreurDeJourneaux extends Job {
     constructor() {
-        const d = { name: "Livreur de journaux", x: -318.839, y: -609.888, z: 33.558, rot: 0, dim: 0, blipmodel: 687 }
+        const d = {name: "Livreur de journaux", x: -318.839, y: -609.888, z: 33.558, rot: 0, dim: 0, blipmodel: 687}
         super(d);
         this.posToDrop = {x: -292.263, y: -600.794, z: 33.553};
         this.posToGetVehicle = {x: -311.542, y: -607.759, z: 33.557};
@@ -30,28 +30,25 @@ class LivreurDeJourneaux extends Job {
 
 
         mp.events.add({
-            "playerEnterColshape" : (player, shape) => {
+            "playerEnterColshape": (player, shape) => {
                 if (!player.loggedIn || !this.isPlayerWorksHere(player)) return;
                 if (shape.orangeCollectorTree === player.job.activeTree) {
                     player.call("cMisc-CallServerEvenWithTimeout", ["sLivreurDeJournaux-EnteredTreeShape", 2400]);
-                }
-                else if (shape === this.dropShape) {
+                } else if (shape === this.dropShape) {
                     player.call("cMisc-CallServerEvenWithTimeout", ["sLivreurDeJournaux-EnteredDropShape", 2400]);
+                } else if (shape === this.vehicleShape) {
+                    player.canGetVehicle = true;
                 }
-                else if (shape === this.vehicleShape) {
-                    player.canGetVehicle = true;  
-                } 
             },
-            "playerExitColshape" : (player, shape) => {
+            "playerExitColshape": (player, shape) => {
                 if (shape === this.vehicleShape) {
-                    player.canGetVehicle = false; 
-                } 
+                    player.canGetVehicle = false;
+                }
             },
-            "sKeys-E" : (player) => {
+            "sKeys-E": (player) => {
                 if (!player.loggedIn || player.vehicle || !this.isPlayerWorksHere(player)) return;
-               
-                if(player.canGetVehicle)
-                {
+
+                if (player.canGetVehicle) {
                     if (player.locationJob) return player.notify("~r~Vous avez déjà un véhicule de travail.");
                     const d = {
                         model: 'fixter',
@@ -74,22 +71,22 @@ class LivreurDeJourneaux extends Job {
                 }
 
             },
-            "sLivreurDeJournaux-EnteredTreeShape" : (player) => {
+            "sLivreurDeJournaux-EnteredTreeShape": (player) => {
                 this.enteredTreeShape(player);
             },
 
-            "sLivreurDeJournaux-EnteredDropShape" : (player) => {
+            "sLivreurDeJournaux-EnteredDropShape": (player) => {
                 this.enteredDropShape(player);
             },
-        
-            "sLivreurDeJournaux-StartWork" : (player) => {
+
+            "sLivreurDeJournaux-StartWork": (player) => {
                 this.startWork(player);
             },
-        
-            "sLivreurDeJournaux-FinishWork" : (player) => {
+
+            "sLivreurDeJournaux-FinishWork": (player) => {
                 this.finishWork(player);
             },
-        
+
         });
 
         this.createMenuToDrop();
@@ -99,51 +96,51 @@ class LivreurDeJourneaux extends Job {
 
     createGetVehicle() {
         this.vehicleMarker = mp.markers.new(1, new mp.Vector3(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z - 1), 0.75,
-        {
-            color: [255, 255, 255, 100],
-            visible: true,
-        });
+            {
+                color: [255, 255, 255, 100],
+                visible: true,
+            });
         this.vehicleLabel = mp.labels.new("Vehicule de service", new mp.Vector3(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z),
-		{
-			los: false,
-			font: 2,
-			drawDistance: 3,
-			color: [255, 255, 255, 255],
-        });
-        this.vehicleShape = mp.colshapes.newSphere(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z, 1);        
+            {
+                los: false,
+                font: 2,
+                drawDistance: 3,
+                color: [255, 255, 255, 255],
+            });
+        this.vehicleShape = mp.colshapes.newSphere(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z, 1);
     }
 
     createMenuToDrop() {
         this.dropMarker = mp.markers.new(1, new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z - 1), 0.75,
-        {
-            color: [255, 165, 0, 100],
-            visible: false,
-        });
+            {
+                color: [255, 165, 0, 100],
+                visible: false,
+            });
         this.dropLabel = mp.labels.new("Bureau", new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z),
-		{
-			los: false,
-			font: 2,
-			drawDistance: 3,
-			color: [255, 255, 255, 255],
-        });
+            {
+                los: false,
+                font: 2,
+                drawDistance: 3,
+                color: [255, 255, 255, 255],
+            });
         this.dropShape = mp.colshapes.newSphere(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z, 1);
     }
 
     createCheckpoints() {
         for (let i = 0; i < this.checkPoints.length; i++) {
             const marker = mp.markers.new(1, new mp.Vector3(this.checkPoints[i].x, this.checkPoints[i].y, this.checkPoints[i].z - 1), 3,
-            {
-                color: [255, 165, 0, 50],
-                visible: false,
-            });
-            const blip = mp.blips.new(1, new mp.Vector3(this.checkPoints[i].x, this.checkPoints[i].y, this.checkPoints[i].z), {	
+                {
+                    color: [255, 165, 0, 50],
+                    visible: false,
+                });
+            const blip = mp.blips.new(1, new mp.Vector3(this.checkPoints[i].x, this.checkPoints[i].y, this.checkPoints[i].z), {
                 shortRange: true,
                 scale: 0,
                 color: 60,
             });
             marker.orangeCollectorTree = i;
 
-            const obj = { marker, blip };
+            const obj = {marker, blip};
             this.treeMarkersList.push(obj);
             const colshape = mp.colshapes.newSphere(this.checkPoints[i].x, this.checkPoints[i].y, this.checkPoints[i].z, 3);
             colshape.orangeCollectorTree = i;
@@ -159,7 +156,7 @@ class LivreurDeJourneaux extends Job {
     startWork(player) {
         if (player.loyality < 20) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 20 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
         super.startWork(player);
-        player.job = { name: this.name, collected: 0, activeTree: false };
+        player.job = {name: this.name, collected: 0, activeTree: false};
         this.createRandomCheckPoint(player);
         this.dropMarker.showFor(player);
     }
@@ -226,6 +223,7 @@ class LivreurDeJourneaux extends Job {
         super.finishWork(player);
     }
 
-    
+
 }
+
 new LivreurDeJourneaux();
