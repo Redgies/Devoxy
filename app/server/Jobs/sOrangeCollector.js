@@ -1,6 +1,7 @@
 const misc = require('../sMisc');
 const i18n = require('../sI18n');
 const Job = require('./sJob');
+const Vehicle = require('../Basic/Vehicle/sVehicle');
 
 
 
