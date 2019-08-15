@@ -220,6 +220,7 @@ class LivreurDeJourneaux extends Job {
         this.hideActiveCheckPoint(player);
         this.dropMarker.hideFor(player);
         player.locationJob.destroy();
+        player.locationJob = 0;
         super.finishWork(player);
     }
 
