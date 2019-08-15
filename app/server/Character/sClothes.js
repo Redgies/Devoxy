@@ -3,8 +3,7 @@ const misc = require('../sMisc');
 
 class ClothesSingletone {
     constructor() {
-        function loadMans() {
-            this.manHats = [
+        this.manHats = [
                 {id: 8, name: "Sans chapeau", color: 0, colors: [0], price: 0,},
                 {id: 2, name: "Bonnet", color: 0, colors: [0,1,2,3,4,5,6,7], price: 500,},
                 {id: 4, name: "Casquette LS", color: 0, colors: [0,1], price: 500,},
