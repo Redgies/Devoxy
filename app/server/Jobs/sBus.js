@@ -107,12 +107,12 @@ class Bus extends Job {
     }
 
     createMenuToDrop() {
-        this.dropMarker = mp.markers.new(1, new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z - 1), 4,
+        this.dropMarker = mp.markers.new(1, new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z - 1), 0.75,
         {
             color: [255, 165, 0, 100],
             visible: false,
         });
-        this.dropLabel = mp.labels.new("Dépôt", new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z),
+        this.dropLabel = mp.labels.new("Depot", new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z),
         {
             los: false,
             font: 2,
@@ -183,9 +183,8 @@ class Bus extends Job {
     }
 
     hideActiveCheckPoint(player) {
-        const i = player.job.activeTree;
         if (typeof i !== "number") return;
-        this.treeMarkersList[i].marker.hideFor(player);
+        this.treeMarkersList[player.job.collected].marker.hideFor(player);
         player.job.activeTree = false;
     }
 

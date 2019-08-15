@@ -111,7 +111,7 @@ class Eboueur extends Job {
     }
 
     createMenuToDrop() {
-        this.dropMarker = mp.markers.new(1, new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z - 1), 4,
+        this.dropMarker = mp.markers.new(1, new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z - 1), 0.75,
         {
             color: [255, 165, 0, 100],
             visible: false,
