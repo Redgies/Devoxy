@@ -114,7 +114,7 @@ class VehicleSingleton {
             },
 
             'veh': (player) => {  // Temporary vehicle spawning
-                if (player.vip < 1) return;
+                if (player.vip < 1) return player.notify("~r~Vous n'êtes pas VIP.");
                 if (player.locationVip) return player.notify("~r~Vous avez déjà un scooter de location.");
                 const d = {
                     model: 'faggio2',

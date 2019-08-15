@@ -56,13 +56,15 @@ class LifeInvader extends faction {
     createEvents() {
         mp.events.addCommand({	
 			"annonce": (player, fullText) => {
-                if (!player.canMakeAnnounce) return;
+                if (!player.canMakeAnnounce && !player.vip) return;
                 if (fullText.length <= 0) return player.notify("~r~Vous devez entrer une annonce.");
 
-                if (player.money.cash < 500)
+                let price = player.vip ? 0 : 500;
+
+                if (player.money.cash < price)
                 return player.notify("~r~Vous n'avez pas assez sur vous.");
 
-                player.changeMoney(-500);
+                player.changeMoney(-price);
 
                 mp.players.broadcast(`!{#fdcb6e}[${time.getTime()}] [ANNONCE] ${player.name} [${player.id}] : ${fullText}`);
 				misc.log.debug(`${player.name} ${fullText}`);
