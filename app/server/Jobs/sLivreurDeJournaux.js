@@ -175,7 +175,7 @@ class LivreurDeJourneaux extends Job {
         const i = misc.getRandomInt(0, this.checkPoints.length - 1)
         if (i === player.job.activeTree) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
-        this.treeMarkersList[i].showFor(player);
+        this.treeMarkersList[i].marker.showFor(player);
         this.treeMarkersList[i].blip.routeFor(player, 60, 0.7);
         player.job.activeTree = i;
         return i;
