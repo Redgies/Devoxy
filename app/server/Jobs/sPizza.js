@@ -185,7 +185,7 @@ class Pizza extends Job {
 
     enteredTreeShape(player) {
         player.stopAnimation();
-        player.job.collected += misc.getRandomInt(1, 2);
+        player.job.collected += 1;
         player.notify(`Vous avez livrés ~g~${player.job.collected} ~w~adresses.`);
         if (player.job.collected < 10) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
@@ -199,7 +199,7 @@ class Pizza extends Job {
         const earnedMoney = player.vip ? (player.job.collected * 220 * 1.10) : player.job.collected * 220;
         player.changeMoney(earnedMoney);
         player.notify(`Vous gagnez ~g~$${earnedMoney} ! ~w~Continuez !`);
-        if (player.loyality < 50) player.addLoyality(player.job.collected / 10);
+        if (player.loyality < 60) player.addLoyality(player.job.collected / 10);
         misc.log.debug(`${player.name} earned $${earnedMoney} at livreur de pizzas job!`);
         player.job.collected = 0;
         if (!player.job.activeTree) this.createRandomCheckPoint(player);
