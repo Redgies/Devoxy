@@ -184,7 +184,7 @@ class LivreurDeJourneaux extends Job {
     hideActiveCheckPoint(player) {
         const i = player.job.activeTree;
         if (typeof i !== "number") return;
-        this.treeMarkersList[i].hideFor(player);
+        this.treeMarkersList[i].marker.hideFor(player);
         player.job.activeTree = false;
     }
 
@@ -192,7 +192,7 @@ class LivreurDeJourneaux extends Job {
         player.stopAnimation();
         player.job.collected += misc.getRandomInt(1, 2);
         player.notify(`Vous avez livrés ~g~${player.job.collected} ~w~adresses.`);
-        if (player.job.collected < 20) return this.createRandomCheckPoint(player);
+        if (player.job.collected < 10) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Vous n'avez plus de journaux, retournez au bureau.`);
     }
