@@ -79,7 +79,7 @@ class OrangeCollector extends Job {
                         whoCanOpen: JSON.stringify([player.guid]),
                         factionId: 0,
                         tunning: JSON.stringify([]),
-                        numberPlate: this.generateRandomNumberPlate(),
+                        numberPlate: "JOB",
                         primaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
                         secondaryColor: JSON.stringify([misc.getRandomInt(0, 159), misc.getRandomInt(0, 159), misc.getRandomInt(0, 159)]),
                     }
@@ -114,7 +114,7 @@ class OrangeCollector extends Job {
         this.vehicleMarker = mp.markers.new(1, new mp.Vector3(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z - 1), 0.75,
         {
             color: [255, 255, 255, 100],
-            visible: false,
+            visible: true,
         });
         this.vehicleShape = mp.colshapes.newSphere(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z, 1);        
     }
