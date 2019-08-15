@@ -378,7 +378,7 @@ mp.events.add({
             player.tpToJail();
             player.resetAllWeapons();
 
-            player.notifyWithPicture("Police", "", `Vous avez été transféré à la prison, votre caution s'èléve à ~g~${2500 * target.delits.length}$.`, "CHAR_CALL911");
+            player.notifyWithPicture("Police", "", `Vous avez été transféré à la prison, votre caution s'èléve à ~g~${2500 * player.delits.length}$.`, "CHAR_CALL911");
         }
         else
         {
