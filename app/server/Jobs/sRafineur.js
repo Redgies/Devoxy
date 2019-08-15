@@ -10,17 +10,13 @@ class Rafineur extends Job {
         this.posToDrop = {x: 2735.925, y: 1448.377, z: 28.086};
         this.posToGetVehicle = {x: 2711.542, y: 1464.341, z: 24.501};
         this.checkPoints = [
-            {x: 308.647, y: -762.751, z: 29.244},
-            {x: 117.585, y: -785.561, z: 31.298},
-            {x: -171.037, y: -816.288, z: 31.186},
-            {x: -487.902, y: -805.703, z: 30.568},
-            {x: -506.235, y: 18.672, z: 44.737},
-            {x: -685.978, y: -279.696, z: 35.968},
-            {x: -652.984, y: -606.963, z: 33.233},
-            {x: -287.458, y: -1388.193, z: 31.256},
-            {x: 92.96, y: -1724.242, z: 28.895},
-            {x: 440.727, y: -2029.999, z: 23.515},
-            {x: 953.223, y: -2092.698, z: 30.612},
+            {x: 2524.849, y: 4194.735, z: 39.956},
+            {x: 1704.226, y: 6420.088, z: 32.637},
+            {x: 191.699, y: 6605.507, z: 31.85},
+            {x: -2555.408, y: 2330.514, z: 33.06},
+            {x: -2101.029, y: -320.243, z: 13.028},
+            {x: -527.503, y: -1210.386, z: 18.185},
+            {x: 261.138, y: -1260.75, z: 29.143},
         ];
         this.treeMarkersList = [];
 
@@ -150,7 +146,7 @@ class Rafineur extends Job {
     }
 
     startWork(player) {
-        if (player.loyality < 40) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 20 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
+        if (player.loyality < 50) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 50 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
         super.startWork(player);
         player.job = {name: this.name, collected: 0, activeTree: false};
         this.createRandomCheckPoint(player);
@@ -191,7 +187,7 @@ class Rafineur extends Job {
     enteredTreeShape(player) {
         player.job.collected += 1;
         player.notify(`Vous avez ravitaillé ~g~${player.job.collected} ~w~stations.`);
-        if (player.job.collected < 10) return this.createRandomCheckPoint(player);
+        if (player.job.collected < 7) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Votre camion est vide, retournez à la rampe.`);
         this.dropMarker.routeFor(player, 60, 0.7);
@@ -202,7 +198,7 @@ class Rafineur extends Job {
         const earnedMoney = player.vip ? ((player.job.collected * 580) * 1.10) : player.job.collected * 580;
         player.changeMoney(+earnedMoney);
         player.notify(`Vous gagnez ~g~$${earnedMoney} ! ~w~Continuez !`);
-        if (player.loyality < 50) player.addLoyality(player.job.collected / 10);
+        if (player.loyality < 60) player.addLoyality(player.job.collected / 10);
         misc.log.debug(`${player.name} earned $${earnedMoney} at raffineur job!`);
         player.job.collected = 0;
         if (!player.job.activeTree) this.createRandomCheckPoint(player);

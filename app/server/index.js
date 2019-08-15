@@ -31,6 +31,7 @@ require('./Jobs/sOrangeCollector');
 require('./Jobs/sLivreurDeJournaux');
 require('./Jobs/sEboueur');
 require('./Jobs/sBus');
+require('./Jobs/sRafineur');
 
 require('./Phone/sPhone');
 
