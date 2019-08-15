@@ -92,6 +92,13 @@ class Pizza extends Job {
                 color: [255, 255, 255, 100],
                 visible: true,
             });
+        this.vehicleLabel = mp.labels.new("Vehicule de service", new mp.Vector3(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z),
+            {
+                los: false,
+                font: 2,
+                drawDistance: 3,
+                color: [255, 255, 255, 255],
+            });
         this.vehicleShape = mp.colshapes.newSphere(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z, 1);
     }
 
@@ -105,6 +112,13 @@ class Pizza extends Job {
             {
                 color: [255, 165, 0, 100],
                 visible: false,
+            });
+        this.dropLabel = mp.labels.new("Bureau", new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z),
+            {
+                los: false,
+                font: 2,
+                drawDistance: 3,
+                color: [255, 255, 255, 255],
             });
         this.dropShape = mp.colshapes.newSphere(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z, 1);
     }
@@ -176,6 +190,7 @@ class Pizza extends Job {
         if (player.job.collected < 10) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Vous n'avez plus de pizza, retournez à la pizzeria.`);
+        this.dropMarker.routeFor(player, 60, 0.7);
     }
 
     enteredDropShape(player) {
