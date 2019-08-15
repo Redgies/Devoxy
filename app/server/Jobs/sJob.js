@@ -55,7 +55,7 @@ class Job {
             color: [0, 255, 0, 100],
             visible: true,
         });
-        this.label = mp.labels.new(this.name, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z),
+        this.label = mp.labels.new(this.name, new mp.Vector3(this.mainMenu.x, this.mainMenu.y, this.mainMenu.z),
 		{
 			los: false,
 			font: 2,
