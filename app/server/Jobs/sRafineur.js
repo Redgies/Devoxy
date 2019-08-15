@@ -11,7 +11,7 @@ class Rafineur extends Job {
         this.posToGetVehicle = {x: 2711.542, y: 1464.341, z: 24.501};
         this.checkPoints = [
             {x: 2524.849, y: 4194.735, z: 39.956},
-            {x: 1704.226, y: 6420.088, z: 32.637},
+            {x: 1690.893, y: 6423.356, z: 32.597},
             {x: 191.699, y: 6605.507, z: 31.85},
             {x: -2555.408, y: 2330.514, z: 33.06},
             {x: -2101.029, y: -320.243, z: 13.028},
@@ -48,8 +48,8 @@ class Rafineur extends Job {
                         id: 0,
                         title: 'Cerberus',
                         fuel: 1,
-                        fuelTank: 50,
-                        fuelRate: 8,
+                        fuelTank: 70,
+                        fuelRate: 30,
                         price: 1,
                         ownerId: 0,
                         whoCanOpen: JSON.stringify([player.guid]),
@@ -179,14 +179,14 @@ class Rafineur extends Job {
     }
 
     hideActiveCheckPoint(player) {
-        this.treeMarkersList[player.job.collected].marker.hideFor(player);
+        this.treeMarkersList[player.job.collected - 1].marker.hideFor(player);
         player.job.activeTree = false;
     }
 
     enteredTreeShape(player) {
         player.job.collected += 1;
         player.notify(`Vous avez ravitaillé ~g~${player.job.collected} ~w~stations.`);
-        if (player.job.collected < 7) return this.createRandomCheckPoint(player);
+        if (player.job.collected < 6) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Votre camion est vide, retournez à la rampe.`);
         this.dropMarker.routeFor(player, 60, 0.7);
@@ -194,7 +194,7 @@ class Rafineur extends Job {
 
     enteredDropShape(player) {
         if (player.job.collected === 0) return player.notify(`Vous n'êtes passé à aucune station !`);
-        const earnedMoney = player.vip ? ((player.job.collected * 580) * 1.10) : player.job.collected * 580;
+        const earnedMoney = player.vip ? ((player.job.collected * 1080) * 1.10) : player.job.collected * 1080;
         player.changeMoney(+earnedMoney);
         player.notify(`Vous gagnez ~g~$${earnedMoney} ! ~w~Continuez !`);
         if (player.loyality < 60) player.addLoyality(player.job.collected / 10);

@@ -1,9 +1,29 @@
 const moneyAPI = require('./Money/sMoney');
 const business = require('../Business/sBusiness');
+const misc = require("../sMisc");
 
 
 class GPS {
 	constructor () {
+		mp.events.addCommand({
+			"donnerpos" : (player, fullText, arg1) => {
+				if(!arg1) return player.notify("~r~Utilisez /donnerpos id");
+
+				let target = misc.findPlayerByIdOrNickname(arg1);
+				if(!target) return player.notify("~r~Ce joueur n'est pas connecté.");
+				
+				const pos = target.position;
+				let x, y;
+
+				x = pos.x;
+				y = pos.y;
+
+				this.createRoute(target, x, y);
+
+				target.notify(`${player.name} vous a envoyé sa position.`);
+				player.notify(`Vous avez envoyé votre position à ${target.name}.`);
+			}
+		});			
 		mp.events.add('sGPS-CreateRoute', (player, str) => {
 			const d = JSON.parse(str);
 			let x, y;
