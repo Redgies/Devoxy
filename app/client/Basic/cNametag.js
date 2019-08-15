@@ -8,7 +8,7 @@ mp.nametags.enabled = false;
 
 mp.events.add('render', (nametags) => {
   const graphics = mp.game.graphics;
- ﻿ const screenRes = graphics.getScreenResolution(0, 0);
+  const screenRes = graphics.getScreenResolution(0, 0);
 
   nametags.forEach(nametag => {
       let [player, x, y, distance] = nametag;
