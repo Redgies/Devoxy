@@ -371,11 +371,11 @@ mp.events.add({
         player.spawn(new mp.Vector3(player.position));
 
         if(player.jailed) return player.tpToJail();
-        if(target.delits.length >= 1)
+        if(player.delits.length >= 1)
         {
             player.health = 50;
-            target.jailed = 1;
-            target.tpToJail();
+            player.jailed = 1;
+            player.tpToJail();
             player.resetAllWeapons();
 
             player.notifyWithPicture("Police", "", `Vous avez été transféré à la prison, votre caution s'èléve à ~g~${2500 * target.delits.length}$.`, "CHAR_CALL911");
