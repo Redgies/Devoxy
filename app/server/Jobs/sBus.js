@@ -183,7 +183,6 @@ class Bus extends Job {
     }
 
     hideActiveCheckPoint(player) {
-        if (typeof i !== "number") return;
         this.treeMarkersList[player.job.collected].marker.hideFor(player);
         player.job.activeTree = false;
     }
