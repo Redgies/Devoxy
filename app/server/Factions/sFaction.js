@@ -27,24 +27,6 @@ class Faction {
 		});
 			
 		mp.events.addCommand({	
-			"makeleader": (player, fullText, target, faction) => {
-				if(player.adminLvl < 3) return;
-				if(!target || !faction) return player.notify("~r~Utilisez /makeleader id faction");
-
-				target = misc.findPlayerByIdOrNickname(target);
-				if(!target) return;
-
-				if(faction !== this.id) return;
-
-				target.faction = this.id;
-				target.rank = this.maxrank;
-				
-				target.call("cFaction-Update", [target.faction]);
-				target.setVariable('faction', target.faction);
-
-				player.notify(`~g~Vous avez nommé ${target.name} leader dans ${this.name}.`);
-				target.notify(`~g~${player.name} vous a nommé leader dans ${this.name}.`);
-			},
  			"invite": (player, fullText, target) => {
                 target = misc.findPlayerByIdOrNickname(target);
 				if(!target) return;
@@ -385,6 +367,15 @@ mp.events.addCommand({
 
 			target.faction = f.id;
 			target.rank = f.maxRank;
+
+			target.call("cFaction-Update", [target.faction]);
+			target.setVariable('faction', target.faction);
+
+			if(player.faction != 0)
+			{
+				job = f.getFactionName(target);
+			}
+			player.call("cJob-Update", [job]);
 
 			const currentTime = misc.getTime();
 
