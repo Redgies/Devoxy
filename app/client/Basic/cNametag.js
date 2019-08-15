@@ -8,7 +8,7 @@ mp.nametags.enabled = false;
 
 mp.events.add('render', (nametags) => {
   const graphics = mp.game.graphics;
-  const screenRes = graphics.getScreenResolution(0, 0);
+ ﻿ const screenRes = graphics.getScreenResolution(0, 0);
 
   nametags.forEach(nametag => {
       let [player, x, y, distance] = nametag;
@@ -24,7 +24,30 @@ mp.events.add('render', (nametags) => {
     
           y -= scale * (0.005 * (screenRes.y / 1080));
   
-          graphics.drawText(player.name, 4, color, 0.4, 0.4, true, x, y);
+          graphics.drawText(player.name.replace('_', ' '), 4, color, 0.4, 0.4, true, x, y);
+    
+          if(mp.game.player.isFreeAimingAtEntity(player.handle)) {
+              let y2 = y + 0.042;
+      
+              if(armour > 0) {
+                  let x2 = x - width / 2 - border / 2;
+        
+                  graphics.drawRect(x2, y2, width + border * 2, 0.0085, 0, 0, 0, 200);
+                  graphics.drawRect(x2, y2, width, height, 150, 150, 150, 255);
+                  graphics.drawRect(x2 - width / 2 * (1 - health), y2, width * health, height, 255, 255, 255, 200);
+
+                  x2 = x + width / 2 + border / 2;
+         
+                  graphics.drawRect(x2, y2, width + border * 2, height + border * 2, 0, 0, 0, 200);
+                  graphics.drawRect(x2, y2, width, height, 41, 66, 78, 255);
+                  graphics.drawRect(x2 - width / 2 * (1 - armour), y2, width * armour, height, 48, 108, 135, 200);
+              }
+              else {
+                  graphics.drawRect(x, y2, width + border * 2, height + border * 2, 0, 0, 0, 200);
+                  graphics.drawRect(x, y2, width, height, 150, 150, 150, 255);
+                  graphics.drawRect(x - width / 2 * (1 - health), y2, width * health, height, 255, 255, 255, 200);
+              }
+          }
       }
   })
 })
