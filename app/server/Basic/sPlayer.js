@@ -357,8 +357,8 @@ mp.events.add({
         if(!player.vip)
         {
             player.resetAllWeapons();
-            player._inventory = [];
         }
+        player._inventory = [];
 
         if (!killer || player === killer) return;
         if (killer.faction == 1 && killer.working == true) return;
@@ -371,14 +371,25 @@ mp.events.add({
         player.spawn(new mp.Vector3(player.position));
 
         if(player.jailed) return player.tpToJail();
+        if(target.delits.length >= 1)
+        {
+            player.health = 50;
+            target.jailed = 1;
+            target.tpToJail();
+            player.resetAllWeapons();
 
-        player.health = 50;
-        player.call("cHospital-DisableHealthRegeneration");
-        player.newFine(5000, `${i18n.get('sHospital', 'transferTo', player.lang)}`);
-
-        const tp = { x: 275.446, y: -1361.11, z: 24.5378, rot: 46.77, dim: 0 };
-        player.tp(tp);
-        misc.log.debug(`${player.name} transfered to Hospital. Fine: $${pay}`);
+            player.notifyWithPicture("Police", "", `Vous avez été transféré à la prison, votre caution s'èléve à ~g~${2500 * target.delits.length}$.`, "CHAR_CALL911");
+        }
+        else
+        {
+            player.health = 50;
+            player.call("cHospital-DisableHealthRegeneration");
+            player.newFine(5000, `${i18n.get('sHospital', 'transferTo', player.lang)}`);
+    
+            const tp = { x: 275.446, y: -1361.11, z: 24.5378, rot: 46.77, dim: 0 };
+            player.tp(tp);
+            misc.log.debug(`${player.name} transfered to Hospital. Fine: $${pay}`);
+        }
 
         player.setCuff(false);
     },

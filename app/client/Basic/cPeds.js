@@ -20,7 +20,7 @@ mp.events.add("createPed", () => {
 	let ped11 = mp.peds.new(mp.game.joaat('a_m_m_soucent_02'), new mp.Vector3(-742.425, -1508.115, 5.001), 24.3, mp.players.local.dimension); //concess bateaux//
 	let ped12 = mp.peds.new(mp.game.joaat('s_m_m_hairdress_01'), new mp.Vector3(-1282.565, -1118.296, 7), 84.53, mp.players.local.dimension); //coiffeur plage//
 	let ped13 = mp.peds.new(mp.game.joaat('csb_reporter'), new mp.Vector3(-1082.975, -245.78, 37.763), 203.68, mp.players.local.dimension); //lifeinvader bureaux//
-	let ped14 = mp.peds.new(mp.game.joaat('u_f_o_moviestar'), new mp.Vector3(-622.316, -229.856, 129.75), 129.75, mp.players.local.dimension); //bijouterie//
+	let ped14 = mp.peds.new(mp.game.joaat('u_f_o_moviestar'), new mp.Vector3(-622.316, -229.856, 38.057), 129.75, mp.players.local.dimension); //bijouterie//
 	let ped15 = mp.peds.new(mp.game.joaat('g_m_y_korlieut_01'), new mp.Vector3(-52.007, -1100.579, 26.422), 336.64, mp.players.local.dimension); //concess central
 	let ped16 = mp.peds.new(mp.game.joaat('s_m_m_hairdress_01'), new mp.Vector3(1215.575, -473.953, 66.218), 70.16, mp.players.local.dimension) //coiffeur haut droit ville//s
 });
