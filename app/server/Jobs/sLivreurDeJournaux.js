@@ -127,8 +127,15 @@ class LivreurDeJourneaux extends Job {
                 color: [255, 165, 0, 50],
                 visible: false,
             });
+            const blip = mp.blips.new(1, new mp.Vector3(this.checkPoints[i].x, this.checkPoints[i].y, this.checkPoints[i].z), {	
+                shortRange: true,
+                scale: 0,
+                color: 60,
+            });
             marker.orangeCollectorTree = i;
-            this.treeMarkersList.push(marker);
+
+            const obj = { marker, blip };
+            this.treeMarkersList.push(obj);
             const colshape = mp.colshapes.newSphere(this.checkPoints[i].x, this.checkPoints[i].y, this.checkPoints[i].z, 3);
             colshape.orangeCollectorTree = i;
         }
@@ -169,6 +176,7 @@ class LivreurDeJourneaux extends Job {
         if (i === player.job.activeTree) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         this.treeMarkersList[i].showFor(player);
+        this.treeMarkersList[i].blip.routeFor(player, 60, 0.7);
         player.job.activeTree = i;
         return i;
     }
