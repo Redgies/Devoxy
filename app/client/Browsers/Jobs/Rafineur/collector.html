@@ -38,12 +38,13 @@ const app = new Vue({
     start: true,
     finish: false,
 
-    messageText1: "Bienvenue chauffeur de bus !",
-    messageText2: "Nous allons t'expliquer comment prendre tes fonctions en tant que chauffeur de bus :",
-    messageText3: "1 - Tu récupère ton véhicule a l'emplacement indiqué.",
-    messageText4: "2 - Tu dois récuperer les citoyens aux arrets de bus aux endroits indiqué sur ton GPS.",
-    messageText5: "3 - Une fois ta tournée terminée tu dois revenir au dépot.",
-    messageText7: "Sans toi les citoyens ne pourraient pas aller travailler nous comptons sur toi !",
+    messageText1: "Bienvenue !",
+    messageText2: "Tout d'abord bienvenue à toi au Daily Globe International nous allons t'expliquer comment prendre tes fonctions :",
+    messageText3: "1 - tu dois prendre ton service a l'endroit meme ou tu te trouve.",
+    messageText4: "2 - ensuite prendre ton vélo qui se trouve juste derrière toi.",
+    messageText5: "3 - Tu part charger de 10 journaux et tu dois livrer les 10.",
+    messageText6: "4 - une fois livré tu retourne au bureau voir ton patron qui te donnera ton salaire.",
+    messageText7: "N'oubli pas tu es en vélo tu es donc très vulnérable sur la route soit vigilant vis à vis des autres conducteurs.",
     startText: "Commencer le job",
     finishText: "Terminer le job",
   },
@@ -54,11 +55,11 @@ const app = new Vue({
     },
     startWork: function() {
       this.exit();
-      mp.trigger("cMisc-CallServerEvent", "sRafineur-StartWork");
+      mp.trigger("cMisc-CallServerEvent", "sBus-StartWork");
     },
     finishWork: function() {
       this.exit();
-      mp.trigger("cMisc-CallServerEvent", "sRafineur-FinishWork");
+      mp.trigger("cMisc-CallServerEvent", "sBus-FinishWork");
     },
     exit: function() {
       mp.trigger("cCloseCef");
