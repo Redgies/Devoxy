@@ -69,7 +69,7 @@ class OrangeCollector extends Job {
                     if (player.locationJob) return player.notify("~r~Vous avez déjà un véhicule de travail.");
                     const d = {
                         model: 'faggio2',
-                        coord: {x: 395.912, y: 6514.077, z: 27.776, rot: 175.7},
+                        coord: JSON.stringify({x: 395.912, y: 6514.077, z: 27.776, rot: 175.7}),
                         id: 0,
                         title: 'Pegassi Faggio',
                         fuel: 1,
