@@ -183,6 +183,7 @@ class LivreurDeJourneaux extends Job {
         this.hideActiveCheckPoint(player);
         this.treeMarkersList[i].marker.showFor(player);
         this.treeMarkersList[i].blip.routeFor(player, 60, 0.7);
+        player.routeBlip = this.treeMarkersList[i].blip;
         player.job.activeTree = i;
         return i;
     }
@@ -219,6 +220,7 @@ class LivreurDeJourneaux extends Job {
     finishWork(player) {
         this.hideActiveCheckPoint(player);
         this.dropMarker.hideFor(player);
+        player.routeBlip.unrouteFor(player);
         player.locationJob.destroy();
         player.locationJob = 0;
         super.finishWork(player);

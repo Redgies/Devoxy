@@ -68,8 +68,8 @@ class Job {
         {	
             name: this.name,
             shortRange: true,
-            scale: 0.7,
-            color: 17,
+            scale: 0.4,
+            color: 4,
         });
     }
 
