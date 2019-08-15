@@ -8,4 +8,9 @@ mp.events.add({
         misc.openCef("package://RP/Browsers/Jobs/OrangeCollector/collector.html", lang);
         misc.injectCef(inject);
     },
+    "cLivreurDeJournaux-OpenMainMenu" : (lang, inject) => {
+        misc.prepareToCef();
+        misc.openCef("package://RP/Browsers/Jobs/LivreurDeJournaux/collector.html", lang);
+        misc.injectCef(inject);
+    },
 });       
