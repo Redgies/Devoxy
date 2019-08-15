@@ -1,0 +1,69 @@
+﻿<html>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="collector.css">
+  <script src="../../vue.js"></script>
+	<body>
+		<div id="app">
+      <div class="b3-close" @click="exit">X</div>
+    
+      <div class="message">
+        {{ messageText1 }}
+        <br><br>
+        {{ messageText2 }}
+        <br><br>
+        {{ messageText3 }}
+        <br>
+        {{ messageText4 }}
+        <br>
+        {{ messageText5 }}
+        <br>
+        {{ messageText6 }}
+        <br><br>
+        {{ messageText7 }}
+      </div>
+    
+      <div class="buttons" id="app">
+        <div class="button" v-if="start" @click="startWork">{{ startText }}</div>
+        <div class="button" v-if="finish" @click="finishWork">{{ finishText }}</div>
+      </div>
+    </div>
+	</body>
+</html>
+
+
+<script>
+const app = new Vue({
+  el: '#app',
+  data: {
+    start: true,
+    finish: false,
+
+    messageText1: "Bienvenue !",
+    messageText2: "Tout d'abord bienvenue à toi au Daily Globe International nous allons t'expliquer comment prendre tes fonctions :",
+    messageText3: "1 - tu dois prendre ton service a l'endroit meme ou tu te trouve.",
+    messageText4: "2 - ensuite prendre ton vélo qui se trouve juste derrière toi.",
+    messageText5: "3 - Tu part charger de 10 journaux et tu dois livrer les 10.",
+    messageText6: "4 - une fois livré tu retourne au bureau voir ton patron qui te donnera ton salaire.",
+    messageText7: "N'oubli pas tu es en vélo tu es donc très vulnérable sur la route soit vigilant vis à vis des autres conducteurs.",
+    startText: "Commencer le job",
+    finishText: "Terminer le job",
+  },
+  methods: {
+    loadFinish: function() {
+      this.start = false;
+      this.finish = true;
+    },
+    startWork: function() {
+      this.exit();
+      mp.trigger("cMisc-CallServerEvent", "sEboueur-StartWork");
+    },
+    finishWork: function() {
+      this.exit();
+      mp.trigger("cMisc-CallServerEvent", "sEboueur-FinishWork");
+    },
+    exit: function() {
+      mp.trigger("cCloseCef");
+    },
+  }
+});
+</script>

@@ -68,7 +68,7 @@ class Job {
         {	
             name: this.name,
             shortRange: true,
-            scale: 0.4,
+            scale: 0.6,
             color: 4,
         });
     }
@@ -78,7 +78,7 @@ class Job {
     }
 
     startWork(player) {
-        player.outputChatBox(`!{0, 200, 0}${i18n.get('sJob', 'start', player.lang)} ${this.name}`);
+        player.notify(`${i18n.get('sJob', 'start', player.lang)} ${this.name}`);
         if (player.model === 1885233650) this.setWorkingClothesForMan(player);
         else this.setWorkingClothesForWoman(player);
         misc.log.debug(`${player.name} started works as ${this.name}`);
@@ -94,7 +94,7 @@ class Job {
 
     finishWork(player) {
         player.job = {};
-        player.outputChatBox(`!{200, 0, 0}${i18n.get('sJob', 'finish', player.lang)} ${this.name}`);
+        player.notify(`${i18n.get('sJob', 'finish', player.lang)} ${this.name}`);
         misc.log.debug(`${player.name} finished works as ${this.name}`);
         clothes.loadPlayerClothes(player);
     }
