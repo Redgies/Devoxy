@@ -31,7 +31,6 @@ mp.events.add({
         const job = getJobByName(player.canOpen.job);
         job.pressedKeyOnMainShape(player);
     },
-
 });
 
 

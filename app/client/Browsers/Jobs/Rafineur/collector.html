@@ -38,13 +38,13 @@ const app = new Vue({
     start: true,
     finish: false,
 
-    messageText1: "Bienvenue !",
-    messageText2: "Tout d'abord bienvenue à toi au Daily Globe International nous allons t'expliquer comment prendre tes fonctions :",
-    messageText3: "1 - tu dois prendre ton service a l'endroit meme ou tu te trouve.",
-    messageText4: "2 - ensuite prendre ton vélo qui se trouve juste derrière toi.",
-    messageText5: "3 - Tu part charger de 10 journaux et tu dois livrer les 10.",
-    messageText6: "4 - une fois livré tu retourne au bureau voir ton patron qui te donnera ton salaire.",
-    messageText7: "N'oubli pas tu es en vélo tu es donc très vulnérable sur la route soit vigilant vis à vis des autres conducteurs.",
+    messageText1: "Bienvenue Raffineur :)",
+    messageText2: "Alors nous allons t'expliqué comment prendre les fonctions du raffinage :",
+    messageText3: "1 - Tu va prendre tes fonctions a l'endroit meme ou tu est actuellement.",
+    messageText4: "2 - Prends ta tenue et prend ton camion a l'endroit indiqué.",
+    messageText5: "3 - Sur ton GPS se trouve les endroits ou les stations ont besoin d'essence.",
+    messageText6: "4 - Une fois les stations pleines tu reviens a la raffinerie sur la rampe.",
+    messageText7: "Attention la ville compte sur toi si tu n'est pas présent ou incomptétent une partie de la ville sera sans essence.",
     startText: "Commencer le job",
     finishText: "Terminer le job",
   },
@@ -55,11 +55,11 @@ const app = new Vue({
     },
     startWork: function() {
       this.exit();
-      mp.trigger("cMisc-CallServerEvent", "sBus-StartWork");
+      mp.trigger("cMisc-CallServerEvent", "sRafineur-StartWork");
     },
     finishWork: function() {
       this.exit();
-      mp.trigger("cMisc-CallServerEvent", "sBus-FinishWork");
+      mp.trigger("cMisc-CallServerEvent", "sRafineur-FinishWork");
     },
     exit: function() {
       mp.trigger("cCloseCef");
