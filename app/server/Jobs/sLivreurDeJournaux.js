@@ -5,7 +5,7 @@ const Vehicle = require('../Basic/Vehicles/sVehicle');
 
 class LivreurDeJourneaux extends Job {
     constructor() {
-        const d = { name: "Livreur de journaux", x: -318.839, y: -609.888, z: 33.558, rot: 0, dim: 0 }
+        const d = { name: "Livreur de journaux", x: -318.839, y: -609.888, z: 33.558, rot: 0, dim: 0, blipmodel: 687 }
         super(d);
         this.posToDrop = {x: -292.263, y: -600.794, z: 33.553};
         this.posToGetVehicle = {x: -311.542, y: -607.759, z: 33.557};
@@ -103,6 +103,13 @@ class LivreurDeJourneaux extends Job {
             color: [255, 255, 255, 100],
             visible: true,
         });
+        this.vehicleLabel = mp.labels.new("Vehicule de service", new mp.Vector3(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 3,
+			color: [255, 255, 255, 255],
+        });
         this.vehicleShape = mp.colshapes.newSphere(this.posToGetVehicle.x, this.posToGetVehicle.y, this.posToGetVehicle.z, 1);        
     }
 
@@ -116,6 +123,13 @@ class LivreurDeJourneaux extends Job {
         {
             color: [255, 165, 0, 100],
             visible: false,
+        });
+        this.dropLabel = mp.labels.new("Bureau", new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z),
+		{
+			los: false,
+			font: 2,
+			drawDistance: 3,
+			color: [255, 255, 255, 255],
         });
         this.dropShape = mp.colshapes.newSphere(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z, 1);
     }
@@ -195,6 +209,7 @@ class LivreurDeJourneaux extends Job {
         if (player.job.collected < 10) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Vous n'avez plus de journaux, retournez au bureau.`);
+        this.dropMarker.routeFor(player, 60, 0.7);
     }
 
     enteredDropShape(player) {
