@@ -27,7 +27,7 @@ require('./Basic/sBlanchir');
 require('./Basic/sTeleporters');
 
 require('./Jobs/sOrangeCollector');
-// require('./Jobs/sPizza');
+require('./Jobs/sLivreurDeColis');
 require('./Jobs/sLivreurDeJournaux');
 require('./Jobs/sEboueur');
 require('./Jobs/sBus');

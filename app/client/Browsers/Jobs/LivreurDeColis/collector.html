@@ -1,0 +1,69 @@
+﻿<html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="collector.css">
+<script src="../../vue.js"></script>
+<body>
+<div id="app">
+    <div class="b3-close" @click="exit">X</div>
+
+    <div class="message">
+        {{ messageText1 }}
+        <br><br>
+        {{ messageText2 }}
+        <br><br>
+        {{ messageText3 }}
+        <br>
+        {{ messageText4 }}
+        <br>
+        {{ messageText5 }}
+        <br>
+        {{ messageText6 }}
+        <br>
+        {{ messageText7 }}
+    </div>
+
+    <div class="buttons" id="app">
+        <div class="button" v-if="start" @click="startWork">{{ startText }}</div>
+        <div class="button" v-if="finish" @click="finishWork">{{ finishText }}</div>
+    </div>
+</div>
+</body>
+</html>
+
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            start: true,
+            finish: false,
+
+            messageText1: "Bienvenue Livreur Amazon :) !",
+            messageText2: "La ville a besoin de toi pour la livraison de colis rapide.",
+            messageText3: "1 - Tout d'abord tu dois récuperer ton véhicule et ta tenue à l'endroit où tu te trouves.",
+            messageText4: "2 - Ensuite prendre ton camion à ta gauche.",
+            messageText5: "3 - Tu pars chargé de 10 colis et tu dois livrer les 10.",
+            messageText6: "4 - une fois livré, tu retournes au dépot voir ton patron qui te donnera ton salaire.",
+            messageText7: "Attention livraison rapide rhyme aussi avec conduite sérieuse vous etes amendable comme tous le monde.",
+            startText: "Commencer le job",
+            finishText: "Terminer le job",
+        },
+        methods: {
+            loadFinish: function () {
+                this.start = false;
+                this.finish = true;
+            },
+            startWork: function () {
+                this.exit();
+                mp.trigger("cMisc-CallServerEvent", "sLivreurDeColis-StartWork");
+            },
+            finishWork: function () {
+                this.exit();
+                mp.trigger("cMisc-CallServerEvent", "sLivreurDeColis-FinishWork");
+            },
+            exit: function () {
+                mp.trigger("cCloseCef");
+            },
+        }
+    });
+</script>
