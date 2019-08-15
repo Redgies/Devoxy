@@ -43,7 +43,7 @@ class Job {
     constructor(d) {
         this.name = d.name;
         this.mainMenu = { x: d.x, y: d.y, z: d.z, rot: d.rot, dim: d.dim };
-        this.blipModel = d.blipmodel;
+        //this.blipModel = d.blipmodel;
 
         this.createMainEntities();
         jobsList.push(this);
@@ -66,7 +66,7 @@ class Job {
         this.mainShape = mp.colshapes.newSphere(this.mainMenu.x, this.mainMenu.y, this.mainMenu.z, 1);
         this.mainShape.job = this.name;
     
-        this.blip = mp.blips.new(this.blipModel, new mp.Vector3(this.mainMenu.x, this.mainMenu.y, this.mainMenu.z),
+        this.blip = mp.blips.new(40, new mp.Vector3(this.mainMenu.x, this.mainMenu.y, this.mainMenu.z),
         {	
             name: this.name,
             shortRange: true,
