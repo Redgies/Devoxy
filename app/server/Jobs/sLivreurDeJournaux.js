@@ -40,13 +40,11 @@ class LivreurDeJourneaux extends Job {
                 }
                 else if (shape === this.vehicleShape) {
                     player.canGetVehicle = true;  
-                    player.outputChatBox("true");
                 } 
             },
             "playerExitColshape" : (player, shape) => {
                 if (shape === this.vehicleShape) {
                     player.canGetVehicle = false; 
-                    player.outputChatBox("false"); 
                 } 
             },
             "sKeys-E" : (player) => {
