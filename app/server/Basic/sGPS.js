@@ -12,7 +12,7 @@ class GPS {
 				let target = misc.findPlayerByIdOrNickname(arg1);
 				if(!target) return player.notify("~r~Ce joueur n'est pas connecté.");
 				
-				const pos = target.position;
+				const pos = player.position;
 				let x, y;
 
 				x = pos.x;
