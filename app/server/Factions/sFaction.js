@@ -376,7 +376,7 @@ mp.events.addCommand({
 		if(!arg1 || !arg2)
 			return player.notify("Utilisez /makeleader id faction");
 
-		const target = this.findPlayerByIdOrNickname(arg1);
+		const target = misc.findPlayerByIdOrNickname(arg1);
 		if(!target)
 			return player.notify("Ce joueur n'est pas connecté.");
 
@@ -387,7 +387,7 @@ mp.events.addCommand({
 			target.rank = f.maxRank;
 
 			const currentTime = misc.getTime();
-			
+
 			player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez passsé ${target.name} leader de la faction ${f.name}.`);
 			target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a passé leader de la faction ${f.name}.`);
 			misc.log.debug(`${player.name} make leader ${f.name} for ${target.name}`);
