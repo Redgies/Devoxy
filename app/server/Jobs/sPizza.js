@@ -5,7 +5,7 @@ const Vehicle = require('../Basic/Vehicles/sVehicle');
 
 class Pizza extends Job {
     constructor() {
-        const d = { name: "Livreur de pizza", x: -1182.947, y: -884.062, z: 13.755, rot: 0, dim: 0 }
+        const d = { name: "Livreur de pizza", x: -1182.947, y: -884.062, z: 13.755, rot: 0, dim: 0, blipmodel: 688}
         super(d);
         this.posToDrop = {x: -1176.807, y: -890.748, z: 13.807};
         this.posToGetVehicle = {x: -1174.217, y: -874.52, z: 14.118};
@@ -157,7 +157,7 @@ class Pizza extends Job {
         const i = misc.getRandomInt(0, this.checkPoints.length - 1)
         if (i === player.job.activeTree) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
-        this.treeMarkersList[i].showFor(player);
+        this.treeMarkersList[i].marker.showFor(player);
         player.job.activeTree = i;
         return i;
     }
@@ -165,7 +165,7 @@ class Pizza extends Job {
     hideActiveCheckPoint(player) {
         const i = player.job.activeTree;
         if (typeof i !== "number") return;
-        this.treeMarkersList[i].hideFor(player);
+        this.treeMarkersList[i].marker.hideFor(player);
         player.job.activeTree = false;
     }
 
@@ -173,7 +173,7 @@ class Pizza extends Job {
         player.stopAnimation();
         player.job.collected += misc.getRandomInt(1, 2);
         player.notify(`Vous avez livrés ~g~${player.job.collected} ~w~adresses.`);
-        if (player.job.collected < 20) return this.createRandomCheckPoint(player);
+        if (player.job.collected < 10) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Vous n'avez plus de pizza, retournez à la pizzeria.`);
     }
