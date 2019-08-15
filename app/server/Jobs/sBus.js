@@ -3,28 +3,23 @@ const i18n = require('../sI18n');
 const Job = require('./sJob');
 const Vehicle = require('../Basic/Vehicles/sVehicle');
 
-class Eboueur extends Job {
+class Bus extends Job {
     constructor() {
-        const d = {name: "Eboueur", x: -428.94, y: -1728.32, z: 19.784, rot: 0, dim: 0, blipmodel: 689}
+        const d = {name: "Chauffeur de Bus", x: 450.842, y: -650.804, z: 28.445, rot: 0, dim: 0, blipmodel: 689}
         super(d);
-        this.posToDrop = {x: -461.582, y: -1718.228, z: 18.641};
-        this.posToGetVehicle = {x: -431.762, y: -1718.568, z: 19.014};
+        this.posToDrop = {x: 463.859, y: -622.322, z: 28.4};
+        this.posToGetVehicle = {x: 450.594, y: -643.683, z: 28.487};
         this.checkPoints = [
-            {x: -31.249, y: -1750.697, z: 29.135},
-            {x: 89.51, y: -1442.977, z: 29.242},
-            {x: 297.191, y: -1088.435, z: 29.401},
-            {x: 113.463, y: -1942.946, z: 20.748},
-            {x: -182.429, y: -1288.029, z: 31.296},
-            {x: -711.832, y: -1136.869, z: 10.613},
-            {x: -1447.184, y: -877.673, z: 10.795},
-            {x: -1626.064, y: -441.152, z: 38.974},
-            {x: -1359.553, y: -148.023, z: 48.524},
-            {x: -990.892, y: -298.24, z: 37.815},
-            {x: -707.972, y: -725.996, z: 28.684},
-            {x: -359.82, y: -112.45, z: 38.697},
-            {x: 545.16, y: -208.517, z: 53.862},
-            {x: 648.783, y: 137.049, z: 91.412},
-            {x: 499.019, y: -634.922, z: 24.847},
+            {x: 308.647, y: -762.751, z: 29.244},
+            {x: 117.585, y: -785.561, z: 31.298},
+            {x: -171.037, y: -816.288, z: 31.186},
+            {x: -506.235, y: 18.672, z: 44.737},
+            {x: -685.978, y: -279.696, z: 35.968},
+            {x: -652.984, y: -606.963, z: 33.233},
+            {x: -287.458, y: -1388.193, z: 31.256},
+            {x: 92.96, y: -1724.242, z: 28.895},
+            {x: 440.727, y: -2029.999, z: 23.515},
+            {x: 953.223, y: -2092.698, z: 30.612},
         ];
         this.treeMarkersList = [];
 
@@ -33,9 +28,9 @@ class Eboueur extends Job {
             "playerEnterColshape": (player, shape) => {
                 if (!player.loggedIn || !this.isPlayerWorksHere(player)) return;
                 if (shape.orangeCollectorTree === player.job.activeTree) {
-                    player.call("cMisc-CallServerEvenWithTimeout", ["sEboueur-EnteredTreeShape", 2400]);
+                    player.call("cMisc-CallServerEvenWithTimeout", ["sBus-EnteredTreeShape", 2400]);
                 } else if (shape === this.dropShape) {
-                    player.call("cMisc-CallServerEvenWithTimeout", ["sEboueur-EnteredDropShape", 2400]);
+                    player.call("cMisc-CallServerEvenWithTimeout", ["sBus-EnteredDropShape", 2400]);
                 } else if (shape === this.vehicleShape) {
                     player.canGetVehicle = true;
                 }
@@ -51,10 +46,10 @@ class Eboueur extends Job {
                 if (player.canGetVehicle) {
                     if (player.locationJob) return player.notify("~r~Vous avez déjà un véhicule de travail.");
                     const d = {
-                        model: 'trash',
-                        coord: JSON.stringify({x: -441.954, y: -1700.088, z: 18.936, rot: 166.23}),
+                        model: 'bus',
+                        coord: JSON.stringify({x: 461.571, y: -650.561, z: 28.045, rot: 172.88}),
                         id: 0,
-                        title: 'Camion Poubelle',
+                        title: 'Bus',
                         fuel: 1,
                         fuelTank: 50,
                         fuelRate: 8,
@@ -71,19 +66,19 @@ class Eboueur extends Job {
                 }
 
             },
-            "sEboueur-EnteredTreeShape": (player) => {
+            "sBus-EnteredTreeShape": (player) => {
                 this.enteredTreeShape(player);
             },
 
-            "sEboueur-EnteredDropShape": (player) => {
+            "sBus-EnteredDropShape": (player) => {
                 this.enteredDropShape(player);
             },
 
-            "sEboueur-StartWork": (player) => {
+            "sBus-StartWork": (player) => {
                 this.startWork(player);
             },
 
-            "sEboueur-FinishWork": (player) => {
+            "sBus-FinishWork": (player) => {
                 this.finishWork(player);
             },
 
@@ -116,7 +111,7 @@ class Eboueur extends Job {
             color: [255, 165, 0, 100],
             visible: false,
         });
-        this.dropLabel = mp.labels.new("Decharge", new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z),
+        this.dropLabel = mp.labels.new("Dépôt", new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z),
         {
             los: false,
             font: 2,
@@ -150,7 +145,7 @@ class Eboueur extends Job {
     pressedKeyOnMainShape(player) {
         let execute = '';
         if (player.job.name === this.name) execute = `app.loadFinish();`;
-        player.call("cEboueur-OpenMainMenu", [player.lang, execute]);
+        player.call("cBus-OpenMainMenu", [player.lang, execute]);
     }
 
     startWork(player) {
@@ -178,13 +173,11 @@ class Eboueur extends Job {
     }
 
     createRandomCheckPoint(player) {
-        const i = misc.getRandomInt(0, this.checkPoints.length - 1)
-        if (i === player.job.activeTree) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
-        this.treeMarkersList[i].marker.showFor(player);
-        this.treeMarkersList[i].blip.routeFor(player, 60, 0.7);
-        player.routeBlip = this.treeMarkersList[i].blip;
-        player.job.activeTree = i;
+        this.treeMarkersList[player.job.collected].marker.showFor(player);
+        this.treeMarkersList[player.job.collected].blip.routeFor(player, 60, 0.7);
+        player.routeBlip = this.treeMarkersList[player.job.collected].blip;
+        player.job.activeTree = player.job.collected;
         return i;
     }
 
@@ -197,20 +190,20 @@ class Eboueur extends Job {
 
     enteredTreeShape(player) {
         player.job.collected += 1;
-        player.notify(`Vous avez ramassé ~g~${player.job.collected} ~w~poubelles.`);
-        if (player.job.collected < 10) return this.createRandomCheckPoint(player);
+        player.notify(`Vous avez passé ~g~${player.job.collected} ~w~arrêts.`);
+        if (player.job.collected < 9) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
-        player.notify(`~g~Votre camion est plein, retournez à la décharge.`);
+        player.notify(`~g~Votre ligne est terminé, retournez au dépôt.`);
         this.dropMarker.routeFor(player, 60, 0.7);
     }
 
     enteredDropShape(player) {
-        if (player.job.collected === 0) return player.notify(`Vous n'avez pas livré de journaux !`);
-        const earnedMoney = player.vip ? ((player.job.collected * 320) * 1.10) : player.job.collected * 320;
+        if (player.job.collected === 0) return player.notify(`Vous n'êtes passé à aucuns arrêts !`);
+        const earnedMoney = player.vip ? ((player.job.collected * 420) * 1.10) : player.job.collected * 420;
         player.changeMoney(+earnedMoney);
         player.notify(`Vous gagnez ~g~$${earnedMoney} ! ~w~Continuez !`);
         if (player.loyality < 50) player.addLoyality(player.job.collected / 10);
-        misc.log.debug(`${player.name} earned $${earnedMoney} at éboueur job!`);
+        misc.log.debug(`${player.name} earned $${earnedMoney} at bus job!`);
         player.job.collected = 0;
         if (!player.job.activeTree) this.createRandomCheckPoint(player);
     }
@@ -227,4 +220,4 @@ class Eboueur extends Job {
 
 }
 
-new Eboueur();
+new Bus();

@@ -30,6 +30,7 @@ require('./Jobs/sOrangeCollector');
 // require('./Jobs/sPizza');
 require('./Jobs/sLivreurDeJournaux');
 require('./Jobs/sEboueur');
+require('./Jobs/sBus');
 
 require('./Phone/sPhone');
 

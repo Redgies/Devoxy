@@ -23,4 +23,9 @@ mp.events.add({
         misc.openCef("package://RP/Browsers/Jobs/Pizza/collector.html", lang);
         misc.injectCef(inject);
     },
+    "cBus-OpenMainMenu" : (lang, inject) => {
+        misc.prepareToCef();
+        misc.openCef("package://RP/Browsers/Jobs/Bus/collector.html", lang);
+        misc.injectCef(inject);
+    },
 });       
