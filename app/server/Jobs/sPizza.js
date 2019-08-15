@@ -5,7 +5,7 @@ const Vehicle = require('../Basic/Vehicles/sVehicle');
 
 class Pizza extends Job {
     constructor() {
-        const d = {name: "Livreur de pizza", x: -1182.947, y: -884.062, z: 13.755, rot: 0, dim: 0, blipmodel: 688}
+        const d = {name: "Livreur de pizza", x: -1182.947, y: -884.062, z: 13.755, rot: 0, dim: 0}
         super(d);
         this.posToDrop = {x: -1176.807, y: -890.748, z: 13.807};
         this.posToGetVehicle = {x: -1174.217, y: -874.52, z: 14.118};

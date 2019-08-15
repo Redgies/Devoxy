@@ -7,7 +7,7 @@ const Vehicle = require('../Basic/Vehicles/sVehicle');
 
 class OrangeCollector extends Job {
     constructor() {
-        const d = { name: "Ramasseur d'Oranges", x: 405.676, y: 6526.119, z: 27.709, rot: 0, dim: 0, blipmodel: 686 }
+        const d = { name: "Ramasseur d'Oranges", x: 405.676, y: 6526.119, z: 27.709, rot: 0, dim: 0 }
         super(d);
         this.posToDrop = {x: 331.74, y: 6541.576, z: 28.417};
         // this.posToGetVehicle = {x: 402.508, y: 6513.289, z: 27.775};
