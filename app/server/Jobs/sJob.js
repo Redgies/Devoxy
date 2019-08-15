@@ -46,7 +46,6 @@ class Job {
         this.blipModel = d.blipmodel;
 
         this.createMainEntities();
-        this.setLocalSettings();
         jobsList.push(this);
     }
 
@@ -56,14 +55,14 @@ class Job {
             color: [0, 255, 0, 100],
             visible: true,
         });
-        this.label = mp.labels.new(this.name, new mp.Vector3(this.mainMenu.x, this.mainMenu.y, this.mainMenu.z),
+        this.label = mp.labels.new(this.name, new mp.Vector3(this.pos.x, this.pos.y, this.pos.z),
 		{
 			los: false,
 			font: 2,
 			drawDistance: 3,
 			color: [255, 255, 255, 255],
         });
-
+        
         this.mainShape = mp.colshapes.newSphere(this.mainMenu.x, this.mainMenu.y, this.mainMenu.z, 1);
         this.mainShape.job = this.name;
     
