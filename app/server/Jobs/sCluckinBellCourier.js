@@ -5,7 +5,7 @@ const Job = require('./sJob');
 
 class ClickinBellCourier extends Job {
     constructor() {
-        const d = { name: "Livreur de journaux", x: -145.918, y: 6303.983, z: 31.559, rot: 131.94, dim: 0 }
+        const d = { name: "Livreur de journaux", x: -145.918, y: 6303.983, z: 31.559, rot: 131.94, dim: 0, blipmodel: 40 }
         super(d);
         this.getOrderCoord = { x: -139.975, y: 6301.485, z: 31.488, rot: 134.19 };
         this.deliveryPoints = [
