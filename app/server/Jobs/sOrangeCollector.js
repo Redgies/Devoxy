@@ -198,7 +198,7 @@ class OrangeCollector extends Job {
         player.stopAnimation();
         player.job.collected += misc.getRandomInt(1, 2);
         player.notify(`${i18n.get('sOrangeCollector', 'collected1', player.lang)} ~g~${player.job.collected} ~w~${i18n.get('sOrangeCollector', 'collected2', player.lang)}!`);
-        if (player.job.collected < 20) return this.createRandomCheckPoint(player);
+        if (player.job.collected < 10) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~${i18n.get('sOrangeCollector', 'full', player.lang)}!`);
     }

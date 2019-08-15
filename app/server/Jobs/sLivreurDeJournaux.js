@@ -154,7 +154,7 @@ class LivreurDeJourneaux extends Job {
     }
 
     startWork(player) {
-        if (player.loyality < 20) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 20 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
+        if (player.loyality < 10) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 10 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
         super.startWork(player);
         player.job = {name: this.name, collected: 0, activeTree: false};
         this.createRandomCheckPoint(player);
@@ -211,7 +211,7 @@ class LivreurDeJourneaux extends Job {
         const earnedMoney = player.vip ? (player.job.collected * 220 * 1.10) : player.job.collected * 220;
         player.changeMoney(earnedMoney);
         player.notify(`Vous gagnez ~g~$${earnedMoney} ! ~w~Continuez !`);
-        if (player.loyality < 40) player.addLoyality(player.job.collected / 10);
+        if (player.loyality < 20) player.addLoyality(player.job.collected / 10);
         misc.log.debug(`${player.name} earned $${earnedMoney} at livreur de journaux job!`);
         player.job.collected = 0;
         if (!player.job.activeTree) this.createRandomCheckPoint(player);

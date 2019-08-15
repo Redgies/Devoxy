@@ -28,4 +28,9 @@ mp.events.add({
         misc.openCef("package://RP/Browsers/Jobs/Bus/collector.html", lang);
         misc.injectCef(inject);
     },
+    "cRafineur-OpenMainMenu" : (lang, inject) => {
+        misc.prepareToCef();
+        misc.openCef("package://RP/Browsers/Jobs/Rafineur/collector.html", lang);
+        misc.injectCef(inject);
+    },
 });       
