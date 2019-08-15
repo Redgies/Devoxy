@@ -282,7 +282,7 @@ class PlayerSingleton {
 
         player.saveBasicData = function() {
             const pos = this.getCurrentPos(0.1);
-            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}', delits = '${JSON.stringify(this.delits)}', jailed = '${this.jailed}', inventory = '${JSON.stringify(this._inventory)}' WHERE id = '${this.guid}'`);
+            misc.query(`UPDATE users SET ip = '${this.ip}', logdate = '${new Date().toLocaleString()}', position = '${JSON.stringify(pos)}', health = '${this.health}', loyality = '${this.loyality}', faction = '${this.faction}', rank = '${this.rank}', weapons = '${JSON.stringify(this.pWeapons)}', delits = '${JSON.stringify(this.delits)}', jailed = '${this.jailed}', inventory = '${JSON.stringify(this._inventory)}', vip = '${this.vip}', permis = '${this.permis}' WHERE id = '${this.guid}'`);
         }
 
         player.isDriver = function() {
