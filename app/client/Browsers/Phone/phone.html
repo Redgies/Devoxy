@@ -395,7 +395,7 @@
                     }
 
                     // ENTRER DANS UN CONTACT
-                    if (this.currentTab == 32) {
+                    if (this.currentTab == 32 && this.d.contacts.length >= 1) {
                         for (let i = 0; i < this.d.contacts.length; i++) {
                             if (this.currentLi == i) {
                                 this.contactPhone = this.d.contacts[i].phone;
@@ -450,7 +450,7 @@
 
 
                     // ENTRER DANS UNE CONVERSATION
-                    if(this.currentTab == 3) {
+                    if(this.currentTab == 3 && this.d.talks.length >= 1) {
                         this.currentTab = 30;
 
                         if(this.currentLi > this.d.talks.length) return;

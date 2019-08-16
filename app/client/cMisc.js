@@ -80,10 +80,10 @@ mp.events.add(
 	"cDestroyCam" : () => destroyCam(),
 
 	"cShowCursor" : () => {
-		mp.gui.cursor.visible = true;
+		mp.gui.cursor.show(true, true);
 	},
 	"cHideCursor" : () => {
-		mp.gui.cursor.visible = false;
+		mp.gui.cursor.show(false, false);
 	},
 
 	"cCloseCefAndDestroyCam" : () => {

@@ -61,7 +61,10 @@ class Phone {
 
                 createMessage(d);
 
-                console.log("fdp fdp fdp");
+                mp.players.forEach((p, id) => {
+                    if(p.phone == d.receiver)
+                        p.notify("~b~Vous avez reçu un nouveau message.");
+                });
 
                 let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
                 execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
@@ -90,8 +93,6 @@ class Phone {
                 {
                     createTalk(d);
 
-                    console.log("createTalk");
-
                     execute += `app.currentTab = 3;`;
                     execute += `app.currentTalk = 0`;
                 }
@@ -100,12 +101,15 @@ class Phone {
                     d.talk = exist;
                     createMessage(d);
 
-                    console.log("createMEssage");
-
                     execute += `app.currentTab = 30;`;
                     execute += `app.currentTalk = ${exist}`;
                 }
 
+                mp.players.forEach((p, id) => {
+                    if(p.phone == d.receiver)
+                        p.notify("~b~Vous avez reçu un nouveau message.");
+                });
+ 
                 execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, exist)};`;
                 execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
 

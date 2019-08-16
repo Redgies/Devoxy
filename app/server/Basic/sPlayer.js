@@ -21,10 +21,15 @@ class PlayerSingleton {
         }
         const weapons = [];
         const delits = [];
-        const inventory = []
+        const inventory = [];
+
+        let phone;
+        for (let i = 0; i < 6; i++) {
+            phone += Math.floor(Math.random() * 10); 
+        }
         await misc.query(`INSERT INTO users 
-        (email, firstName, lastName, password, ip, regdate, position, socialclub, weapons, delits, inventory) VALUES 
-        ('${email}', '${firstName}', '${lastName}', '${pass}', '${player.ip}', '${new Date().toLocaleString()}', '${JSON.stringify(firstSpawn)}', '${player.socialClub}', '${JSON.stringify(weapons)}', '${JSON.stringify(delits)}', '${JSON.stringify(inventory)}')`);
+        (email, firstName, lastName, password, ip, regdate, position, socialclub, weapons, delits, inventory, phone) VALUES 
+        ('${email}', '${firstName}', '${lastName}', '${pass}', '${player.ip}', '${new Date().toLocaleString()}', '${JSON.stringify(firstSpawn)}', '${player.socialClub}', '${JSON.stringify(weapons)}', '${JSON.stringify(delits)}', '${JSON.stringify(inventory)}', '${phone}')`);
 
         misc.log.debug(`New Account: ${email} | ${firstName} ${lastName}`);
     }
