@@ -91,11 +91,11 @@ mp.events.add({
     
     const player = mp.players.local;
   
-    player.setInvincible(fly);
-    player.freezePosition(fly);
-    player.setAlpha(fly ? 0 : 255);
+    player.setInvincible(global.fly.flying);
+    player.freezePosition(global.fly.flying);
+    player.setAlpha(global.fly.flying ? 0 : 255);
 
-    mp.game.graphics.notify(fly ? 'NoClip: ~g~activé' : 'NoClip: ~r~désactivé');
+    mp.game.graphics.notify(global.fly.flying ? 'NoClip: ~g~activé' : 'NoClip: ~r~désactivé');
   },
   "getCamCoords": (name) => {
     mp.events.callRemote('saveCamCoords', JSON.stringify(coords), JSON.stringify(pointingAt(fly.point_distance)), name);
