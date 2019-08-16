@@ -24,12 +24,7 @@ class GPS {
 					const dist = client.dist(player.position);
 					const color = '#c2a2da';
 					const currentTime = misc.getTime();
-					if (anon) {
-						client.outputChatBox(`!{${color}}[${currentTime}] ${i18n.get('sChat', 'someone', player.lang)}: envoi sa position depuis son téléphone.`);
-					}
-					else {
-						client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} envoi sa position depuis son téléphone`);
-					}
+					client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} envoi sa position depuis son téléphone`);
 					// graylog.log(`/me ${player.name} ${text}.`, `/me ${player.name} ${text}.`, '/me');
 					misc.log.debug(`${player.name} envoi sa position depuis son téléphone.`);
 				});
