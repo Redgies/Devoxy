@@ -193,9 +193,9 @@ class Bus extends Job {
         player.job.collected += 1;
         player.notify(`Vous avez passé ~g~${player.job.collected} ~w~arrêts.`);
         if (player.job.collected < 10) return this.createRandomCheckPoint(player);
+        player.job.collected--;
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Votre ligne est terminé, retournez au dépôt.`);
-        player.job.collected--;
         this.dropMarker.routeFor(player, 60, 0.7);
     }
 
