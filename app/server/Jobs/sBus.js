@@ -153,6 +153,7 @@ class Bus extends Job {
         if (player.loyality < 40) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 40 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
         super.startWork(player);
         player.job.collected = 0;
+        player.job.activeTree = 0;
         player.job = {name: this.name, collected: 0, activeTree: false};
         this.createRandomCheckPoint(player);
         this.dropMarker.showFor(player);
