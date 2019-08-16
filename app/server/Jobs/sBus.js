@@ -176,16 +176,16 @@ class Bus extends Job {
 
     createRandomCheckPoint(player) {
         this.hideActiveCheckPoint(player);
-        this.treeMarkersList[player.job.collected].marker.showFor(player);
-        this.treeMarkersList[player.job.collected].blip.routeFor(player, 60, 0.7);
-        player.routeBlip = this.treeMarkersList[player.job.collected].blip;
+        this.treeMarkersList[player.job.activeTree].marker.showFor(player);
+        this.treeMarkersList[player.job.activeTree].blip.routeFor(player, 60, 0.7);
+        player.routeBlip = this.treeMarkersList[player.job.activeTree].blip;
         player.job.activeTree = player.job.collected;
         return i;
     }
 
     hideActiveCheckPoint(player) {
         if(player.job.collected <= 0) return;
-        this.treeMarkersList[player.job.collected - 1].marker.hideFor(player);
+        this.treeMarkersList[player.job.activeTree].marker.hideFor(player);
         player.job.activeTree = false;
     }
 
