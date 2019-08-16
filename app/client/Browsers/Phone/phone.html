@@ -15,6 +15,19 @@
         <div class="phone" style="background: url('images/wallpaper.jpg'); background-size: 100% 100%;">
             <img src="images/iphone-x.png">
 
+            <div class="phone-messages animated zoomIn faster" v-if="currentTab === 40">
+                <div class="head">
+                    <h1>Appels</h1>
+                    <i class="fa fa-phone"></i>
+                </div>
+                <input type="text" v-model="callNumber" style="background: rgb(241, 241, 241);height: 27px;outline: none;color: rgb(9, 132, 227);border: none;width: 100%;text-align: center;font-size: 19px;height: 40px;">
+                <ul class="contacts">
+                    <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
+                        {{ contact.firstName}} <b>{{ contact.lastName }}</b>
+                    </li>
+                </ul>
+            </div>
+
             <div class="phone-messages animated zoomIn faster" v-if="currentTab === 3">
                 <div class="head">
                     <h1>Messages</h1>
@@ -268,6 +281,7 @@
             talkName: '',
             currentTalk: 0,
             newMessage: '',
+            callNumber: '000000',
             newNumber: '000000',
             textMessage: '',
             contactId: 0,
@@ -287,8 +301,8 @@
             },
         },
         created() {
-            this.updatePlayerMessages();
-            this.timer = setInterval(this.updatePlayerMessages, 3000);
+            // this.updatePlayerMessages();
+            // this.timer = setInterval(this.updatePlayerMessages, 3000);
 
             window.addEventListener('keydown', (e) => {
                 if (e.key == 'Backspace') {
@@ -352,6 +366,18 @@
                     }
                     if (this.currentTab == 30)
                         this.scrollToBottom("chat");
+                    if (this.currentTab == 40) {
+                        this.currentLi++;
+
+                        if(this.currentLi >= (this.d.contacts.length - 1))
+                            this.currentLi = this.d.contacts.length - 1;
+
+                        for (let i = 0; i < this.d.contacts.length; i++) {
+                            if (this.currentLi == i) {
+                                this.callNumber = this.d.contacts[i].phone;
+                            }
+                        }
+                    }
 
                 }
                 if (e.key == 'ArrowUp') {
@@ -371,6 +397,17 @@
                     }
                     if (this.currentTab == 30)
                         this.scrollToTop("chat");
+                    if (this.currentTab == 40) {
+                        this.currentLi--;
+                        if (this.currentLi <= 0)
+                            this.currentLi = 0;
+
+                        for (let i = 0; i < this.d.contacts.length; i++) {
+                            if (this.currentLi == i) {
+                                this.callNumber = this.d.contacts[i].phone;
+                            }
+                        }
+                    }
 
                 }
                 if (e.key == 'Enter') {
@@ -393,6 +430,13 @@
 
                         this.currentTab = 3;
                         return 1;
+                    }
+
+                    // ENTRER DANS LES APPELS
+                    if(this.homeFooterSelection == 2) {
+                        this.homeFooterSelection = 0;
+                        this.currentLi = 0;
+                        return this.currentTab = 40;
                     }
 
                     // ENTRER DANS UN CONTACT

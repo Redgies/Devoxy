@@ -220,8 +220,6 @@ class Bus extends Job {
         player.locationJob = 0;
         super.finishWork(player);
     }
-
-
 }
 
 new Bus();
