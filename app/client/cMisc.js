@@ -81,9 +81,11 @@ mp.events.add(
 
 	"cShowCursor" : () => {
 		mp.gui.cursor.show(true, true);
+		mp.gui.chat.show(false);
 	},
 	"cHideCursor" : () => {
 		mp.gui.cursor.show(false, false);
+		mp.gui.chat.show(true);
 	},
 
 	"cCloseCefAndDestroyCam" : () => {

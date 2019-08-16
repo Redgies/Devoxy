@@ -52,11 +52,11 @@ const app = new Vue({
     },
     startWork: function() {
       this.exit();
-      mp.trigger("cMisc-CallServerEvent", "sRafineur-StartWork");
+      mp.trigger("cMisc-CallServerEvent", "sBus-StartWork");
     },
     finishWork: function() {
       this.exit();
-      mp.trigger("cMisc-CallServerEvent", "sRafineur-FinishWork");
+      mp.trigger("cMisc-CallServerEvent", "sBus-FinishWork");
     },
     exit: function() {
       mp.trigger("cCloseCef");
