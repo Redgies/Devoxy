@@ -153,7 +153,6 @@ class Bus extends Job {
         if (player.loyality < 40) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 40 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
         super.startWork(player);
         player.job.collected = 0;
-        player.job.activeTree = 0;
         player.job = {name: this.name, collected: 0, activeTree: false};
         this.createRandomCheckPoint(player);
         this.dropMarker.showFor(player);
@@ -177,16 +176,16 @@ class Bus extends Job {
 
     createRandomCheckPoint(player) {
         this.hideActiveCheckPoint(player);
-        this.treeMarkersList[player.job.activeTree].marker.showFor(player);
-        this.treeMarkersList[player.job.activeTree].blip.routeFor(player, 60, 0.7);
-        player.routeBlip = this.treeMarkersList[player.job.activeTree].blip;
+        this.treeMarkersList[player.job.collected].marker.showFor(player);
+        this.treeMarkersList[player.job.collected].blip.routeFor(player, 60, 0.7);
+        player.routeBlip = this.treeMarkersList[player.job.collected].blip;
         player.job.activeTree = player.job.collected;
         return i;
     }
 
     hideActiveCheckPoint(player) {
-        if(player.job.collected <= 0) return;
-        this.treeMarkersList[player.job.activeTree].marker.hideFor(player);
+        if(player.job.collected <= 0) return 1;
+        this.treeMarkersList[player.job.collected - 1].marker.hideFor(player);
         player.job.activeTree = false;
     }
 
@@ -196,6 +195,7 @@ class Bus extends Job {
         if (player.job.collected < 10) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Votre ligne est terminé, retournez au dépôt.`);
+        player.job.collected--;
         this.dropMarker.routeFor(player, 60, 0.7);
     }
 
@@ -213,7 +213,8 @@ class Bus extends Job {
     finishWork(player) {
         this.hideActiveCheckPoint(player);
         this.dropMarker.hideFor(player);
-        player.routeBlip.unrouteFor(player);
+        if(player.routeBlip)
+            player.routeBlip.unrouteFor(player);
         if(player.locationJob)
             player.locationJob.destroy();
         player.locationJob = 0;
