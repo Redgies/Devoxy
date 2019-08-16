@@ -9,7 +9,7 @@ class NoClip {
                 if(player.adminLvl < 1) return;
 
                 player.fly = !player.fly;
-                player.setVisible(player.fly, 0);
+                // player.setVisible(player.fly, 0);
                 player.call("cNoclip-Update", [player.fly]);
 
             },

@@ -80,6 +80,7 @@ class Job {
         player.notify(`${i18n.get('sJob', 'start', player.lang)} ${this.name}`);
         if (player.model === 1885233650) this.setWorkingClothesForMan(player);
         else this.setWorkingClothesForWoman(player);
+        player.job.collected = 0;
         misc.log.debug(`${player.name} started works as ${this.name}`);
     }
 
