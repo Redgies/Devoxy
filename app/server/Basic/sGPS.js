@@ -22,7 +22,7 @@ class GPS {
 
 				mp.players.forEachInRange(player.position, 10, (client) => {
 					const dist = client.dist(player.position);
-					const color = this.getColorInRange("purple", dist);
+					const color = '#c2a2da';
 					const currentTime = misc.getTime();
 					if (anon) {
 						client.outputChatBox(`!{${color}}[${currentTime}] ${i18n.get('sChat', 'someone', player.lang)}: envoi sa position depuis son téléphone.`);

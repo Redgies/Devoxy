@@ -53,7 +53,7 @@ class ChatSingleton {
 
 				const currentTime = misc.getTime();
 			
-				const message = fullText.substr(arg1 + arg1.length);
+				let message = fullText.substr(arg1.length + 1, fullText.length);
 				const str = `!{#0984e3}[${currentTime}] [PM] à ${recipient.name} [${recipient.id}] : ${message}`;
 				player.outputChatBox(str);
 
