@@ -30,9 +30,9 @@ class LivreurDeColis extends Job {
             "playerEnterColshape": (player, shape) => {
                 if (!player.loggedIn || !this.isPlayerWorksHere(player)) return;
                 if (shape.orangeCollectorTree === player.job.activeTree) {
-                    player.call("cMisc-CallServerEvenWithTimeout", ["sLivreurDeColis-EnteredTreeShape", 2400]);
+                    player.call("cMisc-CallServerEvenWithTimeout", ["sLivreurDeColis-EnteredTreeShape", 100]);
                 } else if (shape === this.dropShape) {
-                    player.call("cMisc-CallServerEvenWithTimeout", ["sLivreurDeColis-EnteredDropShape", 2400]);
+                    player.call("cMisc-CallServerEvenWithTimeout", ["sLivreurDeColis-EnteredDropShape", 100]);
                 } else if (shape === this.vehicleShape) {
                     player.canGetVehicle = true;
                 }
@@ -53,8 +53,8 @@ class LivreurDeColis extends Job {
                         id: 0,
                         title: 'Benson',
                         fuel: 1,
-                        fuelTank: 5,
-                        fuelRate: 0,
+                        fuelTank: 50,
+                        fuelRate: 20,
                         price: 1,
                         ownerId: 0,
                         whoCanOpen: JSON.stringify([player.guid]),
@@ -193,7 +193,6 @@ class LivreurDeColis extends Job {
     }
 
     enteredTreeShape(player) {
-        player.stopAnimation();
         player.job.collected += 1;
         player.notify(`Vous avez livrés ~g~${player.job.collected} ~w~adresses.`);
         if (player.job.collected < 10) return this.createRandomCheckPoint(player);
@@ -203,12 +202,11 @@ class LivreurDeColis extends Job {
     }
 
     enteredDropShape(player) {
-        player.stopAnimation();
         if (player.job.collected === 0) return player.notify(`Vous n'avez pas livré de colis !`);
-        const earnedMoney = player.vip ? (player.job.collected * 280 * 1.10) : player.job.collected * 280;
+        const earnedMoney = player.vip ? (player.job.collected * 370 * 1.10) : player.job.collected * 370;
         player.changeMoney(earnedMoney);
         player.notify(`Vous gagnez ~g~$${earnedMoney} ! ~w~Continuez !`);
-        if (player.loyality < 30) player.addLoyality(player.job.collected / 10);
+        if (player.loyality < 30) player.addLoyality(2);
         misc.log.debug(`${player.name} gagne $${earnedMoney} en tant que livreur de colis!`);
         player.job.collected = 0;
         if (!player.job.activeTree) this.createRandomCheckPoint(player);
@@ -218,7 +216,8 @@ class LivreurDeColis extends Job {
         this.hideActiveCheckPoint(player);
         this.dropMarker.hideFor(player);
         player.routeBlip.unrouteFor(player);
-        player.locationJob.destroy();
+        if(player.locationJob)
+            player.locationJob.destroy();
         player.locationJob = 0;
         super.finishWork(player);
     }

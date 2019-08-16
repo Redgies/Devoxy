@@ -184,7 +184,6 @@ class Prisonnier extends Job {
         const earnedMoney = player.vip ? (player.job.collected * 200 * 1.10) : player.job.collected * 200;
         player.changeMoney(earnedMoney);
         player.notify(`Le pénitencier vous récompense de ~g~${earnedMoney}$ ! ~w~ Continuez !`);
-        if (player.loyality < 50) player.addLoyality(player.job.collected / 10);
         misc.log.debug(`${player.name} earned $${earnedMoney} at prisonnier job!`);
         player.job.collected = 0;
         if (!player.job.activeTree) this.createRandomCheckPoint(player);

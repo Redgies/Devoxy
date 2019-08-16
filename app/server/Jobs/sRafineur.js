@@ -197,7 +197,7 @@ class Rafineur extends Job {
         const earnedMoney = player.vip ? ((player.job.collected * 1080) * 1.10) : player.job.collected * 1080;
         player.changeMoney(+earnedMoney);
         player.notify(`Vous gagnez ~g~$${earnedMoney} ! ~w~Continuez !`);
-        if (player.loyality < 60) player.addLoyality(player.job.collected / 10);
+        if (player.loyality < 60) player.addLoyality(2);
         misc.log.debug(`${player.name} earned $${earnedMoney} at raffineur job!`);
         player.job.collected = 0;
         if (!player.job.activeTree) this.createRandomCheckPoint(player);
@@ -207,7 +207,8 @@ class Rafineur extends Job {
         this.hideActiveCheckPoint(player);
         this.dropMarker.hideFor(player);
         player.routeBlip.unrouteFor(player);
-        player.locationJob.destroy();
+        if(player.locationJob)
+            player.locationJob.destroy();
         player.locationJob = 0;
         super.finishWork(player);
     }

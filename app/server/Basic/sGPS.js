@@ -20,6 +20,20 @@ class GPS {
 
 				this.createRoute(target, x, y);
 
+				mp.players.forEachInRange(player.position, 10, (client) => {
+					const dist = client.dist(player.position);
+					const color = this.getColorInRange("purple", dist);
+					const currentTime = misc.getTime();
+					if (anon) {
+						client.outputChatBox(`!{${color}}[${currentTime}] ${i18n.get('sChat', 'someone', player.lang)}: envoi sa position depuis son téléphone.`);
+					}
+					else {
+						client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} envoi sa position depuis son téléphone`);
+					}
+					// graylog.log(`/me ${player.name} ${text}.`, `/me ${player.name} ${text}.`, '/me');
+					misc.log.debug(`${player.name} envoi sa position depuis son téléphone.`);
+				});
+
 				target.notify(`${player.name} vous a envoyé sa position.`);
 				player.notify(`Vous avez envoyé votre position à ${target.name}.`);
 			}

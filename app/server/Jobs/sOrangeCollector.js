@@ -209,7 +209,7 @@ class OrangeCollector extends Job {
         const earnedMoney = player.vip ? (player.job.collected * 160 * 1.10) : player.job.collected * 160;
         player.changeMoney(earnedMoney);
         player.notify(`${i18n.get('basic', 'earned1', player.lang)} ~g~$${earnedMoney}! ~w~${i18n.get('basic', 'earned2', player.lang)}!`);
-        if (player.loyality < 50) player.addLoyality(player.job.collected / 10);
+        if (player.loyality < 50) player.addLoyality(2);
         misc.log.debug(`${player.name} earned $${earnedMoney} at orange collector job!`);
         player.job.collected = 0;
         if (!player.job.activeTree) this.createRandomCheckPoint(player);
