@@ -23,7 +23,7 @@ class PlayerSingleton {
         const delits = [];
         const inventory = [];
 
-        let phone;
+        let phone = '';
         for (let i = 0; i < 6; i++) {
             phone += Math.floor(Math.random() * 10); 
         }
