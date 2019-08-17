@@ -14,6 +14,10 @@ class ChatSingleton {
 			misc.log.debug(`${player.name}[${player.id}]: ${message}`);
 		});
 
+		mp.events.add('playerWeaponShot', (targetPosition, targetEntity) => {
+			mp.gui.chat.push('shot +' + targetPosition + ' + ' + targetEntity);
+		});
+
 		mp.events.addCommand({
 			'dim' : (player, fullText) => {
 				player.dimension = 0;
