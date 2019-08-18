@@ -475,6 +475,14 @@
                         this.currentTab = 41;
                         this.callStatut = 'Appel en cours...';
 
+                        var number = this.callNumber;
+
+                        for(let j = 0; j < this.d.contacts.length; j++) {
+                            if (number == this.d.contacts[j].phone) {
+                                this.callNumber = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
+                            }
+                        }
+
                         sound = new Howl({
                             src: ['sounds/tonalite.mp3']
                         });
@@ -486,7 +494,7 @@
                             self.checkCall();
                         }, 10000);
 
-                        mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
+                        mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", number);
                     }
 
                     // REPONDRE A UN APPEL
@@ -672,8 +680,13 @@
             receiveCall: function(sender) {
                 this.homeFooterSelection = 0;
                 this.currentTab = 42;
-                this.callNumber = sender;
                 this.callStatut = 'Appel entrant...';
+
+                for(let j = 0; j < this.d.contacts.length; j++) {
+                    if (sender == this.d.contacts[j].phone) {
+                        this.callNumber = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
+                    }
+                }
 
                 sound = new Howl({
                     src: ['sounds/sonnerie.mp3']
@@ -737,7 +750,6 @@
             },
             scrollBottom: function (id) {
                 var element = document.getElementById(id);
-                console.log(element);
                 element.scrollTop = element.scrollHeight;
             },
             scrollToBottom: function (id) {
