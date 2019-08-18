@@ -467,7 +467,9 @@
 
                         sound.play();
 
-                        setTimeout(this.checkCall(), 3000);
+                        setTimeout(function() {
+                            this.checkCall();
+                        }, 3000);
 
                         // setTimeout(function() { 
                         //     sound.stop();
