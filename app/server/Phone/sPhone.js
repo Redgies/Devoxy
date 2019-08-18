@@ -99,6 +99,8 @@ class Phone {
             },
 
             "sPhone-newCall": (player, receiver) => {
+                let found = 0;
+                
                 mp.players.forEach((p, id) => {
                     if(p.phone == receiver)
                     {
