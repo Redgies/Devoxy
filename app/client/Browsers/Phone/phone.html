@@ -689,6 +689,7 @@
                 {
                     this.currentTab = 0;
                     sound.stop();
+                    clearInterval(interval);
 
                     mp.trigger("cMisc-CallServerEvent", "sPhone-endCall");
                 }
@@ -699,7 +700,7 @@
             checkCall: function() {
                 sound.stop();
 
-                if(this.foundCall == 0 && this.inCall != 0)
+                if(this.foundCall == 0 && this.inCall == 0)
                 {
                     var self = this;
                     var timer = 0;

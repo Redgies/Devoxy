@@ -103,8 +103,9 @@ class Phone {
 
                         // let execute = `app.receiveCall('${player.phone}');`;
 
-                        let execute2 = `app.hasRespondToCall();`;
-                        execute2 += `app.inCall = 1;`;
+                        let execute2 = `app.inCall = 1;`;
+                        execute2 += `app.hasRespondToCall();`;
+                        
                         p.call("cPhone-Update", [execute2]);
                         return 1;
                     }
