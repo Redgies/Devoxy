@@ -300,7 +300,7 @@
             contactPhone: '',
             foundCall: 0,
             inCall: 0,
-            endCall: 0,
+            stopCall: 0,
             contactFirstName: '',
             contactLastName: '',
             callStatut: 'Appel en cours...',
@@ -350,7 +350,7 @@
                     if(this.currentTab == 41 || this.currentTab == 42)
                     {
                         this.inCall = 0;
-                        this.endCall = 1;
+                        this.stopCall = 1;
                         this.endCall();
                     }
 
