@@ -130,7 +130,7 @@ class Phone {
                 mp.players.forEach((p, id) => {
                     if(p.phone == receiver && p.loggedIn)
                     {
-                        if(!p.inCall)
+                        if(p.inCall == 0)
                         {
                             found = 1;
                             let execute = `app.receiveCall('${player.phone}');`;
@@ -139,11 +139,6 @@ class Phone {
                         }
                     }
                 }); 
-
-                if(found == 0)
-                {
-                    player.outputChatBox("déjà en appel ou pas connecté");
-                }
 
                 let execute = `app.foundCall = ${found};`;
                 player.call("cPhone-Update", [execute]);
