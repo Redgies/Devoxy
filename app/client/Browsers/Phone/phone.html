@@ -21,10 +21,10 @@
 
                 <img id="declineCall" src="images/decline.png">
             </div>
-            <!-- <div class="phone-call" v-if="currentTab === 42">
-                    <h1 id="callContact">34234343</h1>
-                    <span id="callStatut">Appel entrant</span>
-                </div> -->
+            <div class="phone-call" v-if="currentTab === 42">
+                <h1 id="callContact">34234343</h1>
+                <span id="callStatut">Appel entrant</span>
+            </div>
 
             <div class="phone-messages animated zoomIn faster" v-if="currentTab === 40">
                 <div class="head">
@@ -344,6 +344,9 @@
                     if(this.currentTab == 34 || this.currentTab == 35) 
                         mp.trigger("cShowCursor");
 
+                    if(this.currentTab == 41)
+                        this.endCall();
+
                     mp.trigger("cHideCursor");
 
                 }
@@ -640,6 +643,14 @@
             },
         },
         methods: {
+            receiveCall: function(sender) {
+                this.callNumber = sender;
+
+                sound = new Howl({
+                    src: ['sounds/sonnerie.mp3']
+                });
+                sound.play();
+            },
             updatePlayerMessages: function () {
                 const data = {
                     talkId: this.currentTalk,
@@ -650,6 +661,8 @@
             endCall: function() {
                 this.currentTab = 0;
                 sound.stop();
+
+                mp.trigger("cMisc-CallServerEvent", "sPhone-endCall");
             },
             updateCall: function(timer) {
                 this.callStatut = 'Appel : ' + timer + ' secondes';

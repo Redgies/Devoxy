@@ -76,21 +76,27 @@ class Phone {
                 misc.log.debug(`${player.name} send message`);
             },
 
+            "sPhone-endCall": (player) => {
+                player.inCall = 0;
+            },
+
+
             "sPhone-newCall": (player, receiver) => {
                 let found = 0;
 
+                player.inCall = 1;
 
                 mp.players.forEach((p, id) => {
                     if(p.phone == receiver)
                     {
                         found = 1;
+                        let execute = `app.receiveCall(${receiver});`;
+                        execute += `app.currentTab = 42;`;
+                        p.call("cPhone-Open", [execute]);
                     }
                 }); 
 
                 let execute = `app.foundCall = ${found};`;
-
-
-                console.log(execute);
                 player.call("cPhone-Update", [execute]);
             },
 
