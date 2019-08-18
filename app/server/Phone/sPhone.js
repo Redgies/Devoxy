@@ -128,7 +128,7 @@ class Phone {
                 let found = 0;
 
                 mp.players.forEach((p, id) => {
-                    if(p.phone == receiver)
+                    if(p.phone == receiver && p.loggedIn)
                     {
                         if(!p.inCall)
                         {
