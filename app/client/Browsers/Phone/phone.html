@@ -647,12 +647,27 @@
 
                 mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
             },
+            endCall: function() {
+                this.currentTab = 0;
+                sound.stop();
+            },
             checkCall: function() {
                 sound.stop();
 
                 if(this.foundCall == 0)
                 {
-                    alert("test");
+                    var self = this;
+                    var timer = 0;
+                    var interval = setInterval(function() {
+                        timer++;
+
+                        if(timer >= 7)
+                        {
+                            clearInterval(interval);
+                            self.endCall();
+                        }
+                    }, 1000);
+
                     sound = new Howl({
                         src: ['sounds/nondispo.mp3']
                     });
