@@ -18,12 +18,12 @@
                 <h1 id="callContact">34234343</h1>
                 <span id="callStatut"></span>
 
-                <img id="declineCall" src="images/decline.png" @click="alert('test');">
+                <img id="declineCall" src="images/decline.png">
             </div>
-            <div class="phone-call" v-if="currentTab === 42">
+            <!-- <div class="phone-call" v-if="currentTab === 42">
                     <h1 id="callContact">34234343</h1>
                     <span id="callStatut">Appel entrant</span>
-                </div>
+                </div> -->
 
             <div class="phone-messages animated zoomIn faster" v-if="currentTab === 40">
                 <div class="head">
@@ -120,8 +120,7 @@
 
             <div class="phone-conversation" v-if="currentTab === 31">
                 <div class="head">
-                    <h1
-                        style="width: 100%; text-align: center; text-indent: 0px; margin-left: -16px; margin-top: 18px; font-size: 15px;">
+                    <h1 style="width: 100%; text-align: center; text-indent: 0px; margin-left: -16px; margin-top: 18px; font-size: 15px;">
                         Nouveau message</h1>
                 </div>
                 <span class="sms-to">À :</span>
@@ -457,8 +456,8 @@
                         this.currentTab = 41;
                         this.callStatut = 'Appel en cours...';
 
-                        document.getElementById("callContact").innerHTML = this.callNumber;
-                        document.getElementById("callStatut").innerHTML = this.callStatut;
+                        document.getElementById("callContact").innerHTML = 'sdfsd';
+                        document.getElementById("callStatut").innerHTML = 'sfds';
 
                         mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
                     }
