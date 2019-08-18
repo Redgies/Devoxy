@@ -466,22 +466,24 @@
 
                         sound.play();
 
-                        alert("fpd");
-
-                        setTimeout(function() { 
-                            sound.stop();
-                            alert("dsfds");
-                            if(this.foundCall == 0)
-                            {
-                                alert("test");
-                                var sound = new Howl({
-                                    src: ['sounds/nondispo.mp3']
-                                });
-                                sound.play();
-
-                                this.currentTab = 0;
-                            } 
+                        setTimeout(function () {
+                            alert("fdp");
                         }, 3000);
+
+                        // setTimeout(function() { 
+                        //     sound.stop();
+                        //     alert("dsfds");
+                        //     if(this.foundCall == 0)
+                        //     {
+                        //         alert("test");
+                        //         var sound = new Howl({
+                        //             src: ['sounds/nondispo.mp3']
+                        //         });
+                        //         sound.play();
+
+                        //         this.currentTab = 0;
+                        //     } 
+                        // }, 3000);
 
 
                         mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
