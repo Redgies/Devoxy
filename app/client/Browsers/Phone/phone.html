@@ -453,11 +453,15 @@
                     // NOUVEL APPEL
                     if(this.currentTab == 40)
                     {
+                        mp.trigger("cHideCursor");
+
                         this.currentTab = 41;
                         this.callStatut = 'Appel en cours...';
 
-                        document.getElementById("callContact").innerHTML = 'sdfsd';
-                        document.getElementById("callStatut").innerHTML = 'sfds';
+                        var callContact = document.getElementById("callContact");
+                        callContact.innerHTML = 'sdfsd';
+                        // document.getElementById("callContact").innerHTML = 'sdfsd';
+                        // document.getElementById("callStatut").innerHTML = 'sfds';
 
                         mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
                     }
