@@ -483,6 +483,7 @@
                     if (this.currentTab == 42)
                     {
                         sound.stop();
+                        clearInterval(interval);
                         this.currentTab = 41;
 
                         var self = this;
@@ -542,8 +543,6 @@
                             }
 
                             mp.trigger("cMisc-CallServerEvent", "sPhone-createContact", JSON.stringify(data));
-
-                            mp.trigger("cHideCursor");
 
                             this.currentTab = 32;
                         }
@@ -645,6 +644,7 @@
         },
         methods: {
             hasRespondToCall: function() {
+                alert("test");
                 clearInterval(interval);
 
                 sound.stop();
