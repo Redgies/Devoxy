@@ -22,8 +22,8 @@
                 <img id="declineCall" src="images/decline.png">
             </div>
             <div class="phone-call" v-if="currentTab === 42">
-                <h1 id="callContact">34234343</h1>
-                <span id="callStatut">Appel entrant</span>
+                <h1 id="callContact">{{ callNumber }}</h1>
+                <span id="callStatut">{{ callStatut }}</span>
             </div>
 
             <div class="phone-messages animated zoomIn faster" v-if="currentTab === 40">
@@ -335,7 +335,7 @@
                     if (this.currentTab == 0) {
                         mp.trigger("cCloseCef");
                     }
-                    if (this.currentTab == 3 || this.currentTab == 32 || this.currentTab == 40 || this.currentTab == 41)
+                    if (this.currentTab == 3 || this.currentTab == 32 || this.currentTab == 40 || this.currentTab == 41 || this.currentTab == 42)
                         this.currentTab = 0;
                     if (this.currentTab == 30 || this.currentTab == 31)
                         this.currentTab = 3;
@@ -344,7 +344,7 @@
                     if(this.currentTab == 34 || this.currentTab == 35) 
                         mp.trigger("cShowCursor");
 
-                    if(this.currentTab == 41)
+                    if(this.currentTab == 41 || this.currentTab == 42)
                         this.endCall();
 
                     mp.trigger("cHideCursor");
@@ -473,7 +473,7 @@
                         var self = this;
                         setTimeout(function() {
                             self.checkCall();
-                        }, 3000);
+                        }, 10000);
 
                         // setTimeout(function() { 
                         //     sound.stop();
@@ -645,11 +645,17 @@
         methods: {
             receiveCall: function(sender) {
                 this.callNumber = sender;
+                this.callStatut = 'Appel entrant...';
 
                 sound = new Howl({
                     src: ['sounds/sonnerie.mp3']
                 });
                 sound.play();
+
+                var self = this;
+                setTimeout(function() {
+                    self.endCall();
+                }, 10000);
             },
             updatePlayerMessages: function () {
                 const data = {

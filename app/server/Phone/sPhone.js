@@ -90,7 +90,7 @@ class Phone {
                     if(p.phone == receiver)
                     {
                         found = 1;
-                        let execute = `app.receiveCall(${receiver});`;
+                        let execute = `app.receiveCall('${player.phone}');`;
                         execute += `app.currentTab = 42;`;
                         p.call("cPhone-Open", [execute]);
                     }
