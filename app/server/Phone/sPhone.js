@@ -64,7 +64,7 @@ class Phone {
                 mp.players.forEach((p, id) => {
                     if(p.phone == d.receiver)
                     {
-                        p.call("cPhone-soundSMS");
+                        // p.call("cPhone-soundSMS");
                         p.notify("~b~Vous avez reçu un nouveau message.");
                     }
                 });
