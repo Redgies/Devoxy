@@ -63,7 +63,10 @@ class Phone {
 
                 mp.players.forEach((p, id) => {
                     if(p.phone == d.receiver)
+                    {
                         p.notify("~b~Vous avez reçu un nouveau message.");
+                        player.call("cPhone-soundSMS");
+                    }
                 });
 
                 let execute = `app.d.messages = ${this.getMessageForPlayer(player.phone, d.talkId)};`;
