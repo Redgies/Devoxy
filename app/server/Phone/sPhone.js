@@ -85,7 +85,7 @@ class Phone {
                             console.log("sPhone-endCall");
                             p.inCall = 0;
     
-                            execute += `app.stopCall();`;
+                            let execute = `app.stopCall();`;
     
                             p.call("cPhone-Update", [execute]);
                         }
