@@ -126,6 +126,7 @@ class Phone {
                     {
                         if(!p.inCall)
                         {
+                            found = 1;
                             let execute = `app.receiveCall('${player.phone}');`;
                             p.call("cPhone-Open", [execute]);
                             return 1;
