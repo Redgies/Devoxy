@@ -12,6 +12,6 @@ mp.events.add({
 	"cPhone-soundSMS" : () => {
 		misc.prepareToCef(0, false, true, true);
 		misc.openCef("package://RP/Browsers/Phone/sounds.html");
-		misc.injectCef.execute(`playSoundSMS()`);
+		misc.injectCef(`playSoundSMS()`);
 	}
 });
