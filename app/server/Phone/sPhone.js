@@ -80,7 +80,7 @@ class Phone {
                 if(player.inCall != 0)
                 {
                     mp.players.forEach((p, id) => {
-                        if(p.inCall == player.id)
+                        if(p.id == player.inCall)
                         {
                             console.log("sPhone-endCall");
                             p.inCall = 0;
