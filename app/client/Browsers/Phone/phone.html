@@ -428,7 +428,6 @@
 
                 }
                 if (e.key == 'Enter') {
-                    alert("tamere : " + this.currentTab);
                     // ENTRER DANS LES CONTACTS
                     if(this.homeFooterSelection == 1) {
                         this.homeFooterSelection = 0;
@@ -491,7 +490,7 @@
                             self.updateCall(timer);
                         }, 1000);
 
-                        // mp.trigger("cMisc-CallServerEvent", "sPhone-respondCall", this.callNumber);
+                        mp.trigger("cMisc-CallServerEvent", "sPhone-respondCall", this.callNumber);
                     }
 
                     // ENTRER DANS UN CONTACT
