@@ -89,6 +89,17 @@
     transform: translateY(-50%);
 }
 
+.phone .phone-call {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width: 100%;
+    background: #1C1716;
+    border-radius: 54px;
+    overflow: hidden;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;    
+}
+
 .phone .phone-messages, 
 .phone .phone-conversation {
     position: absolute;
@@ -372,4 +383,28 @@
 }
 .btn-confirm:focus {
     background: #74b9ff;
+}
+
+#callContact {
+    text-align: center;
+    margin-top: 100px;
+    color: #fff;
+    font-size: 20px;
+}
+
+#callStatut {
+    text-align: center;
+    margin-top: -10px;
+    color: #fff;
+    font-size: 13px;
+    width: 100%;
+    display: block; 
+}
+
+#declineCall {
+    width: 50px;
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
 }
