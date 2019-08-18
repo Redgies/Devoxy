@@ -77,19 +77,23 @@ class Phone {
             },
 
             "sPhone-endCall": (player) => {
-                mp.players.forEach((p, id) => {
-                    if(p.id == player.inCall)
-                    {
-                        console.log("sPhone-endCall");
-                        p.inCall = 0;
-
-                        let execute = `app.endCall = 0;`;
-                        execute += `app.endCall();`;
-
-                        p.call("cPhone-Update", [execute]);
-                    }
-                });
-                player.inCall = 0;
+                if(player.inCall != 0)
+                {
+                    console.log("end call");
+                    mp.players.forEach((p, id) => {
+                        if(id == player.inCall)
+                        {
+                            console.log("sPhone-endCall");
+                            p.inCall = 0;
+    
+                            let execute = `app.endCall = 0;`;
+                            execute += `app.endCall();`;
+    
+                            p.call("cPhone-Update", [execute]);
+                        }
+                    });
+                    player.inCall = 0;
+                }
             },
 
             "sPhone-stopCall": (player) => {
@@ -130,6 +134,11 @@ class Phone {
                         }
                     }
                 }); 
+
+                if(found == 0)
+                {
+                    player.outpoutChatbox("déjà en appel ou pas connecté");
+                }
 
                 let execute = `app.foundCall = ${found};`;
                 player.call("cPhone-Update", [execute]);
