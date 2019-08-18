@@ -101,6 +101,14 @@ setInterval(function(){
         }
         // if(debug) mp.gui.chat.push(volumeModifier);
 
+        if(player.getVariable("inCall") != -1)
+        {
+          if(player.remoteId == streamedPlayer.getVariable("inCall"))
+          {
+            playerNames.push(streamedPlayer.name + "~0~0~0~" + 1);
+          }
+        }
+
         if(player.getVariable("faction") == streamedPlayer.getVariable("faction"))
         {
           if(streamedPlayer.getVariable("radioOn") == 1 && streamedPlayer.getVariable("faction") != 0)

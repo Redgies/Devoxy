@@ -84,6 +84,7 @@ class Phone {
                         {
                             console.log("sPhone-endCall");
                             p.inCall = 0;
+                            p.setVariable("inCall", -1);
     
                             let execute = `app.stopCall();`;
     
@@ -91,11 +92,13 @@ class Phone {
                         }
                     });
                     player.inCall = 0;
+                    player.setVariable("inCall", -1);
                 }
             },
 
             "sPhone-stopCall": (player) => {
                 player.inCall = 0;
+                player.setVariable("inCall", -1);
             },
 
             "sPhone-respondCall" : (player, sender) => {
@@ -105,6 +108,9 @@ class Phone {
                         console.log("sPhone-respondCall");
                         player.inCall = p.id;
                         p.inCall = player.id;
+
+                        player.setVariable("inCall", p.id);
+                        p.setVariable("inCall", player.id);
 
                         // player.call("cPhone-Update", [execute]);
 
@@ -136,7 +142,7 @@ class Phone {
 
                 if(found == 0)
                 {
-                    player.outputChatBox("déjà en appel ou pas connecté");
+                    player.outputChatBox("déjà en appel ou pas connecté");zZZZ
                 }
 
                 let execute = `app.foundCall = ${found};`;
