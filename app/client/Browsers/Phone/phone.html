@@ -297,6 +297,7 @@
             currentTalk: 0,
             newMessage: '',
             callNumber: '000000',
+            callTitle: 'GG L\'ASTUCE',
             newNumber: '000000',
             textMessage: '',
             contactId: 0,
@@ -479,7 +480,7 @@
 
                         for(let j = 0; j < this.d.contacts.length; j++) {
                             if (number == this.d.contacts[j].phone) {
-                                this.callNumber = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
+                                this.callTitle = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
                             }
                         }
 
@@ -681,10 +682,12 @@
                 this.homeFooterSelection = 0;
                 this.currentTab = 42;
                 this.callStatut = 'Appel entrant...';
+                this.callNumber = sender;
+                this.callTitle = sender;
 
                 for(let j = 0; j < this.d.contacts.length; j++) {
                     if (sender == this.d.contacts[j].phone) {
-                        this.callNumber = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
+                        this.callTitle = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
                     }
                 }
 
