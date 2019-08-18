@@ -338,6 +338,14 @@
                     if (this.currentTab == 0) {
                         mp.trigger("cCloseCef");
                     }
+                    
+                    if(this.currentTab == 41 || this.currentTab == 42)
+                    {
+                        this.inCall = 0;
+                        this.stopCall = 1;
+                        this.endCall();
+                    }
+
                     if (this.currentTab == 3 || this.currentTab == 32 || this.currentTab == 40 || this.currentTab == 41 || this.currentTab == 42)
                         this.currentTab = 0;
                     if (this.currentTab == 30 || this.currentTab == 31)
@@ -346,13 +354,6 @@
                         this.currentTab = 32;
                     if(this.currentTab == 34 || this.currentTab == 35) 
                         mp.trigger("cShowCursor");
-
-                    if(this.currentTab == 41 || this.currentTab == 42)
-                    {
-                        this.inCall = 0;
-                        this.stopCall = 1;
-                        this.endCall();
-                    }
 
                     mp.trigger("cHideCursor");
 
