@@ -133,7 +133,11 @@ class Phone {
                         if(p.inCall == -1)
                         {
                             found = 1;
-                            let execute = `app.receiveCall('${player.phone}');`;
+                            let execute = `app.phone = ${player.phone};`;
+                            execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
+                            execute += `app.d.talks = ${this.getTalksForPlayer(player)};`;
+                            execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
+                            execute += `app.receiveCall('${player.phone}');`;
                             p.call("cPhone-Open", [execute]);
                             return 1;
                         }
