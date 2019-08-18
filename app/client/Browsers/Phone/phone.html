@@ -651,6 +651,9 @@
                 this.currentTab = 0;
                 sound.stop();
             },
+            updateCall: function(timer) {
+                this.callStatut = 'Appel : ' + timer + ' secondes';
+            },
             checkCall: function() {
                 sound.stop();
 
@@ -661,11 +664,12 @@
                     var interval = setInterval(function() {
                         timer++;
 
-                        if(timer >= 7)
+                        if(timer >= 8)
                         {
                             clearInterval(interval);
                             self.endCall();
                         }
+                        self.updateCall(timer);
                     }, 1000);
 
                     sound = new Howl({
