@@ -466,8 +466,6 @@
 
                         sound.play();
 
-                        mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
-
                         setTimeout(function() { 
                             sound.stop();
                             alert("dsfds");
@@ -481,7 +479,10 @@
 
                                 this.currentTab = 0;
                             } 
-                        }, 10000);
+                        }, 3000);
+
+
+                        mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
                     }
 
                     // ENTRER DANS UN CONTACT
