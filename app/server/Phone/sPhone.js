@@ -142,7 +142,7 @@ class Phone {
 
                 if(found == 0)
                 {
-                    player.outputChatBox("déjà en appel ou pas connecté");zZZZ
+                    player.outputChatBox("déjà en appel ou pas connecté");
                 }
 
                 let execute = `app.foundCall = ${found};`;
