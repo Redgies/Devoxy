@@ -90,7 +90,7 @@ class Phone {
                         // let execute = `app.receiveCall('${player.phone}');`;
 
                         let execute2 = `app.hasRespondToCall();`;
-                        player.call("cPhone-Update", [execute2]);
+                        p.call("cPhone-Update", [execute2]);
                         return 1;
                     }
                 }); 
