@@ -81,7 +81,7 @@ class Phone {
                 {
                     console.log("end call");
                     mp.players.forEach((p, id) => {
-                        player.outputChatBox("id : " + id + " incall : " + player.inCall);
+                        player.outputChatBox("id : " + JSON.stringify(p) + " incall : " + player.inCall);
                         if(p.id == player.inCall)
                         {
                             console.log("sPhone-endCall");
