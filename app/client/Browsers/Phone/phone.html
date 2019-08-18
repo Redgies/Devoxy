@@ -299,6 +299,7 @@
             contactId: 0,
             contactPhone: '',
             foundCall: 0,
+            inCall: 0,
             contactFirstName: '',
             contactLastName: '',
             callStatut: 'Appel en cours...',
@@ -346,7 +347,10 @@
                         mp.trigger("cShowCursor");
 
                     if(this.currentTab == 41 || this.currentTab == 42)
+                    {
+                        this.inCall = 0;
                         this.endCall();
+                    }
 
                     mp.trigger("cHideCursor");
 
@@ -679,10 +683,13 @@
                 mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
             },
             endCall: function() {
-                this.currentTab = 0;
-                sound.stop();
+                if(inCall == 0)
+                {
+                    this.currentTab = 0;
+                    sound.stop();
 
-                mp.trigger("cMisc-CallServerEvent", "sPhone-endCall");
+                    mp.trigger("cMisc-CallServerEvent", "sPhone-endCall");
+                }
             },
             updateCall: function(timer) {
                 this.callStatut = 'Appel : ' + timer + ' secondes';
