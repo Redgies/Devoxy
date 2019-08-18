@@ -15,8 +15,8 @@
             <img src="images/iphone-x.png">
 
             <div class="phone-call" v-if="currentTab === 41">
-                <h1 id="callContact">34234343</h1>
-                <span id="callStatut"></span>
+                <h1 id="callContact">{{ callContact }}</h1>
+                <span id="callStatut">{{ callStatut }}</span>
 
                 <img id="declineCall" src="images/decline.png">
             </div>
@@ -457,11 +457,6 @@
 
                         this.currentTab = 41;
                         this.callStatut = 'Appel en cours...';
-
-                        var callContact = document.getElementById("callContact");
-                        callContact.innerHTML = 'sdfsd';
-                        // document.getElementById("callContact").innerHTML = 'sdfsd';
-                        // document.getElementById("callStatut").innerHTML = 'sfds';
 
                         mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
                     }
