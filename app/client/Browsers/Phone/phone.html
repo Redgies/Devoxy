@@ -147,111 +147,6 @@
                             {{ msg.text | nl2br }}
                         </div>
                     </div>
-                    <!-- <div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                                    <div class="message last">
-                                        sdfsdfds
-                                    </div>
-                                </div><div class="messages mine">
-                                        <div class="message last">
-                                            sdfsdfds
-                                        </div>
-                                    </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div> -->
                     <br><br><br><br><br>
                 </div>
                 <div class="reply" id="reply-div">
@@ -320,8 +215,8 @@
             },
         },
         created() {
-            // this.updatePlayerMessages();
-            // this.timer = setInterval(this.updatePlayerMessages, 3000);
+            this.updatePlayerMessages();
+            this.timer = setInterval(this.updatePlayerMessages, 3000);
 
             window.addEventListener('keydown', (e) => {
                 if (e.key == 'Backspace') {
@@ -502,7 +397,6 @@
                         sound.stop();
                         clearInterval(interval);
                         this.currentTab = 41;
-
                         var self = this;
                         var timer = 0;
                         interval = setInterval(function() {

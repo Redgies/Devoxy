@@ -77,13 +77,13 @@ class Phone {
             },
 
             "sPhone-endCall": (player) => {
-                if(player.inCall != -1)
+                if(player.inCall != 0)
                 {
                     mp.players.forEach((p, id) => {
                         if(p.id == player.inCall)
                         {
                             console.log("sPhone-endCall");
-                            p.inCall = -1;
+                            p.inCall = 0;
                             p.setVariable("inCall", -1);
     
                             let execute = `app.stopCall();`;
@@ -91,13 +91,13 @@ class Phone {
                             p.call("cPhone-Update", [execute]);
                         }
                     });
-                    player.inCall = -1;
+                    player.inCall = 0;
                     player.setVariable("inCall", -1);
                 }
             },
 
             "sPhone-stopCall": (player) => {
-                player.inCall = -1;
+                player.inCall = 0;
                 player.setVariable("inCall", -1);
             },
 
@@ -130,7 +130,7 @@ class Phone {
                 mp.players.forEach((p, id) => {
                     if(p.phone == receiver && p.loggedIn)
                     {
-                        if(p.inCall == -1)
+                        if(p.inCall == 0)
                         {
                             found = 1;
                             let execute = `app.receiveCall('${player.phone}');`;
