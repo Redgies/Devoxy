@@ -16,13 +16,13 @@
             <img src="images/iphone-x.png">
 
             <div class="phone-call" v-if="currentTab === 41">
-                <h1 id="callContact">{{ callNumber }}</h1>
+                <h1 id="callContact">{{ callTitle }}</h1>
                 <span id="callStatut">{{ callStatut }}</span>
 
                 <img id="declineCall" src="images/decline.png">
             </div>
             <div class="phone-call" v-if="currentTab === 42">
-                <h1 id="callContact">{{ callNumber }}</h1>
+                <h1 id="callContact">{{ callTitle }}</h1>
                 <span id="callStatut">{{ callStatut }}</span>
 
                 <img id="acceptCall" src="images/accept.png">
@@ -298,6 +298,7 @@
             newMessage: '',
             callNumber: '000000',
             newNumber: '000000',
+            callTitle: '',
             textMessage: '',
             contactId: 0,
             contactPhone: '',
@@ -478,6 +479,14 @@
                         sound = new Howl({
                             src: ['sounds/tonalite.mp3']
                         });
+
+                        this.callTitle = this.callNumber;
+
+                        for(let j = 0; j < this.d.contacts.length; j++) {
+                            if (this.callNumber == this.d.contacts[j].phone) {
+                                this.callTitle = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
+                            }
+                        }
 
                         sound.play();
 
@@ -674,6 +683,14 @@
                 this.currentTab = 42;
                 this.callNumber = sender;
                 this.callStatut = 'Appel entrant...';
+
+                this.callTitle = this.callNumber;
+
+                for(let j = 0; j < this.d.contacts.length; j++) {
+                    if (this.callNumber == this.d.contacts[j].phone) {
+                        this.callTitle = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
+                    }
+                }
 
                 sound = new Howl({
                     src: ['sounds/sonnerie.mp3']
