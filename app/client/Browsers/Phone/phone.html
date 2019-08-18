@@ -482,9 +482,10 @@
                     // REPONDRE A UN APPEL
                     if (this.currentTab == 42)
                     {
-                        alert("test");
                         sound.stop();
+                        this.currentTab = 41;
 
+                        var self = this;
                         var timer = 0;
                         interval = setInterval(function() {
                             timer++;
@@ -649,6 +650,7 @@
                 sound.stop();
 
                 var timer = 0;
+                var self = this;
                 interval = setInterval(function() {
                     timer++;
                     self.updateCall(timer);

@@ -88,8 +88,6 @@ class Phone {
                         p.inCall = player.id;
 
                         // let execute = `app.receiveCall('${player.phone}');`;
-                        let execute = `app.currentTab = 41;`;
-                        player.call("cPhone-Update", [execute]);
 
                         let execute2 = `app.hasRespondToCall();`;
                         player.call("cPhone-Update", [execute2]);
