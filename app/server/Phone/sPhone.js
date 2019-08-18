@@ -80,19 +80,35 @@ class Phone {
                 player.inCall = 0;
             },
 
+            "sPhone-respondCall" : (player, sender) => {
+                mp.players.forEach((p, id) => {
+                    if(p.phone == sender)
+                    {
+                        player.inCall = p.id;
+                        p.inCall = player.id;
+
+                        // let execute = `app.receiveCall('${player.phone}');`;
+                        let execute = `app.currentTab = 41;`;
+                        player.call("cPhone-Update", [execute]);
+
+                        let execute = `app.hasRespondToCall();`;
+                        player.call("cPhone-Update", [execute]);
+                        break;
+                    }
+                }); 
+            },
 
             "sPhone-newCall": (player, receiver) => {
-                let found = 0;
-
-                player.inCall = 1;
-
                 mp.players.forEach((p, id) => {
                     if(p.phone == receiver)
                     {
-                        found = 1;
-                        let execute = `app.receiveCall('${player.phone}');`;
-                        execute += `app.currentTab = 42;`;
-                        p.call("cPhone-Open", [execute]);
+                        if(!p.inCall)
+                        {
+                            let execute = `app.receiveCall('${player.phone}');`;
+                            execute += `app.currentTab = 42;`;
+                            p.call("cPhone-Open", [execute]);
+                            break;
+                        }
                     }
                 }); 
 
