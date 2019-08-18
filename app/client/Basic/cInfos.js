@@ -3,7 +3,7 @@ let showed = false;
 let player = mp.players.local;
 
 let money;
-let job = 'Chômeur';
+let job = 'Aucune faction';
 let id;
 let guid;
 
