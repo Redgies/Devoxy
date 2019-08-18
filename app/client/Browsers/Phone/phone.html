@@ -467,7 +467,7 @@
 
                         sound.play();
 
-                        setTimeout(this.checkCall, 3000);
+                        setTimeout(this.checkCall(), 3000);
 
                         // setTimeout(function() { 
                         //     sound.stop();
@@ -645,9 +645,11 @@
                 mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
             },
             checkCall: function() {
+                alert("fdp +" + this.foundCall);
+
                 sound.stop();
 
-                alert("fdp +" + this.foundCall);
+               
 
                 var sound = new Howl({
                     src: ['sounds/nondispo.mp3']
