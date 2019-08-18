@@ -69,7 +69,7 @@ class PlayerSingleton {
         else 
             player.tp(JSON.parse(d[0].position));
 
-        player.inCall = -1;
+        player.inCall = 0;
         player.setVariable("adminLvl", player.adminLvl);
         player.call("createPed");
         player.call("cCloseCefAndDestroyCam");
