@@ -16,13 +16,13 @@
             <img src="images/iphone-x.png">
 
             <div class="phone-call" v-if="currentTab === 41">
-                <h1 id="callContact">{{ callTitle }}</h1>
+                <h1 id="callContact">{{ callNumber }}</h1>
                 <span id="callStatut">{{ callStatut }}</span>
 
                 <img id="declineCall" src="images/decline.png">
             </div>
             <div class="phone-call" v-if="currentTab === 42">
-                <h1 id="callContact">{{ callTitle }}</h1>
+                <h1 id="callContact">{{ callNumber }}</h1>
                 <span id="callStatut">{{ callStatut }}</span>
 
                 <img id="acceptCall" src="images/accept.png">
@@ -147,6 +147,111 @@
                             {{ msg.text | nl2br }}
                         </div>
                     </div>
+                    <!-- <div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                                    <div class="message last">
+                                        sdfsdfds
+                                    </div>
+                                </div><div class="messages mine">
+                                        <div class="message last">
+                                            sdfsdfds
+                                        </div>
+                                    </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                                <div class="message last">
+                                    sdfsdfds
+                                </div>
+                            </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div><div class="messages mine">
+                            <div class="message last">
+                                sdfsdfds
+                            </div>
+                        </div> -->
                     <br><br><br><br><br>
                 </div>
                 <div class="reply" id="reply-div">
@@ -191,7 +296,6 @@
             talkName: '',
             currentTalk: 0,
             newMessage: '',
-            callTitle: '',
             callNumber: '000000',
             newNumber: '000000',
             textMessage: '',
@@ -215,8 +319,8 @@
             },
         },
         created() {
-            this.updatePlayerMessages();
-            this.timer = setInterval(this.updatePlayerMessages, 3000);
+            // this.updatePlayerMessages();
+            // this.timer = setInterval(this.updatePlayerMessages, 3000);
 
             window.addEventListener('keydown', (e) => {
                 if (e.key == 'Backspace') {
@@ -377,12 +481,6 @@
 
                         sound.play();
 
-                        for(let j = 0; j < this.d.contacts.length; j++) {
-                            if (this.callNumber == this.d.contacts[j].phone) {
-                                this.callTitle = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
-                            }
-                        }
-
                         var self = this;
                         setTimeout(function() {
                             self.checkCall();
@@ -397,6 +495,7 @@
                         sound.stop();
                         clearInterval(interval);
                         this.currentTab = 41;
+
                         var self = this;
                         var timer = 0;
                         interval = setInterval(function() {
@@ -573,6 +672,7 @@
             receiveCall: function(sender) {
                 this.homeFooterSelection = 0;
                 this.currentTab = 42;
+                this.callNumber = sender;
                 this.callStatut = 'Appel entrant...';
 
                 sound = new Howl({
@@ -637,6 +737,7 @@
             },
             scrollBottom: function (id) {
                 var element = document.getElementById(id);
+                console.log(element);
                 element.scrollTop = element.scrollHeight;
             },
             scrollToBottom: function (id) {
