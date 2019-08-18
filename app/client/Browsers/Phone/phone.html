@@ -458,6 +458,12 @@
                         this.currentTab = 41;
                         this.callStatut = 'Appel en cours...';
 
+                        var sound = new Howl({
+                            src: ['sounds/tonalite.mp3']
+                        });
+
+                        sound.play();
+
                         mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
                     }
 
