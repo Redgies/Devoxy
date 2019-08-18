@@ -320,8 +320,8 @@
             },
         },
         created() {
-            // this.updatePlayerMessages();
-            // this.timer = setInterval(this.updatePlayerMessages, 3000);
+            this.updatePlayerMessages();
+            this.timer = setInterval(this.updatePlayerMessages, 3000);
 
             window.addEventListener('keydown', (e) => {
                 if (e.key == 'Backspace') {
@@ -685,6 +685,8 @@
                 this.callStatut = 'Appel entrant...';
 
                 this.callTitle = this.callNumber;
+
+                alert(JSON.stringify(this.d.contacts));
 
                 // for(let j = 0; j < this.d.contacts.length; j++) {
                     // if (this.callNumber == this.d.contacts[j].phone) {
