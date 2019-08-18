@@ -93,7 +93,7 @@ class Phone {
 
                         let execute2 = `app.hasRespondToCall();`;
                         player.call("cPhone-Update", [execute2]);
-                        break;
+                        return 1;
                     }
                 }); 
             },
@@ -107,7 +107,7 @@ class Phone {
                             let execute = `app.receiveCall('${player.phone}');`;
                             execute += `app.currentTab = 42;`;
                             p.call("cPhone-Open", [execute]);
-                            break;
+                            return 1;
                         }
                     }
                 }); 
