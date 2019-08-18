@@ -16,13 +16,13 @@
             <img src="images/iphone-x.png">
 
             <div class="phone-call" v-if="currentTab === 41">
-                <h1 id="callContact">{{ callNumber }}</h1>
+                <h1 id="callContact">{{ callTitle }}</h1>
                 <span id="callStatut">{{ callStatut }}</span>
 
                 <img id="declineCall" src="images/decline.png">
             </div>
             <div class="phone-call" v-if="currentTab === 42">
-                <h1 id="callContact">{{ callNumber }}</h1>
+                <h1 id="callContact">{{ callTitle }}</h1>
                 <span id="callStatut">{{ callStatut }}</span>
 
                 <img id="acceptCall" src="images/accept.png">
@@ -296,8 +296,8 @@
             talkName: '',
             currentTalk: 0,
             newMessage: '',
+            callTitle: '',
             callNumber: '000000',
-            callTitle: 'GG L\'ASTUCE',
             newNumber: '000000',
             textMessage: '',
             contactId: 0,
@@ -476,26 +476,24 @@
                         this.currentTab = 41;
                         this.callStatut = 'Appel en cours...';
 
-                        var number = this.callNumber;
-
-                        for(let j = 0; j < this.d.contacts.length; j++) {
-                            if (number == this.d.contacts[j].phone) {
-                                this.callTitle = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
-                            }
-                        }
-
                         sound = new Howl({
                             src: ['sounds/tonalite.mp3']
                         });
 
                         sound.play();
 
+                        for(let j = 0; j < this.d.contacts.length; j++) {
+                            if (this.callNumber == this.d.contacts[j].phone) {
+                                this.callTitle = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
+                            }
+                        }
+
                         var self = this;
                         setTimeout(function() {
                             self.checkCall();
                         }, 10000);
 
-                        mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", number);
+                        mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
                     }
 
                     // REPONDRE A UN APPEL
@@ -682,14 +680,6 @@
                 this.homeFooterSelection = 0;
                 this.currentTab = 42;
                 this.callStatut = 'Appel entrant...';
-                this.callNumber = sender;
-                this.callTitle = sender;
-
-                for(let j = 0; j < this.d.contacts.length; j++) {
-                    if (sender == this.d.contacts[j].phone) {
-                        this.callTitle = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
-                    }
-                }
 
                 sound = new Howl({
                     src: ['sounds/sonnerie.mp3']
