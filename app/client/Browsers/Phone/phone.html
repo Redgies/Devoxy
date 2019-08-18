@@ -476,22 +476,6 @@
                             self.checkCall();
                         }, 10000);
 
-                        // setTimeout(function() { 
-                        //     sound.stop();
-                        //     alert("dsfds");
-                        //     if(this.foundCall == 0)
-                        //     {
-                        //         alert("test");
-                        //         var sound = new Howl({
-                        //             src: ['sounds/nondispo.mp3']
-                        //         });
-                        //         sound.play();
-
-                        //         this.currentTab = 0;
-                        //     } 
-                        // }, 3000);
-
-
                         mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
                     }
 
@@ -506,7 +490,7 @@
                             self.updateCall(timer);
                         }, 1000);
 
-                        mp.trigger("cMisc-CallServerEvent", "sPhone-respondCall", this.callNumber);
+                        // mp.trigger("cMisc-CallServerEvent", "sPhone-respondCall", this.callNumber);
                     }
 
                     // ENTRER DANS UN CONTACT
