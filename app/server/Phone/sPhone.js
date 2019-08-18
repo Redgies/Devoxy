@@ -91,7 +91,7 @@ class Phone {
                         let execute = `app.currentTab = 41;`;
                         player.call("cPhone-Update", [execute]);
 
-                        let execute = `app.hasRespondToCall();`;
+                        execute = `app.hasRespondToCall();`;
                         player.call("cPhone-Update", [execute]);
                         break;
                     }
