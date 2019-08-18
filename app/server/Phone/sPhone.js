@@ -100,11 +100,11 @@ class Phone {
                         player.inCall = p.id;
                         p.inCall = player.id;
 
-                        player.call("cPhone-Update", [execute]);
+                        // player.call("cPhone-Update", [execute]);
 
                         // let execute = `app.receiveCall('${player.phone}');`;
 
-                        execute2 += `app.hasRespondToCall();`;
+                       let execute2 = `app.hasRespondToCall();`;
                         
                         p.call("cPhone-Update", [execute2]);
                         return 1;

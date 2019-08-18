@@ -714,7 +714,8 @@
                         if(timer >= 8)
                         {
                             clearInterval(interval);
-                            self.endCall();
+                            this.currentTab = 0;
+                            sound.stop();
                         }
                         self.updateCall(timer);
                     }, 1000);
