@@ -100,14 +100,13 @@ class Phone {
 
             "sPhone-newCall": (player, receiver) => {
                 let found = 0;
-                
+
                 mp.players.forEach((p, id) => {
                     if(p.phone == receiver)
                     {
                         if(!p.inCall)
                         {
                             let execute = `app.receiveCall('${player.phone}');`;
-                            execute += `app.currentTab = 42;`;
                             p.call("cPhone-Open", [execute]);
                             return 1;
                         }

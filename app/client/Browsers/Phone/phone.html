@@ -428,7 +428,6 @@
 
                 }
                 if (e.key == 'Enter') {
-                    alert("tamere : " + this.currentTab);
                     // ENTRER DANS LES CONTACTS
                     if(this.homeFooterSelection == 1) {
                         this.homeFooterSelection = 0;
@@ -655,6 +654,7 @@
                 }, 1000);
             },
             receiveCall: function(sender) {
+                this.currentTab = 42;
                 this.callNumber = sender;
                 this.callStatut = 'Appel entrant...';
 
