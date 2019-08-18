@@ -408,3 +408,19 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+#declineCall2 {
+    width: 50px;
+    position: absolute;
+    bottom: 80px;
+    left: 70%;
+    transform: translateX(-50%);
+}
+
+#acceptCall {
+    width: 50px;
+    position: absolute;
+    bottom: 80px;
+    left: 30%;
+    transform: translateX(-50%);
+}

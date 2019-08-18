@@ -24,6 +24,9 @@
             <div class="phone-call" v-if="currentTab === 42">
                 <h1 id="callContact">{{ callNumber }}</h1>
                 <span id="callStatut">{{ callStatut }}</span>
+
+                <img id="acceptCall" src="images/accept.png">
+                <img id="declineCall2" src="images/decline.png">
             </div>
 
             <div class="phone-messages animated zoomIn faster" v-if="currentTab === 40">
@@ -31,7 +34,7 @@
                     <h1>Appels</h1>
                     <i type="button" class="fa fa-phone"></i>
                 </div>
-                <input type="text" v-model="callNumber" style="background: rgb(241, 241, 241);height: 27px;outline: none;color: rgb(9, 132, 227);border: none;width: 100%;text-align: center;font-size: 19px;height: 40px;">
+                <input type="text" id="callNumberInput" v-model="callNumber" style="background: rgb(241, 241, 241);height: 27px;outline: none;color: rgb(9, 132, 227);border: none;width: 100%;text-align: center;font-size: 19px;height: 40px;">
                 <ul class="contacts">
                     <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
                         {{ contact.firstName}} <b>{{ contact.lastName }}</b>
@@ -321,15 +324,17 @@
 
             window.addEventListener('keydown', (e) => {
                 if (e.key == 'Backspace') {
-                    var reply = document.getElementById("reply");
+                    var callNumberInput = document.getElementById("callNumberInput");
                     var divcontactPhone = document.getElementById("contactPhone");
                     var divcontactFirstName = document.getElementById("contactFirstName");
                     var divcontactLastName = document.getElementById("contactLastName");
+                    var reply = document.getElementById("reply");
 
                     if(document.activeElement === reply || 
                     document.activeElement === divcontactPhone || 
                     document.activeElement === divcontactFirstName ||
-                    document.activeElement === divcontactLastName)
+                    document.activeElement === divcontactLastName ||
+                    document.activeElement === callNumberInput)
                     {
                         return;
                     }
