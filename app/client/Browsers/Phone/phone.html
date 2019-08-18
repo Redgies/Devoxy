@@ -648,16 +648,18 @@
                 mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
             },
             checkCall: function() {
-                alert("fdp +" + this.foundCall);
-
                 sound.stop();
 
-               
+                if(this.foundCall == 0)
+                {
+                    alert("test");
+                    sound = new Howl({
+                        src: ['sounds/nondispo.mp3']
+                    });
+                    sound.play();
 
-                var sound = new Howl({
-                    src: ['sounds/nondispo.mp3']
-                });
-                sound.play();
+                    this.currentTab = 0;
+                } 
             },
             scrollBottom: function (id) {
                 var element = document.getElementById(id);
