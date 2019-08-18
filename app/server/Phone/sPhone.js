@@ -88,6 +88,9 @@ class Phone {
                 }); 
 
                 let execute = `app.foundCall = ${found};`;
+
+
+                console.log(execute);
                 player.call("cPhone-Update", [execute]);
             },
 
