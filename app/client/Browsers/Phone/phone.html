@@ -338,7 +338,7 @@
                     if (this.currentTab == 0) {
                         mp.trigger("cCloseCef");
                     }
-                    
+
                     if(this.currentTab == 41 || this.currentTab == 42)
                     {
                         this.inCall = 0;
@@ -698,6 +698,12 @@
 
                     mp.trigger("cMisc-CallServerEvent", "sPhone-endCall");
                 }
+            },
+            stopCall: function() {
+                this.currentTab = 0;
+                sound.stop();
+                clearInterval(interval);
+                this.inCall = 0;
             },
             updateCall: function(timer) {
                 this.callStatut = 'Appel : ' + timer + ' secondes';
