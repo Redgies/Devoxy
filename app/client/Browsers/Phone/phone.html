@@ -469,6 +469,8 @@
                         mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
 
                         setTimeout(function() { 
+                            sound.stop();
+                            alert("dsfds");
                             if(this.foundCall == 0)
                             {
                                 alert("test");
