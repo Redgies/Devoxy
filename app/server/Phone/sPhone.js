@@ -275,8 +275,6 @@ class Phone {
             playerContacts.push(mVar); 
         }
 
-        console.log('playerTalks : ' + JSON.stringify(playerContacts));
-
 		return JSON.stringify(playerContacts);
 	}
 }
