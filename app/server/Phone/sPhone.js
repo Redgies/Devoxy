@@ -76,6 +76,21 @@ class Phone {
                 misc.log.debug(`${player.name} send message`);
             },
 
+            "sPhone-newCall": (player, receiver) => {
+                let found = 0;
+
+
+                mp.players.forEach((p, id) => {
+                    if(p.phone == receiver)
+                    {
+                        found = 1;
+                    }
+                }); 
+
+                let execute = `app.foundCall = ${found};`;
+                player.call("cPhone-Update", [execute]);
+            },
+
             "sPhone-newMessage": (player, str) => {
                 const d = JSON.parse(str);
 

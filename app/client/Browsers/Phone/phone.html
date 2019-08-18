@@ -296,6 +296,7 @@
             textMessage: '',
             contactId: 0,
             contactPhone: '',
+            foundCall: 0,
             contactFirstName: '',
             contactLastName: '',
             callStatut: 'Appel en cours...',
@@ -466,6 +467,18 @@
                         sound.play();
 
                         mp.trigger("cMisc-CallServerEvent", "sPhone-newCall", this.callNumber);
+
+                        setTimeout(function() { 
+                            if(this.foundCall == 0)
+                            {
+                                var sound = new Howl({
+                                    src: ['sounds/nondispo.mp3']
+                                });
+                                sound.play();
+
+                                this.currentTab = 0;
+                            } 
+                        }, 37000);
                     }
 
                     // ENTRER DANS UN CONTACT
