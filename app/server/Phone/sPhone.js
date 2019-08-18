@@ -77,6 +77,17 @@ class Phone {
             },
 
             "sPhone-endCall": (player) => {
+                mp.players.forEach((p, id) => {
+                    if(p.id == player.inCall)
+                    {
+                        p.inCall = 0;
+
+                        let execute = `app.endCall = 0;`;
+                        execute += `app.endCall();`;
+
+                        p.call("cPhone-Update", [execute]);
+                    }
+                });
                 player.inCall = 0;
             },
 
