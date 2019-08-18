@@ -92,6 +92,10 @@ class Phone {
                 player.inCall = 0;
             },
 
+            "sPhone-stopCall": (player) => {
+                player.inCall = 0;
+            },
+
             "sPhone-respondCall" : (player, sender) => {
                 mp.players.forEach((p, id) => {
                     if(p.phone == sender)

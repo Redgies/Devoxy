@@ -716,6 +716,7 @@
                             clearInterval(interval);
                             this.currentTab = 0;
                             sound.stop();
+                            mp.trigger("cMisc-CallServerEvent", "sPhone-stopCall");
                         }
                         self.updateCall(timer);
                     }, 1000);
