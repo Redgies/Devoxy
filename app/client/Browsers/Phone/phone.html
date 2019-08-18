@@ -689,7 +689,7 @@
                 mp.trigger("cMisc-CallServerEvent", "sPhone-updatePlayerMessages", JSON.stringify(data));
             },
             endCall: function() {
-                if(inCall == 0)
+                if(this.inCall == 0)
                 {
                     this.currentTab = 0;
                     sound.stop();
