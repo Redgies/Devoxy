@@ -499,6 +499,8 @@
                             self.updateCall(timer);
                         }, 1000);
 
+                        this.inCall = 1;
+
                         mp.trigger("cMisc-CallServerEvent", "sPhone-respondCall", this.callNumber);
                     }
 
@@ -651,6 +653,8 @@
         methods: {
             hasRespondToCall: function() {
                 clearInterval(interval);
+
+                this.inCall = 1;
 
                 sound.stop();
 

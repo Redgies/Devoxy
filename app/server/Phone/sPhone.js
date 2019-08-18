@@ -80,6 +80,7 @@ class Phone {
                 mp.players.forEach((p, id) => {
                     if(p.id == player.inCall)
                     {
+                        console.log("sPhone-endCall");
                         p.inCall = 0;
 
                         let execute = `app.endCall = 0;`;
@@ -95,15 +96,14 @@ class Phone {
                 mp.players.forEach((p, id) => {
                     if(p.phone == sender)
                     {
+                        console.log("sPhone-respondCall");
                         player.inCall = p.id;
                         p.inCall = player.id;
 
-                        let execute = `app.inCall = 1;`;
                         player.call("cPhone-Update", [execute]);
 
                         // let execute = `app.receiveCall('${player.phone}');`;
 
-                        let execute2 = `app.inCall = 1;`;
                         execute2 += `app.hasRespondToCall();`;
                         
                         p.call("cPhone-Update", [execute2]);
