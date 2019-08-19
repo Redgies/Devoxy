@@ -1,5 +1,5 @@
 const misc = require('../sMisc');
-const vehicleAPI = require('../Vehicles/sVehicleSingletone');
+const vehicleAPI = require('../Basic/Vehicles/sVehicleSingletone');
 
 let messagesList = [];
 let talksList = [];
