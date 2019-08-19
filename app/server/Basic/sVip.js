@@ -5,7 +5,7 @@ async function tryVipCode(player, code) {
 
     const d = await misc.query(`SELECT payment_status, payment_type, payment_code_used FROM paiements WHERE payment_code = '${code}' LIMIT 1`);
     if (!d[0]) {
-        return showError(player, "Ce code n'éxiste pas !");
+        return showError(player, "Le code entré est incorrecte.");
     }
 
     if(d[0].payment_code_used == 1)
@@ -13,12 +13,17 @@ async function tryVipCode(player, code) {
         return showError(player, "Ce code est déjà utilisé");
     }
 
-    return showError(player, "Ce code est correct.");
+    return showSuccess(player, "Ce code est correct.");
 }
 
 function showError(player, text) {
     player.notify(text);
     player.call("cInjectCef", [`app.showError('${text}');`]);
+}
+
+function showSuccess(player, text) {
+    player.notify(text);
+    player.call("cInjectCef", [`app.showSuccess('${text}');`]);
 }
 
 mp.events.addCommand({
