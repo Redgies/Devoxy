@@ -56,12 +56,12 @@
                 <div class="head">
                     <h1>Vendre le véhicule</h1>
                 </div>
-                <div class="sellTo" style="color: #0984e3; margin-left: 20px; margin-bottom: 5px; margin-top: 5px;">Vendre à : </div>
+                <div class="sellTo" style="color: #0984e3; margin-left: 25px; margin-bottom: 5px; margin-top: 5px;">Vendre à : </div>
                 <ul class="contacts">
-                    <li v-for="(p, i) in d.passengers" :class="[{ active: currentLi === i }]">{{ p.name }}</a>
+                    <li class="active">{{ d.passengers[0].name }}</a>
                 </ul>
-                <div class="sellTo" style="color: #0984e3; margin-left: 20px; margin-bottom: 5px; margin-top: 5px;">Prix : </div>
-                <input type="text" v-model="sellPrice" style="width: 100%; text-indent: 20px;">
+                <div class="sellTo" style="color: #0984e3; margin-left: 25px; margin-bottom: 5px; margin-top: 5px;">Prix : </div>
+                <input type="text" v-model="sellPrice" style="width: 100%; text-indent: 25px; font-size: 14px; padding: 5px;">
             </div>
 
 
@@ -378,13 +378,6 @@
                         if(this.currentLi >= 4)
                             this.currentLi = 0;
                     }
-                    if (this.currentTab == 52)
-                    {
-                        this.currentLi++;
-
-                        if(this.currentLi >= d.passengers.length)
-                            this.currentLi = 0;
-                    }
 
                 }
                 if (e.key == 'ArrowUp') {
@@ -422,12 +415,6 @@
                             this.currentLi = 0;
                     }
                     if(this.currentTab == 51) {
-                        this.currentLi--;
-
-                        if (this.currentLi <= 0)
-                            this.currentLi = 0;
-                    }
-                    if(this.currentTab == 52) {
                         this.currentLi--;
 
                         if (this.currentLi <= 0)
