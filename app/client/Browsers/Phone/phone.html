@@ -61,7 +61,8 @@
                     <li class="active">{{ d.passengers[0].name }}</a>
                 </ul>
                 <div class="sellTo" style="color: #0984e3; margin-left: 25px; margin-bottom: 5px; margin-top: 5px;">Prix : </div>
-                <input type="text" v-model="sellPrice" style="width: 100%; text-indent: 25px; font-size: 14px; padding: 5px;">
+                <input type="text" v-model="sellPrice" style="width: 100%; text-indent: 22px; font-size: 14px; padding: 5px; outline: none;">
+                <p style="position: absolute; width: 100%; text-align: center; bottom: 10px; font-size: 13px;">Appuyez sur entrer pour valider</p>
             </div>
 
 
@@ -699,6 +700,14 @@
 			},
             callNineOneOne(id) {
 				mp.trigger("cMisc-CallServerEvent", "sMenu-RestoreVehicle", id);
+				this.exit();
+            },
+            sellVehicleToPlayer() {
+				const str = {
+					price: this.sellPrice,
+					passengerId: this.d.passengers[0].id,
+				}
+				mp.trigger("cMisc-CallServerEvent", "sVehicle-SellToPlayer", JSON.stringify(str));
 				this.exit();
 			},
             loadVehicles: function(str) {
