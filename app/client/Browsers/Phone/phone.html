@@ -20,6 +20,21 @@
                 <a class="police" :class="{ 'active' : homeFooterSelection == 6}"></a>
             </div>
 
+            <div class="phone-messages" v-if="currentTab === 55">
+                <div class="head">
+                    <h1>Mes délits</h1>
+                </div>
+                <ul class="contacts">
+                    <li v-for="(warn, i) in d.delits" :class="[{ active: currentLi === i }]">
+                        {{ warn.comment}}    
+                    </li>
+                    <!-- <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
+                        {{ contact.firstName}} <b>{{ contact.lastName }}</b>
+                    </li> -->
+                    <!-- <li :class="[{ active: currentLi === 0 }]">Reaper <span style="float: right; font-style: italic; margin-right: 26px; color: rgb(99,110,114); font-size: 12px;">sdfdfds</span></li> -->
+                </ul>
+            </div>
+
             <div class="phone-messages" v-if="currentTab === 50">
                 <div class="head">
                     <h1>Mes véhicules</h1>
@@ -62,7 +77,7 @@
                 </ul>
                 <div class="sellTo" style="color: #0984e3; margin-left: 25px; margin-bottom: 5px; margin-top: 5px;">Prix : </div>
                 <input type="text" id="sellPrice" v-model="sellPrice" style="width: 100%; text-indent: 22px; font-size: 14px; padding: 5px; outline: none;">
-                <p style="width: 100%; text-align: center; font-size: 13px; margin-top: 20px;">Appuyez sur entrer pour valider</p>
+                <div style="width: 100%; text-align: center; font-size: 13px; margin-top: 20px;">Appuyez sur entrer pour valider</div>
             </div>
 
 
@@ -272,6 +287,9 @@
                 passengers: [
 
                 ],
+                delits: [
+
+                ]
             },
         },
         created() {
@@ -307,7 +325,7 @@
                         this.endCall();
                     }
 
-                    if (this.currentTab == 3 || this.currentTab == 32 || this.currentTab == 40 || this.currentTab == 41 || this.currentTab == 42 || this.currentTab == 50)
+                    if (this.currentTab == 3 || this.currentTab == 32 || this.currentTab == 40 || this.currentTab == 41 || this.currentTab == 42 || this.currentTab == 50 || this.currentTab == 55)
                         this.currentTab = 0;
                     if (this.currentTab == 30 || this.currentTab == 31)
                         this.currentTab = 3;
@@ -453,6 +471,12 @@
                         this.currentLi = 0;
                         this.homeFooterSelection = 0;
                         return this.currentTab = 50;
+                    }
+
+                    // ENTRER DANS LES DELITS
+                    if (this.homeFooterSelection == 6) {
+                        this.homeFooterSelection = 0;
+                        return this.currentTab = 55;
                     }
 
                     // ENTRER DANS UN VEHICULE
@@ -723,6 +747,9 @@
             },
             loadPassengers: function(str) {
 			    this.d.passengers = JSON.parse(str);
+            },
+            loadDelits: function(str) {
+			    this.d.delits = JSON.parse(str);
 		    },
             hasRespondToCall: function() {
                 clearInterval(interval);

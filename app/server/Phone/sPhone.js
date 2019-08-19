@@ -20,6 +20,7 @@ class Phone {
                 execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
                 execute += `app.loadVehicles('${vehicleAPI.getVehiclesForPlayerMenu(player.guid)}');`;
                 execute += `app.loadPassengers('${vehicleAPI.getPassengersForPlayerMenu(player)}');`;
+                execute += `app.loadDelits('${JSON.stringify(player.delits)}');`;
                 if (player.vehicle) execute += `app.d.currentVehicleId = ${player.vehicle.id};`;
 
                 player.call("cPhone-Open", [execute]);
@@ -144,6 +145,7 @@ class Phone {
                             execute += `app.receiveCall('${player.phone}');`;
                             execute += `app.loadVehicles('${vehicleAPI.getVehiclesForPlayerMenu(player.guid)}');`;
                             execute += `app.loadPassengers('${vehicleAPI.getPassengersForPlayerMenu(player)}');`;
+                            execute += `app.loadDelits('${JSON.stringify(player.delits)}');`;
                             if (player.vehicle) execute += `app.d.currentVehicleId = ${player.vehicle.id};`;
                             p.call("cPhone-Open", [execute]);
                             return 1;
