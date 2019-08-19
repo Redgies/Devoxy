@@ -13,6 +13,6 @@ mp.events.addCommand({
 mp.events.add({
     "sVip-CheckCode" : async (player, code) => {
         player.outputChatBox("test 1 : " + code);
-        loginSingleton.tryVipCode(player, code);
+        // loginSingleton.tryVipCode(player, code);
     },
 });
