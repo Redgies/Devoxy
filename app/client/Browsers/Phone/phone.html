@@ -38,10 +38,10 @@
 
             <div class="phone-messages" v-if="currentTab === 51">
                 <div class="head">
-                    <h1>{{ d.vehicles[currentLi].title }}</h1>
+                    <h1>{{ d.vehicles[currentVeh].title }}</h1>
                 </div>
                 <ul class="contacts">
-                    <li :class="[{ active: currentLi === 0 }]" @click="createGPSRoute('Find Vehicle', d.vehicles[currentVeh].id)">Trouver le véhicule</li>
+                    <li :class="[{ active: currentLi === 0 }]" @keyup.enter="createGPSRoute('Find Vehicle', d.vehicles[currentVeh].id)">Trouver le véhicule</li>
                     <li :class="[{ active: currentLi === 1 }]">Mettre au garage</li>
                     <li :class="[{ active: currentLi === 2 }]">Vendre au concessionnaire</li>
                     <!-- <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
