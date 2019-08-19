@@ -435,7 +435,7 @@
                     if (this.currentTab == 50) {
                         this.currentVeh == this.currentLi;
                         this.currentLi = 0;
-                        this.currentTab = 51;
+                        return this.currentTab = 51;
                     }
 
                     // ENTRER DANS LES APPELS
@@ -643,9 +643,12 @@
         },
         methods: {
             createGPSRoute(name, id = false) {
-				const d = { name: name, id: id }
+                const d = { name: name, id: id }
+                
+                alert(JSON.stringify(d));
+
 				mp.trigger("cMisc-CallServerEvent", "sGPS-CreateRoute", JSON.stringify(d));
-				app.exit();
+				this.exit();
             },
             loadVehicles: function(str) {
 			    this.d.vehicles = JSON.parse(str);
