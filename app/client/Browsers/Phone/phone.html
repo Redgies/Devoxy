@@ -269,12 +269,14 @@
                         this.endCall();
                     }
 
-                    if (this.currentTab == 3 || this.currentTab == 32 || this.currentTab == 40 || this.currentTab == 41 || this.currentTab == 42)
+                    if (this.currentTab == 3 || this.currentTab == 32 || this.currentTab == 40 || this.currentTab == 41 || this.currentTab == 42 || this.currentTab == 50)
                         this.currentTab = 0;
                     if (this.currentTab == 30 || this.currentTab == 31)
                         this.currentTab = 3;
                     if (this.currentTab == 33 || this.currentTab == 34 || this.currentTab == 35)
                         this.currentTab = 32;
+                    if (this.currentTab == 51) 
+                        this.currentTab = 50;
                     if(this.currentTab == 34 || this.currentTab == 35) 
                         mp.trigger("cShowCursor");
 
@@ -325,6 +327,13 @@
                             }
                         }
                     }
+                    if (this.currentTab == 50)
+                    {
+                        this.currentLi++;
+
+                        if(this.currentLi >= (this.d.vehicles.length - 1))
+                            this.currentLi = this.d.vehicles.length - 1;
+                    }
 
                 }
                 if (e.key == 'ArrowUp') {
@@ -355,6 +364,13 @@
                             }
                         }
                     }
+                    if(this.currentTab == 50) {
+                        this.currentLi--;
+
+                        if (this.currentLi <= 0)
+                            this.currentLi = 0;
+                    }
+                     
 
                 }
                 if (e.key == 'Enter') {
