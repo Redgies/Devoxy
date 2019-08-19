@@ -1,7 +1,8 @@
 const misc = require('../cMisc');
 
 mp.events.add("createPed", () => {
-	let ped1 = mp.peds.new(mp.game.joaat('a_m_y_business_02'), new mp.Vector3(-1039.167, -2730.757, 20.214), 270.0, mp.players.local.dimension);
+	let ped1 = mp.peds.new(mp.game.joaat('a_m_y_business_02'), new mp.Vector3(-1039.686, -2731.237, 20.214), 260.9, mp.players.local.dimension);
+	let ped17 = mp.peds.new(mp.game.joaat('a_m_y_business_02'), new mp.Vector3(-186.393, 6432.393, 31.515), 26.55, mp.players.local.dimension);
 	let ped2 = mp.peds.new(mp.game.joaat('s_m_y_cop_01'), new mp.Vector3(435.043, -983.981, 30.69), 264.8, mp.players.local.dimension);
 	//Ammunation droite du comico zone indus//
 	let ped3 = mp.peds.new(mp.game.joaat('s_m_y_ammucity_01'), new mp.Vector3(843.553, -1035.356, 28.195), 3.63, mp.players.local.dimension);

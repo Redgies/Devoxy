@@ -2,7 +2,8 @@ const misc = require('../sMisc');
 const Vehicle = require('./Vehicles/sVehicle');
 
 const locationsData = [
-    {pos: {x:-1038.748, y: -2731.016, z: 20.169}} // AEROPORT
+    {pos: {x:-1038.748, y: -2731.016, z: 20.169}}, // AEROPORT
+    {pos: {x: -187.015, y: 6433.144, z: 31.513}}
 ];
 
 
@@ -87,7 +88,6 @@ class Location {
 
 for(let i = 0; i < locationsData.length; i++)
 {
-    console.log("new location");
     new Location(locationsData[i]);
 }
 
