@@ -56,11 +56,12 @@
                 <div class="head">
                     <h1>Vendre le véhicule</h1>
                 </div>
-                <div class="sellTo" style="color: #0984e3; margin-left: 15px; margin-bottom: 5px;">Vendre à : </div>
+                <div class="sellTo" style="color: #0984e3; margin-left: 20px; margin-bottom: 5px; margin-top: 5px;">Vendre à : </div>
                 <ul class="contacts">
                     <li v-for="(p, i) in d.passengers" :class="[{ active: currentLi === i }]">{{ p.name }}</a>
                 </ul>
-                <input type="text" v-model="sellPrice" style="width: 100%;">
+                <div class="sellTo" style="color: #0984e3; margin-left: 20px; margin-bottom: 5px; margin-top: 5px;">Prix : </div>
+                <input type="text" v-model="sellPrice" style="width: 100%; text-indent: 20px;">
             </div>
 
 
@@ -377,7 +378,7 @@
                         if(this.currentLi >= 4)
                             this.currentLi = 0;
                     }
-                    if (this.currentTab == 51)
+                    if (this.currentTab == 52)
                     {
                         this.currentLi++;
 
