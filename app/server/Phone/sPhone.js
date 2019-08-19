@@ -137,7 +137,7 @@ class Phone {
                             execute += `app.d.messages = ${this.getMessageForPlayer(p.phone, 0)};`;
                             execute += `app.d.talks = ${this.getTalksForPlayer(p)};`;
                             execute += `app.d.contacts = ${this.getContactsForPlayer(p)};`;
-                            execute += `app.receiveCall('${p.phone}');`;
+                            execute += `app.receiveCall('${player.phone}');`;
                             p.call("cPhone-Open", [execute]);
                             return 1;
                         }
