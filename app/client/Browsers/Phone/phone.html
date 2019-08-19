@@ -36,6 +36,21 @@
                 </ul>
             </div>
 
+            <div class="phone-messages" v-if="currentTab === 51">
+                <div class="head">
+                    <h1>{{ d.vehicles[currentLi].title }}</h1>
+                </div>
+                <ul class="contacts">
+                    <li :class="[{ active: currentLi === 0 }]">Trouver le véhicule</li>
+                    <li :class="[{ active: currentLi === 1 }]">Mettre au garage</li>
+                    <li :class="[{ active: currentLi === 2 }]">Vendre au concessionnaire</li>
+                    <!-- <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
+                        {{ contact.firstName}} <b>{{ contact.lastName }}</b>
+                    </li> -->
+                    <!-- <li :class="[{ active: currentLi === 0 }]">Reaper <span style="float: right; font-style: italic; margin-right: 26px; color: rgb(99,110,114); font-size: 12px;">sdfdfds</span></li> -->
+                </ul>
+            </div>
+
             <div class="phone-call" v-if="currentTab === 41">
                 <h1 id="callContact">{{ callTitle }}</h1>
                 <span id="callStatut">{{ callStatut }}</span>
@@ -398,11 +413,13 @@
                     // ENTRER DANS LES VEHICULES
                     if (this.homeFooterSelection == 5) {
                         this.currentLi = 0;
+                        this.homeFooterSelection = 0;
                         return this.currentTab = 50;
                     }
 
                     // ENTRER DANS UN VEHICULE
                     if (this.currentTab == 50) {
+                        this.currentLi = 0;
                         this.currentTab = 51;
                     }
 
