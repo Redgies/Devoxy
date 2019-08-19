@@ -17,6 +17,7 @@ async function tryVipCode(player, code) {
 }
 
 function showError(player, text) {
+    player.notify(text);
     player.call("cInjectCef", [`app.showError('${text}');`]);
 }
 
