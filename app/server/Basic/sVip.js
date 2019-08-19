@@ -18,6 +18,8 @@ async function tryVipCode(player, code) {
 
     await misc.query(`UPDATE paiements SET payment_code_used = 1 WHERE payment_code = '${code}' LIMIT 1`);
 
+    player.notify("d[0].payment_type : " + d[0].payment_type);
+
     if(d[0].payment_type == 1)
     {
         player.vip = 1;
