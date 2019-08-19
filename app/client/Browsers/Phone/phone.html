@@ -52,6 +52,18 @@
                 </ul>
             </div>
 
+            <div class="phone-messages" v-if="currentTab === 52">
+                <div class="head">
+                    <h1>Vendre le véhicule</h1>
+                </div>
+                <div class="sellTo">Vendre à : </div>
+                <ul class="contacts">
+                    <li v-for="(p, i) in d.passengers" :class="[{ active: currentLi === i }]">{{ p.name }}</a>
+                </ul>
+                <input type="text" v-model="sellPrice">
+            </div>
+
+
             <div class="phone-call" v-if="currentTab === 41">
                 <h1 id="callContact">{{ callTitle }}</h1>
                 <span id="callStatut">{{ callStatut }}</span>
@@ -223,6 +235,7 @@
             homeFooterSelection: 1,
             currentTab: 0,
             currentLi: 0,
+            sellPrice: 0,
             phone: 0,       // MON NUMERO
             talkNumber: 0, // NUMERO DU DESTINATAIRE
             talkName: '',
@@ -297,6 +310,8 @@
                     if (this.currentTab == 33 || this.currentTab == 34 || this.currentTab == 35)
                         this.currentTab = 32;
                     if (this.currentTab == 51) 
+                        this.currentTab = 50;
+                    if (this.currentTab == 52)
                         this.currentTab = 50;
                     if(this.currentTab == 34 || this.currentTab == 35) 
                         mp.trigger("cShowCursor");
@@ -456,6 +471,14 @@
                         if(this.currentLi == 2)
                         {
                             this.sellVehicleToGov(this.d.vehicles[this.currentVeh].id);
+                        }
+                        // VENDRE LE VEHICULE
+                        if(this.currentLi == 3)
+                        {
+                            this.sellPrice = this.d.vehicles[this.currentVeh].price;
+                            this.currentLi = 0;
+                            mp.trigger("cShowCursor");
+                            return this.currentTab = 52;
                         }
                     }
 
