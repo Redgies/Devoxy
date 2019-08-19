@@ -687,7 +687,7 @@
                 this.callTitle = this.callNumber;
 
                 for(let j = 0; j < this.d.contacts.length; j++) {
-                    mp.gui.chat.push("a = " + parseInt(this.callNumber) + " b = " + parseInt(this.d.contacts[j].phone));
+                    alert("a = " + parseInt(this.callNumber) + " b = " + parseInt(this.d.contacts[j].phone));
                     if (parseInt(this.callNumber) == parseInt(this.d.contacts[j].phone)) {
                         this.callTitle = this.d.contacts[j].firstName + ' ' + this.d.contacts[j].lastName;
                     }
