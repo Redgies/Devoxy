@@ -16,34 +16,35 @@ async function tryVipCode(player, code) {
         return showError(player, "Ce code est déjà utilisé.");
     }
 
-    await misc.query(`UPDATE paiements SET payment_code_used = 1 WHERE payment_code = '${code}' LIMIT 1`);
-
     player.notify("d[0].payment_type : " + d[0].payment_type);
+
+    let msg = '';
 
     if(d[0].payment_type == 1)
     {
         player.vip = 1;
         player.changeMoney(+300000);
-        let msg = "Vous avez activé votre Pack VIP. (utilisez /save)";
+        msg = "Vous avez activé votre Pack VIP. (utilisez /save)";
     }
     if(d[0].payment_type == 2)
     {
         player.whitewash = 1;
         player.changeMoney(+100000);
-        let msg = "Vous avez activé votre Pack Blanchisseur.  (utilisez /save";
+        msg = "Vous avez activé votre Pack Blanchisseur.  (utilisez /save";
     }
     if(d[0].payment_type == 3)
     {
         player.changeMoney(+600000);
-        let msg = "Vous avez activé votre Pack Argent I.  (utilisez /save";
+        msg = "Vous avez activé votre Pack Argent I.  (utilisez /save";
     }
     if(d[0].payment_type == 4)
     {
         player.changeMoney(+1500000);
-        let msg = "Vous avez activé votre Pack Argent II.  (utilisez /save";
+        msg = "Vous avez activé votre Pack Argent II.  (utilisez /save";
     }
 
-
+    await misc.query(`UPDATE paiements SET payment_code_used = 1 WHERE payment_code = '${code}' LIMIT 1`);
+    
     return showSuccess(player, msg);
 }
 
