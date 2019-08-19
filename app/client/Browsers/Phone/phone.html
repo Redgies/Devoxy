@@ -41,7 +41,7 @@
                     <h1>{{ d.vehicles[currentVeh].title }}</h1>
                 </div>
                 <ul class="contacts">
-                    <li :class="[{ active: currentLi === 0 }]" @keyup.enter="createGPSRoute('Find Vehicle', d.vehicles[currentVeh].id)">Trouver le véhicule</li>
+                    <li :class="[{ active: currentLi === 0 }]">Trouver le véhicule</li>
                     <li :class="[{ active: currentLi === 1 }]">Mettre au garage</li>
                     <li :class="[{ active: currentLi === 2 }]">Vendre au concessionnaire</li>
                     <!-- <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
@@ -436,6 +436,15 @@
                         this.currentVeh == this.currentLi;
                         this.currentLi = 0;
                         return this.currentTab = 51;
+                    }
+
+                    // ACTION DANS UN VEHICULE
+                    if (this.currentTab == 51) {
+                        if(this.currentLi == 0)
+                        {
+                            this.createGPSRoute('Find Vehicle', d.vehicles[currentVeh].id);
+                            this.exit();
+                        }
                     }
 
                     // ENTRER DANS LES APPELS
