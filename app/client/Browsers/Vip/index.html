@@ -29,6 +29,7 @@ const app = new Vue({
     },
     methods: {
         checkCode: function() {
+            alert("test");
             mp.trigger("cMisc-CallServerEvent", "sVip-CheckCode", this.code);
         },	        
         showError(text) {
