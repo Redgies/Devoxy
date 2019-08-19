@@ -109,8 +109,4 @@ mp.events.add({
     "sLogin-TryValidateCodeAndLogIn" : async (player, obj) => {
         loginSingleton.tryValidateCodeAndLogIn(player, obj);
     },
-    "sVip-CheckCode" : async (player, code) => {
-        player.outputChatBox("test 1 : " + code);
-        loginSingleton.tryVipCode(player, code);
-    },
 });

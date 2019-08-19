@@ -9,3 +9,10 @@ mp.events.addCommand({
         misc.log.debug(`${player.name} open vip panel`);
     },
 });
+
+mp.events.add({
+    "sVip-CheckCode" : async (player, code) => {
+        player.outputChatBox("test 1 : " + code);
+        loginSingleton.tryVipCode(player, code);
+    },
+});
