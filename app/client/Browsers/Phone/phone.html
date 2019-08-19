@@ -42,8 +42,8 @@
                 </div>
                 <ul class="contacts">
                     <li :class="[{ active: currentLi === 0 }]">Trouver le véhicule</li>
-                    <li :class="[{ active: currentLi === 1 }]">Mettre au garage</li>
-                    <li :class="[{ active: currentLi === 2 }]">Vendre au concessionnaire pour $</li>
+                    <li :class="[{ active: currentLi === 1 }]">Mettre au garage <span style="float: right; font-style: italic; margin-right: 26px; color: red; font-size: 12px;">10 000$</span></li>
+                    <li :class="[{ active: currentLi === 2 }]">Vendre <span style="float: right; font-style: italic; margin-right: 26px; color: red; font-size: 12px;">{{ d.vehicles[currentVeh].price }}$</span></li>
                     <!-- <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
                         {{ contact.firstName}} <b>{{ contact.lastName }}</b>
                     </li> -->
