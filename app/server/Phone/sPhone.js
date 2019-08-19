@@ -19,6 +19,8 @@ class Phone {
                 execute += `app.d.talks = ${this.getTalksForPlayer(player)};`;
                 execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
                 execute += `app.loadVehicles('${vehicleAPI.getVehiclesForPlayerMenu(player.guid)}');`;
+                execute += `app.loadPassengers('${vehicleAPI.getPassengersForPlayerMenu(player)}');`;
+                if (player.vehicle) execute += `app.d.currentVehicleId = ${player.vehicle.id};`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
@@ -141,6 +143,8 @@ class Phone {
                             execute += `app.d.contacts = ${this.getContactsForPlayer(p)};`;
                             execute += `app.receiveCall('${player.phone}');`;
                             execute += `app.loadVehicles('${vehicleAPI.getVehiclesForPlayerMenu(player.guid)}');`;
+                            execute += `app.loadPassengers('${vehicleAPI.getPassengersForPlayerMenu(player)}');`;
+                            if (player.vehicle) execute += `app.d.currentVehicleId = ${player.vehicle.id};`;
                             p.call("cPhone-Open", [execute]);
                             return 1;
                         }

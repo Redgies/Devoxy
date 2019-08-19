@@ -42,8 +42,9 @@
                 </div>
                 <ul class="contacts">
                     <li :class="[{ active: currentLi === 0 }]">Trouver le véhicule</li>
-                    <li :class="[{ active: currentLi === 1 }]">Mettre au garage <span style="float: right; font-style: italic; margin-right: 26px; color: red; font-size: 12px;">10 000$</span></li>
-                    <li :class="[{ active: currentLi === 2 }]">Vendre <span style="float: right; font-style: italic; margin-right: 26px; color: red; font-size: 12px;">{{ d.vehicles[currentVeh].price }}$</span></li>
+                    <li :class="[{ active: currentLi === 1 }]">Faire dépanner <span style="float: right; font-style: italic; margin-right: 26px; color: red; font-size: 12px;">10 000$</span></li>
+                    <li :class="[{ active: currentLi === 2 }]">Vendre <span style="float: right; font-style: italic; margin-right: 26px; color: green; font-size: 12px;">{{ d.vehicles[currentVeh].price * 0.5 }}$</span></li>
+                    <li :class="[{ active: currentLi === 3 }]" v-if="d.passengers.length > 0 && d.currentVehicleId === d.vehicles[currentVeh].id">Vendre au passager</li>
                     <!-- <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
                         {{ contact.firstName}} <b>{{ contact.lastName }}</b>
                     </li> -->
@@ -240,6 +241,7 @@
             contactLastName: '',
             callStatut: 'Appel en cours...',
             d: {
+                currentVehicleId: null,
                 messages: [
 
                 ],
@@ -251,6 +253,9 @@
                 ],
                 vehicles: [
                     
+                ],
+                passengers: [
+
                 ],
             },
         },
@@ -674,6 +679,9 @@
 			},
             loadVehicles: function(str) {
 			    this.d.vehicles = JSON.parse(str);
+            },
+            loadPassengers: function(str) {
+			    this.d.passengers = JSON.parse(str);
 		    },
             hasRespondToCall: function() {
                 clearInterval(interval);
