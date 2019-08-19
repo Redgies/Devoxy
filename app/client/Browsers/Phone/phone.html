@@ -22,7 +22,7 @@
 
             <div class="phone-messages" v-if="currentTab === 55">
                 <div class="head">
-                    <h1>Mes délits</h1>
+                    <h1>Mes délits ({{ d.delits.length }})</h1>
                 </div>
                 <ul class="contacts">
                     <li v-for="(warn, i) in d.delits" :class="[{ active: currentLi === i }]">
@@ -58,8 +58,8 @@
                 <ul class="contacts">
                     <li :class="[{ active: currentLi === 0 }]">Trouver le véhicule</li>
                     <li :class="[{ active: currentLi === 1 }]">Faire dépanner <span style="float: right; font-style: italic; margin-right: 26px; color: red; font-size: 12px;">10 000$</span></li>
-                    <li :class="[{ active: currentLi === 2 }]">Vendre <span style="float: right; font-style: italic; margin-right: 26px; color: green; font-size: 12px;">{{ d.vehicles[currentVeh].price * 0.5 }}$</span></li>
-                    <li :class="[{ active: currentLi === 3 }]" v-if="d.passengers.length > 0 && d.currentVehicleId === d.vehicles[currentVeh].id">Vendre au passager</li>
+                    <!-- <li :class="[{ active: currentLi === 2 }]">Vendre <span style="float: right; font-style: italic; margin-right: 26px; color: green; font-size: 12px;">{{ d.vehicles[currentVeh].price * 0.5 }}$</span></li> -->
+                    <li :class="[{ active: currentLi === 2 }]" v-if="d.passengers.length > 0 && d.currentVehicleId === d.vehicles[currentVeh].id">Vendre au passager</li>
                     <!-- <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
                         {{ contact.firstName}} <b>{{ contact.lastName }}</b>
                     </li> -->
@@ -293,8 +293,8 @@
             },
         },
         created() {
-            // this.updatePlayerMessages();
-            // this.timer = setInterval(this.updatePlayerMessages, 1500);
+            this.updatePlayerMessages();
+            this.timer = setInterval(this.updatePlayerMessages, 1500);
 
             window.addEventListener('keydown', (e) => {
                 if (e.key == 'Backspace') {
@@ -496,12 +496,12 @@
                         {
                             this.callNineOneOne(this.d.vehicles[this.currentVeh].id);
                         }
-                        if(this.currentLi == 2)
-                        {
-                            this.sellVehicleToGov(this.d.vehicles[this.currentVeh].id);
-                        }
+                        // if(this.currentLi == 2)
+                        // {
+                        //     this.sellVehicleToGov(this.d.vehicles[this.currentVeh].id);
+                        // }
                         // VENDRE LE VEHICULE
-                        if(this.currentLi == 3)
+                        if(this.currentLi == 2)
                         {
                             this.sellPrice = this.d.vehicles[this.currentVeh].price;
                             this.currentLi = 0;
