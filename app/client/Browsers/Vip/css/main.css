@@ -1,0 +1,257 @@
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Montserrat-ExtraBold;
+    src: url('../fonts/montserrat/Montserrat-ExtraBold.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Montserrat-Bold;
+    src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
+  }
+  
+* {
+     margin: 0px; 
+     padding: 0px; 
+     box-sizing: border-box;
+  }
+
+::-webkit-scrollbar {
+    display: none;
+}
+  
+body, html {
+    height: 100%;
+    font-family: Montserrat-Regular, sans-serif;
+}
+
+.panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background: #dfe6e9;
+    border: 1px solid #F1F1F1;
+    -webkit-box-shadow: 0px 7px 12px 0px #848484; 
+    box-shadow: 0px 7px 12px 0px #848484;
+}
+
+.panel .panel-head {
+    background: #636e72;
+    height: 30px;
+}
+
+.panel .panel-head h1 {
+    color: #fff;
+    font-size: 15px;
+    line-height: 30px;
+    text-indent: 10px;
+    font-weight: bolder;
+}
+
+.panel .panel-head .close {
+    position: absolute;
+    height: 30px;
+    right: 0px;
+    top: 0;
+    background: #d63031;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+}
+
+.panel .panel-head .close:hover {
+    background: #ff7675;
+}
+
+.panel .panel-body {
+    overflow: hidden;
+    height: calc(100% - 30px);
+}
+
+.table-scroll {
+    display: block;
+    empty-cells: show;
+    border-spacing: 0;
+}
+  
+.table-scroll thead {
+    background-color: #b2bec3;  
+    position:relative;
+    display: block;
+    width: 100%;
+    overflow-y: scroll;
+}
+  
+.table-scroll tbody {
+    display: block; 
+    position: relative;
+    width:100%; 
+    overflow-y: scroll;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    background: #fff;
+}
+  
+.table-scroll tr {
+    width: 100%;
+    display: flex;
+}
+  
+.table-scroll td,.table-scroll th {
+    flex-basis: 100%;
+    flex-grow: 2 ;
+    display: block;
+    padding: 6px;
+    text-align: left;
+}
+.table-scroll th {
+    font-size: 14px;
+}
+
+.table-scroll.small-first-col td:first-child,
+.table-scroll.small-first-col th:first-child {
+    flex-grow: 1;
+}
+  
+.table-scroll tbody tr:nth-child(2n) {
+    background-color: #f2f2f2;
+}
+  
+.body-half-screen {
+    max-height: calc(100% - 30px);
+}
+  
+.small-col{ flex-basis: 10%; }
+
+.table-scroll tr:hover {background-color: #ddd;}
+
+.items { 
+    padding: 10px;
+    text-align: center;
+}
+
+.item {
+    display: inline-block;
+    padding: 5px;
+    width: 30%;
+    position: relative;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.item:hover {
+    background: #F1F1F1;
+}
+
+.item .title {
+    font-size: 13px;
+}
+
+.item img {
+    width: 40px;
+    clear: both;
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+}
+
+input[type="text"]
+{
+    background: none;
+    border: none;
+    border-bottom: 1px solid #848484;
+    font-size: 12px;
+    color: #848484;
+    display: inline-block;
+    outline: none;
+}
+
+.title-right {
+    font-size: 14px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.p-right {
+    font-size: 11px;
+    color: #848484;
+    margin-bottom: 10px;
+}
+
+.btn-valid {
+    background: #0984e3;
+    color: #fff;
+    bottom: 0;
+    right: 0px;
+    margin-top: 20px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    border: none;
+    display: block;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+}
+.btn-valid:hover {
+    background: #74b9ff;
+}
+
+.walk-style {
+    font-size: 12px;
+    width: 100%;
+    display: block;
+    background: #f0f0f0;
+    padding: 3px;
+    margin-bottom: 3px;
+}
+.walk-style:hover {
+    background: #f5f5f5;
+}
+
+.dropdown {
+    font-size: 12px;
+    width: 100%;
+    display: block;
+    background: #f0f0f0;
+    padding: 5px;
+    margin-bottom: 3px;
+}
+.dropdown:hover {
+    background: #f5f5f5;
+}
+
+
+.dropdown-data {
+    background: #fff;
+    display: none;
+}
+
+.dropdown-data.active {
+    display: block;
+}
+
+.dropdown-data li {
+    list-style: none;
+    padding: 5px 9px;
+}
+.dropdown-data li:hover {
+    background: #f0f0f0;
+}
+
+.tunning {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    width: 200px;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #F4F4F4;
+}

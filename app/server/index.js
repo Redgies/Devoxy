@@ -25,6 +25,7 @@ require('./Basic/Money/sATM');
 require('./Basic/sBraquage');
 require('./Basic/sBlanchir');
 require('./Basic/sTeleporters');
+require('./Basic/sVip');
 
 require('./Jobs/sOrangeCollector');
 require('./Jobs/sLivreurDeColis');
