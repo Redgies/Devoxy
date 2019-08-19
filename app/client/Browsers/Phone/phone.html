@@ -61,8 +61,8 @@
                     <li class="active">{{ d.passengers[0].name }}</a>
                 </ul>
                 <div class="sellTo" style="color: #0984e3; margin-left: 25px; margin-bottom: 5px; margin-top: 5px;">Prix : </div>
-                <input type="text" v-model="sellPrice" style="width: 100%; text-indent: 22px; font-size: 14px; padding: 5px; outline: none;">
-                <p style="position: absolute; width: 100%; text-align: center; bottom: 10px; font-size: 13px;">Appuyez sur entrer pour valider</p>
+                <input type="text" id="sellPrice" v-model="sellPrice" style="width: 100%; text-indent: 22px; font-size: 14px; padding: 5px; outline: none;">
+                <p style="width: 100%; text-align: center; font-size: 13px; margin-top: 20px;">Appuyez sur entrer pour valider</p>
             </div>
 
 
@@ -284,13 +284,15 @@
                     var divcontactPhone = document.getElementById("contactPhone");
                     var divcontactFirstName = document.getElementById("contactFirstName");
                     var divcontactLastName = document.getElementById("contactLastName");
+                    var sellPrice = document.getElementById("sellPrice");
                     var reply = document.getElementById("reply");
 
                     if(document.activeElement === reply || 
                     document.activeElement === divcontactPhone || 
                     document.activeElement === divcontactFirstName ||
                     document.activeElement === divcontactLastName ||
-                    document.activeElement === callNumberInput)
+                    document.activeElement === callNumberInput || 
+                    document.activeElement === sellPrice)
                     {
                         return;
                     }
@@ -482,6 +484,12 @@
                             mp.trigger("cShowCursor");
                             return this.currentTab = 52;
                         }
+                    }
+
+                    // VENDRE LE VEHICULE
+                    if(this.currentTab == 52)
+                    {
+                        this.sellVehicleToPlayer();
                     }
 
                     // ENTRER DANS LES APPELS
