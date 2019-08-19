@@ -7,13 +7,42 @@ async function tryVipCode(player, code) {
     if (!d[0]) {
         return showError(player, "Le code entré est incorrecte.");
     }
-
+    if(d[0].payment_status != 'approved')
+    {
+        return showError(player, "Ce code n'est pas encore disponible.");
+    }
     if(d[0].payment_code_used == 1)
     {
-        return showError(player, "Ce code est déjà utilisé");
+        return showError(player, "Ce code est déjà utilisé.");
     }
 
-    return showSuccess(player, "Ce code est correct.");
+    await misc.query(`UPDATE paiements SET payment_code_used = 1 WHERE payment_code = '${code}' LIMIT 1`);
+
+    if(d[0].payment_type == 1)
+    {
+        player.vip = 1;
+        player.changeMoney(+300000);
+        let msg = "Vous avez activé votre Pack VIP. (utilisez /save)";
+    }
+    if(d[0].payment_type == 2)
+    {
+        player.whitewash = 1;
+        player.changeMoney(+100000);
+        let msg = "Vous avez activé votre Pack Blanchisseur.  (utilisez /save";
+    }
+    if(d[0].payment_type == 3)
+    {
+        player.changeMoney(+600000);
+        let msg = "Vous avez activé votre Pack Argent I.  (utilisez /save";
+    }
+    if(d[0].payment_type == 4)
+    {
+        player.changeMoney(+1500000);
+        let msg = "Vous avez activé votre Pack Argent II.  (utilisez /save";
+    }
+
+
+    return showSuccess(player, msg);
 }
 
 function showError(player, text) {
