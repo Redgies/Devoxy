@@ -43,7 +43,7 @@
                 <ul class="contacts">
                     <li :class="[{ active: currentLi === 0 }]">Trouver le véhicule</li>
                     <li :class="[{ active: currentLi === 1 }]">Mettre au garage</li>
-                    <li :class="[{ active: currentLi === 2 }]">Vendre au concessionnaire</li>
+                    <li :class="[{ active: currentLi === 2 }]">Vendre au concessionnaire pour {{ prettify(Math.round(d.vehicles[currentVeh].price * 0.5)) }}$</li>
                     <!-- <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
                         {{ contact.firstName}} <b>{{ contact.lastName }}</b>
                     </li> -->
@@ -443,7 +443,14 @@
                         if(this.currentLi == 0)
                         {
                             this.createGPSRoute('Find Vehicle', this.d.vehicles[this.currentVeh].id);
-                            this.exit();
+                        }
+                        if(this.currentLi == 1) 
+                        {
+                            this.callNineOneOne(this.d.vehicles[this.currentVeh].id);
+                        }
+                        if(this.currentLi == 2)
+                        {
+                            this.sellVehicleToGov(this.d.vehicles[this.currentVeh].id);
                         }
                     }
 
@@ -653,12 +660,18 @@
         methods: {
             createGPSRoute(name, id = false) {
                 const d = { name: name, id: id }
-                
-                alert(JSON.stringify(d));
 
 				mp.trigger("cMisc-CallServerEvent", "sGPS-CreateRoute", JSON.stringify(d));
 				this.exit();
             },
+            sellVehicleToGov(id) {
+				mp.trigger("cMisc-CallServerEvent", "sVehicle-SellToGovernment", id);
+				this.exit();
+			},
+            callNineOneOne(id) {
+				mp.trigger("cMisc-CallServerEvent", "sMenu-RestoreVehicle", id);
+				this.exit();
+			},
             loadVehicles: function(str) {
 			    this.d.vehicles = JSON.parse(str);
 		    },
@@ -763,6 +776,9 @@
                 var element = document.getElementById(id);
                 element.scrollTop -= 20;
             },
+            exit: function() {
+                mp.trigger("cCloseCef");
+            }
         },
         filters: {
             anonyme(str) {
