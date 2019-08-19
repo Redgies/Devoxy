@@ -1,9 +1,9 @@
 const misc = require('../cMisc');
 
 mp.events.add({
-	"cVip-Open" : (inject) => {
+	"cVip-Open" : () => {
 		misc.prepareToCef(0);
 		misc.openCef("package://RP/Browsers/Vip/index.html");
-		misc.injectCef(inject);
+		// misc.injectCef(inject);
 	},
 });

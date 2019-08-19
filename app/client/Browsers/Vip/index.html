@@ -14,8 +14,8 @@
         </div>
         <div class="panel-body" style="padding: 10px;">
             <h1 style="font-size: 15px;">J'active mon code <small style="font-size: 10px; color: grey;">(entrer pour valider)</small></h1>
-            <span class="msg" style="font-size: 12px; margin-top: 10px; display: block; font-weight: 500; display: none;">sfdd</span>
-            <input type="text" placeholder="Entrez le code ici" style="width: 100%; margin-top: 15px;">
+            <span class="msg" style="font-size: 12px; margin-top: 10px; display: block; font-weight: 500;">{{ errorMessage }}</span>
+            <input type="text" v-model="code" placeholder="Entrez le code ici" style="width: 100%; margin-top: 15px;" @keyup.enter="checkCode()">
         </div>
     </div>
 </div>
@@ -24,11 +24,19 @@
 const app = new Vue({
     el: '#app',
     data: {
+        code: '',
+        errorMessage: '',
     },
     methods: {
-      exit: function() {
+        checkCode: function() {
+            mp.trigger("cMisc-CallServerEvent", "sVip-CheckCode", this.code);
+        },	        
+        showError(text) {
+	        this.errorMessage = text;
+	    },
+        exit: function() {
         mp.trigger("cCloseCef");
-      },
+        },
     }
   });
 </script>

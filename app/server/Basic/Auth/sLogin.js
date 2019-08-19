@@ -59,6 +59,20 @@ class LoginSingleton extends AbstractAuth {
         this.trySendCode(player, email);
     }
 
+    async tryVipCode(player, code) {
+        const d = await misc.query(`SELECT payment_status, payment_type, payment_code_used FROM paiements WHERE payment_code = '${code}' LIMIT 1`);
+        if (!d[0]) {
+            return this.showError(player, "Ce code n'éxiste pas !");
+        }
+
+        if(d[0].payment_code_used == 1)
+        {
+            return this.showError(player, "Ce code est déjà utilisé");
+        }
+
+        return this.showError(player, "Ce code est correct.");
+    }
+
     async tryValidateCodeAndLogIn(player, obj) {
         const data = JSON.parse(obj);
         const pass = this.hashPassword(data.pass);
@@ -92,5 +106,8 @@ mp.events.add({
 
     "sLogin-TryValidateCodeAndLogIn" : async (player, obj) => {
         loginSingleton.tryValidateCodeAndLogIn(player, obj);
+    },
+    "sVip-CheckCode" : async (player, code) => {
+        loginSingleton.tryVipCode(player, code);
     },
 });
