@@ -41,7 +41,7 @@
                     <h1>{{ d.vehicles[currentLi].title }}</h1>
                 </div>
                 <ul class="contacts">
-                    <li :class="[{ active: currentLi === 0 }]">Trouver le véhicule</li>
+                    <li :class="[{ active: currentLi === 0 }]" @click="createGPSRoute('Find Vehicle', d.vehicles[currentVeh].id)">Trouver le véhicule</li>
                     <li :class="[{ active: currentLi === 1 }]">Mettre au garage</li>
                     <li :class="[{ active: currentLi === 2 }]">Vendre au concessionnaire</li>
                     <!-- <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
@@ -234,6 +234,7 @@
             contactId: 0,
             contactPhone: '',
             foundCall: 0,
+            currentVeh: 0,
             inCall: 0,
             contactFirstName: '',
             contactLastName: '',
@@ -349,6 +350,13 @@
                         if(this.currentLi >= (this.d.vehicles.length - 1))
                             this.currentLi = this.d.vehicles.length - 1;
                     }
+                    if (this.currentTab == 51)
+                    {
+                        this.currentLi++;
+
+                        if(this.currentLi >= 4)
+                            this.currentLi = 0;
+                    }
 
                 }
                 if (e.key == 'ArrowUp') {
@@ -380,6 +388,12 @@
                         }
                     }
                     if(this.currentTab == 50) {
+                        this.currentLi--;
+
+                        if (this.currentLi <= 0)
+                            this.currentLi = 0;
+                    }
+                    if(this.currentTab == 51) {
                         this.currentLi--;
 
                         if (this.currentLi <= 0)
@@ -419,6 +433,7 @@
 
                     // ENTRER DANS UN VEHICULE
                     if (this.currentTab == 50) {
+                        this.currentVeh == this.currentLi;
                         this.currentLi = 0;
                         this.currentTab = 51;
                     }
@@ -627,6 +642,11 @@
             },
         },
         methods: {
+            createGPSRoute(name, id = false) {
+				const d = { name: name, id: id }
+				mp.trigger("cMisc-CallServerEvent", "sGPS-CreateRoute", JSON.stringify(d));
+				app.exit();
+            },
             loadVehicles: function(str) {
 			    this.d.vehicles = JSON.parse(str);
 		    },
