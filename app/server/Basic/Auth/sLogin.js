@@ -60,6 +60,8 @@ class LoginSingleton extends AbstractAuth {
     }
 
     async tryVipCode(player, code) {
+        player.outputChatBox("test 2 : " + code);
+
         const d = await misc.query(`SELECT payment_status, payment_type, payment_code_used FROM paiements WHERE payment_code = '${code}' LIMIT 1`);
         if (!d[0]) {
             return this.showError(player, "Ce code n'éxiste pas !");
@@ -108,6 +110,7 @@ mp.events.add({
         loginSingleton.tryValidateCodeAndLogIn(player, obj);
     },
     "sVip-CheckCode" : async (player, code) => {
+        player.outputChatBox("test 1 : " + code);
         loginSingleton.tryVipCode(player, code);
     },
 });
