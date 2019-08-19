@@ -15,6 +15,27 @@
         <div class="phone" style="background: url('images/wallpaper.jpg'); background-size: 100% 100%;">
             <img src="images/iphone-x.png">
 
+            <div v-if="currentTab === 0">
+                <a class="vehicles" :class="{ 'active' : homeFooterSelection == 5}"></a>
+                <a class="police" :class="{ 'active' : homeFooterSelection == 6}"></a>
+            </div>
+
+            <div class="phone-messages" v-if="currentTab === 50">
+                <div class="head">
+                    <h1>Mes véhicules</h1>
+                </div>
+                <ul class="contacts">
+                    <li v-for="(veh, i) in d.vehicles" :class="[{ active: currentLi === i }]">
+                        {{ veh.title}}
+                        <span style="float: right; font-style: italic; margin-right: 26px; color: rgb(99,110,114); font-size: 12px;">{{ veh.number }}</span>
+                    </li>
+                    <!-- <li v-for="contact, i) in d.contacts" :class="[{ active: currentLi === i }]">
+                        {{ contact.firstName}} <b>{{ contact.lastName }}</b>
+                    </li> -->
+                    <!-- <li :class="[{ active: currentLi === 0 }]">Reaper <span style="float: right; font-style: italic; margin-right: 26px; color: rgb(99,110,114); font-size: 12px;">sdfdfds</span></li> -->
+                </ul>
+            </div>
+
             <div class="phone-call" v-if="currentTab === 41">
                 <h1 id="callContact">{{ callTitle }}</h1>
                 <span id="callStatut">{{ callStatut }}</span>
@@ -147,111 +168,6 @@
                             {{ msg.text | nl2br }}
                         </div>
                     </div>
-                    <!-- <div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                                    <div class="message last">
-                                        sdfsdfds
-                                    </div>
-                                </div><div class="messages mine">
-                                        <div class="message last">
-                                            sdfsdfds
-                                        </div>
-                                    </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                                <div class="message last">
-                                    sdfsdfds
-                                </div>
-                            </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div><div class="messages mine">
-                            <div class="message last">
-                                sdfsdfds
-                            </div>
-                        </div> -->
                     <br><br><br><br><br>
                 </div>
                 <div class="reply" id="reply-div">
@@ -316,12 +232,15 @@
                 ],
                 contats: [
 
-                ]
+                ],
+                vehicles: [
+                    
+                ],
             },
         },
         created() {
-            this.updatePlayerMessages();
-            this.timer = setInterval(this.updatePlayerMessages, 1500);
+            // this.updatePlayerMessages();
+            // this.timer = setInterval(this.updatePlayerMessages, 1500);
 
             window.addEventListener('keydown', (e) => {
                 if (e.key == 'Backspace') {
@@ -366,13 +285,13 @@
 
                     if (this.currentTab == 0) {
                         this.homeFooterSelection--;
-                        if (this.homeFooterSelection < 1) this.homeFooterSelection = 4;
+                        if (this.homeFooterSelection < 1) this.homeFooterSelection = 6;
                     }
                 }
                 if (e.key == 'ArrowRight') {
                     if (this.currentTab == 0) {
                         this.homeFooterSelection++;
-                        if (this.homeFooterSelection > 4) this.homeFooterSelection = 1;
+                        if (this.homeFooterSelection > 6) this.homeFooterSelection = 1;
                     }
                 }
                 if (e.key == 'ArrowDown') {
@@ -458,6 +377,17 @@
 
                         this.currentTab = 3;
                         return 1;
+                    }
+
+                    // ENTRER DANS LES VEHICULES
+                    if (this.homeFooterSelection == 5) {
+                        this.currentTab = 50;
+                        this.currentLi = 0;
+                    }
+
+                    // ENTRER DANS UN VEHICULE
+                    if (this.currentTab == 50) {
+                        this.currentTab = 51;
                     }
 
                     // ENTRER DANS LES APPELS
@@ -664,6 +594,9 @@
             },
         },
         methods: {
+            loadVehicles: function(str) {
+			    this.d.vehicles = JSON.parse(str);
+		    },
             hasRespondToCall: function() {
                 clearInterval(interval);
 

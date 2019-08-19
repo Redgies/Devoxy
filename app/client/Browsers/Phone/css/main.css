@@ -29,15 +29,17 @@
     border-bottom-right-radius: 54px;
 }
 
-.phone .phone-footer .sms.active,
-.phone .phone-footer .call.active,
-.phone .phone-footer .contact.active,
-.phone .phone-footer .cog.active {
+.phone .sms.active,
+.phone .call.active,
+.phone .contact.active,
+.phone .vehicles.active,
+.phone .police.active,
+.phone .cog.active {
     border: 2px solid #ffeaa7;
     border-radius: 15px;
 }
 
-.phone .phone-footer .sms {
+.phone .sms {
     background: url('../images/sms.png');
     background-size: 100%;
     width: 50px;
@@ -50,7 +52,33 @@
     transform: translateY(-50%);
 }
 
-.phone .phone-footer .cog {
+.phone .vehicles {
+    background: url('../images/sms.png');
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    z-index: 101;
+    top: 100px;
+    left: 13%;
+    transform: translateY(-50%);
+}
+
+.phone .police {
+    background: url('../images/sms.png');
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    z-index: 101;
+    top: 100px;
+    left: 32%;
+    transform: translateY(-50%);
+}
+
+.phone .cog {
     background: url('../images/cog.png');
     background-size: 100%;
     width: 50px;
@@ -63,7 +91,7 @@
     transform: translateY(-50%);
 }
 
-.phone .phone-footer .call {
+.phone .call {
     background: url('../images/call.png');
     background-size: 100%;
     width: 50px;
@@ -76,7 +104,7 @@
     transform: translateY(-50%);
 }
 
-.phone .phone-footer .contact {
+.phone .contact {
     background: url('../images/contact.png');
     background-size: 100%;
     width: 50px;

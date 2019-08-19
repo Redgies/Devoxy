@@ -1,4 +1,5 @@
 const misc = require('../sMisc');
+const vehicleAPI = require('../Vehicles/sVehicleSingletone');
 
 let messagesList = [];
 let talksList = [];
@@ -17,6 +18,7 @@ class Phone {
                 execute += `app.d.messages = ${this.getMessageForPlayer(player.phone, 0)};`;
                 execute += `app.d.talks = ${this.getTalksForPlayer(player)};`;
                 execute += `app.d.contacts = ${this.getContactsForPlayer(player)};`;
+                execute += `app.loadVehicles('${vehicleAPI.getVehiclesForPlayerMenu(player.guid)}');`;
 
                 player.call("cPhone-Open", [execute]);
                 misc.log.debug(`${player.name} opens phone`);
@@ -138,6 +140,7 @@ class Phone {
                             execute += `app.d.talks = ${this.getTalksForPlayer(p)};`;
                             execute += `app.d.contacts = ${this.getContactsForPlayer(p)};`;
                             execute += `app.receiveCall('${player.phone}');`;
+                            execute += `app.loadVehicles('${vehicleAPI.getVehiclesForPlayerMenu(player.guid)}');`;
                             p.call("cPhone-Open", [execute]);
                             return 1;
                         }
