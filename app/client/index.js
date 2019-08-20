@@ -39,4 +39,4 @@ require('./Basic/cVip');
 // require("./MapEditor/Natives");
 
 mp.gui.execute("window.location = 'package://RP/Browsers/Chat/index.html'");
-require('./Chat/chat.js');
+require('./Browsers/Chat/chat.js');
