@@ -24,6 +24,12 @@ class LoginSingleton extends AbstractAuth {
             player.loggedIn = false;
             return player.kick('Dublicate');
         }
+
+        const ban = await misc.query(`SELECT * FROM bans WHERE user_id = '${d[0].id}' OR social = '${d[0].socialClub}' ORDER BY id DESC LIMIT 1`);
+        if(ban[0]) {
+            this.showError(player, `Vous êtes banni jusqu'au ${ban[0].time}, raison : ${ban[0].reason}.`);
+        }
+
         this.loadAccount(player, d[0].id);
     }
 

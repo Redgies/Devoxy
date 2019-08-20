@@ -32,7 +32,7 @@ mp.blips.new(93, new mp.Vector3(-564.753, 272.189, 83.02),
 
 mp.blips.new(93, new mp.Vector3(-1390.863, -583.321, 30.224),
 {
-    name: 'Tequi-la-la',
+    name: 'Bahama Mamas',
     color: 4,
     scale: 0.6,
     shortRange: true,
