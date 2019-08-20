@@ -38,5 +38,5 @@ require('./Basic/cVip');
 // require("./MapEditor/object_data");
 // require("./MapEditor/Natives");
 
-mp.gui.execute("window.location = 'package://RP/Chat/index.html'");
+mp.gui.execute("window.location = 'package://RP/Browsers/Chat/index.html'");
 require('./Chat/chat.js');
