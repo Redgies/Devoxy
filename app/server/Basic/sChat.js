@@ -4,10 +4,6 @@ const misc = require('../sMisc');
 const Faction = require('../Factions/sFaction.js');
 const graylog = require('../sGraylog');
 const time = require('./sTime');
-
-mp.events.add("playerChat", (player,message) =>{
-    player.call('Send_ToChat',[player,message]);
-});
 const clothes = require('../Character/sClothes');
 
 class ChatSingleton {
