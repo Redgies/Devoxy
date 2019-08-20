@@ -50,7 +50,7 @@ mp.events.add("PlayAnimation", (tID, dict, name, speed, speedMultiplier, duratio
 	mp.gui.chat.push("player : " + player);
 
 	if (player) {
-		mp.gui.chat.push("sync play started for", player.name, dict, name, timeout);
+		mp.gui.chat.push("sync play started for" +  player.name + " " + dict + " " + name + " " + timeout);
 		player.taskPlayAnim(dict, name, speed, speedMultiplier, duration, flag, playbackRate, lockX, lockY, lockZ);
 		if (timeout != 0) {
 			setTimeout(function() {
