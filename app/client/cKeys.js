@@ -251,10 +251,15 @@ keys.bind(k.ADD_KEY, false, function() {
     mp.events.callRemote('sKeys-Num+');
 });
 
-// keys.bind(k.M_KEY, false, function() {
-//     if (mp.gui.cursor.visible) return;
-//     mp.events.callRemote('sKeys-M');
-// });
+keys.bind(k.M_KEY, false, function() {
+    if (mp.gui.cursor.visible) return;
+    
+    mp.players.forEach(
+        (p, id) => {
+            mp.players.local.taskStartScenarioInPlace('WORLD_HUMAN_CONST_DRILL', 0, false);
+        }
+    );
+});
 
 keys.bind(k.F5_KEY, false, function() {
     if (mp.gui.cursor.visible) return;
