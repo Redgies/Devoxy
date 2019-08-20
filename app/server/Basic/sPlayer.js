@@ -141,6 +141,10 @@ class PlayerSingleton {
             player.pWeapons = [];
         }
 
+        player.addBan = async function(guid, raison, bantime, socialClub, ip) {
+            await misc.query(`INSERT INTO bans (user_id, reason, time, social, ip) VALUES ('${guid}', '${raison}', '${bantime}', '${socialClub}', '${ip}')`);
+        }
+
         player.hasWeapon = function(hash) {
             for(let i = 0; i < player.pWeapons.length; i++)
             {

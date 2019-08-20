@@ -114,12 +114,6 @@ class ChatSingleton {
 				misc.log.debug(`${player.name} teleported to ${target.name}.`);
 			},
 
-			'tptest' : (player, fullText) => {
-				if(player.adminLvl < 1) return;
-				
-				player.position = new Vector3(-786.8663, 315.7642, 217.6385);
-			},
-
 			'admin' : (player, fullText) => {
 				if(player.adminLvl < 1) return;
 				if(fullText.length < 1) 
@@ -271,13 +265,46 @@ class ChatSingleton {
 				misc.log.debug(`${player.name} make vip ${arg2} for ${target.name}`);
 			},
 
+			'ban': (player, fullText, arg1, arg2, arg3) => {
+				if(player.adminLvl < 2) return;
+
+				if(fullText.length < 3 || !arg1 || !arg2 || !arg3)
+					return player.notify("Utilisez /ban id temps (heures) raison");
+
+				const target = misc.findPlayerByIdOrNickname(arg1);
+				const raison = fullText.substr((arg1.length + 1) + (arg2.length + 1), fullText.length);
+				let date = new Date.now();
+				date.getTime(arg2);
+				const bantime = Math.floor(date / 1000)
+
+				if(!target)
+					return player.notify("~r~Ce joueur n'est pas connecté.");
+				if(target.id == player.id)
+					return player.notify("~r~Vous ne pouvez pas vous bannir vous même.");
+
+				const onlinePlayers = mp.players.toArray();
+				const currentTime = misc.getTime();
+
+
+				const str = `!{#d63031}[${currentTime}] [ADMIN] Vous avez banni ${target.name} pendant ${arg2} heures, raison : ${raison}`;
+				player.outputChatBox(str);
+				const str2 = `!{#d63031}[${currentTime}] [ADMIN] ${target.name} a été banni pendant ${arg2} heures par ${player.name}, raison : ${raison}`;
+				for(const p of onlinePlayers) {
+					p.outputChatBox(str2);
+				}
+				target.addBan(target.guid, raison, bantime, target.socialClub, target.ip);
+				target.kick();
+				const str3 = `${player.name} banned ${target.name}. reason : ${raison}`;
+				misc.log.debug(str3);
+			},
+
 			'kick': (player, fullText, arg1, arg2) =>	{
 				if(player.adminLvl < 1) return;
 				if(fullText.length < 3 || !arg1 || !arg2)
 					return player.notify("Utilisez /kick id raison");
 
 				const target = this.findPlayerByIdOrNickname(arg1);
-				const raison = fullText.substr(arg1 + arg1.length);
+				const raison = fullText.substr(arg1.length + 1, fullText.length);
 				if(!target)
 					return player.notify("Ce joueur n'est pas connecté.");
 				if(target.id == player.id)

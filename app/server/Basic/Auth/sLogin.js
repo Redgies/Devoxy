@@ -12,7 +12,7 @@ class LoginSingleton extends AbstractAuth {
         const data = JSON.parse(obj);
         const pass = this.hashPassword(data.pass);
         const d = await misc.query(`SELECT id, email, password, socialclub FROM users WHERE email = '${data.email}' LIMIT 1`);
-        const ban = await misc.query(`SELECT * FROM bans WHERE user_id = '${d[0].id}' OR social = '${d[0].socialclub}' ORDER BY id DESC LIMIT 1`);
+        const ban = await misc.query(`SELECT * FROM bans WHERE user_id = '${d[0].id}' OR social = '${player.socialClub}' OR ip = '${player.ip}' ORDER BY id DESC LIMIT 1`);
         if(ban[0]) {
             if(Math.floor(Date.now() / 1000) < ban[0].time)
             {
