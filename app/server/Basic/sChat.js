@@ -273,7 +273,7 @@ class ChatSingleton {
 
 				const target = misc.findPlayerByIdOrNickname(arg1);
 				const raison = fullText.substr((arg1.length + 1) + (arg2.length + 1), fullText.length);
-				let date = new Date.now();
+				let date = Date.now();
 				date.getTime(arg2);
 				const bantime = Math.floor(date / 1000)
 
