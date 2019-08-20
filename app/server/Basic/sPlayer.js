@@ -342,9 +342,11 @@ mp.events.add("anim", (player, dict, name, speed, flag) => {
     player.playAnimation(dict.toString(), name.toString(), speed, flag);s
 });
 mp.events.add("syncanim", (player, dict, name, speed, flag) => {
+    player.outputChatBox("anim : " d+ ict);
     let id = player.id;
 
     mp.players.forEachInRange(player.position, 200, (tPlayer) => {
+        player.outputChatBox("called");
         tPlayer.call("PlayAnimation", [id, dict, name, speed, 1.0, 0, 0, 1.0, false, false, false, 0]);
     });
 });
