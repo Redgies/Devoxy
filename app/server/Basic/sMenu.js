@@ -56,7 +56,7 @@ class Menu {
                 vehicle.repair();
                 vehicle.locked = true;
                 vehicle.engine = false;
-                player.newFine(vehicle.info.price / 5, `911 call for ${vehicle.title}`);
+                player.changeMoney(-10000);
 			},
 
         });

@@ -19,6 +19,10 @@ class ChatSingleton {
 		});
 
 		mp.events.addCommand({
+			'test' : (player, fullText) => {
+				player.playScenario("WORLD_HUMAN_AA_SMOKE");
+			},
+
 			'dim' : (player, fullText) => {
 				player.dimension = 0;
 				clothes.loadPlayerClothes(player);

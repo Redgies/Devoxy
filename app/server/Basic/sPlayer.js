@@ -348,7 +348,6 @@ mp.events.add("anim", (player, dict, name, speed, flag) => {
 
 mp.events.add("loopanim", (player, data) => {
     const d = JSON.parse(data);
-    player.outputChatBox(data);
     player.playAnimation(d.dict.toString(), d.name.toString(), d.speed, d.flag);
 });
 
