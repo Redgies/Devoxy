@@ -347,7 +347,7 @@ mp.events.add("anim", (player, dict, name, speed, flag) => {
 });
 
 mp.events.add("loopanim", (player, dict, name, speed, flag) => {
-    player.outputChatBox("flag : " + parseInt(flag));
+    player.outputChatBox("dict : " + dict + " name : " + name + " speed : " + speed + " flag : " + flag);
     player.playAnimation(dict.toString(), name.toString(), 1, parseInt(49));
 });
 
