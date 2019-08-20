@@ -25,7 +25,7 @@ require('./Basic/cGPS');
 require('./3rd/betternotifs.js');
 require('./fingerpointing');
 require('./Basic/cNoClip');
-require('./Basic/cWalking');
+require('./Basic/cAnimations');
 require('./Basic/cNametag');
 require('./Basic/cInfos');
 require('./Basic/cInterface');

@@ -149,6 +149,13 @@ class PlayerSingleton {
             return 0;
         }
 
+        player.playAnimSync = function(dict, name, speed, speedMultiplier, duration, flag, playbackRate, lockX, lockY, lockZ, timeout = 0) {
+            let id = player.id;
+            mp.players.forEachInRange(this._player.position, 200, (tPlayer) => {
+                tPlayer.call("PlayAnimation", [id, dict, name, speed, speedMultiplier, duration, flag, playbackRate, lockX, lockY, lockZ, timeout])
+            });
+        }
+
         player.unsetWeapon = function(hash) {
             player.removeWeapon(hash);
 
@@ -340,6 +347,9 @@ mp.events.addCommand({
 
 mp.events.add("anim", (player, dict, name, speed, flag) => {
     player.playAnimation(dict.toString(), name.toString(), speed, flag);s
+});
+mp.events.add("syncanim", (player, dict, name, speed, flag) => {
+    taskPlayAnim(dict, anim, 8.0, 1.0, 0, 0, 1.0, false, false, false);
 });
 
 mp.events.add("fpsync.update", (player, camPitch, camHeading) => {
