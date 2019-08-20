@@ -17,7 +17,7 @@ class LoginSingleton extends AbstractAuth {
             return this.showError(player, "Ce compte n'existe pas !");
         }
         if (d[0].password !== pass) {
-            return this.showError(player, `Votre mot de passe est incorrect !`);
+            return this.showError(player, `Votre mot de passe est incorrect.`);
         }
         else if (this.isAlreadyPlaying(d[0].email)) {
             this.showError(player, `Vous ne pouvez pas vous connecter sur 2 appareils différents !`);
@@ -66,8 +66,6 @@ class LoginSingleton extends AbstractAuth {
     }
 
     async tryVipCode(player, code) {
-        player.outputChatBox("test 2 : " + code);
-
         const d = await misc.query(`SELECT payment_status, payment_type, payment_code_used FROM paiements WHERE payment_code = '${code}' LIMIT 1`);
         if (!d[0]) {
             return this.showError(player, "Ce code n'éxiste pas !");
