@@ -15,6 +15,9 @@
         <div class="phone" style="background: url('images/wallpaper.jpg'); background-size: 100% 100%;">
             <img src="images/iphone-x.png">
 
+            <i class="fa fa-signal" style="position: absolute; top: 22px; color: #FFF; z-index: 200; left: 30px; font-size: 12px;"> 4G</i>
+            <img src="images/battery.png" style="position: absolute;right: 32px; width: 37px; top: 22px; z-index: 200;">
+
             <div v-if="currentTab === 0">
                 <a class="vehicles" :class="{ 'active' : homeFooterSelection == 5}"></a>
                 <a class="police" :class="{ 'active' : homeFooterSelection == 6}"></a>
