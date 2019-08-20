@@ -736,10 +736,17 @@
                     this.exit();
                 },
                 setAnimation: function (index) {
+                    const data = {
+                        dict: this.animsList[index].p1,
+                        name: this.animsList[index].p2,
+                        speed: this.animsList[index].p3,
+                        flag: this.animsList[index].p4
+                    };
+
                     if(index == 0)
                         mp.trigger("cMisc-CallServerEvent", "stopanim");
                     else
-                        mp.trigger("cMisc-CallServerEvent", "loopanim", this.animsList[index].p1, this.animsList[index].p2, this.animsList[index].p3, this.animsList[index].p4);
+                        mp.trigger("cMisc-CallServerEvent", "loopanim", JSON.stringify(data));
                    
                     this.exit();
                 },
