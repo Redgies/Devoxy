@@ -293,7 +293,7 @@ class ChatSingleton {
 					p.outputChatBox(str2);
 				}
 				target.addBan(target.guid, raison, bantime, target.socialClub, target.ip);
-				target.kick();
+				// target.kick();
 				const str3 = `${player.name} banned ${target.name}. reason : ${raison}`;
 				misc.log.debug(str3);
 			},
