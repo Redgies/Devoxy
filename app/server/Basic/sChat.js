@@ -275,7 +275,7 @@ class ChatSingleton {
 				const raison = fullText.substr((arg1.length + 1) + (arg2.length + 1), fullText.length);
 
 				let date = new Date();
-				date.setHours(date.getHours() + arg2);
+				// date.setHours(date.getHours() + arg2);
 				const bantime = Math.floor(date / 1000)
 
 				if(!target)
