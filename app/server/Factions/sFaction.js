@@ -81,7 +81,7 @@ class Faction {
 				player.notify(`~g~Vous virez ${target.name} de la faction.`);
 				target.notify(`~g~${player.name} vous a viré de la faction.`);		
 			},
-			"sms" : (player, fullText) => {
+			"police" : (player, fullText) => {
 				if(fullText.length <= 0) return player.notify("~r~Vous devez saisir un message.");
 
 				for(const p of mp.players.toArray()) {
@@ -91,7 +91,29 @@ class Faction {
 				}
 
 				player.notifyWithPicture("Appel 911", "", "Votre message a bien été reçu, nous le traiterons dès que possible.", "CHAR_CALL911");
-			}
+			},
+			"mecano" : (player, fullText) => {
+				if(fullText.length <= 0) return player.notify("~r~Vous devez saisir un message.");
+
+				for(const p of mp.players.toArray()) {
+                    if((p.faction !== 2 && p.faction !== 3) || !this.isWorking(p)) continue;
+                    
+					p.notifyWithPicture("Dépannage", player.name, fullText, "CHAR_SOCIAL_CLUB");
+				}
+
+				player.notifyWithPicture("Dépannage", "", "Votre message a bien été reçu, nous le traiterons dès que possible.", "CHAR_SOCIAL_CLUB");
+			},
+			"medic" : (player, fullText) => {
+				if(fullText.length <= 0) return player.notify("~r~Vous devez saisir un message.");
+
+				for(const p of mp.players.toArray()) {
+                    if(p.faction !== 4 || !this.isWorking(p)) continue;
+                    
+					p.notifyWithPicture("Médecin", player.name, fullText, "CHAR_SOCIAL_CLUB");
+				}
+
+				player.notifyWithPicture("Médecin", "", "Votre message a bien été reçu, nous le traiterons dès que possible.", "CHAR_SOCIAL_CLUB");
+			},
 		});
 	}
 
