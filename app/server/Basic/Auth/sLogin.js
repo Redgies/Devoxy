@@ -15,6 +15,7 @@ class LoginSingleton extends AbstractAuth {
         const ban = await misc.query(`SELECT * FROM bans WHERE user_id = '${d[0].id}' OR social = '${d[0].socialClub}' ORDER BY id DESC LIMIT 1`);
         if(ban[0]) {
             const string = 'Vous êtes banni jusqu\'au :' + timeConverter(ban[0].time) + ', raison : ' + ban[0].reason;
+            console.log(string);
             return this.showError(player, string);
         }
 
