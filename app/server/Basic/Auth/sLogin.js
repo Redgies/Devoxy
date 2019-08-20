@@ -13,6 +13,11 @@ class LoginSingleton extends AbstractAuth {
         const data = JSON.parse(obj);
         const pass = this.hashPassword(data.pass);
         const d = await misc.query(`SELECT id, email, password, socialclub FROM users WHERE email = '${data.email}' LIMIT 1`);
+        const ban = await misc.query(`SELECT * FROM bans WHERE user_id = '${d[0].id}' OR social = '${d[0].socialClub}' ORDER BY id DESC LIMIT 1`);
+        if(ban[0]) {
+            return this.showError(player, "Vous êtes banni.");
+        }
+
         if (!d[0]) {
             return this.showError(player, "Ce compte n'existe pas !");
         }
@@ -23,11 +28,6 @@ class LoginSingleton extends AbstractAuth {
             this.showError(player, `Vous ne pouvez pas vous connecter sur 2 appareils différents !`);
             player.loggedIn = false;
             return player.kick('Dublicate');
-        }
-
-        const ban = await misc.query(`SELECT * FROM bans WHERE user_id = '${d[0].id}' OR social = '${d[0].socialClub}' ORDER BY id DESC LIMIT 1`);
-        if(ban[0]) {
-            return this.showError(player, `Vous êtes banni jusqu'au.`);
         }
 
         this.loadAccount(player, d[0].id);
