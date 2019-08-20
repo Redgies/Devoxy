@@ -275,8 +275,9 @@ class ChatSingleton {
 				const raison = fullText.substr((arg1.length + 1) + (arg2.length + 1), fullText.length);
 
 				let date = new Date();
-				// date.setHours(date.getHours() + arg2);
-				const bantime = Math.floor(date / 1000)
+				date = Math.floor(date / 1000);
+				const bantime = date.setHours(date.getHours() + arg2);
+				// const bantime = Math.floor(date / 1000)
 
 				if(!target)
 					return player.notify("~r~Ce joueur n'est pas connecté.");
