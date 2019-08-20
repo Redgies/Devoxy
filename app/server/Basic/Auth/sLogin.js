@@ -17,7 +17,7 @@ class LoginSingleton extends AbstractAuth {
             return this.showError(player, "Ce compte n'existe pas !");
         }
         if (d[0].password !== pass) {
-            return this.showError(player, `Votre mot de passe est incorrect.`);
+            return this.showError(player, `Votre mot de passe est incorrect !`);
         }
         else if (this.isAlreadyPlaying(d[0].email)) {
             this.showError(player, `Vous ne pouvez pas vous connecter sur 2 appareils différents !`);
@@ -26,9 +26,8 @@ class LoginSingleton extends AbstractAuth {
         }
 
         const ban = await misc.query(`SELECT * FROM bans WHERE user_id = '${d[0].id}' OR social = '${d[0].socialClub}' ORDER BY id DESC LIMIT 1`);
-        console.log(JSON.stringify(ban));
         if(ban[0]) {
-            return this.showError(player, `Vous êtes banni jusqu'au ${ban[0].time}, raison : ${ban[0].reason}.`);
+            return this.showError(player, `Vous êtes banni jusqu'au.`);
         }
 
         this.loadAccount(player, d[0].id);
