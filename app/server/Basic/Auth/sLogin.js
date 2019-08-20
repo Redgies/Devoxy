@@ -58,13 +58,6 @@ class LoginSingleton extends AbstractAuth {
         }
     }
 
-    tryGetCodeToLogin(player, email) {
-        if (!mailer.isEmailValid(email)) {
-            return this.showError(player, "Email Invalid");
-        }
-        this.trySendCode(player, email);
-    }
-
     async tryVipCode(player, code) {
         const d = await misc.query(`SELECT payment_status, payment_type, payment_code_used FROM paiements WHERE payment_code = '${code}' LIMIT 1`);
         if (!d[0]) {
@@ -78,39 +71,11 @@ class LoginSingleton extends AbstractAuth {
 
         return this.showError(player, "Ce code est correct.");
     }
-
-    async tryValidateCodeAndLogIn(player, obj) {
-        const data = JSON.parse(obj);
-        const pass = this.hashPassword(data.pass);
-        if (!this.checkCode(player, data.code)) return;
-        const d = await misc.query(`SELECT id, email, password FROM users WHERE email = '${data.email}' LIMIT 1`);
-        if (!d[0]) {
-            return this.showError(player, "Ce compte n'éxiste pas !");
-        }
-        if (d[0].password !== pass) {
-            player.call("cInjectCef", [`app.showCode = false; app.enteredCode = "";`]);
-            return this.showError(player, `Votre mot de passe est incorrect.`);
-        }
-        if (this.isAlreadyPlaying(d[0].email)) {
-            this.showError(player, `Vous ne pouvez pas vous connecter sur 2 appareils différents !`);
-            return player.kick('Dublicate');
-        }
-        this.loadAccount(player, d[0].id);
-    }
-
 }
 const loginSingleton = new LoginSingleton();
 
 mp.events.add({
     "sLogin-TryLoginWithoutCode" : async (player, obj) => {
         loginSingleton.tryLoginWithoutCode(player, obj);
-    },
-
-    "sLogin-TryGetCodeToLogin" : async (player, email) => {
-        loginSingleton.tryGetCodeToLogin(player, email);
-    },
-
-    "sLogin-TryValidateCodeAndLogIn" : async (player, obj) => {
-        loginSingleton.tryValidateCodeAndLogIn(player, obj);
     },
 });
