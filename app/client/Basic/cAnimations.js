@@ -46,19 +46,16 @@ mp.events.add("PrepareAnim", (anims) => {
 });
 mp.events.add("PlayAnimation", (tID, dict, name, speed, speedMultiplier, duration, flag, playbackRate, lockX, lockY, lockZ, timeout) => {
 	var player = mp.players.atRemoteId(tID);
+
+	mp.gui.chat.push("player : " + player);
+
 	if (player) {
-		if (mp.game.streaming.doesAnimDictExist(dict)) {
-			mp.game.streaming.requestAnimDict(dict);
-			while (mp.game.streaming.hasAnimDictLoaded(dict)) {
-				break;
-			}
-			console.log("sync play started for", player.name, dict, name, timeout);
-			player.taskPlayAnim(dict, name, speed, speedMultiplier, duration, flag, playbackRate, lockX, lockY, lockZ);
-			if (timeout != 0) {
-				setTimeout(function() {
-					player.stopAnimTask(dict, name, 1);
-				}, timeout)
-			}
+		mp.gui.chat.push("sync play started for", player.name, dict, name, timeout);
+		player.taskPlayAnim(dict, name, speed, speedMultiplier, duration, flag, playbackRate, lockX, lockY, lockZ);
+		if (timeout != 0) {
+			setTimeout(function() {
+				player.stopAnimTask(dict, name, 1);
+			}, timeout)
 		}
 	}
 });

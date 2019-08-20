@@ -339,7 +339,7 @@ mp.events.addCommand({
 });
 
 mp.events.add("anim", (player, dict, name, speed, flag) => {
-    player.playAnimation(dict.toString(), name.toString(), speed, flag);s
+    player.playAnimation(dict.toString(), name.toString(), speed, flag);
 });
 mp.events.add("syncanim", (player, dict, name, speed, flag) => {
     player.outputChatBox("anim : " + dict);
