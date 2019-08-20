@@ -346,8 +346,8 @@ mp.events.add("anim", (player, dict, name, speed, flag) => {
     player.playAnimation(dict.toString(), name.toString(), speed, flag);
 });
 
-mp.events.add("loopanim", (player, dict, name, speed, flag) => {
-    player.playAnimation(dict.toString(), name.toString(), 1, 32);
+mp.events.add("loopanim", (player, dict, name, speed, flag) => {s
+    player.playAnimation(dict.toString(), name.toString(), 1, parseInt(flag));
 });
 
 
