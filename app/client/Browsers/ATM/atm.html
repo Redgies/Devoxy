@@ -13,15 +13,15 @@
 			<div class="b1-money">
 				<div>
 					<div class="b1-summ">{{ showCash() }}</div>
-					<div class="b1-summ-info">{{ cashText }}</div>
+					<div class="b1-summ-info">Liquide</div>
 				</div>
 				<div>
 					<div class="b1-summ">{{ showBMoney() }}</div>
-					<div class="b1-summ-info">{{ bankAccountText }}</div>
+					<div class="b1-summ-info">Compte bancaire</div>
 				</div>
 				<div>
 					<div class="b1-summ">{{ showTMoney() }}</div>
-					<div class="b1-summ-info">{{ taxAccountText }}</div>
+					<div class="b1-summ-info">Compte taxé</div>
 				</div>
 				<div v-if="fine !== 0">
 					<div class="b1-summ">{{ showFMoney() }}</div>
@@ -30,10 +30,10 @@
 			</div>
 			
 			<div class="b2-buttons" v-if="!transactionBlockSeen && !finesBlockSeen">
-				<div class="b2-item" @click="openTransactionBlock('getCash')">{{ takeCashText }}</div>
-				<div class="b2-item" @click="openTransactionBlock('putCash')">{{ putCashText }}</div>
-				<div class="b2-item" @click="openTransactionBlock('getTaxMoney')">{{ takeTaxMoneyText }}</div>
-				<div class="b2-item" @click="openTransactionBlock('putTaxMoney')">{{ putCashToTaxText }}</div>
+				<div class="b2-item" @click="openTransactionBlock('getCash')">Retirer des espèces</div>
+				<div class="b2-item" @click="openTransactionBlock('putCash')">Déposer des espèces</div>
+				<div class="b2-item" @click="openTransactionBlock('getTaxMoney')">Retirer des espèces du compte taxé</div>
+				<div class="b2-item" @click="openTransactionBlock('putTaxMoney')">Déposer des espèces du compte taxé</div>
 				<div class="b2-item" v-if="fine !== 0" @click="openFinesBlock">{{ payFinesText }}</div>
 			</div>
 			
@@ -42,7 +42,7 @@
 				<div class="b3-vars">
 					<div class="b2-item b3-item" v-for="cash in cashTemplate" @click="addToInput(cash.amount)">{{ prettify(cash.amount) }}</div>
 					<div class="b2-item b3-item-input"><input class="submit-cash" type="text" v-model.number="inputValue"></div>
-					<div class="b2-item b3-item-done" @click="doTransaction">{{ doneText }}</div>
+					<div class="b2-item b3-item-done" @click="doTransaction">Valider</div>
 				</div>
 			</div>
 			
@@ -74,8 +74,8 @@ const app = new Vue({
 		finesBlockSeen: false,
 		transactionType: null,
 		cashTemplate: [
+			{ amount: 500 },
 			{ amount: 1000 },
-			{ amount: 5000 },
 			{ amount: 10000 },
 			{ amount: 25000 },
 			{ amount: 50000 },
@@ -173,93 +173,6 @@ const app = new Vue({
 
 function load() {
 	document.getElementById("logo").classList.remove("logoLoading");
-}
-
-function loadRusLang() {
-	app.cashText = "наличные";
-	app.bankAccountText = "сберегательный счет";
-	app.taxAccountText = "налоговый счет";
-	app.fineAccountText = "штрафной счет";
-
-	app.takeCashText = "Снять наличные";
-	app.putCashText = "Положить наличные";
-	app.takeTaxMoneyText = "Снять деньги с налогового счета";
-	app.putCashToTaxText = "Положить деньги на налоговый счет";
-	app.payFinesText = "Погасить штрафы";
-
-	app.doneText = "Готово";
-}
-
-function loadGerLang() {
-	app.cashText = "Bargeld";
-	app.bankAccountText = "Sparkonto";
-	app.taxAccountText = "Steuerkonto";
-	//app.fineAccountText = "";
-
-	app.takeCashText = "Bargeld abheben";
-	app.putCashText = "Bargeld einzahlen";
-	app.takeTaxMoneyText = "Geld von einem Steuerkonto abheben";
-	app.putCashToTaxText = "Geld auf ein Steuerkonto einzahlen";
-	//app.payFinesText = "";
-
-	app.doneText = "Erledigt";
-}
-
-function loadBrLang() {
-	app.cashText = "Dinheiro";
-	app.bankAccountText = "Conta bancária";
-	app.taxAccountText = "Impostos";
-	//app.fineAccountText = "";
-
-	app.takeCashText = "Sacar dinheiro";
-	app.putCashText = "Depósito em dinheiro";
-	app.takeTaxMoneyText = "Sacar dinheiro da conta de impostos";
-	app.putCashToTaxText = "Depositar dinheiro em conta de imposto";
-	app.payFinesText = "Pagar multa";
-
-	app.doneText = "Encerrar";
-}
-
-function loadZhsLang() {
-	app.cashText = "现金";
-	app.bankAccountText = "银行账户";
-	app.taxAccountText = "税务账户";
-	app.fineAccountText = "罚款账户";
-	app.takeCashText = "提现";
-	app.putCashText = "存款";
-	app.takeTaxMoneyText = "从税务账户提现";
-	app.putCashToTaxText = "存款到税务账户";
-	app.payFinesText = "缴纳罚款";
-
-	app.doneText = "完成";
-}
-
-
-
-function loadZhtLang() {
-  app.cashText = "現金";
-  app.bankAccountText = "銀行帳戶";
-  app.taxAccountText = "稅務帳戶";
-  app.fineAccountText = "罰金賬戶";
-  app.takeCashText = "提現";
-  app.putCashText = "存款";
-  app.takeTaxMoneyText = "從稅務帳戶提現";
-  app.putCashToTaxText = "存款到稅務帳戶";
-  app.payFinesText = "繳納罰金";
-
-  app.doneText = "完成";
-}
-function loadCsLang() {
-	app.cashText = "peníze";
-	app.bankAccountText = "bankovní účet";
-	app.taxAccountText = "daňový účet";
-	app.fineAccountText = "účet pokut";
-	app.takeCashText = "Vybrat peníze";
-	app.putCashText = "Vložit peníze";
-	app.takeTaxMoneyText = "Vybrat peníze z daňového účtu";
-	app.putCashToTaxText = "Vložit peníze do daňového účtu";
-	app.payFinesText = "Zaplatit pokuty";
-	app.doneText = "Hotovo";
 }
 
 </script>

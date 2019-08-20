@@ -4,6 +4,10 @@ const misc = require('../sMisc');
 const Faction = require('../Factions/sFaction.js');
 const graylog = require('../sGraylog');
 const time = require('./sTime');
+
+mp.events.add("playerChat", (player,message) =>{
+    player.call('Send_ToChat',[player,message]);
+});
 const clothes = require('../Character/sClothes');
 
 class ChatSingleton {
@@ -294,7 +298,7 @@ class ChatSingleton {
 					p.outputChatBox(str2);
 				}
 				target.addBan(target.guid, raison, bantime, target.socialClub, target.ip);
-				// target.kick();
+				target.kick();
 				const str3 = `${player.name} banned ${target.name}. reason : ${raison}`;
 				misc.log.debug(str3);
 			},
