@@ -20,7 +20,7 @@ class ChatSingleton {
 
 		mp.events.addCommand({
 			'test' : (player, fullText) => {
-				player.playScenario("WORLD_HUMAN_AA_SMOKE");
+				player.playScenario("WORLD_HUMAN_STAND_MOBILE");
 			},
 
 			'dim' : (player, fullText) => {
