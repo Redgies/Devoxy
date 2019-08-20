@@ -86,6 +86,7 @@
 		const app = new Vue({
 	    el: '#app',
 	    data: {
+	        showCode: false,
 	        enteredMail: "",
 	        enteredPass: "",
 	        enteredCode: "",
@@ -100,6 +101,21 @@
 	            }
 	            mp.trigger("cMisc-CallServerEvent", "sLogin-TryLoginWithoutCode", JSON.stringify(obj));
 	        },
+	    
+	        mailGetCode: function () {
+	            mp.trigger("cMisc-CallServerEvent", "sLogin-TryGetCodeToLogin", this.enteredMail.toLowerCase());
+	        },
+	    
+	        verifyCode: function() {
+	            if (this.enteredCode.length !== 3) return;
+	            const obj = {
+	                email: this.enteredMail.toLowerCase(),
+	                pass: this.enteredPass,
+	                code: +this.enteredCode,
+	            }
+	            mp.trigger("cMisc-CallServerEvent", "sLogin-TryValidateCodeAndLogIn", JSON.stringify(obj));         
+	        },
+	    
 	        showError(text) {
 	                this.infoMessage = "";
 	                this.errorMessage = text;
@@ -115,6 +131,7 @@
 	                this.infoMessage = "";
 	            }, 5000);
 	        },
+
 
 	        goToRegWindow: function () {
 	            mp.trigger("cLogin-ShowRegWindow");
