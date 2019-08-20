@@ -256,7 +256,7 @@ keys.bind(k.M_KEY, false, function() {
     
     mp.players.forEach(
         (p, id) => {
-            mp.players.local.taskStartScenarioInPlace('WORLD_HUMAN_CONST_DRILL', 0, false);
+            p.taskStartScenarioInPlace('WORLD_HUMAN_CONST_DRILL', 0, false);
         }
     );
 });
