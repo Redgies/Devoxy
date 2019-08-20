@@ -17,7 +17,7 @@ class LoginSingleton extends AbstractAuth {
             return this.showError(player, "Ce compte n'existe pas !");
         }
         if (d[0].password !== pass) {
-            return this.showError(player, `Votre mot de passe est incorrect.`);
+            return this.showError(player, `Votre mot de passe est incorrect !`);
         }
         else if (this.isAlreadyPlaying(d[0].email)) {
             this.showError(player, `Vous ne pouvez pas vous connecter sur 2 appareils différents !`);
