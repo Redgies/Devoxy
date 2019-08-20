@@ -117,13 +117,12 @@
 	        },
 	    
 	        showError(text) {
-				alert(text);
-	                this.infoMessage = "";
-	                this.errorMessage = text;
-	                setTimeout(() => {
-	                    this.errorMessage = "";
-	                }, 5000);
-	            },
+				this.infoMessage = "";
+				this.errorMessage = text;
+				setTimeout(() => {
+					this.errorMessage = "";
+				}, 5000);
+			},
 
 	        showInfo(text) {
 	            this.errorMessage = "";
