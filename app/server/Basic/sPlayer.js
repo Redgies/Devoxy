@@ -339,7 +339,7 @@ mp.events.addCommand({
 });
 
 mp.events.add("anim", (player, dict, name, speed, flag) => {
-    player.playAnimation(dict.toString(), name.toString(), speed, 423);
+    player.playAnimation(dict.toString(), name.toString(), speed, 1 << 0);
 });
 
 mp.events.add("fpsync.update", (player, camPitch, camHeading) => {
@@ -357,7 +357,6 @@ mp.events.add("radioOff", (player) => {
 
 mp.events.add("pointingStop", (player) => {
     player.stopAnimation();
-    player.notify("test");
 });
 
 mp.events.add({
