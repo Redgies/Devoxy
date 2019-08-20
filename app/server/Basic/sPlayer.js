@@ -338,10 +338,18 @@ mp.events.addCommand({
     
 });
 
+mp.events.add("stopanim", (player) => {
+    player.stopAnimation();
+});
+
 mp.events.add("anim", (player, dict, name, speed, flag) => {
-    player.outputChatBox("playanim");
+    player.playAnimation(dict.toString(), name.toString(), speed, flag);
+});
+
+mp.events.add("loopanim", (player, dict, name, speed, flag) => {
     player.playAnimation(dict.toString(), name.toString(), 2, 1);
 });
+
 
 mp.events.add("fpsync.update", (player, camPitch, camHeading) => {
     mp.players.call(player.streamedPlayers, "fpsync.update", [player.id, camPitch, camHeading]);
