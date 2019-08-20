@@ -5,6 +5,7 @@ const mailer = require('../../sMailer');
 
 class AbstractAuth {
     showError(player, text) {
+        console.log(text);
         player.call("cInjectCef", [`app.showError('${text}');`]);
     }
 
