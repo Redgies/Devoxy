@@ -105,7 +105,7 @@ mp.events.addCommand({
 	'getmoney' : (player, fullText, id) => {
 		if (admin.adminLvl < 1) return;
 		const target = mp.players.at(+id);
-		if (!target) return admin.notify("~r~Ce joueur n'est pas connecté.");
+		if (!target) return player.notify("~r~Ce joueur n'est pas connecté.");
 
 		player.outputChatBox(`!{#d63031}[ADMIN] !{#ffffff} Argent liquide de ${target.name} : ${target.money.cash}$.`);
 		player.outputChatBox(`!{#d63031}[ADMIN] !{#ffffff} Argent banque de ${target.name} : ${target.money.bank}$.`);

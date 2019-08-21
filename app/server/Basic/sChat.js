@@ -45,7 +45,7 @@ class ChatSingleton {
 
 			'ooc' : (player, fullText) => {
 				if(!fullText) return player.notify("Veuillez entrer un message.");
-				mp.players.broadcast(`!{#0984e3}[${time.getTime()}] [OOC] ${player.name} [${player.id}] : ${fullText}`);
+				mp.players.broadcast(`!{#0984e3}[${time.getTime()}] [OOC]!{#ffffff} ${player.name} [${player.id}] : ${fullText}`);
 				misc.log.debug(`${player.name} ${fullText}`);
 			}, 
 
@@ -62,10 +62,10 @@ class ChatSingleton {
 				const currentTime = misc.getTime();
 			
 				let message = fullText.substr(arg1.length + 1, fullText.length);
-				const str = `!{#0984e3}[${currentTime}] [PM] à ${recipient.name} [${recipient.id}] : ${message}`;
+				const str = `!{#0984e3}[${currentTime}] [PM]!{#ffffff} à ${recipient.name} [${recipient.id}] : ${message}`;
 				player.outputChatBox(str);
 
-				const str2 = `!{#0984e3}[${currentTime}] [PM] de ${player.name} [${player.id}] : ${message}`;
+				const str2 = `!{#0984e3}[${currentTime}] [PM]!{#ffffff} de ${player.name} [${player.id}] : ${message}`;
 				recipient.outputChatBox(str2);
 			},
 
@@ -86,8 +86,8 @@ class ChatSingleton {
 
 				const currentTime = misc.getTime();
 
-				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez téléporté ${target.name} à vous.`);
-				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a téléporté à lui.`);
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous avez téléporté ${target.name} à vous.`);
+				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${player.name} vous a téléporté à lui.`);
 
 				misc.log.debug(`${player.name} teleported ${target.name} to him.`);
 			},
@@ -109,7 +109,7 @@ class ChatSingleton {
 
 				const currentTime = misc.getTime();
 
-				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous vous êtes téléporté à ${target.name}.`);
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous vous êtes téléporté à ${target.name}.`);
 
 				misc.log.debug(`${player.name} teleported to ${target.name}.`);
 			},
@@ -125,7 +125,7 @@ class ChatSingleton {
 				for(const p of onlinePlayers) {
 					if(p.adminLvl >= 1) 
 					{
-						p.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} [${player.id}] : ${fullText}`);
+						p.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN CHAT]!{#ffffff} ${player.name} [${player.id}] : ${fullText}`);
 					}
 				}
 			}, 
@@ -167,7 +167,7 @@ class ChatSingleton {
 				const currentTime = misc.getTime();
 	
 				for(const p of onlinePlayers) {
-					p.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN OOC] ${player.name} [${player.id}] : ${fullText}`);
+					p.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN OOC]!{#ffffff} ${player.name} [${player.id}] : ${fullText}`);
 				}
 			},
 
@@ -184,8 +184,8 @@ class ChatSingleton {
 
 				const currentTime = misc.getTime();
 
-				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez heal ${target.name}.`);
-				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a heal.`);
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous avez heal ${target.name}.`);
+				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${player.name} vous a heal.`);
 				misc.log.debug(`${player.name} healed ${target.name}.`);
 			},
 
@@ -199,7 +199,7 @@ class ChatSingleton {
 
 				const currentTime = misc.getTime();
 
-				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Le GUID de ${target.name} [${target.id}] est ${target.guid}.`);
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Le GUID de ${target.name} [${target.id}] est ${target.guid}.`);
 				misc.log.debug(`GUID of ${target.name} [${target.id}] is ${target.guid}`);
 			},
 
@@ -215,13 +215,13 @@ class ChatSingleton {
 				if(player.aduty)
 				{
 					player.aduty = false;
-					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous n'êtes plus en admin service.`);
+					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous n'êtes plus en admin service.`);
 					misc.log.debug(`${player.name} left admin mode`);
 				}
 				else 
 				{
 					player.aduty = true;
-					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous êtes en admin service.`);
+					player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous êtes en admin service.`);
 					misc.log.debug(`${player.name} started admin mode`);
 				}	
 			},
@@ -242,8 +242,8 @@ class ChatSingleton {
 				target.health = 0;
 
 				const currentTime = misc.getTime();
-				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez tué ${target.name}.`);
-				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a tué.`);
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous avez tué ${target.name}.`);
+				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${player.name} vous a tué.`);
 				misc.log.debug(`${player.name} killed ${target.name}`);
 			},
 
@@ -259,8 +259,8 @@ class ChatSingleton {
 				target.vip = parseInt(arg2);
 
 				const currentTime = misc.getTime();
-				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] Vous avez passsé ${target.name} VIP ${arg2}.`);
-				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a passé VIP ${arg2}.`);
+				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous avez passsé ${target.name} VIP ${arg2}.`);
+				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${player.name} vous a passé VIP ${arg2}.`);
 				misc.log.debug(`${player.name} make vip ${arg2} for ${target.name}`);
 			},
 
@@ -286,9 +286,9 @@ class ChatSingleton {
 				const currentTime = misc.getTime();
 
 
-				const str = `!{#d63031}[${currentTime}] [ADMIN] Vous avez banni ${target.name} pendant ${arg2} heures, raison : ${raison}`;
+				const str = `!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous avez banni ${target.name} pendant ${arg2} heures, raison : ${raison}`;
 				player.outputChatBox(str);
-				const str2 = `!{#d63031}[${currentTime}] [ADMIN] ${target.name} a été banni pendant ${arg2} heures par ${player.name}, raison : ${raison}`;
+				const str2 = `!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${target.name} a été banni pendant ${arg2} heures par ${player.name}, raison : ${raison}`;
 				for(const p of onlinePlayers) {
 					p.outputChatBox(str2);
 				}
@@ -322,11 +322,11 @@ class ChatSingleton {
 				const currentTime = misc.getTime();
 
 
-				const str = `!{#d63031}[${currentTime}] [ADMIN] Vous avez kické ${target.name}. Raison : ${raison}`;
+				const str = `!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous avez kické ${target.name}. Raison : ${raison}`;
 				player.outputChatBox(str);
-				const str1 = `!{#d63031}[${currentTime}] [ADMIN] ${player.name} vous a kické. Raison : ${raison}`;
+				const str1 = `!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${player.name} vous a kické. Raison : ${raison}`;
 				target.outputChatBox(str1);
-				const str2 = `!{#d63031}[${currentTime}] [ADMIN] ${target.name} a été kické par ${player.name}. Raison : ${raison}`;
+				const str2 = `!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${target.name} a été kické par ${player.name}. Raison : ${raison}`;
 				for(const p of onlinePlayers) {
 					p.outputChatBox(str2);
 				}
