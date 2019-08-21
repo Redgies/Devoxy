@@ -27,9 +27,9 @@ mp.events.add({
 
     const player = mp.players.local;
 
-    mp.players.forEach(p => {
-      player.setAlpha(fly.flying ? 0 : 255);
-    });
+    // mp.players.forEach(p => {
+    //   player.setAlpha(fly.flying ? 0 : 255);
+    // });
 
    
     if (fly.flying) {
