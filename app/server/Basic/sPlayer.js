@@ -61,6 +61,7 @@ class PlayerSingleton {
         player.pWeapons = JSON.parse(d[0].weapons);
         player.delits = JSON.parse(d[0].delits);
         player.jailed = d[0].jailed;
+        player.cloack = false;
 
         player._inventory = JSON.parse(d[0].inventory);
         player.canMakeAnnounce = 0;

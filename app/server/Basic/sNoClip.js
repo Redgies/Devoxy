@@ -11,7 +11,6 @@ class NoClip {
                 player.fly = !player.fly;
 
                 player.alpha = (player.fly ? 0 : 255);
-                player.outputChatBox("player.alpha : " + player.alpha);
 
                 // player.setVisible(player.fly, 0);
                 player.call("cNoclip-Update", [player.fly]);

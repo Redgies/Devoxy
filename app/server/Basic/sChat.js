@@ -298,6 +298,14 @@ class ChatSingleton {
 				misc.log.debug(str3);
 			},
 
+			'cloack': (player, fullText) => {
+				if(player.adminLvl < 1) return;
+
+				player.cloack = !player.cloack;
+
+				player.alpha = (player.cloack ? 0 : 255);
+			},
+
 			'kick': (player, fullText, arg1, arg2) =>	{
 				if(player.adminLvl < 1) return;
 				if(fullText.length < 3 || !arg1 || !arg2)

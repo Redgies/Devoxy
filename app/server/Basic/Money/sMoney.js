@@ -94,13 +94,21 @@ module.exports = moneySingletone;
 
 mp.events.addCommand({	
 	'givecash' : (admin, fullText, id, value) => {
-		if (admin.adminLvl < 1) return;
+		if (admin.adminLvl < 3) return;
 		const player = mp.players.at(+id);
-		if (!player) return admin.outputChatBox(`!{200, 0, 0}Player does not exist!`);
+		if (!player) return admin.notify("~r~Ce joueur n'est pas connecté.");
 		player.changeMoney(+value);
-		admin.outputChatBox(`!{0, 200, 0}You gave $${+value} to ${player.name}!`);
-		player.outputChatBox(`!{0, 200, 0}${admin.name} gave you $${+value}!`);
-		misc.log.info(`${admin.name} give ${player.name} $${+value}`);
+		admin.outputChatBox(`!{#d63031}[ADMIN] !{#ffffff}Vous avez donné ${+value}$ à ${player.name}.`);
+		player.outputChatBox(`!{#d63031}[ADMIN] !{#ffffff}${admin.name} vous a donné ${+value}$.`);
+		misc.log.info(`${admin.name} give ${player.name} ${+value}$`);
 	},
+	'getmoney' : (player, fullText, id) => {
+		if (admin.adminLvl < 1) return;
+		const target = mp.players.at(+id);
+		if (!target) return admin.notify("~r~Ce joueur n'est pas connecté.");
 
+		player.outputChatBox(`!{#d63031}[ADMIN] !{#ffffff} Argent liquide de ${target.name} : ${target.money.cash}$.`);
+		player.outputChatBox(`!{#d63031}[ADMIN] !{#ffffff} Argent banque de ${target.name} : ${target.money.bank}$.`);
+		player.outputChatBox(`!{#d63031}[ADMIN] !{#ffffff} Argent tax de ${target.name} : ${target.money.tax}$.`);
+	}
 });
