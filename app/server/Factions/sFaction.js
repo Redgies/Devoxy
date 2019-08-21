@@ -388,16 +388,16 @@ mp.events.addCommand({
 			if(parseInt(arg2) !== f.id) continue; 
 
 			target.faction = f.id;
-			target.rank = f.maxRank;
+			target.rank = f.maxRank - 1;
 
 			target.call("cFaction-Update", [target.faction]);
 			target.setVariable('faction', target.faction);
 
-			if(player.faction != 0)
+			if(target.faction != 0)
 			{
-				job = f.surname + ' | ' + f.getRank(player);
+				job = f.surname + ' | ' + f.getRank(target);
 			}
-			player.call("cJob-Update", [job]);
+			target.call("cJob-Update", [job]);
 
 			const currentTime = misc.getTime();
 
