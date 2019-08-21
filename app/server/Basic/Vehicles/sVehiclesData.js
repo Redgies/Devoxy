@@ -61,8 +61,6 @@ class VehiclesDataSingleton {
 			{	model: "mule4",			title: "Maibatsu Mule Custom",		fuelTank: 250,	fuelRate: 30,	price: 150000,	},
 
 			{   model: "bati",      title: "Bati",              fuelTank: 45,   fuelRate: 11,   price: 20000,   },
-            {   model: "bf400",     title: "BF400",             fuelTank: 60,   fuelRate: 16,   price: 20000,   },
-			{   model: "enduro",    title: "Enduro",             fuelTank: 80,   fuelRate: 25,   price: 20000,   },
 			
 			{   model: "dinghy",        title: "Dinghy",                fuelTank: 45,   fuelRate: 11,   price: 20000,   },
             {   model: "seashark",      title: "Seashark",          fuelTank: 60,   fuelRate: 16,   price: 20000,   },
@@ -71,6 +69,16 @@ class VehiclesDataSingleton {
 			{	model: "buzzard2", 		title: "Buzzard", 				fuelTank: 45, 	fuelRate: 11, 	price: 20000,	},
 			{	model: "dodo",		title: "Dodo", 			fuelTank: 60, 	fuelRate: 16, 	price: 20000,	},
 			{	model: "cuban800", 	title: "Cuban", 		    fuelTank: 80, 	fuelRate: 25, 	price: 20000,	},
+
+			{   model: "faggio",         title: "Principe Faggio",          fuelTank: 35,   fuelRate: 70,  price: 3000,   },
+			{   model: "bf400",         title: "Nagasaki BF400",          fuelTank: 45,   fuelRate: 100,  price: 25000,   },
+			{   model: "enduro",         title: "Dinka Enduro",          fuelTank: 55,   fuelRate: 140,  price: 25750,   },
+			{   model: "sanchez2",         title: "Maibatsu Sanchez",          fuelTank: 45,   fuelRate: 140,  price: 30000,   },
+			{   model: "vader",         title: "Shitzu Vader",          fuelTank: 45,   fuelRate: 135,  price: 37500,   },
+			{   model: "hakuchou",         title: "Shitzu Hakuchou",          fuelTank: 50,   fuelRate: 150,  price: 50000,   },
+			{   model: "nightblade",         title: "Western Nightblade",          fuelTank: 50,   fuelRate: 180,  price: 50000,   },
+			{   model: "double",         title: "Dinka Double T",          fuelTank: 50,   fuelRate: 120,  price: 55750,   },
+			{   model: "nemesis",         title: "Principe Nemesis",          fuelTank: 45,   fuelRate: 135,  price: 60000,   },
 
 		
 		];
