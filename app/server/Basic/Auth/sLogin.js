@@ -4,7 +4,7 @@ const logger = require('../../sGraylog');
 const i18n = require('../../sI18n');
 const playerSingleton = require('../sPlayer');
 const AbstractAuth = require('./sAuthAbstract');
-const clothes = require('../Character/sClothes');
+const clothes = require('../../Character/sClothes');
 
 
 
