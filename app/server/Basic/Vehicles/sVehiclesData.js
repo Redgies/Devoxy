@@ -62,13 +62,19 @@ class VehiclesDataSingleton {
 
 			{   model: "bati",      title: "Bati",              fuelTank: 45,   fuelRate: 11,   price: 20000,   },
 			
-			{   model: "dinghy",        title: "Dinghy",                fuelTank: 45,   fuelRate: 11,   price: 20000,   },
-            {   model: "seashark",      title: "Seashark",          fuelTank: 60,   fuelRate: 16,   price: 20000,   },
-			{   model: "squalo",    title: "Squalo",             fuelTank: 80,   fuelRate: 25,   price: 20000,   },
+			{   model: "seashark",         title: "SeaShark",          fuelTank: 50,   fuelRate: 150,  price: 35000,   },
+			{   model: "dinghy",         title: "Dinghy",          fuelTank: 50,   fuelRate: 150,  price: 125000,   },
+			{   model: "speeder",         title: "Speeder",          fuelTank: 50,   fuelRate: 150,  price: 225000,   },
+			{   model: "marquis",         title: "Marquis",          fuelTank: 50,   fuelRate: 150,  price: 350000,   },
 			
-			{	model: "buzzard2", 		title: "Buzzard", 				fuelTank: 45, 	fuelRate: 11, 	price: 20000,	},
+			
 			{	model: "dodo",		title: "Dodo", 			fuelTank: 60, 	fuelRate: 16, 	price: 20000,	},
 			{	model: "cuban800", 	title: "Cuban", 		    fuelTank: 80, 	fuelRate: 25, 	price: 20000,	},
+			{   model: "buzzard2",         title: "Buzzard 2",          fuelTank: 50,   fuelRate: 150,  price: 800000,   },
+			{   model: "havok",         title: "Havok",          fuelTank: 50,   fuelRate: 150,  price: 850000,   },
+			{   model: "swift",         title: "Swift",          fuelTank: 50,   fuelRate: 150,  price: 1200000,   },
+			{   model: "cargobob2",         title: "Cargobob 2",          fuelTank: 50,   fuelRate: 150,  price: 1600000,   },
+
 
 			{   model: "faggio",         title: "Faggio",          fuelTank: 35,   fuelRate: 70,  price: 3000,   },
 			{   model: "bf400",         title: "BF400",          fuelTank: 45,   fuelRate: 100,  price: 25000,   },
