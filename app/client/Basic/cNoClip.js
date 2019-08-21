@@ -94,11 +94,7 @@ mp.events.add({
     player.setInvincible(global.fly.flying);
     player.freezePosition(global.fly.flying);
 
-    mp.players.forEach(p => {
-      player.setAlpha(global.fly.flying ? 0 : 255);
-    });
-
-    
+    player.alpha = global.fly.flying ? 0 : 255;
 
     mp.game.graphics.notify(global.fly.flying ? 'NoClip: ~g~activé' : 'NoClip: ~r~désactivé');
   },
