@@ -3,7 +3,7 @@ const i18n = require('../sI18n');
 const misc = require('../sMisc');
 const Faction = require('../Factions/sFaction.js');
 const graylog = require('../sGraylog');
-const time = require('./sTime');t
+const time = require('./sTime');
 const clothes = require('../Character/sClothes');
 
 class ChatSingleton {
