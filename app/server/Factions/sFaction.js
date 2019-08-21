@@ -388,7 +388,7 @@ mp.events.addCommand({
 			if(parseInt(arg2) !== f.id) continue; 
 
 			target.faction = f.id;
-			target.rank = f.maxRank - 1;
+			target.rank = f.maxRank;
 
 			target.call("cFaction-Update", [target.faction]);
 			target.setVariable('faction', target.faction);

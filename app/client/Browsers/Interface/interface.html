@@ -80,17 +80,17 @@
                     <span class="title">Port d'arme</span>
                 </div>
                 <div class="item" @click="currentTab = 10"
-                    v-if="player.faction == 1 && player.working == 1 && target.guid">
+                    v-if="((player.faction == 1 && player.working == 1) || player.adminLvl >= 1) && target.guid">
                     <img src="images/search.png">
                     <span class="title">Fouiller</span>
                 </div>
                 <div class="item" @click="newConfiscate()"
-                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 2 && target.guid">
+                    v-if="((player.faction == 1 && player.working == 1 && player.rank >= 2) || player.adminLvl >= 1) && target.guid">
                     <img src="images/hold.png">
                     <span class="title">Confisquer les armes</span>
                 </div>
                 <div class="item" @click="newConfiscateInv()"
-                    v-if="player.faction == 1 && player.working == 1 && player.rank >= 3 && target.guid">
+                    v-if="((player.faction == 1 && player.working == 1 && player.rank >= 3) || player.adminLvl >= 1) && target.guid">
                     <img src="images/hold.png">
                     <span class="title">Confisquer l'inventaire</span>
                 </div>
