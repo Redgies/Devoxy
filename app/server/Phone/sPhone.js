@@ -135,6 +135,7 @@ class Phone {
                 mp.players.forEach((p, id) => {
                     if(p.phone == receiver && p.loggedIn)
                     {
+                        if(p.cuffed || p.jailed) return player.notify("~r~Ce joueur ne peut pas utiliser son téléphone.");
                         if(p.inCall == -1)
                         {
                             found = 1;
