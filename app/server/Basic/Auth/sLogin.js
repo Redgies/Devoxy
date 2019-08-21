@@ -4,6 +4,7 @@ const logger = require('../../sGraylog');
 const i18n = require('../../sI18n');
 const playerSingleton = require('../sPlayer');
 const AbstractAuth = require('./sAuthAbstract');
+const clothes = require('../Character/sClothes');
 
 
 
@@ -53,6 +54,8 @@ class LoginSingleton extends AbstractAuth {
         await playerSingleton.loadAccount(player, id);
 
         const onlinePlayers = mp.players.toArray();
+
+        clothes.loadPlayerClothes(player);
 
         if (onlinePlayers.length < 30) {
             for (const p of onlinePlayers) {
