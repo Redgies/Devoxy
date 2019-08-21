@@ -1909,7 +1909,6 @@ class ClothesSingletone {
             player.setClothes(7, this.manNeck[d.number].id, d.color, 0);
         } else if (title === "Tops") {
             player.setClothes(11, this.manTops[d.number].id, d.color, 0);
-            player.outputChatBox("torso : " + this.manTops[d.number].torso);
             player.setClothes(3, this.manTops[d.number].torso, 0, 0);
             player.setClothes(8, this.manTops[d.number].undershirt, d.underColor, 0);
         } else if (title === "Legs") {
