@@ -76,8 +76,6 @@
     top: 0;
     width: 3vw;
     transition: 0.3s;
-    height: 100%;
-    padding-top: 15px;
  }
  
  .arrow:hover {

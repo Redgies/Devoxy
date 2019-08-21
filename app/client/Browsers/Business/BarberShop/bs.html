@@ -7,37 +7,37 @@
 		<div class="b1" id="app">
 			<div class="b1-title">{{ titleText }} №{{ id }}</div>
 				<div class="item b name">
-					<div class="arrow l-arrow" @click="prev('hairStyle')"><i class="fas fa-chevron-left"></i></div>
+					<div class="arrow l-arrow" @click="prev('hairStyle')"><</div>
 					{{ hairStyleText }}
-					<div class="arrow r-arrow" @click="next('hairStyle')"><i class="fas fa-chevron-right"></i></div>
+					<div class="arrow r-arrow" @click="next('hairStyle')">></div>
 				</div>
 				<div class="item b buy" @click="buy('hairStyle')">
 					<div>{{ buyText }}</div>
 					<div>{{ showPrice(500) }}</div>
 				</div>
 				<div class="item b name">
-					<div class="arrow l-arrow" @click="prev('hairCol1')"><i class="fas fa-chevron-left"></i></div>
+					<div class="arrow l-arrow" @click="prev('hairCol1')"><</div>
 						{{ hairColorText }}
-					<div class="arrow r-arrow" @click="next('hairCol1')"><i class="fas fa-chevron-right"></i></div>
+					<div class="arrow r-arrow" @click="next('hairCol1')">></div>
 				</div>
 				<div class="item b name">
-					<div class="arrow l-arrow" @click="prev('hairCol2')"><i class="fas fa-chevron-left"></i></div>
+					<div class="arrow l-arrow" @click="prev('hairCol2')"><</div>
 						{{ hairHighlightColorText }}
-					<div class="arrow r-arrow" @click="next('hairCol2')"><i class="fas fa-chevron-right"></i></div>
+					<div class="arrow r-arrow" @click="next('hairCol2')">></div>
 				</div>
 				<div class="item b buy" @click="buy('hairCol')">
 					<div>{{ buyText }}</div>
 					<div>{{ showPrice(350) }}</div>
 				</div>
 				<div class="item b name">
-					<div class="arrow l-arrow" @click="prev('browStyle')"><i class="fas fa-chevron-left"></i></div>
+					<div class="arrow l-arrow" @click="prev('browStyle')"><</div>
 						{{ browText }}
-					<div class="arrow r-arrow" @click="next('browStyle')"><i class="fas fa-chevron-right"></i></div>
+					<div class="arrow r-arrow" @click="next('browStyle')">></div>
 				</div>
 				<div class="item b name">
-					<div class="arrow l-arrow" @click="prev('browModifier')"><i class="fas fa-chevron-left"></i></div>
+					<div class="arrow l-arrow" @click="prev('browModifier')"><</div>
 						{{ intensityText }}
-					<div class="arrow r-arrow" @click="next('browModifier')"><i class="fas fa-chevron-right"></i></div>
+					<div class="arrow r-arrow" @click="next('browModifier')">></div>
 				</div>
 				<div class="item b buy" @click="buy('brow')">
 					<div>{{ buyText }}</div>
@@ -45,14 +45,14 @@
 				</div>
 				<div v-if="showBeard">
 					<div class="item b name">
-						<div class="arrow l-arrow" @click="prev('beardStyle')"><i class="fas fa-chevron-left"></i></div>
+						<div class="arrow l-arrow" @click="prev('beardStyle')"><</div>
 						{{ beardText }}
-						<div class="arrow r-arrow" @click="next('beardStyle')"><i class="fas fa-chevron-right"></i></div>
+						<div class="arrow r-arrow" @click="next('beardStyle')">></div>
 					</div>
 					<div class="item b name">
-						<div class="arrow l-arrow" @click="prev('beardModifier')"><i class="fas fa-chevron-left"></i></div>
+						<div class="arrow l-arrow" @click="prev('beardModifier')"><</div>
 							{{ intensityText }}
-						<div class="arrow r-arrow" @click="next('beardModifier')"><i class="fas fa-chevron-right"></i></div>
+						<div class="arrow r-arrow" @click="next('beardModifier')">></div>
 					</div>
 					<div class="item b buy" @click="buy('beard')">
 						<div>{{ buyText }}</div>
