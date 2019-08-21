@@ -118,7 +118,7 @@
 
 .rotation input[type=range] {
    -webkit-appearance: none;
-   width: 80vw;
+   width: 50vw;
    background: url(transparent.png);
 }
 

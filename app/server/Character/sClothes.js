@@ -177,7 +177,7 @@ class ClothesSingletone {
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 4,
@@ -188,7 +188,7 @@ class ClothesSingletone {
                 torso: 6,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 5,
@@ -210,7 +210,7 @@ class ClothesSingletone {
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 7,
@@ -221,7 +221,7 @@ class ClothesSingletone {
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 8,
@@ -362,7 +362,7 @@ class ClothesSingletone {
                 torso: 14,
                 undershirt: 2,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 29,
@@ -371,7 +371,7 @@ class ClothesSingletone {
                 colors: [0, 1, 2, 3, 4, 5, 6, 7],
                 price: 900,
                 torso: 14,
-                undershirt: 25,
+                undershirt: 15,
                 underColor: 0,
                 underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
@@ -395,7 +395,7 @@ class ClothesSingletone {
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },{
                 id: 38,
                 name: "T-Shirt long",
@@ -481,7 +481,7 @@ class ClothesSingletone {
                 torso: 14,
                 undershirt: 2,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },{
                 id: 70,
                 name: "Manteau de fourrure",
@@ -491,7 +491,7 @@ class ClothesSingletone {
                 torso: 14,
                 undershirt: 0,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 72,
@@ -522,7 +522,7 @@ class ClothesSingletone {
                 torso: 12,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },{
                 id: 75,
                 name: "Veste à motifs fermée",

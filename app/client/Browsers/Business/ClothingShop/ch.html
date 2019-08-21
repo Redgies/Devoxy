@@ -28,7 +28,7 @@
             </div>
             <div class="item b name" v-if="currentTitle == 'Tops'">
                 <div class="arrow l-arrow" @click="nextUnderColor"><</div>
-                Undershit {{ currentCloth.undercolor }}
+                Undershirt : {{ currentCloth.underColor }}
                 <div class="arrow r-arrow" @click="prevUnderColor">></div>
             </div>
 
@@ -105,6 +105,7 @@
                 this.currentNum = 0;
                 this.currentCloth = this.currentArr[0];
                 this.currentCloth.color = this.currentCloth.colors[0];
+                this.currentCloth.underColor = this.currentCloth.underColors[0];
                 this.setColor(0);
                 if (this.currentTitle === "Tops") this.setUnderColor(0);
                 mp.trigger("cClothingShop-SetCamera", this.currentTitle);
@@ -413,7 +414,7 @@
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 4,
@@ -424,7 +425,7 @@
                 torso: 6,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 5,
@@ -446,7 +447,7 @@
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 7,
@@ -457,7 +458,7 @@
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 8,
@@ -598,7 +599,7 @@
                 torso: 14,
                 undershirt: 2,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 29,
@@ -607,7 +608,7 @@
                 colors: [0, 1, 2, 3, 4, 5, 6, 7],
                 price: 900,
                 torso: 14,
-                undershirt: 25,
+                undershirt: 15,
                 underColor: 0,
                 underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
@@ -631,7 +632,7 @@
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },{
                 id: 38,
                 name: "T-Shirt long",
@@ -717,7 +718,7 @@
                 torso: 14,
                 undershirt: 2,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },{
                 id: 70,
                 name: "Manteau de fourrure",
@@ -727,7 +728,7 @@
                 torso: 14,
                 undershirt: 0,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },
             {
                 id: 72,
@@ -758,7 +759,7 @@
                 torso: 12,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                underColors: [0],
             },{
                 id: 75,
                 name: "Veste à motifs fermée",
