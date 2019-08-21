@@ -35,6 +35,15 @@ body, html {
 	font-family: Montserrat-Regular, sans-serif;
 }
 
+.logo {
+  position: absolute;
+  /* position: relative; */
+  width: 15vw;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 60px;
+}
+
 /*---------------------------------------------*/
 a {
 	font-family: Montserrat-Regular;
@@ -191,6 +200,14 @@ iframe {
   background: transparent;
 }
 
+.infos {
+  position: absolute;
+    left: 40px;
+    top: 40px;
+    background: #ffffff54;
+    padding: 10px;
+}
+
 
 
 /*------------------------------------------------------------------
@@ -204,6 +221,7 @@ iframe {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-top: 15vh;
 }
 
 .login100-form-title {
