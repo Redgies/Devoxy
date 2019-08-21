@@ -2,7 +2,7 @@
    height: 100%;
    font-family: Segoe UI;
    font-weight: 100;
-   color: #DDD;
+   color: #0984e3;
    text-align: center;
 }
 
@@ -31,7 +31,8 @@
 .item {
    height: 5vh;
    font-size: 1.5vw;
-   line-height: 6vh;
+   line-height: 5vh;
+   color: #0984e3;
 }
 
 .title {
@@ -79,7 +80,7 @@
 }
 
 .arrow:hover {
-   background: #555;
+   background: #c6c6c6;
 }
 
 .l-arrow {
