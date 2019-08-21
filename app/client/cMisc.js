@@ -87,14 +87,6 @@ mp.events.add(
 		mp.gui.cursor.show(false, false);
 		mp.gui.chat.show(true);
 	},
-	"cHide-HUD" : () => {
-		mp.game.ui.displayRadar(false);
-		mp.gui.chat.show(false);
-	},
-	"cShow-HUD" : () => {
-		mp.game.ui.displayRadar(true);
-		mp.gui.chat.show(true);
-	},
 	"cCloseCefAndDestroyCam" : () => {
 		closeCef();
 		destroyCam();

@@ -230,15 +230,6 @@ class ChatSingleton {
 				player.setClothes(parseInt(arg1), parseInt(arg2), parseInt(arg3), parseInt(arg4));
 			},
 
-			'hidehud': (player, fullText) => {
-				player.hideHud = !player.hideHud;
-
-				if(player.hideHud)
-					player.call("cHide-HUD");
-				else 
-					player.call("cShow-HUD");
-			},
-
 			'kill': (player, fullText, arg1) =>	{
 				if(player.adminLvl < 1) return;
 				if(!arg1)
