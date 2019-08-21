@@ -22,6 +22,7 @@ require('./Basic/cNoClip.js');
 require('./Basic/cLocation.js');
 require('./Basic/cDoors.js');
 require('./Basic/cGPS');
+require('./Basic/cHeadshot');
 require('./3rd/betternotifs.js');
 require('./fingerpointing');
 require('./Basic/cNoClip');
