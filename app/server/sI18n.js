@@ -2,7 +2,7 @@ const i18n = {
 
 	basic: {
 		success: {
-			eng: 'Success',
+			eng: 'Succès',
 			rus: 'Успешно',
 			ger: 'Erfolgreich',
 			br: 'Sucesso', 
@@ -12,7 +12,7 @@ const i18n = {
 		},
 
 		pressE: {
-			eng: 'Press ~b~E ~s~',
+			eng: 'Appuyer sur la touche ~b~E ~s~',
 			rus: 'Нажмите ~b~E ~s~',
 			ger: 'Drücken Sie ~b~ E ~s~',
 			br: 'Pressione ~b~E ~s~', 
@@ -82,7 +82,7 @@ const i18n = {
 		},
 
 		tooFarAway: {
-			eng: 'too far away from you',
+			eng: 'trop loin de votre position',
 			rus: 'слишком далеко от вас',
 			ger: 'zu weit weg von dir',
 			br: 'muito longe de você', 
@@ -92,7 +92,7 @@ const i18n = {
 		},
 
 		wait: {
-			eng: 'Wait',
+			eng: 'Attendez',
 			rus: 'Подождите',
 			ger: 'Warte',
 			br: 'Aguarde', 
@@ -102,7 +102,7 @@ const i18n = {
 		},
 
 		seconds: {
-			eng: 'seconds',
+			eng: 'secondes',
 			rus: 'секунд',
 			ger: 'sekunden',
 			br: 'segundos', 
@@ -112,7 +112,7 @@ const i18n = {
 		},
 
 		toEnter: {
-			eng: 'to enter',
+			eng: 'pour entrer',
 			rus: 'чтобы войти',
 			ger: 'betreten',
 			br: 'para entrar', 
@@ -122,7 +122,7 @@ const i18n = {
 		},
 
 		toExit: {
-			eng: 'to exit',
+			eng: 'pour sortir',
 			rus: 'чтобы выйти',
 			ger: 'exit',
 			br: 'para sair', 
@@ -132,7 +132,7 @@ const i18n = {
 		},
 
 		toEnterGarage: {
-			eng: 'to enter garage',
+			eng: 'pour entrer dans le garage',
 			rus: 'чтобы попасть в гараж',
 			ger: 'in die Garage gehen',
 			br: 'para entrar na garagem', 
@@ -142,7 +142,7 @@ const i18n = {
 		},
 
 		toExitGarage: {
-			eng: 'to exit garage',
+			eng: 'pour sortir du garage',
 			rus: 'чтобы покинуть гараж',
 			ger: 'garage verlassen',
 			br: 'para sair da garagem', 
@@ -152,7 +152,7 @@ const i18n = {
 		},
 
 		toCallLift: {
-			eng: 'to call lift',
+			eng: 'pour appeler l\'ascenceur',
 			rus: 'чтобы вызвать лифт',
 			ger: 'um Aufzug zu rufen',
 			br: 'chamar elevador', 
@@ -162,7 +162,7 @@ const i18n = {
 		},
 
 		someVehicleIsBlocking: {
-			eng: 'Some vehicle is blocking the area',
+			eng: 'Un vehicule bloque la zone',
 			rus: 'Какое-то ТС блокирует зону',
 			ger: 'Ein Fahrzeug blockiert den Bereich',
 			br: 'Alguns veículos estão bloqueando a área', 
@@ -172,7 +172,7 @@ const i18n = {
 		},
 
 		somePlayerIsBlocking: {
-			eng: 'Some player is blocking the area',
+			eng: 'Un joueur bloque la zone',
 			rus: 'Какой-то игрок блокирует зону',
 			ger: 'Ein Spieler blockiert das Gebiet',
 			br: 'Algum jogador está bloqueando a área', 
@@ -182,7 +182,7 @@ const i18n = {
 		},
 
 		youRejectedOffer: {
-			eng: 'You rejected offer by player',
+			eng: 'Vous avez refusé l\'offre du joueur',
 			rus: 'Вы отклонили предложение игрока',
 			ger: 'Du hast das Angebot von Spieler abgelehnt',
 			br: 'Você rejeitou a oferta pelo jogador', 
@@ -192,7 +192,7 @@ const i18n = {
 		},
 
 		rejectedYourOffer: {
-			eng: 'rejected your offer',
+			eng: 'a refusé votre offre',
 			rus: 'отклонил(а) ваше предложение',
 			ger: 'hat Ihr Angebot abgelehnt',
 			br: 'rejeitou sua oferta', 
@@ -202,7 +202,7 @@ const i18n = {
 		},
 
 		confirmedYourOffer: {
-			eng: 'confirmed your offer',
+			eng: 'a accepté votre offre',
 			rus: 'принял(а) ваше предложение',
 			ger: 'bestätigte Ihr Angebot',
 			br: 'confirmou sua oferta', 
@@ -212,7 +212,7 @@ const i18n = {
 		},
 
 		youConfirmedOffer: {
-			eng: 'You confirmed offer by player',
+			eng: 'Vous avez confirmé l\'offre du joueur',
 			rus: 'Вы приняли предложение игрока',
 			ger: 'Du hast das Angebot von Spieler bestätigt',
 			br: 'Você confirmou a oferta pelo jogador', 
@@ -226,7 +226,7 @@ const i18n = {
   
    sAuth: {    
     	checkEmail: {
-			eng: 'Please check your mail box.',
+			eng: 'Vérifiez votre boite mail',
 			rus: '',
 			ger: '',
 			br: '', 
@@ -240,7 +240,7 @@ const i18n = {
 
   sLogin: {    
     	connected: {
-			eng: 'connected',
+			eng: 's\'est connecté',
 			rus: 'присоединился',
 			ger: 'verbunden',
 			br: 'conectado', 
@@ -250,7 +250,7 @@ const i18n = {
 		},    
     
    		disconnected: {
-			eng: 'disconnected',
+			eng: 's\'est déconnecté',
 			rus: 'отключился',
 			ger: 'getrennt',
 			br: 'desconectou', 
@@ -270,7 +270,7 @@ const i18n = {
 		},
     
 		annouceSpawnVehicle: {
-			eng: 'Spawn a vehicle: /veh',
+			eng: 'Louer un scooter /veh',
 			rus: 'Создать транспорт: /veh',
 			ger: '',
 			br: 'Criar um veiculo: /veh', 
@@ -300,7 +300,7 @@ const i18n = {
 		},
 		
 		saveGame: {
-			eng: 'Account successfully saved!',
+			eng: 'Compte sauvegardé',
 			rus: 'Аккаунт сохранен!',
 			ger: 'Konto erfolgreich gespeichert!',
 			br: 'Conta salva com sucesso!', 
@@ -310,7 +310,7 @@ const i18n = {
 		}, 
     
     accNotexist: {
-			eng: 'This account doesnt exist',
+			eng: 'Ce compte n\'existe pas',
 			rus: '',
 			ger: '',
 			br: '', 
@@ -323,7 +323,7 @@ const i18n = {
 
 	sMoney: {
 		enterATM: {
-			eng: 'Press ~b~E ~s~to open ATM Menu',
+			eng: 'Appuyez sur ~b~E ~s~pour accéder à l\'ATM',
 			rus: 'Нажмите ~b~E ~s~для входа в меню банкомата',
 			ger: 'Drücken Sie ~b~ E ~s~, um das ATM-Menü zu öffnen',
 			br: 'Pressione ~b~E ~s~para abrir o menu do Caixa Eletrônico', 
@@ -333,7 +333,7 @@ const i18n = {
 		},
 
 		notEnoughCash: {
-			eng: 'Not enough cash',
+			eng: 'Pas assez d\'argent',
 			rus: 'Недостаточно наличных',
 			ger: 'Nicht genug Geld',
 			br: 'O dinheiro não é suficiente', 
@@ -343,7 +343,7 @@ const i18n = {
 		},
 
 		addBankMoney: {
-			eng: 'New payment',
+			eng: 'Nouveau paiement',
 			rus: 'Новый чек',
 			ger: 'Neue zahlung',
 			br: 'Novo pagamento', 
@@ -353,7 +353,7 @@ const i18n = {
 		},
 
 		payTaxOffline: {
-			eng: 'New tax payment',
+			eng: 'Nouveau paiement de taxe',
 			rus: 'Новый налоговый чек',
 			ger: 'Neue tax zahlung',
 			br: 'Novo pagamento de imposto', 
@@ -375,7 +375,7 @@ const i18n = {
 
 	sLoyality: {
 		loyality: {
-			eng: 'Loyality',
+			eng: 'Loyauté',
 			rus: 'Лояльность',
 			ger: '',
 			br: 'Fidelidade', 
@@ -387,7 +387,7 @@ const i18n = {
 
 	sChat: {
 		someone: {
-			eng: 'Someone',
+			eng: 'Quelqu'un',
 			rus: 'Неизвестный',
 			ger: 'Jemand',
 			br: 'Alguém', 
@@ -399,7 +399,7 @@ const i18n = {
 
 	sBusiness: {
 		alreadyHave: {
-			eng: 'You cant own more than 1 business',
+			eng: 'Vous ne pouvez pas posséder plus d\'1 business',
 			rus: 'Вы не можете иметь более 1 бизнеса',
 			ger: 'Sie können nicht mehr als 1 Geschäft besitzen',
 			br: 'Você não pode possuir mais de 1 negócio', 
@@ -409,7 +409,7 @@ const i18n = {
 		},
 
 		sale: {
-			eng: 'Business sale',
+			eng: 'Vente du business',
 			rus: 'Продажа бизнеса',
 			ger: 'Geschäftsverkauf',
 			br: 'Venda de negócios', 
@@ -422,7 +422,7 @@ const i18n = {
 
 	sVehicle: {
 		locked: {
-			eng: 'locked',
+			eng: 'verouillé',
 			rus: 'закрыт',
 			ger: 'gesperrt',
 			br: 'trancado', 
@@ -432,7 +432,7 @@ const i18n = {
 		},
 
 		unlocked: {
-			eng: 'unlocked',
+			eng: 'devérouillé',
 			rus: 'открыт',
 			ger: 'entsperrt',
 			br: 'destrancado', 
@@ -442,7 +442,7 @@ const i18n = {
 		},
     
 		helpUnlock: {
-			eng: 'Unlock: num +',
+			eng: 'Devérouiller num +',
 			rus: 'Открыть: num +',
 			ger: 'Entsperren: num +',
 			br: 'Destravar: num +', 
@@ -452,7 +452,7 @@ const i18n = {
 		},
 		
 		helpEngine: {
-			eng: 'Toggle engine: num 0',
+			eng: 'Allumer le moteur: num 0',
 			rus: 'Завести двигатель: num 0',
 			ger: 'Toggle-Engine: Nummer 0',
 			br: 'Ligar o motor: num 0', 
@@ -462,7 +462,7 @@ const i18n = {
 		},
 		
 		spawnedFaggio2: {
-			eng: 'Toggle engine: num 0',
+			eng: 'Allumer le moteur: num 0',
 			rus: 'Завести двигатель: num 0',
 			ger: 'Toggle-Engine: Nummer 0',
 			br: 'Ligar o motor: num 0', 
@@ -472,7 +472,7 @@ const i18n = {
 		},
 
 		sellVehicle: {
-			eng: 'Vehicle sell',
+			eng: 'Vente du véhicule',
 			rus: 'Продажа ТС',
 			ger: '',
 			br: '', 
@@ -482,7 +482,7 @@ const i18n = {
 		},
 
 		wantsSellVehicleToPlayer: {
-			eng: 'wants sell you a',
+			eng: 'veut vous vendre',
 			rus: 'хочет продать вам',
 			ger: '',
 			br: '', 
@@ -494,7 +494,7 @@ const i18n = {
 
 	sGasStation: {
 		offEngine: {
-			eng: 'Please turn off the engine',
+			eng: 'Veuillez éteindre le moteur',
 			rus: 'Пожалуйста, заглушите двигатель',
 			ger: 'Bitte schalte den Motor ab',
 			br: 'Por favor desligue o motor', 
@@ -504,7 +504,7 @@ const i18n = {
 		},
 
 		fuelPrice: {
-			eng: 'Price for litre',
+			eng: 'Prix du litre',
 			rus: 'Цена за литр',
 			ger: 'Preis pro Liter',
 			br: 'Preço por litro', 
@@ -514,7 +514,7 @@ const i18n = {
 		},
 
 		goodJourney: {
-			eng: 'Have a good journey',
+			eng: 'Passez un bon voyage!',
 			rus: 'Счастливого пути',
 			ger: 'Gute weiter Reise',
 			br: 'Tenha uma boa viagem', 
@@ -524,7 +524,7 @@ const i18n = {
 		},
 
 		passengersDropOff: {
-			eng: 'Please drop off passengers',
+			eng: 'Veuillez faire descendre les passagers',
 			rus: 'Пожалуйста, высадите пассажиров',
 			ger: '',
 			br: 'Por favor, deixe os passageiros', 
@@ -537,7 +537,7 @@ const i18n = {
 
 	sFaction: {
 		changeClothes: {
-			eng: 'to change clothes',
+			eng: 'pour changer de vêtements',
 			rus: 'чтобы переодеться',
 			ger: 'um die Kleidung zu wechseln',
 			br: 'trocar de roupa', 
@@ -547,7 +547,7 @@ const i18n = {
 		},
 
 		setNewRank: {
-			eng: 'You set new rank to player',
+			eng: 'Vous avez promu le joueur',
 			rus: 'Вы установили новый ранг игроку',
 			ger: 'Du hast dem Spieler einen neuen Rang zugewiesen',
 			br: 'Você definiu uma nova classificação para o jogador', 
@@ -557,7 +557,7 @@ const i18n = {
 		},
 
 		changedYourRank: {
-			eng: 'changed your rank to',
+			eng: 'a changé votre grade en',
 			rus: 'изменил(а) ваш ранг на',
 			ger: 'änderte deinen Rang in',
 			br: 'mudou sua classificação para', 
@@ -567,7 +567,7 @@ const i18n = {
 		},
 
 		invited: {
-			eng: 'invited you to',
+			eng: 'vous a invité',
 			rus: 'устроил(а) вас в',
 			ger: 'lud dich ein',
 			br: 'convidou você para', 
@@ -577,7 +577,7 @@ const i18n = {
 		},
 
 		leader: {
-			eng: 'Now you are leader in',
+			eng: 'Vous êtes maintenant leader de',
 			rus: 'Теперь вы лидер',
 			ger: 'Jetzt bist du Anführer',
 			br: 'Agora você é líder em', 
@@ -587,7 +587,7 @@ const i18n = {
 		},
 
 		uninvited: {
-			eng: 'uninvited you from',
+			eng: 'a annulé votre invitation',
 			rus: 'уволил(а) вас из',
 			ger: 'ungebeten von dir',
 			br: 'sem ser convidado de', 
@@ -599,7 +599,7 @@ const i18n = {
 
 	sHospital: {
 		needHelp: {
-			eng: 'You need a medical help',
+			eng: 'Vous avez besoin d\'assistance médicale',
 			rus: 'Вам нужна медицинская помощь',
 			ger: 'Sie brauchen eine medizinische Hilfe',
 			br: 'Você precisa de ajuda médica', 
@@ -609,7 +609,7 @@ const i18n = {
 		},
 
 		toStartHealing: {
-			eng: 'to start healing',
+			eng: 'pour commencer les soins',
 			rus: 'чтобы начать лечение',
 			ger: 'um zu heilen',
 			br: 'para começar a curar', 
@@ -629,7 +629,7 @@ const i18n = {
 		},
 
 		startedHealing: {
-			eng: 'You started healing process',
+			eng: 'Vous avez commencé le processus de soins',
 			rus: 'Вы начали лечение',
 			ger: 'Du hast den Heilungsprozess begonnen',
 			br: 'Você começou o processo de tratamento', 
@@ -639,7 +639,7 @@ const i18n = {
 		},
 
 		finishedHealing: {
-			eng: 'You finished healing process',
+			eng: 'Vous avez terminé le processus de soins',
 			rus: 'Вы завершили лечение',
 			ger: 'Du hast den Heilungsprozess beendet',
 			br: 'Você terminou o processo de cicatrização', 
@@ -649,7 +649,7 @@ const i18n = {
 		},
 
 		isntHealing: {
-			eng: 'isnt healing right now',
+			eng: 'n\'est pas soigné actuellement',
 			rus: 'не записан на лечение',
 			ger: 'ist nicht gerade in der Heilung',
 			br: 'não está curando agora', 
@@ -659,7 +659,7 @@ const i18n = {
 		},
 
 		youArentHealing: {
-			eng: 'Youre not healing right now',
+			eng: 'Vous ne vous soignez pas actuellement',
 			rus: 'Вы не записаны на лечение',
 			ger: 'Du heilst gerade nicht',
 			br: 'Você não está curando agora', 
@@ -669,7 +669,7 @@ const i18n = {
 		},
 
 		wantsIncreaseHealing: {
-			eng: 'Wants increase healing speed',
+			eng: 'Veut accelérer les soins',
 			rus: 'Предлагает увеличить скорость лечения',
 			ger: 'Will die Heilungsgeschwindigkeit erhöhen',
 			br: 'Quer aumentar a velocidade de cicatrização', 
@@ -679,7 +679,7 @@ const i18n = {
 		},
 
 		wantsHeal: {
-			eng: 'Wants heal you',
+			eng: 'Veut vous soigner',
 			rus: 'Предлагает вылечить вас',
 			ger: 'Will dich heilen',
 			br: 'Quer curar você', 
@@ -760,7 +760,7 @@ const i18n = {
 
 	sCBDeliveryMen: {
 		invite: {
-			eng: 'Press ~b~E ~s~to start work as a Delivery Men',
+			eng: 'Appuyez sur ~b~E ~s~pour commencer le travail de Livreur',
 			rus: 'Нажмите ~b~E~s~, чтобы устроиться курьером в Clickin Bell',
 			ger: 'Drücken Sie ~b~ E ~s~, um mit der Arbeit als Delivery Men zu beginnen',
 			br: 'Pressione ~b~E~s~, para começar a trabalhar como entregador', 
@@ -770,7 +770,7 @@ const i18n = {
 		},
 
 		uninvite: {
-			eng: 'Press ~b~E ~s~to finish work as a Delivery Men',
+			eng: 'Appuyez ~b~E ~s~pour quitter votre service de Livreur',
 			rus: 'Нажмите ~b~E~s~, чтобы уволиться из Clickin Bell',
 			ger: 'Drücken Sie ~b~ E ~s~, um die Arbeit als Delivery Men abzuschließen',
 			br: 'Pressione ~b~E~s~, para encerrar o trabalho como entregador', 
@@ -780,7 +780,7 @@ const i18n = {
 		},
 
 		cantGetNewOrder: {
-			eng: 'You cant get new order',
+			eng: 'Vous ne pouvez pas prendre une nouvelle commande',
 			rus: 'Вы не можете взять другой заказ',
 			ger: 'Du kannst keine neue Bestellung bekommen',
 			br: 'Você não pode conseguir um novo pedido', 
@@ -790,7 +790,7 @@ const i18n = {
 		},
 
 		getNewOrder: {
-			eng: 'Press ~b~E ~s~to get a new order',
+			eng: 'Appuyez sur ~b~E ~s~pour prendre une nouvelle commande',
 			rus: 'Нажмите ~b~E~s~, чтобы взять новый заказ',
 			ger: 'Drücken Sie ~b~ E ~s~, um eine neue Reihenfolge zu erhalten',
 			br: 'Pressione ~b~E~s~, para pegar um novo pedido', 
@@ -800,7 +800,7 @@ const i18n = {
 		},
 
 		haveUndeliveredOrder: {
-			eng: 'You have undelivered order! You will pay $500 finishing right now!',
+			eng: 'Vous paierez 500$ si vous finissez maintenant!',
 			rus: 'У вас есть недоставленный заказ! Вам выпишут штраф $500, если вы уволитесь прямо сейчас!',
 			ger: 'Sie haben die Bestellung nicht zugestellt! Sie werden jetzt $500 bezahlen!',
 			br: 'Você tem ordem não entregue! Você vai pagar $500 terminando agora!', 
@@ -853,7 +853,7 @@ const i18n = {
 
 	sMenu: {
 		wrongOldPass: {
-			eng: 'You entered wrong old password',
+			eng: 'Vous avez entré un mot de passe incorrect',
 			rus: 'Вы ввели неправильный старый пароль',
 			ger: '',
 			br: '', 
