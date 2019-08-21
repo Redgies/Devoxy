@@ -96,6 +96,7 @@
     display: flex;
     justify-content: space-around;
     transition: 0.3s;
+    margin-bottom: 10px;
  }
  
  .buy:hover {
