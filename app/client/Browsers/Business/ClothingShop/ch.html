@@ -26,6 +26,11 @@
                 {{ colorText }} {{ currentCloth.color }}
                 <div class="arrow r-arrow" @click="nextColor">></div>
             </div>
+            <div class="item b name" v-if="currentTitle == 'Tops'">
+                <div class="arrow l-arrow" @click="nextUnderColor"><</div>
+                Undershit {{ currentCloth.undercolor }}
+                <div class="arrow r-arrow" @click="prevUnderColor">></div>
+            </div>
 
             <div class="item b buy" @click="buy">
                 <div> {{ buyText }}</div>
@@ -408,7 +413,7 @@
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
             {
                 id: 4,
@@ -419,7 +424,7 @@
                 torso: 6,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
             {
                 id: 5,
@@ -441,7 +446,7 @@
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
             {
                 id: 7,
@@ -452,7 +457,7 @@
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
             {
                 id: 8,
@@ -493,10 +498,10 @@
                 color: 0,
                 colors: [0, 1],
                 price: 900,
-                torso: 15,
+                torso: 11,
                 undershirt: 6,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
             {
                 id: 12,
@@ -558,10 +563,10 @@
                 color: 0,
                 colors: [0, 1],
                 price: 900,
-                torso: 14,
+                torso: 12,
                 undershirt: 31,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },{
                 id: 20,
                 name: "Veste élégante 2",
@@ -571,7 +576,7 @@
                 torso: 14,
                 undershirt: 31,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
             {
                 id: 25,
@@ -580,9 +585,9 @@
                 colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
                 price: 900,
                 torso: 15,
-                undershirt: 10,
+                undershirt: 33,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
             {
                 id: 27,
@@ -593,7 +598,7 @@
                 torso: 14,
                 undershirt: 2,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
             {
                 id: 29,
@@ -602,9 +607,9 @@
                 colors: [0, 1, 2, 3, 4, 5, 6, 7],
                 price: 900,
                 torso: 14,
-                undershirt: 23,
+                undershirt: 25,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
             {
                 id: 33,
@@ -626,7 +631,7 @@
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },{
                 id: 38,
                 name: "T-Shirt long",
@@ -712,7 +717,7 @@
                 torso: 14,
                 undershirt: 2,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },{
                 id: 70,
                 name: "Manteau de fourrure",
@@ -722,7 +727,7 @@
                 torso: 14,
                 undershirt: 0,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
             {
                 id: 72,
@@ -733,7 +738,7 @@
                 torso: 14,
                 undershirt: 10,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },{
                 id: 73,
                 name: "T-Shirt à motifs",
@@ -750,10 +755,10 @@
                 color: 0,
                 colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 price: 900,
-                torso: 14,
+                torso: 12,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },{
                 id: 75,
                 name: "Veste à motifs fermée",
@@ -773,7 +778,7 @@
                 torso: 14,
                 undershirt: 5,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },
             {
                 id: 78,
@@ -1080,7 +1085,7 @@
                 torso: 14,
                 undershirt: 1,
                 underColor: 0,
-                underColors: [0],
+                underColors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             },{
                 id: 168,
                 name: "Veste à capuche",
