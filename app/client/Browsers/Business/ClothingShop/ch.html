@@ -3,10 +3,8 @@
 <link rel="stylesheet" href="ch.css">
 <script src="../../vue.js"></script>
 <body>
-<div id="app">
-    <div class="b1">
-        <div class="item title">{{ titleText }} №{{ id }}</div>
-        <div class="item"></div>
+    <div class="b1" id="app">
+        <div class="b1-title">{{ titleText }} №{{ id }}</div>
         <div class="item buttons" @click="showHats">{{ hatsText }}</div>
         <div class="item buttons" @click="showGlasses">{{ glassesText }}</div>
         <div class="item buttons" @click="showEars">{{ earsText }}</div>
