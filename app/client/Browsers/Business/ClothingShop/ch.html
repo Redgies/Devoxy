@@ -229,6 +229,7 @@
                     title: this.currentTitle,
                     number: this.currentNum,
                     color: this.currentCloth.color,
+                    torso: this.currentCloth.torso,
                     underColor: this.currentCloth.underColor,
                 }
                 mp.trigger("cMisc-CallServerEvent", "sClothes-SetCloth", JSON.stringify(obj));
