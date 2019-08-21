@@ -55,6 +55,7 @@ class PlayerSingleton {
         player.updateName();
 
         player.working = false;
+        player.hideHud = false;
         
         player.health = d[0].health;
         player.pWeapons = JSON.parse(d[0].weapons);

@@ -2,7 +2,7 @@ const invAPI = require("../3rd/inventory.js");
 const misc = require('../sMisc');
 
 const braquageData = [
-    {id: 1, name: 'Superette', model: 351, price: 6000, pos: {x: 28.221, y: -1339.338, z: 351.497}, color: 1, time: 45, text: 'Braquage en cours à la ~r~superette rouge~w~.'},
+    {id: 1, name: 'Superette', model: 351, price: 6000, pos: {x: 28.841, y: -1339.444, z: 29.497}, color: 1, time: 45, text: 'Braquage en cours à la ~r~superette rouge~w~.'},
     {id: 2, name: 'Superette', model: 351, price: 6000, pos: {x: -43.87, y: -1749.139, z: 29.421}, color: 3, time: 45, text: 'Braquage en cours à la ~b~superette bleue~w~.'},
     {id: 3, name: 'Superette', model: 351, price: 6000, pos: {x: -709.421, y: -904.421, z: 19.216}, color: 2, time: 45, text: 'Braquage en cours à la ~g~superette verte~w~.'}, 
     {id: 4, name: 'Superette', model: 351, price: 6000, pos: {x: 1159.85, y: -313.997, z: 69.205}, color: 5, time: 45, text: 'Braquage en cours à la ~y~superette jaune~w~.'} ,

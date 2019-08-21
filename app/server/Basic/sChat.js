@@ -3,7 +3,7 @@ const i18n = require('../sI18n');
 const misc = require('../sMisc');
 const Faction = require('../Factions/sFaction.js');
 const graylog = require('../sGraylog');
-const time = require('./sTime');
+const time = require('./sTime');t
 const clothes = require('../Character/sClothes');
 
 class ChatSingleton {
@@ -225,10 +225,18 @@ class ChatSingleton {
 					misc.log.debug(`${player.name} started admin mode`);
 				}	
 			},
-
 			'sap': (player, fullText, arg1, arg2, arg3, arg4) => {
 				player.notify("Changement de sappe !");
 				player.setClothes(parseInt(arg1), parseInt(arg2), parseInt(arg3), parseInt(arg4));
+			},
+
+			'hidehud': (player, fullText) => {
+				player.hideHud = !player.hideHud;
+
+				if(player.hideHud)
+					player.call("cHide-HUD");
+				else 
+					player.call("cShow-HUD");
 			},
 
 			'kill': (player, fullText, arg1) =>	{
