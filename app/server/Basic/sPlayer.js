@@ -373,6 +373,10 @@ mp.events.add("pointingStop", (player) => {
     player.stopAnimation();
 });
 
+mp.events.add('radiochange', (player, vehicle_data) => {
+    player.vehicle.setVariable('radio', vehicle_data);
+});  
+
 mp.events.add({
     "playerDeath" : (player, reason, killer) => {
         player.call("cMisc-CallServerEvenWithTimeout", ["sHospital-SpawnAfterDeath", 10000]);
