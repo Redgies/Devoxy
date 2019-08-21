@@ -94,6 +94,8 @@ mp.events.add({
     player.setInvincible(global.fly.flying);
     player.freezePosition(global.fly.flying);
 
+    player.setVisible(false, false);
+
     // player.alpha = global.fly.flying ? 0 : 255;
 
     mp.players.forEach(p => {
