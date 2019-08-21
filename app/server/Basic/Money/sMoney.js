@@ -103,7 +103,7 @@ mp.events.addCommand({
 		misc.log.info(`${admin.name} give ${player.name} ${+value}$`);
 	},
 	'getmoney' : (player, fullText, id) => {
-		if (admin.adminLvl < 1) return;
+		if (player.adminLvl < 1) return;
 		const target = mp.players.at(+id);
 		if (!target) return player.notify("~r~Ce joueur n'est pas connecté.");
 
