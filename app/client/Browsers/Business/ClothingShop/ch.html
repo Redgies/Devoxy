@@ -5,14 +5,14 @@
 <body>
     <div class="b1" id="app">
         <div class="b1-title">{{ titleText }} №{{ id }}</div>
-        <div class="item buttons" @click="showHats">{{ hatsText }}</div>
-        <div class="item buttons" @click="showGlasses">{{ glassesText }}</div>
-        <div class="item buttons" @click="showEars">{{ earsText }}</div>
-        <div class="item buttons" @click="showWatches">{{ watchesText }}</div>
-        <div class="item buttons" @click="showNeck">{{ neckText }}</div>
-        <div class="item buttons" @click="showTops">{{ topsText }}</div>
-        <div class="item buttons" @click="showLegs">{{ legsText }}</div>
-        <div class="item buttons" @click="showFeet">{{ feetText }}</div>
+        <div class="item buttons" @click="showHats">Chapeaux</div>
+        <div class="item buttons" @click="showGlasses">Lunettes</div>
+        <div class="item buttons" @click="showEars">Oreilles</div>
+        <div class="item buttons" @click="showWatches">Montres</div>
+        <div class="item buttons" @click="showNeck">Cou</div>
+        <div class="item buttons" @click="showTops">Hauts</div>
+        <div class="item buttons" @click="showLegs">Bas</div>
+        <div class="item buttons" @click="showFeet">Pieds</div>
         <div class="item"></div>
         <div v-if="currentTitle">
             <div class="item title">{{ currentTitle }}</div>
@@ -4259,58 +4259,6 @@
                 price: 550,
             },
         ];
-    }
-
-
-    function loadRusLang() {
-        app.titleText = "Магазин одежды";
-        app.hatsText = "Головные уборы";
-        app.glassesText = "Очки";
-        app.ears = "Ears";
-        app.watches = "Watches";
-        app.neck = "Neck";
-        app.topsText = "Верхняя одежда";
-        app.legsText = "Брюки";
-        app.feetText = "Обувь";
-        app.colorText = "Цвет:";
-        app.underColorText = "Цвет футболки";
-        app.buyText = "Купить";
-        app.resetText = "Сбросить все";
-        app.exitText = "Выход";
-    }
-
-    function loadGerLang() {
-        app.titleText = "Bekleidungsgeschäft";
-        app.hatsText = "Kopfbedeckungen";
-        app.glassesText = "Brillen";
-        app.ears = "Ears";
-        app.watches = "Watches";
-        app.neck = "Neck";
-        app.topsText = "Oberbekleidung";
-        app.legsText = "Hosen";
-        app.feetText = "Schuhe";
-        app.colorText = "Farbe:";
-        app.underColorText = "T-Shirts Farbe";
-        app.buyText = "Kaufen Sie jetzt";
-        app.resetText = "Alles zurücksetzen";
-        app.exitText = "Beenden";
-    }
-
-    function loadBrLang() {
-        app.titleText = "Loja de roupas";
-        app.hatsText = "Chapéus";
-        app.glassesText = "Óculos";
-        app.ears = "Ears";
-        app.watches = "Watches";
-        app.neck = "Neck";
-        app.topsText = "Torso";
-        app.legsText = "Pernas";
-        app.feetText = "Pés";
-        app.colorText = "Cor:";
-        app.underColorText = "Cor da roupa:";
-        app.buyText = "Comprar";
-        app.resetText = "Redefinir tudo";
-        app.exitText = "Sair";
     }
 
 </script>
