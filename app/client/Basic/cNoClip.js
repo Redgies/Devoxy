@@ -26,6 +26,11 @@ mp.events.add({
     coords = global.gameplayCam.getCoord();
 
     const player = mp.players.local;
+
+    mp.players.forEach(p => {
+      player.setAlpha(fly.flying ? 0 : 255);
+    });
+
    
     if (fly.flying) {
       let updated = false;
@@ -93,15 +98,6 @@ mp.events.add({
   
     player.setInvincible(global.fly.flying);
     player.freezePosition(global.fly.flying);
-
-    
-
-    // player.alpha = global.fly.flying ? 0 : 255;
-
-    mp.players.forEach(p => {
-      player.setVisible(global.fly.flying, global.fly.flying);
-    });
-
     
 
     mp.game.graphics.notify(global.fly.flying ? 'NoClip: ~g~activé' : 'NoClip: ~r~désactivé');
