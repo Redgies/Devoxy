@@ -175,7 +175,7 @@ class ClothesSingletone {
                 colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
                 price: 900,
                 torso: 14,
-                undershirt: 15,
+                undershirt: 5,
                 underColor: 0,
                 underColors: [0],
             },
@@ -183,31 +183,31 @@ class ClothesSingletone {
                 id: 4,
                 name: "Veste 2",
                 color: 0,
-                colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                colors: [0, 1, 2, 3, 4],
                 price: 900,
                 torso: 14,
-                undershirt: 15,
+                undershirt: 5,
                 underColor: 0,
                 underColors: [0],
             },
             {
                 id: 5,
-                name: "5",
+                name: "Marcel",
                 color: 0,
-                colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                colors: [0, 1, 2, 3],
                 price: 900,
-                torso: 0,
+                torso: 2,
                 undershirt: 15,
                 underColor: 0,
                 underColors: [0],
             },
             {
                 id: 6,
-                name: "6",
+                name: "Veste en cuir",
                 color: 0,
-                colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
                 price: 900,
-                torso: 0,
+                torso: -1,
                 undershirt: 15,
                 underColor: 0,
                 underColors: [0],
@@ -4079,6 +4079,7 @@ class ClothesSingletone {
             player.setClothes(7, this.manNeck[d.number].id, d.color, 0);
         } else if (title === "Tops") {
             player.setClothes(11, this.manTops[d.number].id, d.color, 0);
+            player.outputChatBox("torso : " + this.manTops[d.number].torso);
             player.setClothes(3, this.manTops[d.number].torso, 0, 0);
             player.setClothes(8, this.manTops[d.number].undershirt, d.underColor, 0);
         } else if (title === "Legs") {
