@@ -387,7 +387,7 @@ const i18n = {
 
 	sChat: {
 		someone: {
-			eng: 'Quelqu'un',
+			eng: 'Quelqu\'un',
 			rus: 'Неизвестный',
 			ger: 'Jemand',
 			br: 'Alguém', 
