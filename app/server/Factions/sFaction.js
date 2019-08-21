@@ -138,9 +138,11 @@ class Faction {
 				player.resetAllWeapons();
 				
 			this.setWorking(player, false);
+			player.notify("Vous arrêtez votre service.");
 			player.armour = 0;
 			return clothes.loadPlayerClothes(player);
 		}
+		player.notify("Vous prenez votre service.");
 		this.setWorking(player, true);
 		if(player.model === 1885233650) this.changeClothesMan(player);
 		else this.changeClothesWoman(player);
