@@ -1744,17 +1744,17 @@ class ClothesSingletone {
         ];
 
         this.womanHats = [
-            {id: 7, name: "Beret", color: 0, colors: [1,2,3,4,5,6,7], price: 500,},
-            {id: 12, name: "Bonnet", color: 0, colors: [1,2,3,4,5,6,7], price: 500,},
-            {id: 13, name: "Chapeau de paille", color: 0, colors: [0], price: 500,},
-            {id: 21, name: "Bob", color: 0, colors: [1,2,3,4,5], price: 500,},
-            {id: 22, name: "Chapeau de paille", color: 0, colors: [0], price: 500,},
-            {id: 26, name: "Haut de forme", color: 0, colors: [1,2,3,4,5], price: 500,},
-            {id: 43, name: "Casquette 1", color: 0, colors: [1,2,3,4,5], price: 500,},
-            {id: 44, name: "Casquette à l'envers", color: 0, colors: [1,2,3,4,5], price: 500,},
-            {id: 53, name: "Casquette 2", color: 0, colors: [1,2,3,4,5], price: 500,},
-            {id: 61, name: "Chapeau 1", color: 0, colors: [1,2,3,4,5,6], price: 500,},
-            {id: 83, name: "Casque Punk", color: 0, colors: [0], price: 500,},		
+            {id: 7, name: "Beret", color: 0, colors: [1,2,3,4,5,6,7], price: 500},
+            {id: 12, name: "Bonnet", color: 0, colors: [1,2,3,4,5,6,7], price: 500},
+            {id: 13, name: "Chapeau de paille", color: 0, colors: [0], price: 500},
+            {id: 21, name: "Bob", color: 0, colors: [1,2,3,4,5], price: 500},
+            {id: 22, name: "Chapeau de paille", color: 0, colors: [0], price: 500},
+            {id: 26, name: "Haut de forme", color: 0, colors: [1,2,3,4,5], price: 500},
+            {id: 43, name: "Casquette 1", color: 0, colors: [1,2,3,4,5], price: 500},
+            {id: 44, name: "Casquette à l'envers", color: 0, colors: [1,2,3,4,5], price: 500},
+            {id: 53, name: "Casquette 2", color: 0, colors: [1,2,3,4,5], price: 500},
+            {id: 61, name: "Chapeau 1", color: 0, colors: [1,2,3,4,5,6], price: 500},
+            {id: 83, name: "Casque Punk", color: 0, colors: [0], price: 500},		
         ];
 
         this.womanGlasses = [

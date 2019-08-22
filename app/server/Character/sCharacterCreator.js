@@ -68,6 +68,8 @@ class CharCreator {
 		else if (d[0].gender === 'w') player.model = 2147483647;
 		this.setBody(player, d[0].skindata);
 		this.setFace(player, d[0].facedata);
+
+		player.notify("genre : " + d[0].gender + " playermodel : " + player.model);
 	}
 
 	setBody(player, strJSON) {
