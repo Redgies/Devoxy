@@ -65,7 +65,7 @@ class CharCreator {
 		const d = await misc.query(`SELECT * FROM usersBody WHERE id = '${player.guid}'`);
 		if (!d[0].gender) return this.openMenu(player);
 		if (d[0].gender === 'm') player.model = 1885233650;
-		else if (d[0].gender === 'w') player.model = 2147483647;
+		else if (d[0].gender === 'w') player.model = 2627665880;
 		this.setBody(player, d[0].skindata);
 		this.setFace(player, d[0].facedata);
 
