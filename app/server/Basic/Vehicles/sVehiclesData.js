@@ -16,7 +16,7 @@ class VehiclesDataSingleton {
             {   model: "chino2",        title: "Chino Custom",        fuelTank: 65,   fuelRate: 200,  price: 160000,   },
             {   model: "serrano",       title: "Serrano",        fuelTank: 60,   fuelRate: 150,  price: 210000,  },
 			{   model: "rancherxl",     title: "RancherXL",        fuelTank: 80,   fuelRate: 230,  price: 210000,  },
-			{   model: "surge",     	title: "Tesla Surge",        fuelTank: 40,   fuelRate: 40,  price: 250000,  },
+			{   model: "surge",     	title: "Tesla S",        fuelTank: 40,   fuelRate: 40,  price: 250000,  },
             {   model: "buccaneer",     title: "Buccaneer",          fuelTank: 75,   fuelRate: 180,  price: 260000,  },
             {   model: "glendale",      title: "Glendale",       fuelTank: 60,   fuelRate: 160,  price: 270000,  },
             {   model: "radi",          title: "Radius",              fuelTank: 50,   fuelRate: 180,  price: 290000,  },
@@ -41,6 +41,8 @@ class VehiclesDataSingleton {
             {   model: "toros",         title: "Toros",             fuelTank: 55,   fuelRate: 320,  price: 1450000,  },
             {   model: "fmj",           title: "FMJ",                 fuelTank: 60,   fuelRate: 300,  price: 1800000,  },
 			{   model: "zentorno",      title: "Zentorno",          fuelTank: 55,   fuelRate: 300,  price: 2000000,  },
+			{   model: "tezeract",      title: "Tesla T",          fuelTank: 80,   fuelRate: 50,  price: 650000,   },
+			{   model: "raiden",        title: "Tesla R",          fuelTank: 80,   fuelRate: 50,  price: 650000,   },
 
 			{   model: "brioso",         title: "Brioso",          fuelTank: 40,   fuelRate: 120,  price: 350000,   },
 			{   model: "baller6",         title: "Baller blindé",          fuelTank: 80,   fuelRate: 150,  price: 350000,   },
@@ -50,7 +52,6 @@ class VehiclesDataSingleton {
 			{   model: "infernus",           title: "Infernus",                 fuelTank: 60,   fuelRate: 300,  price: 1900000,  },
 			{   model: "adder",           title: "Adder",                 fuelTank: 80,   fuelRate: 280,  price: 2200000,  },
 			{   model: "emerus",           title: "Emerus",                 fuelTank: 80,   fuelRate: 280,  price: 2400000,  },
-	
 
 			{	model: "mule",			title: "Maibatsu Mule",				fuelTank: 160,	fuelRate: 20,	price: 35000,	},
 			{	model: "mule2",			title: "Maibatsu Mule 2",			fuelTank: 200,	fuelRate: 25,	price: 50000,	},
