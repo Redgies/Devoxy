@@ -434,12 +434,15 @@
                     }
                     if(this.currentTab == 50) {
                         this.currentLi--;
+                        this.scrollToTop("contacts");
 
                         if (this.currentLi <= 0)
                             this.currentLi = 0;
                     }
                     if(this.currentTab == 51) {
                         this.currentLi--;
+
+                        this.scrollToBottom("contacts");
 
                         if (this.currentLi <= 0)
                             this.currentLi = 0;
