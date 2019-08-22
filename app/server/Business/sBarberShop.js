@@ -25,8 +25,6 @@ class ClothingShop extends business {
 		if (player.model === 1885233650) execute = `app.loadMans();`;
 		else execute = `app.loadWomans();`;
 
-		console.log("execute : " + execute);
-
 		execute += `app.id = ${this.id};`;
 		execute += `app.margin = ${this.margin};`;
 		execute += `app.camRotation = ${player.heading};`;
