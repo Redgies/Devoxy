@@ -31,7 +31,7 @@ async function loadShops() {
 		new CommercialCarDealership(d[i]);
 	}
 }
-loadShops();
+// loadShops();
 
 
 mp.events.addCommand({
