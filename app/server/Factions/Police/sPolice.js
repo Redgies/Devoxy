@@ -333,8 +333,6 @@ class Police extends faction {
         if(!this.isWorking(player))
             return player.notify("~r~Vous devez être en service.");
 
-        player.resetAllWeapons();
-
         let execute = `app.rank = ${player.rank};`;
         execute += `app.coderouge = ${this.codeRouge};`;
 
