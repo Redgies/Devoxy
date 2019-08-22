@@ -57,6 +57,7 @@ class Faction {
 				if(!this.isInThisFaction(player) || !this.isFactionLeader(player) || !this.isInThisFaction(target)) return;
 
 				target.rank = parseInt(rank);
+				target.call("cFaction-Update", [target.faction]);
 
 				player.notify(`~g~Vous passez ${target.name} au rang de ${this.ranks[target.rank - 1]}.`);
 				target.notify(`~g~${player.name} vous a passé au rang de ${this.ranks[target.rank - 1]}.`);				

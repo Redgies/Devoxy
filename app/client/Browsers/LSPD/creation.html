@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+        <div class="panel">
+            <div class="panel-head">
+                <h1>Armurerie LSPD</h1>
+                <div class="close" @click="exit">X</div>
+            </div>
+            <div class="panel-body" style="background: #fff;">
+                <a class="walk-style" @click="buyWeapon(0x1B06D571)" v-if="rank >= 1">
+                    Pistolet
+                </a>
+                <a class="walk-style" @click="buyWeapon(0x99AEEB3B)" v-if="rank >= 6">
+                    Desert Eagle
+                </a>
+                <a class="walk-style" @click="buyWeapon(0x3656C8C1)" v-if="rank >= 1">
+                    Tazer
+                </a>
+                <a class="walk-style" @click="buyWeapon(0x678B81B1)" v-if="rank >= 1">
+                    Matraque
+                </a>
+                <a class="walk-style" @click="buyWeapon(0x8BB05FD7)" v-if="rank >= 2">
+                    Lampe torche
+                </a>
+                <a class="walk-style" @click="buyWeapon(0x0C472FE2)" v-if="rank >= 5">
+                    Sniper
+                </a>
+                <a class="walk-style" @click="buyWeapon(0x1D073A89)" v-if="rank >= 4">
+                    Fusil à pompe
+                </a>
+                <a class="walk-style" @click="buyWeapon(0xC0A3098D)" v-if="rank >= 5">
+                    Carabine spéciale
+                </a>
+                <a class="walk-style" @click="buyWeapon(0x2BE6766B)" v-if="rank >= 2">
+                    MP5
+                </a>
+                <a class="walk-style" @click="buyWeapon('munitions')" v-if="rank >= 1"> 
+                    Bôite de munitions
+                </a>
+            </div>
+        </div>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+    const app = new Vue({
+    el: '#app',
+    data: {
+        rank: 1,
+        coderouge: 0,
+    },
+    methods: {
+        exit: function () {
+            mp.trigger("cCloseCef");
+        }, 
+        buyWeapon: function (hash, price) {
+            const data = {
+                hash: hash,
+            };
+
+            mp.trigger("cMisc-CallServerEvent", "sLSPD-buyWeapon", JSON.stringify(data));
+            this.exit();
+        },
+    }
+});
+</script>

@@ -5,7 +5,7 @@ const i18n = require('../../sI18n');
 
 class MoneySingletone {
 	async createNewUser(id) {
-		await misc.query(`INSERT INTO usersMoney (id, cash, fines) VALUES ('${id}', '1500', '[]');`);
+		await misc.query(`INSERT INTO usersMoney (id, cash, fines) VALUES ('${id}', '5000', '[]');`);
 	}
 
 	async loadUser(player) {

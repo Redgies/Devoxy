@@ -63,10 +63,10 @@ class ClothingShop extends business {
 
 	getPrice(d) {
 		let price;
-		if (misc.isValueNumber(d.hairStyle)) price = 2500;
-		else if (misc.isValueNumber(d.hairCol1) && misc.isValueNumber(d.hairCol2)) price = 1500;
-		else if (misc.isValueNumber(d.browStyle) && misc.isValueNumber(d.browOp)) price = 1000;
-		else if (misc.isValueNumber(d.beardStyle) && misc.isValueNumber(d.beardOp)) price = 500;
+		if (misc.isValueNumber(d.hairStyle)) price = 900;
+		else if (misc.isValueNumber(d.hairCol1) && misc.isValueNumber(d.hairCol2)) price = 900;
+		else if (misc.isValueNumber(d.browStyle) && misc.isValueNumber(d.browOp)) price = 900;
+		else if (misc.isValueNumber(d.beardStyle) && misc.isValueNumber(d.beardOp)) price = 900;
 		return price;
 	}
 

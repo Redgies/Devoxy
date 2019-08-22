@@ -296,8 +296,8 @@
             },
         },
         created() {
-            // this.updatePlayerMessages();
-            // this.timer = setInterval(this.updatePlayerMessages, 1500);
+            this.updatePlayerMessages();
+            this.timer = setInterval(this.updatePlayerMessages, 1500);
 
             window.addEventListener('keydown', (e) => {
                 if (e.key == 'Backspace') {

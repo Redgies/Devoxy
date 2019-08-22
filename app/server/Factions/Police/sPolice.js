@@ -63,6 +63,8 @@ class Police extends faction {
         this.createCellulesPoint(factionData.cellulesPoint);
         this.createCautionPoint(factionData.cautionPoint);
         this.createBlip();
+
+        this.codeRouge = 0;
     }
 
     createBlip()
@@ -184,6 +186,21 @@ class Police extends faction {
                 if(player.canTakeWeapon)
                     this.takeWeapons(player);
             },
+            "sLSPD-buyWeapon" : (player, data) => {
+                if(!player.loggedIn || !this.isInThisFaction(player)) return;
+
+                const d = JSON.parse(data);
+
+                if(d.hash == 'munitions')
+                {
+                    player.giveItem("item_munitions", "Boîte de Munitions", 1);
+                    player.notify(`Vous avez récupéré une boîte de munitions.`);
+                    return 1;
+                }
+
+                player.setWeapon(d.hash, 50);
+                player.notify("Nouvelle arme équipée.");
+            }
         });
     }
 
@@ -301,25 +318,10 @@ class Police extends faction {
 
         player.resetAllWeapons();
 
-        player.setWeapon(0x678B81B1, 1);
-        player.setWeapon(0x3656C8C1, 100);
+        let execute = `app.rank = ${player.rank};`;
+        execute += `app.coderouge = ${this.codeRouge};`;
 
-        if(player.rank == 1)
-        {
-            player.setWeapon(0x1B06D571, 150);
-        }
-        if(player.rank >= 2)
-        {
-            player.setWeapon(0x99AEEB3B, 150);
-        }
-        if(player.rank >= 4)
-        {
-            player.setWeapon(0x1D073A89, 100);
-        }
-        if(player.rank >= 6)
-        {
-            player.setWeapon(0xEFE7E2DF, 300);
-        }
+        player.call("cLSPD-Open", [execute]);
     }
 
     changeClothesMan(player) {

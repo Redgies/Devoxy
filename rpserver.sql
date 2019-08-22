@@ -195,7 +195,7 @@ CREATE TABLE `usersJail` (
 
 CREATE TABLE `usersMoney` (
   `id` int(255) NOT NULL,
-  `cash` bigint(255) NOT NULL DEFAULT '1500',
+  `cash` bigint(255) NOT NULL DEFAULT '5000',
   `bank` bigint(255) NOT NULL DEFAULT '0',
   `tax` bigint(255) NOT NULL DEFAULT '0',
   `fines` text
