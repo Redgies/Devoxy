@@ -27,63 +27,36 @@
                         <span>{{ car.fuelRate }}L / 100 km</span>
                     </div>
                 </div>
-                <a class="veh-item" @click="car.buy = !car.buy" :class="[{ lefted: car.buy }]">
+                <a class="veh-item">
                     <span @click="buyCar(car.model)">Acheter</span>
                 </a>
             </div>
         </div>
-        <!-- <div v-for="car in cars" :style="{ 'background': 'url(img/' + car.model + '.jpg) #b2bec3', 'background-size': 'contain', 'background-position': 'center', 'background-repeat': 'no-repeat'}" class="item">
-            <div class="item-bg-color" @mouseover="car.hideText = false" @mouseout="car.hideText = true">
-                <table class="item-table" :class="{ hideText: car.hideText }" border="0" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td>{{ modelText }}</td>
-                        <td class="right">{{ car.title }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ fuelTankText }}</td>
-                        <td class="right">{{ car.fuelTank }} L</td>
-                    </tr>
-                    <tr>
-                        <td>{{ fuelRateText }}</td>
-                        <td class="right">{{ car.fuelRate }} L/100 km</td>
-                    </tr>
-                    <tr class="buy" @click="buyCar(car.model)">
-                        <td>{{ priceText }}</td>
-                        <td class="right price">{{ prettify(car.price + car.price * margin / 400) }}</td>
-                    </tr>
-                </table>
+        <div class="item" v-for="car of vips">
+            <img :src="'img/' + car.model + '.jpg'">
+            <div class="item-info">
+                <div class="model">{{ car.title }}</div>
+                <div class="veh-info_props">
+                    <div class="veh-info_prop">
+                        <img src="../../Menu/img/fuel.png">
+                        <span>{{ car.fuelTank }} L</span>
+                    </div>
+                    <div class="veh-info_prop">
+                        <img src="../../Menu/img/price-tag.png">
+                        <span style="color: #00b894;">${{ prettify(car.price + car.price * margin / 400) }}</span>
+                    </div>
+                    <div class="veh-info_prop">
+                        <img src="../../Menu/img/motor.png">
+                        <span>{{ car.fuelRate }}L / 100 km</span>
+                    </div>
+                </div>
+                <a class="veh-item">
+                    <span @click="buyCar(car.model)">Acheter</span>
+                </a>
             </div>
-        </div> -->
+        </div>
     </div>
 </div>
-<!-- <div id="app">
-    <div class="b3-close" id="close-button" @click="exit">X</div>
-    <div class="title" id="id">{{ title }} №{{ id }}</div>
-    <div class="content">
-       <div v-for="car in cars" :style="{ 'background': 'url(img/' + car.model + '.jpg) center', 'background-size': 'cover' }" class="item">
-          <div class="item-bg-color" @mouseover="car.hideText = false" @mouseout="car.hideText = true">
-             <table class="item-table" :class="{ hideText: car.hideText }" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                   <td>{{ modelText }}</td>
-                   <td class="right">{{ car.title }}</td>
-                </tr>
-                <tr>
-                   <td>{{ fuelTankText }}</td>
-                   <td class="right">{{ car.fuelTank }} L</td>
-                </tr>
-                <tr>
-                   <td>{{ fuelRateText }}</td>
-                   <td class="right">{{ car.fuelRate }} L/100 km</td>
-                </tr>
-                <tr class="buy" @click="buyCar(car.model)">
-                   <td>{{ priceText }}</td>
-                   <td class="right price">{{ prettify(car.price + car.price * margin / 400) }}</td>
-                </tr>
-             </table>
-          </div>
-       </div>
-    </div>
- </div> -->
 </body>
 </html>
 
@@ -98,8 +71,19 @@
             modelText: "Model",
             fuelTankText: "Réservoir",
             fuelRateText: "Consommation",
-            priceText: "Buy",
+            priceText: "Acheter",
             hideText: true,
+            vip: 0,
+            vips: [
+                {   model: "brioso",         title: "[VIP] Brioso",          fuelTank: 40,   fuelRate: 120,  price: 350000,   },
+                {   model: "baller6",         title: "[VIP] Baller blindé",          fuelTank: 80,   fuelRate: 150,  price: 350000,   },
+                {   model: "hotknife",         title: "[VIP] Hot Knife",          fuelTank: 60,   fuelRate: 150,  price: 575000,   },
+                {   model: "t20",           title: "[VIP] T20",       fuelTank: 60,   fuelRate: 290,  price: 1200000,  },
+                {   model: "neo",           title: "[VIP] Neo",                 fuelTank: 60,   fuelRate: 300,  price: 1750000,  },
+                {   model: "infernus",           title: "[VIP] Infernus",                 fuelTank: 60,   fuelRate: 300,  price: 1900000,  },
+                {   model: "adder",           title: "[VIP] Adder",                 fuelTank: 80,   fuelRate: 280,  price: 2200000,  },
+                {   model: "emerus",           title: "[VIP] Emerus",                 fuelTank: 80,   fuelRate: 280,  price: 2400000,  },
+            ],
             cars: [
                 {   model: "panto",         title: "Panto",          fuelTank: 40,   fuelRate: 100,  price: 22000,   },
                 {   model: "peyote",        title: "Peyote",              fuelTank: 50,   fuelRate: 100,  price: 27000,   },
@@ -116,6 +100,7 @@
                 {   model: "chino2",        title: "Chino Custom",        fuelTank: 65,   fuelRate: 200,  price: 160000,   },
                 {   model: "serrano",       title: "Serrano",        fuelTank: 60,   fuelRate: 150,  price: 210000,  },
                 {   model: "rancherxl",     title: "RancherXL",        fuelTank: 80,   fuelRate: 230,  price: 210000,  },
+                {   model: "surge",     	title: "Tesla Surge",        fuelTank: 40,   fuelRate: 40,  price: 250000,  },
                 {   model: "buccaneer",     title: "Buccaneer",          fuelTank: 75,   fuelRate: 180,  price: 260000,  },
                 {   model: "glendale",      title: "Glendale",       fuelTank: 60,   fuelRate: 160,  price: 270000,  },
                 {   model: "radi",          title: "Radius",              fuelTank: 50,   fuelRate: 180,  price: 290000,  },
@@ -159,44 +144,4 @@
             },
         }
     });
-
-    function loadRusLang() {
-        app.title = "Автосалон эконом класса";
-        app.modelText = "Модель";
-        app.fuelTankText = "Бензобак";
-        app.fuelRateText = "Расход";
-        app.priceText = "Купить";
-    }
-
-    function loadGerLang() {
-        app.title = "Motor Show Economy Klasse";
-        app.modelText = "Das Modell";
-        app.fuelTankText = "Kraftstofftank";
-        app.fuelRateText = "Verbrauch";
-        app.priceText = "Kaufen Sie jetzt";
-    }
-
-    function loadBrLang() {
-        app.title = "Loja de Carros";
-        app.modelText = "Modelo";
-        app.fuelTankText = "Tanque de combustível";
-        app.fuelRateText = "Taxa de combustível";
-        app.priceText = "Comprar";
-    }
-
-    function loadZhsLang() {
-        app.title = "廉价车销售";
-        app.modelText = "型号";
-        app.fuelTankText = "油量";
-        app.fuelRateText = "油耗";
-        app.priceText = "价格";
-    }
-
-    function loadZhtLang() {
-        app.title = "廉價車銷售";
-        app.modelText = "型號";
-        app.fuelTankText = "油量";
-        app.fuelRateText = "油耗";
-        app.priceText = "價格";
-    }
 </script>

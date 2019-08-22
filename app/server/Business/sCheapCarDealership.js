@@ -18,6 +18,7 @@ class CheapCarDealership extends carDealership {
 		if (player.vehicle) return;
 		let execute = `app.id = ${this.id};`;
 		execute += `app.margin = ${this.margin};`;
+		execute += `app.vip = ${player.vip};`;
 
 		player.call("cCheapCarDealership-OpenBuyerMenu", [player.lang, execute]);
 		misc.log.debug(`${player.name} enter a cheap car dealership menu`);
