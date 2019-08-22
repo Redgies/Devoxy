@@ -46,6 +46,9 @@ class VehiclesDataSingleton {
 			{   model: "dubsta",        title: "Dubsta",                fuelTank: 80,   fuelRate: 250,  price: 625000,  },
 			{   model: "stretch",       title: "Stretch",         fuelTank: 80,   fuelRate: 230,  price: 798000,  },
 			{   model: "guardian",       title: "Guardian",         fuelTank: 80,   fuelRate: 200,  price: 298000,  },
+			{   model: "burrito3",      title: "Burrito",               fuelTank: 80,   fuelRate: 130,  price: 80000,   },
+			{   model: "exemplar",      title: "Exemplar",         fuelTank: 60,   fuelRate: 270,  price: 1280000,  },
+			{   model: "surano",      title: "Surano",         fuelTank: 60,   fuelRate: 270,  price: 1280000,  },
 
 			{   model: "brioso",         title: "Brioso",          fuelTank: 40,   fuelRate: 120,  price: 350000,   },
 			{   model: "baller6",         title: "Baller blindé",          fuelTank: 80,   fuelRate: 150,  price: 350000,   },
