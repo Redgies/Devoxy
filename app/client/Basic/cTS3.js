@@ -109,7 +109,7 @@ setInterval(function(){
 
         if(player.getVariable("faction") == streamedPlayer.getVariable("faction"))
         {
-          if(streamedPlayer.getVariable("radioOn") == 1 && streamedPlayer.getVariable("radioActive") == 1 && streamedPlayer.getVariable("faction") != 0)
+          if(player.getVariable("radioOn") == 1 && streamedPlayer.getVariable("radioActive") == 1 && streamedPlayer.getVariable("faction") != 0)
           {
             playerNames.push(streamedPlayer.name + "~0~0~0~" + 1);
             continue;
