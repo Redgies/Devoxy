@@ -6,6 +6,7 @@ let money;
 let job = 'Aucune faction';
 let id;
 let guid;
+let radio;
 
 mp.events.add({
     "cMoney-Update" : (value) => { 
@@ -20,6 +21,9 @@ mp.events.add({
     "cGuid-Update" : (value) => {
         guid = value;
     },
+    "cRadio-Update" : (value) => {
+        radio = value;
+    },
     "playerStartTalking": (p) => 
     {
         p.playFacialAnim("mic_chatter", "mp_facial");
@@ -30,7 +34,7 @@ mp.events.add({
     },
     "render": () =>
     {
-        speedo.execute(`updateMoney(${money}, '${job}', ${id}, ${guid});`);  
+        speedo.execute(`updateMoney(${money}, '${job}', ${id}, ${guid}, ${radio});`);  
 
         if(player.vehicle && player.vehicle.getPedInSeat(-1) === player.handle)
             {

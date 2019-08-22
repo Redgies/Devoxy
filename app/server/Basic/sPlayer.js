@@ -79,6 +79,7 @@ class PlayerSingleton {
         player.setVariable('faction', player.faction);
         player.setVariable('inCall', -1);
         player.setVariable("radioActive", false);
+        player.call("cRadio-Update", [false]);
 
         player.radioActive = false;
 

@@ -4,8 +4,9 @@
     <script src="https://kit.fontawesome.com/247ab50e3d.js"></script>
       
 	<body>
+        <img class="radio" src="radiooff.png">
         <div class="container">
-            <div class="bar" style="text-indent: 18px;"><i class="fas fa-info" style="margin-right: 19px;"></i>ID : <span class="id" style="color: #fdcb6e">3</span>&nbsp;&nbsp;&nbsp;GUID : <span class="guid" style="color: #fdcb6e">3</span></div>
+            <div class="bar" style="text-indent: 18px;"><i class="fas fa-info" style="margin-right: 19px;"></i>ID : <span class="id" style="color: #fdcb6e">0</span>&nbsp;&nbsp;&nbsp;GUID : <span class="guid" style="color: #fdcb6e">0</span></div>
             <div class="bar"><i class="fas fa-briefcase"></i> <span class="job" style="color: #0984e3">Aucun</span></div>
             <div class="bar"><i class="fas fa-dollar-sign" style="margin-left: 4px; margin-right: 15px;"></i> <span class="money" style="color: #00b894">0</span></div>
             <div class="bar spedo" style="display: none;"><i class="fas fa-tachometer-alt"></i> <span class="kmh">100Km/h</span></div>
@@ -18,12 +19,17 @@
     function formatNumber(num) {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
     }
-    function updateMoney(money, job, id, guid)
+    function updateMoney(money, job, id, guid, radio)
     {
         document.getElementsByClassName('money')[0].innerHTML = formatNumber(money);
         document.getElementsByClassName('job')[0].innerHTML = job; 
         document.getElementsByClassName('id')[0].innerHTML = id; 
         document.getElementsByClassName('guid')[0].innerHTML = guid; 
+
+        if(radio)
+            document.getElementsByClassName('radio')[0].src = "radioon.png";
+        else 
+            document.getElementsByClassName('radio')[0].src = "radiooff.png";
     }
     function update(speed, gas)
     {			

@@ -306,6 +306,7 @@ class ChatSingleton {
 				player.radioActive = !player.radioActive;
 
 				player.setVariable("radioActive", player.radioActive);
+				player.call("cRadio-Update", [player.radioActive]);
 
 				if(player.radioActive)
 					return player.notify("Vous avez ~g~activé~w~ votre radio.");
