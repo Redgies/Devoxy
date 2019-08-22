@@ -32,7 +32,7 @@
                 </a>
             </div>
         </div>
-        <div class="item" v-for="car of vips">
+        <div class="item" v-for="car of vips" v-if="vip >= 1">
             <img :src="'img/' + car.model + '.jpg'">
             <div class="item-info">
                 <div class="model">{{ car.title }}</div>
@@ -106,14 +106,17 @@
                 {   model: "glendale",      title: "Glendale",       fuelTank: 60,   fuelRate: 160,  price: 270000,  },
                 {   model: "radi",          title: "Radius",              fuelTank: 50,   fuelRate: 180,  price: 290000,  },
                 {   model: "rapidgt3",      title: "Rapid GT",       fuelTank: 50,   fuelRate: 200,  price: 290000,  },
+                {   model: "guardian",      title: "Guardian",         fuelTank: 80,   fuelRate: 200,  price: 298000,  },
                 {   model: "xls",           title: "XLS",            fuelTank: 70,   fuelRate: 230,  price: 400000,  },
                 {   model: "dominator",     title: "Dominator",           fuelTank: 70,   fuelRate: 230,  price: 500000,  },
                 {   model: "tulip",         title: "Tulip",            fuelTank: 50,   fuelRate: 220,  price: 270000,  },
-                {   model: "patriot2",      title: "Patriot 2",         fuelTank: 80,   fuelRate: 230,  price: 270000,  },
+                {   model: "stretch",       title: "Stretch",         fuelTank: 80,   fuelRate: 230,  price: 798000,  },
+                {   model: "patriot2",      title: "Patriot 2",         fuelTank: 80,   fuelRate: 230,  price: 870000,  },
                 {   model: "dominator3",    title: "Dominator GTX",       fuelTank: 60,   fuelRate: 230,  price: 270000,  },
                 {   model: "cog55",         title: "Cognoscenti",          fuelTank: 55,   fuelRate: 200,  price: 600000,  },
                 {   model: "oracle",        title: "Oracle",          fuelTank: 65,   fuelRate: 250,  price: 600000,  },
                 {   model: "fq2",           title: "FQ2",                fuelTank: 80,   fuelRate: 250,  price: 600000,  },
+                {   model: "dubsta",        title: "Dubsta",                fuelTank: 80,   fuelRate: 250,  price: 625000,  },
                 {   model: "hermes",        title: "Hermes",             fuelTank: 60,   fuelRate: 240,  price: 850000,  },
                 {   model: "sultanrs",      title: "Sultan RS",                 fuelTank: 55,   fuelRate: 210,  price: 870000,  },
                 {   model: "buffalo2",      title: "Buffalo 2",         fuelTank: 65,   fuelRate: 270,  price: 900000,  },

@@ -43,6 +43,9 @@ class VehiclesDataSingleton {
 			{   model: "zentorno",      title: "Zentorno",          fuelTank: 55,   fuelRate: 300,  price: 2000000,  },
 			{   model: "tezeract",      title: "Tesla T",          fuelTank: 80,   fuelRate: 50,  price: 650000,   },
 			{   model: "raiden",        title: "Tesla R",          fuelTank: 80,   fuelRate: 50,  price: 650000,   },
+			{   model: "dubsta",        title: "Dubsta",                fuelTank: 80,   fuelRate: 250,  price: 625000,  },
+			{   model: "stretch",       title: "Stretch",         fuelTank: 80,   fuelRate: 230,  price: 798000,  },
+			{   model: "guardian",       title: "Guardian",         fuelTank: 80,   fuelRate: 200,  price: 298000,  },
 
 			{   model: "brioso",         title: "Brioso",          fuelTank: 40,   fuelRate: 120,  price: 350000,   },
 			{   model: "baller6",         title: "Baller blindé",          fuelTank: 80,   fuelRate: 150,  price: 350000,   },
