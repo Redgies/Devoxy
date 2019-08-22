@@ -17,7 +17,6 @@ class VehiclesDataSingleton {
             {   model: "serrano",       title: "Serrano",        fuelTank: 60,   fuelRate: 150,  price: 210000,  },
             {   model: "rancherxl",     title: "RancherXL",        fuelTank: 80,   fuelRate: 230,  price: 210000,  },
             {   model: "buccaneer",     title: "Buccaneer",          fuelTank: 75,   fuelRate: 180,  price: 260000,  },
-            {   model: "btype",         title: "B-Type",                    fuelTank: 75,   fuelRate: 240,  price: 260000,  },
             {   model: "glendale",      title: "Glendale",       fuelTank: 60,   fuelRate: 160,  price: 270000,  },
             {   model: "radi",          title: "Radius",              fuelTank: 50,   fuelRate: 180,  price: 290000,  },
             {   model: "rapidgt3",      title: "Rapid GT",       fuelTank: 50,   fuelRate: 200,  price: 290000,  },
@@ -40,7 +39,7 @@ class VehiclesDataSingleton {
             {   model: "drafter",       title: "Drafter",                 fuelTank: 60,   fuelRate: 270,  price: 1430000,  },
             {   model: "toros",         title: "Toros",             fuelTank: 55,   fuelRate: 320,  price: 1450000,  },
             {   model: "fmj",           title: "FMJ",                 fuelTank: 60,   fuelRate: 300,  price: 1800000,  },
-			{   model: "zentorno",      title: "Zentorno",          fuelTank: 55,   fuelRate: 300,  price: 20000000,  },
+			{   model: "zentorno",      title: "Zentorno",          fuelTank: 55,   fuelRate: 300,  price: 2000000,  },
 	
 
 			{	model: "mule",			title: "Maibatsu Mule",				fuelTank: 160,	fuelRate: 20,	price: 35000,	},
