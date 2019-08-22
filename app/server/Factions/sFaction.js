@@ -128,7 +128,7 @@ class Faction {
 	}
 
 	isFactionLeader(player) {
-		if(player.rank < this.maxRank) return false;
+		if(player.rank < this.maxRank - 1) return false;
 		return true;
 	}
 

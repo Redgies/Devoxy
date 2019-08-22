@@ -739,7 +739,7 @@
             },
             sellVehicleToPlayer() {
 				const str = {
-					price: this.sellPrice,
+					price: Math.abs(this.sellPrice),
 					passengerId: this.d.passengers[0].id,
 				}
 				mp.trigger("cMisc-CallServerEvent", "sVehicle-SellToPlayer", JSON.stringify(str));

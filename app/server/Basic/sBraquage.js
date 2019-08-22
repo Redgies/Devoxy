@@ -9,7 +9,8 @@ const braquageData = [
     {id: 5, name: 'Bijouterie', model: 351, price: 11000, pos: {x: -630.854, y: -228.175, z: 38.057}, color: 4, time: 120, text: 'Braquage en cours à la bijouterie.'},
     {id: 6, name: 'Banque 1', model: 500, price: 30000, pos: {x: -1211.235, y: -335.391, z: 37.781}, color: 69, time: 300, text: 'Braquage en cours à la banque 1.'},
     {id: 7, name: 'Banque 2', model: 500, price: 30000, pos: {x: -2957.646, y: 481.879, z: 15.697}, color: 69, time: 300, text: 'Braquage en cours à la banque 2.'},
-    {id: 8, name: 'Banque Centrale', model: 500, price: 300000, pos: {x: 265.095, y: 213.825, z: 101.68}, color: 69, time: 600, text: 'Braquage en cours à la banque centrale.'} 
+    {id: 8, name: 'Banque Centrale', model: 500, price: 300000, pos: {x: 265.095, y: 213.825, z: 101.68}, color: 69, time: 600, text: 'Braquage en cours à la banque centrale.'},
+    {id: 7, name: 'Banque 3', model: 500, price: 30000, pos: {x: -103.478, y: 6477.758, z: 31.627}, color: 69, time: 300, text: 'Braquage en cours à la banque 3.'},
 ];
 class Braquage {
     constructor(d)

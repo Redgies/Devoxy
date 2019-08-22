@@ -12,8 +12,8 @@ const factionData = {
         "Officier supérieur",
         "Sergent",
         "Lieutenant",
-        "Commissaire",
         "Capitaine",
+        "Commandant",
     ],
     maxRank: 6,
     servicePoint: {
