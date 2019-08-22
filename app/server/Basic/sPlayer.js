@@ -78,6 +78,9 @@ class PlayerSingleton {
         player.call("cFaction-Update", [player.faction]);
         player.setVariable('faction', player.faction);
         player.setVariable('inCall', -1);
+        player.setVariable("radioActive", false);
+
+        player.radioActive = false;
 
         const q1 = moneySingleton.loadUser(player);
         const q2 = characterSingleton.loadPlayerBody(player);

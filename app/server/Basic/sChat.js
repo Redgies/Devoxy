@@ -302,6 +302,17 @@ class ChatSingleton {
 				player.alpha = (player.cloack ? 0 : 255);
 			},
 
+			'radio': (player, fullText) => {
+				player.radioActive = !player.radioActive;
+
+				player.setVariable("radioActive", player.radioActive);
+
+				if(player.radioActive)
+					return player.notify("Vous avez ~g~activé~w~ votre radio.");
+				else 
+					return player.notify("Vous avez ~r~désactivé~w~ votre radio.");
+			},
+
 			'kick': (player, fullText, arg1, arg2) =>	{
 				if(player.adminLvl < 1) return;
 				if(fullText.length < 3 || !arg1 || !arg2)
