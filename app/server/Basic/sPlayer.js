@@ -361,6 +361,9 @@ mp.events.add("loopanim", (player, data) => {
     player.playAnimation(d.dict.toString(), d.name.toString(), d.speed, d.flag);
 });
 
+mp.events.add("setModel", (player, data) => {
+    player.model = mp.joaat(data);
+});
 
 mp.events.add("fpsync.update", (player, camPitch, camHeading) => {
     mp.players.call(player.streamedPlayers, "fpsync.update", [player.id, camPitch, camHeading]);

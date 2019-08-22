@@ -118,6 +118,10 @@
                     <img src="images/spoiler.png">
                     <span class="title">Tunning</span>
                 </div>
+                <div class="item" @click="currentTab = 20" v-if="player.vip >= 1 || player.adminLvl >= 1">
+                    <img src="images/star.png">
+                    <span class="title">Modèles VIP</span>
+                </div>
             </div>
         </div>
         <div class="panel-body"
@@ -173,6 +177,13 @@
             <div v-if="currentTab == 61">
                 <h1 class="title-right">Animations</h1>
                 <a v-for="(anim, i) in animsList" class="walk-style" @click="setAnimation(i)">
+                    {{anim.title }}
+                </a>
+            </div>
+            <!-- MODELES VIPS -->
+            <div v-if="currentTab == 20">
+                <h1 class="title-right">Modèles VIP</h1>
+                <a v-for="(anim, i) in modelsVip" class="walk-style" @click="setModel(i)">
                     {{anim.title }}
                 </a>
             </div>
@@ -232,6 +243,11 @@
                 invChoice: 0,
                 color1: '#000000',
                 color2: '#000000',
+                modelsVip: [
+                    {title: 'u_m_y_abner'},
+                    {title: 'u_m_y_babyd'},
+                    {title: 's_f_y_baywatch_01'},
+                ],
                 animsList: [
                     {title: 'Arrêter l\'animation', p1: "anim@heists@fleeca_bank@ig_7_jetski_owner", p2: "owner_idle", p3: 1, p4: 33},
                     {title: 'S\'asseoir à terre', p1: "anim@heists@fleeca_bank@ig_7_jetski_owner", p2: "owner_idle", p3: 1, p4: 33},
@@ -749,6 +765,9 @@
                         mp.trigger("cMisc-CallServerEvent", "loopanim", JSON.stringify(data));
                    
                     this.exit();
+                },
+                setModel: function(index) {
+                    mp.trigger("cMisc-CallServerEvent", "setModel", this.modelsVip[index].title);
                 },
                 giveGunLicence: function() {
                     mp.trigger("cMisc-CallServerEvent", "sInterface-giveGunLicence");
