@@ -400,7 +400,7 @@ mp.events.add({
         player.spawn(new mp.Vector3(player.position));
 
         if(player.jailed) return player.tpToJail();
-        if(player.delits.length >= 1)
+        if(player.delits.length >= 3)
         {
             player.health = 50;
             player.jailed = 1;

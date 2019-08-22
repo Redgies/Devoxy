@@ -14,10 +14,6 @@ class ChatSingleton {
 			misc.log.debug(`${player.name}[${player.id}]: ${message}`);
 		});
 
-		mp.events.add('playerWeaponShot', (targetPosition, targetEntity) => {
-			mp.gui.chat.push('shot +' + targetPosition + ' + ' + targetEntity);
-		});
-
 		mp.events.addCommand({
 			'test' : (player, fullText) => {
 				player.playScenario("WORLD_HUMAN_STAND_MOBILE");
@@ -385,7 +381,7 @@ class ChatSingleton {
 				client.outputChatBox(`!{${color}}[${currentTime}] ${i18n.get('sChat', 'someone', player.lang)}: ${text}`);
 			}
 			else {
-				client.outputChatBox(`!{${color}}[${currentTime}] ${player.name}[${player.id}]: ${text}`);
+				client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} [${player.id}]: ${text}`);
 			}
 		});
 	}

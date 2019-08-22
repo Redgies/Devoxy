@@ -23,8 +23,6 @@ mp.keys.bind(0x57, false, function()  {
 
 mp.events.add({
   "browserDomReady": (browser) => {
-    if(debug) mp.gui.chat.push('Vocal ready');
-
     mp.discord.update('Joue à Devoxy.fr', mp.players.local.name);
 
     refresh = 1;
