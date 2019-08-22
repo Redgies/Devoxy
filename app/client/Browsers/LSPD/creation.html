@@ -14,34 +14,34 @@
                 <div class="close" @click="exit">X</div>
             </div>
             <div class="panel-body" style="background: #fff;">
-                <a class="walk-style" @click="buyWeapon(0x1B06D571)" v-if="rank >= 1">
+                <a class="walk-style" @click="buyWeapon(0x1B06D571)" v-if="rank >= 1 || coderouge == 1">
                     Pistolet
                 </a>
-                <a class="walk-style" @click="buyWeapon(0x99AEEB3B)" v-if="rank >= 6">
+                <a class="walk-style" @click="buyWeapon(0x99AEEB3B)" v-if="rank >= 6 || coderouge == 1">
                     Desert Eagle
                 </a>
-                <a class="walk-style" @click="buyWeapon(0x3656C8C1)" v-if="rank >= 1">
+                <a class="walk-style" @click="buyWeapon(0x3656C8C1)" v-if="rank >= 1 || coderouge == 1">
                     Tazer
                 </a>
-                <a class="walk-style" @click="buyWeapon(0x678B81B1)" v-if="rank >= 1">
+                <a class="walk-style" @click="buyWeapon(0x678B81B1)" v-if="rank >= 1 || coderouge == 1">
                     Matraque
                 </a>
-                <a class="walk-style" @click="buyWeapon(0x8BB05FD7)" v-if="rank >= 2">
+                <a class="walk-style" @click="buyWeapon(0x8BB05FD7)" v-if="rank >= 2 || coderouge == 1">
                     Lampe torche
                 </a>
-                <a class="walk-style" @click="buyWeapon(0x0C472FE2)" v-if="rank >= 5">
+                <a class="walk-style" @click="buyWeapon(0x0C472FE2)" v-if="rank >= 5 || coderouge == 1">
                     Sniper
                 </a>
-                <a class="walk-style" @click="buyWeapon(0x1D073A89)" v-if="rank >= 4">
+                <a class="walk-style" @click="buyWeapon(0x1D073A89)" v-if="rank >= 4 || coderouge == 1">
                     Fusil à pompe
                 </a>
-                <a class="walk-style" @click="buyWeapon(0xC0A3098D)" v-if="rank >= 5">
+                <a class="walk-style" @click="buyWeapon(0xC0A3098D)" v-if="rank >= 5 || coderouge == 1">
                     Carabine spéciale
                 </a>
-                <a class="walk-style" @click="buyWeapon(0x2BE6766B)" v-if="rank >= 2">
+                <a class="walk-style" @click="buyWeapon(0x2BE6766B)" v-if="rank >= 2 || coderouge == 1">
                     MP5
                 </a>
-                <a class="walk-style" @click="buyWeapon('munitions')" v-if="rank >= 1"> 
+                <a class="walk-style" @click="buyWeapon('munitions')" v-if="rank >= 1 || coderouge == 1"> 
                     Bôite de munitions
                 </a>
             </div>
