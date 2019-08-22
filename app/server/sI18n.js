@@ -2,7 +2,7 @@ const i18n = {
 
 	basic: {
 		success: {
-			eng: 'Succès',
+			eng: 'Succès !',
 			rus: 'Успешно',
 			ger: 'Erfolgreich',
 			br: 'Sucesso', 
@@ -182,7 +182,7 @@ const i18n = {
 		},
 
 		youRejectedOffer: {
-			eng: 'Vous avez refusé l\'offre du joueur',
+			eng: 'Vous avez refusé l\'offre de',
 			rus: 'Вы отклонили предложение игрока',
 			ger: 'Du hast das Angebot von Spieler abgelehnt',
 			br: 'Você rejeitou a oferta pelo jogador', 
@@ -212,7 +212,7 @@ const i18n = {
 		},
 
 		youConfirmedOffer: {
-			eng: 'Vous avez confirmé l\'offre du joueur',
+			eng: 'Vous avez confirmé l\'offre de',
 			rus: 'Вы приняли предложение игрока',
 			ger: 'Du hast das Angebot von Spieler bestätigt',
 			br: 'Você confirmou a oferta pelo jogador', 
@@ -482,7 +482,7 @@ const i18n = {
 		},
 
 		wantsSellVehicleToPlayer: {
-			eng: 'veut vous vendre',
+			eng: 'Veut vous vendre',
 			rus: 'хочет продать вам',
 			ger: '',
 			br: '', 
