@@ -94,6 +94,23 @@ class Police extends faction {
 
                 target.addDelit(message.replace(/'/g, ' '));
                 player.notifyWithPicture("Police", "", `Vous avez ajouté un délit à ${target.name} : ${message}.`, "CHAR_CALL911");
+            },
+            "coderouge": (player, fullText, arg1) => {
+                if(!this.isInThisFaction(player) || !this.isWorking(player)) return;
+
+                if(player.rank < 6)
+                    return player.notify("~r~Vous n'avez pas le grade nécéssaire.");
+
+                this.codeRouge = !this.codeRouge;
+
+                for(const p of mp.players.toArray()) {
+                    if(!this.isInThisFaction(player) || !this.isWorking(player)) continue;
+
+                    if(this.codeRouge)
+                        p.notifyWithPicture("Appel 911", "", `${player.name} a décrété un code rouge.`, "CHAR_CALL911");
+                    else 
+                        p.notifyWithPicture("Appel 911", "", `${player.name} a retiré le code rouge.`, "CHAR_CALL911");
+				}
             }
         });
         mp.events.add({
