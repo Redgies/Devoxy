@@ -3,7 +3,9 @@ const Vehicle = require('./Vehicles/sVehicle');
 
 const locationsData = [
     {pos: {x:-1038.748, y: -2731.016, z: 20.169}}, // AEROPORT
-    {pos: {x: -187.015, y: 6433.144, z: 31.513}}
+    {pos: {x: -187.015, y: 6433.144, z: 31.513}},  // SPAWN
+    {pos: {x: 388.041, y: -970.046, z: 29.443}}, // COMICO
+    {pos: {x: 1868.438, y: 2702.049, z: 45.827}}, // PRISON
 ];
 
 

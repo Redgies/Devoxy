@@ -25,5 +25,6 @@ mp.events.add("createPed", () => {
 	let ped15 = mp.peds.new(mp.game.joaat('g_m_y_korlieut_01'), new mp.Vector3(-52.007, -1100.579, 26.422), 336.64, mp.players.local.dimension); //concess central
 	let ped16 = mp.peds.new(mp.game.joaat('s_m_m_hairdress_01'), new mp.Vector3(1215.575, -473.953, 66.218), 70.16, mp.players.local.dimension) //coiffeur haut droit ville//s
 	let ped18 = mp.peds.new(mp.game.joaat('s_m_y_dealer_01'), new mp.Vector3(-447.179, -783.533, 30.5638), 1.13, mp.players.local.dimension) // acheteur de weed;
+	let ped19 = mp.peds.new(mp.game.joaat('a_m_y_business_02'), new mp.Vector3(386.857, -970, 29.443), 250.62, mp.players.local.dimension); // location comico
+	let ped20 = mp.peds.new(mp.game.joaat('a_m_y_business_02'), new mp.Vector3(1869.478, 2702.443, 45.834), 102.81, mp.players.local.dimension); // location prison
 });
-
