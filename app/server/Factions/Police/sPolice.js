@@ -15,7 +15,7 @@ const factionData = {
         "Capitaine",
         "Commandant",
     ],
-    maxRank: 6,
+    maxRank: 7,
     servicePoint: {
         x: 458.955,
         y: -992.82,

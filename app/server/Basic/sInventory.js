@@ -161,6 +161,8 @@ mp.events.add({
             amount = player.getItemAmount(itemKey);
         else if(itemKey == 'item_munitions')
             amount = 1;
+        else if(itemKey == 'item_weed')
+            amount = 1;
         else 
             amount = 1;
 
@@ -179,6 +181,16 @@ mp.events.add({
         inventory.forEach((item, index) => {
             if(key == index)
                 itemKey = item.key;
+        });
+
+        mp.players.forEachInRange(player.position, 10, (client) => {
+            const dist = client.dist(player.position);
+            const color = '#c2a2da';
+            const currentTime = misc.getTime();
+            client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} jette ${invAPI.getItemName(itemKey)} par terre.`);
+            // graylog.log(`${player.name} envoie sa position depuis son téléphone.`, `${player.name} envoie sa position depuis son téléphone.`, '/donnerpos');
+            // misc.log.debug(`${player.name} envoie sa position depuis son téléphone.`);
+            
         });
 
         player.notify(`~g~Vous avez jeté ${player.getItemAmount(itemKey)}x ${invAPI.getItemName(itemKey)}.`);
@@ -381,6 +393,11 @@ invAPI.addItem("item_dirty_money", "Argent sale", "", (player, inventoryIndex, i
 invAPI.addItem("item_matos", "Matos", "", (player, inventoryIndex, itemKey, data) => {
     // player.armour = 100;
     // player.outputChatBox("Armor refilled.");
+});
+
+invAPI.addItem("item_weed", "Weed", "", (player, inventoryIndex, itemKey, data) => {
+    player.health += 10; 
+    player.removeItem(inventoryIndex);
 });
 
 invAPI.addItem("item_munitions", "Boîte de Munitions", "", (player, inventoryIndex, itemKey, data) => {

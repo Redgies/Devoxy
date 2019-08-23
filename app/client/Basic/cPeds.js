@@ -24,4 +24,6 @@ mp.events.add("createPed", () => {
 	let ped14 = mp.peds.new(mp.game.joaat('u_f_o_moviestar'), new mp.Vector3(-622.316, -229.856, 38.057), 129.75, mp.players.local.dimension); //bijouterie//
 	let ped15 = mp.peds.new(mp.game.joaat('g_m_y_korlieut_01'), new mp.Vector3(-52.007, -1100.579, 26.422), 336.64, mp.players.local.dimension); //concess central
 	let ped16 = mp.peds.new(mp.game.joaat('s_m_m_hairdress_01'), new mp.Vector3(1215.575, -473.953, 66.218), 70.16, mp.players.local.dimension) //coiffeur haut droit ville//s
+	let ped18 = mp.peds.new(mp.game.joaat('s_m_y_dealer_01'), new mp.Vector3(-447.179, -783.533, 30.5638), 1.13, mp.players.local.dimension) // acheteur de weed;
 });
+

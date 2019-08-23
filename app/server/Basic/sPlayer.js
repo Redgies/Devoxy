@@ -363,6 +363,7 @@ mp.events.add("loopanim", (player, data) => {
 
 mp.events.add("setModel", (player, data) => {
     player.model = mp.joaat(data);
+    player.resetAllWeapons();
 });
 
 mp.events.add("fpsync.update", (player, camPitch, camHeading) => {
@@ -399,7 +400,7 @@ mp.events.add({
         if (!killer || player === killer) return;
         if (killer.faction == 1 && killer.working == true) return;
 
-        player.outputChatBox(`Vous avez été tué par ${killer.name} [${killer.id}] GUID : ${killer.guid}`);
+        player.outputChatBox(`Vous avez été tué par ${killer.name} [${killer.id}] GUID : ${killer.guid}.`);
 
         killer.addDelit("Accusation de meurte");
     },

@@ -24,6 +24,7 @@ require('./Basic/sInventory');
 require('./Basic/Money/sATM');
 require('./Basic/sBraquage');
 require('./Basic/sBlanchir');
+require('./Basic/sWeed');
 require('./Basic/sTeleporters');
 require('./Basic/sVip');
 
@@ -49,4 +50,5 @@ require('./Factions/Bennys/sBennys');
 require('./Factions/LsCustom/sLsCustom');
 require('./Factions/Hospital/sHospital');
 require('./Factions/Mafia1/sMafia1');
+require('./Factions/Mafia2/sMafia2');
 require('./Factions/LiveInvader/sLiveInvader');
