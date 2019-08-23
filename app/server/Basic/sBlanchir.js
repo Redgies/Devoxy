@@ -41,7 +41,7 @@ class Blanchir {
                             let amount = player.getItemAmount(item.key);
 
                             player.removeItem(index, amount);
-                            player.changeMoney(+amount);
+                            player.changeMoney(amount);
 
                             player.notify(`Vous avez blanchi de l'argent sale (~g~+${amount}$~w~).`);
                             return 1;

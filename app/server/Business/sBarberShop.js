@@ -90,7 +90,6 @@ mp.events.add({
 	"sBarberShop-SetHeadOverlay" : (player, obj) => {
 		const d = JSON.parse(obj);
 
-		console.log("barber : " + obj);
 		player.setHeadOverlay(d.id, [d.index, d.opacity, 1, 1]);
 	},
 

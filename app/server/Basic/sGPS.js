@@ -25,7 +25,6 @@ class GPS {
 					const color = '#c2a2da';
 					const currentTime = misc.getTime();
 					client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} envoie sa position depuis son téléphone`);
-					graylog.log(`${player.name} envoie sa position depuis son téléphone.`, `${player.name} envoie sa position depuis son téléphone.`, '/donnerpos');
 					misc.log.debug(`${player.name} envoie sa position depuis son téléphone.`);
 					
 				});

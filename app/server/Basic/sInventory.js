@@ -188,7 +188,6 @@ mp.events.add({
             const color = '#c2a2da';
             const currentTime = misc.getTime();
             client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} jette ${invAPI.getItemName(itemKey)} par terre.`);
-            // graylog.log(`${player.name} envoie sa position depuis son téléphone.`, `${player.name} envoie sa position depuis son téléphone.`, '/donnerpos');
             misc.log.debug(`${player.name} envoie sa position depuis son téléphone.`);
             
         });
@@ -203,27 +202,22 @@ invAPI.on("itemDefined", (key, name, description) => {
 });
 
 invAPI.on("itemAdded", (player, key, amount, data) => {
-    // graylog.log(`${player.name} received ${amount}x ${key}.`, `${player.name} received ${amount}x ${key}.`, 'inventory');
     console.log(`${player.name} received ${amount}x ${key}.`);
 });
 
 invAPI.on("itemUsed", (player, invIdx, key, data) => {
-    // graylog.log(`${player.name} used ${key}.`, `${player.name} used ${key}.`, 'inventory');
     console.log(`${player.name} used ${key}.`);
 });
 
 invAPI.on("itemRemoved", (player, invIdx, key, amount, data) => {
-    // graylog.log(`${player.name} lost ${amount}x ${key}.`, `${player.name} lost ${amount}x ${key}.`, 'inventory');
     console.log(`${player.name} lost ${amount}x ${key}.`);
 });
 
 invAPI.on("itemRemovedCompletely", (player, key, data) => {
-    // graylog.log(`${player.name} no longer has ${key} (${data ? "with data" : "without data"}) in their inventory.`, `${player.name} no longer has ${key} (${data ? "with data" : "without data"}) in their inventory.`, 'inventory');
     console.log(`${player.name} no longer has ${key} (${data ? "with data" : "without data"}) in their inventory.`);
 });
 
 invAPI.on("inventoryReplaced", (player, oldInventory, newInventory) => {
-    // graylog.log(`${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`, `${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`, 'inventory');
     console.log(`${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`);
 });
 
