@@ -399,6 +399,8 @@ mp.events.add({
         if (!killer || player === killer) return;
         if (killer.faction == 1 && killer.working == true) return;
 
+        player.outputChatBox(`Vous avez été tué par ${killer.name} [${killer.id}] GUID : ${killer.guid}`);
+
         killer.addDelit("Accusation de meurte");
     },
     "sHospital-SpawnAfterDeath" : (player) => {
