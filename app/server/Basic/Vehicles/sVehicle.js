@@ -82,31 +82,31 @@ class Vehicle {
 
 		vehicle.unlock = function() {
 			if (this.getOccupants().length === 0) {
-				this.blinkLights();
+				// this.blinkLights();
 				setTimeout(() => {
-					this.blinkLights();
+					// this.blinkLights();
 				}, 600);
 			}
 		}
 
-		vehicle.blinkLights = function() { 
-			const engineStatus = this.engine;
-			if (!engineStatus) this.engine = true;
+		// vehicle.blinkLights = function() { 
+		// 	const engineStatus = this.engine;
+		// 	if (!engineStatus) this.engine = true;
 		
-			const players = mp.players.toArray();
-			for (const player of players) {
-				player.call("cVehicle-setLights", [this, 2]);
-				setTimeout(() => {
-					player.call("cVehicle-setLights", [this, 0]);
-				}, 300);
-			}
+		// 	const players = mp.players.toArray();
+		// 	for (const player of players) {
+		// 		player.call("cVehicle-setLights", [this, 2]);
+		// 		setTimeout(() => {
+		// 			player.call("cVehicle-setLights", [this, 0]);
+		// 		}, 300);
+		// 	}
 
-			if (!engineStatus) {
-				setTimeout(() => {
-					this.engine = engineStatus;
-				}, 300);
-			}
-		}
+		// 	if (!engineStatus) {
+		// 		setTimeout(() => {
+		// 			this.engine = engineStatus;
+		// 		}, 300);
+		// 	}
+		// }
 
 		vehicle.canRollWindow = function(player, window) {
 			if (player.isDriver() || player.seat + 1 === window) return true;
