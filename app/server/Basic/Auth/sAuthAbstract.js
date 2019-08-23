@@ -35,7 +35,6 @@ class AbstractAuth {
         if (player.verificationCodeTries < 5) return true;
         this.showError(player, `Too many wrong codes`);
         player.loggedIn = false;
-        graylog.log(`${player.socialClub} too many wrong codes.`, `${player.socialClub} too many wrong codes.`, 'error');
         misc.log.warn(`${player.socialClub} too many wrong codes`);
         player.kick('Vous avez essayé trop de fois un mauvais code.');
         return false;
@@ -45,7 +44,7 @@ class AbstractAuth {
         // if (!this.canCheckCode(player)) return false;
         // if (player.verificationCode !== code) {
         //     player.verificationCodeTries++;
-        //     this.showError(player, `Code incorrect !`);
+        //     this.//testshowError(player, `Code incorrect !`);
         //     return false;
         // }
         return true;
