@@ -187,32 +187,32 @@ mp.events.add({
 });
 
 invAPI.on("itemDefined", (key, name, description) => {
-    graylog.log(`Item defined, key: ${key} | name: ${name} | description: ${description}`, `Item defined, key: ${key} | name: ${name} | description: ${description}`, 'inventory');
+    // graylog.log(`Item defined, key: ${key} | name: ${name} | description: ${description}`, `Item defined, key: ${key} | name: ${name} | description: ${description}`, 'inventory');
     console.log(`Item defined, key: ${key} | name: ${name} | description: ${description}`);
 });
 
 invAPI.on("itemAdded", (player, key, amount, data) => {
-    graylog.log(`${player.name} received ${amount}x ${key}.`, `${player.name} received ${amount}x ${key}.`, 'inventory');
+    // graylog.log(`${player.name} received ${amount}x ${key}.`, `${player.name} received ${amount}x ${key}.`, 'inventory');
     console.log(`${player.name} received ${amount}x ${key}.`);
 });
 
 invAPI.on("itemUsed", (player, invIdx, key, data) => {
-    graylog.log(`${player.name} used ${key}.`, `${player.name} used ${key}.`, 'inventory');
+    // graylog.log(`${player.name} used ${key}.`, `${player.name} used ${key}.`, 'inventory');
     console.log(`${player.name} used ${key}.`);
 });
 
 invAPI.on("itemRemoved", (player, invIdx, key, amount, data) => {
-    graylog.log(`${player.name} lost ${amount}x ${key}.`, `${player.name} lost ${amount}x ${key}.`, 'inventory');
+    // graylog.log(`${player.name} lost ${amount}x ${key}.`, `${player.name} lost ${amount}x ${key}.`, 'inventory');
     console.log(`${player.name} lost ${amount}x ${key}.`);
 });
 
 invAPI.on("itemRemovedCompletely", (player, key, data) => {
-    graylog.log(`${player.name} no longer has ${key} (${data ? "with data" : "without data"}) in their inventory.`, `${player.name} no longer has ${key} (${data ? "with data" : "without data"}) in their inventory.`, 'inventory');
+    // graylog.log(`${player.name} no longer has ${key} (${data ? "with data" : "without data"}) in their inventory.`, `${player.name} no longer has ${key} (${data ? "with data" : "without data"}) in their inventory.`, 'inventory');
     console.log(`${player.name} no longer has ${key} (${data ? "with data" : "without data"}) in their inventory.`);
 });
 
 invAPI.on("inventoryReplaced", (player, oldInventory, newInventory) => {
-    graylog.log(`${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`, `${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`, 'inventory');
+    // graylog.log(`${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`, `${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`, 'inventory');
     console.log(`${player.name} had their inventory replaced. (Old item count: ${oldInventory.length}, new: ${newInventory.length})`);
 });
 
