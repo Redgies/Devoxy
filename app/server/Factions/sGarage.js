@@ -33,7 +33,7 @@ class Garage {
 
 				if(shape === this.eGarageTopEnter)
 				{
-					if(!player.isDriver()) return;
+					// if(!player.isDriver()) return;
 
 					player.canUseElevator = true;
 					player.notify("Appuyez ~b~E ~w~pour descendre votre véhicule au garage.");
