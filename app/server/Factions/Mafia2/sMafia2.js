@@ -16,9 +16,9 @@ const factionData = {
     ],
     maxRank: 6,
     matosPoint: {
-        x: 1009.998, 
-        y: -2892.902, 
-        z: 11.26
+        x: 726.544, 
+        y: 4169.017, 
+        z: 40.709
     },
     createPoint: {
         x: 2347.756, 
@@ -27,7 +27,7 @@ const factionData = {
     },
 }
 
-class Mafia1 extends faction {
+class Mafia2 extends faction {
 	constructor() {
         super(factionData.id, factionData.name, factionData.surname, factionData.ranks, factionData.maxRank);
 
@@ -149,4 +149,4 @@ class Mafia1 extends faction {
 	changeClothesWoman(player) {
 	}
 }
-const mafia1 = new Mafia1();
+const mafia2 = new Mafia2();
