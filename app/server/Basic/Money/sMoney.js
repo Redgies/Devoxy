@@ -60,8 +60,7 @@ class MoneySingletone {
 			misc.query(`UPDATE usersMoney SET fines = '${JSON.stringify(this.money.fines)}' WHERE id = '${this.guid}'`);
 			this.money.fines.push(newFine);
 			this.call("cMoney-SendNotification", [`${i18n.get('sMoney', 'newFine', this.lang)}: ~r~$${value}. ~w~${comment}`]);
-			misc.log.debug(`New fine: ${player.name}, $${value}, ${comment}`);
-			graylog.log(`New fine: ${player.name}, $${value}, ${comment}`, `New fine: ${player.name}, $${value}, ${comment}`, 'fines');
+			misc.log.debug(`New facture: ${player.name}, $${value}, ${comment}`);
 		}
 	}
 
@@ -101,7 +100,6 @@ mp.events.addCommand({
 		player.changeMoney(+value);
 		admin.outputChatBox(`!{#d63031}[ADMIN] !{#ffffff}Vous avez donné ${+value}$ à ${player.name}.`);
 		player.outputChatBox(`!{#d63031}[ADMIN] !{#ffffff}${admin.name} vous a donné ${+value}$.`);
-		graylog.log(`${admin.name} give ${player.name} ${+value}$`, `${admin.name} give ${player.name} ${+value}$`, 'admin');
 		misc.log.info(`${admin.name} give ${player.name} ${+value}$`);
 	},
 	'getmoney' : (player, fullText, id) => {
