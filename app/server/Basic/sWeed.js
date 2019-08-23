@@ -38,6 +38,14 @@ class Weed {
                 if(player.canWeed) 
                 {
                     player.weedTimer = 25;
+
+                    for(const p of mp.players.toArray()) {
+                        if(p.faction !== 1 || !p.working) continue;
+                    
+                        p.notifyWithPicture("Appel 911", "Stupéfiant", "Une transaction de weed à lieue au Parking n°1.", "CHAR_CALL911");
+                    }
+
+
                     player.timer = setInterval(() => {
                         player.weedTimer--;
 

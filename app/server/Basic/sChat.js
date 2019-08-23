@@ -331,6 +331,8 @@ class ChatSingleton {
 
 				target.giveItem("item_dirty_money", "Argent sale", parseInt(arg2));
 
+				const currentTime = misc.getTime();
+
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous avez donné ${arg2} d'argent sale à ${target.name}.`);
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${player.name} vous donné ${arg2} d'argent sale.`);
 			},
@@ -346,6 +348,8 @@ class ChatSingleton {
 
 				target.giveItem("item_matos", "Matos", parseInt(arg2));
 
+				const currentTime = misc.getTime();
+
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous avez donné ${arg2} de matos à ${target.name}.`);
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${player.name} vous donné ${arg2} de matos.`);
 			},
@@ -360,6 +364,8 @@ class ChatSingleton {
 					return player.notify("Ce joueur n'est pas connecté.");
 
 				target.giveItem("item_weed", "Weed", parseInt(arg2));
+
+				const currentTime = misc.getTime();
 
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous avez donné ${arg2} de weed à ${target.name}.`);
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${player.name} vous donné ${arg2} de weed.`);
