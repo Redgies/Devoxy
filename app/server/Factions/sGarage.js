@@ -39,6 +39,8 @@ class Garage {
 					player.notify("Appuyez ~b~E ~w~pour descendre votre véhicule au garage.");
 				}
 
+				player.outputChatBox("shape : " + JSON.stringify(shape));
+
 				if(shape === this.eGarageUndergroundExit1 || shape === this.eGarageUndergroundExit2 || shape === this.eGarageUndergroundExit3 || shape === this.eGarageUndergroundExit4 || shape === this.eGarageUndergroundExit5)
 				{
 					// if(!player.isDriver()) return;
