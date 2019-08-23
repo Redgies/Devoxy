@@ -21,23 +21,23 @@ class ATMSingletone {
 			},
 
 			"sMoney-GetCash" : (player, value) => {
-				this.getCash(player, value);
+				this.getCash(player, Math.abs(value));
 			},
 
 			"sMoney-PutCash" : (player, value) => {
-				this.putCash(player, value);
+				this.putCash(player, Math.abs(value));
 			},
 
 			"sMoney-GetTaxMoney" : (player, value) => {
-				this.getTaxMoney(player, value);
+				this.getTaxMoney(player, Math.abs(value));
 			},
 
 			"sMoney-PutTaxMoney" : (player, value) => {
-				this.putTaxMoney(player, value);
+				this.putTaxMoney(player, Math.abs(value));
 			},
 
 			"sMoney-PayFine" : (player, i) => {
-				this.payFine(player, i);
+				this.payFine(player, Math.abs(i));
 			},
 		});
 	}
