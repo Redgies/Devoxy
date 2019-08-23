@@ -41,7 +41,7 @@ class Garage {
 
 				if(shape === this.eGarageUndergroundExit1 || shape === this.eGarageUndergroundExit2 || shape === this.eGarageUndergroundExit3 || shape === this.eGarageUndergroundExit4 || shape === this.eGarageUndergroundExit5)
 				{
-					if(!player.isDriver()) return;
+					// if(!player.isDriver()) return;
 
 					player.canUseElevator = true;
 					player.notify("Appuyez ~b~E ~w~pour remonter votre véhicule.");
