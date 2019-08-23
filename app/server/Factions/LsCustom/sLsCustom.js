@@ -4,7 +4,7 @@ const faction = require('../sFaction');
 const factionData = {
     id: 3,
     name: "Los Santos Custom",
-    surname: "LS Cus.",
+    surname: "LS Cus",
     ranks: [
         "Dépanneur",
         "Mécanicien",
