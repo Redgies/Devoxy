@@ -189,7 +189,7 @@ mp.events.add({
             const currentTime = misc.getTime();
             client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} jette ${invAPI.getItemName(itemKey)} par terre.`);
             // graylog.log(`${player.name} envoie sa position depuis son téléphone.`, `${player.name} envoie sa position depuis son téléphone.`, '/donnerpos');
-            // misc.log.debug(`${player.name} envoie sa position depuis son téléphone.`);
+            misc.log.debug(`${player.name} envoie sa position depuis son téléphone.`);
             
         });
 
@@ -199,7 +199,6 @@ mp.events.add({
 });
 
 invAPI.on("itemDefined", (key, name, description) => {
-    // graylog.log(`Item defined, key: ${key} | name: ${name} | description: ${description}`, `Item defined, key: ${key} | name: ${name} | description: ${description}`, 'inventory');
     console.log(`Item defined, key: ${key} | name: ${name} | description: ${description}`);
 });
 

@@ -107,9 +107,9 @@ class Police extends faction {
                     if(!this.isInThisFaction(player) || !this.isWorking(player)) continue;
 
                     if(this.codeRouge)
-                        p.notifyWithPicture("Appel 911", "", `${player.name} a décrété un code rouge.`, "CHAR_CALL911");
+                        p.notifyWithPicture("Police", "", `${player.name} a décrété un code rouge.`, "CHAR_CALL911");
                     else 
-                        p.notifyWithPicture("Appel 911", "", `${player.name} a retiré le code rouge.`, "CHAR_CALL911");
+                        p.notifyWithPicture("Police", "", `${player.name} a retiré le code rouge.`, "CHAR_CALL911");
 				}
             }
         });
