@@ -43,6 +43,7 @@ class ChatSingleton {
 				if(!fullText) return player.notify("Veuillez entrer un message.");
 				mp.players.broadcast(`!{#0984e3}[${time.getTime()}] [OOC]!{#ffffff} ${player.name} [${player.id}] : ${fullText}`);
 				misc.log.debug(`${player.name} ${fullText}`);
+				graylog.log(`${player.name} ${fullText}`, `${player.name} ${fullText}`, `/ooc`);
 			}, 
 
 			'pm' : (player, fullText, arg1, arg2) => {
@@ -60,6 +61,8 @@ class ChatSingleton {
 				let message = fullText.substr(arg1.length + 1, fullText.length);
 				const str = `!{#0984e3}[${currentTime}] [PM]!{#ffffff} à ${recipient.name} [${recipient.id}] : ${message}`;
 				player.outputChatBox(str);
+
+				graylog.log(`[PM] à ${recipient.name} [${recipient.id}] : ${message}`, `[PM] à ${recipient.name} [${recipient.id}] : ${message}`, `/pm`);
 
 				const str2 = `!{#0984e3}[${currentTime}] [PM]!{#ffffff} de ${player.name} [${player.id}] : ${message}`;
 				recipient.outputChatBox(str2);
@@ -86,6 +89,7 @@ class ChatSingleton {
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${player.name} vous a téléporté à lui.`);
 
 				misc.log.debug(`${player.name} teleported ${target.name} to him.`);
+				graylog.log(`${player.name} teleported ${target.name} to him.`, `${player.name} teleported ${target.name} to him.`, `/tphere`);
 			},
 
 			'tpto' : (player, fullText, arg1) => {
@@ -108,6 +112,7 @@ class ChatSingleton {
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous vous êtes téléporté à ${target.name}.`);
 
 				misc.log.debug(`${player.name} teleported to ${target.name}.`);
+				graylog.log(`${player.name} teleported to ${target.name}.`, `${player.name} teleported to ${target.name}.`, '/tpto');
 			},
 
 			'admin' : (player, fullText) => {
@@ -126,11 +131,11 @@ class ChatSingleton {
 				}
 			}, 
 
-			'wep': (player, fullText) => {
-				const str = player.weapons.all;
+			// 'wep': (player, fullText) => {
+			// 	const str = player.weapons.all;
 
-				player.outputChatBox("weapons : " + JSON.stringify(str));
-			},
+			// 	player.outputChatBox("weapons : " + JSON.stringify(str));
+			// },
 
 			// 'cuff' : (player, fullText) => {
 			// 	player.setCuff(true);
@@ -152,6 +157,7 @@ class ChatSingleton {
 					
 					p.outputChatBox(`!{#fdcb6e}[${currentTime}] [RAPPORT] ${player.name} [${player.id}] : ${fullText}`);
 				}
+				graylog.log(`[RAPPORT] ${player.name} [${player.id}] : ${fullText}`, `[RAPPORT] ${player.name} [${player.id}] : ${fullText}`, '/rapport');
 			},
 
 			'aooc': (player, fullText) => {
@@ -439,6 +445,7 @@ class ChatSingleton {
 			else {
 				client.outputChatBox(`!{${color}}[${currentTime}] ${text} | ${player.name}`);
 			}
+			graylog.log(`/do ${player.name} ${text}.`, `/do ${player.name} ${text}.`, '/do');
 			misc.log.debug(`${text} | ${player.name}.`);
 		});
 	}

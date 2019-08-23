@@ -5,7 +5,6 @@ const mailer = require('../../sMailer');
 
 class AbstractAuth {
     showError(player, text) {
-        console.log(text);
         player.call("cInjectCef", [`app.showError("${text}");`]);
     }
 
@@ -17,9 +16,9 @@ class AbstractAuth {
         const mail = {
             from: `${mailer.getMailAdress()}`,
             to: `${email}`,
-            subject: `Verification code: ${code}`,
-            text: `Hello! Your verification code is: ${code}`,
-            html: `<b>Hello!</b><br>Your verification code is: ${code}`,
+            subject: `Code de vérification : ${code}`,
+            text: `Votre code de vérification est : ${code}`,
+            html: `<b>Bonjour !</b><br>Votre code de vérification est : ${code}`,
         }
         mailer.sendMail(mail);
         player.call("cInjectCef", [`app.showInfo('Vérifiez vos mails !');`]);
@@ -36,6 +35,7 @@ class AbstractAuth {
         if (player.verificationCodeTries < 5) return true;
         this.showError(player, `Too many wrong codes`);
         player.loggedIn = false;
+        graylog.log(`${player.socialClub} too many wrong codes.`, `${player.socialClub} too many wrong codes.`, 'error');
         misc.log.warn(`${player.socialClub} too many wrong codes`);
         player.kick('Vous avez essayé trop de fois un mauvais code.');
         return false;

@@ -87,6 +87,7 @@ class Phone {
                     mp.players.forEach((p, id) => {
                         if(p.id == player.inCall)
                         {
+                            ${player.name} received ${amount}x ${key}.
                             console.log("sPhone-endCall");
                             p.inCall = -1;
                             p.setVariable("inCall", -1);

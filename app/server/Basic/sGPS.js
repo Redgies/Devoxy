@@ -24,9 +24,10 @@ class GPS {
 					const dist = client.dist(player.position);
 					const color = '#c2a2da';
 					const currentTime = misc.getTime();
-					client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} envoi sa position depuis son téléphone`);
-					// graylog.log(`/me ${player.name} ${text}.`, `/me ${player.name} ${text}.`, '/me');
-					misc.log.debug(`${player.name} envoi sa position depuis son téléphone.`);
+					client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} envoie sa position depuis son téléphone`);
+					graylog.log(`${player.name} envoie sa position depuis son téléphone.`, `${player.name} envoie sa position depuis son téléphone.`, '/donnerpos');
+					misc.log.debug(`${player.name} envoie sa position depuis son téléphone.`);
+					
 				});
 
 				target.notify(`${player.name} vous a envoyé sa position.`);
