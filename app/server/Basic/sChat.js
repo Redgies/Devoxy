@@ -2,7 +2,6 @@
 const i18n = require('../sI18n');
 const misc = require('../sMisc');
 const Faction = require('../Factions/sFaction.js');
-// const graylog = require('../sGraylog');
 const time = require('./sTime');
 const clothes = require('../Character/sClothes');
 
@@ -43,7 +42,6 @@ class ChatSingleton {
 				if(!fullText) return player.notify("Veuillez entrer un message.");
 				mp.players.broadcast(`!{#0984e3}[${time.getTime()}] [OOC]!{#ffffff} ${player.name} [${player.id}] : ${fullText}`);
 				misc.log.debug(`${player.name} ${fullText}`);
-				// graylog.log(`${player.name} ${fullText}`, `${player.name} ${fullText}`, `/ooc`);
 			}, 
 
 			'pm' : (player, fullText, arg1, arg2) => {
@@ -61,8 +59,6 @@ class ChatSingleton {
 				let message = fullText.substr(arg1.length + 1, fullText.length);
 				const str = `!{#0984e3}[${currentTime}] [PM]!{#ffffff} à ${recipient.name} [${recipient.id}] : ${message}`;
 				player.outputChatBox(str);
-
-				// graylog.log(`[PM] à ${recipient.name} [${recipient.id}] : ${message}`, `[PM] à ${recipient.name} [${recipient.id}] : ${message}`, `/pm`);
 
 				const str2 = `!{#0984e3}[${currentTime}] [PM]!{#ffffff} de ${player.name} [${player.id}] : ${message}`;
 				recipient.outputChatBox(str2);
@@ -89,7 +85,6 @@ class ChatSingleton {
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${player.name} vous a téléporté à lui.`);
 
 				misc.log.debug(`${player.name} teleported ${target.name} to him.`);
-				// graylog.log(`${player.name} teleported ${target.name} to him.`, `${player.name} teleported ${target.name} to him.`, `/tphere`);
 			},
 
 			'tpto' : (player, fullText, arg1) => {
@@ -112,7 +107,6 @@ class ChatSingleton {
 				player.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} Vous vous êtes téléporté à ${target.name}.`);
 
 				misc.log.debug(`${player.name} teleported to ${target.name}.`);
-				// graylog.log(`${player.name} teleported to ${target.name}.`, `${player.name} teleported to ${target.name}.`, '/tpto');
 			},
 
 			'admin' : (player, fullText) => {
@@ -157,7 +151,6 @@ class ChatSingleton {
 					
 					p.outputChatBox(`!{#fdcb6e}[${currentTime}] [RAPPORT] ${player.name} [${player.id}] : ${fullText}`);
 				}
-				// graylog.log(`[RAPPORT] ${player.name} [${player.id}] : ${fullText}`, `[RAPPORT] ${player.name} [${player.id}] : ${fullText}`, '/rapport');
 			},
 
 			'aooc': (player, fullText) => {
@@ -371,6 +364,25 @@ class ChatSingleton {
 				target.outputChatBox(`!{#d63031}[${currentTime}] [ADMIN]!{#ffffff} ${player.name} vous donné ${arg2} de weed.`);
 			},
 
+			'vgarer': (player, fullText) => {
+				if(player.adminLvl < 1) return;
+				
+				let vehicle = player.vehicle;
+
+				if(!vehicle) return player.notify("~r~Vous n'êtes pas dans un véhicule.");
+
+				const obj = {
+					x: misc.roundNum(vehicle.position.x, 1),
+					y: misc.roundNum(vehicle.position.y, 1),
+					z: misc.roundNum(vehicle.position.z, 1),
+					rot: misc.roundNum(vehicle.rotation.z, 1),
+					dim: vehicle.dimension,
+				}
+				const f = vehicle.fuel;
+				const id = vehicle.guid;
+				misc.query(`UPDATE vehicles SET coord = '${JSON.stringify(obj)}', fuel = '${f}', primaryColor = '${JSON.stringify(vehicle.primaryColor)}', secondaryColor = '${JSON.stringify(vehicle.secondaryColor)}', tunning = '${JSON.stringify(vehicle.tunning)}' WHERE id = '${id}'`);
+			},
+
 			'kick': (player, fullText, arg1, arg2) => {
 				if(player.adminLvl < 1) return;
 				if(fullText.length < 3 || !arg1 || !arg2)
@@ -480,7 +492,6 @@ class ChatSingleton {
 			else {
 				client.outputChatBox(`!{${color}}[${currentTime}] ${player.name} ${text}`);
 			}
-			// graylog.log(`/me ${player.name} ${text}.`, `/me ${player.name} ${text}.`, '/me');
 			misc.log.debug(`${player.name} ${text}.`);
 		});
 	}
@@ -496,7 +507,6 @@ class ChatSingleton {
 			else {
 				client.outputChatBox(`!{${color}}[${currentTime}] ${text} | ${player.name}`);
 			}
-			// graylog.log(`/do ${player.name} ${text}.`, `/do ${player.name} ${text}.`, '/do');
 			misc.log.debug(`${text} | ${player.name}.`);
 		});
 	}

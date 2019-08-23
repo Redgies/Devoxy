@@ -299,6 +299,8 @@ class VehicleSingleton {
         for (const veh of vehicles) {
             if (veh.factionId == 1)
                 veh.firstName = 'Los Santos Police Departement';
+            if (veh.factionId == 4)
+                veh.firstName = 'EMS';
 
             new Vehicle(veh);
         }
