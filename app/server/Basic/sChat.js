@@ -202,6 +202,10 @@ class ChatSingleton {
 				player.outputChatBox("Votre numéro de téléphone est : " + player.phone);
 			},
 
+			'loyauté': (player, fullText) => {
+				player.outputChatBox("Vous avez " + player.loyality + " de loyauté.");
+			},
+
 			'aduty': (player, fullText) => {
 				if(player.adminLvl < 1) return;
 
@@ -220,10 +224,10 @@ class ChatSingleton {
 					misc.log.debug(`${player.name} started admin mode`);
 				}	
 			},
-			'sap': (player, fullText, arg1, arg2, arg3, arg4) => {
-				player.notify("Changement de sappe !");
-				player.setClothes(parseInt(arg1), parseInt(arg2), parseInt(arg3), parseInt(arg4));
-			},
+			// 'sap': (player, fullText, arg1, arg2, arg3, arg4) => {
+			// 	player.notify("Changement de sappe !");
+			// 	player.setClothes(parseInt(arg1), parseInt(arg2), parseInt(arg3), parseInt(arg4));
+			// },
 
 			'kill': (player, fullText, arg1) =>	{
 				if(player.adminLvl < 1) return;

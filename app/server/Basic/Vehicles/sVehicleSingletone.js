@@ -301,6 +301,8 @@ class VehicleSingleton {
                 veh.firstName = 'Los Santos Police Departement';
             if (veh.factionId == 4)
                 veh.firstName = 'EMS';
+            if (veh.factionId == 2)
+                veh.firstName = 'Bennys';
 
             new Vehicle(veh);
         }

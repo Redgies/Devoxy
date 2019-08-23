@@ -53,3 +53,4 @@ require('./Factions/Mafia1/sMafia1');
 require('./Factions/Mafia2/sMafia2');
 require('./Factions/LiveInvader/sLiveInvader');
 require('./Factions/Gangs/sGang1');
+require('./Factions/Gangs/sGang2');
