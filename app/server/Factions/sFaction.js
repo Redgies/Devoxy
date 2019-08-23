@@ -411,6 +411,16 @@ mp.events.addCommand({
 	},
 	"r" : (player, fullText) => {
 		const currentTime = misc.getTime();
+
+		for (const f of factionsList) {
+			if(f.id !== player.id) continue;
+			
+			if(player.faction != 0)
+			{
+				job = f.surname + ' | ' + f.getRank(player);
+			}
+			player.call("cJob-Update", [job]);
+		}
 		
 		for (const p of mp.players.toArray()) {
 			for (const f of factionsList) {
