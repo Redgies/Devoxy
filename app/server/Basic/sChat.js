@@ -366,7 +366,7 @@ class ChatSingleton {
 
 			'vgarer': (player, fullText) => {
 				if(player.adminLvl < 1) return;
-				
+
 				let vehicle = player.vehicle;
 
 				if(!vehicle) return player.notify("~r~Vous n'êtes pas dans un véhicule.");
@@ -381,6 +381,8 @@ class ChatSingleton {
 				const f = vehicle.fuel;
 				const id = vehicle.guid;
 				misc.query(`UPDATE vehicles SET coord = '${JSON.stringify(obj)}', fuel = '${f}', primaryColor = '${JSON.stringify(vehicle.primaryColor)}', secondaryColor = '${JSON.stringify(vehicle.secondaryColor)}', tunning = '${JSON.stringify(vehicle.tunning)}' WHERE id = '${id}'`);
+
+				player.notify("Véhicule garé !");
 			},
 
 			'kick': (player, fullText, arg1, arg2) => {
