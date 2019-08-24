@@ -50,7 +50,7 @@ class Garage {
 			"playerExitColshape" : (player, shape) => {
                 if(!player.loggedIn) return;
                 
-                if(shape === this.eTopShape || shape === this.eUndergroundShape1 || shape === this.eUndergroundShape2 || shape === this.eUndergroundShape3 || shape === this.eUndergroundShape4 || shape === this.eUndergroundShape5 || shape === this.eGarageUndergroundExit1 || shape === this.eGarageUndergroundExit2 || shape === this.eGarageUndergroundExit3 || shape === this.eGarageUndergroundExit4 || shape === this.eGarageUndergroundExit5) 
+                if(shape === this.eTopShape || shape === this.eGarageTopEnter || shape === this.eUndergroundShape1 || shape === this.eUndergroundShape2 || shape === this.eUndergroundShape3 || shape === this.eUndergroundShape4 || shape === this.eUndergroundShape5 || shape === this.eGarageUndergroundExit1 || shape === this.eGarageUndergroundExit2 || shape === this.eGarageUndergroundExit3 || shape === this.eGarageUndergroundExit4 || shape === this.eGarageUndergroundExit5) 
                     player.canUseElevator = false;
             },
 			"sKeys-E" : (player) => {
@@ -133,11 +133,11 @@ class Garage {
 
 		this.eGarageTopEnter = mp.colshapes.newSphere(garage.topEnter.x, garage.topEnter.y, garage.topEnter.z, 5);
 
-		this.eGarageUndergroundExit1 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim);
-		this.eGarageUndergroundExit2 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim + 1);
-		this.eGarageUndergroundExit3 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim + 2);
-		this.eGarageUndergroundExit4 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim + 3);
-		this.eGarageUndergroundExit5 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, this.garage.startDim + 4);
+		this.eGarageUndergroundExit1 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, 5, this.garage.startDim);
+		this.eGarageUndergroundExit2 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, 5, this.garage.startDim + 1);
+		this.eGarageUndergroundExit3 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, 5, this.garage.startDim + 2);
+		this.eGarageUndergroundExit4 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, 5, this.garage.startDim + 3);
+		this.eGarageUndergroundExit5 = mp.colshapes.newSphere(garage.undergroundExit.x, garage.undergroundExit.y, garage.undergroundExit.z, 5, this.garage.startDim + 4);
 	}
 
 	// createGarage() {
