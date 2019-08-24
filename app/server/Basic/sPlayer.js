@@ -208,6 +208,14 @@ class PlayerSingleton {
             if (d.dim) this.dimension = d.dim;
         }
 
+        player.tpWithVehicle = function(d) {
+            if (!this.isDriver() || !this.vehicle) return;
+            this.vehicle.position = new mp.Vector3(d);
+            this.heading = d.rot;
+            this.vehicle.dimension = d.dim;
+            if (d.dim) this.dimension = d.dim;
+        }
+
         player.tpToJail = function() {
             this.position = new mp.Vector3(1691.678, 2565.581, 45.565);
             this.heading = 180.3;
@@ -254,13 +262,6 @@ class PlayerSingleton {
                 player.call("cUnCuff");
                 player.stopAnimation();
             }
-        }
-
-        player.tpWithVehicle = function(d) {
-            if (!this.isDriver() || !this.vehicle) return;
-            this.vehicle.position = new mp.Vector3(d);
-            this.heading = d.rot;
-            this.vehicle.dimension = d.dim;
         }
 
         player.getCurrentPos = function(changeHeight = 0) {

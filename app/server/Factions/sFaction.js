@@ -33,8 +33,6 @@ class Faction {
 				
 				if(!target.loggedIn) return player.notify("~r~Cette personne n'est pas connecté.");
 
-
-
 				if(!this.isInThisFaction(player) || !this.isFactionLeader(player)) return;
                 if(!target.loggedIn) return player.notify("~r~Cette personne n'est pas connecté.");
                 if(target.faction != 0) return player.notify("~r~Cette personne a déjà une faction.");
@@ -45,7 +43,7 @@ class Faction {
 				target.call("cFaction-Update", [target.faction]);
 				target.setVariable('faction', target.faction);
 
-				job = this.surname + ' | ' + this.getRank(player);
+				let job = this.surname + ' | ' + this.getRank(player);
 				target.call("cJob-Update", [job]);
 
 				player.notify(`~g~Vous avez invité ${target.name} dans ${this.name}.`);
@@ -62,7 +60,7 @@ class Faction {
 				target.rank = parseInt(rank);
 				target.call("cFaction-Update", [target.faction]);
 
-				job = this.surname + ' | ' + this.getRank(player);
+				let job = this.surname + ' | ' + this.getRank(player);
 				target.call("cJob-Update", [job]);
 
 				player.notify(`~g~Vous passez ${target.name} au rang de ${this.ranks[target.rank - 1]}.`);
@@ -82,7 +80,7 @@ class Faction {
 				target.faction = 0;
 				target.rank = 0;
 
-				job = 'Aucune faction';
+				let job = 'Aucune faction';
 				target.call("cJob-Update", [job]);
 
 				target.call("cFaction-Update", [target.faction]);

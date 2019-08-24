@@ -73,7 +73,7 @@ class Vehicle {
 		}
 		
 		vehicle.lock = function() {
-			if (this.getOccupants().length === 0) this.blinkLights(); 
+			// if (this.getOccupants().length === 0) this.blinkLights(); 
 		}
 
 		vehicle.setColor = function() {
