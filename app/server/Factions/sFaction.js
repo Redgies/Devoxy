@@ -410,6 +410,8 @@ mp.events.addCommand({
 		}
 	},
 	"r" : (player, fullText) => {
+		if(fullText.length < 1) return;
+		
 		const currentTime = misc.getTime();
 
 		for (const f of factionsList) {
