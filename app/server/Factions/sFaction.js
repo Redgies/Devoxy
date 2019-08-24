@@ -45,6 +45,9 @@ class Faction {
 				target.call("cFaction-Update", [target.faction]);
 				target.setVariable('faction', target.faction);
 
+				job = this.surname + ' | ' + this.getRank(player);
+				target.call("cJob-Update", [job]);
+
 				player.notify(`~g~Vous avez invité ${target.name} dans ${this.name}.`);
 				target.notify(`~g~${player.name} vous a invité dans ${this.name}.`);
 			},
@@ -58,6 +61,9 @@ class Faction {
 
 				target.rank = parseInt(rank);
 				target.call("cFaction-Update", [target.faction]);
+
+				job = this.surname + ' | ' + this.getRank(player);
+				target.call("cJob-Update", [job]);
 
 				player.notify(`~g~Vous passez ${target.name} au rang de ${this.ranks[target.rank - 1]}.`);
 				target.notify(`~g~${player.name} vous a passé au rang de ${this.ranks[target.rank - 1]}.`);				
@@ -75,6 +81,9 @@ class Faction {
 
 				target.faction = 0;
 				target.rank = 0;
+
+				job = 'Aucune faction';
+				target.call("cJob-Update", [job]);
 
 				target.call("cFaction-Update", [target.faction]);
 				target.setVariable('faction', target.faction);
@@ -411,7 +420,7 @@ mp.events.addCommand({
 	},
 	"r" : (player, fullText) => {
 		if(fullText.length < 1) return;
-		
+
 		const currentTime = misc.getTime();
 
 		for (const f of factionsList) {
