@@ -3,8 +3,8 @@ const faction = require('../sFaction');
 
 const factionData = {
     id: 2,
-    name: "Benny's Original Motor Works",
-    surname: "Benny's",
+    name: "Bennys Original Motor Works",
+    surname: "Bennys",
     ranks: [
         "Dépanneur",
         "Mécanicien",
