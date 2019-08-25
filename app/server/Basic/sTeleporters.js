@@ -8,6 +8,7 @@ const teleporters = [
     {id: 5, enter: {x: -1389.052, y: -587.329, z: 30.223}, exit: {x: -1387.912, y: -588.479, z: 30.32}}, // BAHAMA MAMAS
     {id: 5, enter: {x: 16.576, y: -1115.601, z: 29.791}, exit: {x: 17.011, y: -1114.116, z: 29.809}}, // ammunation centre
     {id: 6, enter: {x: -545.137, y: -204.164, z: 38.215}, exit: {x: 136.397, y: -761.089, z: 242.152}} // MAIRIE
+    {id: 7, enter: {x: -1075.244, y: -253.32, z: 44.021}, exit: {x: -1072.7, y: -246.547, z: 54.006}}
 ]
 
 class Teleporter {
