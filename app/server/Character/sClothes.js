@@ -2387,11 +2387,11 @@ class ClothesSingletone {
             this.setClothes(player, feet);
         }
 
-        if (d[0].masks) {
-            const masks = JSON.parse(d[0].masks);
-            masks.title = "Masks";
-            this.setClothes(player, masks);
-        }
+        // if (d[0].masks) {
+        //     const masks = JSON.parse(d[0].masks);
+        //     masks.title = "Masks";
+        //     this.setClothes(player, masks);
+        // }
     }
 }
 
