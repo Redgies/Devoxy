@@ -2227,6 +2227,7 @@ class ClothesSingletone {
     }
 
     setManClothes(player, title, d) {
+        console.log("setManClothes :" + JSON.stringify(d));
         if (title === "Hats") {
             player.setProp(0, this.manHats[d.number].id, d.color);
         }
