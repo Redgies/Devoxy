@@ -2232,7 +2232,7 @@ class ClothesSingletone {
             player.setProp(0, this.manHats[d.number].id, d.color);
         }
         else if (title === "Masks") {
-            player.setClothes(1, this.manMasks[d.number].id, d.color);
+            player.setClothes(1, this.manMasks[d.number].id, d.color, 0);
         } else if (title === "Glasses") {
             player.setProp(1, this.manGlasses[d.number].id, d.color);
         } else if (title === "Ears") {
