@@ -44,12 +44,12 @@ class Rafineur extends Job {
                     if (player.locationJob) return player.notify("~r~Vous avez déjà un véhicule de travail.");
                     const d = {
                         model: 'cerberus',
-                        coord: JSON.stringify({x: 2689.165, y: 1470.643, z: 24.574, rot: 176.35}),
+                        coord: JSON.stringify({x: 461.571, y: -650.561, z: 28.045, rot: 172.88}),
                         id: 0,
                         title: 'Cerberus',
                         fuel: 1,
-                        fuelTank: 70,
-                        fuelRate: 30,
+                        fuelTank: 50,
+                        fuelRate: 250,
                         price: 1,
                         ownerId: 0,
                         whoCanOpen: JSON.stringify([player.guid]),
@@ -103,7 +103,7 @@ class Rafineur extends Job {
     }
 
     createMenuToDrop() {
-        this.dropMarker = mp.markers.new(1, new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z - 1), 0.75,
+        this.dropMarker = mp.markers.new(1, new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z - 1), 3,
         {
             color: [255, 165, 0, 100],
             visible: false,
@@ -146,11 +146,12 @@ class Rafineur extends Job {
     }
 
     startWork(player) {
-        if (player.loyality < 50) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 50 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
+        if (player.loyality < 50) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 40 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
         super.startWork(player);
+        player.job.collected = 0;
         player.job = {name: this.name, collected: 0, activeTree: false};
-        this.createRandomCheckPoint(player);
         this.dropMarker.showFor(player);
+        this.createRandomCheckPoint(player);
     }
 
     setWorkingClothesForMan(player) {
@@ -179,6 +180,7 @@ class Rafineur extends Job {
     }
 
     hideActiveCheckPoint(player) {
+        if(player.job.collected <= 0) return 1;
         this.treeMarkersList[player.job.collected - 1].marker.hideFor(player);
         player.job.activeTree = false;
     }
@@ -186,19 +188,19 @@ class Rafineur extends Job {
     enteredTreeShape(player) {
         player.job.collected += 1;
         player.notify(`Vous avez ravitaillé ~g~${player.job.collected} ~w~stations.`);
-        if (player.job.collected < 6) return this.createRandomCheckPoint(player);
+        if (player.job.collected < 10) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
-        player.notify(`~g~Votre camion est vide, retournez à la rampe.`);
+        player.notify(`~g~Votre citerne est vide, retournez à la rampe.`);
         this.dropMarker.routeFor(player, 60, 0.7);
     }
 
     enteredDropShape(player) {
         if (player.job.collected === 0) return player.notify(`Vous n'êtes passé à aucune station !`);
-        const earnedMoney = player.vip ? ((player.job.collected * 1080) * 1.10) : player.job.collected * 1080;
+        const earnedMoney = player.vip ? ((player.job.collected * 620) * 1.10) : player.job.collected * 620;
         player.changeMoney(+earnedMoney);
         player.notify(`Vous gagnez ~g~$${earnedMoney} ! ~w~Continuez !`);
-        if (player.loyality < 60) player.addLoyality(2);
-        misc.log.debug(`${player.name} earned $${earnedMoney} at raffineur job!`);
+        if (player.loyality < 50) player.addLoyality(2);
+        misc.log.debug(`${player.name} earned $${earnedMoney} at rafineur job!`);
         player.job.collected = 0;
         if (!player.job.activeTree) this.createRandomCheckPoint(player);
     }
@@ -206,14 +208,14 @@ class Rafineur extends Job {
     finishWork(player) {
         this.hideActiveCheckPoint(player);
         this.dropMarker.hideFor(player);
-        player.routeBlip.unrouteFor(player);
+        if(player.routeBlip)
+            player.routeBlip.unrouteFor(player);
         if(player.locationJob)
             player.locationJob.destroy();
         player.locationJob = 0;
         super.finishWork(player);
     }
-
-
 }
 
 new Rafineur();
+

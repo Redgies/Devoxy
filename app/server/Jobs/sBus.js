@@ -154,8 +154,8 @@ class Bus extends Job {
         super.startWork(player);
         player.job.collected = 0;
         player.job = {name: this.name, collected: 0, activeTree: false};
-        this.createRandomCheckPoint(player);
         this.dropMarker.showFor(player);
+        this.createRandomCheckPoint(player);
     }
 
     setWorkingClothesForMan(player) {
@@ -193,10 +193,10 @@ class Bus extends Job {
         player.job.collected += 1;
         player.notify(`Vous avez passé ~g~${player.job.collected} ~w~arrêts.`);
         if (player.job.collected < 10) return this.createRandomCheckPoint(player);
-        player.job.collected--;
         this.hideActiveCheckPoint(player);
-        player.notify(`~g~Votre ligne est terminé, retournez au dépôt.`);
         this.dropMarker.routeFor(player, 60, 0.7);
+        player.notify(`~g~Votre ligne est terminé, retournez au dépôt.`);
+        
     }
 
     enteredDropShape(player) {
