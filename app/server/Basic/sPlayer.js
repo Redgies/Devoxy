@@ -55,7 +55,8 @@ class PlayerSingleton {
         player.updateName();
 
     
-        player.mask = 1;
+        player.mask = 0;
+        player.matos = 100;
 
         player.working = false;
         player.hideHud = false;
