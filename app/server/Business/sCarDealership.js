@@ -42,7 +42,7 @@ class CarDealership extends business {
 			{mod: 23, value: -1}
 		];
 
-		if (!canBuy) return;
+		if (!canBuy) return player.notify("~r~Vous n'avez pas assez d'argent.");
 		await this.addMoneyToBalance(shopTax);
 		await vehicleSingletone.saveNewCar(player, model, this.newCarCoord, false, tunning);
 

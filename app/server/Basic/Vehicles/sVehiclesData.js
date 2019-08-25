@@ -49,6 +49,7 @@ class VehiclesDataSingleton {
 			{   model: "burrito3",      title: "Burrito",               fuelTank: 80,   fuelRate: 130,  price: 80000,   },
 			{   model: "exemplar",      title: "Exemplar",         fuelTank: 60,   fuelRate: 270,  price: 1280000,  },
 			{   model: "surano",      title: "Surano",         fuelTank: 60,   fuelRate: 270,  price: 1280000,  },
+			{   model: "bison",         title: "Bison",                  fuelTank: 70,   fuelRate: 150,  price: 130000,   },
 
 			{   model: "brioso",         title: "Brioso",          fuelTank: 40,   fuelRate: 120,  price: 350000,   },
 			{   model: "baller6",         title: "Baller blindé",          fuelTank: 80,   fuelRate: 150,  price: 350000,   },
@@ -77,17 +78,16 @@ class VehiclesDataSingleton {
 			{   model: "swift",         title: "Swift",          fuelTank: 50,   fuelRate: 150,  price: 1200000,   },
 			{   model: "cargobob2",         title: "Cargobob 2",          fuelTank: 50,   fuelRate: 150,  price: 1600000,   },
 
-			{   model: "faggio",         title: "Faggio",          fuelTank: 35,   fuelRate: 70,  price: 3000,   },
+			{   model: "faggio",         title: "Faggio",          fuelTank: 35,   fuelRate: 70,  price: 5000,   },
 			{   model: "bf400",         title: "BF400",          fuelTank: 45,   fuelRate: 100,  price: 250000,   },
-			{   model: "enduro",         title: "Enduro",          fuelTank: 55,   fuelRate: 140,  price: 25750,   },
-			{   model: "sanchez2",         title: "Sanchez",          fuelTank: 45,   fuelRate: 140,  price: 30000,   },
-			{   model: "vader",         title: "Vader",          fuelTank: 45,   fuelRate: 135,  price: 37500,   },
-			{   model: "hakuchou",         title: "Hakuchou",          fuelTank: 50,   fuelRate: 150,  price: 150000,   },
-			{   model: "nightblade",         title: "Nightblade",          fuelTank: 50,   fuelRate: 180,  price: 140000,   },
-			{   model: "double",         title: "Double T",          fuelTank: 50,   fuelRate: 120,  price: 55750,   },
-			{   model: "nemesis",         title: "Nemesis",          fuelTank: 45,   fuelRate: 135,  price: 60000,   },
-			{   model: "bati",      title: "Bati",              fuelTank: 45,   fuelRate: 11,   price: 120000,   },
-		
+			{   model: "enduro",         title: "Enduro",          fuelTank: 55,   fuelRate: 140,  price: 50000,   },
+			{   model: "sanchez2",         title: "Sanchez",          fuelTank: 45,   fuelRate: 140,  price: 75000,   },
+			{   model: "vader",         title: "Vader",          fuelTank: 45,   fuelRate: 135,  price: 200000,   },
+			{   model: "hakuchou",         title: "Hakuchou",          fuelTank: 50,   fuelRate: 150,  price: 300000,   },
+			{   model: "nightblade",         title: "Nightblade",          fuelTank: 50,   fuelRate: 180,  price: 300000,   },
+			{   model: "double",         title: "Double T",          fuelTank: 50,   fuelRate: 120,  price: 320000,   },
+			{   model: "nemesis",         title: "Nemesis",          fuelTank: 45,   fuelRate: 135,  price: 350000,   },
+			{   model: "bati",      title: "Bati",              fuelTank: 45,   fuelRate: 11,   price: 260000,   },
 		];
 	}
 

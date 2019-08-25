@@ -10,7 +10,7 @@ const factionData = {
         "Mécanicien",
         "Carrossier",
         "Pimper",
-        "Chef d'équipe",
+        "Chef des Equipes",
         "Directeur",
     ],
     maxRank: 6,
