@@ -167,7 +167,7 @@ class PlayerSingleton {
             let count = 0;
             const onlinePlayers = mp.players.toArray();
             for (const p of onlinePlayers) {
-                if(p.faction !== 1 || p.working !== 1) continue;
+                if(p.faction !== 1 || !p.working) continue;
                 count++;
             }
 
