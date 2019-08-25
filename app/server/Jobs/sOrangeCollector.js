@@ -206,7 +206,7 @@ class OrangeCollector extends Job {
     enteredDropShape(player) {
         player.stopAnimation();
         if (player.job.collected === 0) return player.notify(`${i18n.get('sOrangeCollector', 'empty', player.lang)}!`);
-        const earnedMoney = player.vip ? (player.job.collected * 80 * 1.10) : player.job.collected * 80;
+        const earnedMoney = player.vip ? (player.job.collected * 50 * 1.10) : player.job.collected * 5Ò0;
         player.changeMoney(earnedMoney);
         player.notify(`${i18n.get('basic', 'earned1', player.lang)} ~g~$${earnedMoney}! ~w~${i18n.get('basic', 'earned2', player.lang)}!`);
         if (player.loyality < 10) player.addLoyality(2);
