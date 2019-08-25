@@ -44,7 +44,7 @@ class Rafineur extends Job {
                     if (player.locationJob) return player.notify("~r~Vous avez déjà un véhicule de travail.");
                     const d = {
                         model: 'cerberus',
-                        coord: JSON.stringify({x: 461.571, y: -650.561, z: 28.045, rot: 172.88}),
+                        coord: JSON.stringify({x: 2689.958, y: 1468.092, z: 24.567, rot: 179.63}),
                         id: 0,
                         title: 'Cerberus',
                         fuel: 1,
@@ -188,7 +188,7 @@ class Rafineur extends Job {
     enteredTreeShape(player) {
         player.job.collected += 1;
         player.notify(`Vous avez ravitaillé ~g~${player.job.collected} ~w~stations.`);
-        if (player.job.collected < 10) return this.createRandomCheckPoint(player);
+        if (player.job.collected < 7) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Votre citerne est vide, retournez à la rampe.`);
         this.dropMarker.routeFor(player, 60, 0.7);
