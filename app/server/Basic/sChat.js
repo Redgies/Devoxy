@@ -393,7 +393,7 @@ class ChatSingleton {
 				clothes.loadPlayerMask(player);
 			},
 
-			'matos': (playern, fullText, arg1) => {
+			'matos': (player, fullText, arg1) => {
 				if(!player.faction) return;
 				if(!arg1) return player.notify("~r~Utilisez /matos <quantité>");
 
