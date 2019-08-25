@@ -5,6 +5,7 @@
 <body>
     <div class="b1" id="app">
         <div class="b1-title">{{ titleText }} №{{ id }}</div>
+        <div class="item buttons" @click="showMasks">Masques</div>
         <div class="item buttons" @click="showHats">Chapeaux</div>
         <div class="item buttons" @click="showGlasses">Lunettes</div>
         <div class="item buttons" @click="showEars">Oreilles</div>
@@ -58,6 +59,7 @@
             id: 0,
             margin: 0,
             camRotation: 0,
+            masks: false,
             hats: false,
             glasses: false,
             ears: false,
@@ -74,6 +76,7 @@
             currentCloth: false,
 
             titleText: "Magasin de vêtements",
+            masksText: "Masks",
             hatsText: "Hats",
             glassesText: "Glasses",
             earsText: "Ears",
@@ -133,6 +136,11 @@
             showNeck: function () {
                 this.currentTitle = "Neck";
                 this.currentArr = this.neck;
+                this.setCurrentStartSettings();
+            },
+            showMasks: function () {
+                this.currentTitle = "Masks";
+                this.currentArr = this.masks;
                 this.setCurrentStartSettings();
             },
             showTops: function () {
@@ -244,6 +252,22 @@
     });
 
     function loadMans() {
+        app.masks = [
+            {id: 0, name: "Rien", color: 0, colors: [0], price: 0,},
+            {id: 1, name: "Cochon", color: 0, colors: [0], price: 2000},
+            {id: 3, name: "Singe", color: 0, colors: [0], price: 2000},
+            {id: 7, name: "Troll", color: 0, colors: [0], price: 2000},
+            {id: 8, name: "Père Noël", color: 0, colors: [0], price: 2000},
+            {id: 14, name: "Masque 1", color: 0, colors: [0], price: 2000},
+            {id: 15, name: "Masque 2", color: 0, colors: [0], price: 2000},
+            {id: 16, name: "Masque 3", color: 0, colors: [0], price: 2000},
+            {id: 29, name: "Masque 4", color: 0, colors: [0], price: 2000},
+            {id: 35, name: "Cagoule", color: 0, colors: [0], price: 2000},
+            {id: 46, name: "Masque à gaz", color: 0, colors: [0], price: 2000},
+            {id: 51, name: "Bandana", color: 0, colors: [0], price: 2000},
+            {id: 136, name: "Corbeau", color: 0, colors: [0], price: 2000},
+        ];
+
         app.hats = [
             {id: 8, name: "Sans chapeau", color: 0, colors: [0], price: 0,},
             {id: 2, name: "Bonnet", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7], price: 500,},
@@ -1983,7 +2007,22 @@
 
 
     function loadWomans() {
-
+        app.masks = [
+            {id: 0, name: "Rien", color: 0, colors: [0], price: 0,},
+            {id: 1, name: "Cochon", color: 0, colors: [0], price: 2000},
+            {id: 3, name: "Singe", color: 0, colors: [0], price: 2000},
+            {id: 7, name: "Troll", color: 0, colors: [0], price: 2000},
+            {id: 8, name: "Père Noël", color: 0, colors: [0], price: 2000},
+            {id: 14, name: "Masque 1", color: 0, colors: [0], price: 2000},
+            {id: 15, name: "Masque 2", color: 0, colors: [0], price: 2000},
+            {id: 16, name: "Masque 3", color: 0, colors: [0], price: 2000},
+            {id: 29, name: "Masque 4", color: 0, colors: [0], price: 2000},
+            {id: 35, name: "Cagoule", color: 0, colors: [0], price: 2000},
+            {id: 46, name: "Masque à gaz", color: 0, colors: [0], price: 2000},
+            {id: 51, name: "Bandana", color: 0, colors: [0], price: 2000},
+            {id: 136, name: "Corbeau", color: 0, colors: [0], price: 2000},
+        ];
+        
         app.hats = [
             {id: 7, name: "Beret", color: 0, colors: [1,2,3,4,5,6,7], price: 500,},
             {id: 12, name: "Bonnet", color: 0, colors: [1,2,3,4,5,6,7], price: 500,},

@@ -3,6 +3,22 @@ const misc = require('../sMisc');
 
 class ClothesSingletone {
     constructor() {
+        this.manMasks = [
+            {id: 0, name: "Rien", color: 0, colors: [0], price: 0,},
+            {id: 1, name: "Cochon", color: 0, colors: [0], price: 2000},
+            {id: 3, name: "Singe", color: 0, colors: [0], price: 2000},
+            {id: 7, name: "Troll", color: 0, colors: [0], price: 2000},
+            {id: 8, name: "Père Noël", color: 0, colors: [0], price: 2000},
+            {id: 14, name: "Masque 1", color: 0, colors: [0], price: 2000},
+            {id: 15, name: "Masque 2", color: 0, colors: [0], price: 2000},
+            {id: 16, name: "Masque 3", color: 0, colors: [0], price: 2000},
+            {id: 29, name: "Masque 4", color: 0, colors: [0], price: 2000},
+            {id: 35, name: "Cagoule", color: 0, colors: [0], price: 2000},
+            {id: 46, name: "Masque à gaz", color: 0, colors: [0], price: 2000},
+            {id: 51, name: "Bandana", color: 0, colors: [0], price: 2000},
+            {id: 136, name: "Corbeau", color: 0, colors: [0], price: 2000},
+        ];
+
         this.manHats = [
             {id: 8, name: "Sans chapeau", color: 0, colors: [0], price: 0,},
             {id: 2, name: "Bonnet", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7], price: 500,},
@@ -2150,12 +2166,31 @@ class ClothesSingletone {
                 colors: [0, 1, 2],
                 price: 550,
             },
-        ];     
+        ]; 
 
+        this.womanMasks = [
+            {id: 0, name: "Rien", color: 0, colors: [0], price: 0,},
+            {id: 1, name: "Cochon", color: 0, colors: [0], price: 2000},
+            {id: 3, name: "Singe", color: 0, colors: [0], price: 2000},
+            {id: 7, name: "Troll", color: 0, colors: [0], price: 2000},
+            {id: 8, name: "Père Noël", color: 0, colors: [0], price: 2000},
+            {id: 14, name: "Masque 1", color: 0, colors: [0], price: 2000},
+            {id: 15, name: "Masque 2", color: 0, colors: [0], price: 2000},
+            {id: 16, name: "Masque 3", color: 0, colors: [0], price: 2000},
+            {id: 29, name: "Masque 4", color: 0, colors: [0], price: 2000},
+            {id: 35, name: "Cagoule", color: 0, colors: [0], price: 2000},
+            {id: 46, name: "Masque à gaz", color: 0, colors: [0], price: 2000},
+            {id: 51, name: "Bandana", color: 0, colors: [0], price: 2000},
+            {id: 136, name: "Corbeau", color: 0, colors: [0], price: 2000},
+        ];
     }
 
     getPrice(player, title, number) {
-        if (title === "Hats") {
+        if (title === "Masks") {
+            if (player.model === 1885233650) return this.manMasks[number].price;
+            else return this.womanMasks[number].price;
+        }
+        else if (title === "Hats") {
             if (player.model === 1885233650) return this.manHats[number].price;
             else return this.womanHats[number].price;
         } else if (title === "Glasses") {
@@ -2194,6 +2229,9 @@ class ClothesSingletone {
     setManClothes(player, title, d) {
         if (title === "Hats") {
             player.setProp(0, this.manHats[d.number].id, d.color);
+        }
+        else if (title === "Masks") {
+            player.setClothes(1, this.manMasks[d.number].id, d.color);
         } else if (title === "Glasses") {
             player.setProp(1, this.manGlasses[d.number].id, d.color);
         } else if (title === "Ears") {
@@ -2216,6 +2254,9 @@ class ClothesSingletone {
     setWomanClothes(player, title, d) {
         if (title === "Hats") {
             player.setProp(0, this.womanHats[d.number].id, d.color);
+        }
+        else if (title === "Masks") {
+            player.setClothes(1, this.womanMasks[d.number].id, d.color);
         } else if (title === "Glasses") {
             player.setProp(1, this.womanGlasses[d.number].id, d.color);
         } else if (title === "Ears") {
@@ -2257,6 +2298,8 @@ class ClothesSingletone {
             await misc.query(`UPDATE usersClothes SET legs = '${JSON.stringify(obj)}' WHERE id = ${player.guid}`);
         } else if (d.title === "Feet") {
             await misc.query(`UPDATE usersClothes SET feet = '${JSON.stringify(obj)}' WHERE id = ${player.guid}`);
+        } else if (d.title === "Masks") {
+            await misc.query(`UPDATE usersClothes SET masks = '${JSON.stringify(obj)}' WHERE id = ${player.guid}`);
         }
     }
 
@@ -2268,8 +2311,33 @@ class ClothesSingletone {
         await misc.query(`INSERT INTO usersClothes (id, hats, glasses, ears, watches, neck, tops, legs, feet) VALUES ('${id}', '${obj}', '${obj}', '${obj}', '${obj}', '${obj}', '${tops}', '${obj}', '${obj}');`);
     }
 
+    async loadPlayerMask(player) {
+        const d = await misc.query(`SELECT masks FROM usersClothes WHERE id = '${player.guid}'`);
+
+        player.mask = !player.mask;
+
+        if(player.mask == 0)   
+        {
+            if (d[0].masks) {
+                const masks = JSON.parse(d[0].masks);
+                masks.title = "Masks";
+                this.setClothes(player, masks);
+                player.notify("Vous avez mit votre masque.");
+            }
+        }
+        else
+        {
+            const masks;
+            masks.title = "Masks";
+            masks.number = 0;
+            masks.color = 0;
+            this.setClothes(player, masks);
+            player.notify("Vous avez retiré votre masque.");
+        }
+    }
+
     async loadPlayerClothes(player) {
-        const d = await misc.query(`SELECT hats, glasses, ears, watches, neck, tops, legs, feet FROM usersClothes WHERE id = '${player.guid}'`);
+        const d = await misc.query(`SELECT hats, glasses, ears, watches, neck, tops, legs, feet, masks FROM usersClothes WHERE id = '${player.guid}'`);
         if (d[0].hats) {
             const hats = JSON.parse(d[0].hats);
             hats.title = "Hats";
@@ -2316,6 +2384,12 @@ class ClothesSingletone {
             const feet = JSON.parse(d[0].feet);
             feet.title = "Feet";
             this.setClothes(player, feet);
+        }
+
+        if (d[0].masks) {
+            const masks = JSON.parse(d[0].masks);
+            masks.title = "Masks";
+            this.setClothes(player, masks);
         }
     }
 }

@@ -78,7 +78,7 @@ class VehiclesDataSingleton {
 			{   model: "cargobob2",         title: "Cargobob 2",          fuelTank: 50,   fuelRate: 150,  price: 1600000,   },
 
 			{   model: "faggio",         title: "Faggio",          fuelTank: 35,   fuelRate: 70,  price: 3000,   },
-			{   model: "bf400",         title: "BF400",          fuelTank: 45,   fuelRate: 100,  price: 25000,   },
+			{   model: "bf400",         title: "BF400",          fuelTank: 45,   fuelRate: 100,  price: 250000,   },
 			{   model: "enduro",         title: "Enduro",          fuelTank: 55,   fuelRate: 140,  price: 25750,   },
 			{   model: "sanchez2",         title: "Sanchez",          fuelTank: 45,   fuelRate: 140,  price: 30000,   },
 			{   model: "vader",         title: "Vader",          fuelTank: 45,   fuelRate: 135,  price: 37500,   },

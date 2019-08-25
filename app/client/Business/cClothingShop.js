@@ -15,6 +15,10 @@ mp.events.add(
 
 	"cClothingShop-SetCamera" : (type) => {
 		switch (type) {
+			case "Masks":
+				misc.createCam(camD.x, camD.y, camD.z + 0.7, camD.rx, camD.ry, camD.rz, camD.viewangle - 20);
+				break;
+
 			case "Hats":
 				misc.createCam(camD.x, camD.y, camD.z + 0.7, camD.rx, camD.ry, camD.rz, camD.viewangle - 20);
 				break;

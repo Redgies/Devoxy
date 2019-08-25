@@ -54,6 +54,9 @@ class PlayerSingleton {
         player.whitewash = d[0].whitewash;
         player.updateName();
 
+    
+        player.mask = 1;
+
         player.working = false;
         player.hideHud = false;
         
@@ -395,8 +398,9 @@ mp.events.add({
         if(!player.vip)
         {
             player.resetAllWeapons();
+            player._inventory = [];
         }
-        player._inventory = [];
+        
 
         if (!killer || player === killer) return;
         if (killer.faction == 1 && killer.working == true) return;

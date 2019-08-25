@@ -51,6 +51,9 @@ class Weed {
 
                         player.notify(`Transaction en cours... ~b~${player.weedTimer} ~w~secondes.`);
 
+                        if(player.weedTimer <= 0)
+                            clearInterval(player.timer);
+
                         if(player.weedTimer <= 1)
                         {
                             const inventory = player.getInventory();

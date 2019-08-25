@@ -37,3 +37,43 @@ mp.blips.new(93, new mp.Vector3(-1390.863, -583.321, 30.224),
     scale: 0.6,
     shortRange: true,
 });
+
+mp.blips.new(78, new mp.Vector3(-545.137, -204.164, 38.215),
+{
+    name: 'Mairie',
+    color: 67,
+    scale: 0.6,
+    shortRange: true,
+});
+
+mp.blips.new(494, new mp.Vector3(-1038.748, -2731.016, 20.169),
+{
+    name: 'Loueur de Scooter',
+    color: 4,
+    scale: 0.5,
+    shortRange: true,
+});
+
+mp.blips.new(494, new mp.Vector3(-187.015, 6433.144, 31.513),
+{
+    name: 'Loueur de Scooter',
+    color: 4,
+    scale: 0.5,
+    shortRange: true,
+});
+
+mp.blips.new(494, new mp.Vector3(388.041, -970.046, 29.443),
+{
+    name: 'Loueur de Scooter',
+    color: 4,
+    scale: 0.5,
+    shortRange: true,
+});
+
+mp.blips.new(494, new mp.Vector3(1868.438, 2702.049, 45.827),
+{
+    name: 'Loueur de Scooter',
+    color: 4,
+    scale: 0.5,
+    shortRange: true,
+});
