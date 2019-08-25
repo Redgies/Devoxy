@@ -176,7 +176,7 @@ class Rafineur extends Job {
         this.treeMarkersList[player.job.collected].blip.routeFor(player, 60, 0.7);
         player.routeBlip = this.treeMarkersList[player.job.collected].blip;
         player.job.activeTree = player.job.collected;
-        return i;
+        // return i;
     }
 
     hideActiveCheckPoint(player) {

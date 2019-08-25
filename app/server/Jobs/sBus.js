@@ -150,7 +150,7 @@ class Bus extends Job {
     }
 
     startWork(player) {
-        if (player.loyality < 40) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 40 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
+        // if (player.loyality < 40) return player.notify(`~r~${i18n.get('basic', 'needMoreLoyality1', player.lang)} 40 ${i18n.get('basic', 'needMoreLoyality2', player.lang)}!`);
         super.startWork(player);
         player.job.collected = 0;
         player.job = {name: this.name, collected: 0, activeTree: false};
@@ -180,7 +180,7 @@ class Bus extends Job {
         this.treeMarkersList[player.job.collected].blip.routeFor(player, 60, 0.7);
         player.routeBlip = this.treeMarkersList[player.job.collected].blip;
         player.job.activeTree = player.job.collected;
-        return i;
+        // return i;
     }
 
     hideActiveCheckPoint(player) {
