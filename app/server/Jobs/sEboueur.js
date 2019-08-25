@@ -123,6 +123,11 @@ class Eboueur extends Job {
             drawDistance: 5,
             color: [255, 255, 255, 255],
         });
+        this.dropBlip = mp.blips.new(1, new mp.Vector3(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z), {
+            shortRange: true,
+            scale: 0,
+            color: 60,
+        });
         this.dropShape = mp.colshapes.newSphere(this.posToDrop.x, this.posToDrop.y, this.posToDrop.z, 4);
     }
 
@@ -196,12 +201,15 @@ class Eboueur extends Job {
     }
 
     enteredTreeShape(player) {
+        if(player.vehicle != player.locationJob)
+            return player.notify("~r~Vous n'êtes pas dans votre véhicule de service.");
+            
         player.job.collected += 1;
         player.notify(`Vous avez ramassé ~g~${player.job.collected} ~w~poubelles.`);
         if (player.job.collected < 10) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Votre camion est plein, retournez à la décharge.`);
-        this.dropMarker.routeFor(player, 60, 0.7);
+        this.dropBlip.routeFor(player, 60, 0.7);
     }
 
     enteredDropShape(player) {

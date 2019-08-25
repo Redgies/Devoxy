@@ -191,6 +191,8 @@ class Rafineur extends Job {
     }
 
     enteredTreeShape(player) {
+        if(player.vehicle != player.locationJob)
+            return player.notify("~r~Vous n'êtes pas dans votre véhicule de service.");
         player.job.collected += 1;
         player.notify(`Vous avez ravitaillé ~g~${player.job.collected} ~w~stations.`);
         if (player.job.collected < 7) return this.createRandomCheckPoint(player);
@@ -201,7 +203,7 @@ class Rafineur extends Job {
 
     enteredDropShape(player) {
         if (player.job.collected === 0) return player.notify(`Vous n'êtes passé à aucune station !`);
-        const earnedMoney = player.vip ? ((player.job.collected * 620) * 1.10) : player.job.collected * 620;
+        const earnedMoney = player.vip ? ((player.job.collected * 820) * 1.10) : player.job.collected * 820;
         player.changeMoney(+earnedMoney);
         player.notify(`Vous gagnez ~g~$${earnedMoney} ! ~w~Continuez !`);
         if (player.loyality < 50) player.addLoyality(2);
