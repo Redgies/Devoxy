@@ -67,6 +67,14 @@ class Braquage {
                     let playerWeapon = player.weapon;
 
                     if(playerWeapon == 2725352035) return player.notify("~r~Vous n'avez pas d'armes en mains.");
+
+                    if(this.price <= 15000 && player.getCops() < 3) 
+                        return player.notify("~r~Il n'y a pas assez de flics en ville.");
+                    if(this.price <= 30000 && player.getCops() < 6) 
+                        return player.notify("~r~Il n'y a pas assez de flics en ville.");
+                    if(this.price <= 300000 && player.getCops() < 10) 
+                        return player.notify("~r~Il n'y a pas assez de flics en ville.");
+
                     if(this.used) return player.notify("~r~Il y a déjà un braquage en cours.");
                     if(this.finish) return player.notify("~r~Vous ne pouvez pas encore braquer.");
 

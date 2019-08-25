@@ -399,7 +399,11 @@ class ChatSingleton {
 
 				player.matos = parseInt(arg1);
 
-				player.notify(`Votre prochaine commande sera de ~b~${player.matos} ~w~pour ~g~${player.matos * 150}$.`);
+				player.notify(`Votre prochaine commande sera de ~b~${player.matos} ~w~ matos pour ~g~${player.matos * 150}$.`);
+			},
+
+			'cops': (player, fullText) => {
+				player.notify(`Il y a actuellement ~r~${player.getCops()}~w~ policiers en services.`);
 			},
 
 			'kick': (player, fullText, arg1, arg2) => {

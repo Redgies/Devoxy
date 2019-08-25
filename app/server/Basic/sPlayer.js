@@ -163,6 +163,17 @@ class PlayerSingleton {
             return 0;
         }
 
+        player.getCops = function() {
+            let count = 0;
+            const onlinePlayers = mp.players.toArray();
+            for (const p of onlinePlayers) {
+                if(p.faction !== 1 && p.working !== 1) continue;
+                count++;
+            }
+
+            return count;
+        }
+
         player.unsetWeapon = function(hash) {
             player.removeWeapon(hash);
 

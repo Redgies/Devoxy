@@ -43,7 +43,7 @@ class Mafia2 extends faction {
                 if(shape === this.matosShape)
                 {
                     player.canBuyMatos = true;
-                    player.notify("Appuyez ~b~E ~w~pour acheter du matos (~g~15000$~w~ les 100 matos).");
+                    player.notify(`Appuyez ~b~E ~w~pour acheter ${player.matos} (~g~${player.matos * 150}$~w~).`);
                 }
                 if(shape === this.createShape)
                 {
@@ -65,13 +65,13 @@ class Mafia2 extends faction {
 
                 if(player.canBuyMatos)
                 {
-                    if(player.money.cash < 15000)
+                    if(player.money.cash < player.matos * 150)
                         return player.notify("~r~Vous n'avez pas assez sur vous.");
 
-                    player.changeMoney(-15000);
-                    player.giveItem("item_matos", "Matos", 100);
+                    player.changeMoney(-player.matos * 150);
+                    player.giveItem("item_matos", "Matos", player.matos);
 
-                    player.notify("Vous avez acheté 100 matos pour ~g~15000$~w~.")
+                    player.notify(`Vous avez acheté ${player.matos} matos pour ~g~${player.matos * 150}$~w~.`)
                 }
                 if(player.canCreateWeapon)
                 {
