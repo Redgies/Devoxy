@@ -2327,7 +2327,7 @@ class ClothesSingletone {
         }
         else
         {
-            const masks;
+            const masks = {};
             masks.title = "Masks";
             masks.number = 0;
             masks.color = 0;
