@@ -6,7 +6,7 @@
 	"csharp" : true,
 	"stream-distance": 500.0,
 	"announce": true,
-	"port": 22007,
-	"bind": "91.121.7.136",
+	"port": 22005,
+	"bind": "46.105.102.23",
 	"url": "www.devoxy.fr"
 }
