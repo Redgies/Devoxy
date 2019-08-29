@@ -37,6 +37,7 @@ class Weed {
             "sKeys-E" : (player) => {
                 if(player.canWeed) 
                 {
+                    player.canWeed = false;
                     player.weedTimer = 25;
 
                     for(const p of mp.players.toArray()) {
