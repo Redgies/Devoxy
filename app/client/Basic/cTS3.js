@@ -99,7 +99,7 @@ setInterval(function(){
         }
         // if(debug) mp.gui.chat.push(volumeModifier);
 
-        mp.gui.chat.push("speaking : " + player.IS_SPEAKING);
+        mp.gui.chat.push("speaking : " + JSON.stringify(player));
 
         if(player.getVariable("inCall") != -1)
         {
