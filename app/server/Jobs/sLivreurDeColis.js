@@ -203,7 +203,7 @@ class LivreurDeColis extends Job {
 
         player.job.collected += 1;
         player.notify(`Vous avez livrés ~g~${player.job.collected} ~w~adresses.`);
-        if (player.job.collected < 10) return this.createRandomCheckPoint(player);
+        if (player.job.collected < 5) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Vous n'avez plus de colis, retournez au bureau.`);
         this.dropBlip.routeFor(player, 60, 0.7);

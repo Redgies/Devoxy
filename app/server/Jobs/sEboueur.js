@@ -203,10 +203,10 @@ class Eboueur extends Job {
     enteredTreeShape(player) {
         if(player.vehicle != player.locationJob)
             return player.notify("~r~Vous n'êtes pas dans votre véhicule de service.");
-            
+
         player.job.collected += 1;
         player.notify(`Vous avez ramassé ~g~${player.job.collected} ~w~poubelles.`);
-        if (player.job.collected < 10) return this.createRandomCheckPoint(player);
+        if (player.job.collected < 5) return this.createRandomCheckPoint(player);
         this.hideActiveCheckPoint(player);
         player.notify(`~g~Votre camion est plein, retournez à la décharge.`);
         this.dropBlip.routeFor(player, 60, 0.7);
@@ -232,8 +232,6 @@ class Eboueur extends Job {
         player.locationJob = 0;
         super.finishWork(player);
     }
-
-
 }
 
 new Eboueur();
