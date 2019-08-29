@@ -53,6 +53,8 @@ var getStreamedPlayers = () => {
 
 
 setInterval(function(){
+
+    mp.gui.chat.push("speaking : " + player.getVariable("IS_SPEAKING"));
   // mp.gui.chat.push("faction : " + mp.players.local.faction);
     // var dateTime = API.getGameTime();
     if (refresh == 1)// && (dateTime - oldDateTime) >= 500)
