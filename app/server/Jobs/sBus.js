@@ -29,7 +29,7 @@ class Bus extends Job {
             "playerEnterColshape": (player, shape) => {
                 if (!player.loggedIn || !this.isPlayerWorksHere(player)) return;
                 if (shape.orangeCollectorTree === player.job.activeTree) {
-                    player.call("cMisc-CallServerEvenWithTimeout", ["sBus-EnteredTreeShape", 100]);
+                    player.call("cMisc-CallServerEvenWithTimeout", ["sBus-EnteredTreeShape", 3000]);
                 } else if (shape === this.dropShape) {
                     player.call("cMisc-CallServerEvenWithTimeout", ["sBus-EnteredDropShape", 100]);
                 } else if (shape === this.vehicleShape) {

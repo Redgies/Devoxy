@@ -19,6 +19,9 @@ class Dockeur extends Job {
         mp.events.add({
             "playerEnterColshape": (player, shape) => {
                 if (!player.loggedIn || !this.isPlayerWorksHere(player)) return;
+
+                player.outputChatBox("shape : " + shape.orangeCollectorTree);
+
                 if (shape.orangeCollectorTree === player.job.activeTree) {
                     player.call("cMisc-CallServerEvenWithTimeout", ["sDockeur-EnteredTreeShape", 100]);
                 } else if (shape === this.dropShape) {
@@ -38,7 +41,7 @@ class Dockeur extends Job {
                 if (player.canGetVehicle) {
                     if (player.locationJob) return player.notify("~r~Vous avez déjà un véhicule de travail.");
                     const d = {
-                        model: 'handler',
+                        model: 'drafter',
                         coord: JSON.stringify({x: 1184.773, y: -3231.942, z: 6.014, rot: 0.46}),
                         id: 0,
                         title: 'Handler',
@@ -181,8 +184,7 @@ class Dockeur extends Job {
     }
 
     hideActiveCheckPoint(player) {
-        if(player.job.collected <= 0) return 1;
-        this.treeMarkersList[player.job.collected - 1].marker.hideFor(player);
+        this.treeMarkersList[player.job.checkpoint - 1].marker.hideFor(player);
         player.job.activeTree = false;
     }
 
