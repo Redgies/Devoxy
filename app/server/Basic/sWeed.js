@@ -37,6 +37,9 @@ class Weed {
             "sKeys-E" : (player) => {
                 if(player.canWeed) 
                 {
+                    if(player.getCops() < 3) 
+                        return player.notify("~r~Il n'y a pas assez de flics en ville.");
+
                     player.canWeed = false;
                     player.weedTimer = 25;
 
