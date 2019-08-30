@@ -20,7 +20,7 @@ class Dockeur extends Job {
             "playerEnterColshape": (player, shape) => {
                 if (!player.loggedIn || !this.isPlayerWorksHere(player)) return;
 
-                player.outputChatBox("shape : " + shape.orangeCollectorTree);
+                player.outputChatBox("shape : " + shape.orangeCollectorTree + " => " + player.job.activeTree);
 
                 if (shape.orangeCollectorTree === player.job.activeTree) {
                     player.call("cMisc-CallServerEvenWithTimeout", ["sDockeur-EnteredTreeShape", 100]);
