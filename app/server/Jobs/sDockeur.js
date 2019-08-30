@@ -184,17 +184,23 @@ class Dockeur extends Job {
     }
 
     hideActiveCheckPoint(player) {
-        this.treeMarkersList[player.job.checkpoint].marker.hideFor(player);
+        let i = 0;
+        
+        if(player.job.checkpoint == 0) i = 0;
+        else i = 1;
+
+        this.treeMarkersList[i].marker.hideFor(player);
         player.job.activeTree = false;
     }
 
     enteredTreeShape(player) {
         player.notify("test");
-        if(player.vehicle != player.locationJob)
+        if (player.vehicle != player.locationJob)
             return player.notify("~r~Vous n'êtes pas dans votre véhicule de service.");
 
-        if(player.job.checkpoint == 0)
+        if (player.job.checkpoint == 0)
         {
+            player.notify("chargement");
             player.job.checkpoint = 1;
         }
         else
