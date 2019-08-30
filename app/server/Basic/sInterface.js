@@ -48,6 +48,7 @@ class Interface {
                 veh.setColorRGB(d.color1.r, d.color1.g, d.color1.b, d.color2.r, d.color2.g, d.color2.b);
                 veh.primaryColor = [d.color1.r, d.color1.g, d.color1.b];
                 veh.secondaryColor = [d.color2.r, d.color2.g, d.color2.b];
+                veh.setTyreSmokeColor(d.smoke.r, d.smoke.g, d.smoke.b);
             },
             "sInterface-setTunning": (player, mod, modvalue) => {
                 let veh = misc.getNearestVehicle(player, 3);

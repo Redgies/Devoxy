@@ -196,6 +196,9 @@
                 <br><br><br>
                 <p class="p-right">Couleur secondaire :</p>
                 <input type="text" v-model="color2" id="color2">
+                <br><br><br>
+                <p class="p-right">Couleur fumée :</p>
+                <input type="text" v-model="color3" id="color3">
                 <br><br>
                 <button type="button" class="btn-valid" @click="setColor()">Valider</button>
             </div>
@@ -243,6 +246,7 @@
                 invChoice: 0,
                 color1: '#000000',
                 color2: '#000000',
+                color3: '#000000',
                 modelsVip: [
                     {title: 'a_c_rottweiler'},
                     {title: 'a_c_mtlion'},
@@ -789,6 +793,11 @@
                         picker2.on("change", function (color) {
                             this.source.value = '#' + color;
                         });
+
+                        var picker3 = new CP(document.getElementById('color3'));
+                        picker3.on("change", function (color) {
+                            this.source.value = '#' + color;
+                        });
                     }, 500)
                 },
 
@@ -862,6 +871,7 @@
                 setColor: function () {
                     var color1 = document.getElementById('color1');
                     var color2 = document.getElementById('color2');
+                    var color3 = document.getElementById('color3');
                     const data = {
                         color1: {
                             r: this.hexToRgb(color1.value).r,
@@ -872,6 +882,11 @@
                             r: this.hexToRgb(color2.value).r,
                             g: this.hexToRgb(color2.value).g,
                             b: this.hexToRgb(color2.value).b,
+                        },
+                        smoke: {
+                            r: this.hexToRgb(color3.value).r,
+                            g: this.hexToRgb(color3.value).g,
+                            b: this.hexToRgb(color3.value).b,
                         }
                     };
                     mp.trigger("cMisc-CallServerEvent", "sInterface-setColor", JSON.stringify(data));
