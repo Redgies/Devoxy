@@ -25,7 +25,7 @@ class Dockeur extends Job {
                 if (shape.orangeCollectorTree === player.job.activeTree) {
                     player.call("cMisc-CallServerEvenWithTimeout", ["sDockeur-EnteredTreeShape", 100]);
                 } else if (shape === this.dropShape) {
-                    player.call("cMisc-CallServerEvenWithTimeout", ["sDockeur-EnteredDropShape", 100]);
+                        player.call("cMisc-CallServerEvenWithTimeout", ["sDockeur-EnteredDropShape", 100]);
                 } else if (shape === this.vehicleShape) {
                     player.canGetVehicle = true;
                 }
@@ -184,7 +184,7 @@ class Dockeur extends Job {
     }
 
     hideActiveCheckPoint(player) {
-        this.treeMarkersList[player.job.checkpoint - 1].marker.hideFor(player);
+        this.treeMarkersList[player.job.checkpoint].marker.hideFor(player);
         player.job.activeTree = false;
     }
 
