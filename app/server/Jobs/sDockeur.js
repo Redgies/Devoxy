@@ -18,7 +18,7 @@ class Dockeur extends Job {
 
         mp.events.add({
             "playerEnterColshape": (player, shape) => {
-                if (!player.loggedIn || !this.isPlayerWorksHere(player)) return;s
+                if (!player.loggedIn || !this.isPlayerWorksHere(player)) return;
 
                 if (shape.orangeCollectorTree === player.job.activeTree) {
                     player.call("cMisc-CallServerEvenWithTimeout", ["sDockeur-EnteredTreeShape", 100]);
@@ -216,7 +216,7 @@ class Dockeur extends Job {
         if (player.job.collected === 0) return player.notify(`Vous n'avez chargé aucun container !`);
         const earnedMoney = player.vip ? ((player.job.collected * 880) * 1.10) : player.job.collected * 880;
         player.changeMoney(+earnedMoney);
-        player.notify(`Vous gagnez ~g~$${earnedMoney} ! ~w~Continuez !`);
+        player.notify(`Vous gagnez ~g~${earnedMoney}$ ~w~! Continuez !`);
         if (player.loyality < 70) player.addLoyality(2);
         misc.log.debug(`${player.name} earned $${earnedMoney} at dockeur job!`);
         player.job.collected = 0;
