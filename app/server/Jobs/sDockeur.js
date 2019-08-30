@@ -189,6 +189,7 @@ class Dockeur extends Job {
     }
 
     enteredTreeShape(player) {
+        player.notify("test");
         if(player.vehicle != player.locationJob)
             return player.notify("~r~Vous n'êtes pas dans votre véhicule de service.");
 
