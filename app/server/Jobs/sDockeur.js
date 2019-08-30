@@ -185,6 +185,8 @@ class Dockeur extends Job {
 
     hideActiveCheckPoint(player) {
         let i = 0;
+
+        player.notify("hide");
         
         if(player.job.checkpoint == 0) i = 0;
         else i = 1;
