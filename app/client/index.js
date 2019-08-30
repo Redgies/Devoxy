@@ -25,6 +25,7 @@ require('./Basic/cGPS');
 require('./Basic/cHeadshot');
 require('./Basic/cRadio');
 require('./3rd/betternotifs.js');
+require('./3rd/smokecolor.js');
 require('./fingerpointing');
 require('./Basic/cNoClip');
 require('./Basic/cAnimations');
