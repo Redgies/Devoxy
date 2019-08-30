@@ -7,12 +7,6 @@ class TimeSingleton {
 	}
 
 	everyMinuteEvent() {
-		const players = mp.players.toArray();
-		for (const player of players) {
-			if (!player.loggedIn) return;
-			// player.addHP();
-			// player.jailEvent();
-		}	
 	}
 
 	every5MinutesEvent() {
@@ -21,6 +15,46 @@ class TimeSingleton {
 
 	everyHourEvent() {
 		business.payTaxes();
+
+		const players = mp.players.toArray();
+		for (const player of players) {
+			if (!player.loggedIn) return;
+
+			let salaire = 0;
+
+			if(player.faction == 1)
+			{
+				switch(player.rank) {
+					case 1: 
+						salaire = 1200;
+						break;
+					case 2: 
+						salaire = 1400;
+						break;
+					case 3: 
+						salaire = 1600;
+						break;
+					case 4: 
+						salaire = 1800;
+						break;
+					case 5: 
+						salaire = 2000;
+						break;
+					case 6: 
+						salaire = 3000;
+						break;
+					case 7: 
+						salaire = 4000;
+						break;
+				}
+			}
+
+			if(salaire > 0)
+			{
+				player.money.bank += salaire;
+				player.notifyWithPicture("Banque", "", `Votre entreprise vous paye ~g~${salaire}$~w~.`, "CHAR_BANK_FLEECA");
+			}
+		}	
 	}
 
 	runTimer(isFirstRunning) {

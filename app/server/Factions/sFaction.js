@@ -1,6 +1,7 @@
 const misc = require('../sMisc');
 const clothes = require('../Character/sClothes');
 const vehicleSingletone = require('../Basic/Vehicles/sVehicleSingletone');
+const GPS = require('../Basic/sGPS');
 
 const factionsList = [];
 
@@ -103,10 +104,20 @@ class Faction {
 			"mecano" : (player, fullText) => {
 				if(fullText.length <= 0) return player.notify("~r~Vous devez saisir un message.");
 
+				const pos = player.position;
+				let x, y;
+
+				x = pos.x;
+				y = pos.y;
+
+				GPS.createRoute(target, x, y);
+
 				for(const p of mp.players.toArray()) {
                     if((p.faction !== 2 && p.faction !== 3) || !this.isWorking(p)) continue;
-                    
+					
+					const dist = p.dist(player.position);
 					p.notifyWithPicture("Dépannage", player.name, fullText, "CHAR_SOCIAL_CLUB");
+					misc.log.debug(`${player.name} appel un mecano`);
 				}
 
 				player.notifyWithPicture("Dépannage", "", "Votre message a bien été reçu, nous le traiterons dès que possible.", "CHAR_SOCIAL_CLUB");
@@ -114,10 +125,20 @@ class Faction {
 			"medic" : (player, fullText) => {
 				if(fullText.length <= 0) return player.notify("~r~Vous devez saisir un message.");
 
+				const pos = player.position;
+				let x, y;
+
+				x = pos.x;
+				y = pos.y;
+
+				GPS.createRoute(target, x, y);
+
 				for(const p of mp.players.toArray()) {
                     if(p.faction !== 4 || !this.isWorking(p)) continue;
-                    
+					
+					const dist = p.dist(player.position);
 					p.notifyWithPicture("Médecin", player.name, fullText, "CHAR_SOCIAL_CLUB");
+					misc.log.debug(`${player.name} appel un médecin`);
 				}
 
 				player.notifyWithPicture("Médecin", "", "Votre message a bien été reçu, nous le traiterons dès que possible.", "CHAR_SOCIAL_CLUB");

@@ -33,4 +33,9 @@ mp.events.add({
         misc.openCef("package://RP/Browsers/Jobs/Rafineur/collector.html", lang);
         misc.injectCef(inject);
     },
+    "cDockeur-OpenMainMenu" : (lang, inject) => {
+        misc.prepareToCef();
+        misc.openCef("package://RP/Browsers/Jobs/Dockeur/collector.html", lang);
+        misc.injectCef(inject);
+    },
 });       

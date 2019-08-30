@@ -90,13 +90,13 @@ mp.events.add({
                 player.giveItem("weapon_dbshotgun", "Pompe Double Canon", 1);
                 break;				
             case 3220176749:
-                player.giveItem("weapon_assaultrifle", "Fusil D'assault AK47", 1);
+                player.giveItem("weapon_assaultrifle", "Fusil Assault AK47", 1);
                 break;		
             case 4024951519:
-                player.giveItem("weapon_assaultsmg", "Fusil d'assault", 1);
+                player.giveItem("weapon_assaultsmg", "Fusil Assault", 1);
                 break;
             case 3231910285:
-                player.giveItem("weapon_specialcarbine", "Fusil d'assault MK II", 1);
+                player.giveItem("weapon_specialcarbine", "Fusil Assault MK II", 1);
                 break;							
             case 100416529:
                 player.giveItem("weapon_sniperrifle", "Sniper", 1);
@@ -325,15 +325,15 @@ invAPI.addItem("weapon_dbshotgun", "Pompe Double Canon", "", (player, inventoryI
     player.setWeapon(4019527611, 0);
     player.removeItem(inventoryIndex);
 });
-invAPI.addItem("weapon_assaultrifle", "Fusil D'assault AK47", "", (player, inventoryIndex, itemKey, data) => {
+invAPI.addItem("weapon_assaultrifle", "Fusil Assault AK47", "", (player, inventoryIndex, itemKey, data) => {
     player.setWeapon(3220176749, 0);
     player.removeItem(inventoryIndex);
 });
-invAPI.addItem("weapon_assaultsmg", "Fusil d'assault", "", (player, inventoryIndex, itemKey, data) => {
+invAPI.addItem("weapon_assaultsmg", "Fusil Assault", "", (player, inventoryIndex, itemKey, data) => {
     player.setWeapon(4024951519, 0);
     player.removeItem(inventoryIndex);
 });
-invAPI.addItem("weapon_specialcarbine", "Fusil d'assault MK II", "", (player, inventoryIndex, itemKey, data) => {
+invAPI.addItem("weapon_specialcarbine", "Fusil Assault MK II", "", (player, inventoryIndex, itemKey, data) => {
     player.setWeapon(3231910285, 0);
     player.removeItem(inventoryIndex);
 });

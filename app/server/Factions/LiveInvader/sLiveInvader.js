@@ -68,6 +68,22 @@ class LifeInvader extends faction {
 				misc.log.debug(`${player.name} ${fullText}`);
             }
         });
+        mp.events.addCommand({	
+			"ano": (player, fullText) => {
+                if (!player.canMakeAnnounce && !player.vip) return;
+                if (fullText.length <= 0) return player.notify("~r~Vous devez entrer une annonce.");
+
+                let price = player.vip ? 0 : 500;
+
+                if (player.money.cash < price)
+                return player.notify("~r~Vous n'avez pas assez sur vous.");
+
+                player.changeMoney(-price);
+
+                mp.players.broadcast(`!{#fdcb6e}[${time.getTime()}] [ANNONCE] Anonyme [${player.id}] : ${fullText}`);
+				misc.log.debug(`${player.name} ${fullText}`);
+            }
+        });
         mp.events.add({ 
             "playerEnterColshape" : (player, shape) => {
                 if(shape === this.announceShape)
