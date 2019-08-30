@@ -39,7 +39,7 @@ class Dockeur extends Job {
                 if (player.canGetVehicle) {
                     if (player.locationJob) return player.notify("~r~Vous avez déjà un véhicule de travail.");
                     const d = {
-                        model: 'handler',
+                        model: 'drafter',
                         coord: JSON.stringify({x: 1184.773, y: -3231.942, z: 6.014, rot: 0.46}),
                         id: 0,
                         title: 'Handler',
@@ -136,7 +136,7 @@ class Dockeur extends Job {
 
             const obj = {marker, blip};
             this.treeMarkersList.push(obj);
-            const colshape = mp.colshapes.newSphere(this.checkPoints[i].x, this.checkPoints[i].y, this.checkPoints[i].z, 3);
+            const colshape = mp.colshapes.newSphere(this.checkPoints[i].x, this.checkPoints[i].y, this.checkPoints[i].z + 1, 6);
             colshape.orangeCollectorTree = i;
         }
     }

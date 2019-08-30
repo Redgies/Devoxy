@@ -68,9 +68,9 @@ class Weed {
                                     let amount = player.getItemAmount(item.key);
 
                                     player.removeItem(index, amount);
-                                    player.giveItem("item_dirty_money", "Argent sale", amount * 250);
+                                    player.giveItem("item_dirty_money", "Argent sale", amount * 200);
 
-                                    player.notify(`Vous avez vendu de la weed (~g~+${amount * 250}$ en argent sale~w~).`);
+                                    player.notify(`Vous avez vendu de la weed (~g~+${amount * 200}$ en argent sale~w~).`);
                                     return 1;
                                 }
                             });
