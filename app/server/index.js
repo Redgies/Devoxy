@@ -34,6 +34,7 @@ require('./Jobs/sLivreurDeJournaux');
 require('./Jobs/sEboueur');
 require('./Jobs/sBus');
 require('./Jobs/sRafineur');
+require('./Jobs/sDockeur');
 require('./Jobs/sPrisonnier');
 
 require('./Phone/sPhone');
