@@ -61,6 +61,7 @@ class Dockeur extends Job {
             },
             "sDockeur-EnteredTreeShape": (player) => {
                 this.enteredTreeShape(player);
+                player.notify("entré");
             },
 
             "sDockeur-EnteredDropShape": (player) => {
