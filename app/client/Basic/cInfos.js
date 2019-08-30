@@ -36,6 +36,8 @@ mp.events.add({
     {
         speedo.execute(`updateMoney(${money}, '${job}', ${id}, ${guid}, ${radio});`);  
 
+        mp.game.player.restoreStamina(100);
+
         if(player.vehicle && player.vehicle.getPedInSeat(-1) === player.handle)
             {
                 if(showed === false)

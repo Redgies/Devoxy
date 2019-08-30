@@ -110,11 +110,10 @@ class Faction {
 				x = pos.x;
 				y = pos.y;
 
-				GPS.createRoute(target, x, y);
-
 				for(const p of mp.players.toArray()) {
                     if((p.faction !== 2 && p.faction !== 3) || !this.isWorking(p)) continue;
 					
+					GPS.createRoute(p, x, y);
 					const dist = p.dist(player.position);
 					p.notifyWithPicture("Dépannage", player.name, fullText, "CHAR_SOCIAL_CLUB");
 					misc.log.debug(`${player.name} appel un mecano`);
@@ -131,11 +130,11 @@ class Faction {
 				x = pos.x;
 				y = pos.y;
 
-				GPS.createRoute(target, x, y);
 
 				for(const p of mp.players.toArray()) {
                     if(p.faction !== 4 || !this.isWorking(p)) continue;
 					
+					GPS.createRoute(p, x, y);
 					const dist = p.dist(player.position);
 					p.notifyWithPicture("Médecin", player.name, fullText, "CHAR_SOCIAL_CLUB");
 					misc.log.debug(`${player.name} appel un médecin`);
